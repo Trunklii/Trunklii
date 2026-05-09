@@ -6,357 +6,286 @@
 <title id="page-title">Studio — Trunklii</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;1,200;1,300&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --ink:#111010;
-  --off:#f4f2ee;
+  --off:#ffffff;
+  --bg:#f8f6f2;
   --mid:#888078;
   --accent:#b8935a;
   --border:rgba(17,16,16,.1);
   --serif:'Noto Serif JP',serif;
+  --display:'Cormorant Garamond',serif;
   --sans:'Jost',sans-serif;
   --ease:cubic-bezier(.25,.46,.45,.94);
 }
 html{scroll-behavior:smooth}
-body{background:var(--off);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:14px;line-height:1.8;overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:14px;line-height:1.8;overflow-x:hidden}
 
 /* ═══ NAV ═══ */
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  background:rgba(244,242,238,.96);backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--border);
-  transition:box-shadow .3s;
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:#fff;border-bottom:1px solid #1a1a1a}
+
+.nav-top{
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;padding:0 clamp(1rem,3vw,2.5rem);height:80px;position:relative;
 }
-.nav.scrolled{box-shadow:0 1px 20px rgba(17,16,16,.06)}
-
-.nav-inner{
-  display:flex;align-items:center;justify-content:space-between;
-  height:60px;padding:0 clamp(1rem,3vw,2.5rem);
-  max-width:1500px;margin:0 auto;
+.brand-tabs{display:flex;align-items:center;gap:0;list-style:none}
+.brand-tab{
+  font-family:var(--sans);font-weight:500;font-size:.78rem;
+  letter-spacing:.04em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;
+  padding:.6rem 1.2rem;position:relative;
+  transition:opacity .25s;white-space:nowrap;
+}
+.brand-tab:not(.active){opacity:.4}
+.brand-tab:not(.active):hover{opacity:.7}
+.brand-tab.active{font-weight:700}
+.brand-tab.active::after{
+  content:'';position:absolute;bottom:-1px;left:1.2rem;right:1.2rem;
+  height:2px;background:var(--ink);
 }
 
-/* Brand */
-.nav-brand{display:flex;align-items:baseline;gap:.45rem;text-decoration:none;flex-shrink:0}
-.nav-parent{font-family:var(--sans);font-weight:200;font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--mid)}
-.nav-slash{font-size:.7rem;color:var(--border)}
-.nav-studio{font-family:var(--sans);font-weight:200;font-size:clamp(.9rem,2vw,1.1rem);letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.nav-logo-wrap{display:flex;align-items:center;justify-content:center}
+.nav-logo{display:block;height:42px;color:var(--ink)}
+.nav-logo svg{height:100%;width:auto;display:block}
 
-/* Desktop menu */
+.nav-right{display:flex;align-items:center;justify-content:flex-end;gap:1.5rem}
+.nav-store{
+  display:flex;align-items:center;gap:.4rem;
+  font-family:var(--sans);font-weight:400;font-size:.78rem;
+  letter-spacing:.05em;color:var(--ink);text-decoration:none;
+}
+.nav-store svg{width:14px;height:14px}
+
+.nav-bot{
+  display:flex;align-items:center;justify-content:center;
+  padding:0 clamp(1rem,3vw,2.5rem);height:48px;
+  border-top:1px solid #f0eee9;position:relative;
+}
 .nav-menu{display:flex;align-items:center;gap:0;list-style:none}
-.nav-item{position:relative}
 .nav-link{
-  display:block;padding:.4rem .9rem;
-  font-family:var(--sans);font-weight:300;font-size:.68rem;
-  letter-spacing:.16em;text-transform:uppercase;
-  color:var(--mid);text-decoration:none;
-  transition:color .25s;white-space:nowrap;
+  font-family:var(--sans);font-weight:500;font-size:.74rem;
+  letter-spacing:.05em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;
+  padding:0 1.2rem;height:48px;display:flex;align-items:center;
+  position:relative;transition:color .2s;white-space:nowrap;
 }
-.nav-link:hover,.nav-item.open>.nav-link{color:var(--ink)}
+.nav-link sup{font-size:.55rem;font-weight:500;letter-spacing:.05em;margin-left:.25rem;color:var(--accent)}
 
-/* Dropdown */
+.nav-item{position:relative}
 .nav-drop{
-  position:absolute;top:calc(100% + 1px);left:50%;
-  transform:translateX(-50%) translateY(6px);
-  background:var(--off);border:1px solid var(--border);
-  min-width:160px;opacity:0;pointer-events:none;
-  transition:opacity .22s,transform .22s;
-  box-shadow:0 8px 32px rgba(17,16,16,.08);
+  position:absolute;top:100%;left:0;
+  background:#fff;border:1px solid #e5e2dc;
+  min-width:180px;opacity:0;pointer-events:none;
+  transform:translateY(4px);transition:opacity .22s,transform .22s;
+  box-shadow:0 8px 24px rgba(17,16,16,.08);z-index:10;
 }
-.nav-item:hover .nav-drop,
-.nav-item.open .nav-drop{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
+.nav-item:hover .nav-drop{opacity:1;pointer-events:all;transform:translateY(0)}
 .nav-drop a{
-  display:block;padding:.55rem 1.2rem;
-  font-family:var(--sans);font-weight:300;font-size:.65rem;
-  letter-spacing:.14em;text-transform:uppercase;
-  color:var(--mid);text-decoration:none;
-  border-bottom:1px solid rgba(17,16,16,.05);
-  transition:color .2s,background .2s;
+  display:block;padding:.7rem 1.2rem;
+  font-family:var(--sans);font-weight:400;font-size:.72rem;
+  letter-spacing:.05em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;
+  border-bottom:1px solid #f0eee9;transition:background .2s;
 }
 .nav-drop a:last-child{border-bottom:none}
-.nav-drop a:hover{color:var(--ink);background:rgba(17,16,16,.03)}
+.nav-drop a:hover{background:#f8f6f2}
 
-/* Switch + Booking */
-.nav-actions{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
-.nav-switch{
-  font-family:var(--sans);font-weight:300;font-size:.62rem;
-  letter-spacing:.16em;text-transform:uppercase;
-  color:var(--mid);text-decoration:none;
-  padding:.32rem .85rem;border:1px solid var(--border);
-  transition:all .25s;
-}
-.nav-switch:hover{color:var(--ink);border-color:var(--ink)}
 .nav-book{
-  font-family:var(--sans);font-weight:300;font-size:.65rem;
-  letter-spacing:.16em;text-transform:uppercase;
-  color:var(--off);background:var(--ink);
-  text-decoration:none;padding:.42rem 1.1rem;
-  transition:background .25s,color .25s;
+  position:absolute;right:clamp(1rem,3vw,2.5rem);top:50%;
+  transform:translateY(-50%);
+  font-family:var(--sans);font-weight:500;font-size:.72rem;
+  letter-spacing:.05em;text-transform:uppercase;
+  color:#fff;background:var(--ink);
+  text-decoration:none;padding:.5rem 1.2rem;transition:background .2s;
 }
-.nav-book:hover{background:var(--accent);color:var(--off)}
+.nav-book:hover{background:var(--accent)}
 
-/* Hamburger */
 .hamburger{
   display:none;flex-direction:column;gap:5px;
-  cursor:pointer;background:none;border:none;padding:4px;flex-shrink:0;
+  cursor:pointer;background:none;border:none;padding:8px;
+  position:absolute;left:1rem;top:50%;transform:translateY(-50%);z-index:5;
 }
-.hamburger span{display:block;width:21px;height:1px;background:var(--ink);transition:all .3s}
-.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--ink);transition:all .3s}
 
-/* Mobile drawer */
+/* ═══ MOBILE NAV ═══ */
 .mob-nav{
-  position:fixed;top:60px;left:0;right:0;bottom:0;z-index:199;
-  background:var(--off);overflow-y:auto;
-  transform:translateX(100%);transition:transform .4s var(--ease);
-  padding:1.5rem 0 3rem;
+  position:fixed;inset:0;z-index:300;background:#fff;
+  display:flex;flex-direction:column;
+  transform:translateX(-100%);transition:transform .35s var(--ease);
+  overflow-y:auto;
 }
 .mob-nav.open{transform:translateX(0)}
-.mob-item{border-bottom:1px solid var(--border)}
+
 .mob-top{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.85rem clamp(1.5rem,5vw,2.5rem);cursor:pointer;
+  position:sticky;top:0;
+  display:grid;grid-template-columns:auto 1fr auto;
+  align-items:center;padding:0 1rem;height:60px;
+  background:#fff;border-bottom:1px solid #1a1a1a;z-index:2;
 }
-.mob-top-label{
-  font-family:var(--sans);font-weight:200;font-size:.85rem;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--ink);
-  text-decoration:none;
+.mob-close{
+  background:none;border:none;cursor:pointer;
+  font-size:1.4rem;color:var(--ink);padding:.5rem;line-height:1;
 }
-.mob-arrow{font-size:.7rem;color:var(--mid);transition:transform .3s}
+.mob-logo{display:flex;align-items:center;justify-content:center;height:42px}
+.mob-logo svg{height:36px;width:auto}
+.mob-spacer{width:32px}
+
+.mob-brand-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #1a1a1a}
+.mob-brand-tab{
+  display:flex;align-items:center;justify-content:center;
+  padding:2.5rem 1rem;text-decoration:none;color:var(--ink);
+  position:relative;transition:background .2s;min-height:140px;
+}
+.mob-brand-tab:not(.active){opacity:.35}
+.mob-brand-tab.active{background:var(--ink);color:#fff}
+.mob-brand-tab + .mob-brand-tab{border-left:1px solid #1a1a1a}
+.mob-brand-tab .brand-svg{height:60px;width:auto;display:block}
+.mob-brand-tab.active .brand-svg{filter:invert(1)}
+
+.mob-list{display:flex;flex-direction:column;flex:1}
+.mob-item{border-bottom:1px solid #f0eee9}
+.mob-item-top{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 1.5rem;cursor:pointer}
+.mob-item-label{
+  font-family:var(--sans);font-weight:500;font-size:1.1rem;
+  letter-spacing:.02em;text-transform:uppercase;color:var(--ink);
+  text-decoration:none;flex:1;
+}
+.mob-item-label sup{font-size:.6rem;color:var(--accent);margin-left:.3rem;font-weight:500}
+.mob-arrow{font-size:1rem;color:var(--ink);transition:transform .3s;font-weight:300}
 .mob-item.open .mob-arrow{transform:rotate(90deg)}
-.mob-sub{
-  display:none;padding:0 clamp(1.5rem,5vw,2.5rem) .75rem;
-}
+.mob-sub{display:none;background:#f8f6f2;padding:.5rem 0}
 .mob-item.open .mob-sub{display:block}
 .mob-sub a{
-  display:block;padding:.55rem 0;
-  font-family:var(--sans);font-weight:200;font-size:.75rem;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--mid);
-  text-decoration:none;border-bottom:1px solid rgba(17,16,16,.04);
+  display:block;padding:.85rem 2.5rem;
+  font-family:var(--sans);font-weight:400;font-size:.85rem;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--ink);
+  text-decoration:none;
 }
-.mob-sub a:last-child{border-bottom:none}
-.mob-actions{
-  padding:1.5rem clamp(1.5rem,5vw,2.5rem);
-  display:flex;flex-direction:column;gap:.75rem;
-}
-.mob-book{
+.mob-sub a:hover{background:#f0eee9}
+
+.mob-actions{padding:1.5rem;display:flex;flex-direction:column;gap:.75rem;border-top:1px solid #1a1a1a}
+.mob-book-btn{
   display:block;text-align:center;
-  font-family:var(--sans);font-weight:300;font-size:.75rem;
-  letter-spacing:.2em;text-transform:uppercase;
-  color:var(--off);background:var(--ink);
-  text-decoration:none;padding:.75rem 1.5rem;
-}
-.mob-switch{
-  display:block;text-align:center;
-  font-family:var(--sans);font-weight:200;font-size:.72rem;
-  letter-spacing:.18em;text-transform:uppercase;
-  color:var(--mid);border:1px solid var(--border);
-  text-decoration:none;padding:.65rem 1.5rem;
+  font-family:var(--sans);font-weight:500;font-size:.85rem;
+  letter-spacing:.05em;text-transform:uppercase;
+  color:#fff;background:var(--ink);
+  text-decoration:none;padding:1rem 1.5rem;
 }
 
 /* ═══ HERO ═══ */
-.hero{position:relative;height:100vh;min-height:560px;margin-top:60px;overflow:hidden}
-.hero-slide{
-  position:absolute;inset:0;opacity:0;
-  background-size:cover;background-position:center;
-  transition:opacity 1.6s ease;
-}
+.hero{position:relative;height:calc(100vh - 128px);min-height:520px;margin-top:128px;overflow:hidden}
+.hero-slide{position:absolute;inset:0;opacity:0;background-size:cover;background-position:center;transition:opacity 1.6s ease}
 .hero-slide.active{opacity:1}
-.hero-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(160deg,rgba(244,242,238,.04) 0%,rgba(17,16,16,.38) 100%);
-}
-.hero-content{
-  position:absolute;bottom:clamp(3rem,8vw,7rem);
-  left:clamp(1.5rem,6vw,6rem);z-index:2;
-}
-.hero-eyebrow{
-  font-family:var(--sans);font-weight:200;font-size:.6rem;
-  letter-spacing:.3em;text-transform:uppercase;color:rgba(244,242,238,.6);
-  margin-bottom:.8rem;
-}
-.hero-name{
-  font-family:var(--sans);font-weight:100;
-  font-size:clamp(3.5rem,10vw,9rem);letter-spacing:.04em;
-  line-height:1;color:var(--off);
-}
-.hero-tagline{
-  font-family:var(--serif);font-weight:200;font-style:italic;
-  font-size:clamp(.7rem,1.5vw,.88rem);letter-spacing:.16em;
-  color:rgba(244,242,238,.55);margin-top:.9rem;
-}
-.hero-dots{
-  position:absolute;bottom:2rem;right:clamp(1.5rem,4vw,3.5rem);
-  display:flex;gap:.55rem;z-index:2;
-}
-.hero-dot{
-  width:5px;height:5px;border-radius:50%;
-  background:rgba(244,242,238,.25);cursor:pointer;transition:background .3s;
-}
-.hero-dot.active{background:var(--off)}
-.scroll-cue{
-  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:.4rem;
-  z-index:2;opacity:.45;
-}
-.scroll-cue span{font-size:.55rem;letter-spacing:.22em;color:var(--off)}
-.scroll-bar{width:1px;height:34px;background:var(--off);animation:scBar 1.9s ease-in-out infinite}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(248,246,242,.04) 0%,rgba(17,16,16,.38) 100%)}
+.hero-content{position:absolute;bottom:clamp(3rem,8vw,7rem);left:clamp(1.5rem,6vw,6rem);z-index:2}
+.hero-eyebrow{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:.8rem}
+.hero-name{font-family:var(--display);font-weight:300;font-style:italic;font-size:clamp(3.5rem,10vw,9rem);letter-spacing:-.01em;line-height:1;color:#fff}
+.hero-tagline{font-family:var(--display);font-weight:300;font-style:italic;font-size:clamp(.75rem,1.6vw,.95rem);letter-spacing:.12em;color:rgba(255,255,255,.65);margin-top:.9rem}
+.hero-dots{position:absolute;bottom:2rem;right:clamp(1.5rem,4vw,3.5rem);display:flex;gap:.55rem;z-index:2}
+.hero-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:background .3s}
+.hero-dot.active{background:#fff}
+.scroll-cue{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;z-index:2;opacity:.6}
+.scroll-cue span{font-size:.55rem;letter-spacing:.22em;color:#fff;text-transform:uppercase}
+.scroll-bar{width:1px;height:34px;background:#fff;animation:scBar 1.9s ease-in-out infinite}
 @keyframes scBar{0%,100%{opacity:.25;transform:scaleY(.4);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
 
 /* ═══ SECTIONS ═══ */
 .wrap{max-width:1440px;margin:0 auto;padding:clamp(4rem,10vw,9rem) clamp(1.5rem,5vw,5rem)}
 .sec-head{display:flex;align-items:baseline;gap:1.2rem;margin-bottom:clamp(2.5rem,5vw,4.5rem)}
-.sec-num{font-family:var(--sans);font-weight:200;font-size:.62rem;letter-spacing:.22em;color:var(--mid)}
-.sec-title{font-family:var(--sans);font-weight:200;font-size:clamp(1.4rem,3.5vw,2.4rem);letter-spacing:.12em;text-transform:uppercase}
+.sec-num{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.22em;color:var(--mid)}
+.sec-title{font-family:var(--display);font-weight:300;font-style:italic;font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:-.01em}
 .sec-rule{flex:1;height:1px;background:var(--border);min-width:20px}
 
-/* coming banner */
-.coming-banner{
-  font-family:var(--serif);font-style:italic;font-size:.8rem;
-  letter-spacing:.12em;color:var(--accent);
-  border:1px solid rgba(184,147,90,.25);padding:.75rem 1.5rem;
-  margin-bottom:2rem;text-align:center;
-}
+.coming-banner{font-family:var(--display);font-style:italic;font-size:.85rem;letter-spacing:.08em;color:var(--accent);border:1px solid rgba(184,147,90,.25);padding:.75rem 1.5rem;margin-bottom:2rem;text-align:center}
 
-/* ═══ ABOUT ═══ */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,7vw,8rem);align-items:center}
-.about-text p{
-  font-family:var(--serif);font-weight:200;
-  font-size:clamp(.82rem,1.4vw,.92rem);color:var(--mid);
-  white-space:pre-line;line-height:2.2;margin-bottom:2.2rem;
-}
+.about-text p{font-family:var(--serif);font-weight:300;font-size:clamp(.85rem,1.4vw,.95rem);color:var(--mid);white-space:pre-line;line-height:2.2;margin-bottom:2.2rem}
 .about-img-wrap{position:relative}
 .about-img-wrap img{width:100%;height:clamp(300px,50vw,560px);object-fit:cover;display:block}
-.about-img-wrap::before{
-  content:'';position:absolute;top:-10px;left:-10px;right:10px;bottom:10px;
-  border:1px solid var(--border);z-index:-1;
-}
-.btn-line{
-  display:inline-block;font-family:var(--sans);font-weight:300;
-  font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--ink);border:1px solid var(--ink);
-  padding:.7rem 1.8rem;text-decoration:none;transition:all .3s;
-}
-.btn-line:hover{background:var(--ink);color:var(--off)}
+.about-img-wrap::before{content:'';position:absolute;top:-10px;left:-10px;right:10px;bottom:10px;border:1px solid var(--border);z-index:-1}
+.btn-line{display:inline-block;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:.85rem 2rem;text-decoration:none;transition:all .3s}
+.btn-line:hover{background:var(--ink);color:#fff}
 
-/* ═══ GALLERY ═══ */
 .g-filters{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:2.5rem}
-.g-filter{
-  background:none;border:1px solid var(--border);cursor:pointer;
-  font-family:var(--sans);font-weight:300;font-size:.62rem;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--mid);
-  padding:.32rem .9rem;transition:all .25s;
-}
-.g-filter.active,.g-filter:hover{background:var(--ink);border-color:var(--ink);color:var(--off)}
+.g-filter{background:none;border:1px solid var(--border);cursor:pointer;font-family:var(--sans);font-weight:400;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);padding:.42rem 1rem;transition:all .25s}
+.g-filter.active,.g-filter:hover{background:var(--ink);border-color:var(--ink);color:#fff}
 .g-grid{columns:3;column-gap:1rem}
 .g-item{break-inside:avoid;margin-bottom:1rem;overflow:hidden;position:relative;cursor:pointer}
 .g-item img{width:100%;display:block;transition:transform .7s var(--ease)}
 .g-item:hover img{transform:scale(1.04)}
-.g-cap{
-  position:absolute;bottom:0;left:0;right:0;
-  background:linear-gradient(transparent,rgba(17,16,16,.55));
-  color:#fff;font-family:var(--serif);font-style:italic;
-  font-size:.7rem;letter-spacing:.1em;
-  padding:2rem .75rem .6rem;opacity:0;transition:opacity .3s;
-}
+.g-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(17,16,16,.55));color:#fff;font-family:var(--display);font-style:italic;font-size:.78rem;letter-spacing:.06em;padding:2rem .75rem .6rem;opacity:0;transition:opacity .3s}
 .g-item:hover .g-cap{opacity:1}
 .g-item.hidden{display:none}
 
-/* ═══ COSTUME / KIMONO ═══ */
 .items-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 .item-card{position:relative;overflow:hidden;cursor:pointer}
 .item-card img{width:100%;height:clamp(200px,28vw,340px);object-fit:cover;display:block;transition:transform .7s var(--ease)}
 .item-card:hover img{transform:scale(1.04)}
 .item-info{padding:1rem .2rem .5rem}
-.item-name{font-family:var(--sans);font-weight:300;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
-.item-desc{font-size:.72rem;color:var(--mid);margin-top:.3rem}
-.section-body-text{
-  font-family:var(--serif);font-weight:200;font-size:.88rem;
-  color:var(--mid);line-height:2.1;white-space:pre-line;margin-bottom:2.5rem;
-}
+.item-name{font-family:var(--sans);font-weight:500;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.item-desc{font-family:var(--serif);font-size:.72rem;color:var(--mid);margin-top:.3rem}
+.section-body-text{font-family:var(--serif);font-weight:300;font-size:.9rem;color:var(--mid);line-height:2.1;white-space:pre-line;margin-bottom:2.5rem}
 
-/* ═══ PLANS ═══ */
 .plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--border)}
-.plan-card{background:var(--off);padding:2.2rem 1.8rem;transition:background .35s;position:relative}
+.plan-card{background:#fff;padding:2.2rem 1.8rem;transition:background .35s;position:relative}
 .plan-card:hover{background:var(--ink)}
-.plan-tag{
-  position:absolute;top:1.2rem;right:1.2rem;
-  font-family:var(--sans);font-weight:200;font-size:.55rem;
-  letter-spacing:.14em;color:var(--off);background:var(--accent);
-  padding:.18rem .55rem;
-}
-.plan-name{font-family:var(--sans);font-weight:200;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.6rem;color:var(--ink);transition:color .35s}
-.plan-price{font-family:var(--serif);font-weight:300;font-size:1.5rem;color:var(--accent);margin-bottom:.9rem;transition:color .35s}
-.plan-desc{font-size:.75rem;color:var(--mid);line-height:1.9;transition:color .35s}
-.plan-card:hover .plan-name,.plan-card:hover .plan-desc{color:rgba(244,242,238,.75)}
+.plan-tag{position:absolute;top:1.2rem;right:1.2rem;font-family:var(--sans);font-weight:400;font-size:.55rem;letter-spacing:.1em;color:#fff;background:var(--accent);padding:.18rem .55rem;text-transform:uppercase}
+.plan-name{font-family:var(--sans);font-weight:500;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem;color:var(--ink);transition:color .35s}
+.plan-price{font-family:var(--display);font-weight:300;font-style:italic;font-size:1.7rem;color:var(--accent);margin-bottom:.9rem;transition:color .35s}
+.plan-desc{font-family:var(--serif);font-size:.78rem;color:var(--mid);line-height:1.9;transition:color .35s}
+.plan-card:hover .plan-name,.plan-card:hover .plan-desc{color:rgba(255,255,255,.75)}
 
-/* ═══ RECRUIT ═══ */
-.recruit-body{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:clamp(3rem,6vw,6rem);align-items:start;
-}
-.recruit-copy{
-  font-family:var(--serif);font-weight:200;font-size:.88rem;
-  color:var(--mid);line-height:2.1;white-space:pre-line;margin-bottom:2rem;
-}
+.recruit-body{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,6rem);align-items:start}
+.recruit-copy{font-family:var(--serif);font-weight:300;font-size:.9rem;color:var(--mid);line-height:2.1;white-space:pre-line;margin-bottom:2rem}
 .pos-list{display:flex;flex-direction:column;gap:1px;background:var(--border)}
-.pos-card{background:var(--off);padding:1.6rem 1.8rem}
-.pos-title{font-family:var(--sans);font-weight:200;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-bottom:.35rem}
-.pos-type{font-family:var(--sans);font-weight:200;font-size:.62rem;letter-spacing:.14em;color:var(--accent);margin-bottom:.5rem}
-.pos-desc{font-size:.75rem;color:var(--mid);line-height:1.8}
+.pos-card{background:#fff;padding:1.6rem 1.8rem}
+.pos-title{font-family:var(--sans);font-weight:500;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-bottom:.35rem}
+.pos-type{font-family:var(--sans);font-weight:400;font-size:.65rem;letter-spacing:.08em;color:var(--accent);margin-bottom:.5rem;text-transform:uppercase}
+.pos-desc{font-family:var(--serif);font-size:.78rem;color:var(--mid);line-height:1.8}
 
-/* ═══ ACCESS ═══ */
 .access-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:2.5rem}
-.access-block dt{font-family:var(--sans);font-weight:200;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mid);margin-bottom:.5rem}
-.access-block dd{font-size:.85rem;color:var(--ink);line-height:2}
+.access-block dt{font-family:var(--sans);font-weight:500;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);margin-bottom:.5rem}
+.access-block dd{font-family:var(--serif);font-size:.88rem;color:var(--ink);line-height:2}
 .access-block a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 
-/* ═══ CTA ═══ */
-.cta{background:var(--ink);color:var(--off);text-align:center;padding:clamp(4rem,9vw,8rem) 2rem}
-.cta h2{font-family:var(--sans);font-weight:100;font-size:clamp(1.8rem,4.5vw,3.8rem);letter-spacing:.1em;white-space:pre-line;line-height:1.3;margin-bottom:1.5rem}
-.cta p{font-family:var(--serif);font-style:italic;font-size:.8rem;letter-spacing:.14em;color:rgba(244,242,238,.45);margin-bottom:2.5rem}
-.btn-line-light{
-  display:inline-block;font-family:var(--sans);font-weight:300;
-  font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--off);border:1px solid rgba(244,242,238,.35);
-  padding:.8rem 2.2rem;text-decoration:none;transition:all .3s;
-}
-.btn-line-light:hover{background:var(--off);color:var(--ink)}
+.cta{background:var(--ink);color:#fff;text-align:center;padding:clamp(4rem,9vw,8rem) 2rem}
+.cta h2{font-family:var(--display);font-weight:300;font-style:italic;font-size:clamp(2rem,5vw,4rem);letter-spacing:-.01em;white-space:pre-line;line-height:1.3;margin-bottom:1.5rem}
+.cta p{font-family:var(--display);font-style:italic;font-size:.85rem;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:2.5rem}
+.btn-line-light{display:inline-block;font-family:var(--sans);font-weight:500;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.35);padding:.95rem 2.4rem;text-decoration:none;transition:all .3s}
+.btn-line-light:hover{background:#fff;color:var(--ink)}
 
-/* ═══ LIGHTBOX ═══ */
-.lightbox{display:none;position:fixed;inset:0;z-index:300;background:rgba(17,16,16,.93);backdrop-filter:blur(10px);align-items:center;justify-content:center}
+.lightbox{display:none;position:fixed;inset:0;z-index:400;background:rgba(17,16,16,.93);backdrop-filter:blur(10px);align-items:center;justify-content:center}
 .lightbox.open{display:flex}
 .lb-img{max-width:92vw;max-height:90vh;object-fit:contain}
-.lb-close{position:absolute;top:1.5rem;right:1.8rem;font-size:1.2rem;color:rgba(244,242,238,.5);cursor:pointer;background:none;border:none;transition:color .2s}
-.lb-close:hover{color:var(--off)}
-.lb-prev,.lb-next{
-  position:absolute;top:50%;transform:translateY(-50%);
-  background:none;border:1px solid rgba(244,242,238,.2);
-  color:rgba(244,242,238,.5);font-size:.8rem;letter-spacing:.1em;
-  padding:.6rem .9rem;cursor:pointer;transition:all .2s;
-}
+.lb-close{position:absolute;top:1.5rem;right:1.8rem;font-size:1.2rem;color:rgba(255,255,255,.5);cursor:pointer;background:none;border:none;transition:color .2s}
+.lb-close:hover{color:#fff}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);font-size:.8rem;letter-spacing:.1em;padding:.6rem .9rem;cursor:pointer;transition:all .2s}
 .lb-prev{left:1.5rem}.lb-next{right:1.5rem}
-.lb-prev:hover,.lb-next:hover{color:var(--off);border-color:rgba(244,242,238,.5)}
+.lb-prev:hover,.lb-next:hover{color:#fff;border-color:rgba(255,255,255,.5)}
 
-/* ═══ FOOTER ═══ */
-footer{
-  border-top:1px solid var(--border);
-  padding:2rem clamp(1.5rem,5vw,4rem);
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:1.2rem;
-}
-.footer-logo{font-family:var(--sans);font-weight:200;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;background:#fff}
+.footer-logo{font-family:var(--sans);font-weight:300;font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink);text-decoration:none}
 .footer-links{display:flex;gap:1.8rem;list-style:none;flex-wrap:wrap}
-.footer-links a{font-family:var(--sans);font-weight:200;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color .2s}
+.footer-links a{font-family:var(--sans);font-weight:400;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color .2s}
 .footer-links a:hover{color:var(--ink)}
-.footer-copy{font-size:.6rem;letter-spacing:.08em;color:var(--mid)}
+.footer-copy{font-size:.62rem;letter-spacing:.06em;color:var(--mid)}
 
-/* ═══ RESPONSIVE ═══ */
+@media(max-width:1100px){
+  .nav-bot{justify-content:flex-start}
+  .nav-link{padding:0 .9rem;font-size:.7rem}
+}
 @media(max-width:960px){
-  .nav-menu,.nav-switch{display:none}
-  .hamburger{display:flex}
+  .nav-top{grid-template-columns:auto 1fr auto;height:60px}
+  .brand-tabs{display:none}
+  .nav-bot{display:none}
+  .hamburger{display:flex;position:relative;left:0;top:0;transform:none}
+  .nav-right{gap:.8rem}
+  .nav-store span{display:none}
+  .nav-logo{height:36px}
+  .hero{height:calc(100vh - 60px);margin-top:60px}
   .about-grid,.recruit-body{grid-template-columns:1fr}
   .about-img-wrap{order:-1}
   .g-grid{columns:2}
@@ -373,111 +302,131 @@ footer{
 </head>
 <body>
 
-<!-- NAV -->
 <header class="nav" id="main-nav">
-<div class="nav-inner">
-  <a href="../" class="nav-brand">
-    <span class="nav-parent">Trunklii</span>
-    <span class="nav-slash">/</span>
-    <span class="nav-studio" id="nav-studio-name">Studio et.</span>
-  </a>
-
-  <ul class="nav-menu" id="nav-menu">
-    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-    <li class="nav-item">
-      <a href="#gallery" class="nav-link">Gallery ▾</a>
-      <div class="nav-drop" id="drop-gallery">
-        <a href="#gallery" onclick="filterGallery('all')">All</a>
-        <a href="#gallery" onclick="filterGallery('753')">七五三</a>
-        <a href="#gallery" onclick="filterGallery('newborn')">Newborn</a>
-        <a href="#gallery" onclick="filterGallery('birthday')">Birthday</a>
-        <a href="#gallery" onclick="filterGallery('family')">Family</a>
-        <a href="#gallery" onclick="filterGallery('maternity')">Maternity</a>
-      </div>
-    </li>
-    <li class="nav-item"><a href="#costume" class="nav-link">Costume</a></li>
-    <li class="nav-item"><a href="#kimono" class="nav-link">Kimono</a></li>
-    <li class="nav-item">
-      <a href="#plans" class="nav-link">Plans ▾</a>
-      <div class="nav-drop" id="drop-plans">
-        <a href="#plans">All Plans</a>
-        <a href="#plans">Newborn</a>
-        <a href="#plans">Birthday</a>
-        <a href="#plans">753</a>
-        <a href="#plans">Family</a>
-        <a href="#plans">Maternity</a>
-      </div>
-    </li>
-    <li class="nav-item"><a href="#recruit" class="nav-link">Recruit</a></li>
-  </ul>
-
-  <div class="nav-actions">
-    <a href="#" class="nav-switch" id="nav-switch">Maison nr. →</a>
-    <a href="#booking" class="nav-book" id="nav-book">予約する</a>
+  <div class="nav-top">
+    <button class="hamburger" id="hamburger" onclick="openMob()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="brand-tabs">
+      <li><a href="../et/" class="brand-tab" id="tab-et">Studio et.</a></li>
+      <li><a href="../nr/" class="brand-tab" id="tab-nr">Maison nr.</a></li>
+    </ul>
+    <div class="nav-logo-wrap">
+      <a href="../" class="nav-logo" id="nav-logo-link"></a>
+    </div>
+    <div class="nav-right">
+      <a href="#access" class="nav-store">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 21s-7-7-7-12a7 7 0 1 1 14 0c0 5-7 12-7 12z"/>
+          <circle cx="12" cy="9" r="2.5"/>
+        </svg>
+        <span>アクセス</span>
+      </a>
+    </div>
   </div>
-
-  <button class="hamburger" id="hamburger" onclick="toggleMob()">
-    <span></span><span></span><span></span>
-  </button>
-</div>
+  <nav class="nav-bot">
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+      <li class="nav-item">
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <div class="nav-drop">
+          <a href="#gallery" onclick="filterGallery('all')">All</a>
+          <a href="#gallery" onclick="filterGallery('753')">七五三</a>
+          <a href="#gallery" onclick="filterGallery('newborn')">Newborn</a>
+          <a href="#gallery" onclick="filterGallery('birthday')">Birthday</a>
+          <a href="#gallery" onclick="filterGallery('family')">Family</a>
+          <a href="#gallery" onclick="filterGallery('maternity')">Maternity</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="#costume" class="nav-link">Costume</a></li>
+      <li class="nav-item"><a href="#kimono" class="nav-link">Kimono</a></li>
+      <li class="nav-item">
+        <a href="#plans" class="nav-link">Plans</a>
+        <div class="nav-drop">
+          <a href="#plans">All Plans</a>
+          <a href="#plans">Newborn</a>
+          <a href="#plans">Birthday</a>
+          <a href="#plans">753</a>
+          <a href="#plans">Family</a>
+          <a href="#plans">Maternity</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="#recruit" class="nav-link">Recruit<sup>NEW</sup></a></li>
+    </ul>
+    <a href="#booking" class="nav-book" id="nav-book">予約する</a>
+  </nav>
 </header>
 
-<!-- MOBILE NAV -->
 <div class="mob-nav" id="mob-nav">
-  <div class="mob-item">
-    <div class="mob-top" onclick="toggleMobItem(this)">
-      <a href="#about" class="mob-top-label" onclick="closeMob()">About</a>
+  <div class="mob-top">
+    <button class="mob-close" onclick="closeMob()" aria-label="Close">✕</button>
+    <div class="mob-logo" id="mob-logo"></div>
+    <div class="mob-spacer"></div>
+  </div>
+
+  <div class="mob-brand-row">
+    <a href="../et/" class="mob-brand-tab" id="mob-tab-et">
+      <img class="brand-svg" src="../assets/et-square.svg" alt="Studio et." />
+    </a>
+    <a href="../nr/" class="mob-brand-tab" id="mob-tab-nr">
+      <img class="brand-svg" src="../assets/nr-square.svg" alt="Maison nr." />
+    </a>
+  </div>
+
+  <div class="mob-list">
+    <div class="mob-item">
+      <div class="mob-item-top">
+        <a href="#about" class="mob-item-label" onclick="closeMob()">About</a>
+      </div>
+    </div>
+    <div class="mob-item">
+      <div class="mob-item-top" onclick="toggleMobItem(event,this)">
+        <span class="mob-item-label">Gallery</span><span class="mob-arrow">›</span>
+      </div>
+      <div class="mob-sub">
+        <a href="#gallery" onclick="filterGallery('all');closeMob()">All</a>
+        <a href="#gallery" onclick="filterGallery('753');closeMob()">七五三</a>
+        <a href="#gallery" onclick="filterGallery('newborn');closeMob()">Newborn</a>
+        <a href="#gallery" onclick="filterGallery('birthday');closeMob()">Birthday</a>
+        <a href="#gallery" onclick="filterGallery('family');closeMob()">Family</a>
+        <a href="#gallery" onclick="filterGallery('maternity');closeMob()">Maternity</a>
+      </div>
+    </div>
+    <div class="mob-item">
+      <div class="mob-item-top">
+        <a href="#costume" class="mob-item-label" onclick="closeMob()">Costume</a>
+      </div>
+    </div>
+    <div class="mob-item">
+      <div class="mob-item-top">
+        <a href="#kimono" class="mob-item-label" onclick="closeMob()">Kimono</a>
+      </div>
+    </div>
+    <div class="mob-item">
+      <div class="mob-item-top" onclick="toggleMobItem(event,this)">
+        <span class="mob-item-label">Plans</span><span class="mob-arrow">›</span>
+      </div>
+      <div class="mob-sub">
+        <a href="#plans" onclick="closeMob()">All Plans</a>
+        <a href="#plans" onclick="closeMob()">Newborn</a>
+        <a href="#plans" onclick="closeMob()">Birthday</a>
+        <a href="#plans" onclick="closeMob()">753</a>
+        <a href="#plans" onclick="closeMob()">Family</a>
+        <a href="#plans" onclick="closeMob()">Maternity</a>
+      </div>
+    </div>
+    <div class="mob-item">
+      <div class="mob-item-top">
+        <a href="#recruit" class="mob-item-label" onclick="closeMob()">Recruit<sup>NEW</sup></a>
+      </div>
     </div>
   </div>
-  <div class="mob-item">
-    <div class="mob-top" onclick="toggleMobItem(this)">
-      <span class="mob-top-label">Gallery</span><span class="mob-arrow">›</span>
-    </div>
-    <div class="mob-sub">
-      <a href="#gallery" onclick="filterGallery('all');closeMob()">All</a>
-      <a href="#gallery" onclick="filterGallery('753');closeMob()">七五三</a>
-      <a href="#gallery" onclick="filterGallery('newborn');closeMob()">Newborn</a>
-      <a href="#gallery" onclick="filterGallery('birthday');closeMob()">Birthday</a>
-      <a href="#gallery" onclick="filterGallery('family');closeMob()">Family</a>
-      <a href="#gallery" onclick="filterGallery('maternity');closeMob()">Maternity</a>
-    </div>
-  </div>
-  <div class="mob-item">
-    <div class="mob-top" onclick="toggleMobItem(this)">
-      <a href="#costume" class="mob-top-label" onclick="closeMob()">Costume</a>
-    </div>
-  </div>
-  <div class="mob-item">
-    <div class="mob-top" onclick="toggleMobItem(this)">
-      <a href="#kimono" class="mob-top-label" onclick="closeMob()">Kimono</a>
-    </div>
-  </div>
-  <div class="mob-item">
-    <div class="mob-top" onclick="toggleMobItem(this)">
-      <span class="mob-top-label">Plans</span><span class="mob-arrow">›</span>
-    </div>
-    <div class="mob-sub">
-      <a href="#plans" onclick="closeMob()">All Plans</a>
-      <a href="#plans" onclick="closeMob()">Newborn</a>
-      <a href="#plans" onclick="closeMob()">Birthday</a>
-      <a href="#plans" onclick="closeMob()">753</a>
-      <a href="#plans" onclick="closeMob()">Family</a>
-      <a href="#plans" onclick="closeMob()">Maternity</a>
-    </div>
-  </div>
-  <div class="mob-item">
-    <div class="mob-top" onclick="toggleMobItem(this)">
-      <a href="#recruit" class="mob-top-label" onclick="closeMob()">Recruit</a>
-    </div>
-  </div>
+
   <div class="mob-actions">
-    <a href="#booking" class="mob-book" id="mob-book" onclick="closeMob()">予約する</a>
-    <a href="#" class="mob-switch" id="mob-switch" onclick="closeMob()">Maison nr. →</a>
-    <a href="../" class="mob-switch" onclick="closeMob()">← Trunklii</a>
+    <a href="#booking" class="mob-book-btn" id="mob-book-btn" onclick="closeMob()">予約する</a>
   </div>
 </div>
 
-<!-- HERO -->
 <section class="hero" id="hero">
   <div id="hero-slides"></div>
   <div class="hero-overlay"></div>
@@ -490,8 +439,7 @@ footer{
   <div class="scroll-cue"><span>Scroll</span><div class="scroll-bar"></div></div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" style="background:var(--off)">
+<section id="about" style="background:var(--bg)">
 <div class="wrap">
   <div class="sec-head">
     <span class="sec-num">01</span>
@@ -503,15 +451,12 @@ footer{
       <p id="about-body"></p>
       <a href="#booking" class="btn-line" id="about-btn">予約する →</a>
     </div>
-    <div class="about-img-wrap">
-      <img id="about-img" src="" alt="Studio" />
-    </div>
+    <div class="about-img-wrap"><img id="about-img" src="" alt="Studio"/></div>
   </div>
 </div>
 </section>
 
-<!-- GALLERY -->
-<section id="gallery" style="background:#edeae4">
+<section id="gallery" style="background:#f0eee9">
 <div class="wrap">
   <div class="sec-head">
     <span class="sec-num">02</span>
@@ -531,53 +476,33 @@ footer{
 </div>
 </section>
 
-<!-- COSTUME -->
-<section id="costume" style="background:var(--off)">
+<section id="costume" style="background:var(--bg)">
 <div class="wrap">
-  <div class="sec-head">
-    <span class="sec-num">03</span>
-    <h2 class="sec-title" id="costume-heading">Costume</h2>
-    <div class="sec-rule"></div>
-  </div>
+  <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title" id="costume-heading">Costume</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="costume-body"></p>
   <div class="items-grid" id="costume-grid"></div>
 </div>
 </section>
 
-<!-- KIMONO -->
-<section id="kimono" style="background:#edeae4">
+<section id="kimono" style="background:#f0eee9">
 <div class="wrap">
-  <div class="sec-head">
-    <span class="sec-num">04</span>
-    <h2 class="sec-title" id="kimono-heading">Kimono</h2>
-    <div class="sec-rule"></div>
-  </div>
+  <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title" id="kimono-heading">Kimono</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="kimono-body"></p>
   <div class="items-grid" id="kimono-grid"></div>
 </div>
 </section>
 
-<!-- PLANS -->
-<section id="plans" style="background:var(--off)">
+<section id="plans" style="background:var(--bg)">
 <div class="wrap">
-  <div class="sec-head">
-    <span class="sec-num">05</span>
-    <h2 class="sec-title">Plans & Pricing</h2>
-    <div class="sec-rule"></div>
-  </div>
+  <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Plans & Pricing</h2><div class="sec-rule"></div></div>
   <div id="coming-plans"></div>
   <div class="plans-grid" id="plans-grid"></div>
 </div>
 </section>
 
-<!-- RECRUIT -->
-<section id="recruit" style="background:#edeae4">
+<section id="recruit" style="background:#f0eee9">
 <div class="wrap">
-  <div class="sec-head">
-    <span class="sec-num">06</span>
-    <h2 class="sec-title" id="recruit-heading">Recruit</h2>
-    <div class="sec-rule"></div>
-  </div>
+  <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title" id="recruit-heading">Recruit</h2><div class="sec-rule"></div></div>
   <div class="recruit-body">
     <div>
       <p class="recruit-copy" id="recruit-body"></p>
@@ -588,36 +513,28 @@ footer{
 </div>
 </section>
 
-<!-- ACCESS -->
-<section id="access" style="background:var(--off)">
+<section id="access" style="background:var(--bg)">
 <div class="wrap">
-  <div class="sec-head">
-    <span class="sec-num">07</span>
-    <h2 class="sec-title">Access</h2>
-    <div class="sec-rule"></div>
-  </div>
+  <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title">Access</h2><div class="sec-rule"></div></div>
   <div class="access-grid" id="access-grid"></div>
 </div>
 </section>
 
-<!-- CTA / BOOKING -->
 <section class="cta" id="booking">
   <h2 id="cta-heading"></h2>
   <p id="cta-note"></p>
   <a href="#" class="btn-line-light" id="cta-btn">予約する</a>
 </section>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <button class="lb-close" onclick="closeLb()">✕</button>
   <button class="lb-prev" onclick="lbNav(-1)">‹</button>
-  <img class="lb-img" id="lb-img" src="" alt="" />
+  <img class="lb-img" id="lb-img" src="" alt=""/>
   <button class="lb-next" onclick="lbNav(1)">›</button>
 </div>
 
-<!-- FOOTER -->
 <footer>
-  <a href="../" class="footer-logo" id="footer-logo">Trunklii</a>
+  <a href="../" class="footer-logo" id="footer-logo">TRUNKLII</a>
   <ul class="footer-links">
     <li><a href="#about">About</a></li>
     <li><a href="#gallery">Gallery</a></li>
@@ -632,34 +549,47 @@ footer{
 
 <script src="../site-data.js"></script>
 <script>
-// Detect which studio
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbIdx=0;
 
-function init(){
+async function loadSvg(url){
+  try{
+    const r = await fetch(url);
+    if(!r.ok) throw new Error();
+    return await r.text();
+  }catch(e){ return null; }
+}
+
+async function init(){
   const d = window.SITE_DATA.studios[STUDIO_KEY];
   const g = window.SITE_DATA.global;
   if(!d) return;
 
-  // Accent color
   document.documentElement.style.setProperty('--accent', d.accentColor);
-
-  // Page title
   document.getElementById('page-title').textContent = d.name + ' — Trunklii';
 
-  // Nav
-  document.getElementById('nav-studio-name').textContent = d.name;
-  const sw = document.getElementById('nav-switch');
-  const msw = document.getElementById('mob-switch');
-  const other = STUDIO_KEY === 'et' ? 'nr' : 'et';
-  const otherName = window.SITE_DATA.studios[other].name;
-  sw.textContent = otherName + ' →';
-  sw.href = '../' + other + '/';
-  msw.textContent = otherName + ' →';
-  msw.href = '../' + other + '/';
+  // Brand tabs active
+  document.getElementById('tab-et').classList.toggle('active', STUDIO_KEY==='et');
+  document.getElementById('tab-nr').classList.toggle('active', STUDIO_KEY==='nr');
+  document.getElementById('mob-tab-et').classList.toggle('active', STUDIO_KEY==='et');
+  document.getElementById('mob-tab-nr').classList.toggle('active', STUDIO_KEY==='nr');
+
+  // Logo (wide) for header
+  const wideSvg = await loadSvg(`../assets/${STUDIO_KEY}-wide.svg`);
+  const logoLink = document.getElementById('nav-logo-link');
+  const mobLogo = document.getElementById('mob-logo');
+  if(wideSvg){
+    logoLink.innerHTML = wideSvg;
+    mobLogo.innerHTML = wideSvg;
+  } else {
+    logoLink.innerHTML = `<span style="font-family:var(--display);font-style:italic;font-size:1.6rem;font-weight:300">${d.name}</span>`;
+    mobLogo.innerHTML = `<span style="font-family:var(--display);font-style:italic;font-size:1.2rem;font-weight:300">${d.name}</span>`;
+  }
+
   document.getElementById('nav-book').textContent = d.bookingLabel;
-  document.getElementById('mob-book').textContent = d.bookingLabel;
-  document.getElementById('mob-book').href = d.bookingUrl;
+  document.getElementById('nav-book').href = d.bookingUrl;
+  document.getElementById('mob-book-btn').textContent = d.bookingLabel;
+  document.getElementById('mob-book-btn').href = d.bookingUrl;
 
   // Hero
   document.getElementById('hero-eyebrow').textContent = 'Trunklii / ' + d.name;
@@ -674,7 +604,6 @@ function init(){
   document.getElementById('about-btn').textContent = d.bookingLabel + ' →';
   document.getElementById('about-btn').href = d.bookingUrl;
 
-  // Coming soon banners
   if(d.comingSoon){
     ['coming-gallery','coming-plans'].forEach(id=>{
       document.getElementById(id).innerHTML='<div class="coming-banner">現在準備中です。近日公開予定。</div>';
@@ -685,38 +614,29 @@ function init(){
   lbImages = d.gallery.map(i=>i.file);
   document.getElementById('g-grid').innerHTML = d.gallery.map((item,i)=>`
     <div class="g-item" data-cat="${item.category}">
-      <img src="${item.file}" alt="${item.caption}" loading="lazy" onclick="openLb(${i})" />
+      <img src="${item.file}" alt="${item.caption}" loading="lazy" onclick="openLb(${i})"/>
       <div class="g-cap">${item.caption}</div>
     </div>
   `).join('');
 
-  // Costume
   document.getElementById('costume-heading').textContent = d.costume.heading;
   document.getElementById('costume-body').textContent = d.costume.body;
   document.getElementById('costume-grid').innerHTML = d.costume.items.map(item=>`
     <div class="item-card">
-      <img src="${item.file}" alt="${item.name}" loading="lazy" onclick="openLbSrc('${item.file}')" />
-      <div class="item-info">
-        <div class="item-name">${item.name}</div>
-        <div class="item-desc">${item.desc}</div>
-      </div>
+      <img src="${item.file}" alt="${item.name}" loading="lazy" onclick="openLbSrc('${item.file}')"/>
+      <div class="item-info"><div class="item-name">${item.name}</div><div class="item-desc">${item.desc}</div></div>
     </div>
-  `).join('') || '<p style="color:var(--mid);font-size:.8rem;font-family:var(--serif);font-style:italic">近日公開予定。</p>';
+  `).join('') || '<p style="color:var(--mid);font-size:.85rem;font-family:var(--display);font-style:italic">近日公開予定。</p>';
 
-  // Kimono
   document.getElementById('kimono-heading').textContent = d.kimono.heading;
   document.getElementById('kimono-body').textContent = d.kimono.body;
   document.getElementById('kimono-grid').innerHTML = d.kimono.items.map(item=>`
     <div class="item-card">
-      <img src="${item.file}" alt="${item.name}" loading="lazy" onclick="openLbSrc('${item.file}')" />
-      <div class="item-info">
-        <div class="item-name">${item.name}</div>
-        <div class="item-desc">${item.desc}</div>
-      </div>
+      <img src="${item.file}" alt="${item.name}" loading="lazy" onclick="openLbSrc('${item.file}')"/>
+      <div class="item-info"><div class="item-name">${item.name}</div><div class="item-desc">${item.desc}</div></div>
     </div>
-  `).join('') || '<p style="color:var(--mid);font-size:.8rem;font-family:var(--serif);font-style:italic">近日公開予定。</p>';
+  `).join('') || '<p style="color:var(--mid);font-size:.85rem;font-family:var(--display);font-style:italic">近日公開予定。</p>';
 
-  // Plans
   document.getElementById('plans-grid').innerHTML = d.plans.map(p=>`
     <div class="plan-card">
       ${p.tag ? `<div class="plan-tag">${p.tag}</div>` : ''}
@@ -726,43 +646,34 @@ function init(){
     </div>
   `).join('');
 
-  // Recruit
   document.getElementById('recruit-heading').textContent = d.recruit.heading;
   document.getElementById('recruit-body').textContent = d.recruit.body;
   document.getElementById('recruit-contact').href = 'mailto:' + d.recruit.contactEmail;
   document.getElementById('pos-list').innerHTML = d.recruit.positions.map(p=>`
-    <div class="pos-card">
-      <div class="pos-title">${p.title}</div>
-      <div class="pos-type">${p.type}</div>
-      <div class="pos-desc">${p.desc}</div>
-    </div>
-  `).join('') || '<p style="color:var(--mid);font-size:.8rem;font-family:var(--serif);font-style:italic;padding:1.5rem">近日公開予定。</p>';
+    <div class="pos-card"><div class="pos-title">${p.title}</div><div class="pos-type">${p.type}</div><div class="pos-desc">${p.desc}</div></div>
+  `).join('') || '<p style="color:var(--mid);font-size:.85rem;font-family:var(--display);font-style:italic;padding:1.5rem">近日公開予定。</p>';
 
-  // Access
   document.getElementById('access-grid').innerHTML = `
     <dl class="access-block"><dt>Address</dt><dd>${d.address}</dd></dl>
     <dl class="access-block"><dt>Tel</dt><dd><a href="tel:${d.tel}">${d.tel}</a></dd></dl>
     <dl class="access-block"><dt>Hours</dt><dd>${d.hours}</dd></dl>
-    <dl class="access-block"><dt>Instagram</dt><dd><a href="${d.instagram}" target="_blank" rel="noopener">@${d.name.toLowerCase().replace(/\s/g,'_')}</a></dd></dl>
+    <dl class="access-block"><dt>Instagram</dt><dd><a href="${d.instagram}" target="_blank" rel="noopener">${d.name}</a></dd></dl>
   `;
 
-  // CTA
   document.getElementById('cta-heading').textContent = d.ctaHeading;
   document.getElementById('cta-note').textContent = d.ctaNote;
   const ctaBtn = document.getElementById('cta-btn');
   ctaBtn.textContent = d.comingSoon ? '最新情報はInstagramで →' : d.bookingLabel + ' →';
   ctaBtn.href = d.comingSoon ? d.instagram : d.bookingUrl;
 
-  // Footer
-  document.getElementById('footer-logo').textContent = g.brandName;
   document.getElementById('footer-copy').textContent = g.copyright;
+  document.getElementById('footer-logo').textContent = g.brandName.toUpperCase();
 }
 
 function buildHero(images){
   const slides = document.getElementById('hero-slides');
   const dots = document.getElementById('hero-dots');
-  slides.innerHTML = '';
-  dots.innerHTML = '';
+  slides.innerHTML = ''; dots.innerHTML = '';
   images.forEach((img,i)=>{
     const s = document.createElement('div');
     s.className = 'hero-slide'+(i===0?' active':'');
@@ -784,7 +695,6 @@ function buildHero(images){
     },5000);
   }
 }
-
 function goSlide(i){
   clearInterval(heroTimer);
   const sl=document.querySelectorAll('.hero-slide');
@@ -793,8 +703,6 @@ function goSlide(i){
   dt.forEach(d=>d.classList.remove('active'));
   sl[i]?.classList.add('active'); dt[i]?.classList.add('active');
 }
-
-// Gallery filter
 function filterGallery(cat, btn){
   if(btn){
     document.querySelectorAll('.g-filter').forEach(b=>b.classList.remove('active'));
@@ -804,8 +712,6 @@ function filterGallery(cat, btn){
     item.classList.toggle('hidden', cat!=='all' && item.dataset.cat!==cat);
   });
 }
-
-// Lightbox
 function openLb(idx){ lbIdx=idx; document.getElementById('lb-img').src=lbImages[lbIdx]; document.getElementById('lightbox').classList.add('open'); }
 function openLbSrc(src){ lbIdx=-1; document.getElementById('lb-img').src=src; document.getElementById('lightbox').classList.add('open'); }
 function closeLb(){ document.getElementById('lightbox').classList.remove('open'); }
@@ -813,21 +719,10 @@ function lbNav(dir){ if(lbIdx<0) return; lbIdx=(lbIdx+dir+lbImages.length)%lbIma
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeLb(); if(e.key==='ArrowRight') lbNav(1); if(e.key==='ArrowLeft') lbNav(-1); });
 document.getElementById('lightbox').addEventListener('click',e=>{ if(e.target===e.currentTarget) closeLb(); });
 
-// Nav scroll
-window.addEventListener('scroll',()=>{
-  document.getElementById('main-nav').classList.toggle('scrolled', scrollY>20);
-});
-
-// Mobile nav
-function toggleMob(){
-  document.getElementById('mob-nav').classList.toggle('open');
-  document.getElementById('hamburger').classList.toggle('open');
-}
-function closeMob(){
-  document.getElementById('mob-nav').classList.remove('open');
-  document.getElementById('hamburger').classList.remove('open');
-}
-function toggleMobItem(el){
+function openMob(){ document.getElementById('mob-nav').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeMob(){ document.getElementById('mob-nav').classList.remove('open'); document.body.style.overflow=''; }
+function toggleMobItem(e,el){
+  e.preventDefault();
   const item=el.closest('.mob-item');
   const wasOpen=item.classList.contains('open');
   document.querySelectorAll('.mob-item.open').forEach(i=>i.classList.remove('open'));

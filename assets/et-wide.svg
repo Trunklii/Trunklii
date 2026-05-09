@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <g fill="currentColor">
+    <text x="50%" y="42" text-anchor="middle" 
+          font-family="'Cormorant Garamond', 'EB Garamond', Georgia, serif" 
+          font-size="56" font-weight="300" font-style="italic" letter-spacing="-1">
+      Studio et.
+    </text>
+    <text x="50%" y="68" text-anchor="middle" 
+          font-family="'Jost', 'Helvetica Neue', sans-serif" 
+          font-size="9" font-weight="300" letter-spacing="6">
+      TOKYO
+    </text>
+  </g>
+</svg>
