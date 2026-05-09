@@ -16,7 +16,8 @@ window.SITE_DATA = {
       address: "〒XXX-XXXX 東京都XXX区XXX 1-2-3",
       tel: "0X0-XXXX-XXXX",
       hours: "10:00 – 18:00（火曜定休）",
-      instagram: "https://www.instagram.com/studio_et_/",
+      instagram: "https://www.instagram.com/studio_et._",
+      instagramHandle: "@studio_et._",
       bookingUrl: "#booking",
       bookingLabel: "予約する",
       comingSoon: false,
@@ -29,6 +30,17 @@ window.SITE_DATA = {
         image: "18295179019220181.jpg",
         heading: "About Studio et.",
         body: "子どもたちの輝く瞬間を、花とともに。\nスタジオエトでは、七五三・ニューボーン・バースデーなど\n大切な記念日を美しい写真に残します。\n\n一つひとつのお花から、衣装、ヘアメイク、撮影まで\nすべてをスタジオにてご提供しています。"
+      },
+      flow: {
+        heading: "Flow",
+        body: "ご予約から撮影、納品までの流れをご案内します。",
+        steps: [
+          { title: "Web予約", desc: "公式サイトより撮影プランをお選びいただき、ご希望日時をご予約ください。", note: "" },
+          { title: "予約完了メール受信", desc: "ご登録のメールアドレスに予約確認メールをお送りします。", note: "" },
+          { title: "事前の電話カウンセリング", desc: "撮影内容・衣装・ご希望のイメージなどを丁寧にヒアリングします。", note: "予約後5営業日以内" },
+          { title: "当日撮影", desc: "リラックスした雰囲気の中で、お子さまの自然な表情を撮影します。", note: "" },
+          { title: "当日データ納品", desc: "撮影当日に編集済みデータをお渡しします。", note: "アルバムやフォトフレームなどは後日納品" }
+        ]
       },
       gallery: [
         { file: "18505164388065081.jpg", caption: "Shichi-Go-San", category: "753" },
@@ -95,7 +107,8 @@ window.SITE_DATA = {
       address: "〒XXX-XXXX 東京都XXX区XXX 4-5-6",
       tel: "0X0-XXXX-XXXX",
       hours: "詳細は近日公開",
-      instagram: "#",
+      instagram: "https://www.instagram.com/maison_nr._",
+      instagramHandle: "@maison_nr._",
       bookingUrl: "#coming-soon",
       bookingLabel: "予約する",
       comingSoon: true,
@@ -108,6 +121,17 @@ window.SITE_DATA = {
         image: "18303974821264064.jpg",
         heading: "About Maison nr.",
         body: "まもなくオープン。\nMaison nr.は Studio et. の姉妹スタジオとして\n新たな表現とスタイルをご提供します。\n\n詳細は近日公開予定です。"
+      },
+      flow: {
+        heading: "Flow",
+        body: "ご予約から撮影、納品までの流れをご案内します。",
+        steps: [
+          { title: "Web予約", desc: "公式サイトより撮影プランをお選びいただき、ご希望日時をご予約ください。", note: "" },
+          { title: "予約完了メール受信", desc: "ご登録のメールアドレスに予約確認メールをお送りします。", note: "" },
+          { title: "事前の電話カウンセリング", desc: "撮影内容・衣装・ご希望のイメージなどを丁寧にヒアリングします。", note: "予約後5営業日以内" },
+          { title: "当日撮影", desc: "リラックスした雰囲気の中で、お子さまの自然な表情を撮影します。", note: "" },
+          { title: "当日データ納品", desc: "撮影当日に編集済みデータをお渡しします。", note: "アルバムやフォトフレームなどは後日納品" }
+        ]
       },
       gallery: [
         { file: "18505164388065081.jpg", caption: "Shichi-Go-San", category: "753" },

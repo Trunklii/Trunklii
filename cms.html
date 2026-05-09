@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>CMS — Trunklii</title>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=Noto+Serif+JP:wght@200;300&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -12,47 +12,41 @@
   --et:#b8935a;--nr:#7a9e95;
   --panel:#fff;--border:rgba(17,16,16,.1);
   --danger:#c0392b;--success:#4a7c59;
-  --sans:'Jost',sans-serif;--serif:'Noto Serif JP',serif;
+  --sans:'Jost',sans-serif;--display:'Cormorant Garamond',serif;
 }
 html,body{height:100%}
 body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13px;color:var(--ink);display:flex;flex-direction:column}
 
-/* ── TOP BAR ── */
 .top{
   background:var(--ink);color:var(--off);
   display:flex;align-items:center;justify-content:space-between;
   padding:0 1.5rem;height:52px;flex-shrink:0;gap:1rem;flex-wrap:wrap;
 }
-.top-title{font-family:var(--sans);font-weight:200;font-size:.85rem;letter-spacing:.25em;text-transform:uppercase;white-space:nowrap}
+.top-title{font-family:var(--sans);font-weight:500;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap}
 .top-links{display:flex;gap:.5rem;flex-wrap:wrap}
 .top-links a{color:rgba(244,242,238,.45);text-decoration:none;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(244,242,238,.18);padding:.28rem .75rem;transition:all .2s;white-space:nowrap}
 .top-links a:hover{color:var(--off);border-color:rgba(244,242,238,.45)}
 
-/* ── LAYOUT ── */
 .layout{display:flex;flex:1;overflow:hidden}
 
-/* ── SIDEBAR ── */
-.sidebar{width:200px;flex-shrink:0;background:var(--panel);border-right:1px solid var(--border);overflow-y:auto;display:flex;flex-direction:column}
+.sidebar{width:220px;flex-shrink:0;background:var(--panel);border-right:1px solid var(--border);overflow-y:auto;display:flex;flex-direction:column}
 .studio-switch{display:flex;border-bottom:1px solid var(--border)}
-.sw-btn{flex:1;background:none;border:none;cursor:pointer;font-family:var(--sans);font-weight:300;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);padding:.65rem .5rem;transition:all .2s;border-bottom:2px solid transparent}
-.sw-btn.on-et{color:var(--et);border-bottom-color:var(--et)}
-.sw-btn.on-nr{color:var(--nr);border-bottom-color:var(--nr)}
+.sw-btn{flex:1;background:none;border:none;cursor:pointer;font-family:var(--sans);font-weight:500;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);padding:.7rem .5rem;transition:all .2s;border-bottom:2px solid transparent}
+.sw-btn.on-et{color:var(--et);border-bottom-color:var(--et);font-weight:600}
+.sw-btn.on-nr{color:var(--nr);border-bottom-color:var(--nr);font-weight:600}
 .sb-group{padding:.6rem 0}
 .sb-label{padding:.2rem 1.2rem .1rem;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mid)}
-.sb-btn{display:block;width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:.55rem 1.2rem;font-family:var(--sans);font-weight:300;font-size:.72rem;color:var(--ink);transition:background .2s;border-left:2px solid transparent;white-space:nowrap}
+.sb-btn{display:block;width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:.55rem 1.2rem;font-family:var(--sans);font-weight:400;font-size:.72rem;color:var(--ink);transition:background .2s;border-left:2px solid transparent;white-space:nowrap}
 .sb-btn:hover{background:rgba(17,16,16,.04)}
-.sb-btn.active{background:rgba(184,147,90,.08);border-left-color:var(--et);font-weight:400}
+.sb-btn.active{background:rgba(184,147,90,.08);border-left-color:var(--et);font-weight:500}
 .sb-btn.active-nr{border-left-color:var(--nr);background:rgba(122,158,149,.08)}
 
-/* ── MAIN ── */
 .main{flex:1;overflow-y:auto;padding:2rem}
 
-/* ── PANEL ── */
 .panel{background:var(--panel);border:1px solid var(--border);padding:1.8rem;margin-bottom:1.5rem}
-.panel-title{font-family:var(--sans);font-weight:200;font-size:1.1rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
-.panel-sub{font-family:var(--sans);font-weight:200;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin:1.5rem 0 .75rem}
+.panel-title{font-family:var(--sans);font-weight:500;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
+.panel-sub{font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin:1.5rem 0 .75rem}
 
-/* ── FORM ── */
 .row{margin-bottom:1.1rem}
 .row label{display:block;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);margin-bottom:.35rem}
 .row input,.row textarea,.row select{
@@ -65,8 +59,7 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
 .row-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
 
-/* ── BUTTONS ── */
-.btn{display:inline-block;cursor:pointer;border:none;font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;padding:.55rem 1.3rem;transition:all .2s}
+.btn{display:inline-block;cursor:pointer;border:none;font-family:var(--sans);font-weight:500;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;padding:.55rem 1.3rem;transition:all .2s}
 .btn-primary{background:var(--ink);color:var(--off)}
 .btn-primary:hover{background:#333}
 .btn-danger{background:var(--danger);color:#fff}
@@ -77,16 +70,15 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
   display:block;width:100%;background:none;
   border:1px dashed rgba(17,16,16,.18);color:var(--mid);
   padding:.6rem;text-align:center;cursor:pointer;
-  font-family:var(--sans);font-size:.65rem;letter-spacing:.14em;
+  font-family:var(--sans);font-weight:400;font-size:.65rem;letter-spacing:.14em;
   text-transform:uppercase;transition:all .2s;
 }
 .btn-add:hover{border-color:var(--et);color:var(--et)}
 .btn-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.2rem;align-items:center}
 
-/* ── LIST ITEMS ── */
 .list-item{border:1px solid var(--border);padding:1rem;margin-bottom:.6rem;background:var(--off);display:flex;gap:.75rem;align-items:flex-start}
 .li-body{flex:1;display:flex;flex-direction:column;gap:.5rem}
-.li-body input,.li-body textarea,.li-body select{width:100%;border:1px solid var(--border);background:#fff;padding:.4rem .6rem;font-family:var(--sans);font-size:.75rem;color:var(--ink);outline:none}
+.li-body input,.li-body textarea{width:100%;border:1px solid var(--border);background:#fff;padding:.4rem .6rem;font-family:var(--sans);font-size:.75rem;color:var(--ink);outline:none}
 .li-body input:focus,.li-body textarea:focus{border-color:var(--et)}
 .li-body textarea{min-height:52px;resize:vertical}
 .li-ctrl{display:flex;flex-direction:column;gap:.4rem;flex-shrink:0}
@@ -94,30 +86,20 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
 .li-ctrl .del:hover{background:var(--danger);color:#fff;border-color:var(--danger)}
 .li-ctrl .up:hover,.li-ctrl .dn:hover{background:var(--ink);color:var(--off);border-color:var(--ink)}
 
-/* ── IMAGE UPLOAD ── */
 .img-upload-area{
   border:1px dashed rgba(17,16,16,.2);padding:2rem;
   text-align:center;cursor:pointer;transition:border-color .2s;
-  background:var(--off);position:relative;
+  background:var(--off);position:relative;overflow:hidden;
 }
 .img-upload-area:hover{border-color:var(--et)}
-.img-upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
 .img-upload-label{font-size:.7rem;letter-spacing:.14em;color:var(--mid)}
 .img-upload-label span{color:var(--et)}
 
-/* Hero image slots */
 .hero-slots{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
 .hero-slot{width:160px;flex-shrink:0}
-.hero-slot-thumb{
-  width:100%;height:100px;object-fit:cover;display:block;
-  border:1px solid var(--border);cursor:pointer;
-  transition:border-color .2s;
-}
-.hero-slot:hover .hero-slot-thumb{border-color:var(--et)}
+.hero-slot-thumb{width:100%;height:100px;object-fit:cover;display:block;border:1px solid var(--border);transition:border-color .2s}
 .hero-slot-label{font-size:.58rem;letter-spacing:.1em;color:var(--mid);text-align:center;margin-top:.35rem}
-.hero-slot-input{display:none}
 
-/* Gallery CMS grid */
 .gallery-cms{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.75rem;margin-bottom:1rem}
 .gcms-item{position:relative;border:1px solid var(--border)}
 .gcms-item img{width:100%;height:120px;object-fit:cover;display:block}
@@ -128,34 +110,40 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
   gap:.4rem;opacity:0;transition:opacity .2s;
 }
 .gcms-item:hover .gcms-overlay{opacity:1}
-.gcms-overlay button,.gcms-overlay select{
+.gcms-overlay button,.gcms-overlay select,.gcms-overlay input,.gcms-overlay label{
   background:none;border:1px solid rgba(244,242,238,.35);
   color:var(--off);font-size:.6rem;padding:.25rem .6rem;cursor:pointer;
   letter-spacing:.1em;font-family:var(--sans);transition:background .2s;
-  width:90%;
+  width:90%;text-align:center;
 }
-.gcms-overlay button:hover{background:rgba(244,242,238,.15)}
+.gcms-overlay button:hover,.gcms-overlay label:hover{background:rgba(244,242,238,.15)}
 .gcms-overlay select{background:rgba(17,16,16,.5);color:var(--off)}
+.gcms-overlay input{background:rgba(17,16,16,.5);color:var(--off)}
 
-/* Items grid CMS */
 .items-cms{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem;margin-bottom:1rem}
 .icms-item{border:1px solid var(--border);padding:.5rem}
 .icms-item img{width:100%;height:110px;object-fit:cover;display:block;margin-bottom:.5rem}
 .icms-item input{width:100%;border:1px solid var(--border);background:var(--off);padding:.35rem .5rem;font-size:.72rem;font-family:var(--sans);outline:none;margin-bottom:.35rem}
 .icms-item input:focus{border-color:var(--et)}
 .icms-item-btns{display:flex;gap:.3rem}
-.icms-item-btns button{flex:1;font-size:.58rem;padding:.25rem .4rem;cursor:pointer;border:1px solid var(--border);background:none;color:var(--mid);transition:all .2s;font-family:var(--sans)}
+.icms-item-btns button,.icms-item-btns label{flex:1;font-size:.58rem;padding:.25rem .4rem;cursor:pointer;border:1px solid var(--border);background:none;color:var(--mid);transition:all .2s;font-family:var(--sans);text-align:center}
 .icms-item-btns .del:hover{background:var(--danger);color:#fff;border-color:var(--danger)}
+.icms-item-btns label:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 
-/* Upload progress */
-.upload-progress{
-  display:none;align-items:center;gap:.75rem;
-  padding:.6rem .8rem;background:rgba(184,147,90,.08);border:1px solid rgba(184,147,90,.2);
-  margin-bottom:.75rem;font-size:.7rem;letter-spacing:.1em;color:var(--et);
+.flow-cms-item{
+  display:grid;grid-template-columns:48px 1fr auto;gap:1rem;
+  align-items:flex-start;padding:1rem;
+  border:1px solid var(--border);background:var(--off);margin-bottom:.6rem;
 }
-.upload-progress.show{display:flex}
+.flow-num-badge{
+  width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-style:italic;font-size:.95rem;
+}
+.flow-fields{display:flex;flex-direction:column;gap:.4rem}
+.flow-fields input,.flow-fields textarea{width:100%;border:1px solid var(--border);background:#fff;padding:.4rem .6rem;font-family:var(--sans);font-size:.75rem;color:var(--ink);outline:none}
+.flow-fields input:focus,.flow-fields textarea:focus{border-color:var(--et)}
 
-/* Toast */
 .toast{
   position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;
   background:var(--ink);color:var(--off);
@@ -165,7 +153,6 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
 .toast.show{transform:translateY(0);opacity:1}
 .toast.err{background:var(--danger)}
 
-/* Export */
 .export-pre{
   background:var(--off);border:1px solid var(--border);
   padding:1rem;font-family:monospace;font-size:.7rem;
@@ -173,10 +160,8 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
   margin-bottom:1rem;
 }
 
-/* Global section */
 .global-note{font-size:.7rem;color:var(--mid);line-height:1.7;margin-bottom:1rem;font-style:italic}
 
-/* Responsive */
 @media(max-width:700px){
   .layout{flex-direction:column}
   .sidebar{width:100%;height:auto;flex-direction:row;flex-wrap:wrap;overflow:visible}
@@ -185,6 +170,7 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
   .sb-label{width:100%}
   .main{padding:1rem}
   .row-2,.row-3{grid-template-columns:1fr}
+  .flow-cms-item{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -193,19 +179,18 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
 <div class="top">
   <span class="top-title">CMS — Trunklii</span>
   <div class="top-links">
+    <a href="./" target="_blank">LP →</a>
     <a href="./et/" target="_blank">et. →</a>
     <a href="./nr/" target="_blank">nr. →</a>
-    <a href="./" target="_blank">LP →</a>
   </div>
 </div>
 
 <div class="layout">
 
-<!-- SIDEBAR -->
 <aside class="sidebar">
   <div class="studio-switch">
-    <button class="sw-btn on-et" id="sw-et" onclick="setStudio('et')">et.</button>
-    <button class="sw-btn" id="sw-nr" onclick="setStudio('nr')">nr.</button>
+    <button class="sw-btn on-et" id="sw-et" onclick="setStudio('et')">Studio et.</button>
+    <button class="sw-btn" id="sw-nr" onclick="setStudio('nr')">Maison nr.</button>
   </div>
   <div class="sb-group">
     <div class="sb-label">General</div>
@@ -216,6 +201,7 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
     <button class="sb-btn" onclick="show('basic')">Basic Info</button>
     <button class="sb-btn" onclick="show('hero')">Hero Images</button>
     <button class="sb-btn" onclick="show('about')">About</button>
+    <button class="sb-btn" onclick="show('flow')">Flow</button>
     <button class="sb-btn" onclick="show('gallery')">Gallery</button>
     <button class="sb-btn" onclick="show('costume')">Costume</button>
     <button class="sb-btn" onclick="show('kimono')">Kimono</button>
@@ -229,7 +215,6 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
   </div>
 </aside>
 
-<!-- MAIN -->
 <main class="main" id="main"></main>
 
 </div>
@@ -238,24 +223,18 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
 
 <script src="site-data.js"></script>
 <script>
-// Deep clone data
 let D = JSON.parse(JSON.stringify(window.SITE_DATA));
 let currentStudio = 'et';
 let currentPanel = 'global';
 
-// ── Studio switch ──
 function setStudio(key){
   currentStudio = key;
   document.getElementById('sw-et').className = 'sw-btn' + (key==='et'?' on-et':'');
   document.getElementById('sw-nr').className = 'sw-btn' + (key==='nr'?' on-nr':'');
   document.getElementById('sb-studio-label').textContent = D.studios[key].name;
-  document.querySelectorAll('.sb-btn').forEach(b=>{
-    b.classList.remove('active','active-nr');
-  });
   show(currentPanel==='global'?'global':currentPanel);
 }
 
-// ── Panel routing ──
 function show(id){
   currentPanel = id;
   document.querySelectorAll('.sb-btn').forEach(b=>{
@@ -268,6 +247,7 @@ function show(id){
     basic: renderBasic,
     hero: renderHero,
     about: renderAbout,
+    flow: renderFlow,
     gallery: renderGallery,
     costume: ()=>renderItems('costume'),
     kimono: ()=>renderItems('kimono'),
@@ -281,9 +261,8 @@ function show(id){
 
 const m = ()=>document.getElementById('main');
 const d = ()=>D.studios[currentStudio];
-const esc = s=>(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+const esc = s=>(s==null?'':String(s)).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
 const val = id=>document.getElementById(id)?.value??'';
-const chk = id=>document.getElementById(id)?.checked??false;
 
 function toast(msg,err){
   const el=document.getElementById('toast');
@@ -293,31 +272,6 @@ function toast(msg,err){
   el._t=setTimeout(()=>el.classList.remove('show'),2600);
 }
 
-// ── Image upload helper ──
-// Converts uploaded file to base64 data URL or returns filename if using existing
-function makeImgInput(id, currentSrc, onChange){
-  return `
-    <div class="img-upload-area" style="position:relative;overflow:hidden">
-      <img src="${esc(currentSrc)}" id="prev-${id}" style="width:100%;height:120px;object-fit:cover;display:block;margin-bottom:.75rem;${currentSrc?'':'display:none'}" />
-      <div class="img-upload-label">クリックして画像を変更 <span>またはドラッグ＆ドロップ</span></div>
-      <input type="file" accept="image/*" onchange="handleImgUpload(this,'${id}','${onChange}')" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%" />
-    </div>
-  `;
-}
-
-function handleImgUpload(input, previewId, callbackName){
-  const file = input.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = e=>{
-    const src = e.target.result;
-    const prev = document.getElementById('prev-'+previewId);
-    if(prev){ prev.src=src; prev.style.display='block'; }
-    if(callbackName && window[callbackName]) window[callbackName](src, previewId);
-  };
-  reader.readAsDataURL(file);
-}
-
 // ── GLOBAL ──
 function renderGlobal(){
   const g = D.global;
@@ -325,11 +279,9 @@ function renderGlobal(){
     <div class="panel">
       <div class="panel-title">Global Settings</div>
       <p class="global-note">サイト全体に適用される設定です。</p>
-      <div class="row"><label>ブランド名</label><input id="g-brand" value="${esc(g.brandName)}" /></div>
-      <div class="row"><label>Copyright</label><input id="g-copy" value="${esc(g.copyright)}" /></div>
-      <div class="btn-row">
-        <button class="btn btn-primary" onclick="saveGlobal()">保存</button>
-      </div>
+      <div class="row"><label>ブランド名</label><input id="g-brand" value="${esc(g.brandName)}"/></div>
+      <div class="row"><label>Copyright</label><input id="g-copy" value="${esc(g.copyright)}"/></div>
+      <div class="btn-row"><button class="btn btn-primary" onclick="saveGlobal()">保存</button></div>
     </div>
   `;
 }
@@ -344,25 +296,26 @@ function renderBasic(){
   const s = d();
   m().innerHTML = `
     <div class="panel">
-      <div class="panel-title">Basic Info — ${s.name}</div>
+      <div class="panel-title">Basic Info — ${esc(s.name)}</div>
       <div class="row-2">
-        <div class="row"><label>スタジオ名</label><input id="b-name" value="${esc(s.name)}" /></div>
-        <div class="row"><label>略称 (et. など)</label><input id="b-short" value="${esc(s.shortName)}" /></div>
+        <div class="row"><label>スタジオ名</label><input id="b-name" value="${esc(s.name)}"/></div>
+        <div class="row"><label>略称</label><input id="b-short" value="${esc(s.shortName)}"/></div>
       </div>
-      <div class="row"><label>タグライン (英語)</label><input id="b-tag" value="${esc(s.tagline)}" /></div>
+      <div class="row"><label>タグライン (英語)</label><input id="b-tag" value="${esc(s.tagline)}"/></div>
       <div class="row"><label>説明文</label><textarea id="b-desc">${esc(s.description)}</textarea></div>
-      <div class="row"><label>アクセントカラー (HEX)</label><input id="b-color" type="color" value="${s.accentColor}" style="width:60px;height:36px;padding:2px" /></div>
+      <div class="row"><label>アクセントカラー</label><input id="b-color" type="color" value="${s.accentColor}" style="width:60px;height:36px;padding:2px"/></div>
       <div class="row-2">
-        <div class="row"><label>住所</label><input id="b-addr" value="${esc(s.address)}" /></div>
-        <div class="row"><label>電話番号</label><input id="b-tel" value="${esc(s.tel)}" /></div>
+        <div class="row"><label>住所</label><input id="b-addr" value="${esc(s.address)}"/></div>
+        <div class="row"><label>電話番号</label><input id="b-tel" value="${esc(s.tel)}"/></div>
       </div>
       <div class="row-2">
-        <div class="row"><label>営業時間</label><input id="b-hours" value="${esc(s.hours)}" /></div>
-        <div class="row"><label>Instagram URL</label><input id="b-ig" value="${esc(s.instagram)}" /></div>
+        <div class="row"><label>営業時間</label><input id="b-hours" value="${esc(s.hours)}"/></div>
+        <div class="row"><label>Instagram URL</label><input id="b-ig" value="${esc(s.instagram)}"/></div>
       </div>
+      <div class="row"><label>Instagram ハンドル (例: @studio_et._)</label><input id="b-ighandle" value="${esc(s.instagramHandle||'')}"/></div>
       <div class="row-2">
-        <div class="row"><label>予約 URL</label><input id="b-book" value="${esc(s.bookingUrl)}" /></div>
-        <div class="row"><label>予約ボタンラベル</label><input id="b-blabel" value="${esc(s.bookingLabel)}" /></div>
+        <div class="row"><label>予約 URL</label><input id="b-book" value="${esc(s.bookingUrl)}"/></div>
+        <div class="row"><label>予約ボタンラベル</label><input id="b-blabel" value="${esc(s.bookingLabel)}"/></div>
       </div>
       <div class="row">
         <label>Coming Soon モード</label>
@@ -380,7 +333,8 @@ function saveBasic(){
   s.name=val('b-name'); s.shortName=val('b-short'); s.tagline=val('b-tag');
   s.description=val('b-desc'); s.accentColor=val('b-color');
   s.address=val('b-addr'); s.tel=val('b-tel'); s.hours=val('b-hours');
-  s.instagram=val('b-ig'); s.bookingUrl=val('b-book'); s.bookingLabel=val('b-blabel');
+  s.instagram=val('b-ig'); s.instagramHandle=val('b-ighandle');
+  s.bookingUrl=val('b-book'); s.bookingLabel=val('b-blabel');
   s.comingSoon = val('b-soon')==='true';
   toast('保存しました ✓');
 }
@@ -393,59 +347,58 @@ function renderHero(){
     const src = img.file||'';
     return `
       <div class="hero-slot">
-        <img class="hero-slot-thumb" id="hero-thumb-${i}" src="${esc(src)}" onerror="this.style.opacity=0" style="opacity:${src?1:0}" />
-        <div class="img-upload-area" style="margin-top:.4rem;padding:1rem;position:relative;overflow:hidden">
+        <img class="hero-slot-thumb" id="hero-thumb-${i}" src="${esc(src)}" onerror="this.style.opacity=0" style="opacity:${src?1:0}"/>
+        <div class="img-upload-area" style="margin-top:.4rem;padding:1rem">
           <div class="img-upload-label">Slide ${i+1}<br><span>画像をアップロード</span></div>
-          <input type="file" accept="image/*" data-slot="${i}" onchange="heroUpload(this)" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%" />
+          <input type="file" accept="image/*" data-slot="${i}" onchange="heroUpload(this)" style="position:absolute;inset:0;opacity:0;cursor:pointer"/>
         </div>
-        <input placeholder="Alt テキスト" value="${esc(img.alt)}" id="hero-alt-${i}" style="width:100%;border:1px solid var(--border);background:var(--off);padding:.35rem .5rem;font-family:var(--sans);font-size:.7rem;margin-top:.3rem;outline:none" oninput="D.studios['${currentStudio}'].heroImages[${i}]=D.studios['${currentStudio}'].heroImages[${i}]||{}; D.studios['${currentStudio}'].heroImages[${i}].alt=this.value" />
+        <input placeholder="Alt テキスト" value="${esc(img.alt)}" style="width:100%;border:1px solid var(--border);background:var(--off);padding:.35rem .5rem;font-family:var(--sans);font-size:.7rem;margin-top:.3rem;outline:none" oninput="heroSetAlt(${i},this.value)"/>
         <div class="hero-slot-label">Slide ${i+1}</div>
       </div>
     `;
   }).join('');
-
   m().innerHTML = `
     <div class="panel">
-      <div class="panel-title">Hero Images — ${d().name}</div>
-      <p style="font-size:.7rem;color:var(--mid);margin-bottom:1.2rem;">各スライドの画像をアップロードしてください。アップロードした画像はBase64形式で保存されます。</p>
+      <div class="panel-title">Hero Images — ${esc(d().name)}</div>
+      <p class="global-note">各スライドの画像をアップロードしてください。</p>
       <div class="hero-slots">${slots}</div>
       <div class="btn-row"><button class="btn btn-primary" onclick="toast('ヒーロー画像を保存しました ✓')">保存</button></div>
     </div>
   `;
 }
-
+function heroSetAlt(i, v){
+  const s=d();
+  if(!s.heroImages[i]) s.heroImages[i]={file:'',alt:''};
+  s.heroImages[i].alt=v;
+}
 function heroUpload(input){
   const slot = parseInt(input.dataset.slot);
-  const file = input.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = e=>{
-    const src = e.target.result;
-    const s = d();
+  const file = input.files[0]; if(!file) return;
+  const r = new FileReader();
+  r.onload = e=>{
+    const s=d();
     if(!s.heroImages[slot]) s.heroImages[slot]={file:'',alt:''};
-    s.heroImages[slot].file = src;
-    const thumb = document.getElementById('hero-thumb-'+slot);
-    if(thumb){ thumb.src=src; thumb.style.opacity=1; }
-    toast(`Slide ${slot+1} 更新しました ✓`);
+    s.heroImages[slot].file = e.target.result;
+    const t=document.getElementById('hero-thumb-'+slot); if(t){t.src=e.target.result;t.style.opacity=1;}
+    toast(`Slide ${slot+1} 更新 ✓`);
   };
-  reader.readAsDataURL(file);
+  r.readAsDataURL(file);
 }
 
 // ── ABOUT ──
 function renderAbout(){
-  const s=d();
-  const ab=s.about;
+  const ab=d().about;
   m().innerHTML = `
     <div class="panel">
-      <div class="panel-title">About — ${s.name}</div>
-      <div class="row"><label>見出し</label><input id="ab-heading" value="${esc(ab.heading)}" /></div>
+      <div class="panel-title">About — ${esc(d().name)}</div>
+      <div class="row"><label>見出し</label><input id="ab-heading" value="${esc(ab.heading)}"/></div>
       <div class="row"><label>本文</label><textarea id="ab-body" style="min-height:120px">${esc(ab.body)}</textarea></div>
       <div class="row">
         <label>About 画像</label>
-        <div class="img-upload-area" style="position:relative;overflow:hidden">
-          <img src="${esc(ab.image)}" id="prev-about" style="width:100%;height:160px;object-fit:cover;display:block;margin-bottom:.75rem;${ab.image?'':'display:none'}" onerror="this.style.display='none'" />
+        <div class="img-upload-area">
+          <img src="${esc(ab.image)}" id="prev-about" style="width:100%;height:160px;object-fit:cover;display:${ab.image?'block':'none'};margin-bottom:.75rem" onerror="this.style.display='none'"/>
           <div class="img-upload-label">クリックして画像をアップロード</div>
-          <input type="file" accept="image/*" onchange="aboutImgUpload(this)" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%" />
+          <input type="file" accept="image/*" onchange="aboutImgUpload(this)" style="position:absolute;inset:0;opacity:0;cursor:pointer"/>
         </div>
       </div>
       <div class="btn-row"><button class="btn btn-primary" onclick="saveAbout()">保存</button></div>
@@ -455,10 +408,42 @@ function renderAbout(){
 function aboutImgUpload(input){
   const file=input.files[0]; if(!file)return;
   const r=new FileReader();
-  r.onload=e=>{ d().about.image=e.target.result; const p=document.getElementById('prev-about'); if(p){p.src=e.target.result;p.style.display='block';} toast('画像を更新しました ✓'); };
+  r.onload=e=>{ d().about.image=e.target.result; const p=document.getElementById('prev-about'); if(p){p.src=e.target.result;p.style.display='block';} toast('画像を更新 ✓'); };
   r.readAsDataURL(file);
 }
-function saveAbout(){ const s=d(); s.about.heading=val('ab-heading'); s.about.body=val('ab-body'); toast('保存しました ✓'); }
+function saveAbout(){ d().about.heading=val('ab-heading'); d().about.body=val('ab-body'); toast('保存しました ✓'); }
+
+// ── FLOW ──
+function renderFlow(){
+  const f=d().flow||(d().flow={heading:'Flow',body:'',steps:[]});
+  const rows = f.steps.map((s,i)=>`
+    <div class="flow-cms-item">
+      <div class="flow-num-badge">${String(i+1).padStart(2,'0')}</div>
+      <div class="flow-fields">
+        <input placeholder="ステップ名 (例: Web予約)" value="${esc(s.title)}" oninput="D.studios['${currentStudio}'].flow.steps[${i}].title=this.value"/>
+        <textarea placeholder="説明" oninput="D.studios['${currentStudio}'].flow.steps[${i}].desc=this.value">${esc(s.desc)}</textarea>
+        <input placeholder="補足 (例: 予約後5営業日以内 — 不要なら空白)" value="${esc(s.note)}" oninput="D.studios['${currentStudio}'].flow.steps[${i}].note=this.value"/>
+      </div>
+      <div class="li-ctrl">
+        <button class="del" onclick="D.studios['${currentStudio}'].flow.steps.splice(${i},1);renderFlow()">削除</button>
+        ${i>0?`<button class="up" onclick="arrMove(D.studios['${currentStudio}'].flow.steps,${i},-1);renderFlow()">↑</button>`:''}
+        ${i<f.steps.length-1?`<button class="dn" onclick="arrMove(D.studios['${currentStudio}'].flow.steps,${i},1);renderFlow()">↓</button>`:''}
+      </div>
+    </div>
+  `).join('');
+  m().innerHTML = `
+    <div class="panel">
+      <div class="panel-title">Flow — ${esc(d().name)}</div>
+      <div class="row"><label>見出し</label><input id="fl-heading" value="${esc(f.heading)}"/></div>
+      <div class="row"><label>本文</label><textarea id="fl-body">${esc(f.body)}</textarea></div>
+      <div class="panel-sub">ステップ</div>
+      <div id="flow-list">${rows}</div>
+      <button class="btn-add" onclick="D.studios['${currentStudio}'].flow.steps.push({title:'',desc:'',note:''});renderFlow()">＋ ステップを追加</button>
+      <div class="btn-row"><button class="btn btn-primary" onclick="saveFlow()">保存</button></div>
+    </div>
+  `;
+}
+function saveFlow(){ d().flow.heading=val('fl-heading'); d().flow.body=val('fl-body'); toast('保存しました ✓'); }
 
 // ── GALLERY ──
 function renderGallery(){
@@ -466,38 +451,34 @@ function renderGallery(){
   const cats=['753','newborn','birthday','family','maternity','other'];
   const items = s.gallery.map((item,i)=>`
     <div class="gcms-item">
-      <img src="${esc(item.file)}" alt="${esc(item.caption)}" onerror="this.style.opacity=0.3" />
-      <div class="gcms-badge">${item.category}</div>
+      <img src="${esc(item.file)}" alt="${esc(item.caption)}" onerror="this.style.opacity=0.3"/>
+      <div class="gcms-badge">${esc(item.category)}</div>
       <div class="gcms-overlay">
-        <label style="color:#fff;font-size:.6rem;letter-spacing:.1em;cursor:pointer;border:1px solid rgba(244,242,238,.35);padding:.25rem .6rem;width:90%;text-align:center">
-          画像変更
-          <input type="file" accept="image/*" data-idx="${i}" onchange="galleryReplace(this)" style="display:none" />
-        </label>
+        <label>画像変更<input type="file" accept="image/*" data-idx="${i}" onchange="galleryReplace(this)" style="display:none"/></label>
         <select onchange="D.studios['${currentStudio}'].gallery[${i}].category=this.value;renderGallery()">
           ${cats.map(c=>`<option value="${c}" ${item.category===c?'selected':''}>${c}</option>`).join('')}
         </select>
-        <input placeholder="キャプション" value="${esc(item.caption)}" style="background:rgba(17,16,16,.5);color:#fff;border:1px solid rgba(244,242,238,.3);font-size:.6rem;padding:.25rem .5rem;font-family:var(--sans);outline:none;width:90%" oninput="D.studios['${currentStudio}'].gallery[${i}].caption=this.value" />
+        <input placeholder="キャプション" value="${esc(item.caption)}" oninput="D.studios['${currentStudio}'].gallery[${i}].caption=this.value"/>
         <button onclick="D.studios['${currentStudio}'].gallery.splice(${i},1);renderGallery()" style="border-color:rgba(255,100,100,.4);color:#ff9999">削除</button>
       </div>
     </div>
   `).join('');
-
   m().innerHTML = `
     <div class="panel">
-      <div class="panel-title">Gallery — ${s.name}</div>
-      <div class="gallery-cms" id="gcms-grid">${items}</div>
-      <div class="img-upload-area" style="position:relative;overflow:hidden">
+      <div class="panel-title">Gallery — ${esc(s.name)}</div>
+      <div class="gallery-cms">${items}</div>
+      <div class="img-upload-area">
         <div class="img-upload-label">＋ 画像を追加 <span>（複数選択可）</span></div>
-        <input type="file" accept="image/*" multiple onchange="galleryAdd(this)" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%" />
+        <input type="file" accept="image/*" multiple onchange="galleryAdd(this)" style="position:absolute;inset:0;opacity:0;cursor:pointer"/>
       </div>
-      <div class="btn-row"><button class="btn btn-primary" onclick="toast('ギャラリーを保存しました ✓')">保存</button></div>
+      <div class="btn-row"><button class="btn btn-primary" onclick="toast('保存しました ✓')">保存</button></div>
     </div>
   `;
 }
 function galleryReplace(input){
   const i=parseInt(input.dataset.idx); const file=input.files[0]; if(!file)return;
   const r=new FileReader();
-  r.onload=e=>{ d().gallery[i].file=e.target.result; renderGallery(); toast('画像を更新しました ✓'); };
+  r.onload=e=>{ d().gallery[i].file=e.target.result; renderGallery(); toast('画像を更新 ✓'); };
   r.readAsDataURL(file);
 }
 function galleryAdd(input){
@@ -507,7 +488,7 @@ function galleryAdd(input){
     r.onload=e=>{
       d().gallery.push({file:e.target.result,caption:file.name.replace(/\.[^.]+$/,''),category:'other'});
       done++;
-      if(done===files.length){ renderGallery(); toast(`${files.length}枚追加しました ✓`); }
+      if(done===files.length){ renderGallery(); toast(`${files.length}枚追加 ✓`); }
     };
     r.readAsDataURL(file);
   });
@@ -515,32 +496,28 @@ function galleryAdd(input){
 
 // ── ITEMS (costume / kimono) ──
 function renderItems(section){
-  const s=d();
-  const sec=s[section];
+  const s=d(); const sec=s[section];
   const items = sec.items.map((item,i)=>`
     <div class="icms-item">
-      <img src="${esc(item.file)}" alt="${esc(item.name)}" onerror="this.style.opacity=0.3" />
-      <input placeholder="名前" value="${esc(item.name)}" oninput="D.studios['${currentStudio}']['${section}'].items[${i}].name=this.value" />
-      <input placeholder="説明" value="${esc(item.desc)}" oninput="D.studios['${currentStudio}']['${section}'].items[${i}].desc=this.value" />
+      <img src="${esc(item.file)}" alt="${esc(item.name)}" onerror="this.style.opacity=0.3"/>
+      <input placeholder="名前" value="${esc(item.name)}" oninput="D.studios['${currentStudio}']['${section}'].items[${i}].name=this.value"/>
+      <input placeholder="説明" value="${esc(item.desc)}" oninput="D.studios['${currentStudio}']['${section}'].items[${i}].desc=this.value"/>
       <div class="icms-item-btns">
-        <label style="flex:1;display:block;border:1px solid var(--border);font-size:.6rem;padding:.25rem .4rem;text-align:center;cursor:pointer;color:var(--mid);font-family:var(--sans)">
-          変更<input type="file" accept="image/*" data-idx="${i}" onchange="itemReplace(this,'${section}')" style="display:none" />
-        </label>
+        <label>変更<input type="file" accept="image/*" data-idx="${i}" onchange="itemReplace(this,'${section}')" style="display:none"/></label>
         <button class="del" onclick="D.studios['${currentStudio}']['${section}'].items.splice(${i},1);renderItems('${section}')">削除</button>
       </div>
     </div>
   `).join('');
-
   m().innerHTML = `
     <div class="panel">
-      <div class="panel-title">${section==='costume'?'Costume':'Kimono'} — ${s.name}</div>
-      <div class="row"><label>見出し</label><input id="it-heading" value="${esc(sec.heading)}" /></div>
+      <div class="panel-title">${section==='costume'?'Costume':'Kimono'} — ${esc(s.name)}</div>
+      <div class="row"><label>見出し</label><input id="it-heading" value="${esc(sec.heading)}"/></div>
       <div class="row"><label>本文</label><textarea id="it-body">${esc(sec.body)}</textarea></div>
       <div class="panel-sub">Items</div>
-      <div class="items-cms" id="items-cms">${items}</div>
-      <div class="img-upload-area" style="position:relative;overflow:hidden">
+      <div class="items-cms">${items}</div>
+      <div class="img-upload-area">
         <div class="img-upload-label">＋ アイテムを追加 <span>（複数選択可）</span></div>
-        <input type="file" accept="image/*" multiple onchange="itemAdd(this,'${section}')" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%" />
+        <input type="file" accept="image/*" multiple onchange="itemAdd(this,'${section}')" style="position:absolute;inset:0;opacity:0;cursor:pointer"/>
       </div>
       <div class="btn-row"><button class="btn btn-primary" onclick="saveItems('${section}')">保存</button></div>
     </div>
@@ -549,7 +526,7 @@ function renderItems(section){
 function itemReplace(input,sec){
   const i=parseInt(input.dataset.idx); const file=input.files[0]; if(!file)return;
   const r=new FileReader();
-  r.onload=e=>{ d()[sec].items[i].file=e.target.result; renderItems(sec); toast('画像を更新しました ✓'); };
+  r.onload=e=>{ d()[sec].items[i].file=e.target.result; renderItems(sec); toast('画像を更新 ✓'); };
   r.readAsDataURL(file);
 }
 function itemAdd(input,sec){
@@ -559,7 +536,7 @@ function itemAdd(input,sec){
     r.onload=e=>{
       d()[sec].items.push({file:e.target.result,name:file.name.replace(/\.[^.]+$/,''),desc:''});
       done++;
-      if(done===files.length){ renderItems(sec); toast(`${files.length}件追加しました ✓`); }
+      if(done===files.length){ renderItems(sec); toast(`${files.length}件追加 ✓`); }
     };
     r.readAsDataURL(file);
   });
@@ -572,10 +549,10 @@ function renderPlans(){
   const rows = s.plans.map((p,i)=>`
     <div class="list-item">
       <div class="li-body">
-        <input placeholder="プラン名" value="${esc(p.name)}" oninput="D.studios['${currentStudio}'].plans[${i}].name=this.value" />
-        <input placeholder="価格 (例: ¥33,000〜)" value="${esc(p.price)}" oninput="D.studios['${currentStudio}'].plans[${i}].price=this.value" />
+        <input placeholder="プラン名" value="${esc(p.name)}" oninput="D.studios['${currentStudio}'].plans[${i}].name=this.value"/>
+        <input placeholder="価格 (例: ¥33,000〜)" value="${esc(p.price)}" oninput="D.studios['${currentStudio}'].plans[${i}].price=this.value"/>
         <textarea placeholder="説明文" oninput="D.studios['${currentStudio}'].plans[${i}].desc=this.value">${esc(p.desc)}</textarea>
-        <input placeholder="タグ (例: 人気No.1) — 不要なら空白" value="${esc(p.tag)}" oninput="D.studios['${currentStudio}'].plans[${i}].tag=this.value" />
+        <input placeholder="タグ (例: 人気No.1) — 不要なら空白" value="${esc(p.tag)}" oninput="D.studios['${currentStudio}'].plans[${i}].tag=this.value"/>
       </div>
       <div class="li-ctrl">
         <button class="del" onclick="D.studios['${currentStudio}'].plans.splice(${i},1);renderPlans()">削除</button>
@@ -584,26 +561,24 @@ function renderPlans(){
       </div>
     </div>
   `).join('');
-
   m().innerHTML = `
     <div class="panel">
-      <div class="panel-title">Plans — ${s.name}</div>
-      <div id="plans-list">${rows}</div>
+      <div class="panel-title">Plans — ${esc(s.name)}</div>
+      <div>${rows}</div>
       <button class="btn-add" onclick="D.studios['${currentStudio}'].plans.push({name:'New Plan',price:'¥0〜',desc:'',tag:''});renderPlans()">＋ プランを追加</button>
-      <div class="btn-row"><button class="btn btn-primary" onclick="toast('プランを保存しました ✓')">保存</button></div>
+      <div class="btn-row"><button class="btn btn-primary" onclick="toast('保存しました ✓')">保存</button></div>
     </div>
   `;
 }
 
 // ── RECRUIT ──
 function renderRecruit(){
-  const s=d();
-  const r=s.recruit;
+  const s=d(); const r=s.recruit;
   const rows = r.positions.map((p,i)=>`
     <div class="list-item">
       <div class="li-body">
-        <input placeholder="役職名" value="${esc(p.title)}" oninput="D.studios['${currentStudio}'].recruit.positions[${i}].title=this.value" />
-        <input placeholder="雇用形態" value="${esc(p.type)}" oninput="D.studios['${currentStudio}'].recruit.positions[${i}].type=this.value" />
+        <input placeholder="役職名" value="${esc(p.title)}" oninput="D.studios['${currentStudio}'].recruit.positions[${i}].title=this.value"/>
+        <input placeholder="雇用形態" value="${esc(p.type)}" oninput="D.studios['${currentStudio}'].recruit.positions[${i}].type=this.value"/>
         <textarea placeholder="説明" oninput="D.studios['${currentStudio}'].recruit.positions[${i}].desc=this.value">${esc(p.desc)}</textarea>
       </div>
       <div class="li-ctrl">
@@ -611,15 +586,14 @@ function renderRecruit(){
       </div>
     </div>
   `).join('');
-
   m().innerHTML = `
     <div class="panel">
-      <div class="panel-title">Recruit — ${s.name}</div>
-      <div class="row"><label>見出し</label><input id="rc-heading" value="${esc(r.heading)}" /></div>
+      <div class="panel-title">Recruit — ${esc(s.name)}</div>
+      <div class="row"><label>見出し</label><input id="rc-heading" value="${esc(r.heading)}"/></div>
       <div class="row"><label>本文</label><textarea id="rc-body">${esc(r.body)}</textarea></div>
-      <div class="row"><label>問い合わせ Email</label><input id="rc-email" value="${esc(r.contactEmail)}" /></div>
+      <div class="row"><label>問い合わせ Email</label><input id="rc-email" value="${esc(r.contactEmail)}"/></div>
       <div class="panel-sub">募集ポジション</div>
-      <div id="pos-list">${rows}</div>
+      <div>${rows}</div>
       <button class="btn-add" onclick="D.studios['${currentStudio}'].recruit.positions.push({title:'',type:'',desc:''});renderRecruit()">＋ ポジションを追加</button>
       <div class="btn-row"><button class="btn btn-primary" onclick="saveRecruit()">保存</button></div>
     </div>
@@ -632,9 +606,9 @@ function renderCta(){
   const s=d();
   m().innerHTML = `
     <div class="panel">
-      <div class="panel-title">CTA / Booking — ${s.name}</div>
-      <div class="row"><label>見出し (\\n で改行)</label><textarea id="cta-h">${esc(s.ctaHeading)}</textarea></div>
-      <div class="row"><label>サブテキスト</label><input id="cta-n" value="${esc(s.ctaNote)}" /></div>
+      <div class="panel-title">CTA / Booking — ${esc(s.name)}</div>
+      <div class="row"><label>見出し (改行は \\n)</label><textarea id="cta-h">${esc(s.ctaHeading)}</textarea></div>
+      <div class="row"><label>サブテキスト</label><input id="cta-n" value="${esc(s.ctaNote)}"/></div>
       <div class="btn-row"><button class="btn btn-primary" onclick="saveCta()">保存</button></div>
     </div>
   `;
@@ -646,10 +620,7 @@ function renderExport(){
   m().innerHTML = `
     <div class="panel">
       <div class="panel-title">Export — site-data.js</div>
-      <p style="font-size:.72rem;color:var(--mid);line-height:1.8;margin-bottom:1.2rem">
-        下のコードをコピーして <code>site-data.js</code> を上書き保存、GitHubにpushするとサイトに反映されます。<br>
-        または「ダウンロード」でファイルを取得してください。
-      </p>
+      <p class="global-note">下のコードをコピーして site-data.js を上書き、GitHubにpushしてください。</p>
       <pre class="export-pre" id="export-pre"></pre>
       <div class="btn-row">
         <button class="btn btn-primary" onclick="copyExport()">コピー</button>
@@ -666,13 +637,11 @@ function copyExport(){ navigator.clipboard.writeText(genExport()).then(()=>toast
 function downloadExport(){
   const blob=new Blob([genExport()],{type:'text/javascript'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='site-data.js'; a.click();
-  toast('ダウンロード開始 ✓');
+  toast('ダウンロード ✓');
 }
 
-// ── Helpers ──
-function arrMove(arr,i,dir){ const tmp=arr[i]; arr[i]=arr[i+dir]; arr[i+dir]=tmp; }
+function arrMove(arr,i,dir){ const t=arr[i]; arr[i]=arr[i+dir]; arr[i+dir]=t; }
 
-// Boot
 show('global');
 </script>
 </body>
