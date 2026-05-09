@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CMS — Studio et. / Maison nr.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f7f5f2;
+  --ink: #1a1814;
+  --mid: #6b6560;
+  --accent: #c8a97e;
+  --panel: #fff;
+  --border: rgba(26,24,20,.12);
+  --danger: #c0392b;
+  --success: #4a7c59;
+  --serif: 'Cormorant Garamond', serif;
+  --sans: 'Zen Kaku Gothic New', sans-serif;
+}
+html, body { height: 100%; }
+body { background: var(--bg); font-family: var(--sans); font-weight: 300; font-size: 14px; color: var(--ink); display: flex; flex-direction: column; }
+
+/* ── Topbar ── */
+.topbar {
+  background: var(--ink); color: var(--bg);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 56px; flex-shrink: 0;
+}
+.topbar h1 { font-family: var(--serif); font-size: 1.1rem; font-weight: 300; letter-spacing: .15em; }
+.topbar a { color: var(--accent); text-decoration: none; font-size: .8rem; letter-spacing: .1em; border: 1px solid var(--accent); padding: .35rem 1rem; transition: all .2s; }
+.topbar a:hover { background: var(--accent); color: var(--ink); }
+
+/* ── Layout ── */
+.layout { display: flex; flex: 1; overflow: hidden; }
+
+/* Sidebar */
+.sidebar {
+  width: 220px; flex-shrink: 0;
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 1.5rem 0;
+}
+.sidebar-section { padding: .3rem 1.5rem .1rem; font-size: .65rem; letter-spacing: .18em; color: var(--mid); text-transform: uppercase; margin-top: .5rem; }
+.sidebar-btn {
+  display: block; width: 100%;
+  background: none; border: none; cursor: pointer;
+  text-align: left; padding: .65rem 1.5rem;
+  font-family: var(--sans); font-size: .8rem; color: var(--ink);
+  transition: background .2s; border-left: 2px solid transparent;
+}
+.sidebar-btn:hover { background: rgba(26,24,20,.04); }
+.sidebar-btn.active { background: rgba(200,169,126,.12); border-left-color: var(--accent); font-weight: 400; }
+
+/* Main */
+.main { flex: 1; overflow-y: auto; padding: 2.5rem; }
+
+/* Panel */
+.panel { background: var(--panel); border: 1px solid var(--border); padding: 2rem; margin-bottom: 2rem; }
+.panel h2 { font-family: var(--serif); font-size: 1.4rem; font-weight: 300; letter-spacing: .08em; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .75rem; }
+.panel h3 { font-family: var(--serif); font-size: 1rem; font-weight: 300; letter-spacing: .1em; margin: 1.5rem 0 .75rem; color: var(--mid); }
+
+/* Form elements */
+.form-row { margin-bottom: 1.2rem; }
+.form-row label { display: block; font-size: .7rem; letter-spacing: .14em; color: var(--mid); text-transform: uppercase; margin-bottom: .4rem; }
+.form-row input, .form-row textarea, .form-row select {
+  width: 100%; border: 1px solid var(--border); background: var(--bg);
+  padding: .6rem .8rem; font-family: var(--sans); font-size: .85rem; color: var(--ink);
+  outline: none; transition: border-color .2s; resize: vertical;
+}
+.form-row input:focus, .form-row textarea:focus { border-color: var(--accent); }
+.form-row textarea { min-height: 90px; }
+
+/* Buttons */
+.btn { display: inline-block; cursor: pointer; border: none; font-family: var(--sans); font-size: .8rem; letter-spacing: .1em; padding: .6rem 1.4rem; transition: all .2s; }
+.btn-primary { background: var(--ink); color: var(--bg); }
+.btn-primary:hover { background: #333; }
+.btn-danger { background: var(--danger); color: #fff; }
+.btn-danger:hover { background: #a93226; }
+.btn-add { background: none; border: 1px dashed var(--border); color: var(--mid); width: 100%; padding: .7rem; text-align: center; cursor: pointer; transition: all .2s; font-size: .8rem; }
+.btn-add:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Toast */
+.toast {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+  background: var(--ink); color: var(--bg);
+  padding: .75rem 1.5rem; font-size: .8rem; letter-spacing: .08em;
+  transform: translateY(60px); opacity: 0;
+  transition: all .3s;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast.error { background: var(--danger); }
+
+/* List items */
+.list-item {
+  border: 1px solid var(--border); padding: 1rem 1.2rem;
+  margin-bottom: .75rem; display: flex; gap: 1rem; align-items: flex-start;
+  background: var(--bg);
+}
+.list-item-body { flex: 1; }
+.list-item-body input, .list-item-body textarea, .list-item-body select {
+  width: 100%; border: 1px solid var(--border); background: #fff;
+  padding: .45rem .7rem; font-family: var(--sans); font-size: .82rem; color: var(--ink);
+  outline: none; margin-bottom: .5rem;
+}
+.list-item-body input:focus, .list-item-body textarea:focus { border-color: var(--accent); }
+.list-item-body textarea { min-height: 60px; resize: vertical; }
+.list-item-controls { display: flex; flex-direction: column; gap: .5rem; flex-shrink: 0; }
+.list-item-controls button { font-size: .7rem; padding: .3rem .6rem; cursor: pointer; border: 1px solid var(--border); background: none; color: var(--mid); transition: all .2s; }
+.list-item-controls button:hover { background: var(--danger); color: #fff; border-color: var(--danger); }
+
+/* Gallery grid in CMS */
+.gallery-cms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.gallery-cms-item { position: relative; border: 1px solid var(--border); }
+.gallery-cms-item img { width: 100%; height: 140px; object-fit: cover; display: block; }
+.gallery-cms-item .overlay { position: absolute; inset: 0; background: rgba(26,24,20,.7); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem; opacity: 0; transition: opacity .2s; }
+.gallery-cms-item:hover .overlay { opacity: 1; }
+.gallery-cms-item .overlay button { background: none; border: 1px solid rgba(255,255,255,.5); color: #fff; font-size: .7rem; padding: .3rem .7rem; cursor: pointer; letter-spacing: .08em; transition: background .2s; }
+.gallery-cms-item .overlay button:hover { background: rgba(255,255,255,.2); }
+.gallery-cms-item .badge { position: absolute; top: .4rem; left: .4rem; background: var(--accent); color: var(--ink); font-size: .6rem; padding: .15rem .4rem; letter-spacing: .08em; }
+
+/* Image picker modal */
+.modal-bg { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 300; align-items: center; justify-content: center; }
+.modal-bg.open { display: flex; }
+.modal { background: var(--panel); padding: 2rem; max-width: 700px; width: 90vw; max-height: 80vh; overflow-y: auto; }
+.modal h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 300; margin-bottom: 1rem; }
+.modal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: .75rem; }
+.modal-img-btn { background: none; border: 2px solid transparent; cursor: pointer; padding: 0; transition: border-color .2s; }
+.modal-img-btn:hover { border-color: var(--accent); }
+.modal-img-btn img { width: 100%; height: 90px; object-fit: cover; display: block; }
+.modal-close { margin-top: 1.5rem; background: none; border: 1px solid var(--border); cursor: pointer; font-size: .8rem; padding: .5rem 1.2rem; color: var(--mid); }
+
+/* Hero image pickers */
+.hero-img-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-img-slot { width: 150px; flex-shrink: 0; }
+.hero-img-slot img { width: 100%; height: 100px; object-fit: cover; display: block; border: 1px solid var(--border); margin-bottom: .4rem; cursor: pointer; }
+.hero-img-slot .slot-label { font-size: .65rem; color: var(--mid); letter-spacing: .1em; text-align: center; }
+
+/* Tabs */
+.studio-switch { display: flex; gap: 0; margin-bottom: 2rem; border: 1px solid var(--border); width: fit-content; }
+.studio-switch button { background: none; border: none; cursor: pointer; font-family: var(--serif); font-size: .9rem; letter-spacing: .1em; padding: .5rem 1.5rem; color: var(--mid); transition: all .2s; }
+.studio-switch button.active { background: var(--ink); color: var(--bg); }
+
+/* Export box */
+.export-box { background: var(--bg); border: 1px solid var(--border); padding: 1rem; font-size: .75rem; font-family: monospace; overflow-x: auto; white-space: pre; max-height: 300px; overflow-y: auto; color: #555; }
+
+/* Responsive */
+@media (max-width: 700px) {
+  .layout { flex-direction: column; }
+  .sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); padding: .75rem 0; display: flex; flex-wrap: wrap; }
+  .sidebar-btn { width: auto; }
+  .sidebar-section { width: 100%; }
+  .main { padding: 1.5rem 1rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>CMS — Studio et. / Maison nr.</h1>
+  <a href="index.html" target="_blank">サイトを見る →</a>
+</div>
+
+<div class="layout">
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-section">Studio et.</div>
+  <button class="sidebar-btn active" onclick="showPanel('et-basic')">基本情報</button>
+  <button class="sidebar-btn" onclick="showPanel('et-hero')">ヒーロー画像</button>
+  <button class="sidebar-btn" onclick="showPanel('et-gallery')">ギャラリー</button>
+  <button class="sidebar-btn" onclick="showPanel('et-plans')">プラン・料金</button>
+
+  <div class="sidebar-section" style="margin-top:1rem;">Maison nr.</div>
+  <button class="sidebar-btn" onclick="showPanel('nr-basic')">基本情報</button>
+  <button class="sidebar-btn" onclick="showPanel('nr-hero')">ヒーロー画像</button>
+
+  <div class="sidebar-section" style="margin-top:1rem;">設定</div>
+  <button class="sidebar-btn" onclick="showPanel('export')">エクスポート</button>
+</aside>
+
+<!-- Main -->
+<main class="main" id="main-area">
+  <!-- Panels rendered by JS -->
+</main>
+
+</div><!-- /layout -->
+
+<div class="toast" id="toast"></div>
+
+<!-- Image Picker Modal -->
+<div class="modal-bg" id="modal-bg" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <h3>画像を選択</h3>
+    <div class="modal-grid" id="modal-grid"></div>
+    <button class="modal-close" onclick="closeModal()">閉じる</button>
+  </div>
+</div>
+
+<script src="site-data.js"></script>
+<script>
+// ── Local copy of data we can edit ──
+let data = JSON.parse(JSON.stringify(window.SITE_DATA));
+
+// All image files (filename only — same folder as index.html)
+const ALL_IMAGES = [
+  "AA-18116290120491565.jpg",
+  "AA-18103506649752477.jpg",
+  "AA-17856884340522635.jpg",
+  "18505164388065081.jpg",
+  "18417574654096276.jpg",
+  "18387950968193350.jpg",
+  "18384987919132419.jpg",
+  "18375330547181332.jpg",
+  "18364722763198059.jpg",
+  "18335184631230617.jpg",
+  "18334778899231083.jpg",
+  "18303974821264064.jpg",
+  "18295179019220181.jpg",
+  "18294900103268494.jpg",
+  "18282725923278968.jpg",
+  "18273705787256865.jpg",
+  "625012292_18073272839576495_2638135942964414464_n.jpg",
+  "625133384_18073375556576495_4642466183622618758_n.jpg",
+  "17842722768624869.jpg"
+];
+
+const CATEGORIES = ['753','newborn','birthday','family','maternity','other'];
+
+// ── Panel routing ──
+let currentPanel = 'et-basic';
+function showPanel(id) {
+  currentPanel = id;
+  document.querySelectorAll('.sidebar-btn').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('onclick')?.includes(`'${id}'`));
+  });
+  renderPanel(id);
+}
+
+function renderPanel(id) {
+  const el = document.getElementById('main-area');
+  el.innerHTML = '';
+  const fns = {
+    'et-basic': () => renderBasic('et'),
+    'et-hero': () => renderHero('et'),
+    'et-gallery': () => renderGallery('et'),
+    'et-plans': () => renderPlans('et'),
+    'nr-basic': () => renderBasic('maison'),
+    'nr-hero': () => renderHero('maison'),
+    'export': renderExport,
+  };
+  (fns[id] || (() => {}))();
+}
+
+// ── Basic Info Panel ──
+function renderBasic(key) {
+  const d = data.studios[key];
+  const label = key === 'et' ? 'Studio et.' : 'Maison nr.';
+  document.getElementById('main-area').innerHTML = `
+    <div class="panel">
+      <h2>${label} — 基本情報</h2>
+      <div class="form-row"><label>スタジオ名</label><input id="b-name" value="${esc(d.name)}" /></div>
+      <div class="form-row"><label>タグライン (英語)</label><input id="b-tagline" value="${esc(d.tagline)}" /></div>
+      <div class="form-row"><label>紹介文</label><textarea id="b-desc">${esc(d.description)}</textarea></div>
+      <div class="form-row"><label>住所</label><input id="b-addr" value="${esc(d.address)}" /></div>
+      <div class="form-row"><label>電話番号</label><input id="b-tel" value="${esc(d.tel)}" /></div>
+      <div class="form-row"><label>営業時間</label><input id="b-hours" value="${esc(d.hours)}" /></div>
+      <div class="form-row"><label>Instagram URL</label><input id="b-ig" value="${esc(d.instagram)}" /></div>
+      <div class="form-row"><label>予約 URL</label><input id="b-book" value="${esc(d.bookingUrl)}" /></div>
+      <button class="btn btn-primary" onclick="saveBasic('${key}')">保存</button>
+    </div>
+  `;
+}
+
+function saveBasic(key) {
+  const d = data.studios[key];
+  d.name = v('b-name');
+  d.tagline = v('b-tagline');
+  d.description = v('b-desc');
+  d.address = v('b-addr');
+  d.tel = v('b-tel');
+  d.hours = v('b-hours');
+  d.instagram = v('b-ig');
+  d.bookingUrl = v('b-book');
+  toast('保存しました ✓');
+}
+
+// ── Hero Panel ──
+function renderHero(key) {
+  const d = data.studios[key];
+  const label = key === 'et' ? 'Studio et.' : 'Maison nr.';
+  const slots = [0,1,2].map(i => {
+    const img = d.heroImages[i] || '';
+    return `
+      <div class="hero-img-slot">
+        <img src="${img || 'data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'150\' height=\'100\'><rect width=\'150\' height=\'100\' fill=\'%23eee\'/></svg>'}"
+          id="hero-slot-img-${i}" onclick="openModal('hero','${key}',${i})" title="クリックして変更" />
+        <div class="slot-label">Slide ${i+1}${img ? '' : ' (未設定)'}</div>
+      </div>
+    `;
+  }).join('');
+  document.getElementById('main-area').innerHTML = `
+    <div class="panel">
+      <h2>${label} — ヒーロー画像</h2>
+      <p style="font-size:.8rem;color:var(--mid);margin-bottom:1.5rem;">画像をクリックして変更。最大3枚がスライドショーで表示されます。</p>
+      <div class="hero-img-row">${slots}</div>
+      <button class="btn btn-primary" style="margin-top:1.5rem;" onclick="toast('ヒーロー画像を更新しました ✓')">保存</button>
+    </div>
+  `;
+}
+
+// ── Gallery Panel ──
+function renderGallery(key) {
+  const d = data.studios[key];
+  const items = d.gallery.map((item, i) => `
+    <div class="gallery-cms-item">
+      <img src="${item.file}" alt="${esc(item.caption)}" />
+      <span class="badge">${item.category}</span>
+      <div class="overlay">
+        <button onclick="openModal('gallery','${key}',${i})">画像変更</button>
+        <select onchange="data.studios['${key}'].gallery[${i}].category=this.value" style="background:rgba(0,0,0,.5);color:#fff;border:1px solid rgba(255,255,255,.3);font-size:.72rem;padding:.25rem .5rem;cursor:pointer;">
+          ${CATEGORIES.map(c => `<option value="${c}" ${item.category===c?'selected':''}>${c}</option>`).join('')}
+        </select>
+        <button onclick="removeGalleryItem('${key}',${i})" style="border-color:rgba(255,100,100,.5);color:#ff9999;">削除</button>
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('main-area').innerHTML = `
+    <div class="panel">
+      <h2>Studio et. — ギャラリー</h2>
+      <p style="font-size:.8rem;color:var(--mid);margin-bottom:1.5rem;">画像にホバーして変更・カテゴリ変更・削除ができます。</p>
+      <div class="gallery-cms-grid" id="gallery-cms">${items}</div>
+      <button class="btn-add" onclick="openModal('gallery-add','${key}',null)">＋ 画像を追加</button>
+    </div>
+  `;
+}
+
+function removeGalleryItem(key, i) {
+  data.studios[key].gallery.splice(i, 1);
+  renderGallery(key);
+  toast('削除しました');
+}
+
+// ── Plans Panel ──
+function renderPlans(key) {
+  const d = data.studios[key];
+  const items = d.plans.map((p, i) => `
+    <div class="list-item">
+      <div class="list-item-body">
+        <input placeholder="プラン名" value="${esc(p.name)}" oninput="data.studios['${key}'].plans[${i}].name=this.value" />
+        <input placeholder="価格 (例: ¥33,000〜)" value="${esc(p.price)}" oninput="data.studios['${key}'].plans[${i}].price=this.value" />
+        <textarea placeholder="説明文" oninput="data.studios['${key}'].plans[${i}].desc=this.value">${esc(p.desc)}</textarea>
+      </div>
+      <div class="list-item-controls">
+        <button onclick="removePlan('${key}',${i})">削除</button>
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('main-area').innerHTML = `
+    <div class="panel">
+      <h2>Studio et. — プラン・料金</h2>
+      <div id="plans-list">${items}</div>
+      <button class="btn-add" onclick="addPlan('${key}')">＋ プランを追加</button>
+      <button class="btn btn-primary" style="margin-top:1.5rem;" onclick="toast('プランを保存しました ✓')">保存</button>
+    </div>
+  `;
+}
+
+function removePlan(key, i) {
+  data.studios[key].plans.splice(i, 1);
+  renderPlans(key);
+  toast('削除しました');
+}
+function addPlan(key) {
+  data.studios[key].plans.push({ name: '新しいプラン', price: '¥0〜', desc: '' });
+  renderPlans(key);
+}
+
+// ── Export Panel ──
+function renderExport() {
+  document.getElementById('main-area').innerHTML = `
+    <div class="panel">
+      <h2>エクスポート — site-data.js</h2>
+      <p style="font-size:.8rem;color:var(--mid);margin-bottom:1.2rem;">
+        下のコードをコピーして <code>site-data.js</code> に貼り付け、保存するとサイトに反映されます。
+      </p>
+      <pre class="export-box" id="export-pre"></pre>
+      <div style="margin-top:1rem;display:flex;gap:.75rem;flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="copyExport()">クリップボードにコピー</button>
+        <button class="btn btn-primary" onclick="downloadExport()">ダウンロード</button>
+      </div>
+    </div>
+  `;
+  document.getElementById('export-pre').textContent = generateExport();
+}
+
+function generateExport() {
+  return `// Studio et. & Maison nr. — Site Data
+// Edit this file or use cms.html to update content without coding.
+
+window.SITE_DATA = ${JSON.stringify(data, null, 2)};
+`;
+}
+
+function copyExport() {
+  navigator.clipboard.writeText(generateExport()).then(() => toast('コピーしました ✓'));
+}
+
+function downloadExport() {
+  const blob = new Blob([generateExport()], { type: 'text/javascript' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'site-data.js';
+  a.click();
+  toast('ダウンロード開始 ✓');
+}
+
+// ── Image Picker Modal ──
+let modalContext = null;
+
+function openModal(type, key, idx) {
+  modalContext = { type, key, idx };
+  const grid = document.getElementById('modal-grid');
+  grid.innerHTML = ALL_IMAGES.map(img => `
+    <button class="modal-img-btn" onclick="selectImage('${img}')">
+      <img src="${img}" alt="${img}" />
+    </button>
+  `).join('');
+  document.getElementById('modal-bg').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal-bg').classList.remove('open');
+  modalContext = null;
+}
+
+function selectImage(filename) {
+  const ctx = modalContext;
+  if (!ctx) return;
+  closeModal();
+
+  if (ctx.type === 'hero') {
+    data.studios[ctx.key].heroImages[ctx.idx] = filename;
+    document.getElementById('hero-slot-img-' + ctx.idx).src = filename;
+    toast('ヒーロー画像を変更しました ✓');
+  } else if (ctx.type === 'gallery') {
+    data.studios[ctx.key].gallery[ctx.idx].file = filename;
+    renderGallery(ctx.key);
+    toast('ギャラリー画像を変更しました ✓');
+  } else if (ctx.type === 'gallery-add') {
+    data.studios[ctx.key].gallery.push({ file: filename, caption: '', category: 'other' });
+    renderGallery(ctx.key);
+    toast('ギャラリーに追加しました ✓');
+  }
+}
+
+// ── Toast ──
+function toast(msg, type) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast show' + (type === 'error' ? ' error' : '');
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.classList.remove('show'), 2800);
+}
+
+// ── Helpers ──
+function v(id) { return document.getElementById(id)?.value ?? ''; }
+function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+// ── Boot ──
+showPanel('et-basic');
+</script>
+</body>
+</html>
