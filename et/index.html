@@ -492,6 +492,77 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,5vw,4rem);di
   .flow-step:not(:last-child)::after{left:18px}
   .qa-bot{right:.75rem;left:.75rem;width:auto;max-width:none}
 }
+
+/* ═══ MOTION ═══ */
+:root{
+  --motion-ease:cubic-bezier(.2,.6,.2,1);
+  --motion-fast:.32s;
+  --motion-base:.7s;
+}
+
+/* Page entrance — body fades in once init resolves */
+body{opacity:0;transition:opacity .35s ease}
+body.is-ready{opacity:1}
+
+/* Page exit (used on tab/link transitions) */
+body.is-leaving{opacity:0;transition:opacity .28s ease}
+
+/* Header drop-in */
+.nav{transform:translateY(-100%);opacity:0;transition:transform .55s var(--motion-ease) .05s,opacity .45s ease .05s}
+body.is-ready .nav{transform:translateY(0);opacity:1}
+
+/* Hero text staggered fade-up */
+.hero-eyebrow,.hero-name,.hero-tagline{
+  opacity:0;transform:translateY(14px);
+  transition:opacity .8s var(--motion-ease),transform .8s var(--motion-ease);
+}
+body.is-ready .hero-eyebrow{transition-delay:.55s}
+body.is-ready .hero-name{transition-delay:.7s}
+body.is-ready .hero-tagline{transition-delay:.85s}
+body.is-ready .hero-eyebrow,
+body.is-ready .hero-name,
+body.is-ready .hero-tagline{opacity:1;transform:translateY(0)}
+
+/* Generic reveal — sections + arbitrary blocks */
+.reveal{
+  opacity:0;transform:translateY(24px);
+  transition:opacity var(--motion-base) var(--motion-ease),transform var(--motion-base) var(--motion-ease);
+  will-change:opacity,transform;
+}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* Gallery items staggered (delay set inline via --d) */
+.g-item{
+  opacity:0;transform:translateY(18px);
+  transition:opacity .65s var(--motion-ease),transform .65s var(--motion-ease);
+  transition-delay:calc(var(--d,0) * 60ms);
+}
+.g-item.in{opacity:1;transform:translateY(0)}
+
+/* Plan / item / pos / flow card subtle stagger */
+.plan-card,.item-card,.pos-card,.flow-step{
+  opacity:0;transform:translateY(20px);
+  transition:opacity .65s var(--motion-ease),transform .65s var(--motion-ease);
+  transition-delay:calc(var(--d,0) * 70ms);
+}
+.plan-card.in,.item-card.in,.pos-card.in,.flow-step.in{opacity:1;transform:translateY(0)}
+
+/* QA bot toggle entrance */
+.qa-bot-toggle{
+  opacity:0;transform:translateY(20px) scale(.9);
+  transition:transform .45s var(--motion-ease) .9s,opacity .45s ease .9s,background .25s;
+}
+body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
+.qa-bot-toggle:hover{background:var(--accent);transform:translateY(0) scale(1.05);transition-delay:0s}
+
+/* Reduced motion — kill all of it */
+@media (prefers-reduced-motion: reduce){
+  body,.nav,.hero-eyebrow,.hero-name,.hero-tagline,.reveal,
+  .g-item,.plan-card,.item-card,.pos-card,.flow-step,.qa-bot-toggle{
+    opacity:1!important;transform:none!important;transition:none!important;
+  }
+  body.is-leaving{opacity:1!important}
+}
 </style>
 </head>
 <body>
@@ -808,6 +879,9 @@ const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbIdx=0;
 let SEARCH_INDEX = [];
 
+// Safety net — ensure body fades in even if init() stalls (e.g. slow SVG fetch)
+setTimeout(()=>{ document.body.classList.add('is-ready'); }, 1200);
+
 async function loadSvg(url){
   try{ const r = await fetch(url); if(!r.ok) throw new Error(); return await r.text(); }
   catch(e){ return null; }
@@ -969,7 +1043,9 @@ async function init(){
         <div class="qa-a">${it.a}</div>
       </div>
     `).join('') || '<p style="text-align:center;color:var(--mid);font-family:var(--display);font-style:italic">近日公開予定。</p>';
-    buildQaBot(d.qa.items);
+    buildQaBot(d.qa.items, d);
+  } else {
+    buildQaBot([], d);
   }
 
   // Flow
@@ -1006,6 +1082,13 @@ async function init(){
 
   // Build search index
   buildSearchIndex(d);
+
+  // Motion: tag, observe, then mark body ready (next frame to ensure CSS transitions trigger)
+  enhanceMotion();
+  bindPageLeave();
+  requestAnimationFrame(()=>{
+    requestAnimationFrame(()=>document.body.classList.add('is-ready'));
+  });
 }
 
 function buildHero(images){
@@ -1149,15 +1232,35 @@ function runSearch(){
 
 // Q&A BOT
 let qaBotItems = [];
-function buildQaBot(items){
-  qaBotItems = items;
+function buildQaBot(items, ctx){
+  qaBotItems = items || [];
   const body = document.getElementById('qa-bot-body');
-  body.innerHTML = `
-    <div class="qa-msg qa-msg-bot">こんにちは。よくいただくご質問はこちらです。お選びください。</div>
-    <div class="qa-suggestions">
-      ${items.slice(0,5).map((it,i)=>`<button class="qa-suggest-btn" onclick="askBot(${i})">${it.q}</button>`).join('')}
-    </div>
-  `;
+  if(!body) return;
+  const isComing = !!(ctx && ctx.comingSoon);
+  const hasItems = qaBotItems.length > 0;
+
+  if(hasItems){
+    body.innerHTML = `
+      <div class="qa-msg qa-msg-bot">こんにちは。よくいただくご質問はこちらです。お選びください。</div>
+      <div class="qa-suggestions">
+        ${qaBotItems.slice(0,5).map((it,i)=>`<button class="qa-suggest-btn" onclick="askBot(${i})">${it.q}</button>`).join('')}
+      </div>
+    `;
+  } else if(isComing){
+    const ig = (ctx && ctx.instagram) || '#';
+    body.innerHTML = `
+      <div class="qa-msg qa-msg-bot">こんにちは。Maison nr. はまもなくオープン予定です。</div>
+      <div class="qa-msg qa-msg-bot">最新情報・撮影プラン・ご予約開始日は Instagram にて随時お知らせしております。</div>
+      <div class="qa-suggestions">
+        <a class="qa-suggest-btn" href="${ig}" target="_blank" rel="noopener" style="text-decoration:none;display:block">Instagram をフォローする →</a>
+      </div>
+    `;
+  } else {
+    body.innerHTML = `
+      <div class="qa-msg qa-msg-bot">こんにちは。よくいただくご質問は近日公開予定です。</div>
+      <div class="qa-msg qa-msg-bot">お問い合わせは下記よりお気軽にどうぞ。</div>
+    `;
+  }
 }
 function askBot(i){
   const it = qaBotItems[i];
@@ -1172,6 +1275,71 @@ function askBot(i){
 function toggleBot(){
   document.getElementById('qa-bot').classList.toggle('open');
 }
+
+// ═══ MOTION ═══
+function enhanceMotion(){
+  // Tag sections + cards with reveal class
+  document.querySelectorAll('section').forEach(s=>{
+    if(s.id !== 'hero') s.classList.add('reveal');
+  });
+
+  // Stagger gallery items
+  document.querySelectorAll('#g-grid .g-item').forEach((el,i)=>{
+    el.style.setProperty('--d', i % 12);
+  });
+  // Stagger plan / item / pos cards
+  document.querySelectorAll('.plans-grid .plan-card').forEach((el,i)=>el.style.setProperty('--d', i));
+  document.querySelectorAll('.items-grid .item-card').forEach((el,i)=>el.style.setProperty('--d', i));
+  document.querySelectorAll('#pos-list .pos-card').forEach((el,i)=>el.style.setProperty('--d', i));
+  document.querySelectorAll('#flow-list .flow-step').forEach((el,i)=>el.style.setProperty('--d', i));
+
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.reveal,.g-item,.plan-card,.item-card,.pos-card,.flow-step').forEach(el=>el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal,.g-item,.plan-card,.item-card,.pos-card,.flow-step').forEach(el=>io.observe(el));
+}
+
+// Page-leave fade for tab/external nav (skip in-page #anchors)
+function bindPageLeave(){
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce) return;
+  document.addEventListener('click', function(e){
+    const a = e.target.closest('a');
+    if(!a) return;
+    const href = a.getAttribute('href');
+    if(!href) return;
+    // Skip anchors, targets, mailto/tel, javascript: , and download
+    if(href.startsWith('#')) return;
+    if(a.target && a.target !== '_self') return;
+    if(/^(mailto:|tel:|javascript:)/i.test(href)) return;
+    if(a.hasAttribute('download')) return;
+    // Skip modifier-clicks
+    if(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    // Same-page hash link with full URL? Let it pass.
+    try{
+      const url = new URL(href, location.href);
+      if(url.origin === location.origin && url.pathname === location.pathname && url.hash) return;
+    }catch(_){}
+    e.preventDefault();
+    document.body.classList.add('is-leaving');
+    setTimeout(()=>{ location.href = a.href; }, 240);
+  });
+}
+
+// Page-show: re-fade-in if user came back via bfcache
+window.addEventListener('pageshow', function(e){
+  if(e.persisted){
+    document.body.classList.remove('is-leaving');
+    document.body.classList.add('is-ready');
+  }
+});
 
 init();
 </script>
