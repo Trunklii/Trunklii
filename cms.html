@@ -17,11 +17,7 @@
 html,body{height:100%}
 body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13px;color:var(--ink);display:flex;flex-direction:column}
 
-.top{
-  background:var(--ink);color:var(--off);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 1.5rem;height:52px;flex-shrink:0;gap:1rem;flex-wrap:wrap;
-}
+.top{background:var(--ink);color:var(--off);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;height:52px;flex-shrink:0;gap:1rem;flex-wrap:wrap}
 .top-title{font-family:var(--sans);font-weight:500;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap}
 .top-links{display:flex;gap:.5rem;flex-wrap:wrap}
 .top-links a{color:rgba(244,242,238,.45);text-decoration:none;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(244,242,238,.18);padding:.28rem .75rem;transition:all .2s;white-space:nowrap}
@@ -29,7 +25,7 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
 
 .layout{display:flex;flex:1;overflow:hidden}
 
-.sidebar{width:220px;flex-shrink:0;background:var(--panel);border-right:1px solid var(--border);overflow-y:auto;display:flex;flex-direction:column}
+.sidebar{width:230px;flex-shrink:0;background:var(--panel);border-right:1px solid var(--border);overflow-y:auto;display:flex;flex-direction:column}
 .studio-switch{display:flex;border-bottom:1px solid var(--border)}
 .sw-btn{flex:1;background:none;border:none;cursor:pointer;font-family:var(--sans);font-weight:500;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);padding:.7rem .5rem;transition:all .2s;border-bottom:2px solid transparent}
 .sw-btn.on-et{color:var(--et);border-bottom-color:var(--et);font-weight:600}
@@ -49,30 +45,17 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
 
 .row{margin-bottom:1.1rem}
 .row label{display:block;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);margin-bottom:.35rem}
-.row input,.row textarea,.row select{
-  width:100%;border:1px solid var(--border);background:var(--off);
-  padding:.5rem .7rem;font-family:var(--sans);font-size:.78rem;color:var(--ink);
-  outline:none;transition:border-color .2s;resize:vertical;
-}
+.row input,.row textarea,.row select{width:100%;border:1px solid var(--border);background:var(--off);padding:.5rem .7rem;font-family:var(--sans);font-size:.78rem;color:var(--ink);outline:none;transition:border-color .2s;resize:vertical}
 .row input:focus,.row textarea:focus{border-color:var(--et)}
 .row textarea{min-height:80px}
 .row-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
 
 .btn{display:inline-block;cursor:pointer;border:none;font-family:var(--sans);font-weight:500;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;padding:.55rem 1.3rem;transition:all .2s}
 .btn-primary{background:var(--ink);color:var(--off)}
 .btn-primary:hover{background:#333}
-.btn-danger{background:var(--danger);color:#fff}
-.btn-danger:hover{background:#a93226}
 .btn-ghost{background:none;border:1px solid var(--border);color:var(--mid)}
 .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
-.btn-add{
-  display:block;width:100%;background:none;
-  border:1px dashed rgba(17,16,16,.18);color:var(--mid);
-  padding:.6rem;text-align:center;cursor:pointer;
-  font-family:var(--sans);font-weight:400;font-size:.65rem;letter-spacing:.14em;
-  text-transform:uppercase;transition:all .2s;
-}
+.btn-add{display:block;width:100%;background:none;border:1px dashed rgba(17,16,16,.18);color:var(--mid);padding:.6rem;text-align:center;cursor:pointer;font-family:var(--sans);font-weight:400;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;transition:all .2s}
 .btn-add:hover{border-color:var(--et);color:var(--et)}
 .btn-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.2rem;align-items:center}
 
@@ -86,36 +69,23 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
 .li-ctrl .del:hover{background:var(--danger);color:#fff;border-color:var(--danger)}
 .li-ctrl .up:hover,.li-ctrl .dn:hover{background:var(--ink);color:var(--off);border-color:var(--ink)}
 
-.img-upload-area{
-  border:1px dashed rgba(17,16,16,.2);padding:2rem;
-  text-align:center;cursor:pointer;transition:border-color .2s;
-  background:var(--off);position:relative;overflow:hidden;
-}
+.img-upload-area{border:1px dashed rgba(17,16,16,.2);padding:2rem;text-align:center;cursor:pointer;transition:border-color .2s;background:var(--off);position:relative;overflow:hidden}
 .img-upload-area:hover{border-color:var(--et)}
 .img-upload-label{font-size:.7rem;letter-spacing:.14em;color:var(--mid)}
 .img-upload-label span{color:var(--et)}
 
 .hero-slots{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
 .hero-slot{width:160px;flex-shrink:0}
-.hero-slot-thumb{width:100%;height:100px;object-fit:cover;display:block;border:1px solid var(--border);transition:border-color .2s}
+.hero-slot-thumb{width:100%;height:100px;object-fit:cover;display:block;border:1px solid var(--border)}
 .hero-slot-label{font-size:.58rem;letter-spacing:.1em;color:var(--mid);text-align:center;margin-top:.35rem}
 
 .gallery-cms{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.75rem;margin-bottom:1rem}
 .gcms-item{position:relative;border:1px solid var(--border)}
 .gcms-item img{width:100%;height:120px;object-fit:cover;display:block}
 .gcms-badge{position:absolute;top:.3rem;left:.3rem;background:var(--et);color:var(--off);font-size:.55rem;padding:.12rem .4rem;letter-spacing:.08em}
-.gcms-overlay{
-  position:absolute;inset:0;background:rgba(17,16,16,.72);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:.4rem;opacity:0;transition:opacity .2s;
-}
+.gcms-overlay{position:absolute;inset:0;background:rgba(17,16,16,.72);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;opacity:0;transition:opacity .2s}
 .gcms-item:hover .gcms-overlay{opacity:1}
-.gcms-overlay button,.gcms-overlay select,.gcms-overlay input,.gcms-overlay label{
-  background:none;border:1px solid rgba(244,242,238,.35);
-  color:var(--off);font-size:.6rem;padding:.25rem .6rem;cursor:pointer;
-  letter-spacing:.1em;font-family:var(--sans);transition:background .2s;
-  width:90%;text-align:center;
-}
+.gcms-overlay button,.gcms-overlay select,.gcms-overlay input,.gcms-overlay label{background:none;border:1px solid rgba(244,242,238,.35);color:var(--off);font-size:.6rem;padding:.25rem .6rem;cursor:pointer;letter-spacing:.1em;font-family:var(--sans);transition:background .2s;width:90%;text-align:center}
 .gcms-overlay button:hover,.gcms-overlay label:hover{background:rgba(244,242,238,.15)}
 .gcms-overlay select{background:rgba(17,16,16,.5);color:var(--off)}
 .gcms-overlay input{background:rgba(17,16,16,.5);color:var(--off)}
@@ -130,35 +100,17 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
 .icms-item-btns .del:hover{background:var(--danger);color:#fff;border-color:var(--danger)}
 .icms-item-btns label:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 
-.flow-cms-item{
-  display:grid;grid-template-columns:48px 1fr auto;gap:1rem;
-  align-items:flex-start;padding:1rem;
-  border:1px solid var(--border);background:var(--off);margin-bottom:.6rem;
-}
-.flow-num-badge{
-  width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--display);font-style:italic;font-size:.95rem;
-}
+.flow-cms-item{display:grid;grid-template-columns:48px 1fr auto;gap:1rem;align-items:flex-start;padding:1rem;border:1px solid var(--border);background:var(--off);margin-bottom:.6rem}
+.flow-num-badge{width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-style:italic;font-size:.95rem}
 .flow-fields{display:flex;flex-direction:column;gap:.4rem}
 .flow-fields input,.flow-fields textarea{width:100%;border:1px solid var(--border);background:#fff;padding:.4rem .6rem;font-family:var(--sans);font-size:.75rem;color:var(--ink);outline:none}
 .flow-fields input:focus,.flow-fields textarea:focus{border-color:var(--et)}
 
-.toast{
-  position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;
-  background:var(--ink);color:var(--off);
-  padding:.6rem 1.2rem;font-size:.68rem;letter-spacing:.1em;
-  transform:translateY(50px);opacity:0;transition:all .3s;
-}
+.toast{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;background:var(--ink);color:var(--off);padding:.6rem 1.2rem;font-size:.68rem;letter-spacing:.1em;transform:translateY(50px);opacity:0;transition:all .3s}
 .toast.show{transform:translateY(0);opacity:1}
 .toast.err{background:var(--danger)}
 
-.export-pre{
-  background:var(--off);border:1px solid var(--border);
-  padding:1rem;font-family:monospace;font-size:.7rem;
-  overflow:auto;max-height:280px;white-space:pre;color:#555;
-  margin-bottom:1rem;
-}
+.export-pre{background:var(--off);border:1px solid var(--border);padding:1rem;font-family:monospace;font-size:.7rem;overflow:auto;max-height:280px;white-space:pre;color:#555;margin-bottom:1rem}
 
 .global-note{font-size:.7rem;color:var(--mid);line-height:1.7;margin-bottom:1rem;font-style:italic}
 
@@ -169,7 +121,7 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
   .sb-group{display:flex;flex-wrap:wrap}
   .sb-label{width:100%}
   .main{padding:1rem}
-  .row-2,.row-3{grid-template-columns:1fr}
+  .row-2{grid-template-columns:1fr}
   .flow-cms-item{grid-template-columns:1fr}
 }
 </style>
@@ -201,11 +153,16 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
     <button class="sb-btn" onclick="show('basic')">Basic Info</button>
     <button class="sb-btn" onclick="show('hero')">Hero Images</button>
     <button class="sb-btn" onclick="show('about')">About</button>
-    <button class="sb-btn" onclick="show('flow')">Flow</button>
     <button class="sb-btn" onclick="show('gallery')">Gallery</button>
-    <button class="sb-btn" onclick="show('costume')">Costume</button>
     <button class="sb-btn" onclick="show('kimono')">Kimono</button>
+    <button class="sb-btn" onclick="show('costume')">Costume</button>
     <button class="sb-btn" onclick="show('plans')">Plans</button>
+    <button class="sb-btn" onclick="show('goods')">Goods</button>
+    <button class="sb-btn" onclick="show('calendar')">Calendar</button>
+    <button class="sb-btn" onclick="show('reservation')">Reservation</button>
+    <button class="sb-btn" onclick="show('cancel')">Cancel Policy</button>
+    <button class="sb-btn" onclick="show('qa')">Q&A</button>
+    <button class="sb-btn" onclick="show('flow')">Flow</button>
     <button class="sb-btn" onclick="show('recruit')">Recruit</button>
     <button class="sb-btn" onclick="show('cta')">CTA / Booking</button>
   </div>
@@ -247,11 +204,16 @@ function show(id){
     basic: renderBasic,
     hero: renderHero,
     about: renderAbout,
-    flow: renderFlow,
     gallery: renderGallery,
-    costume: ()=>renderItems('costume'),
-    kimono: ()=>renderItems('kimono'),
+    kimono: ()=>renderItems('kimono','Kimono'),
+    costume: ()=>renderItems('costume','Costume'),
     plans: renderPlans,
+    goods: renderGoods,
+    calendar: renderCalendar,
+    reservation: renderReservation,
+    cancel: renderCancel,
+    qa: renderQa,
+    flow: renderFlow,
     recruit: renderRecruit,
     cta: renderCta,
     export: renderExport,
@@ -271,6 +233,8 @@ function toast(msg,err){
   clearTimeout(el._t);
   el._t=setTimeout(()=>el.classList.remove('show'),2600);
 }
+
+function arrMove(arr,i,dir){ const t=arr[i]; arr[i]=arr[i+dir]; arr[i+dir]=t; }
 
 // ── GLOBAL ──
 function renderGlobal(){
@@ -301,7 +265,7 @@ function renderBasic(){
         <div class="row"><label>スタジオ名</label><input id="b-name" value="${esc(s.name)}"/></div>
         <div class="row"><label>略称</label><input id="b-short" value="${esc(s.shortName)}"/></div>
       </div>
-      <div class="row"><label>タグライン (英語)</label><input id="b-tag" value="${esc(s.tagline)}"/></div>
+      <div class="row"><label>タグライン</label><input id="b-tag" value="${esc(s.tagline)}"/></div>
       <div class="row"><label>説明文</label><textarea id="b-desc">${esc(s.description)}</textarea></div>
       <div class="row"><label>アクセントカラー</label><input id="b-color" type="color" value="${s.accentColor}" style="width:60px;height:36px;padding:2px"/></div>
       <div class="row-2">
@@ -310,9 +274,12 @@ function renderBasic(){
       </div>
       <div class="row-2">
         <div class="row"><label>営業時間</label><input id="b-hours" value="${esc(s.hours)}"/></div>
-        <div class="row"><label>Instagram URL</label><input id="b-ig" value="${esc(s.instagram)}"/></div>
+        <div class="row"><label>Google Maps URL (Access)</label><input id="b-map" value="${esc(s.mapUrl||'')}"/></div>
       </div>
-      <div class="row"><label>Instagram ハンドル (例: @studio_et._)</label><input id="b-ighandle" value="${esc(s.instagramHandle||'')}"/></div>
+      <div class="row-2">
+        <div class="row"><label>Instagram URL</label><input id="b-ig" value="${esc(s.instagram)}"/></div>
+        <div class="row"><label>Instagram ハンドル</label><input id="b-ighandle" value="${esc(s.instagramHandle||'')}"/></div>
+      </div>
       <div class="row-2">
         <div class="row"><label>予約 URL</label><input id="b-book" value="${esc(s.bookingUrl)}"/></div>
         <div class="row"><label>予約ボタンラベル</label><input id="b-blabel" value="${esc(s.bookingLabel)}"/></div>
@@ -333,6 +300,7 @@ function saveBasic(){
   s.name=val('b-name'); s.shortName=val('b-short'); s.tagline=val('b-tag');
   s.description=val('b-desc'); s.accentColor=val('b-color');
   s.address=val('b-addr'); s.tel=val('b-tel'); s.hours=val('b-hours');
+  s.mapUrl=val('b-map');
   s.instagram=val('b-ig'); s.instagramHandle=val('b-ighandle');
   s.bookingUrl=val('b-book'); s.bookingLabel=val('b-blabel');
   s.comingSoon = val('b-soon')==='true';
@@ -362,15 +330,11 @@ function renderHero(){
       <div class="panel-title">Hero Images — ${esc(d().name)}</div>
       <p class="global-note">各スライドの画像をアップロードしてください。</p>
       <div class="hero-slots">${slots}</div>
-      <div class="btn-row"><button class="btn btn-primary" onclick="toast('ヒーロー画像を保存しました ✓')">保存</button></div>
+      <div class="btn-row"><button class="btn btn-primary" onclick="toast('保存しました ✓')">保存</button></div>
     </div>
   `;
 }
-function heroSetAlt(i, v){
-  const s=d();
-  if(!s.heroImages[i]) s.heroImages[i]={file:'',alt:''};
-  s.heroImages[i].alt=v;
-}
+function heroSetAlt(i, v){ const s=d(); if(!s.heroImages[i]) s.heroImages[i]={file:'',alt:''}; s.heroImages[i].alt=v; }
 function heroUpload(input){
   const slot = parseInt(input.dataset.slot);
   const file = input.files[0]; if(!file) return;
@@ -412,38 +376,6 @@ function aboutImgUpload(input){
   r.readAsDataURL(file);
 }
 function saveAbout(){ d().about.heading=val('ab-heading'); d().about.body=val('ab-body'); toast('保存しました ✓'); }
-
-// ── FLOW ──
-function renderFlow(){
-  const f=d().flow||(d().flow={heading:'Flow',body:'',steps:[]});
-  const rows = f.steps.map((s,i)=>`
-    <div class="flow-cms-item">
-      <div class="flow-num-badge">${String(i+1).padStart(2,'0')}</div>
-      <div class="flow-fields">
-        <input placeholder="ステップ名 (例: Web予約)" value="${esc(s.title)}" oninput="D.studios['${currentStudio}'].flow.steps[${i}].title=this.value"/>
-        <textarea placeholder="説明" oninput="D.studios['${currentStudio}'].flow.steps[${i}].desc=this.value">${esc(s.desc)}</textarea>
-        <input placeholder="補足 (例: 予約後5営業日以内 — 不要なら空白)" value="${esc(s.note)}" oninput="D.studios['${currentStudio}'].flow.steps[${i}].note=this.value"/>
-      </div>
-      <div class="li-ctrl">
-        <button class="del" onclick="D.studios['${currentStudio}'].flow.steps.splice(${i},1);renderFlow()">削除</button>
-        ${i>0?`<button class="up" onclick="arrMove(D.studios['${currentStudio}'].flow.steps,${i},-1);renderFlow()">↑</button>`:''}
-        ${i<f.steps.length-1?`<button class="dn" onclick="arrMove(D.studios['${currentStudio}'].flow.steps,${i},1);renderFlow()">↓</button>`:''}
-      </div>
-    </div>
-  `).join('');
-  m().innerHTML = `
-    <div class="panel">
-      <div class="panel-title">Flow — ${esc(d().name)}</div>
-      <div class="row"><label>見出し</label><input id="fl-heading" value="${esc(f.heading)}"/></div>
-      <div class="row"><label>本文</label><textarea id="fl-body">${esc(f.body)}</textarea></div>
-      <div class="panel-sub">ステップ</div>
-      <div id="flow-list">${rows}</div>
-      <button class="btn-add" onclick="D.studios['${currentStudio}'].flow.steps.push({title:'',desc:'',note:''});renderFlow()">＋ ステップを追加</button>
-      <div class="btn-row"><button class="btn btn-primary" onclick="saveFlow()">保存</button></div>
-    </div>
-  `;
-}
-function saveFlow(){ d().flow.heading=val('fl-heading'); d().flow.body=val('fl-body'); toast('保存しました ✓'); }
 
 // ── GALLERY ──
 function renderGallery(){
@@ -494,8 +426,8 @@ function galleryAdd(input){
   });
 }
 
-// ── ITEMS (costume / kimono) ──
-function renderItems(section){
+// ── ITEMS (kimono / costume) ──
+function renderItems(section, label){
   const s=d(); const sec=s[section];
   const items = sec.items.map((item,i)=>`
     <div class="icms-item">
@@ -504,20 +436,20 @@ function renderItems(section){
       <input placeholder="説明" value="${esc(item.desc)}" oninput="D.studios['${currentStudio}']['${section}'].items[${i}].desc=this.value"/>
       <div class="icms-item-btns">
         <label>変更<input type="file" accept="image/*" data-idx="${i}" onchange="itemReplace(this,'${section}')" style="display:none"/></label>
-        <button class="del" onclick="D.studios['${currentStudio}']['${section}'].items.splice(${i},1);renderItems('${section}')">削除</button>
+        <button class="del" onclick="D.studios['${currentStudio}']['${section}'].items.splice(${i},1);renderItems('${section}','${label}')">削除</button>
       </div>
     </div>
   `).join('');
   m().innerHTML = `
     <div class="panel">
-      <div class="panel-title">${section==='costume'?'Costume':'Kimono'} — ${esc(s.name)}</div>
+      <div class="panel-title">${label} — ${esc(s.name)}</div>
       <div class="row"><label>見出し</label><input id="it-heading" value="${esc(sec.heading)}"/></div>
       <div class="row"><label>本文</label><textarea id="it-body">${esc(sec.body)}</textarea></div>
       <div class="panel-sub">Items</div>
       <div class="items-cms">${items}</div>
       <div class="img-upload-area">
         <div class="img-upload-label">＋ アイテムを追加 <span>（複数選択可）</span></div>
-        <input type="file" accept="image/*" multiple onchange="itemAdd(this,'${section}')" style="position:absolute;inset:0;opacity:0;cursor:pointer"/>
+        <input type="file" accept="image/*" multiple onchange="itemAdd(this,'${section}','${label}')" style="position:absolute;inset:0;opacity:0;cursor:pointer"/>
       </div>
       <div class="btn-row"><button class="btn btn-primary" onclick="saveItems('${section}')">保存</button></div>
     </div>
@@ -526,17 +458,17 @@ function renderItems(section){
 function itemReplace(input,sec){
   const i=parseInt(input.dataset.idx); const file=input.files[0]; if(!file)return;
   const r=new FileReader();
-  r.onload=e=>{ d()[sec].items[i].file=e.target.result; renderItems(sec); toast('画像を更新 ✓'); };
+  r.onload=e=>{ d()[sec].items[i].file=e.target.result; renderItems(sec, sec.charAt(0).toUpperCase()+sec.slice(1)); toast('画像を更新 ✓'); };
   r.readAsDataURL(file);
 }
-function itemAdd(input,sec){
+function itemAdd(input,sec,label){
   const files=Array.from(input.files); let done=0;
   files.forEach(file=>{
     const r=new FileReader();
     r.onload=e=>{
       d()[sec].items.push({file:e.target.result,name:file.name.replace(/\.[^.]+$/,''),desc:''});
       done++;
-      if(done===files.length){ renderItems(sec); toast(`${files.length}件追加 ✓`); }
+      if(done===files.length){ renderItems(sec,label); toast(`${files.length}件追加 ✓`); }
     };
     r.readAsDataURL(file);
   });
@@ -550,7 +482,7 @@ function renderPlans(){
     <div class="list-item">
       <div class="li-body">
         <input placeholder="プラン名" value="${esc(p.name)}" oninput="D.studios['${currentStudio}'].plans[${i}].name=this.value"/>
-        <input placeholder="価格 (例: ¥33,000〜)" value="${esc(p.price)}" oninput="D.studios['${currentStudio}'].plans[${i}].price=this.value"/>
+        <input placeholder="価格" value="${esc(p.price)}" oninput="D.studios['${currentStudio}'].plans[${i}].price=this.value"/>
         <textarea placeholder="説明文" oninput="D.studios['${currentStudio}'].plans[${i}].desc=this.value">${esc(p.desc)}</textarea>
         <input placeholder="タグ (例: 人気No.1) — 不要なら空白" value="${esc(p.tag)}" oninput="D.studios['${currentStudio}'].plans[${i}].tag=this.value"/>
       </div>
@@ -570,6 +502,198 @@ function renderPlans(){
     </div>
   `;
 }
+
+// ── GOODS ──
+function renderGoods(){
+  const s=d(); const sec=s.goods||(s.goods={heading:'Goods',body:'',items:[]});
+  const items = sec.items.map((item,i)=>`
+    <div class="icms-item">
+      <img src="${esc(item.file)}" alt="${esc(item.name)}" onerror="this.style.opacity=0.3"/>
+      <input placeholder="商品名" value="${esc(item.name)}" oninput="D.studios['${currentStudio}'].goods.items[${i}].name=this.value"/>
+      <input placeholder="価格 (例: ¥22,000〜)" value="${esc(item.price)}" oninput="D.studios['${currentStudio}'].goods.items[${i}].price=this.value"/>
+      <input placeholder="説明" value="${esc(item.desc)}" oninput="D.studios['${currentStudio}'].goods.items[${i}].desc=this.value"/>
+      <div class="icms-item-btns">
+        <label>変更<input type="file" accept="image/*" data-idx="${i}" onchange="goodsReplace(this)" style="display:none"/></label>
+        <button class="del" onclick="D.studios['${currentStudio}'].goods.items.splice(${i},1);renderGoods()">削除</button>
+      </div>
+    </div>
+  `).join('');
+  m().innerHTML = `
+    <div class="panel">
+      <div class="panel-title">Goods — ${esc(s.name)}</div>
+      <div class="row"><label>見出し</label><input id="g-heading" value="${esc(sec.heading)}"/></div>
+      <div class="row"><label>本文</label><textarea id="g-body">${esc(sec.body)}</textarea></div>
+      <div class="panel-sub">Items</div>
+      <div class="items-cms">${items}</div>
+      <div class="img-upload-area">
+        <div class="img-upload-label">＋ アイテムを追加 <span>（複数選択可）</span></div>
+        <input type="file" accept="image/*" multiple onchange="goodsAdd(this)" style="position:absolute;inset:0;opacity:0;cursor:pointer"/>
+      </div>
+      <div class="btn-row"><button class="btn btn-primary" onclick="saveGoods()">保存</button></div>
+    </div>
+  `;
+}
+function goodsReplace(input){
+  const i=parseInt(input.dataset.idx); const file=input.files[0]; if(!file)return;
+  const r=new FileReader();
+  r.onload=e=>{ d().goods.items[i].file=e.target.result; renderGoods(); toast('画像を更新 ✓'); };
+  r.readAsDataURL(file);
+}
+function goodsAdd(input){
+  const files=Array.from(input.files); let done=0;
+  files.forEach(file=>{
+    const r=new FileReader();
+    r.onload=e=>{
+      d().goods.items.push({file:e.target.result,name:file.name.replace(/\.[^.]+$/,''),price:'',desc:''});
+      done++;
+      if(done===files.length){ renderGoods(); toast(`${files.length}件追加 ✓`); }
+    };
+    r.readAsDataURL(file);
+  });
+}
+function saveGoods(){ d().goods.heading=val('g-heading'); d().goods.body=val('g-body'); toast('保存しました ✓'); }
+
+// ── CALENDAR ──
+function renderCalendar(){
+  const s=d(); const c=s.calendar||(s.calendar={heading:'Calendar',body:'',embedUrl:'',note:''});
+  m().innerHTML = `
+    <div class="panel">
+      <div class="panel-title">Calendar — ${esc(s.name)}</div>
+      <div class="row"><label>見出し</label><input id="c-heading" value="${esc(c.heading)}"/></div>
+      <div class="row"><label>本文</label><textarea id="c-body">${esc(c.body)}</textarea></div>
+      <div class="row"><label>埋め込みURL (Google Calendar 等)</label><input id="c-embed" value="${esc(c.embedUrl)}" placeholder="https://calendar.google.com/calendar/embed?src=..."/></div>
+      <div class="row"><label>補足</label><input id="c-note" value="${esc(c.note)}"/></div>
+      <div class="btn-row"><button class="btn btn-primary" onclick="saveCalendar()">保存</button></div>
+    </div>
+  `;
+}
+function saveCalendar(){
+  const c=d().calendar;
+  c.heading=val('c-heading'); c.body=val('c-body'); c.embedUrl=val('c-embed'); c.note=val('c-note');
+  toast('保存しました ✓');
+}
+
+// ── RESERVATION ──
+function renderReservation(){
+  const s=d(); const r=s.reservation||(s.reservation={heading:'Reservation',body:'',formUrl:'',note:''});
+  m().innerHTML = `
+    <div class="panel">
+      <div class="panel-title">Reservation — ${esc(s.name)}</div>
+      <div class="row"><label>見出し</label><input id="r-heading" value="${esc(r.heading)}"/></div>
+      <div class="row"><label>本文</label><textarea id="r-body">${esc(r.body)}</textarea></div>
+      <div class="row"><label>予約フォームURL</label><input id="r-form" value="${esc(r.formUrl)}" placeholder="STORES予約 / Googleフォーム等"/></div>
+      <div class="row"><label>補足</label><input id="r-note" value="${esc(r.note)}"/></div>
+      <div class="btn-row"><button class="btn btn-primary" onclick="saveReservation()">保存</button></div>
+    </div>
+  `;
+}
+function saveReservation(){
+  const r=d().reservation;
+  r.heading=val('r-heading'); r.body=val('r-body'); r.formUrl=val('r-form'); r.note=val('r-note');
+  toast('保存しました ✓');
+}
+
+// ── CANCEL POLICY ──
+function renderCancel(){
+  const s=d(); const c=s.cancelPolicy||(s.cancelPolicy={heading:'Cancellation Policy',body:'',items:[],note:''});
+  const rows = c.items.map((it,i)=>`
+    <div class="list-item">
+      <div class="li-body">
+        <input placeholder="キャンセル時期" value="${esc(it.when)}" oninput="D.studios['${currentStudio}'].cancelPolicy.items[${i}].when=this.value"/>
+        <input placeholder="料金" value="${esc(it.fee)}" oninput="D.studios['${currentStudio}'].cancelPolicy.items[${i}].fee=this.value"/>
+      </div>
+      <div class="li-ctrl">
+        <button class="del" onclick="D.studios['${currentStudio}'].cancelPolicy.items.splice(${i},1);renderCancel()">削除</button>
+        ${i>0?`<button class="up" onclick="arrMove(D.studios['${currentStudio}'].cancelPolicy.items,${i},-1);renderCancel()">↑</button>`:''}
+        ${i<c.items.length-1?`<button class="dn" onclick="arrMove(D.studios['${currentStudio}'].cancelPolicy.items,${i},1);renderCancel()">↓</button>`:''}
+      </div>
+    </div>
+  `).join('');
+  m().innerHTML = `
+    <div class="panel">
+      <div class="panel-title">Cancellation Policy — ${esc(s.name)}</div>
+      <div class="row"><label>見出し</label><input id="cp-heading" value="${esc(c.heading)}"/></div>
+      <div class="row"><label>本文</label><textarea id="cp-body">${esc(c.body)}</textarea></div>
+      <div class="panel-sub">キャンセル料 一覧</div>
+      <div>${rows}</div>
+      <button class="btn-add" onclick="D.studios['${currentStudio}'].cancelPolicy.items.push({when:'',fee:''});renderCancel()">＋ 項目を追加</button>
+      <div class="row" style="margin-top:1.2rem"><label>補足</label><input id="cp-note" value="${esc(c.note)}"/></div>
+      <div class="btn-row"><button class="btn btn-primary" onclick="saveCancel()">保存</button></div>
+    </div>
+  `;
+}
+function saveCancel(){
+  const c=d().cancelPolicy;
+  c.heading=val('cp-heading'); c.body=val('cp-body'); c.note=val('cp-note');
+  toast('保存しました ✓');
+}
+
+// ── Q&A ──
+function renderQa(){
+  const s=d(); const q=s.qa||(s.qa={heading:'Q & A',body:'',items:[]});
+  const rows = q.items.map((it,i)=>`
+    <div class="list-item">
+      <div class="li-body">
+        <input placeholder="質問" value="${esc(it.q)}" oninput="D.studios['${currentStudio}'].qa.items[${i}].q=this.value"/>
+        <textarea placeholder="回答" oninput="D.studios['${currentStudio}'].qa.items[${i}].a=this.value">${esc(it.a)}</textarea>
+      </div>
+      <div class="li-ctrl">
+        <button class="del" onclick="D.studios['${currentStudio}'].qa.items.splice(${i},1);renderQa()">削除</button>
+        ${i>0?`<button class="up" onclick="arrMove(D.studios['${currentStudio}'].qa.items,${i},-1);renderQa()">↑</button>`:''}
+        ${i<q.items.length-1?`<button class="dn" onclick="arrMove(D.studios['${currentStudio}'].qa.items,${i},1);renderQa()">↓</button>`:''}
+      </div>
+    </div>
+  `).join('');
+  m().innerHTML = `
+    <div class="panel">
+      <div class="panel-title">Q & A — ${esc(s.name)}</div>
+      <div class="row"><label>見出し</label><input id="qa-heading" value="${esc(q.heading)}"/></div>
+      <div class="row"><label>本文</label><textarea id="qa-body">${esc(q.body)}</textarea></div>
+      <div class="panel-sub">Q&A 項目</div>
+      <p class="global-note">※ Q&Aボットには上から5件が候補として表示されます。</p>
+      <div>${rows}</div>
+      <button class="btn-add" onclick="D.studios['${currentStudio}'].qa.items.push({q:'',a:''});renderQa()">＋ Q&Aを追加</button>
+      <div class="btn-row"><button class="btn btn-primary" onclick="saveQa()">保存</button></div>
+    </div>
+  `;
+}
+function saveQa(){
+  const q=d().qa;
+  q.heading=val('qa-heading'); q.body=val('qa-body');
+  toast('保存しました ✓');
+}
+
+// ── FLOW ──
+function renderFlow(){
+  const f=d().flow||(d().flow={heading:'Flow',body:'',steps:[]});
+  const rows = f.steps.map((s,i)=>`
+    <div class="flow-cms-item">
+      <div class="flow-num-badge">${String(i+1).padStart(2,'0')}</div>
+      <div class="flow-fields">
+        <input placeholder="ステップ名" value="${esc(s.title)}" oninput="D.studios['${currentStudio}'].flow.steps[${i}].title=this.value"/>
+        <textarea placeholder="説明" oninput="D.studios['${currentStudio}'].flow.steps[${i}].desc=this.value">${esc(s.desc)}</textarea>
+        <input placeholder="補足 — 不要なら空白" value="${esc(s.note)}" oninput="D.studios['${currentStudio}'].flow.steps[${i}].note=this.value"/>
+      </div>
+      <div class="li-ctrl">
+        <button class="del" onclick="D.studios['${currentStudio}'].flow.steps.splice(${i},1);renderFlow()">削除</button>
+        ${i>0?`<button class="up" onclick="arrMove(D.studios['${currentStudio}'].flow.steps,${i},-1);renderFlow()">↑</button>`:''}
+        ${i<f.steps.length-1?`<button class="dn" onclick="arrMove(D.studios['${currentStudio}'].flow.steps,${i},1);renderFlow()">↓</button>`:''}
+      </div>
+    </div>
+  `).join('');
+  m().innerHTML = `
+    <div class="panel">
+      <div class="panel-title">Flow — ${esc(d().name)}</div>
+      <div class="row"><label>見出し</label><input id="fl-heading" value="${esc(f.heading)}"/></div>
+      <div class="row"><label>本文</label><textarea id="fl-body">${esc(f.body)}</textarea></div>
+      <div class="panel-sub">ステップ</div>
+      <div>${rows}</div>
+      <button class="btn-add" onclick="D.studios['${currentStudio}'].flow.steps.push({title:'',desc:'',note:''});renderFlow()">＋ ステップを追加</button>
+      <div class="btn-row"><button class="btn btn-primary" onclick="saveFlow()">保存</button></div>
+    </div>
+  `;
+}
+function saveFlow(){ d().flow.heading=val('fl-heading'); d().flow.body=val('fl-body'); toast('保存しました ✓'); }
 
 // ── RECRUIT ──
 function renderRecruit(){
@@ -639,8 +763,6 @@ function downloadExport(){
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='site-data.js'; a.click();
   toast('ダウンロード ✓');
 }
-
-function arrMove(arr,i,dir){ const t=arr[i]; arr[i]=arr[i+dir]; arr[i+dir]=t; }
 
 show('global');
 </script>
