@@ -138,24 +138,25 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .mob-logo svg{height:32px;width:auto}
 .mob-spacer{width:32px}
 
-/* Slim brand switcher (TOP / et. / nr.) */
+/* Brand switcher — italic display style (Maison Kitsuné inspired) */
 .mob-brand-row{
-  display:grid;grid-template-columns:1fr 1fr 1fr;
+  display:grid;grid-template-columns:1fr 1fr;
   border-bottom:1px solid #1a1a1a;
   background:#fff;
 }
 .mob-brand-tab{
   display:flex;align-items:center;justify-content:center;
-  padding:.85rem .5rem;text-decoration:none;color:var(--ink);
-  font-family:var(--sans);font-weight:500;font-size:.7rem;
-  letter-spacing:.14em;text-transform:uppercase;
-  position:relative;transition:background .2s,color .2s;
+  padding:1.1rem .5rem;text-decoration:none;color:var(--ink);
+  font-family:var(--display);font-style:italic;font-weight:300;
+  font-size:1.45rem;letter-spacing:-.005em;
+  position:relative;transition:background .25s,color .25s,opacity .25s;
   cursor:pointer;background:none;border:none;
-  border-left:1px solid #1a1a1a;
+  border-left:1px solid #1a1a1a;line-height:1;
 }
 .mob-brand-tab:first-child{border-left:none}
-.mob-brand-tab:not(.active){opacity:.45}
-.mob-brand-tab.active{background:var(--ink);color:#fff;opacity:1;font-weight:600}
+.mob-brand-tab:not(.active){opacity:.4}
+.mob-brand-tab:not(.active):hover{opacity:.7}
+.mob-brand-tab.active{background:var(--ink);color:#fff;opacity:1}
 
 .mob-list{display:flex;flex-direction:column;flex:1}
 .mob-item{border-bottom:1px solid #f0eee9}
@@ -555,12 +556,12 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,5vw,4rem);di
   </div>
 
   <div class="mob-brand-row">
-    <button class="mob-brand-tab" id="mob-tab-top" onclick="mobScrollTop(event)">TOP</button>
-    <a href="../et/" class="mob-brand-tab" id="mob-tab-et">et.</a>
-    <a href="../nr/" class="mob-brand-tab" id="mob-tab-nr">nr.</a>
+    <a href="../et/" class="mob-brand-tab" id="mob-tab-et">Studio et.</a>
+    <a href="../nr/" class="mob-brand-tab" id="mob-tab-nr">Maison nr.</a>
   </div>
 
   <div class="mob-list">
+    <div class="mob-item"><div class="mob-item-top"><a href="#hero" class="mob-item-label" onclick="closeMob();scrollTopSmooth(event)">TOP</a></div></div>
     <div class="mob-item"><div class="mob-item-top"><a href="#about" class="mob-item-label" onclick="closeMob()">About</a></div></div>
     <div class="mob-item">
       <div class="mob-item-top" onclick="toggleMobItem(event,this)">
@@ -1068,16 +1069,8 @@ function toggleMobItem(e,el){
   document.querySelectorAll('.mob-item.open').forEach(i=>i.classList.remove('open'));
   if(!wasOpen) item.classList.add('open');
 }
-function mobScrollTop(e){
-  e.preventDefault();
-  // Don't close menu - just scroll the underlying page to top
-  window.scrollTo({top:0, behavior:'smooth'});
-  // Visual feedback
-  const btn = document.getElementById('mob-tab-top');
-  btn.style.background = 'var(--accent)';
-  btn.style.color = '#fff';
-  setTimeout(()=>{ btn.style.background=''; btn.style.color=''; }, 400);
-}
+function mobScrollTop(e){ e?.preventDefault?.(); window.scrollTo({top:0, behavior:'smooth'}); }
+function scrollTopSmooth(e){ e?.preventDefault?.(); window.scrollTo({top:0, behavior:'smooth'}); }
 
 // Q&A accordion
 function toggleQa(i){
