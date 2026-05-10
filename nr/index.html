@@ -25,7 +25,7 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:14px;line-height:1.8;overflow-x:hidden}
 
 /* ═══ NAV ═══ */
-.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:#fff;border-bottom:1px solid #1a1a1a}
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.9);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid #1a1a1a}
 
 .nav-top{
   display:grid;grid-template-columns:1fr auto 1fr;
@@ -295,7 +295,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .hero-eyebrow{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:.8rem}
 .hero-name{font-family:var(--display);font-weight:300;font-style:italic;font-size:clamp(3.5rem,10vw,9rem);letter-spacing:-.01em;line-height:1;color:#fff}
 .hero-tagline{font-family:var(--display);font-weight:300;font-style:italic;font-size:clamp(.75rem,1.6vw,.95rem);letter-spacing:.12em;color:rgba(255,255,255,.65);margin-top:.9rem}
-.hero-dots{position:absolute;bottom:2rem;right:clamp(1.5rem,4vw,3.5rem);display:flex;gap:.55rem;z-index:2}
+.hero-dots{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;gap:.55rem;z-index:2}
 .hero-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:background .3s}
 .hero-dot.active{background:#fff}
 
@@ -317,6 +317,9 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .about-img-wrap img{width:100%;height:clamp(300px,50vw,560px);object-fit:cover;display:block}
 .about-img-wrap::before{content:'';position:absolute;top:-10px;left:-10px;right:10px;bottom:10px;border:1px solid var(--border);z-index:-1}
 .btn-line{display:inline-block;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:.85rem 2rem;text-decoration:none;transition:all .3s}
+.more-cta{display:flex;justify-content:center;margin-top:2.5rem}
+.pos-list-lite{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;max-width:760px;margin:0 auto}
+.pos-list-lite .pos-chip{font-family:var(--sans);font-weight:400;font-size:.74rem;letter-spacing:.08em;color:var(--ink);background:#fff;border:1px solid var(--border);padding:.7rem 1.3rem}
 .btn-line:hover{background:var(--ink);color:#fff}
 
 /* GALLERY */
@@ -418,11 +421,11 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 
 /* FLOW */
 .flow-wrap{max-width:780px;margin:0 auto;position:relative}
-.flow-step{position:relative;display:grid;grid-template-columns:80px 1fr;gap:2rem;padding:1.8rem 0;align-items:start}
+.flow-step{position:relative;display:grid;grid-template-columns:80px 1fr;gap:2rem;padding:2.6rem 0;align-items:start}
 .flow-step + .flow-step{border-top:1px solid var(--border)}
 .flow-num{display:flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:var(--ink);color:#fff;font-family:var(--display);font-style:italic;font-weight:300;font-size:1.7rem;letter-spacing:-.02em;flex-shrink:0;position:relative;z-index:2}
-.flow-step:not(:last-child)::before{content:'';position:absolute;left:32px;top:88px;bottom:-24px;width:1px;background:var(--border);z-index:1}
-.flow-step:not(:last-child)::after{content:'';position:absolute;left:27px;bottom:-30px;width:11px;height:11px;border-right:1.5px solid var(--accent);border-bottom:1.5px solid var(--accent);transform:rotate(45deg);z-index:1}
+.flow-step:not(:last-child)::before{content:'';position:absolute;left:32px;top:108px;bottom:24px;width:1px;background:var(--border);z-index:1}
+.flow-step:not(:last-child)::after{content:'';position:absolute;left:27px;bottom:18px;width:11px;height:11px;border-right:1.5px solid var(--accent);border-bottom:1.5px solid var(--accent);transform:rotate(45deg);z-index:1}
 .flow-body{padding-top:.4rem}
 .flow-title{font-family:var(--sans);font-weight:500;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:.5rem}
 .flow-desc{font-family:var(--serif);font-weight:300;font-size:.85rem;color:var(--mid);line-height:2}
@@ -486,10 +489,10 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,5vw,4rem);di
   .plans-grid{grid-template-columns:1fr}
   footer{flex-direction:column;text-align:center}
   .footer-links{justify-content:center}
-  .flow-step{grid-template-columns:50px 1fr;gap:1.2rem}
+  .flow-step{grid-template-columns:50px 1fr;gap:1.2rem;padding:2.2rem 0}
   .flow-num{width:46px;height:46px;font-size:1.2rem}
-  .flow-step:not(:last-child)::before{left:23px;top:64px}
-  .flow-step:not(:last-child)::after{left:18px}
+  .flow-step:not(:last-child)::before{left:23px;top:82px;bottom:18px}
+  .flow-step:not(:last-child)::after{left:18px;bottom:12px}
   .qa-bot{right:.75rem;left:.75rem;width:auto;max-width:none}
 }
 
@@ -540,12 +543,12 @@ body.is-ready .hero-tagline{opacity:1;transform:translateY(0)}
 .g-item.in{opacity:1;transform:translateY(0)}
 
 /* Plan / item / pos / flow card subtle stagger */
-.plan-card,.item-card,.pos-card,.flow-step{
+.plan-card,.item-card,.pos-card,.pos-chip,.flow-step{
   opacity:0;transform:translateY(20px);
   transition:opacity .65s var(--motion-ease),transform .65s var(--motion-ease);
   transition-delay:calc(var(--d,0) * 70ms);
 }
-.plan-card.in,.item-card.in,.pos-card.in,.flow-step.in{opacity:1;transform:translateY(0)}
+.plan-card.in,.item-card.in,.pos-card.in,.pos-chip.in,.flow-step.in{opacity:1;transform:translateY(0)}
 
 /* QA bot toggle entrance */
 .qa-bot-toggle{
@@ -558,7 +561,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 /* Reduced motion — kill all of it */
 @media (prefers-reduced-motion: reduce){
   body,.nav,.hero-eyebrow,.hero-name,.hero-tagline,.reveal,
-  .g-item,.plan-card,.item-card,.pos-card,.flow-step,.qa-bot-toggle{
+  .g-item,.plan-card,.item-card,.pos-card,.pos-chip,.flow-step,.qa-bot-toggle{
     opacity:1!important;transform:none!important;transition:none!important;
   }
   body.is-leaving{opacity:1!important}
@@ -748,7 +751,9 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 <section id="plans" style="background:var(--bg)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Plans & Pricing</h2><div class="sec-rule"></div></div>
+  <p class="section-body-text" id="plans-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
   <div class="plans-grid" id="plans-grid"></div>
+  <div class="more-cta"><a href="plans/" class="btn-line" id="plans-more-btn">すべてのプランを見る →</a></div>
 </div>
 </section>
 
@@ -766,7 +771,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title" id="calendar-heading">Calendar</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="calendar-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
-  <div class="cal-block" id="calendar-block"></div>
+  <div class="more-cta"><a href="calendar/" class="btn-line" id="calendar-more-btn">空き状況を見る →</a></div>
 </div>
 </section>
 
@@ -775,7 +780,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">08</span><h2 class="sec-title" id="reservation-heading">Reservation</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="reservation-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
-  <div class="res-block" id="reservation-block"></div>
+  <div class="more-cta"><a href="reservation/" class="btn-line" id="reservation-more-btn">予約フォームへ →</a></div>
 </div>
 </section>
 
@@ -783,8 +788,8 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 <section id="cancel-policy" style="background:var(--bg)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">09</span><h2 class="sec-title" id="cancel-heading">Cancellation Policy</h2><div class="sec-rule"></div></div>
-  <p class="section-body-text" id="cancel-body" style="max-width:780px;margin:0 auto 2.5rem"></p>
-  <div style="max-width:780px;margin:0 auto" id="cancel-block"></div>
+  <p class="section-body-text" id="cancel-body" style="text-align:center;max-width:780px;margin:0 auto 2.5rem"></p>
+  <div class="more-cta"><a href="cancel-policy/" class="btn-line" id="cancel-more-btn">キャンセル料金表を見る →</a></div>
 </div>
 </section>
 
@@ -810,13 +815,9 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 <section id="recruit" style="background:#f0eee9">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">12</span><h2 class="sec-title" id="recruit-heading">Recruit</h2><div class="sec-rule"></div></div>
-  <div class="recruit-body">
-    <div>
-      <p class="recruit-copy" id="recruit-body"></p>
-      <a href="#" class="btn-line" id="recruit-contact">お問い合わせ →</a>
-    </div>
-    <div class="pos-list" id="pos-list"></div>
-  </div>
+  <p class="recruit-copy" id="recruit-body" style="text-align:center;max-width:640px;margin:0 auto 2rem"></p>
+  <div class="pos-list-lite" id="pos-list"></div>
+  <div class="more-cta" style="margin-top:2.5rem"><a href="recruit/" class="btn-line" id="recruit-more-btn">採用情報を詳しく見る →</a></div>
 </div>
 </section>
 
@@ -965,15 +966,21 @@ async function init(){
     </div>
   `).join('') || '<p style="color:var(--mid);font-size:.85rem;font-family:var(--display);font-style:italic">近日公開予定。</p>';
 
-  // Plans
-  document.getElementById('plans-grid').innerHTML = d.plans.map(p=>`
-    <div class="plan-card">
-      ${p.tag ? `<div class="plan-tag">${p.tag}</div>` : ''}
-      <div class="plan-name">${p.name}</div>
-      <div class="plan-price">${p.price}</div>
-      <div class="plan-desc">${p.desc}</div>
-    </div>
-  `).join('');
+  // Plans (digest: top 3 — prefer entries with tag, fallback to first 3)
+  (function(){
+    const plans = d.plans || [];
+    const tagged = plans.filter(p=>p.tag && p.tag.trim());
+    const others = plans.filter(p=>!p.tag || !p.tag.trim());
+    const digest = (tagged.concat(others)).slice(0, 3);
+    document.getElementById('plans-grid').innerHTML = digest.map(p=>`
+      <div class="plan-card">
+        ${p.tag ? `<div class="plan-tag">${p.tag}</div>` : ''}
+        <div class="plan-name">${p.name}</div>
+        <div class="plan-price">${p.price}</div>
+        <div class="plan-desc">${p.desc}</div>
+      </div>
+    `).join('') || '<p style="text-align:center;color:var(--mid);font-family:var(--display);font-style:italic;grid-column:1/-1">近日公開予定。</p>';
+  })();
 
   // Goods
   if(d.goods){
@@ -987,48 +994,22 @@ async function init(){
     `).join('') || '<p style="color:var(--mid);font-size:.85rem;font-family:var(--display);font-style:italic">近日公開予定。</p>';
   }
 
-  // Calendar
+  // Calendar (LP: summary only)
   if(d.calendar){
     document.getElementById('calendar-heading').textContent = d.calendar.heading;
     document.getElementById('calendar-body').textContent = d.calendar.body;
-    const calBlock = document.getElementById('calendar-block');
-    if(d.calendar.embedUrl){
-      calBlock.innerHTML = `<iframe class="cal-embed" src="${d.calendar.embedUrl}" frameborder="0"></iframe>${d.calendar.note?`<div class="cal-note">${d.calendar.note}</div>`:''}`;
-    } else {
-      calBlock.innerHTML = `<div class="cal-placeholder">カレンダー準備中</div>${d.calendar.note?`<div class="cal-note">${d.calendar.note}</div>`:''}`;
-    }
   }
 
-  // Reservation
+  // Reservation (LP: summary only)
   if(d.reservation){
     document.getElementById('reservation-heading').textContent = d.reservation.heading;
     document.getElementById('reservation-body').textContent = d.reservation.body;
-    const resBlock = document.getElementById('reservation-block');
-    if(d.reservation.formUrl){
-      resBlock.innerHTML = `<iframe class="cal-embed" src="${d.reservation.formUrl}" frameborder="0"></iframe>${d.reservation.note?`<div class="cal-note">${d.reservation.note}</div>`:''}<div class="res-cta"><a href="${d.bookingUrl}" class="btn-fill">予約フォームへ →</a></div>`;
-    } else {
-      resBlock.innerHTML = `<div class="cal-placeholder">予約受付準備中</div>${d.reservation.note?`<div class="cal-note">${d.reservation.note}</div>`:''}<div class="res-cta"><a href="${d.bookingUrl}" class="btn-fill">予約フォームへ →</a></div>`;
-    }
   }
 
-  // Cancel Policy
+  // Cancel Policy (LP: summary only)
   if(d.cancelPolicy){
     document.getElementById('cancel-heading').textContent = d.cancelPolicy.heading;
     document.getElementById('cancel-body').textContent = d.cancelPolicy.body;
-    const cb = document.getElementById('cancel-block');
-    if(d.cancelPolicy.items.length){
-      cb.innerHTML = `
-        <table class="cancel-table">
-          <thead><tr><th>キャンセル時期</th><th style="text-align:right">キャンセル料</th></tr></thead>
-          <tbody>
-            ${d.cancelPolicy.items.map(it=>`<tr><td>${it.when}</td><td>${it.fee}</td></tr>`).join('')}
-          </tbody>
-        </table>
-        ${d.cancelPolicy.note?`<p style="font-family:var(--serif);font-size:.8rem;color:var(--mid);font-style:italic;text-align:center;margin-top:1.5rem">${d.cancelPolicy.note}</p>`:''}
-      `;
-    } else {
-      cb.innerHTML = '<p style="text-align:center;color:var(--mid);font-family:var(--display);font-style:italic;font-size:1rem">近日公開予定。</p>';
-    }
   }
 
   // Q&A
@@ -1062,13 +1043,12 @@ async function init(){
     </div>
   `).join('');
 
-  // Recruit
+  // Recruit (LP: position names as chips only)
   document.getElementById('recruit-heading').textContent = d.recruit.heading;
   document.getElementById('recruit-body').textContent = d.recruit.body;
-  document.getElementById('recruit-contact').href = 'mailto:' + d.recruit.contactEmail;
   document.getElementById('pos-list').innerHTML = d.recruit.positions.map(p=>`
-    <div class="pos-card"><div class="pos-title">${p.title}</div><div class="pos-type">${p.type}</div><div class="pos-desc">${p.desc}</div></div>
-  `).join('') || '<p style="color:var(--mid);font-size:.85rem;font-family:var(--display);font-style:italic;padding:1.5rem">近日公開予定。</p>';
+    <div class="pos-chip">${p.title}</div>
+  `).join('') || '<p style="color:var(--mid);font-size:.85rem;font-family:var(--display);font-style:italic;text-align:center">近日公開予定。</p>';
 
   // CTA
   document.getElementById('cta-heading').textContent = d.ctaHeading;
@@ -1291,10 +1271,11 @@ function enhanceMotion(){
   document.querySelectorAll('.plans-grid .plan-card').forEach((el,i)=>el.style.setProperty('--d', i));
   document.querySelectorAll('.items-grid .item-card').forEach((el,i)=>el.style.setProperty('--d', i));
   document.querySelectorAll('#pos-list .pos-card').forEach((el,i)=>el.style.setProperty('--d', i));
+  document.querySelectorAll('#pos-list .pos-chip').forEach((el,i)=>el.style.setProperty('--d', i));
   document.querySelectorAll('#flow-list .flow-step').forEach((el,i)=>el.style.setProperty('--d', i));
 
   if(!('IntersectionObserver' in window)){
-    document.querySelectorAll('.reveal,.g-item,.plan-card,.item-card,.pos-card,.flow-step').forEach(el=>el.classList.add('in'));
+    document.querySelectorAll('.reveal,.g-item,.plan-card,.item-card,.pos-card,.pos-chip,.flow-step').forEach(el=>el.classList.add('in'));
     return;
   }
   const io = new IntersectionObserver((entries)=>{
@@ -1303,7 +1284,7 @@ function enhanceMotion(){
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 
-  document.querySelectorAll('.reveal,.g-item,.plan-card,.item-card,.pos-card,.flow-step').forEach(el=>io.observe(el));
+  document.querySelectorAll('.reveal,.g-item,.plan-card,.item-card,.pos-card,.pos-chip,.flow-step').forEach(el=>io.observe(el));
 }
 
 // Page-leave fade for tab/external nav (skip in-page #anchors)

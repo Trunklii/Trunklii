@@ -139,7 +139,7 @@ window.SITE_DATA = {
         ],
         contactEmail: "recruit@trunklii.com"
       },
-      ctaHeading: "いまのあなたに\nいつでも会える",
+      ctaHeading: "大切な記念日を、\n一緒に残しましょう。",
       ctaNote: "ご予約・お問い合わせはお気軽に"
     },
     nr: {

@@ -568,6 +568,22 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 }
 </style>
 </head>
+
+<style>
+.detail-hero{
+  margin-top:128px;padding:clamp(3.5rem,8vw,6.5rem) 0 clamp(2.5rem,5vw,4rem);
+  background:linear-gradient(180deg,#f0eee9 0%,var(--bg) 100%);
+  text-align:center;
+}
+.detail-eyebrow{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--mid);margin-bottom:1.2rem}
+.detail-title{font-family:var(--display);font-style:italic;font-weight:300;font-size:clamp(2.2rem,5vw,3.4rem);color:var(--ink);letter-spacing:-.01em;margin-bottom:1.5rem;line-height:1.15}
+.detail-sub{font-family:var(--serif);font-weight:300;font-size:.95rem;color:var(--mid);line-height:2.1;white-space:pre-line;max-width:640px;margin:0 auto}
+.detail-body{padding:clamp(3rem,6vw,5.5rem) 0 clamp(4rem,8vw,7rem)}
+@media(max-width:768px){
+  .detail-hero{margin-top:60px;padding-top:3rem;padding-bottom:2rem}
+}
+</style>
+
 <body>
 
 <header class="nav" id="main-nav">
@@ -687,147 +703,26 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
   <div class="search-results" id="search-results"></div>
 </div>
 
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div id="hero-slides"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow" id="hero-eyebrow">Trunklii</div>
-    <div class="hero-name" id="hero-name">et.</div>
-    <div class="hero-tagline" id="hero-tagline"></div>
-  </div>
-  <div class="hero-dots" id="hero-dots"></div>
-</section>
+<!-- DETAIL MAIN -->
+<main>
 
-<!-- ABOUT 01 -->
-<section id="about" style="background:var(--bg)">
-<div class="wrap">
-  <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title" id="about-heading">About</h2><div class="sec-rule"></div></div>
-  <div class="about-grid">
-    <div class="about-text">
-      <p id="about-body"></p>
-      <a href="#booking" class="btn-line" id="about-btn">予約する →</a>
+<section class="detail-hero">
+  <div class="wrap">
+    <div class="detail-eyebrow">Trunklii / <span id="dh-studio"></span></div>
+    <h1 class="detail-title">Recruit</h1>
+    <p class="detail-sub" id="d-intro"></p>
+  </div>
+</section>
+<section class="detail-body" style="background:var(--bg)">
+  <div class="wrap">
+    <div class="pos-list" id="pos-list"></div>
+    <div class="more-cta" style="margin-top:3.5rem">
+      <a id="recruit-contact" class="btn-line" href="#">お問い合わせ →</a>
     </div>
-    <div class="about-img-wrap"><img id="about-img" src="" alt="Studio"/></div>
   </div>
-</div>
 </section>
 
-<!-- GALLERY 02 -->
-<section id="gallery" style="background:#f0eee9">
-<div class="wrap">
-  <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Gallery</h2><div class="sec-rule"></div></div>
-  <div class="g-filters">
-    <button class="g-filter active" onclick="filterGallery('all',this)">All</button>
-    <button class="g-filter" onclick="filterGallery('753',this)">七五三</button>
-    <button class="g-filter" onclick="filterGallery('newborn',this)">Newborn</button>
-    <button class="g-filter" onclick="filterGallery('birthday',this)">Birthday</button>
-    <button class="g-filter" onclick="filterGallery('family',this)">Family</button>
-    <button class="g-filter" onclick="filterGallery('maternity',this)">Maternity</button>
-  </div>
-  <div class="g-grid" id="g-grid"></div>
-</div>
-</section>
-
-<!-- KIMONO 03 -->
-<section id="kimono" style="background:var(--bg)">
-<div class="wrap">
-  <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title" id="kimono-heading">Kimono</h2><div class="sec-rule"></div></div>
-  <p class="section-body-text" id="kimono-body"></p>
-  <div class="items-grid" id="kimono-grid"></div>
-</div>
-</section>
-
-<!-- COSTUME 04 -->
-<section id="costume" style="background:#f0eee9">
-<div class="wrap">
-  <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title" id="costume-heading">Costume</h2><div class="sec-rule"></div></div>
-  <p class="section-body-text" id="costume-body"></p>
-  <div class="items-grid" id="costume-grid"></div>
-</div>
-</section>
-
-<!-- PLANS 05 -->
-<section id="plans" style="background:var(--bg)">
-<div class="wrap">
-  <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Plans & Pricing</h2><div class="sec-rule"></div></div>
-  <p class="section-body-text" id="plans-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
-  <div class="plans-grid" id="plans-grid"></div>
-  <div class="more-cta"><a href="plans/" class="btn-line" id="plans-more-btn">すべてのプランを見る →</a></div>
-</div>
-</section>
-
-<!-- GOODS 06 -->
-<section id="goods" style="background:#f0eee9">
-<div class="wrap">
-  <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title" id="goods-heading">Goods</h2><div class="sec-rule"></div></div>
-  <p class="section-body-text" id="goods-body"></p>
-  <div class="items-grid" id="goods-grid"></div>
-</div>
-</section>
-
-<!-- CALENDAR 07 -->
-<section id="calendar" style="background:var(--bg)">
-<div class="wrap">
-  <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title" id="calendar-heading">Calendar</h2><div class="sec-rule"></div></div>
-  <p class="section-body-text" id="calendar-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
-  <div class="more-cta"><a href="calendar/" class="btn-line" id="calendar-more-btn">空き状況を見る →</a></div>
-</div>
-</section>
-
-<!-- RESERVATION 08 -->
-<section id="reservation" style="background:#f0eee9">
-<div class="wrap">
-  <div class="sec-head"><span class="sec-num">08</span><h2 class="sec-title" id="reservation-heading">Reservation</h2><div class="sec-rule"></div></div>
-  <p class="section-body-text" id="reservation-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
-  <div class="more-cta"><a href="reservation/" class="btn-line" id="reservation-more-btn">予約フォームへ →</a></div>
-</div>
-</section>
-
-<!-- CANCEL POLICY 09 -->
-<section id="cancel-policy" style="background:var(--bg)">
-<div class="wrap">
-  <div class="sec-head"><span class="sec-num">09</span><h2 class="sec-title" id="cancel-heading">Cancellation Policy</h2><div class="sec-rule"></div></div>
-  <p class="section-body-text" id="cancel-body" style="text-align:center;max-width:780px;margin:0 auto 2.5rem"></p>
-  <div class="more-cta"><a href="cancel-policy/" class="btn-line" id="cancel-more-btn">キャンセル料金表を見る →</a></div>
-</div>
-</section>
-
-<!-- Q&A 10 -->
-<section id="qa" style="background:#f0eee9">
-<div class="wrap">
-  <div class="sec-head"><span class="sec-num">10</span><h2 class="sec-title" id="qa-heading">Q & A</h2><div class="sec-rule"></div></div>
-  <p class="section-body-text" id="qa-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
-  <div style="max-width:780px;margin:0 auto"><div class="qa-list" id="qa-list"></div></div>
-</div>
-</section>
-
-<!-- FLOW 11 -->
-<section id="flow" style="background:var(--bg)">
-<div class="wrap">
-  <div class="sec-head"><span class="sec-num">11</span><h2 class="sec-title" id="flow-heading">Flow</h2><div class="sec-rule"></div></div>
-  <p class="section-body-text" id="flow-body" style="text-align:center;max-width:600px;margin:0 auto 3.5rem"></p>
-  <div class="flow-wrap" id="flow-list"></div>
-</div>
-</section>
-
-<!-- RECRUIT 12 -->
-<section id="recruit" style="background:#f0eee9">
-<div class="wrap">
-  <div class="sec-head"><span class="sec-num">12</span><h2 class="sec-title" id="recruit-heading">Recruit</h2><div class="sec-rule"></div></div>
-  <p class="recruit-copy" id="recruit-body" style="text-align:center;max-width:640px;margin:0 auto 2rem"></p>
-  <div class="pos-list-lite" id="pos-list"></div>
-  <div class="more-cta" style="margin-top:2.5rem"><a href="recruit/" class="btn-line" id="recruit-more-btn">採用情報を詳しく見る →</a></div>
-</div>
-</section>
-
-<!-- CTA -->
-<section class="cta" id="booking">
-  <h2 id="cta-heading"></h2>
-  <p id="cta-note"></p>
-  <a href="#" class="btn-line-light" id="cta-btn">予約する</a>
-</section>
-
+</main>
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <button class="lb-close" onclick="closeLb()">✕</button>
@@ -874,18 +769,50 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js"></script>
+<script>window.PAGE_TITLE="Recruit";</script>
+<script>
+function renderPage(d){
+  const r = d.recruit || {};
+  document.getElementById('d-intro').textContent = r.body || '';
+  document.getElementById('recruit-contact').href = 'mailto:' + (r.contactEmail || 'recruit@trunklii.com');
+  const list = document.getElementById('pos-list');
+  if(r.positions && r.positions.length){
+    list.innerHTML = r.positions.map(p=>`
+      <div class="pos-card"><div class="pos-title">${p.title}</div><div class="pos-type">${p.type}</div><div class="pos-desc">${p.desc||''}</div></div>
+    `).join('');
+  } else {
+    list.innerHTML = '<p style="text-align:center;color:var(--mid);font-family:var(--display);font-style:italic;font-size:1.1rem;padding:3rem 0">近日公開予定。</p>';
+  }
+}
+</script>
+
+<script src="../../site-data.js"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
-let heroTimer, lbImages=[], lbIdx=0;
+const PAGE_KEY = (location.pathname.match(/\/(plans|calendar|reservation|cancel-policy|recruit)\//) || [,''])[1];
 let SEARCH_INDEX = [];
 
-// Safety net — ensure body fades in even if init() stalls (e.g. slow SVG fetch)
 setTimeout(()=>{ document.body.classList.add('is-ready'); }, 1200);
 
 async function loadSvg(url){
   try{ const r = await fetch(url); if(!r.ok) throw new Error(); return await r.text(); }
   catch(e){ return null; }
+}
+
+// Rewrite all in-page (#xxx) anchor links to point back to LP at ../#xxx,
+// and rewrite "../et/" / "../nr/" tab links to "../../et/" / "../../nr/" (one level deeper).
+function fixLinks(){
+  // Tab/brand links and footer logo
+  document.querySelectorAll('a[href="../et/"]').forEach(a=>a.setAttribute('href','../../et/'));
+  document.querySelectorAll('a[href="../nr/"]').forEach(a=>a.setAttribute('href','../../nr/'));
+  document.querySelectorAll('a[href="../"]').forEach(a=>a.setAttribute('href','../../'));
+  // In-page anchor links → point to LP
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    const h = a.getAttribute('href');
+    // qa-bot-foot link "#qa" -> "../#qa", footer-links etc. all go to LP
+    a.setAttribute('href', '../' + h);
+  });
+  // Section nav inside detail page should be back to LP, not stay
 }
 
 async function init(){
@@ -894,7 +821,7 @@ async function init(){
   if(!d) return;
 
   document.documentElement.style.setProperty('--accent', d.accentColor);
-  document.getElementById('page-title').textContent = d.name + ' — Trunklii';
+  document.getElementById('page-title').textContent = d.name + ' / ' + (window.PAGE_TITLE||'') + ' — Trunklii';
 
   // Brand tabs
   document.getElementById('tab-et').classList.toggle('active', STUDIO_KEY==='et');
@@ -903,7 +830,7 @@ async function init(){
   document.getElementById('mob-tab-nr').classList.toggle('active', STUDIO_KEY==='nr');
 
   // Logo
-  const wideSvg = await loadSvg(`../assets/${STUDIO_KEY}-wide.svg`);
+  const wideSvg = await loadSvg(`../../assets/${STUDIO_KEY}-wide.svg`);
   const logoLink = document.getElementById('nav-logo-link');
   const mobLogo = document.getElementById('mob-logo');
   if(wideSvg){ logoLink.innerHTML = wideSvg; mobLogo.innerHTML = wideSvg; }
@@ -924,146 +851,25 @@ async function init(){
   document.getElementById('mob-book-btn').textContent = d.bookingLabel;
   document.getElementById('mob-book-btn').href = d.bookingUrl;
 
-  // Hero
-  document.getElementById('hero-eyebrow').textContent = 'Trunklii / ' + d.name;
-  document.getElementById('hero-name').textContent = d.shortName;
-  document.getElementById('hero-tagline').textContent = d.tagline;
-  buildHero(d.heroImages);
+  // Studio name in detail hero
+  const dhStudio = document.getElementById('dh-studio');
+  if(dhStudio) dhStudio.textContent = d.name;
 
-  // About
-  document.getElementById('about-heading').textContent = d.about.heading;
-  document.getElementById('about-body').textContent = d.about.body;
-  document.getElementById('about-img').src = d.about.image;
-  document.getElementById('about-btn').textContent = d.bookingLabel + ' →';
-  document.getElementById('about-btn').href = d.bookingUrl;
+  // Page-specific render
+  if(typeof renderPage === 'function') renderPage(d);
 
-  // Gallery
-  lbImages = d.gallery.map(i=>i.file);
-  document.getElementById('g-grid').innerHTML = d.gallery.map((item,i)=>`
-    <div class="g-item" data-cat="${item.category}">
-      <img src="${item.file}" alt="${item.caption}" loading="lazy" onclick="openLb(${i})"/>
-      <div class="g-cap">${item.caption}</div>
-    </div>
-  `).join('');
+  // QA bot
+  if(d.qa) buildQaBot(d.qa.items, d); else buildQaBot([], d);
 
-  // Kimono
-  document.getElementById('kimono-heading').textContent = d.kimono.heading;
-  document.getElementById('kimono-body').textContent = d.kimono.body;
-  document.getElementById('kimono-grid').innerHTML = d.kimono.items.map(item=>`
-    <div class="item-card">
-      <img src="${item.file}" alt="${item.name}" loading="lazy" onclick="openLbSrc('${item.file}')"/>
-      <div class="item-info"><div class="item-name">${item.name}</div><div class="item-desc">${item.desc}</div></div>
-    </div>
-  `).join('') || '<p style="color:var(--mid);font-size:.85rem;font-family:var(--display);font-style:italic">近日公開予定。</p>';
-
-  // Costume
-  document.getElementById('costume-heading').textContent = d.costume.heading;
-  document.getElementById('costume-body').textContent = d.costume.body;
-  document.getElementById('costume-grid').innerHTML = d.costume.items.map(item=>`
-    <div class="item-card">
-      <img src="${item.file}" alt="${item.name}" loading="lazy" onclick="openLbSrc('${item.file}')"/>
-      <div class="item-info"><div class="item-name">${item.name}</div><div class="item-desc">${item.desc}</div></div>
-    </div>
-  `).join('') || '<p style="color:var(--mid);font-size:.85rem;font-family:var(--display);font-style:italic">近日公開予定。</p>';
-
-  // Plans (digest: top 3 — prefer entries with tag, fallback to first 3)
-  (function(){
-    const plans = d.plans || [];
-    const tagged = plans.filter(p=>p.tag && p.tag.trim());
-    const others = plans.filter(p=>!p.tag || !p.tag.trim());
-    const digest = (tagged.concat(others)).slice(0, 3);
-    document.getElementById('plans-grid').innerHTML = digest.map(p=>`
-      <div class="plan-card">
-        ${p.tag ? `<div class="plan-tag">${p.tag}</div>` : ''}
-        <div class="plan-name">${p.name}</div>
-        <div class="plan-price">${p.price}</div>
-        <div class="plan-desc">${p.desc}</div>
-      </div>
-    `).join('') || '<p style="text-align:center;color:var(--mid);font-family:var(--display);font-style:italic;grid-column:1/-1">近日公開予定。</p>';
-  })();
-
-  // Goods
-  if(d.goods){
-    document.getElementById('goods-heading').textContent = d.goods.heading;
-    document.getElementById('goods-body').textContent = d.goods.body;
-    document.getElementById('goods-grid').innerHTML = d.goods.items.map(item=>`
-      <div class="item-card">
-        <img src="${item.file}" alt="${item.name}" loading="lazy" onclick="openLbSrc('${item.file}')"/>
-        <div class="item-info"><div class="item-name">${item.name}</div><div class="item-price">${item.price||''}</div><div class="item-desc">${item.desc}</div></div>
-      </div>
-    `).join('') || '<p style="color:var(--mid);font-size:.85rem;font-family:var(--display);font-style:italic">近日公開予定。</p>';
-  }
-
-  // Calendar (LP: summary only)
-  if(d.calendar){
-    document.getElementById('calendar-heading').textContent = d.calendar.heading;
-    document.getElementById('calendar-body').textContent = d.calendar.body;
-  }
-
-  // Reservation (LP: summary only)
-  if(d.reservation){
-    document.getElementById('reservation-heading').textContent = d.reservation.heading;
-    document.getElementById('reservation-body').textContent = d.reservation.body;
-  }
-
-  // Cancel Policy (LP: summary only)
-  if(d.cancelPolicy){
-    document.getElementById('cancel-heading').textContent = d.cancelPolicy.heading;
-    document.getElementById('cancel-body').textContent = d.cancelPolicy.body;
-  }
-
-  // Q&A
-  if(d.qa){
-    document.getElementById('qa-heading').textContent = d.qa.heading;
-    document.getElementById('qa-body').textContent = d.qa.body;
-    document.getElementById('qa-list').innerHTML = d.qa.items.map((it,i)=>`
-      <div class="qa-item">
-        <button class="qa-q" onclick="toggleQa(${i})">
-          <span class="qa-q-mark">Q.</span><span class="qa-q-text">${it.q}</span><span class="qa-toggle">+</span>
-        </button>
-        <div class="qa-a">${it.a}</div>
-      </div>
-    `).join('') || '<p style="text-align:center;color:var(--mid);font-family:var(--display);font-style:italic">近日公開予定。</p>';
-    buildQaBot(d.qa.items, d);
-  } else {
-    buildQaBot([], d);
-  }
-
-  // Flow
-  document.getElementById('flow-heading').textContent = d.flow.heading;
-  document.getElementById('flow-body').textContent = d.flow.body;
-  document.getElementById('flow-list').innerHTML = d.flow.steps.map((s,i)=>`
-    <div class="flow-step">
-      <div class="flow-num">${String(i+1).padStart(2,'0')}</div>
-      <div class="flow-body">
-        <div class="flow-title">${s.title}</div>
-        <div class="flow-desc">${s.desc}</div>
-        ${s.note ? `<div class="flow-note">＊${s.note}</div>` : ''}
-      </div>
-    </div>
-  `).join('');
-
-  // Recruit (LP: position names as chips only)
-  document.getElementById('recruit-heading').textContent = d.recruit.heading;
-  document.getElementById('recruit-body').textContent = d.recruit.body;
-  document.getElementById('pos-list').innerHTML = d.recruit.positions.map(p=>`
-    <div class="pos-chip">${p.title}</div>
-  `).join('') || '<p style="color:var(--mid);font-size:.85rem;font-family:var(--display);font-style:italic;text-align:center">近日公開予定。</p>';
-
-  // CTA
-  document.getElementById('cta-heading').textContent = d.ctaHeading;
-  document.getElementById('cta-note').textContent = d.ctaNote;
-  const ctaBtn = document.getElementById('cta-btn');
-  ctaBtn.textContent = d.comingSoon ? '最新情報はInstagramで →' : d.bookingLabel + ' →';
-  ctaBtn.href = d.comingSoon ? d.instagram : d.bookingUrl;
-
+  // Footer
   document.getElementById('footer-copy').textContent = g.copyright;
   document.getElementById('footer-logo').textContent = g.brandName.toUpperCase();
 
-  // Build search index
+  // Fix relative links + build search index
+  fixLinks();
   buildSearchIndex(d);
 
-  // Motion: tag, observe, then mark body ready (next frame to ensure CSS transitions trigger)
+  // Motion
   enhanceMotion();
   bindPageLeave();
   requestAnimationFrame(()=>{
@@ -1071,57 +877,53 @@ async function init(){
   });
 }
 
-function buildHero(images){
-  const slides = document.getElementById('hero-slides');
-  const dots = document.getElementById('hero-dots');
-  slides.innerHTML = ''; dots.innerHTML = '';
-  images.forEach((img,i)=>{
-    const s = document.createElement('div');
-    s.className = 'hero-slide'+(i===0?' active':'');
-    s.style.backgroundImage = `url('${img.file}')`;
-    slides.appendChild(s);
-    const d = document.createElement('div');
-    d.className = 'hero-dot'+(i===0?' active':'');
-    d.onclick = ()=>goSlide(i);
-    dots.appendChild(d);
-  });
-  if(images.length>1){
-    let idx=0;
-    heroTimer = setInterval(()=>{
-      const sl=slides.querySelectorAll('.hero-slide');
-      const dt=dots.querySelectorAll('.hero-dot');
-      sl[idx].classList.remove('active'); dt[idx].classList.remove('active');
-      idx=(idx+1)%sl.length;
-      sl[idx].classList.add('active'); dt[idx].classList.add('active');
-    },5000);
+function enhanceMotion(){
+  document.querySelectorAll('section').forEach(s=>s.classList.add('reveal'));
+  document.querySelectorAll('.plans-grid .plan-card').forEach((el,i)=>el.style.setProperty('--d', i));
+  document.querySelectorAll('.pos-list .pos-card').forEach((el,i)=>el.style.setProperty('--d', i));
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.reveal,.plan-card,.pos-card').forEach(el=>el.classList.add('in'));
+    return;
   }
-}
-function goSlide(i){
-  clearInterval(heroTimer);
-  const sl=document.querySelectorAll('.hero-slide');
-  const dt=document.querySelectorAll('.hero-dot');
-  sl.forEach(s=>s.classList.remove('active'));
-  dt.forEach(d=>d.classList.remove('active'));
-  sl[i]?.classList.add('active'); dt[i]?.classList.add('active');
+  const io = new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:0.12, rootMargin:'0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal,.plan-card,.pos-card').forEach(el=>io.observe(el));
 }
 
-function filterGallery(cat, btn){
-  if(btn){ document.querySelectorAll('.g-filter').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
-  document.querySelectorAll('.g-item').forEach(item=>{
-    item.classList.toggle('hidden', cat!=='all' && item.dataset.cat!==cat);
+function bindPageLeave(){
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce) return;
+  document.addEventListener('click', function(e){
+    const a = e.target.closest('a');
+    if(!a) return;
+    const href = a.getAttribute('href');
+    if(!href) return;
+    if(href.startsWith('#')) return;
+    if(a.target && a.target !== '_self') return;
+    if(/^(mailto:|tel:|javascript:)/i.test(href)) return;
+    if(a.hasAttribute('download')) return;
+    if(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    try{
+      const url = new URL(href, location.href);
+      if(url.origin === location.origin && url.pathname === location.pathname && url.hash) return;
+    }catch(_){}
+    e.preventDefault();
+    document.body.classList.add('is-leaving');
+    setTimeout(()=>{ location.href = a.href; }, 240);
   });
 }
-
-function openLb(idx){ lbIdx=idx; document.getElementById('lb-img').src=lbImages[lbIdx]; document.getElementById('lightbox').classList.add('open'); }
-function openLbSrc(src){ lbIdx=-1; document.getElementById('lb-img').src=src; document.getElementById('lightbox').classList.add('open'); }
-function closeLb(){ document.getElementById('lightbox').classList.remove('open'); }
-function lbNav(dir){ if(lbIdx<0) return; lbIdx=(lbIdx+dir+lbImages.length)%lbImages.length; document.getElementById('lb-img').src=lbImages[lbIdx]; }
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){ closeLb(); closeSearch(); }
-  if(e.key==='ArrowRight') lbNav(1);
-  if(e.key==='ArrowLeft') lbNav(-1);
+window.addEventListener('pageshow', e=>{
+  if(e.persisted){
+    document.body.classList.remove('is-leaving');
+    document.body.classList.add('is-ready');
+  }
 });
-document.getElementById('lightbox').addEventListener('click',e=>{ if(e.target===e.currentTarget) closeLb(); });
+
+// Lightbox stubs (not used on detail pages but referenced by qa-bot etc.)
+function openLb(){} function openLbSrc(){} function closeLb(){} function lbNav(){}
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeSearch(); } });
+const _lb = document.getElementById('lightbox'); if(_lb) _lb.addEventListener('click',e=>{ if(e.target===e.currentTarget) closeLb(); });
 
 function openMob(){ document.getElementById('mob-nav').classList.add('open'); document.body.style.overflow='hidden'; }
 function closeMob(){ document.getElementById('mob-nav').classList.remove('open'); document.body.style.overflow=''; }
@@ -1132,44 +934,37 @@ function toggleMobItem(e,el){
   document.querySelectorAll('.mob-item.open').forEach(i=>i.classList.remove('open'));
   if(!wasOpen) item.classList.add('open');
 }
-function mobScrollTop(e){ e?.preventDefault?.(); window.scrollTo({top:0, behavior:'smooth'}); }
 function scrollTopSmooth(e){ e?.preventDefault?.(); window.scrollTo({top:0, behavior:'smooth'}); }
+function filterGallery(cat){ /* navigate back to LP */ location.href = '../#gallery'; }
 
-// Q&A accordion
-function toggleQa(i){
-  const items = document.querySelectorAll('.qa-item');
-  items[i].classList.toggle('open');
-}
-
-// SEARCH
 function buildSearchIndex(d){
   SEARCH_INDEX = [];
   const add = (label, title, snippet, anchor)=>SEARCH_INDEX.push({label,title,snippet,anchor});
-  add('About', d.about.heading, d.about.body, '#about');
-  add('Flow', d.flow.heading, d.flow.body, '#flow');
-  d.flow.steps.forEach(s=>add('Flow', s.title, s.desc, '#flow'));
-  d.gallery.forEach(g=>add('Gallery', g.caption, g.category, '#gallery'));
-  add('Kimono', d.kimono.heading, d.kimono.body, '#kimono');
-  d.kimono.items.forEach(i=>add('Kimono', i.name, i.desc, '#kimono'));
-  add('Costume', d.costume.heading, d.costume.body, '#costume');
-  d.costume.items.forEach(i=>add('Costume', i.name, i.desc, '#costume'));
-  d.plans.forEach(p=>add('Plans', p.name, p.desc + ' ' + p.price, '#plans'));
+  add('About', d.about.heading, d.about.body, '../#about');
+  add('Flow', d.flow.heading, d.flow.body, '../#flow');
+  d.flow.steps.forEach(s=>add('Flow', s.title, s.desc, '../#flow'));
+  d.gallery.forEach(g=>add('Gallery', g.caption, g.category, '../#gallery'));
+  add('Kimono', d.kimono.heading, d.kimono.body, '../#kimono');
+  d.kimono.items.forEach(i=>add('Kimono', i.name, i.desc, '../#kimono'));
+  add('Costume', d.costume.heading, d.costume.body, '../#costume');
+  d.costume.items.forEach(i=>add('Costume', i.name, i.desc, '../#costume'));
+  d.plans.forEach(p=>add('Plans', p.name, p.desc + ' ' + p.price, '../plans/'));
   if(d.goods){
-    add('Goods', d.goods.heading, d.goods.body, '#goods');
-    d.goods.items.forEach(i=>add('Goods', i.name, i.desc + ' ' + (i.price||''), '#goods'));
+    add('Goods', d.goods.heading, d.goods.body, '../#goods');
+    d.goods.items.forEach(i=>add('Goods', i.name, i.desc + ' ' + (i.price||''), '../#goods'));
   }
-  if(d.calendar) add('Calendar', d.calendar.heading, d.calendar.body, '#calendar');
-  if(d.reservation) add('Reservation', d.reservation.heading, d.reservation.body, '#reservation');
+  if(d.calendar) add('Calendar', d.calendar.heading, d.calendar.body, '../calendar/');
+  if(d.reservation) add('Reservation', d.reservation.heading, d.reservation.body, '../reservation/');
   if(d.cancelPolicy){
-    add('Cancel Policy', d.cancelPolicy.heading, d.cancelPolicy.body, '#cancel-policy');
-    d.cancelPolicy.items.forEach(it=>add('Cancel Policy', it.when, it.fee, '#cancel-policy'));
+    add('Cancel Policy', d.cancelPolicy.heading, d.cancelPolicy.body, '../cancel-policy/');
+    d.cancelPolicy.items.forEach(it=>add('Cancel Policy', it.when, it.fee, '../cancel-policy/'));
   }
   if(d.qa){
-    add('Q&A', d.qa.heading, d.qa.body, '#qa');
-    d.qa.items.forEach(it=>add('Q&A', it.q, it.a, '#qa'));
+    add('Q&A', d.qa.heading, d.qa.body, '../#qa');
+    d.qa.items.forEach(it=>add('Q&A', it.q, it.a, '../#qa'));
   }
-  add('Recruit', d.recruit.heading, d.recruit.body, '#recruit');
-  d.recruit.positions.forEach(p=>add('Recruit', p.title, p.desc, '#recruit'));
+  add('Recruit', d.recruit.heading, d.recruit.body, '../recruit/');
+  d.recruit.positions.forEach(p=>add('Recruit', p.title, p.desc, '../recruit/'));
 }
 
 function openSearch(){
@@ -1190,11 +985,7 @@ function runSearch(){
   const results = SEARCH_INDEX.filter(item=>{
     return (item.title||'').toLowerCase().includes(q) || (item.snippet||'').toLowerCase().includes(q) || (item.label||'').toLowerCase().includes(q);
   });
-  if(!results.length){
-    out.innerHTML = '<div class="search-empty">該当する結果が見つかりませんでした</div>';
-    return;
-  }
-  // Group by label
+  if(!results.length){ out.innerHTML = '<div class="search-empty">該当する結果が見つかりませんでした</div>'; return; }
   const groups = {};
   results.forEach(r=>{ if(!groups[r.label]) groups[r.label]=[]; groups[r.label].push(r); });
   out.innerHTML = Object.keys(groups).map(label=>`
@@ -1210,7 +1001,6 @@ function runSearch(){
   `).join('');
 }
 
-// Q&A BOT
 let qaBotItems = [];
 function buildQaBot(items, ctx){
   qaBotItems = items || [];
@@ -1218,7 +1008,6 @@ function buildQaBot(items, ctx){
   if(!body) return;
   const isComing = !!(ctx && ctx.comingSoon);
   const hasItems = qaBotItems.length > 0;
-
   if(hasItems){
     body.innerHTML = `
       <div class="qa-msg qa-msg-bot">こんにちは。よくいただくご質問はこちらです。お選びください。</div>
@@ -1252,77 +1041,10 @@ function askBot(i){
   `);
   body.scrollTop = body.scrollHeight;
 }
-function toggleBot(){
-  document.getElementById('qa-bot').classList.toggle('open');
-}
-
-// ═══ MOTION ═══
-function enhanceMotion(){
-  // Tag sections + cards with reveal class
-  document.querySelectorAll('section').forEach(s=>{
-    if(s.id !== 'hero') s.classList.add('reveal');
-  });
-
-  // Stagger gallery items
-  document.querySelectorAll('#g-grid .g-item').forEach((el,i)=>{
-    el.style.setProperty('--d', i % 12);
-  });
-  // Stagger plan / item / pos cards
-  document.querySelectorAll('.plans-grid .plan-card').forEach((el,i)=>el.style.setProperty('--d', i));
-  document.querySelectorAll('.items-grid .item-card').forEach((el,i)=>el.style.setProperty('--d', i));
-  document.querySelectorAll('#pos-list .pos-card').forEach((el,i)=>el.style.setProperty('--d', i));
-  document.querySelectorAll('#pos-list .pos-chip').forEach((el,i)=>el.style.setProperty('--d', i));
-  document.querySelectorAll('#flow-list .flow-step').forEach((el,i)=>el.style.setProperty('--d', i));
-
-  if(!('IntersectionObserver' in window)){
-    document.querySelectorAll('.reveal,.g-item,.plan-card,.item-card,.pos-card,.pos-chip,.flow-step').forEach(el=>el.classList.add('in'));
-    return;
-  }
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-
-  document.querySelectorAll('.reveal,.g-item,.plan-card,.item-card,.pos-card,.pos-chip,.flow-step').forEach(el=>io.observe(el));
-}
-
-// Page-leave fade for tab/external nav (skip in-page #anchors)
-function bindPageLeave(){
-  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduce) return;
-  document.addEventListener('click', function(e){
-    const a = e.target.closest('a');
-    if(!a) return;
-    const href = a.getAttribute('href');
-    if(!href) return;
-    // Skip anchors, targets, mailto/tel, javascript: , and download
-    if(href.startsWith('#')) return;
-    if(a.target && a.target !== '_self') return;
-    if(/^(mailto:|tel:|javascript:)/i.test(href)) return;
-    if(a.hasAttribute('download')) return;
-    // Skip modifier-clicks
-    if(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-    // Same-page hash link with full URL? Let it pass.
-    try{
-      const url = new URL(href, location.href);
-      if(url.origin === location.origin && url.pathname === location.pathname && url.hash) return;
-    }catch(_){}
-    e.preventDefault();
-    document.body.classList.add('is-leaving');
-    setTimeout(()=>{ location.href = a.href; }, 240);
-  });
-}
-
-// Page-show: re-fade-in if user came back via bfcache
-window.addEventListener('pageshow', function(e){
-  if(e.persisted){
-    document.body.classList.remove('is-leaving');
-    document.body.classList.add('is-ready');
-  }
-});
+function toggleBot(){ document.getElementById('qa-bot').classList.toggle('open'); }
 
 init();
 </script>
+
 </body>
 </html>
