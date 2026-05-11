@@ -503,15 +503,15 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,5vw,4rem);di
     -webkit-overflow-scrolling:touch;
     padding:0 0 .5rem 0;
     margin:0 -1.2rem; /* 画面端いっぱいまで広げる */
-    padding-left:1.2rem;
-    padding-right:20%; /* 最後の写真も中央に来やすく */
+    padding-left:10%; /* 左に前の画像チラ見えスペース */
+    padding-right:10%; /* 右に次の画像チラ見えスペース */
     scrollbar-width:none;
   }
   .g-grid::-webkit-scrollbar{display:none}
   .g-item{
-    flex:0 0 80%; /* 画面の80%幅 = 次が約20%チラ見え = 1.2枚見せ */
+    flex:0 0 80%; /* 画面の80%幅 = 両端に10%ずつチラ見え */
     margin-bottom:0;
-    scroll-snap-align:start;
+    scroll-snap-align:center;
     aspect-ratio:3/4;
   }
   .g-item img{
@@ -1066,17 +1066,35 @@ async function init(){
   // Plans (digest: top 3 — prefer entries with tag, fallback to first 3)
   (function(){
     const plans = d.plans || [];
+    // 最安価格の算出ヘルパー(variants から)
+    function minPrice(p){
+      if(!p.variants || p.variants.length===0) return p.price || '近日公開';
+      const nums = p.variants.map(v=>{
+        const m = String(v.price||'').match(/[\d,]+/g);
+        return m ? parseInt(m.join('').replace(/,/g,'')) : NaN;
+      }).filter(n=>!isNaN(n));
+      if(nums.length===0) return p.variants[0].price || '近日公開';
+      return `¥${Math.min(...nums).toLocaleString()}〜`;
+    }
     const tagged = plans.filter(p=>p.tag && p.tag.trim());
     const others = plans.filter(p=>!p.tag || !p.tag.trim());
     const digest = (tagged.concat(others)).slice(0, 3);
-    document.getElementById('plans-grid').innerHTML = digest.map(p=>`
-      <div class="plan-card">
+    const cardsHtml = digest.map(p=>{
+      const hasDetail = p.detail && p.variants && p.variants.length>0;
+      const href = hasDetail ? `plan-detail.html?key=${encodeURIComponent(p.key||'')}` : 'plans.html';
+      return `
+      <a href="${href}" class="plan-card" style="text-decoration:none;color:inherit;display:block">
         ${p.tag ? `<div class="plan-tag">${p.tag}</div>` : ''}
         <div class="plan-name">${p.name}</div>
-        <div class="plan-price">${p.price}</div>
+        <div class="plan-price">${minPrice(p)}</div>
         <div class="plan-desc">${p.desc}</div>
-      </div>
-    `).join('') || '<p style="text-align:center;color:var(--mid);font-family:var(--display);font-style:italic;grid-column:1/-1">近日公開予定。</p>';
+      </a>`;
+    }).join('');
+    const seeAllHtml = plans.length > 0 ? `
+      <div style="grid-column:1/-1;background:#fff;padding:1.5rem;text-align:center">
+        <a href="plans.html" style="display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:.7rem 1.6rem;border:1px solid var(--ink);transition:background .2s,color .2s" onmouseover="this.style.background='var(--ink)';this.style.color='#fff'" onmouseout="this.style.background='';this.style.color='var(--ink)'">すべてのプランを見る →</a>
+      </div>` : '';
+    document.getElementById('plans-grid').innerHTML = (cardsHtml + seeAllHtml) || '<p style="text-align:center;color:var(--mid);font-family:var(--display);font-style:italic;grid-column:1/-1">近日公開予定。</p>';
   })();
 
   // Goods
@@ -1221,11 +1239,13 @@ function currentGalleryIndex(){
   const grid = document.getElementById('g-grid');
   const items = visibleGalleryItems();
   if(!grid || items.length===0) return 0;
-  const scrollLeft = grid.scrollLeft;
+  // スクロールビューポートの中央位置
+  const viewportCenter = grid.scrollLeft + grid.clientWidth / 2;
   let bestIdx = 0;
   let bestDist = Infinity;
   items.forEach((el,i)=>{
-    const dist = Math.abs(el.offsetLeft - grid.offsetLeft - scrollLeft);
+    const itemCenter = el.offsetLeft + el.offsetWidth / 2 - grid.offsetLeft;
+    const dist = Math.abs(itemCenter - viewportCenter);
     if(dist < bestDist){ bestDist = dist; bestIdx = i; }
   });
   return bestIdx;
@@ -1239,7 +1259,10 @@ function galleryScroll(dir){
   const nextIdx = Math.max(0, Math.min(items.length-1, idx + dir));
   const target = items[nextIdx];
   if(target){
-    grid.scrollTo({ left: target.offsetLeft - grid.offsetLeft, behavior: 'smooth' });
+    // 対象アイテムが画面中央に来るようスクロール位置を計算
+    const itemCenter = target.offsetLeft + target.offsetWidth / 2 - grid.offsetLeft;
+    const scrollTo = itemCenter - grid.clientWidth / 2;
+    grid.scrollTo({ left: scrollTo, behavior: 'smooth' });
   }
 }
 

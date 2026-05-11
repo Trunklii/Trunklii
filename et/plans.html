@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title id="page-title">Plans — Studio</title>
+<meta name="description" id="meta-desc" content="撮影プラン一覧"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#111010;--off:#fff;--bg:#f8f6f2;--mid:#888078;
+  --accent:#b8935a;--border:rgba(17,16,16,.1);
+  --serif:'Noto Serif JP',serif;--display:'Cormorant Garamond',serif;--sans:'Jost',sans-serif;
+  --ease:cubic-bezier(.25,.46,.45,.94);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:14px;line-height:1.8;overflow-x:hidden;opacity:0;transition:opacity .4s var(--ease)}
+body.is-ready{opacity:1}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid rgba(17,16,16,.12)}
+.nav-top{display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:0 clamp(1rem,3vw,2.5rem);height:64px;gap:1rem}
+.back-link{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:.55rem .9rem;border:1px solid var(--ink);transition:background .2s,color .2s}
+.back-link:hover{background:var(--ink);color:#fff}
+.nav-brand{font-family:var(--display);font-style:italic;font-size:1.1rem;letter-spacing:.04em;text-align:center}
+.nav-brand .b-mark{color:var(--accent);font-style:normal;font-weight:400}
+.nav-right .booking-btn{display:inline-flex;align-items:center;font-family:var(--sans);font-weight:400;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:#fff;text-decoration:none;padding:.6rem 1.1rem;transition:background .25s}
+.nav-right .booking-btn:hover{background:var(--accent)}
+
+main{padding-top:64px}
+
+.pl-head{text-align:center;padding:clamp(3rem,7vw,5rem) 1.5rem 1.5rem}
+.pl-head .pl-sub{font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mid);margin-bottom:1.1rem}
+.pl-head h1{font-family:var(--display);font-style:italic;font-weight:300;font-size:clamp(2.4rem,5vw,3.4rem);line-height:1.1;margin-bottom:1rem}
+.pl-head .pl-lead{font-family:var(--serif);font-weight:300;font-size:1rem;line-height:1.9;max-width:560px;margin:0 auto;color:var(--ink)}
+
+.pl-wrap{max-width:1100px;margin:0 auto;padding:clamp(1.5rem,4vw,3rem) clamp(1.4rem,5vw,3rem) 5rem}
+
+.pl-grid{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+
+.pl-card{
+  background:#fff;border:1px solid var(--border);
+  display:flex;flex-direction:column;text-decoration:none;color:inherit;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease);
+  position:relative;overflow:hidden;
+}
+.pl-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(17,16,16,.08)}
+.pl-card-img{
+  aspect-ratio:4/3;width:100%;overflow:hidden;background:#eee;
+}
+.pl-card-img-inner{
+  width:100%;height:100%;background-size:cover;background-position:center;
+  transition:transform .7s var(--ease);
+}
+.pl-card:hover .pl-card-img-inner{transform:scale(1.05)}
+.pl-card-body{padding:1.5rem 1.5rem 1.8rem;display:flex;flex-direction:column;flex:1}
+.pl-card-tag{font-family:var(--sans);font-weight:500;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;min-height:.6rem}
+.pl-card-name{font-family:var(--display);font-style:italic;font-weight:400;font-size:1.55rem;line-height:1.2;margin-bottom:.5rem}
+.pl-card-price{font-family:var(--display);font-style:italic;font-weight:400;font-size:1.25rem;color:var(--accent);margin-bottom:.8rem}
+.pl-card-desc{font-family:var(--serif);font-weight:300;font-size:.88rem;line-height:1.85;color:var(--ink);margin-bottom:1.2rem;flex:1}
+.pl-card-meta{font-family:var(--sans);font-weight:300;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin-bottom:1.1rem}
+.pl-card-cta{
+  font-family:var(--sans);font-weight:400;font-size:.7rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink);
+  display:inline-flex;align-items:center;gap:.4rem;
+  margin-top:auto;align-self:flex-start;
+  padding:.55rem 0;border-bottom:1px solid var(--ink);
+  transition:gap .25s,color .25s,border-color .25s;
+}
+.pl-card:hover .pl-card-cta{gap:.7rem;color:var(--accent);border-bottom-color:var(--accent)}
+
+.pl-soon{
+  display:block;text-align:center;padding:4rem 1.5rem;
+  font-family:var(--display);font-style:italic;font-size:1.25rem;color:var(--mid);
+}
+
+footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2rem clamp(1.4rem,5vw,3rem);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.2rem;font-family:var(--sans);font-weight:300;font-size:.7rem;letter-spacing:.08em}
+.footer-logo{font-family:var(--display);font-style:italic;font-weight:400;font-size:1.1rem;color:#fff;letter-spacing:.04em;text-decoration:none}
+.footer-links{list-style:none;display:flex;flex-wrap:wrap;gap:1rem}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.footer-links a:hover{color:#fff}
+.footer-copy{font-size:.66rem;letter-spacing:.1em}
+
+@media(max-width:560px){
+  .nav-top{height:56px;padding:0 .8rem;gap:.6rem}
+  main{padding-top:56px}
+  .back-link{padding:.45rem .7rem;font-size:.66rem;gap:.3rem}
+  .nav-brand{font-size:.95rem}
+  .nav-right .booking-btn{padding:.5rem .8rem;font-size:.62rem;letter-spacing:.1em}
+  .pl-head{padding-top:2rem}
+  .pl-grid{grid-template-columns:1fr;gap:1rem}
+  .pl-card-body{padding:1.3rem}
+  footer{flex-direction:column;text-align:center}
+  .footer-links{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-top">
+    <a href="./" class="back-link"><span>‹</span> <span>Top</span></a>
+    <div class="nav-brand" id="nav-brand">Studio <span class="b-mark">·</span></div>
+    <div class="nav-right">
+      <a href="#" class="booking-btn" id="booking-btn">予約する</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <header class="pl-head">
+    <div class="pl-sub">All Plans</div>
+    <h1 id="page-h1">撮影プラン一覧</h1>
+    <p class="pl-lead" id="page-lead">ご希望に合わせて、撮影プランをお選びください。<br/>各プランの詳細・カット数バリエーションは、カードからご覧いただけます。</p>
+  </header>
+
+  <div class="pl-wrap">
+    <div class="pl-grid" id="pl-grid"></div>
+  </div>
+</main>
+
+<footer>
+  <a href="../" class="footer-logo">TRUNKLII</a>
+  <ul class="footer-links">
+    <li><a href="./">Top</a></li>
+    <li><a href="./#calendar">Calendar</a></li>
+    <li><a href="./#reservation">Reservation</a></li>
+    <li><a href="./#cancel-policy">Cancel Policy</a></li>
+  </ul>
+  <span class="footer-copy" id="footer-copy"></span>
+</footer>
+
+<script src="../site-data.js"></script>
+<script>
+const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
+
+function minPriceFromVariants(variants){
+  if(!variants || variants.length === 0) return '';
+  // 数値抽出
+  const nums = variants.map(v=>{
+    const m = String(v.price||'').match(/[\d,]+/g);
+    return m ? parseInt(m.join('').replace(/,/g,'')) : NaN;
+  }).filter(n=>!isNaN(n));
+  if(nums.length === 0) return variants[0].price || '';
+  const min = Math.min(...nums);
+  return `¥${min.toLocaleString()}〜`;
+}
+
+function render(){
+  const data = window.SITE_DATA;
+  if(!data) return;
+  const studio = data.studios[STUDIO_KEY];
+  if(!studio) return;
+
+  if(studio.accentColor){
+    document.documentElement.style.setProperty('--accent', studio.accentColor);
+  }
+
+  const brandEl = document.getElementById('nav-brand');
+  brandEl.innerHTML = `${esc((studio.shortName||'').replace(/\.$/,''))}<span class="b-mark">.</span>`;
+  const bookingBtn = document.getElementById('booking-btn');
+  bookingBtn.href = studio.bookingUrl || '#';
+  bookingBtn.textContent = studio.bookingLabel || '予約する';
+  document.getElementById('footer-copy').textContent = data.global.copyright;
+  document.getElementById('page-title').textContent = `Plans | ${studio.name}`;
+
+  const plans = studio.plans || [];
+  const grid = document.getElementById('pl-grid');
+
+  if(plans.length === 0){
+    grid.innerHTML = '<div class="pl-soon">プラン情報は近日公開予定です。</div>';
+    document.body.classList.add('is-ready');
+    return;
+  }
+
+  grid.innerHTML = plans.map(p=>{
+    const hasDetail = p.detail && p.variants && p.variants.length > 0;
+    const heroImg = hasDetail ? (p.detail.heroImage || '') : '';
+    const price = hasDetail ? minPriceFromVariants(p.variants) : '';
+    const cutsList = hasDetail ? p.variants.map(v=>v.cuts).filter(c=>c!=null).join(' / ') : '';
+    const cardClass = hasDetail ? 'pl-card' : 'pl-card pl-card-soon';
+    const cardHref = hasDetail ? `plan-detail.html?key=${encodeURIComponent(p.key)}` : 'javascript:void(0)';
+
+    return `
+      <a href="${cardHref}" class="${cardClass}">
+        <div class="pl-card-img">${heroImg ? `<div class="pl-card-img-inner" style="background-image:url('${esc(heroImg)}')"></div>` : ''}</div>
+        <div class="pl-card-body">
+          <div class="pl-card-tag">${esc(p.tag || '')}</div>
+          <div class="pl-card-name">${esc(p.name)}</div>
+          <div class="pl-card-price">${esc(price || '近日公開')}</div>
+          <div class="pl-card-desc">${esc(p.desc || '')}</div>
+          ${cutsList ? `<div class="pl-card-meta">${esc(cutsList)} cuts available</div>` : ''}
+          <div class="pl-card-cta">${hasDetail ? 'View detail' : 'Coming soon'} →</div>
+        </div>
+      </a>
+    `;
+  }).join('');
+
+  document.body.classList.add('is-ready');
+}
+
+setTimeout(()=>document.body.classList.add('is-ready'), 1200);
+render();
+</script>
+</body>
+</html>
