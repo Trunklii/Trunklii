@@ -3,7 +3,7 @@
 window.SITE_DATA = {
   global: {
     brandName: "Trunklii",
-    copyright: "© 2025 Trunklii. All rights reserved."
+    copyright: "© 2026 Trunklii. All rights reserved."
   },
   studios: {
     et: {
@@ -13,12 +13,12 @@ window.SITE_DATA = {
       tagline: "I wish you have a healthy life filled with happiness",
       description: "子どもたちの輝く瞬間を、花とともに。\nスタジオエトでは、七五三・ニューボーン・バースデーなど\n大切な記念日を美しい写真に残します。",
       accentColor: "#b8935a",
-      address: "〒XXX-XXXX 東京都XXX区XXX 1-2-3",
-      tel: "0X0-XXXX-XXXX",
+      address: "〒501-6253 岐阜県羽島市小熊町島新道76-9 2階",
+      tel: "050-1751-2601",
       hours: "10:00 – 18:00（火曜定休）",
       instagram: "https://www.instagram.com/studio_et._",
       instagramHandle: "@studio_et._",
-      mapUrl: "https://share.google/THZQdcV3rf6L3IJEN",
+      mapUrl: "https://goo.gl/maps/ZVSCkidKRbLqAvU19",
       bookingUrl: "https://et.trunklii.com/reservation",
       bookingLabel: "予約する",
       comingSoon: false,
@@ -147,10 +147,10 @@ window.SITE_DATA = {
       name: "Maison nr.",
       shortName: "nr.",
       tagline: "A new chapter begins",
-      description: "まもなくオープン。\nMaison nr.は Studio et. の姉妹スタジオとして\n新たな表現とスタイルをご提供します。",
+      description: "まもなくオープン。\nMaison nr. は、独自の世界観で\n新たな表現とスタイルをご提供する\nフォトスタジオです。",
       accentColor: "#7a9e95",
-      address: "〒XXX-XXXX 東京都XXX区XXX 4-5-6",
-      tel: "0X0-XXXX-XXXX",
+      address: "〒486-0806 愛知県春日井市大手田酉町1丁目5-9",
+      tel: "050-1751-2601",
       hours: "詳細は近日公開",
       instagram: "https://www.instagram.com/maison_nr._",
       instagramHandle: "@maison_nr._",
@@ -166,7 +166,7 @@ window.SITE_DATA = {
       about: {
         image: "18303974821264064.jpg",
         heading: "About Maison nr.",
-        body: "まもなくオープン。\nMaison nr.は Studio et. の姉妹スタジオとして\n新たな表現とスタイルをご提供します。\n\n詳細は近日公開予定です。"
+        body: "まもなくオープン。\nMaison nr. は、独自の世界観で\n新たな表現とスタイルをご提供するフォトスタジオです。\n\n詳細は近日公開予定です。"
       },
       gallery: [
         { file: "18505164388065081.jpg", caption: "Shichi-Go-San", category: "753" },
