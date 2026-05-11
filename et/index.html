@@ -333,6 +333,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .g-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(17,16,16,.55));color:#fff;font-family:var(--display);font-style:italic;font-size:.78rem;letter-spacing:.06em;padding:2rem .75rem .6rem;opacity:0;transition:opacity .3s}
 .g-item:hover .g-cap{opacity:1}
 .g-item.hidden{display:none}
+.g-carousel{position:relative}
+.g-nav,.g-counter{display:none}
 
 /* ITEMS (kimono / costume / goods) */
 .items-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
@@ -484,7 +486,81 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,5vw,4rem);di
   .items-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:560px){
-  .g-grid{columns:1}
+  /* Galleryカルーセル: stagger アニメ無効化(横スクロールで visible 判定されないため) */
+  #g-grid .g-item{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+  }
+  .g-grid{
+    columns:auto;
+    display:flex;
+    gap:.6rem;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+    -webkit-overflow-scrolling:touch;
+    padding:0 0 .5rem 0;
+    margin:0 -1.2rem; /* 画面端いっぱいまで広げる */
+    padding-left:1.2rem;
+    padding-right:20%; /* 最後の写真も中央に来やすく */
+    scrollbar-width:none;
+  }
+  .g-grid::-webkit-scrollbar{display:none}
+  .g-item{
+    flex:0 0 80%; /* 画面の80%幅 = 次が約20%チラ見え = 1.2枚見せ */
+    margin-bottom:0;
+    scroll-snap-align:start;
+    aspect-ratio:3/4;
+  }
+  .g-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .g-item.hidden{display:none}
+  .g-cap{
+    opacity:1; /* スマホはホバーなしなので常時表示 */
+    font-size:.7rem;
+    padding:1.6rem .7rem .55rem;
+  }
+  .g-carousel{position:relative}
+  .g-nav{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:36px;height:36px;
+    border-radius:50%;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    border:1px solid var(--border);
+    color:var(--ink);
+    font-family:var(--display);
+    font-size:1.4rem;
+    line-height:1;
+    cursor:pointer;
+    z-index:5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+    transition:opacity .25s, background .25s;
+  }
+  .g-nav:active{background:var(--ink);color:#fff}
+  .g-nav-prev{left:.4rem}
+  .g-nav-next{right:.4rem}
+  .g-nav[disabled]{opacity:.3;pointer-events:none}
+  .g-counter{
+    display:block;
+    text-align:center;
+    margin-top:.8rem;
+    font-family:var(--sans);
+    font-size:.7rem;
+    letter-spacing:.12em;
+    color:var(--mid);
+  }
   .items-grid{grid-template-columns:1fr}
   .plans-grid{grid-template-columns:1fr}
   footer{flex-direction:column;text-align:center}
@@ -725,7 +801,12 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
     <button class="g-filter" onclick="filterGallery('family',this)">Family</button>
     <button class="g-filter" onclick="filterGallery('maternity',this)">Maternity</button>
   </div>
-  <div class="g-grid" id="g-grid"></div>
+  <div class="g-carousel">
+    <div class="g-grid" id="g-grid"></div>
+    <button class="g-nav g-nav-prev" type="button" aria-label="前の写真" onclick="galleryScroll(-1)">‹</button>
+    <button class="g-nav g-nav-next" type="button" aria-label="次の写真" onclick="galleryScroll(1)">›</button>
+    <div class="g-counter" id="g-counter" aria-live="polite">1 / 1</div>
+  </div>
 </div>
 </section>
 
@@ -945,6 +1026,22 @@ async function init(){
       <div class="g-cap">${item.caption}</div>
     </div>
   `).join('');
+  // Galleryカルーセル: スクロールに合わせてカウンター更新
+  (function setupGalleryCarousel(){
+    const grid = document.getElementById('g-grid');
+    if(!grid) return;
+    let ticking = false;
+    grid.addEventListener('scroll', ()=>{
+      if(!ticking){
+        window.requestAnimationFrame(()=>{
+          updateGalleryCounter();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+    updateGalleryCounter();
+  })();
 
   // Kimono
   document.getElementById('kimono-heading').textContent = d.kimono.heading;
@@ -1110,6 +1207,58 @@ function filterGallery(cat, btn){
   document.querySelectorAll('.g-item').forEach(item=>{
     item.classList.toggle('hidden', cat!=='all' && item.dataset.cat!==cat);
   });
+  // スマホ: カルーセル位置を先頭に戻し、カウンター更新
+  const grid = document.getElementById('g-grid');
+  if(grid){ grid.scrollLeft = 0; }
+  updateGalleryCounter();
+}
+
+function visibleGalleryItems(){
+  return Array.from(document.querySelectorAll('#g-grid .g-item')).filter(el=>!el.classList.contains('hidden'));
+}
+
+function currentGalleryIndex(){
+  const grid = document.getElementById('g-grid');
+  const items = visibleGalleryItems();
+  if(!grid || items.length===0) return 0;
+  const scrollLeft = grid.scrollLeft;
+  let bestIdx = 0;
+  let bestDist = Infinity;
+  items.forEach((el,i)=>{
+    const dist = Math.abs(el.offsetLeft - grid.offsetLeft - scrollLeft);
+    if(dist < bestDist){ bestDist = dist; bestIdx = i; }
+  });
+  return bestIdx;
+}
+
+function galleryScroll(dir){
+  const grid = document.getElementById('g-grid');
+  const items = visibleGalleryItems();
+  if(!grid || items.length===0) return;
+  const idx = currentGalleryIndex();
+  const nextIdx = Math.max(0, Math.min(items.length-1, idx + dir));
+  const target = items[nextIdx];
+  if(target){
+    grid.scrollTo({ left: target.offsetLeft - grid.offsetLeft, behavior: 'smooth' });
+  }
+}
+
+function updateGalleryCounter(){
+  const counter = document.getElementById('g-counter');
+  const prevBtn = document.querySelector('.g-nav-prev');
+  const nextBtn = document.querySelector('.g-nav-next');
+  if(!counter) return;
+  const items = visibleGalleryItems();
+  if(items.length === 0){
+    counter.textContent = '0 / 0';
+    if(prevBtn) prevBtn.disabled = true;
+    if(nextBtn) nextBtn.disabled = true;
+    return;
+  }
+  const idx = currentGalleryIndex();
+  counter.textContent = `${idx+1} / ${items.length}`;
+  if(prevBtn) prevBtn.disabled = (idx === 0);
+  if(nextBtn) nextBtn.disabled = (idx === items.length - 1);
 }
 
 function openLb(idx){ lbIdx=idx; document.getElementById('lb-img').src=lbImages[lbIdx]; document.getElementById('lightbox').classList.add('open'); }
