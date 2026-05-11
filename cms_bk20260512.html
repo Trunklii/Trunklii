@@ -180,48 +180,6 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
 
 <script src="site-data.js"></script>
 <script>
-// site-data.js の読み込み状態を確認
-if(!window.SITE_DATA || typeof window.SITE_DATA !== 'object'){
-  // フォールバック: 空の最小限データで起動し、ユーザーに状況を伝える
-  console.error('[CMS] site-data.js の読み込みに失敗しました、または window.SITE_DATA が定義されていません');
-  window.SITE_DATA = {
-    global: { brandName: 'Trunklii', copyright: '© 2026 Trunklii. All rights reserved.' },
-    studios: {
-      et: { key:'et', name:'Studio et.', shortName:'et.', tagline:'', description:'', accentColor:'#b8935a',
-            address:'', tel:'', hours:'', instagram:'', instagramHandle:'', mapUrl:'', bookingUrl:'', bookingLabel:'予約する', comingSoon:false,
-            heroImages:[], about:{image:'',heading:'',body:''}, gallery:[],
-            kimono:{heading:'Kimono',body:'',items:[]}, costume:{heading:'Costume',body:'',items:[]},
-            plans:[], goods:{heading:'Goods',body:'',items:[]},
-            calendar:{heading:'Calendar',body:'',embedUrl:'',note:''},
-            reservation:{heading:'Reservation',body:'',formUrl:'',note:''},
-            cancelPolicy:{heading:'Cancellation Policy',body:'',items:[],note:''},
-            qa:{heading:'Q & A',body:'',items:[]},
-            flow:{heading:'Flow',body:'',steps:[]},
-            recruit:{heading:'Recruit',body:'',positions:[],contactEmail:''},
-            ctaHeading:'',ctaNote:'' },
-      nr: { key:'nr', name:'Maison nr.', shortName:'nr.', tagline:'', description:'', accentColor:'#7a9e95',
-            address:'', tel:'', hours:'', instagram:'', instagramHandle:'', mapUrl:'', bookingUrl:'', bookingLabel:'予約する', comingSoon:true,
-            heroImages:[], about:{image:'',heading:'',body:''}, gallery:[],
-            kimono:{heading:'Kimono',body:'',items:[]}, costume:{heading:'Costume',body:'',items:[]},
-            plans:[], goods:{heading:'Goods',body:'',items:[]},
-            calendar:{heading:'Calendar',body:'',embedUrl:'',note:''},
-            reservation:{heading:'Reservation',body:'',formUrl:'',note:''},
-            cancelPolicy:{heading:'Cancellation Policy',body:'',items:[],note:''},
-            qa:{heading:'Q & A',body:'',items:[]},
-            flow:{heading:'Flow',body:'',steps:[]},
-            recruit:{heading:'Recruit',body:'',positions:[],contactEmail:''},
-            ctaHeading:'',ctaNote:'' }
-    }
-  };
-  // 起動後にエラー通知を出す
-  setTimeout(() => {
-    if(typeof toast === 'function'){
-      toast('site-data.js を読み込めませんでした。ファイルが存在するか確認してください', true);
-    } else {
-      alert('site-data.js が読み込めませんでした。\n\n以下をご確認ください:\n1. cms.html と同じ階層に site-data.js があるか\n2. site-data.js の中身にエラーがないか(ブラウザの開発者ツールのConsoleを確認)\n3. ページを強制リロード(Ctrl+Shift+R / Cmd+Shift+R)してみる');
-    }
-  }, 300);
-}
 let D = JSON.parse(JSON.stringify(window.SITE_DATA));
 let currentStudio = 'et';
 let currentPanel = 'global';
@@ -241,11 +199,6 @@ function show(id){
     b.classList.toggle('active', matches && currentStudio==='et');
     b.classList.toggle('active-nr', matches && currentStudio==='nr');
   });
-  // 動的パネル: plan-detail-{key}
-  if(id.startsWith('plan-detail-')){
-    const key = id.replace('plan-detail-','');
-    return renderPlanDetail(key);
-  }
   const panels = {
     global: renderGlobal,
     basic: renderBasic,
@@ -272,13 +225,6 @@ const m = ()=>document.getElementById('main');
 const d = ()=>D.studios[currentStudio];
 const esc = s=>(s==null?'':String(s)).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
 const val = id=>document.getElementById(id)?.value??'';
-// 画像パスヘルパー: base64 (data:) はそのまま、相対ファイル名は現在のスタジオフォルダ配下を参照
-const imgSrc = file => {
-  if(!file) return '';
-  const s = String(file);
-  if(s.startsWith('data:') || s.startsWith('http://') || s.startsWith('https://') || s.startsWith('/')) return s;
-  return `${currentStudio}/${s}`;
-};
 
 function toast(msg,err){
   const el=document.getElementById('toast');
@@ -369,7 +315,7 @@ function renderHero(){
     const src = img.file||'';
     return `
       <div class="hero-slot">
-        <img class="hero-slot-thumb" id="hero-thumb-${i}" src="${esc(imgSrc(src))}" onerror="this.style.opacity=0" style="opacity:${src?1:0}"/>
+        <img class="hero-slot-thumb" id="hero-thumb-${i}" src="${esc(src)}" onerror="this.style.opacity=0" style="opacity:${src?1:0}"/>
         <div class="img-upload-area" style="margin-top:.4rem;padding:1rem">
           <div class="img-upload-label">Slide ${i+1}<br><span>画像をアップロード</span></div>
           <input type="file" accept="image/*" data-slot="${i}" onchange="heroUpload(this)" style="position:absolute;inset:0;opacity:0;cursor:pointer"/>
@@ -414,7 +360,7 @@ function renderAbout(){
       <div class="row">
         <label>About 画像</label>
         <div class="img-upload-area">
-          <img src="${esc(imgSrc(ab.image))}" id="prev-about" style="width:100%;height:160px;object-fit:cover;display:${ab.image?'block':'none'};margin-bottom:.75rem" onerror="this.style.display='none'"/>
+          <img src="${esc(ab.image)}" id="prev-about" style="width:100%;height:160px;object-fit:cover;display:${ab.image?'block':'none'};margin-bottom:.75rem" onerror="this.style.display='none'"/>
           <div class="img-upload-label">クリックして画像をアップロード</div>
           <input type="file" accept="image/*" onchange="aboutImgUpload(this)" style="position:absolute;inset:0;opacity:0;cursor:pointer"/>
         </div>
@@ -437,7 +383,7 @@ function renderGallery(){
   const cats=['753','newborn','birthday','family','maternity','other'];
   const items = s.gallery.map((item,i)=>`
     <div class="gcms-item">
-      <img src="${esc(imgSrc(item.file))}" alt="${esc(item.caption)}" onerror="this.style.opacity=0.3"/>
+      <img src="${esc(item.file)}" alt="${esc(item.caption)}" onerror="this.style.opacity=0.3"/>
       <div class="gcms-badge">${esc(item.category)}</div>
       <div class="gcms-overlay">
         <label>画像変更<input type="file" accept="image/*" data-idx="${i}" onchange="galleryReplace(this)" style="display:none"/></label>
@@ -485,7 +431,7 @@ function renderItems(section, label){
   const s=d(); const sec=s[section];
   const items = sec.items.map((item,i)=>`
     <div class="icms-item">
-      <img src="${esc(imgSrc(item.file))}" alt="${esc(item.name)}" onerror="this.style.opacity=0.3"/>
+      <img src="${esc(item.file)}" alt="${esc(item.name)}" onerror="this.style.opacity=0.3"/>
       <input placeholder="名前" value="${esc(item.name)}" oninput="D.studios['${currentStudio}']['${section}'].items[${i}].name=this.value"/>
       <input placeholder="説明" value="${esc(item.desc)}" oninput="D.studios['${currentStudio}']['${section}'].items[${i}].desc=this.value"/>
       <div class="icms-item-btns">
@@ -532,251 +478,29 @@ function saveItems(sec){ d()[sec].heading=val('it-heading'); d()[sec].body=val('
 // ── PLANS ──
 function renderPlans(){
   const s=d();
-  // variantsから最低価格を算出
-  function minPriceOf(p){
-    if(!p.variants || p.variants.length===0) return '—';
-    const nums = p.variants.map(v=>{
-      const mt = String(v.price||'').match(/[\d,]+/g);
-      return mt ? parseInt(mt.join('').replace(/,/g,'')) : NaN;
-    }).filter(n=>!isNaN(n));
-    if(nums.length===0) return p.variants[0].price || '—';
-    return `¥${Math.min(...nums).toLocaleString()}〜`;
-  }
-  const rows = s.plans.map((p,i)=>{
-    const variantCount = (p.variants||[]).length;
-    return `
+  const rows = s.plans.map((p,i)=>`
     <div class="list-item">
       <div class="li-body">
         <input placeholder="プラン名" value="${esc(p.name)}" oninput="D.studios['${currentStudio}'].plans[${i}].name=this.value"/>
-        <input placeholder="URLキー (例: 753, newborn) — 半角英数のみ" value="${esc(p.key||'')}" oninput="D.studios['${currentStudio}'].plans[${i}].key=this.value.toLowerCase().replace(/[^a-z0-9_-]/g,'')"/>
-        <textarea placeholder="一覧用の短い説明文" oninput="D.studios['${currentStudio}'].plans[${i}].desc=this.value">${esc(p.desc)}</textarea>
-        <input placeholder="タグ (例: 人気No.1) — 不要なら空白" value="${esc(p.tag||'')}" oninput="D.studios['${currentStudio}'].plans[${i}].tag=this.value"/>
-        <div style="display:flex;gap:.6rem;align-items:center;margin-top:.4rem;font-family:var(--sans);font-size:.7rem;color:var(--mid)">
-          <span>最低価格: <strong style="color:var(--ink)">${esc(minPriceOf(p))}</strong></span>
-          <span>·</span>
-          <span>バリエーション: <strong style="color:var(--ink)">${variantCount}件</strong></span>
-        </div>
-        <button class="btn btn-primary" style="margin-top:.6rem;padding:.5rem 1rem;font-size:.7rem" onclick="show('plan-detail-${esc(p.key||'')}')">→ このプランの詳細を編集</button>
+        <input placeholder="価格" value="${esc(p.price)}" oninput="D.studios['${currentStudio}'].plans[${i}].price=this.value"/>
+        <textarea placeholder="説明文" oninput="D.studios['${currentStudio}'].plans[${i}].desc=this.value">${esc(p.desc)}</textarea>
+        <input placeholder="タグ (例: 人気No.1) — 不要なら空白" value="${esc(p.tag)}" oninput="D.studios['${currentStudio}'].plans[${i}].tag=this.value"/>
       </div>
       <div class="li-ctrl">
-        <button class="del" onclick="if(confirm('「${esc(p.name)}」を削除しますか?')){D.studios['${currentStudio}'].plans.splice(${i},1);renderPlans()}">削除</button>
+        <button class="del" onclick="D.studios['${currentStudio}'].plans.splice(${i},1);renderPlans()">削除</button>
         ${i>0?`<button class="up" onclick="arrMove(D.studios['${currentStudio}'].plans,${i},-1);renderPlans()">↑</button>`:''}
         ${i<s.plans.length-1?`<button class="dn" onclick="arrMove(D.studios['${currentStudio}'].plans,${i},1);renderPlans()">↓</button>`:''}
       </div>
-    </div>`;
-  }).join('');
+    </div>
+  `).join('');
   m().innerHTML = `
     <div class="panel">
       <div class="panel-title">Plans — ${esc(s.name)}</div>
-      <p style="font-family:var(--sans);font-size:.78rem;color:var(--mid);margin-bottom:1.2rem;line-height:1.7">
-        プランの基本情報を編集します。価格・撮影時間・カット数などはプランごとに「詳細を編集」から設定してください。
-      </p>
       <div>${rows}</div>
-      <button class="btn-add" onclick="addNewPlan()">＋ プランを追加</button>
+      <button class="btn-add" onclick="D.studios['${currentStudio}'].plans.push({name:'New Plan',price:'¥0〜',desc:'',tag:''});renderPlans()">＋ プランを追加</button>
       <div class="btn-row"><button class="btn btn-primary" onclick="toast('保存しました ✓')">保存</button></div>
     </div>
   `;
-}
-
-function addNewPlan(){
-  // ユニークな key を生成
-  const existing = (d().plans||[]).map(p=>p.key||'');
-  let n = 1, key = `new${n}`;
-  while(existing.includes(key)){ n++; key = `new${n}`; }
-  d().plans.push({
-    key, name: 'New Plan', desc: '', tag: '',
-    detail: { heroImage: '', tagline: '', longDescription: '', notes: '' },
-    variants: []
-  });
-  renderPlans();
-}
-
-// ── PLAN DETAIL (個別プランの詳細編集画面) ──
-function findPlanIndex(key){
-  return (d().plans||[]).findIndex(p=>p.key===key);
-}
-
-function renderPlanDetail(key){
-  const s = d();
-  const i = findPlanIndex(key);
-  if(i < 0){
-    m().innerHTML = `
-      <div class="panel">
-        <div class="panel-title">プランが見つかりません</div>
-        <p style="font-family:var(--sans);font-size:.8rem;color:var(--mid);margin-bottom:1.2rem">指定された key="${esc(key)}" のプランは存在しません。</p>
-        <button class="btn btn-primary" onclick="show('plans')">← プラン一覧に戻る</button>
-      </div>`;
-    return;
-  }
-  const p = s.plans[i];
-  // detail がなければ初期化
-  if(!p.detail) p.detail = { heroImage:'', tagline:'', longDescription:'', notes:'' };
-  if(!p.variants) p.variants = [];
-  const det = p.detail;
-
-  // バリエーション編集UI
-  const variantsHtml = p.variants.map((v,vi)=>{
-    const includesHtml = (v.includes||[]).map((it,ii)=>`
-      <div style="display:flex;gap:.4rem;margin-bottom:.3rem">
-        <input placeholder="含まれるもの" value="${esc(it)}" oninput="D.studios['${currentStudio}'].plans[${i}].variants[${vi}].includes[${ii}]=this.value" style="flex:1"/>
-        <button class="del" onclick="D.studios['${currentStudio}'].plans[${i}].variants[${vi}].includes.splice(${ii},1);renderPlanDetail('${esc(key)}')">×</button>
-      </div>`).join('');
-    const optionsHtml = (v.options||[]).map((o,oi)=>`
-      <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:.4rem;margin-bottom:.3rem">
-        <input placeholder="オプション名" value="${esc(o.name||'')}" oninput="D.studios['${currentStudio}'].plans[${i}].variants[${vi}].options[${oi}].name=this.value"/>
-        <input placeholder="価格 (例: ¥5,500〜)" value="${esc(o.price||'')}" oninput="D.studios['${currentStudio}'].plans[${i}].variants[${vi}].options[${oi}].price=this.value"/>
-        <button class="del" onclick="D.studios['${currentStudio}'].plans[${i}].variants[${vi}].options.splice(${oi},1);renderPlanDetail('${esc(key)}')">×</button>
-      </div>`).join('');
-    const galleryHtml = (v.gallery||[]).map((g,gi)=>`
-      <div style="position:relative;display:inline-block;margin:0 .3rem .3rem 0">
-        <img src="${esc(imgSrc(g))}" style="width:80px;height:80px;object-fit:cover;display:block;border:1px solid var(--border)" onerror="this.style.opacity=0.3"/>
-        <button onclick="D.studios['${currentStudio}'].plans[${i}].variants[${vi}].gallery.splice(${gi},1);renderPlanDetail('${esc(key)}')" style="position:absolute;top:2px;right:2px;width:20px;height:20px;background:rgba(0,0,0,.7);color:#fff;border:none;cursor:pointer;font-size:.7rem;line-height:1;padding:0">×</button>
-      </div>`).join('');
-    return `
-      <div class="list-item" style="display:block">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem">
-          <strong style="font-family:var(--sans);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase">バリエーション ${vi+1}</strong>
-          <div style="display:flex;gap:.3rem">
-            ${vi>0?`<button class="up" onclick="arrMove(D.studios['${currentStudio}'].plans[${i}].variants,${vi},-1);renderPlanDetail('${esc(key)}')">↑</button>`:''}
-            ${vi<p.variants.length-1?`<button class="dn" onclick="arrMove(D.studios['${currentStudio}'].plans[${i}].variants,${vi},1);renderPlanDetail('${esc(key)}')">↓</button>`:''}
-            <button class="del" onclick="if(confirm('バリエーション ${vi+1} を削除しますか?')){D.studios['${currentStudio}'].plans[${i}].variants.splice(${vi},1);renderPlanDetail('${esc(key)}')}">削除</button>
-          </div>
-        </div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:.5rem">
-          <input type="number" placeholder="カット数" value="${v.cuts!=null?v.cuts:''}" oninput="D.studios['${currentStudio}'].plans[${i}].variants[${vi}].cuts=this.value?parseInt(this.value):null"/>
-          <input placeholder="ラベル (例: 50カットプラン)" value="${esc(v.label||'')}" oninput="D.studios['${currentStudio}'].plans[${i}].variants[${vi}].label=this.value"/>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:.5rem">
-          <input placeholder="価格 (例: ¥55,000)" value="${esc(v.price||'')}" oninput="D.studios['${currentStudio}'].plans[${i}].variants[${vi}].price=this.value"/>
-          <input placeholder="撮影時間 (例: 90分)" value="${esc(v.duration||'')}" oninput="D.studios['${currentStudio}'].plans[${i}].variants[${vi}].duration=this.value"/>
-        </div>
-        <textarea placeholder="バリエーションの説明" oninput="D.studios['${currentStudio}'].plans[${i}].variants[${vi}].description=this.value">${esc(v.description||'')}</textarea>
-
-        <div style="margin-top:.8rem">
-          <div style="font-family:var(--sans);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:.4rem">Includes(含まれるもの)</div>
-          ${includesHtml}
-          <button class="btn-add" style="padding:.4rem .8rem;font-size:.7rem" onclick="(D.studios['${currentStudio}'].plans[${i}].variants[${vi}].includes||(D.studios['${currentStudio}'].plans[${i}].variants[${vi}].includes=[])).push('');renderPlanDetail('${esc(key)}')">＋ 含まれるものを追加</button>
-        </div>
-
-        <div style="margin-top:.8rem">
-          <div style="font-family:var(--sans);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:.4rem">Options(オプション)</div>
-          ${optionsHtml}
-          <button class="btn-add" style="padding:.4rem .8rem;font-size:.7rem" onclick="(D.studios['${currentStudio}'].plans[${i}].variants[${vi}].options||(D.studios['${currentStudio}'].plans[${i}].variants[${vi}].options=[])).push({name:'',price:''});renderPlanDetail('${esc(key)}')">＋ オプションを追加</button>
-        </div>
-
-        <div style="margin-top:.8rem">
-          <div style="font-family:var(--sans);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:.4rem">Gallery(このバリエーション用の写真)</div>
-          <div>${galleryHtml}</div>
-          <label class="btn-add" style="padding:.4rem .8rem;font-size:.7rem;cursor:pointer;position:relative;display:inline-block">
-            ＋ 画像を追加
-            <input type="file" accept="image/*" multiple data-pi="${i}" data-vi="${vi}" data-key="${esc(key)}" onchange="variantGalleryAdd(this)" style="position:absolute;inset:0;opacity:0;cursor:pointer"/>
-          </label>
-        </div>
-      </div>
-    `;
-  }).join('');
-
-  m().innerHTML = `
-    <div class="panel">
-      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem">
-        <button class="btn" onclick="show('plans')" style="padding:.45rem .9rem;font-size:.7rem">‹ 一覧に戻る</button>
-        <div class="panel-title" style="margin:0;flex:1">${esc(p.name)} — 詳細</div>
-      </div>
-
-      <div style="margin-bottom:1.5rem;padding:1rem;background:rgba(184,147,90,.06);border-left:3px solid var(--accent);font-family:var(--sans);font-size:.75rem;color:var(--mid);line-height:1.8">
-        このプランの詳細ページ(plan-detail.html?key=${esc(key)})の内容を編集します。<br>
-        ヒーロー画像・タグライン・説明・Notes はプラン全体共通です。<br>
-        各バリエーション(50カット/20カットなど)を追加・編集できます。
-      </div>
-
-      <div style="margin-bottom:2rem">
-        <div style="font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin-bottom:.6rem">ヒーロー画像</div>
-        ${det.heroImage ? `<img src="${esc(imgSrc(det.heroImage))}" style="width:100%;max-height:200px;object-fit:cover;display:block;margin-bottom:.6rem;border:1px solid var(--border)" onerror="this.style.display='none'"/>` : ''}
-        <div class="img-upload-area">
-          <div class="img-upload-label">＋ ヒーロー画像をアップロード <span>（クリックまたはドラッグ）</span></div>
-          <input type="file" accept="image/*" data-key="${esc(key)}" onchange="planDetailHeroUpload(this)" style="position:absolute;inset:0;opacity:0;cursor:pointer"/>
-        </div>
-      </div>
-
-      <div style="margin-bottom:1.2rem">
-        <div style="font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin-bottom:.4rem">タグライン(ヒーロー下)</div>
-        <input placeholder="例: 七五三の晴れ姿を、花とともに。" value="${esc(det.tagline||'')}" oninput="D.studios['${currentStudio}'].plans[${i}].detail.tagline=this.value"/>
-      </div>
-
-      <div style="margin-bottom:1.2rem">
-        <div style="font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin-bottom:.4rem">長い説明文(About this plan)</div>
-        <textarea placeholder="プラン全体の詳しい紹介文" style="min-height:120px" oninput="D.studios['${currentStudio}'].plans[${i}].detail.longDescription=this.value">${esc(det.longDescription||'')}</textarea>
-      </div>
-
-      <div style="margin-bottom:2rem">
-        <div style="font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin-bottom:.4rem">Notes(プラン共通の注意事項)</div>
-        <textarea placeholder="プラン共通の注意事項" style="min-height:80px" oninput="D.studios['${currentStudio}'].plans[${i}].detail.notes=this.value">${esc(det.notes||'')}</textarea>
-      </div>
-
-      <div style="border-top:1px solid var(--border);padding-top:1.6rem">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
-          <div style="font-family:var(--display);font-style:italic;font-size:1.2rem">Variants — バリエーション</div>
-          <span style="font-family:var(--sans);font-size:.7rem;color:var(--mid)">${p.variants.length}件</span>
-        </div>
-        ${variantsHtml || '<p style="font-family:var(--sans);font-size:.8rem;color:var(--mid);text-align:center;padding:2rem 0">バリエーションがありません。下のボタンから追加してください。</p>'}
-        <button class="btn-add" onclick="addVariant('${esc(key)}')">＋ バリエーションを追加</button>
-      </div>
-
-      <div class="btn-row">
-        <button class="btn" onclick="show('plans')" style="padding:.7rem 1.4rem">‹ 一覧に戻る</button>
-        <button class="btn btn-primary" onclick="toast('保存しました ✓')">保存</button>
-      </div>
-    </div>
-  `;
-}
-
-function planDetailHeroUpload(input){
-  const key = input.dataset.key;
-  const i = findPlanIndex(key);
-  const file = input.files[0]; if(!file || i<0) return;
-  const r = new FileReader();
-  r.onload = e => {
-    if(!d().plans[i].detail) d().plans[i].detail = { heroImage:'', tagline:'', longDescription:'', notes:'' };
-    d().plans[i].detail.heroImage = e.target.result;
-    renderPlanDetail(key);
-    toast('ヒーロー画像を更新 ✓');
-  };
-  r.readAsDataURL(file);
-}
-
-function variantGalleryAdd(input){
-  const pi = parseInt(input.dataset.pi);
-  const vi = parseInt(input.dataset.vi);
-  const key = input.dataset.key;
-  const files = Array.from(input.files);
-  if(files.length===0) return;
-  let done = 0;
-  files.forEach(file => {
-    const r = new FileReader();
-    r.onload = e => {
-      const variant = d().plans[pi].variants[vi];
-      if(!variant.gallery) variant.gallery = [];
-      variant.gallery.push(e.target.result);
-      done++;
-      if(done===files.length){
-        renderPlanDetail(key);
-        toast(`${files.length}枚追加 ✓`);
-      }
-    };
-    r.readAsDataURL(file);
-  });
-}
-
-function addVariant(key){
-  const i = findPlanIndex(key);
-  if(i<0) return;
-  if(!d().plans[i].variants) d().plans[i].variants = [];
-  d().plans[i].variants.push({
-    cuts: null, label: 'New Variant', price: '¥0', duration: '',
-    description: '', includes: [], options: [], gallery: []
-  });
-  renderPlanDetail(key);
 }
 
 // ── GOODS ──
@@ -784,7 +508,7 @@ function renderGoods(){
   const s=d(); const sec=s.goods||(s.goods={heading:'Goods',body:'',items:[]});
   const items = sec.items.map((item,i)=>`
     <div class="icms-item">
-      <img src="${esc(imgSrc(item.file))}" alt="${esc(item.name)}" onerror="this.style.opacity=0.3"/>
+      <img src="${esc(item.file)}" alt="${esc(item.name)}" onerror="this.style.opacity=0.3"/>
       <input placeholder="商品名" value="${esc(item.name)}" oninput="D.studios['${currentStudio}'].goods.items[${i}].name=this.value"/>
       <input placeholder="価格 (例: ¥22,000〜)" value="${esc(item.price)}" oninput="D.studios['${currentStudio}'].goods.items[${i}].price=this.value"/>
       <input placeholder="説明" value="${esc(item.desc)}" oninput="D.studios['${currentStudio}'].goods.items[${i}].desc=this.value"/>
