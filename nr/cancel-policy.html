@@ -21,49 +21,48 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 body.is-ready{opacity:1}
 a{color:inherit}
 
+/* ─── Shared design tokens (index.html と統一) ─── */
+.wrap{max-width:1440px;margin:0 auto;padding:clamp(4rem,10vw,9rem) clamp(1.5rem,5vw,5rem)}
+.sec-head{display:flex;align-items:baseline;gap:1.2rem;margin-bottom:clamp(2.5rem,5vw,4.5rem)}
+.sec-num{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.22em;color:var(--mid)}
+.sec-title{font-family:var(--display);font-weight:300;font-style:italic;font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:-.01em}
+.sec-rule{flex:1;height:1px;background:var(--border);min-width:20px}
+.section-body-text{font-family:var(--serif);font-weight:300;font-size:.9rem;color:var(--mid);line-height:2.1;white-space:pre-line;margin-bottom:2.5rem}
+.btn-line{display:inline-block;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:.85rem 2rem;text-decoration:none;transition:all .3s}
+.btn-line:hover{background:var(--ink);color:#fff}
+.more-cta{display:flex;justify-content:center;margin-top:3rem}
+
+/* ─── Nav ─── */
 .nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid rgba(17,16,16,.12)}
 .nav-top{display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:0 clamp(1rem,3vw,2.5rem);height:64px;gap:1rem}
-.back-link{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:.55rem .9rem;border:1px solid var(--ink);transition:background .2s,color .2s}
+.back-link{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:.55rem .9rem;border:1px solid var(--ink);transition:background .2s,color .2s}
 .back-link:hover{background:var(--ink);color:#fff}
-.nav-brand{font-family:var(--display);font-style:italic;font-size:1.1rem;letter-spacing:.04em;text-align:center}
+.nav-brand{font-family:var(--display);font-style:italic;font-weight:300;font-size:1.1rem;letter-spacing:.04em;text-align:center}
 .nav-brand .b-mark{color:var(--accent);font-style:normal;font-weight:400}
-.nav-right .booking-btn{display:inline-flex;align-items:center;font-family:var(--sans);font-weight:400;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:#fff;text-decoration:none;padding:.6rem 1.1rem;transition:background .25s}
+.nav-right .booking-btn{display:inline-flex;align-items:center;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:#fff;text-decoration:none;padding:.6rem 1.1rem;transition:background .25s}
 .nav-right .booking-btn:hover{background:var(--accent)}
 
 main{padding-top:64px}
 
-/* ─── Header ─── */
-.pg-head{text-align:center;padding:clamp(3rem,7vw,5rem) 1.5rem 2.5rem}
-.pg-sub{font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mid);margin-bottom:1.1rem}
-.pg-head h1{font-family:var(--display);font-style:italic;font-weight:300;font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.1;margin-bottom:1.2rem}
-.pg-lead{font-family:var(--serif);font-weight:300;font-size:.92rem;line-height:2;max-width:640px;margin:0 auto;color:var(--ink)}
-
-/* ─── Content ─── */
-.cp-wrap{max-width:760px;margin:0 auto;padding:0 clamp(1.4rem,5vw,3rem) 5rem}
-
-/* ─── Fee Table ─── */
-.cp-table-section{margin-bottom:3rem}
-.cp-table-title{font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);margin-bottom:1.2rem;text-align:center}
-.cp-table{width:100%;border-collapse:collapse;font-family:var(--sans)}
-.cp-table th{background:var(--ink);color:#fff;font-weight:400;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:.9rem 1.4rem;text-align:left}
-.cp-table td{border-bottom:1px solid var(--border);padding:.95rem 1.4rem;vertical-align:middle}
-.cp-table tr:first-child td{border-top:1px solid var(--border)}
-.cp-table td.fee{font-weight:400;font-size:.95rem;color:var(--ink);text-align:right;white-space:nowrap}
+/* ─── Fee table ─── */
+.cp-table-wrap{max-width:760px;margin:0 auto 3rem}
+.cp-table{width:100%;border-collapse:collapse;font-family:var(--sans);background:#fff;border:1px solid var(--border)}
+.cp-table th{background:var(--ink);color:#fff;font-weight:500;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;padding:1rem 1.4rem;text-align:left}
+.cp-table th:last-child{text-align:right}
+.cp-table td{border-bottom:1px solid var(--border);padding:1.05rem 1.4rem;vertical-align:middle}
+.cp-table tr:last-child td{border-bottom:none}
+.cp-table td.when{font-family:var(--serif);font-weight:300;font-size:.92rem;color:var(--ink);letter-spacing:.02em}
+.cp-table td.fee{font-family:var(--display);font-weight:400;font-style:italic;font-size:1.15rem;text-align:right;white-space:nowrap;color:var(--accent)}
 .cp-table td.fee-free{color:#4a9e6a}
 .cp-table td.fee-high{color:#c0382e}
-.cp-table td.when{font-family:var(--serif);font-weight:300;font-size:.88rem;color:var(--ink)}
-.cp-table tr:nth-child(even) td{background:rgba(17,16,16,.025)}
+.cp-table tr:nth-child(even) td{background:rgba(17,16,16,.018)}
 
 /* ─── Note ─── */
-.cp-note-box{background:#fff;border:1px solid var(--border);padding:1.5rem 1.8rem;margin-bottom:3rem}
-.cp-note-label{font-family:var(--sans);font-weight:400;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);margin-bottom:.6rem}
-.cp-note-text{font-family:var(--serif);font-weight:300;font-size:.88rem;line-height:2;color:var(--ink)}
+.cp-note-box{max-width:760px;margin:0 auto 3rem;padding:1.6rem 1.8rem;background:#fff;border:1px solid var(--border)}
+.cp-note-label{font-family:var(--sans);font-weight:500;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:.7rem}
+.cp-note-text{font-family:var(--serif);font-weight:300;font-size:.88rem;line-height:2.05;color:var(--ink)}
 
-/* ─── CTA ─── */
-.cp-cta{text-align:center;padding:1rem 0 2rem}
-.btn-outline{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:.75rem 1.8rem;border:1px solid var(--ink);transition:background .2s,color .2s}
-.btn-outline:hover{background:var(--ink);color:#fff}
-
+/* ─── Footer ─── */
 footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2rem clamp(1.4rem,5vw,3rem);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.2rem;font-family:var(--sans);font-weight:300;font-size:.7rem;letter-spacing:.08em}
 .footer-logo{font-family:var(--display);font-style:italic;font-weight:400;font-size:1.1rem;color:#fff;letter-spacing:.04em;text-decoration:none}
 .footer-links{list-style:none;display:flex;flex-wrap:wrap;gap:1rem}
@@ -77,7 +76,9 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2rem clamp(1.4re
   .back-link{padding:.45rem .7rem;font-size:.66rem}
   .nav-brand{font-size:.95rem}
   .nav-right .booking-btn{padding:.5rem .8rem;font-size:.62rem}
-  .cp-table th,.cp-table td{padding:.75rem .9rem}
+  .cp-table th,.cp-table td{padding:.85rem 1rem}
+  .cp-table td.fee{font-size:1rem}
+  .sec-head{gap:.8rem}
   footer{flex-direction:column;text-align:center}
   .footer-links{justify-content:center}
 }
@@ -96,55 +97,45 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2rem clamp(1.4re
 </nav>
 
 <main>
-  <header class="pg-head">
-    <div class="pg-sub">Cancellation Policy</div>
-    <h1 id="page-h1">キャンセルポリシー</h1>
-    <p class="pg-lead" id="page-lead">撮影のご予約をいただいた後、キャンセルされる場合は<br/>下記の通り料金が発生いたします。ご予約前に必ずご確認ください。</p>
-  </header>
+  <section>
+    <div class="wrap">
 
-  <div class="cp-wrap">
+      <div class="sec-head">
+        <span class="sec-num">09</span>
+        <h1 class="sec-title">Cancellation Policy</h1>
+        <div class="sec-rule"></div>
+      </div>
 
-    <div class="cp-table-section">
-      <div class="cp-table-title">Cancellation Fee</div>
-      <table class="cp-table">
-        <thead>
-          <tr>
-            <th>キャンセル時期</th>
-            <th style="text-align:right">キャンセル料</th>
-          </tr>
-        </thead>
-        <tbody id="cp-tbody">
-          <!-- JS で描画 / fallback rows -->
-          <tr>
-            <td class="when">撮影日の8日前まで</td>
-            <td class="fee fee-free">無料</td>
-          </tr>
-          <tr>
-            <td class="when">撮影日の7日〜4日前</td>
-            <td class="fee">プラン料金の 30%</td>
-          </tr>
-          <tr>
-            <td class="when">撮影日の3日〜前日</td>
-            <td class="fee">プラン料金の 50%</td>
-          </tr>
-          <tr>
-            <td class="when">撮影日当日</td>
-            <td class="fee fee-high">プラン料金の 100%</td>
-          </tr>
-        </tbody>
-      </table>
+      <p class="section-body-text" style="text-align:center;max-width:680px;margin:0 auto 3rem" id="cp-body">撮影のご予約をいただいた後、キャンセルされる場合は下記の通り料金が発生いたします。<br/>ご予約前に必ずご確認ください。</p>
+
+      <div class="cp-table-wrap">
+        <table class="cp-table">
+          <thead>
+            <tr>
+              <th>キャンセル時期</th>
+              <th>キャンセル料</th>
+            </tr>
+          </thead>
+          <tbody id="cp-tbody">
+            <tr><td class="when">撮影日の8日前まで</td><td class="fee fee-free">無料</td></tr>
+            <tr><td class="when">撮影日の7日〜4日前</td><td class="fee">プラン料金の 30%</td></tr>
+            <tr><td class="when">撮影日の3日〜前日</td><td class="fee">プラン料金の 50%</td></tr>
+            <tr><td class="when">撮影日当日</td><td class="fee fee-high">プラン料金の 100%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cp-note-box">
+        <div class="cp-note-label">Note</div>
+        <p class="cp-note-text" id="cp-note">お子さまの体調不良など、やむを得ない事情の場合はご相談ください。</p>
+      </div>
+
+      <div class="more-cta">
+        <a href="#" id="booking-cta" class="btn-line">ご予約はこちら →</a>
+      </div>
+
     </div>
-
-    <div class="cp-note-box">
-      <div class="cp-note-label">Note</div>
-      <p class="cp-note-text" id="cp-note">お子さまの体調不良など、やむを得ない事情の場合はご相談ください。</p>
-    </div>
-
-    <div class="cp-cta">
-      <a href="#" id="booking-cta" class="btn-outline">ご予約はこちら →</a>
-    </div>
-
-  </div>
+  </section>
 </main>
 
 <footer>
@@ -167,7 +158,7 @@ function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;'
 function feeClass(fee){
   const s = String(fee).trim();
   if(s === '無料') return 'fee fee-free';
-  if(s.includes('100')) return 'fee fee-high';
+  if(s.indexOf('100') !== -1) return 'fee fee-high';
   return 'fee';
 }
 
@@ -179,9 +170,8 @@ function init(){
 
   if(studio.accentColor) document.documentElement.style.setProperty('--accent', studio.accentColor);
 
-  const brandEl = document.getElementById('nav-brand');
   const name = studio.shortName || studio.name || '';
-  brandEl.innerHTML = `${esc(name.replace(/\.$/,''))}<span class="b-mark">.</span>`;
+  document.getElementById('nav-brand').innerHTML = `${esc(name.replace(/\.$/,''))}<span class="b-mark">.</span>`;
 
   document.getElementById('booking-btn').href = studio.bookingUrl || '#';
   document.getElementById('booking-cta').href = studio.bookingUrl || '#';
@@ -190,12 +180,10 @@ function init(){
 
   const cp = studio.cancelPolicy;
   if(cp){
-    if(cp.body) document.getElementById('page-lead').innerHTML = esc(cp.body).replace(/\n/g,'<br/>');
+    if(cp.body) document.getElementById('cp-body').innerHTML = esc(cp.body).replace(/\n/g,'<br/>');
     if(cp.note) document.getElementById('cp-note').textContent = cp.note;
-
     if(cp.items && cp.items.length){
-      const tbody = document.getElementById('cp-tbody');
-      tbody.innerHTML = cp.items.map(it=>`
+      document.getElementById('cp-tbody').innerHTML = cp.items.map(it=>`
         <tr>
           <td class="when">${esc(it.when)}</td>
           <td class="${esc(feeClass(it.fee))}">${esc(it.fee)}</td>

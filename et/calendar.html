@@ -20,69 +20,67 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:14px;line-height:1.8;overflow-x:hidden;opacity:0;transition:opacity .4s var(--ease)}
 body.is-ready{opacity:1}
-img{max-width:100%;display:block}
 a{color:inherit}
 
+/* ─── Shared design tokens (index.html と統一) ─── */
+.wrap{max-width:1440px;margin:0 auto;padding:clamp(4rem,10vw,9rem) clamp(1.5rem,5vw,5rem)}
+.sec-head{display:flex;align-items:baseline;gap:1.2rem;margin-bottom:clamp(2.5rem,5vw,4.5rem)}
+.sec-num{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.22em;color:var(--mid)}
+.sec-title{font-family:var(--display);font-weight:300;font-style:italic;font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:-.01em}
+.sec-rule{flex:1;height:1px;background:var(--border);min-width:20px}
+.section-body-text{font-family:var(--serif);font-weight:300;font-size:.9rem;color:var(--mid);line-height:2.1;white-space:pre-line;margin-bottom:2.5rem}
+.btn-line{display:inline-block;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:.85rem 2rem;text-decoration:none;transition:all .3s;cursor:pointer}
+.btn-line:hover{background:var(--ink);color:#fff}
+.more-cta{display:flex;justify-content:center;margin-top:3rem}
+
+/* ─── Nav (sub-page) ─── */
 .nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid rgba(17,16,16,.12)}
 .nav-top{display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:0 clamp(1rem,3vw,2.5rem);height:64px;gap:1rem}
-.back-link{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:.55rem .9rem;border:1px solid var(--ink);transition:background .2s,color .2s}
+.back-link{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:.55rem .9rem;border:1px solid var(--ink);transition:background .2s,color .2s}
 .back-link:hover{background:var(--ink);color:#fff}
-.nav-brand{font-family:var(--display);font-style:italic;font-size:1.1rem;letter-spacing:.04em;text-align:center}
+.nav-brand{font-family:var(--display);font-style:italic;font-weight:300;font-size:1.1rem;letter-spacing:.04em;text-align:center}
 .nav-brand .b-mark{color:var(--accent);font-style:normal;font-weight:400}
-.nav-right .booking-btn{display:inline-flex;align-items:center;font-family:var(--sans);font-weight:400;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:#fff;text-decoration:none;padding:.6rem 1.1rem;transition:background .25s}
+.nav-right .booking-btn{display:inline-flex;align-items:center;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:#fff;text-decoration:none;padding:.6rem 1.1rem;transition:background .25s}
 .nav-right .booking-btn:hover{background:var(--accent)}
 
 main{padding-top:64px}
 
-.pg-head{text-align:center;padding:clamp(3rem,7vw,5rem) 1.5rem 2rem}
-.pg-sub{font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mid);margin-bottom:1.1rem}
-.pg-head h1{font-family:var(--display);font-style:italic;font-weight:300;font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.1;margin-bottom:1rem}
-.pg-lead{font-family:var(--serif);font-weight:300;font-size:.92rem;line-height:2;max-width:560px;margin:0 auto;color:var(--ink)}
-
-/* ─── Tier Legend ─── */
-.tier-legend{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;padding:0 1.5rem 2.5rem}
-.tier-item{display:flex;align-items:center;gap:.7rem;font-family:var(--sans);font-weight:400;font-size:.8rem;letter-spacing:.06em}
-.tier-dot{display:inline-block;width:20px;height:8px;border-radius:2px;flex-shrink:0}
+/* ─── Tier legend ─── */
+.tier-legend{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;margin-bottom:clamp(2rem,4vw,3rem)}
+.tier-item{display:flex;align-items:center;gap:.7rem;font-family:var(--sans);font-weight:400;font-size:.78rem;letter-spacing:.06em}
+.tier-dot{display:inline-block;width:24px;height:7px;border-radius:2px;flex-shrink:0}
 .tier-a .tier-dot{background:var(--tier-a)}
 .tier-b .tier-dot{background:var(--tier-b)}
 .tier-c .tier-dot{background:var(--tier-c)}
-.tier-label{font-weight:500;font-size:.82rem}
+.tier-label{font-weight:500;letter-spacing:.1em}
 .tier-price{color:var(--ink);font-weight:400}
 .tier-days{color:var(--mid);font-size:.72rem}
 
-/* ─── Calendar Grid ─── */
-.cal-wrap{max-width:1060px;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem) 1rem}
-.cal-months{display:grid;grid-template-columns:1fr 1fr;gap:2rem 3rem}
-.cal-month{}
+/* ─── Calendar grid ─── */
+.cal-months{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,4vw,3rem) clamp(2rem,5vw,4rem);margin-bottom:3rem}
 .cal-month-hd{display:flex;align-items:baseline;gap:.75rem;margin-bottom:.8rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
 .cal-month-name{font-family:var(--display);font-style:italic;font-weight:400;font-size:1.4rem;letter-spacing:.02em}
 .cal-month-year{font-family:var(--sans);font-weight:300;font-size:.7rem;letter-spacing:.14em;color:var(--mid);text-transform:uppercase}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
-.cal-dow{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.1em;text-align:center;padding:.4rem 0;color:var(--mid)}
+.cal-dow{font-family:var(--sans);font-weight:500;font-size:.6rem;letter-spacing:.1em;text-align:center;padding:.4rem 0;color:var(--mid);text-transform:uppercase}
 .cal-dow.sun{color:#c0382e}
 .cal-dow.sat{color:#2e6fc0}
-.cal-day{position:relative;text-align:center;padding:.55rem .2rem .3rem;font-family:var(--sans);font-weight:300;font-size:.8rem;min-height:2.8rem;background:#fff;cursor:default}
+.cal-day{position:relative;text-align:center;padding:.55rem .2rem .3rem;font-family:var(--sans);font-weight:300;font-size:.8rem;min-height:2.8rem;background:#fff}
 .cal-day.empty{background:transparent}
-.cal-day.other-month{opacity:.3;background:#f0ece6}
 .cal-day.sun-col{color:#c0382e}
 .cal-day.sat-col{color:#2e6fc0}
-.cal-day.holiday{color:#c0382e;font-weight:400}
+.cal-day.holiday{color:#c0382e}
 .cal-day::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px}
 .cal-day.tier-a::after{background:var(--tier-a)}
 .cal-day.tier-b::after{background:var(--tier-b)}
 .cal-day.tier-c::after{background:var(--tier-c)}
 .cal-day.today{outline:2px solid var(--accent);outline-offset:-2px}
-.cal-day.closed{opacity:.45;text-decoration:line-through}
 
 /* ─── Notes ─── */
-.cal-notes{max-width:700px;margin:2rem auto 0;padding:0 1.5rem 1.5rem;text-align:center}
-.cal-note{font-family:var(--serif);font-weight:300;font-size:.82rem;line-height:2;color:var(--mid);margin-bottom:.4rem}
+.cal-notes{padding-top:1.5rem;border-top:1px solid var(--border);text-align:center}
+.cal-note{font-family:var(--serif);font-weight:300;font-size:.82rem;line-height:2.1;color:var(--mid);margin-bottom:.4rem}
 
-/* ─── CTA ─── */
-.cal-cta{text-align:center;padding:2.5rem 1.5rem 4rem}
-.btn-fill{display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:400;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;background:var(--ink);color:#fff;text-decoration:none;padding:.85rem 2.4rem;transition:background .25s}
-.btn-fill:hover{background:var(--accent)}
-
+/* ─── Footer ─── */
 footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2rem clamp(1.4rem,5vw,3rem);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.2rem;font-family:var(--sans);font-weight:300;font-size:.7rem;letter-spacing:.08em}
 .footer-logo{font-family:var(--display);font-style:italic;font-weight:400;font-size:1.1rem;color:#fff;letter-spacing:.04em;text-decoration:none}
 .footer-links{list-style:none;display:flex;flex-wrap:wrap;gap:1rem}
@@ -98,6 +96,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2rem clamp(1.4re
   .nav-brand{font-size:.95rem}
   .nav-right .booking-btn{padding:.5rem .8rem;font-size:.62rem}
   .tier-legend{gap:1.2rem}
+  .sec-head{gap:.8rem}
   footer{flex-direction:column;text-align:center}
   .footer-links{justify-content:center}
 }
@@ -116,31 +115,37 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2rem clamp(1.4re
 </nav>
 
 <main>
-  <header class="pg-head">
-    <div class="pg-sub">Calendar</div>
-    <h1 id="page-h1">撮影カレンダー</h1>
-    <p class="pg-lead" id="page-lead">撮影可能日をご確認ください。<br/>お日にちにより撮影料金が異なります。</p>
-  </header>
+  <section>
+    <div class="wrap">
 
-  <div class="tier-legend">
-    <div class="tier-item tier-a"><span class="tier-dot"></span><span class="tier-label">A</span><span class="tier-price">¥6,600</span><span class="tier-days">平日</span></div>
-    <div class="tier-item tier-b"><span class="tier-dot"></span><span class="tier-label">B</span><span class="tier-price">¥8,800</span><span class="tier-days">土曜</span></div>
-    <div class="tier-item tier-c"><span class="tier-dot"></span><span class="tier-label">C</span><span class="tier-price">¥9,900</span><span class="tier-days">日曜・祝日</span></div>
-  </div>
+      <div class="sec-head">
+        <span class="sec-num">07</span>
+        <h1 class="sec-title">Calendar</h1>
+        <div class="sec-rule"></div>
+      </div>
 
-  <div class="cal-wrap">
-    <div class="cal-months" id="cal-months"></div>
-  </div>
+      <p class="section-body-text" style="text-align:center;max-width:640px;margin:0 auto 2.5rem">撮影可能日をご確認ください。お日にちにより撮影料金が異なります。</p>
 
-  <div class="cal-notes">
-    <p class="cal-note" id="cal-note-main">定休日：火曜日 / 撮影は完全予約制となっております。</p>
-    <p class="cal-note">※表示の料金はスタジオ使用料（撮影費別）です。詳細はプランページをご確認ください。</p>
-    <p class="cal-note">※祝日・大型連休はC料金となります。</p>
-  </div>
+      <div class="tier-legend">
+        <div class="tier-item tier-a"><span class="tier-dot"></span><span class="tier-label">A</span><span class="tier-price">¥6,600</span><span class="tier-days">平日</span></div>
+        <div class="tier-item tier-b"><span class="tier-dot"></span><span class="tier-label">B</span><span class="tier-price">¥8,800</span><span class="tier-days">土曜</span></div>
+        <div class="tier-item tier-c"><span class="tier-dot"></span><span class="tier-label">C</span><span class="tier-price">¥9,900</span><span class="tier-days">日曜・祝日</span></div>
+      </div>
 
-  <div class="cal-cta">
-    <a href="#" class="btn-fill" id="cta-btn">ご予約はこちら</a>
-  </div>
+      <div class="cal-months" id="cal-months"></div>
+
+      <div class="cal-notes">
+        <p class="cal-note" id="cal-note-main">定休日：火曜日 / 撮影は完全予約制となっております。</p>
+        <p class="cal-note">※表示の料金はスタジオ使用料（撮影費別）です。詳細はプランページをご確認ください。</p>
+        <p class="cal-note">※祝日・大型連休はC料金となります。</p>
+      </div>
+
+      <div class="more-cta">
+        <a href="#" class="btn-line" id="cta-btn">ご予約はこちら →</a>
+      </div>
+
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -160,7 +165,6 @@ const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 
 function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
-/* 日本の祝日（2025〜2026） */
 const JP_HOLIDAYS = new Set([
   '2025-01-01','2025-01-13',
   '2025-02-11','2025-02-23','2025-02-24',
@@ -188,28 +192,23 @@ function pad(n){ return String(n).padStart(2,'0'); }
 function dateKey(y,m,d){ return `${y}-${pad(m+1)}-${pad(d)}`; }
 
 function getTier(y, m, d){
-  const dow = new Date(y, m, d).getDay(); // 0=Sun,6=Sat
+  const dow = new Date(y, m, d).getDay();
   const key = dateKey(y, m, d);
   if(dow === 0 || JP_HOLIDAYS.has(key)) return 'c';
   if(dow === 6) return 'b';
-  if(dow === 2) return 'closed'; // 火曜=定休日
   return 'a';
 }
 
 function renderMonth(year, month){
   const MONTHS_JA = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
-  const firstDow = new Date(year, month, 1).getDay(); // 0=Sun
-  const startCol = firstDow === 0 ? 6 : firstDow - 1; // 月曜始まりに調整
+  const firstDow = new Date(year, month, 1).getDay();
+  const startCol = firstDow === 0 ? 6 : firstDow - 1;
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const today = new Date();
   const todayKey = dateKey(today.getFullYear(), today.getMonth(), today.getDate());
 
   let cells = '';
-  // 前月の空白
-  for(let i = 0; i < startCol; i++){
-    cells += `<div class="cal-day empty"></div>`;
-  }
-  // 今月の日付
+  for(let i = 0; i < startCol; i++) cells += `<div class="cal-day empty"></div>`;
   for(let d = 1; d <= daysInMonth; d++){
     const dow = new Date(year, month, d).getDay();
     const key = dateKey(year, month, d);
@@ -229,23 +228,15 @@ function renderMonth(year, month){
         <span class="cal-month-year">${year}</span>
       </div>
       <div class="cal-grid">
-        <div class="cal-dow">月</div>
-        <div class="cal-dow">火</div>
-        <div class="cal-dow">水</div>
-        <div class="cal-dow">木</div>
-        <div class="cal-dow">金</div>
-        <div class="cal-dow sat">土</div>
-        <div class="cal-dow sun">日</div>
+        <div class="cal-dow">月</div><div class="cal-dow">火</div><div class="cal-dow">水</div><div class="cal-dow">木</div><div class="cal-dow">金</div><div class="cal-dow sat">土</div><div class="cal-dow sun">日</div>
         ${cells}
       </div>
-    </div>
-  `;
+    </div>`;
 }
 
 function renderCalendar(){
   const now = new Date();
-  let y = now.getFullYear();
-  let m = now.getMonth();
+  let y = now.getFullYear(), m = now.getMonth();
   let html = '';
   for(let i = 0; i < 6; i++){
     html += renderMonth(y, m);
@@ -263,22 +254,16 @@ function init(){
 
   if(studio.accentColor) document.documentElement.style.setProperty('--accent', studio.accentColor);
 
-  const brandEl = document.getElementById('nav-brand');
   const name = studio.shortName || studio.name || '';
-  brandEl.innerHTML = `${esc(name.replace(/\.$/,''))}<span class="b-mark">.</span>`;
+  document.getElementById('nav-brand').innerHTML = `${esc(name.replace(/\.$/,''))}<span class="b-mark">.</span>`;
 
-  const bookingBtn = document.getElementById('booking-btn');
-  const ctaBtn = document.getElementById('cta-btn');
-  bookingBtn.href = studio.bookingUrl || '#';
-  ctaBtn.href = studio.bookingUrl || '#';
-
+  document.getElementById('booking-btn').href = studio.bookingUrl || '#';
+  document.getElementById('cta-btn').href = studio.bookingUrl || '#';
   document.getElementById('footer-copy').textContent = data.global.copyright;
   document.getElementById('page-title').textContent = `Calendar | ${studio.name}`;
 
-  if(studio.calendar){
-    if(studio.calendar.note){
-      document.getElementById('cal-note-main').textContent = studio.calendar.note;
-    }
+  if(studio.calendar && studio.calendar.note){
+    document.getElementById('cal-note-main').textContent = studio.calendar.note;
   }
 
   renderCalendar();
