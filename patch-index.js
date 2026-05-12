@@ -26,6 +26,22 @@
     return 'a';
   }
 
+  /* ── Update tier legend from CMS data (if exists) ── */
+  function renderCalTierLegend(studio){
+    var container = document.querySelector('.cal-top-tiers');
+    if(!container) return;
+    var tiers = studio && studio.calendar && Array.isArray(studio.calendar.tiers) ? studio.calendar.tiers : null;
+    if(!tiers || tiers.length === 0) return; // keep static HTML default
+    container.innerHTML = tiers.map(function(t){
+      return '<div class="cal-top-tier">'
+        + '<span class="cal-top-dot" style="background:' + (t.color||'#ccc') + '"></span>'
+        + '<span class="cal-top-lbl">' + (t.label||'') + '</span>'
+        + '<span class="cal-top-price">' + (t.price||'') + '</span>'
+        + '<span class="cal-top-days">' + (t.days||'') + '</span>'
+      + '</div>';
+    }).join('');
+  }
+
   /* ── Render 2-month preview into #cal-top-months ── */
   function renderCalTop(){
     var container = document.getElementById('cal-top-months');
@@ -91,21 +107,46 @@
     }).join('');
   }
 
-  /* ── Reservation: 予約ボタンの URL を設定 ── */
-  function bindReservationButtons(){
-    var STUDIO_KEY = location.pathname.indexOf('/nr/') !== -1 ? 'nr' : 'et';
-    var d = window.SITE_DATA && window.SITE_DATA.studios && window.SITE_DATA.studios[STUDIO_KEY];
-    var bookUrl = (d && d.bookingUrl) || '#';
-    var phone = (d && d.phone) || '050-1751-2601';
-    var b1 = document.getElementById('res-top-book-1');
-    var b2 = document.getElementById('res-top-book-2');
-    if(b1) b1.href = bookUrl;
-    if(b2) b2.href = bookUrl;
-    var tel = document.getElementById('res-top-tel');
-    if(tel) tel.textContent = phone;
+  /* ── Reservation: ブロックを動的に描画(CMSデータ参照) ── */
+  function renderReservationBlocks(studio){
+    var grid = document.querySelector('.res-top-grid');
+    if(!grid) return;
+    var blocks = studio && studio.reservation && Array.isArray(studio.reservation.blocks) ? studio.reservation.blocks : null;
+    var bookUrlFallback = (studio && studio.bookingUrl) || '#';
+    var phone = (studio && studio.phone) || '050-1751-2601';
+
+    // CMSにブロックがあれば動的描画。なければ既存HTMLのフォールバックを使う
+    if(blocks && blocks.length > 0){
+      grid.innerHTML = blocks.map(function(b){
+        var bookHref = b.bookingUrl || bookUrlFallback;
+        var notes = (b.notes||[]).map(function(n){ return '<li>' + n + '</li>'; }).join('');
+        return '<div class="res-top-block">'
+          + '<div class="res-top-head">'
+            + '<span class="res-top-mark">' + (b.mark||'') + '</span>'
+            + '<h3 class="res-top-title">' + (b.title||'') + '</h3>'
+          + '</div>'
+          + '<div class="res-top-btns">'
+            + '<a href="' + bookHref + '" class="btn-line filled">' + (b.bookingLabel||'ご予約はこちら') + '</a>'
+            + '<a href="' + (b.plansUrl||'plans.html') + '" class="btn-line">' + (b.plansLabel||'プラン・料金') + '</a>'
+          + '</div>'
+          + (notes ? '<ul class="res-top-notes">' + notes + '</ul>' : '')
+        + '</div>';
+      }).join('');
+    } else {
+      // フォールバック: 既存の固定HTMLのURL/電話を埋める
+      var b1 = document.getElementById('res-top-book-1');
+      var b2 = document.getElementById('res-top-book-2');
+      if(b1) b1.href = bookUrlFallback;
+      if(b2) b2.href = bookUrlFallback;
+      var tel = document.getElementById('res-top-tel');
+      if(tel) tel.textContent = phone;
+    }
   }
 
   function applyPatch() {
+    var STUDIO_KEY = location.pathname.indexOf('/nr/') !== -1 ? 'nr' : 'et';
+    var studio = window.SITE_DATA && window.SITE_DATA.studios && window.SITE_DATA.studios[STUDIO_KEY];
+
     /* 旧リンク → .html リダイレクト（保険） */
     var fixes = { 'plans/': 'plans.html', 'calendar/': 'calendar.html', 'reservation/': 'reservation.html', 'cancel-policy/': 'cancel-policy.html' };
     document.querySelectorAll('a[href]').forEach(function (a) {
@@ -113,9 +154,10 @@
       if (fixes[h]) a.setAttribute('href', fixes[h]);
     });
 
+    renderCalTierLegend(studio);
     renderCalTop();
     renderKimonoCats();
-    bindReservationButtons();
+    renderReservationBlocks(studio);
   }
 
   if (document.body.classList.contains('is-ready')) {

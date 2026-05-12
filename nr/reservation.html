@@ -277,6 +277,98 @@ const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 
 function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
+function renderBlocksFromData(studio){
+  const r = studio.reservation;
+  if(!r || !Array.isArray(r.blocks) || r.blocks.length === 0) return;
+  const main = document.querySelector('main > section > .wrap');
+  if(!main) return;
+  // 既存 subsec を全て削除
+  main.querySelectorAll('.subsec').forEach(el => el.remove());
+  const bookUrlFallback = studio.bookingUrl || '#';
+
+  const omairiHtml = renderOmairiHtml(r.omairiPlan);
+
+  r.blocks.forEach((b, bi) => {
+    const sub = document.createElement('div');
+    sub.className = 'subsec';
+    const bookHref = b.bookingUrl || bookUrlFallback;
+    const notes = (b.notes||[]).map(n => `<li>${esc(n)}</li>`).join('');
+    const isOmairi = (b.title||'').indexOf('お詣り') !== -1 || (b.title||'').indexOf('753') !== -1;
+    sub.innerHTML = `
+      <div class="subsec-head">
+        <span class="subsec-mark">${esc(b.mark||'')}</span>
+        <h2 class="subsec-title">${esc(b.title||'')}</h2>
+      </div>
+      <div class="res-btns">
+        <a href="${esc(bookHref)}" class="btn-line filled">${esc(b.bookingLabel||'ご予約はこちら')}</a>
+        <a href="${esc(b.plansUrl||'plans.html')}" class="btn-line">${esc(b.plansLabel||'プラン・料金')}</a>
+      </div>
+      ${notes ? `<ul class="res-notes">${notes}</ul>` : ''}
+      ${isOmairi && omairiHtml ? omairiHtml : ''}
+    `;
+    main.appendChild(sub);
+  });
+}
+
+function renderOmairiHtml(op){
+  if(!op) return '';
+  const periods = Array.isArray(op.periods) ? op.periods : [];
+  const rows = Array.isArray(op.rows) ? op.rows : [];
+  const periodTh = periods.map(p => `<th class="period-hd">${esc(p).replace(/\s+/g,'<br/>')}</th>`).join('');
+  const colSpan = periods.length;
+  const tbodyHtml = rows.map((row, ri) => {
+    const cells = periods.map((_, pi) => {
+      const raw = String(row.prices && row.prices[pi] || '');
+      const m = raw.match(/^([^(（]+)\s*[(（]([^)）]+)[)）]\s*$/);
+      const main = m ? m[1].trim() : raw;
+      const add = m ? m[2].trim() : '';
+      return `<td class="price-cell">
+        <span class="price-main">${esc(main)}</span>
+        ${add ? `<span class="price-add">(${esc(add)})</span>` : ''}
+      </td>`;
+    }).join('');
+    const rowLabelCell = ri === 0
+      ? `<td class="row-label" rowspan="${rows.length}" style="writing-mode:vertical-rl;text-orientation:upright;letter-spacing:.5em">お詣り日</td>`
+      : '';
+    return `<tr>
+      ${rowLabelCell}
+      <td class="row-label">${esc(row.label||'')}${row.sublabel?`<br/><span style="font-size:.66rem;color:var(--mid);font-weight:300">(${esc(row.sublabel)})</span>`:''}</td>
+      ${cells}
+    </tr>`;
+  }).join('');
+
+  return `
+    <div class="omairi-plan" id="omairi-plan">
+      <div class="omairi-plan-head">
+        <div class="omairi-plan-label">753 Omairi Plan</div>
+        <div class="omairi-plan-title">${esc(op.title||'')}</div>
+        <p class="omairi-plan-desc">${esc(op.description||'').replace(/\n/g,'<br/>')}</p>
+        ${op.includes ? `<p class="omairi-plan-includes">（${esc(op.includes)}）</p>` : ''}
+      </div>
+      ${op.basePlan ? `
+        <div class="omairi-base">
+          <div class="omairi-base-label">スタジオ撮影料金</div>
+          <div class="omairi-base-val">${esc(op.basePlan)}</div>
+        </div>
+        <div class="plus-sign">+</div>
+      ` : ''}
+      <div class="omairi-table-wrap">
+        <table class="omairi-table">
+          <thead>
+            <tr>
+              <th colspan="2" rowspan="2">お詣り着物<br/>レンタルセットプラン</th>
+              <th colspan="${colSpan}">スタジオ撮影月</th>
+            </tr>
+            <tr>${periodTh}</tr>
+          </thead>
+          <tbody>${tbodyHtml}</tbody>
+        </table>
+      </div>
+      <p class="omairi-table-tax">( tax in )</p>
+    </div>
+  `;
+}
+
 function init(){
   const data = window.SITE_DATA;
   if(!data){ document.body.classList.add('is-ready'); return; }
@@ -289,12 +381,19 @@ function init(){
   document.getElementById('nav-brand').innerHTML = `${esc(name.replace(/\.$/,''))}<span class="b-mark">.</span>`;
 
   document.getElementById('booking-btn').href = studio.bookingUrl || '#';
-  document.getElementById('book-shoot-btn').href = studio.bookingUrl || '#';
-  document.getElementById('book-omairi-btn').href = studio.bookingUrl || '#';
 
-  if(studio.phone){
-    const telEl = document.getElementById('tel-num');
-    if(telEl) telEl.textContent = studio.phone;
+  // CMS データがあればブロックを再描画。なければ既存固定HTMLのURL/電話を埋める
+  if(studio.reservation && Array.isArray(studio.reservation.blocks) && studio.reservation.blocks.length){
+    renderBlocksFromData(studio);
+  } else {
+    const b1 = document.getElementById('book-shoot-btn');
+    const b2 = document.getElementById('book-omairi-btn');
+    if(b1) b1.href = studio.bookingUrl || '#';
+    if(b2) b2.href = studio.bookingUrl || '#';
+    if(studio.phone){
+      const telEl = document.getElementById('tel-num');
+      if(telEl) telEl.textContent = studio.phone;
+    }
   }
 
   document.getElementById('footer-copy').textContent = data.global.copyright;

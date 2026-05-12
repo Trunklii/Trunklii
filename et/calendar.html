@@ -126,7 +126,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2rem clamp(1.4re
 
       <p class="section-body-text" style="text-align:center;max-width:640px;margin:0 auto 2.5rem">撮影可能日をご確認ください。お日にちにより撮影料金が異なります。</p>
 
-      <div class="tier-legend">
+      <div class="tier-legend" id="tier-legend">
         <div class="tier-item tier-a"><span class="tier-dot"></span><span class="tier-label">A</span><span class="tier-price">¥6,600</span><span class="tier-days">平日</span></div>
         <div class="tier-item tier-b"><span class="tier-dot"></span><span class="tier-label">B</span><span class="tier-price">¥8,800</span><span class="tier-days">土曜</span></div>
         <div class="tier-item tier-c"><span class="tier-dot"></span><span class="tier-label">C</span><span class="tier-price">¥9,900</span><span class="tier-days">日曜・祝日</span></div>
@@ -264,6 +264,21 @@ function init(){
 
   if(studio.calendar && studio.calendar.note){
     document.getElementById('cal-note-main').textContent = studio.calendar.note;
+  }
+
+  // CMSで設定された料金区分があれば動的に描画
+  if(studio.calendar && Array.isArray(studio.calendar.tiers) && studio.calendar.tiers.length){
+    const legend = document.getElementById('tier-legend');
+    if(legend){
+      legend.innerHTML = studio.calendar.tiers.map(t=>`
+        <div class="tier-item">
+          <span class="tier-dot" style="background:${esc(t.color||'#ccc')}"></span>
+          <span class="tier-label">${esc(t.label||'')}</span>
+          <span class="tier-price">${esc(t.price||'')}</span>
+          <span class="tier-days">${esc(t.days||'')}</span>
+        </div>
+      `).join('');
+    }
   }
 
   renderCalendar();

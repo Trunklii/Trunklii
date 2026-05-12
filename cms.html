@@ -364,8 +364,8 @@ function saveBasic(){
 // ── HERO ──
 function renderHero(){
   const s=d();
-  const slots = [0,1,2].map(i=>{
-    const img = s.heroImages[i]||{file:'',alt:''};
+  if(!Array.isArray(s.heroImages)) s.heroImages = [];
+  const slots = s.heroImages.map((img,i)=>{
     const src = img.file||'';
     return `
       <div class="hero-slot">
@@ -374,7 +374,12 @@ function renderHero(){
           <div class="img-upload-label">Slide ${i+1}<br><span>画像をアップロード</span></div>
           <input type="file" accept="image/*" data-slot="${i}" onchange="heroUpload(this)" style="position:absolute;inset:0;opacity:0;cursor:pointer"/>
         </div>
-        <input placeholder="Alt テキスト" value="${esc(img.alt)}" style="width:100%;border:1px solid var(--border);background:var(--off);padding:.35rem .5rem;font-family:var(--sans);font-size:.7rem;margin-top:.3rem;outline:none" oninput="heroSetAlt(${i},this.value)"/>
+        <input placeholder="Alt テキスト" value="${esc(img.alt||'')}" style="width:100%;border:1px solid var(--border);background:var(--off);padding:.35rem .5rem;font-family:var(--sans);font-size:.7rem;margin-top:.3rem;outline:none" oninput="heroSetAlt(${i},this.value)"/>
+        <div class="li-ctrl" style="flex-direction:row;justify-content:center;margin-top:.4rem">
+          ${i>0?`<button class="up" onclick="arrMove(D.studios['${currentStudio}'].heroImages,${i},-1);renderHero()">↑</button>`:''}
+          ${i<s.heroImages.length-1?`<button class="dn" onclick="arrMove(D.studios['${currentStudio}'].heroImages,${i},1);renderHero()">↓</button>`:''}
+          <button class="del" onclick="D.studios['${currentStudio}'].heroImages.splice(${i},1);renderHero()">削除</button>
+        </div>
         <div class="hero-slot-label">Slide ${i+1}</div>
       </div>
     `;
@@ -382,8 +387,9 @@ function renderHero(){
   m().innerHTML = `
     <div class="panel">
       <div class="panel-title">Hero Images — ${esc(d().name)}</div>
-      <p class="global-note">各スライドの画像をアップロードしてください。</p>
+      <p class="global-note">各スライドの画像をアップロードしてください。複数枚で自動カルーセル表示されます。</p>
       <div class="hero-slots">${slots}</div>
+      <button class="btn-add" onclick="D.studios['${currentStudio}'].heroImages.push({file:'',alt:''});renderHero()">＋ スライドを追加する</button>
       <div class="btn-row"><button class="btn btn-primary" onclick="toast('保存しました ✓')">保存</button></div>
     </div>
   `;
@@ -831,14 +837,43 @@ function saveGoods(){ d().goods.heading=val('g-heading'); d().goods.body=val('g-
 
 // ── CALENDAR ──
 function renderCalendar(){
-  const s=d(); const c=s.calendar||(s.calendar={heading:'Calendar',body:'',embedUrl:'',note:''});
+  const s=d();
+  const c=s.calendar||(s.calendar={heading:'Calendar',body:'',embedUrl:'',note:''});
+  if(!Array.isArray(c.tiers)) c.tiers = [
+    {label:'A', price:'¥6,600', color:'#f0c8a0', days:'平日'},
+    {label:'B', price:'¥8,800', color:'#b8cfe8', days:'土曜'},
+    {label:'C', price:'¥9,900', color:'#f4b0bc', days:'日曜・祝日'}
+  ];
+  const tierRows = c.tiers.map((t,i)=>`
+    <div class="list-item">
+      <div class="li-body">
+        <div class="row-2">
+          <input placeholder="ラベル (例: A)" value="${esc(t.label)}" oninput="D.studios['${currentStudio}'].calendar.tiers[${i}].label=this.value"/>
+          <input type="color" value="${esc(t.color||'#cccccc')}" oninput="D.studios['${currentStudio}'].calendar.tiers[${i}].color=this.value" style="height:36px;padding:.15rem;cursor:pointer"/>
+        </div>
+        <div class="row-2">
+          <input placeholder="料金 (例: ¥6,600)" value="${esc(t.price)}" oninput="D.studios['${currentStudio}'].calendar.tiers[${i}].price=this.value"/>
+          <input placeholder="該当日 (例: 平日)" value="${esc(t.days)}" oninput="D.studios['${currentStudio}'].calendar.tiers[${i}].days=this.value"/>
+        </div>
+      </div>
+      <div class="li-ctrl">
+        <button class="del" onclick="D.studios['${currentStudio}'].calendar.tiers.splice(${i},1);renderCalendar()">削除</button>
+        ${i>0?`<button class="up" onclick="arrMove(D.studios['${currentStudio}'].calendar.tiers,${i},-1);renderCalendar()">↑</button>`:''}
+        ${i<c.tiers.length-1?`<button class="dn" onclick="arrMove(D.studios['${currentStudio}'].calendar.tiers,${i},1);renderCalendar()">↓</button>`:''}
+      </div>
+    </div>
+  `).join('');
   m().innerHTML = `
     <div class="panel">
       <div class="panel-title">Calendar — ${esc(s.name)}</div>
       <div class="row"><label>見出し</label><input id="c-heading" value="${esc(c.heading)}"/></div>
       <div class="row"><label>本文</label><textarea id="c-body">${esc(c.body)}</textarea></div>
-      <div class="row"><label>埋め込みURL (Google Calendar 等)</label><input id="c-embed" value="${esc(c.embedUrl)}" placeholder="https://calendar.google.com/calendar/embed?src=..."/></div>
-      <div class="row"><label>補足</label><input id="c-note" value="${esc(c.note)}"/></div>
+      <div class="row"><label>埋め込みURL (Google Calendar 等・任意)</label><input id="c-embed" value="${esc(c.embedUrl||'')}" placeholder="https://calendar.google.com/calendar/embed?src=..."/></div>
+      <div class="panel-sub">料金区分 (A/B/C)</div>
+      <p class="global-note">カレンダーに表示する料金タイプ。色 + 料金 + 該当日を設定します。</p>
+      <div>${tierRows}</div>
+      <button class="btn-add" onclick="D.studios['${currentStudio}'].calendar.tiers.push({label:'',price:'',color:'#cccccc',days:''});renderCalendar()">＋ 料金区分を追加する</button>
+      <div class="row" style="margin-top:1.2rem"><label>補足</label><input id="c-note" value="${esc(c.note)}"/></div>
       <div class="btn-row"><button class="btn btn-primary" onclick="saveCalendar()">保存</button></div>
     </div>
   `;
@@ -851,17 +886,164 @@ function saveCalendar(){
 
 // ── RESERVATION ──
 function renderReservation(){
-  const s=d(); const r=s.reservation||(s.reservation={heading:'Reservation',body:'',formUrl:'',note:''});
+  const s=d();
+  const r=s.reservation||(s.reservation={heading:'Reservation',body:'',formUrl:'',note:''});
+  if(!Array.isArray(r.blocks)) r.blocks = [
+    {
+      mark:'A', title:'撮影予約について',
+      bookingUrl:'', bookingLabel:'撮影のご予約はこちら',
+      plansUrl:'plans.html', plansLabel:'撮影プラン・料金',
+      notes:['電話やSNSでのご予約も受付しております。','ご予約日から1週間以内に確認のお電話を差し上げます。']
+    },
+    {
+      mark:'B', title:'753お詣り予約について',
+      bookingUrl:'', bookingLabel:'お詣り日のご予約はこちら',
+      plansUrl:'reservation.html#omairi-plan', plansLabel:'お詣りプラン・料金',
+      notes:['スタジオ撮影 × お詣り着物レンタルのセットプラン。','撮影日とお詣り日でお好きなお着物をお選びいただけます。']
+    }
+  ];
+  if(!r.omairiPlan) r.omairiPlan = {
+    title:'スタジオ撮影 × お詣り着物レンタルプラン',
+    description:'スタジオ撮影とお詣り着物レンタルがセットになった753お詣りプランです。',
+    includes:'スタジオ撮影 / お着物2着 / 着付け2日分 / ヘアメイク2日分 / クリーニング込',
+    basePlan:'One plan（20cut） / Family plan（50cut）',
+    periods:['2025年 4月〜9月','2025年 10月〜12月','2026年 1月〜3月'],
+    rows:[
+      {label:'平日', sublabel:'お子様1人追加料金', prices:['¥20,000 (¥18,000)','¥24,000 (¥22,000)','¥22,000 (¥20,000)']},
+      {label:'土日祝日', sublabel:'お子様1人追加料金', prices:['¥25,000 (¥23,000)','¥29,000 (¥27,000)','¥27,000 (¥25,000)']}
+    ]
+  };
+
+  const blockHtml = r.blocks.map((b,bi)=>{
+    const noteRows = (b.notes||[]).map((n,ni)=>`
+      <div class="list-item" style="padding:.6rem .8rem">
+        <div class="li-body">
+          <textarea placeholder="注記" oninput="D.studios['${currentStudio}'].reservation.blocks[${bi}].notes[${ni}]=this.value">${esc(n)}</textarea>
+        </div>
+        <div class="li-ctrl">
+          <button class="del" onclick="D.studios['${currentStudio}'].reservation.blocks[${bi}].notes.splice(${ni},1);renderReservation()">削除</button>
+          ${ni>0?`<button class="up" onclick="arrMove(D.studios['${currentStudio}'].reservation.blocks[${bi}].notes,${ni},-1);renderReservation()">↑</button>`:''}
+          ${ni<(b.notes||[]).length-1?`<button class="dn" onclick="arrMove(D.studios['${currentStudio}'].reservation.blocks[${bi}].notes,${ni},1);renderReservation()">↓</button>`:''}
+        </div>
+      </div>
+    `).join('');
+    return `
+      <div class="panel" style="background:rgba(184,147,90,.04);border-color:rgba(184,147,90,.25)">
+        <div class="panel-sub" style="margin-top:0;display:flex;justify-content:space-between;align-items:center">
+          <span>Block ${bi+1}</span>
+          <div class="li-ctrl" style="flex-direction:row">
+            ${bi>0?`<button class="up" onclick="arrMove(D.studios['${currentStudio}'].reservation.blocks,${bi},-1);renderReservation()">↑</button>`:''}
+            ${bi<r.blocks.length-1?`<button class="dn" onclick="arrMove(D.studios['${currentStudio}'].reservation.blocks,${bi},1);renderReservation()">↓</button>`:''}
+            <button class="del" onclick="if(confirm('このブロックを削除しますか？')){D.studios['${currentStudio}'].reservation.blocks.splice(${bi},1);renderReservation()}">ブロック削除</button>
+          </div>
+        </div>
+        <div class="row-2">
+          <div class="row"><label>マーク (A / B 等)</label><input value="${esc(b.mark)}" oninput="D.studios['${currentStudio}'].reservation.blocks[${bi}].mark=this.value"/></div>
+          <div class="row"><label>ブロック見出し</label><input value="${esc(b.title)}" oninput="D.studios['${currentStudio}'].reservation.blocks[${bi}].title=this.value"/></div>
+        </div>
+        <div class="row-2">
+          <div class="row"><label>予約ボタン ラベル</label><input value="${esc(b.bookingLabel||'')}" oninput="D.studios['${currentStudio}'].reservation.blocks[${bi}].bookingLabel=this.value"/></div>
+          <div class="row"><label>予約ボタン リンク</label><input value="${esc(b.bookingUrl||'')}" placeholder="https://..." oninput="D.studios['${currentStudio}'].reservation.blocks[${bi}].bookingUrl=this.value"/></div>
+        </div>
+        <div class="row-2">
+          <div class="row"><label>プランボタン ラベル</label><input value="${esc(b.plansLabel||'')}" oninput="D.studios['${currentStudio}'].reservation.blocks[${bi}].plansLabel=this.value"/></div>
+          <div class="row"><label>プランボタン リンク</label><input value="${esc(b.plansUrl||'')}" placeholder="plans.html" oninput="D.studios['${currentStudio}'].reservation.blocks[${bi}].plansUrl=this.value"/></div>
+        </div>
+        <div class="panel-sub">注記</div>
+        <div>${noteRows}</div>
+        <button class="btn-add" onclick="(D.studios['${currentStudio}'].reservation.blocks[${bi}].notes=D.studios['${currentStudio}'].reservation.blocks[${bi}].notes||[]).push('');renderReservation()">＋ 注記を追加する</button>
+      </div>
+    `;
+  }).join('');
+
+  const op = r.omairiPlan;
+  const periodHtml = op.periods.map((p,pi)=>`
+    <div class="list-item">
+      <div class="li-body">
+        <input placeholder="期間 (例: 2025年 4月〜9月)" value="${esc(p)}" oninput="D.studios['${currentStudio}'].reservation.omairiPlan.periods[${pi}]=this.value;renderReservation()"/>
+      </div>
+      <div class="li-ctrl">
+        <button class="del" onclick="omairiDelPeriod(${pi})">削除</button>
+        ${pi>0?`<button class="up" onclick="omairiMovePeriod(${pi},-1)">↑</button>`:''}
+        ${pi<op.periods.length-1?`<button class="dn" onclick="omairiMovePeriod(${pi},1)">↓</button>`:''}
+      </div>
+    </div>
+  `).join('');
+
+  const rowHtml = op.rows.map((row,ri)=>{
+    const priceInputs = op.periods.map((_,pi)=>`
+      <input placeholder="価格" value="${esc(row.prices[pi]||'')}" oninput="D.studios['${currentStudio}'].reservation.omairiPlan.rows[${ri}].prices[${pi}]=this.value" style="margin-bottom:.3rem"/>
+    `).join('');
+    return `
+      <div class="list-item" style="flex-direction:column;align-items:stretch">
+        <div class="li-ctrl" style="flex-direction:row;justify-content:flex-end;margin-bottom:.5rem">
+          ${ri>0?`<button class="up" onclick="arrMove(D.studios['${currentStudio}'].reservation.omairiPlan.rows,${ri},-1);renderReservation()">↑</button>`:''}
+          ${ri<op.rows.length-1?`<button class="dn" onclick="arrMove(D.studios['${currentStudio}'].reservation.omairiPlan.rows,${ri},1);renderReservation()">↓</button>`:''}
+          <button class="del" onclick="D.studios['${currentStudio}'].reservation.omairiPlan.rows.splice(${ri},1);renderReservation()">行を削除</button>
+        </div>
+        <div class="row-2">
+          <div class="row"><label>行ラベル (例: 平日)</label><input value="${esc(row.label)}" oninput="D.studios['${currentStudio}'].reservation.omairiPlan.rows[${ri}].label=this.value"/></div>
+          <div class="row"><label>サブラベル (例: お子様1人追加料金)</label><input value="${esc(row.sublabel||'')}" oninput="D.studios['${currentStudio}'].reservation.omairiPlan.rows[${ri}].sublabel=this.value"/></div>
+        </div>
+        <div class="row"><label>各期間の価格 (上から順)</label>${priceInputs}</div>
+      </div>
+    `;
+  }).join('');
+
   m().innerHTML = `
     <div class="panel">
       <div class="panel-title">Reservation — ${esc(s.name)}</div>
       <div class="row"><label>見出し</label><input id="r-heading" value="${esc(r.heading)}"/></div>
       <div class="row"><label>本文</label><textarea id="r-body">${esc(r.body)}</textarea></div>
-      <div class="row"><label>予約フォームURL</label><input id="r-form" value="${esc(r.formUrl)}" placeholder="STORES予約 / Googleフォーム等"/></div>
-      <div class="row"><label>補足</label><input id="r-note" value="${esc(r.note)}"/></div>
+      <div class="row"><label>予約フォームURL (共通)</label><input id="r-form" value="${esc(r.formUrl||'')}" placeholder="STORES予約 / Googleフォーム等"/></div>
+
+      <div class="panel-sub" style="margin-top:1.8rem">予約ブロック</div>
+      <p class="global-note">「撮影予約」「753お詣り予約」など、予約の種類ごとにブロックを作成できます。</p>
+      <div>${blockHtml}</div>
+      <button class="btn-add" onclick="D.studios['${currentStudio}'].reservation.blocks.push({mark:'',title:'新しいブロック',bookingUrl:'',bookingLabel:'ご予約はこちら',plansUrl:'',plansLabel:'プラン・料金',notes:[]});renderReservation()">＋ 予約ブロックを追加する</button>
+
+      <div class="panel-sub" style="margin-top:2rem">753お詣りプラン</div>
+      <div class="row"><label>プランタイトル</label><input value="${esc(op.title)}" oninput="D.studios['${currentStudio}'].reservation.omairiPlan.title=this.value"/></div>
+      <div class="row"><label>説明文</label><textarea oninput="D.studios['${currentStudio}'].reservation.omairiPlan.description=this.value">${esc(op.description)}</textarea></div>
+      <div class="row"><label>含まれるもの (1行)</label><input value="${esc(op.includes)}" oninput="D.studios['${currentStudio}'].reservation.omairiPlan.includes=this.value"/></div>
+      <div class="row"><label>ベース撮影プラン名</label><input value="${esc(op.basePlan)}" oninput="D.studios['${currentStudio}'].reservation.omairiPlan.basePlan=this.value"/></div>
+
+      <div class="panel-sub">料金表 — 期間</div>
+      <div>${periodHtml}</div>
+      <button class="btn-add" onclick="omairiAddPeriod()">＋ 期間を追加する</button>
+
+      <div class="panel-sub" style="margin-top:1.4rem">料金表 — 行</div>
+      <div>${rowHtml}</div>
+      <button class="btn-add" onclick="omairiAddRow()">＋ 行を追加する</button>
+
+      <div class="row" style="margin-top:1.4rem"><label>補足 (任意)</label><input id="r-note" value="${esc(r.note||'')}"/></div>
+
       <div class="btn-row"><button class="btn btn-primary" onclick="saveReservation()">保存</button></div>
     </div>
   `;
+}
+function omairiAddPeriod(){
+  const op = d().reservation.omairiPlan;
+  op.periods.push('');
+  op.rows.forEach(row=>row.prices.push(''));
+  renderReservation();
+}
+function omairiDelPeriod(pi){
+  const op = d().reservation.omairiPlan;
+  op.periods.splice(pi,1);
+  op.rows.forEach(row=>row.prices.splice(pi,1));
+  renderReservation();
+}
+function omairiMovePeriod(pi, dir){
+  const op = d().reservation.omairiPlan;
+  arrMove(op.periods, pi, dir);
+  op.rows.forEach(row=>arrMove(row.prices, pi, dir));
+  renderReservation();
+}
+function omairiAddRow(){
+  const op = d().reservation.omairiPlan;
+  op.rows.push({label:'', sublabel:'', prices: op.periods.map(()=>'')});
+  renderReservation();
 }
 function saveReservation(){
   const r=d().reservation;
