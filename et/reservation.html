@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title id="page-title">Reservation — Studio</title>
+<meta name="description" content="撮影予約・753お詣り予約のご案内"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#111010;--off:#fff;--bg:#f8f6f2;--mid:#888078;
+  --accent:#b8935a;--border:rgba(17,16,16,.1);
+  --serif:'Noto Serif JP',serif;--display:'Cormorant Garamond',serif;--sans:'Jost',sans-serif;
+  --ease:cubic-bezier(.25,.46,.45,.94);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:14px;line-height:1.8;overflow-x:hidden;opacity:0;transition:opacity .4s var(--ease)}
+body.is-ready{opacity:1}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid rgba(17,16,16,.12)}
+.nav-top{display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:0 clamp(1rem,3vw,2.5rem);height:64px;gap:1rem}
+.back-link{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:.55rem .9rem;border:1px solid var(--ink);transition:background .2s,color .2s}
+.back-link:hover{background:var(--ink);color:#fff}
+.nav-brand{font-family:var(--display);font-style:italic;font-size:1.1rem;letter-spacing:.04em;text-align:center}
+.nav-brand .b-mark{color:var(--accent);font-style:normal;font-weight:400}
+.nav-right .booking-btn{display:inline-flex;align-items:center;font-family:var(--sans);font-weight:400;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:#fff;text-decoration:none;padding:.6rem 1.1rem;transition:background .25s}
+.nav-right .booking-btn:hover{background:var(--accent)}
+
+main{padding-top:64px}
+
+/* ─── Page Header ─── */
+.pg-head{text-align:center;padding:clamp(3rem,7vw,5rem) 1.5rem 1.5rem}
+.pg-sub{font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mid);margin-bottom:1.1rem}
+.pg-head h1{font-family:var(--display);font-style:italic;font-weight:300;font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.1}
+
+/* ─── Section ─── */
+.res-section{padding:clamp(2.5rem,6vw,4rem) clamp(1.4rem,5vw,3rem)}
+.res-section:nth-child(even){background:#f0eee9}
+.res-inner{max-width:720px;margin:0 auto}
+.res-section-title{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1.5rem,3.5vw,2.1rem);line-height:1.2;margin-bottom:2rem;text-align:center}
+
+/* ─── CTA Buttons ─── */
+.res-btns{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:2rem}
+.res-btn-fill{display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;background:var(--accent);color:#fff;text-decoration:none;padding:1.1rem 1rem;transition:opacity .2s;line-height:1.4}
+.res-btn-fill:hover{opacity:.85}
+.res-btn-outline{display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--ink);color:var(--ink);text-decoration:none;padding:1.1rem 1rem;background:#fff;transition:background .2s,color .2s;line-height:1.4}
+.res-btn-outline:hover{background:var(--ink);color:#fff}
+
+/* ─── Notes list ─── */
+.res-notes{list-style:none;margin-bottom:2rem}
+.res-notes li{display:flex;gap:.8rem;padding:.9rem 0;border-bottom:1px solid var(--border);font-family:var(--serif);font-weight:300;font-size:.88rem;line-height:1.85}
+.res-notes li:first-child{border-top:1px solid var(--border)}
+.res-notes li::before{content:'●';flex-shrink:0;font-size:.5rem;margin-top:.7rem;color:var(--accent)}
+.res-note-sub{font-size:.8rem;color:var(--mid);margin-top:.3rem;display:block}
+.res-note-link{color:var(--accent);text-decoration:underline;text-underline-offset:3px;word-break:break-all}
+
+/* ─── Omairi Plan ─── */
+.omairi-plan{margin-top:2.5rem}
+.omairi-plan-head{text-align:center;margin-bottom:1.5rem}
+.omairi-plan-label{display:inline-block;font-family:var(--sans);font-weight:400;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);margin-bottom:.6rem}
+.omairi-plan-title{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1.1rem,2.5vw,1.4rem);line-height:1.3}
+.omairi-plan-desc{font-family:var(--serif);font-weight:300;font-size:.85rem;line-height:2;color:var(--mid);margin-top:.6rem}
+.omairi-plan-includes{font-family:var(--sans);font-weight:300;font-size:.75rem;letter-spacing:.06em;color:var(--mid);margin:.8rem 0 .3rem;text-align:center}
+
+.omairi-base{text-align:center;margin:1.2rem 0;padding:1.1rem;border:1px solid var(--border);background:#fff}
+.omairi-base-label{font-family:var(--sans);font-weight:300;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:.4rem}
+.omairi-base-val{font-family:var(--serif);font-weight:400;font-size:.92rem}
+
+.plus-sign{text-align:center;font-size:1.6rem;font-weight:200;color:var(--mid);margin:.5rem 0;line-height:1}
+
+/* ─── Pricing Table ─── */
+.omairi-table-wrap{overflow-x:auto;margin:0 0 .5rem}
+.omairi-table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:.78rem}
+.omairi-table th,.omairi-table td{border:1px solid rgba(17,16,16,.15);padding:.7rem .9rem;text-align:center;vertical-align:middle}
+.omairi-table th{background:var(--ink);color:#fff;font-weight:400;font-size:.7rem;letter-spacing:.06em}
+.omairi-table th.period-hd{background:rgba(17,16,16,.75)}
+.omairi-table td.row-label{text-align:left;background:rgba(17,16,16,.04);font-weight:400;font-size:.8rem}
+.omairi-table td.row-sublabel{font-size:.7rem;color:var(--mid);font-weight:300}
+.omairi-table td.price-cell{background:#fff}
+.omairi-table td.price-main{font-size:.88rem;font-weight:400;display:block}
+.omairi-table td.price-add{font-size:.72rem;color:var(--mid);display:block;margin-top:.15rem}
+.omairi-table-tax{text-align:right;font-family:var(--sans);font-size:.7rem;color:var(--mid);letter-spacing:.06em;margin-top:.4rem}
+
+footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2rem clamp(1.4rem,5vw,3rem);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.2rem;font-family:var(--sans);font-weight:300;font-size:.7rem;letter-spacing:.08em}
+.footer-logo{font-family:var(--display);font-style:italic;font-weight:400;font-size:1.1rem;color:#fff;letter-spacing:.04em;text-decoration:none}
+.footer-links{list-style:none;display:flex;flex-wrap:wrap;gap:1rem}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.footer-links a:hover{color:#fff}
+.footer-copy{font-size:.66rem;letter-spacing:.1em}
+
+@media(max-width:560px){
+  .nav-top{height:56px;padding:0 .8rem;gap:.6rem}
+  main{padding-top:56px}
+  .back-link{padding:.45rem .7rem;font-size:.66rem}
+  .nav-brand{font-size:.95rem}
+  .nav-right .booking-btn{padding:.5rem .8rem;font-size:.62rem}
+  .res-btns{grid-template-columns:1fr;gap:.7rem}
+  .omairi-table th,.omairi-table td{padding:.55rem .5rem;font-size:.72rem}
+  footer{flex-direction:column;text-align:center}
+  .footer-links{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-top">
+    <a href="./" class="back-link"><span>‹</span> <span>Top</span></a>
+    <div class="nav-brand" id="nav-brand">Studio <span class="b-mark">·</span></div>
+    <div class="nav-right">
+      <a href="#" class="booking-btn" id="booking-btn">予約する</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <header class="pg-head">
+    <div class="pg-sub">Reservation</div>
+    <h1>ご予約について</h1>
+  </header>
+
+  <!-- ── 撮影予約 ── -->
+  <div class="res-section">
+    <div class="res-inner">
+      <h2 class="res-section-title">撮影予約について</h2>
+
+      <div class="res-btns">
+        <a href="#" class="res-btn-fill" id="book-shoot-btn">撮影のご予約はこちら</a>
+        <a href="plans.html" class="res-btn-outline">撮影プラン・料金はこちら</a>
+      </div>
+
+      <ul class="res-notes">
+        <li>
+          電話やその他SNSでのご予約も受付しております。いつでもお気軽にご連絡ください。
+        </li>
+        <li>
+          ご予約日から1週間以内に電話（<span id="tel-num">050-1751-2601</span>）にて撮影内容の確認をさせていただきます。
+          <span class="res-note-sub">※イベント撮影会等は電話での確認はしておりません。</span>
+        </li>
+        <li>
+          キャンセルポリシー
+          <span class="res-note-sub">
+            下記URLからご確認をお願い致します<br/>
+            <a href="./cancel-policy.html" class="res-note-link">キャンセルポリシーはこちら →</a>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── 753お詣り予約 ── -->
+  <div class="res-section">
+    <div class="res-inner">
+      <h2 class="res-section-title">753お詣り予約について</h2>
+
+      <div class="res-btns">
+        <a href="#" class="res-btn-fill" id="book-omairi-btn">お詣り日のご予約はこちら</a>
+        <a href="#omairi-plan" class="res-btn-outline">お詣りプラン・料金はこちら</a>
+      </div>
+
+      <!-- 753 Omairi Plan detail -->
+      <div class="omairi-plan" id="omairi-plan">
+        <div class="omairi-plan-head">
+          <div class="omairi-plan-label">753 Omairi Plan</div>
+          <div class="omairi-plan-title">スタジオ撮影 × お詣り着物レンタルプラン</div>
+          <p class="omairi-plan-desc">
+            スタジオ撮影とお詣り着物レンタルがセットになった753お詣りプランです。<br/>
+            撮影日とお詣り日でそれぞれお好きなお着物をお選びいただけます。<br/>
+            お日にちの組み合わせ次第で料金が変わります。
+          </p>
+          <p class="omairi-plan-includes">
+            （スタジオ撮影 / お着物2着 / 着付け2日分 / ヘアメイク2日分 / クリーニング込）
+          </p>
+        </div>
+
+        <div class="omairi-base">
+          <div class="omairi-base-label">スタジオ撮影料金</div>
+          <div class="omairi-base-val">One plan（20cut） / Family plan（50cut）</div>
+        </div>
+
+        <div class="plus-sign">+</div>
+
+        <div class="omairi-table-wrap">
+          <table class="omairi-table">
+            <thead>
+              <tr>
+                <th colspan="2" rowspan="2">お詣り着物<br/>レンタルセットプラン</th>
+                <th colspan="3">スタジオ撮影月</th>
+              </tr>
+              <tr>
+                <th class="period-hd">2025年<br/>4月〜9月</th>
+                <th class="period-hd">2025年<br/>10月〜12月</th>
+                <th class="period-hd">2026年<br/>1月〜3月</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="row-label" rowspan="2">お<br/>詣<br/>り<br/>レ<br/>ン<br/>タ<br/>ル<br/>日</td>
+                <td class="row-label">
+                  平日<br/>
+                  <span style="font-size:.7rem;color:var(--mid)">(お子様1人追加料金)</span>
+                </td>
+                <td class="price-cell">
+                  <span class="price-main">¥20,000</span>
+                  <span class="price-add">(¥18,000)</span>
+                </td>
+                <td class="price-cell">
+                  <span class="price-main">¥24,000</span>
+                  <span class="price-add">(¥22,000)</span>
+                </td>
+                <td class="price-cell">
+                  <span class="price-main">¥22,000</span>
+                  <span class="price-add">(¥20,000)</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="row-label">
+                  土日祝日<br/>
+                  <span style="font-size:.7rem;color:var(--mid)">(お子様1人追加料金)</span>
+                </td>
+                <td class="price-cell">
+                  <span class="price-main">¥25,000</span>
+                  <span class="price-add">(¥23,000)</span>
+                </td>
+                <td class="price-cell">
+                  <span class="price-main">¥29,000</span>
+                  <span class="price-add">(¥27,000)</span>
+                </td>
+                <td class="price-cell">
+                  <span class="price-main">¥27,000</span>
+                  <span class="price-add">(¥25,000)</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="omairi-table-tax">( tax in )</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <a href="../" class="footer-logo">TRUNKLII</a>
+  <ul class="footer-links">
+    <li><a href="./">Top</a></li>
+    <li><a href="./plans.html">Plans</a></li>
+    <li><a href="./calendar.html">Calendar</a></li>
+    <li><a href="./cancel-policy.html">Cancel Policy</a></li>
+  </ul>
+  <span class="footer-copy" id="footer-copy"></span>
+</footer>
+
+<script src="../site-data.js"></script>
+<script>
+const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
+
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function init(){
+  const data = window.SITE_DATA;
+  if(!data){ document.body.classList.add('is-ready'); return; }
+  const studio = data.studios[STUDIO_KEY];
+  if(!studio){ document.body.classList.add('is-ready'); return; }
+
+  if(studio.accentColor) document.documentElement.style.setProperty('--accent', studio.accentColor);
+
+  const brandEl = document.getElementById('nav-brand');
+  const name = studio.shortName || studio.name || '';
+  brandEl.innerHTML = `${esc(name.replace(/\.$/,''))}<span class="b-mark">.</span>`;
+
+  document.getElementById('booking-btn').href = studio.bookingUrl || '#';
+  document.getElementById('book-shoot-btn').href = studio.bookingUrl || '#';
+  document.getElementById('book-omairi-btn').href = studio.bookingUrl || '#';
+
+  if(studio.phone){
+    const telEl = document.getElementById('tel-num');
+    if(telEl) telEl.textContent = studio.phone;
+  }
+
+  document.getElementById('footer-copy').textContent = data.global.copyright;
+  document.getElementById('page-title').textContent = `Reservation | ${studio.name}`;
+
+  // Coming Soon の場合はお詣りセクションを隠す
+  if(studio.comingSoon){
+    const omairi = document.getElementById('omairi-plan');
+    if(omairi) omairi.style.opacity = '.4';
+  }
+
+  document.body.classList.add('is-ready');
+}
+
+setTimeout(()=>document.body.classList.add('is-ready'), 1200);
+init();
+</script>
+</body>
+</html>
