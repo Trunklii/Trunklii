@@ -333,6 +333,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .g-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(17,16,16,.55));color:#fff;font-family:var(--display);font-style:italic;font-size:.78rem;letter-spacing:.06em;padding:2rem .75rem .6rem;opacity:0;transition:opacity .3s}
 .g-item:hover .g-cap{opacity:1}
 .g-item.hidden{display:none}
+.g-carousel{position:relative}
+.g-nav,.g-counter{display:none}
 
 /* ITEMS (kimono / costume / goods) */
 .items-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
@@ -484,7 +486,81 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,5vw,4rem);di
   .items-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:560px){
-  .g-grid{columns:1}
+  /* Galleryカルーセル: stagger アニメ無効化(横スクロールで visible 判定されないため) */
+  #g-grid .g-item{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+  }
+  .g-grid{
+    columns:auto;
+    display:flex;
+    gap:.6rem;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+    -webkit-overflow-scrolling:touch;
+    padding:0 0 .5rem 0;
+    margin:0 -1.2rem; /* 画面端いっぱいまで広げる */
+    padding-left:10%; /* 左に前の画像チラ見えスペース */
+    padding-right:10%; /* 右に次の画像チラ見えスペース */
+    scrollbar-width:none;
+  }
+  .g-grid::-webkit-scrollbar{display:none}
+  .g-item{
+    flex:0 0 80%; /* 画面の80%幅 = 両端に10%ずつチラ見え */
+    margin-bottom:0;
+    scroll-snap-align:center;
+    aspect-ratio:3/4;
+  }
+  .g-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .g-item.hidden{display:none}
+  .g-cap{
+    opacity:1; /* スマホはホバーなしなので常時表示 */
+    font-size:.7rem;
+    padding:1.6rem .7rem .55rem;
+  }
+  .g-carousel{position:relative}
+  .g-nav{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:36px;height:36px;
+    border-radius:50%;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    border:1px solid var(--border);
+    color:var(--ink);
+    font-family:var(--display);
+    font-size:1.4rem;
+    line-height:1;
+    cursor:pointer;
+    z-index:5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+    transition:opacity .25s, background .25s;
+  }
+  .g-nav:active{background:var(--ink);color:#fff}
+  .g-nav-prev{left:.4rem}
+  .g-nav-next{right:.4rem}
+  .g-nav[disabled]{opacity:.3;pointer-events:none}
+  .g-counter{
+    display:block;
+    text-align:center;
+    margin-top:.8rem;
+    font-family:var(--sans);
+    font-size:.7rem;
+    letter-spacing:.12em;
+    color:var(--mid);
+  }
   .items-grid{grid-template-columns:1fr}
   .plans-grid{grid-template-columns:1fr}
   footer{flex-direction:column;text-align:center}
@@ -565,6 +641,87 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
     opacity:1!important;transform:none!important;transition:none!important;
   }
   body.is-leaving{opacity:1!important}
+}
+
+/* ═══════════════════════════════
+   TOP: Calendar 2-month preview
+═══════════════════════════════ */
+.cal-top-tiers{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.cal-top-tier{display:flex;align-items:center;gap:.6rem;font-family:var(--sans);font-weight:400;font-size:.78rem;letter-spacing:.04em}
+.cal-top-dot{display:inline-block;width:22px;height:7px;border-radius:2px;flex-shrink:0}
+.cal-top-lbl{font-weight:500}
+.cal-top-price{color:var(--ink)}
+.cal-top-days{color:var(--mid);font-size:.72rem}
+.cal-top-months{display:grid;grid-template-columns:1fr 1fr;gap:2rem 3rem;max-width:1100px;margin:0 auto}
+.cal-top-month{}
+.cal-top-month-hd{display:flex;align-items:baseline;gap:.7rem;margin-bottom:.7rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.cal-top-month-name{font-family:var(--display);font-style:italic;font-weight:400;font-size:1.3rem}
+.cal-top-month-year{font-family:var(--sans);font-weight:300;font-size:.66rem;letter-spacing:.16em;color:var(--mid);text-transform:uppercase}
+.cal-top-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cal-top-dow{font-family:var(--sans);font-weight:500;font-size:.58rem;letter-spacing:.1em;text-align:center;padding:.35rem 0;color:var(--mid);text-transform:uppercase}
+.cal-top-dow.sun{color:#c0382e}
+.cal-top-dow.sat{color:#2e6fc0}
+.cal-top-day{position:relative;text-align:center;padding:.5rem .15rem .35rem;font-family:var(--sans);font-weight:300;font-size:.76rem;min-height:2.5rem;background:#fff}
+.cal-top-day.empty{background:transparent}
+.cal-top-day.sun-col{color:#c0382e}
+.cal-top-day.sat-col{color:#2e6fc0}
+.cal-top-day.holiday{color:#c0382e}
+.cal-top-day::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px}
+.cal-top-day.tier-a::after{background:#f0c8a0}
+.cal-top-day.tier-b::after{background:#b8cfe8}
+.cal-top-day.tier-c::after{background:#f4b0bc}
+.cal-top-day.today{outline:2px solid var(--accent);outline-offset:-2px}
+.cal-top-note{text-align:center;font-family:var(--serif);font-weight:300;font-size:.78rem;color:var(--mid);margin:1.8rem 0 0}
+
+@media(max-width:700px){
+  .cal-top-months{grid-template-columns:1fr;gap:1.5rem}
+  .cal-top-tiers{gap:1.2rem}
+}
+
+/* ═══════════════════════════════
+   TOP: Kimono category carousels
+═══════════════════════════════ */
+.kim-cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:1.5rem}
+.kim-cat{background:#efe9da;padding:2rem 1.8rem 2.2rem;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.kim-cat-head{margin-bottom:1.2rem;padding-bottom:.7rem;border-bottom:1px solid rgba(102,86,55,.25)}
+.kim-cat-title{font-family:var(--display);font-style:normal;font-weight:300;font-size:clamp(1.4rem,2.5vw,1.7rem);color:#6e5a3a;letter-spacing:.01em;margin-bottom:.25rem}
+.kim-cat-sub{font-family:var(--display);font-weight:300;font-size:.95rem;color:#897a5f;letter-spacing:.02em}
+.kim-cat-opt{font-family:var(--sans);font-weight:300;font-size:.7rem;color:#a08e6c;display:block;margin-top:.2rem}
+.kim-cat-carousel{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.kim-cat-main{grid-column:1/-1;aspect-ratio:4/5;background:#d8cfb8;display:flex;align-items:center;justify-content:center;color:#9a8866;font-family:var(--display);font-style:italic;font-size:1rem;letter-spacing:.04em;overflow:hidden;position:relative}
+.kim-cat-main::before{content:'';position:absolute;inset:0;background-image:linear-gradient(135deg,rgba(255,255,255,.15) 0%,rgba(0,0,0,.05) 100%);pointer-events:none}
+.kim-cat-sub-img{aspect-ratio:1/1;background:#d8cfb8;display:flex;align-items:center;justify-content:center;color:#9a8866;font-family:var(--display);font-style:italic;font-size:.8rem;position:relative}
+.kim-cat-sub-img::before{content:'';position:absolute;inset:0;background-image:linear-gradient(135deg,rgba(255,255,255,.15) 0%,rgba(0,0,0,.05) 100%);pointer-events:none}
+.kim-arrow{position:absolute;top:30%;width:44px;height:44px;border-radius:50%;background:rgba(80,68,50,.78);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.5rem;line-height:1;z-index:2;transition:background .2s;font-family:var(--sans);font-weight:300}
+.kim-arrow:hover{background:rgba(80,68,50,.95)}
+.kim-arrow-prev{left:-12px}
+.kim-arrow-next{right:-12px}
+
+@media(max-width:560px){
+  .kim-cats{grid-template-columns:1fr}
+  .kim-cat{padding:1.5rem 1.3rem 1.8rem}
+}
+
+/* ═══════════════════════════════
+   TOP: Reservation expanded
+═══════════════════════════════ */
+.res-top-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;max-width:1000px;margin:0 auto 3rem}
+.res-top-block{background:#fff;border:1px solid var(--border);padding:2rem 1.8rem 2.2rem;display:flex;flex-direction:column}
+.res-top-head{display:flex;align-items:baseline;gap:.8rem;margin-bottom:1.4rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)}
+.res-top-mark{font-family:var(--sans);font-weight:500;font-size:.62rem;letter-spacing:.22em;color:var(--accent);text-transform:uppercase}
+.res-top-title{font-family:var(--display);font-style:italic;font-weight:400;font-size:1.15rem;line-height:1.3;color:var(--ink)}
+.res-top-btns{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.3rem}
+.res-top-btns .btn-line{padding:.85rem .8rem;font-size:.66rem;text-align:center;line-height:1.3}
+.res-top-btns .btn-line.filled{background:var(--ink);color:#fff}
+.res-top-btns .btn-line.filled:hover{background:var(--accent);border-color:var(--accent)}
+.res-top-notes{list-style:none;margin:0}
+.res-top-notes li{font-family:var(--serif);font-weight:300;font-size:.82rem;line-height:1.85;color:var(--ink);padding:.5rem 0;padding-left:1rem;position:relative;border-bottom:1px dotted var(--border)}
+.res-top-notes li:last-child{border-bottom:none}
+.res-top-notes li::before{content:'●';position:absolute;left:0;top:.65rem;font-size:.4rem;color:var(--accent)}
+
+@media(max-width:700px){
+  .res-top-grid{grid-template-columns:1fr;gap:1.2rem}
+  .res-top-btns{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -725,7 +882,12 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
     <button class="g-filter" onclick="filterGallery('family',this)">Family</button>
     <button class="g-filter" onclick="filterGallery('maternity',this)">Maternity</button>
   </div>
-  <div class="g-grid" id="g-grid"></div>
+  <div class="g-carousel">
+    <div class="g-grid" id="g-grid"></div>
+    <button class="g-nav g-nav-prev" type="button" aria-label="前の写真" onclick="galleryScroll(-1)">‹</button>
+    <button class="g-nav g-nav-next" type="button" aria-label="次の写真" onclick="galleryScroll(1)">›</button>
+    <div class="g-counter" id="g-counter" aria-live="polite">1 / 1</div>
+  </div>
 </div>
 </section>
 
@@ -733,8 +895,8 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 <section id="kimono" style="background:var(--bg)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title" id="kimono-heading">Kimono</h2><div class="sec-rule"></div></div>
-  <p class="section-body-text" id="kimono-body"></p>
-  <div class="items-grid" id="kimono-grid"></div>
+  <p class="section-body-text" id="kimono-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
+  <div class="kim-cats" id="kimono-grid"></div>
 </div>
 </section>
 
@@ -753,7 +915,6 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
   <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Plans & Pricing</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="plans-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
   <div class="plans-grid" id="plans-grid"></div>
-  <div class="more-cta"><a href="plans.html" class="btn-line" id="plans-more-btn">すべてのプランを見る →</a></div>
 </div>
 </section>
 
@@ -770,8 +931,15 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 <section id="calendar" style="background:var(--bg)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title" id="calendar-heading">Calendar</h2><div class="sec-rule"></div></div>
-  <p class="section-body-text" id="calendar-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
-  <div class="more-cta"><a href="calendar.html" class="btn-line" id="calendar-more-btn">空き状況を見る →</a></div>
+  <p class="section-body-text" id="calendar-body" style="text-align:center;max-width:640px;margin:0 auto 2rem"></p>
+  <div class="cal-top-tiers">
+    <div class="cal-top-tier"><span class="cal-top-dot" style="background:#f0c8a0"></span><span class="cal-top-lbl">A</span><span class="cal-top-price">¥6,600</span><span class="cal-top-days">平日</span></div>
+    <div class="cal-top-tier"><span class="cal-top-dot" style="background:#b8cfe8"></span><span class="cal-top-lbl">B</span><span class="cal-top-price">¥8,800</span><span class="cal-top-days">土曜</span></div>
+    <div class="cal-top-tier"><span class="cal-top-dot" style="background:#f4b0bc"></span><span class="cal-top-lbl">C</span><span class="cal-top-price">¥9,900</span><span class="cal-top-days">日曜・祝日</span></div>
+  </div>
+  <div class="cal-top-months" id="cal-top-months"></div>
+  <p class="cal-top-note">※3ヶ月以降の料金カレンダーはリンク先ページよりご確認ください。</p>
+  <div class="more-cta"><a href="calendar.html" class="btn-line" id="calendar-more-btn">カレンダーを詳しく見る →</a></div>
 </div>
 </section>
 
@@ -779,8 +947,42 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 <section id="reservation" style="background:#f0eee9">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">08</span><h2 class="sec-title" id="reservation-heading">Reservation</h2><div class="sec-rule"></div></div>
-  <p class="section-body-text" id="reservation-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
-  <div class="more-cta"><a href="reservation.html" class="btn-line" id="reservation-more-btn">予約フォームへ →</a></div>
+  <p class="section-body-text" id="reservation-body" style="text-align:center;max-width:640px;margin:0 auto 3rem">ご予約はオンラインまたはお電話・SNSで承っております。<br/>七五三のお詣り日着物レンタルも受付中です。</p>
+
+  <div class="res-top-grid">
+    <!-- 撮影予約 -->
+    <div class="res-top-block">
+      <div class="res-top-head">
+        <span class="res-top-mark">A</span>
+        <h3 class="res-top-title">撮影予約について</h3>
+      </div>
+      <div class="res-top-btns">
+        <a href="#" id="res-top-book-1" class="btn-line filled">撮影のご予約はこちら</a>
+        <a href="plans.html" class="btn-line">撮影プラン・料金</a>
+      </div>
+      <ul class="res-top-notes">
+        <li>電話やSNSでのご予約も受付しております。</li>
+        <li>ご予約日から1週間以内に <span id="res-top-tel">050-1751-2601</span> にて撮影内容の確認をいたします。</li>
+      </ul>
+    </div>
+    <!-- 753お詣り予約 -->
+    <div class="res-top-block">
+      <div class="res-top-head">
+        <span class="res-top-mark">B</span>
+        <h3 class="res-top-title">753お詣り予約について</h3>
+      </div>
+      <div class="res-top-btns">
+        <a href="#" id="res-top-book-2" class="btn-line filled">お詣り日のご予約はこちら</a>
+        <a href="reservation.html#omairi-plan" class="btn-line">お詣りプラン・料金</a>
+      </div>
+      <ul class="res-top-notes">
+        <li>スタジオ撮影 × お詣り着物レンタルのセットプラン。</li>
+        <li>撮影日とお詣り日でお好きなお着物をお選びいただけます。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="more-cta"><a href="reservation.html" class="btn-line" id="reservation-more-btn">予約の詳細を見る →</a></div>
 </div>
 </section>
 
@@ -945,6 +1147,22 @@ async function init(){
       <div class="g-cap">${item.caption}</div>
     </div>
   `).join('');
+  // Galleryカルーセル: スクロールに合わせてカウンター更新
+  (function setupGalleryCarousel(){
+    const grid = document.getElementById('g-grid');
+    if(!grid) return;
+    let ticking = false;
+    grid.addEventListener('scroll', ()=>{
+      if(!ticking){
+        window.requestAnimationFrame(()=>{
+          updateGalleryCounter();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+    updateGalleryCounter();
+  })();
 
   // Kimono
   document.getElementById('kimono-heading').textContent = d.kimono.heading;
@@ -969,17 +1187,35 @@ async function init(){
   // Plans (digest: top 3 — prefer entries with tag, fallback to first 3)
   (function(){
     const plans = d.plans || [];
+    // 最安価格の算出ヘルパー(variants から)
+    function minPrice(p){
+      if(!p.variants || p.variants.length===0) return p.price || '近日公開';
+      const nums = p.variants.map(v=>{
+        const m = String(v.price||'').match(/[\d,]+/g);
+        return m ? parseInt(m.join('').replace(/,/g,'')) : NaN;
+      }).filter(n=>!isNaN(n));
+      if(nums.length===0) return p.variants[0].price || '近日公開';
+      return `¥${Math.min(...nums).toLocaleString()}〜`;
+    }
     const tagged = plans.filter(p=>p.tag && p.tag.trim());
     const others = plans.filter(p=>!p.tag || !p.tag.trim());
     const digest = (tagged.concat(others)).slice(0, 3);
-    document.getElementById('plans-grid').innerHTML = digest.map(p=>`
-      <div class="plan-card">
+    const cardsHtml = digest.map(p=>{
+      const hasDetail = p.detail && p.variants && p.variants.length>0;
+      const href = hasDetail ? `plan-detail.html?key=${encodeURIComponent(p.key||'')}` : 'plans.html';
+      return `
+      <a href="${href}" class="plan-card" style="text-decoration:none;color:inherit;display:block">
         ${p.tag ? `<div class="plan-tag">${p.tag}</div>` : ''}
         <div class="plan-name">${p.name}</div>
-        <div class="plan-price">${p.price}</div>
+        <div class="plan-price">${minPrice(p)}</div>
         <div class="plan-desc">${p.desc}</div>
-      </div>
-    `).join('') || '<p style="text-align:center;color:var(--mid);font-family:var(--display);font-style:italic;grid-column:1/-1">近日公開予定。</p>';
+      </a>`;
+    }).join('');
+    const seeAllHtml = plans.length > 0 ? `
+      <div style="grid-column:1/-1;background:#fff;padding:1.5rem;text-align:center">
+        <a href="plans.html" style="display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:.7rem 1.6rem;border:1px solid var(--ink);transition:background .2s,color .2s" onmouseover="this.style.background='var(--ink)';this.style.color='#fff'" onmouseout="this.style.background='';this.style.color='var(--ink)'">すべてのプランを見る →</a>
+      </div>` : '';
+    document.getElementById('plans-grid').innerHTML = (cardsHtml + seeAllHtml) || '<p style="text-align:center;color:var(--mid);font-family:var(--display);font-style:italic;grid-column:1/-1">近日公開予定。</p>';
   })();
 
   // Goods
@@ -1110,6 +1346,63 @@ function filterGallery(cat, btn){
   document.querySelectorAll('.g-item').forEach(item=>{
     item.classList.toggle('hidden', cat!=='all' && item.dataset.cat!==cat);
   });
+  // スマホ: カルーセル位置を先頭に戻し、カウンター更新
+  const grid = document.getElementById('g-grid');
+  if(grid){ grid.scrollLeft = 0; }
+  updateGalleryCounter();
+}
+
+function visibleGalleryItems(){
+  return Array.from(document.querySelectorAll('#g-grid .g-item')).filter(el=>!el.classList.contains('hidden'));
+}
+
+function currentGalleryIndex(){
+  const grid = document.getElementById('g-grid');
+  const items = visibleGalleryItems();
+  if(!grid || items.length===0) return 0;
+  // スクロールビューポートの中央位置
+  const viewportCenter = grid.scrollLeft + grid.clientWidth / 2;
+  let bestIdx = 0;
+  let bestDist = Infinity;
+  items.forEach((el,i)=>{
+    const itemCenter = el.offsetLeft + el.offsetWidth / 2 - grid.offsetLeft;
+    const dist = Math.abs(itemCenter - viewportCenter);
+    if(dist < bestDist){ bestDist = dist; bestIdx = i; }
+  });
+  return bestIdx;
+}
+
+function galleryScroll(dir){
+  const grid = document.getElementById('g-grid');
+  const items = visibleGalleryItems();
+  if(!grid || items.length===0) return;
+  const idx = currentGalleryIndex();
+  const nextIdx = Math.max(0, Math.min(items.length-1, idx + dir));
+  const target = items[nextIdx];
+  if(target){
+    // 対象アイテムが画面中央に来るようスクロール位置を計算
+    const itemCenter = target.offsetLeft + target.offsetWidth / 2 - grid.offsetLeft;
+    const scrollTo = itemCenter - grid.clientWidth / 2;
+    grid.scrollTo({ left: scrollTo, behavior: 'smooth' });
+  }
+}
+
+function updateGalleryCounter(){
+  const counter = document.getElementById('g-counter');
+  const prevBtn = document.querySelector('.g-nav-prev');
+  const nextBtn = document.querySelector('.g-nav-next');
+  if(!counter) return;
+  const items = visibleGalleryItems();
+  if(items.length === 0){
+    counter.textContent = '0 / 0';
+    if(prevBtn) prevBtn.disabled = true;
+    if(nextBtn) nextBtn.disabled = true;
+    return;
+  }
+  const idx = currentGalleryIndex();
+  counter.textContent = `${idx+1} / ${items.length}`;
+  if(prevBtn) prevBtn.disabled = (idx === 0);
+  if(nextBtn) nextBtn.disabled = (idx === items.length - 1);
 }
 
 function openLb(idx){ lbIdx=idx; document.getElementById('lb-img').src=lbImages[lbIdx]; document.getElementById('lightbox').classList.add('open'); }
@@ -1324,5 +1617,6 @@ window.addEventListener('pageshow', function(e){
 
 init();
 </script>
+  <script src="../patch-index.js"></script>
 </body>
 </html>
