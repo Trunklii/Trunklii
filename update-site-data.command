@@ -35,8 +35,15 @@ cp "$LATEST" "$REPO/site-data.js"
 echo "✓ リポジトリの site-data.js を更新"
 echo ""
 
+# ─── 2.5. base64画像を実ファイルに抽出してサイズ削減 ───
+if command -v python3 >/dev/null 2>&1 && [ -f "$REPO/extract-images.py" ]; then
+  echo "→ 埋め込み画像を実ファイルに抽出中..."
+  python3 "$REPO/extract-images.py" | sed 's/^/    /'
+  echo ""
+fi
+
 # ─── 3. 変更があるか確認 ───
-if git diff --quiet site-data.js; then
+if git diff --quiet site-data.js && ! git ls-files --others --exclude-standard et/ nr/ | grep -q "^[en][tr]/img-"; then
   echo "ℹ️  変更はありません(同じ内容でした)"
   echo ""
   read -p "Enterキーで閉じます..."
@@ -52,7 +59,7 @@ echo ""
 TIMESTAMP=$(date "+%Y-%m-%d %H:%M")
 COMMIT_MSG="CMS: site-data.js を更新 ($TIMESTAMP)"
 
-git add site-data.js
+git add site-data.js et/img-*.* nr/img-*.* 2>/dev/null
 git commit -m "$COMMIT_MSG"
 echo "✓ コミット完了"
 echo ""
