@@ -5,7 +5,7 @@
 set -e
 
 REPO="/Users/kawashimadsk/Documents/01.Trunklii/99.HP/Trunklii"
-DOWNLOADS="$HOME/Documents/01.Trunklii/99.HP"
+DOWNLOADS="$REPO"
 
 cd "$REPO"
 
