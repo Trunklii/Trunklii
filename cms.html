@@ -1202,11 +1202,22 @@ function renderExport(){
   m().innerHTML = `
     <div class="panel">
       <div class="panel-title">Export — site-data.js</div>
-      <p class="global-note">下のコードをコピーして site-data.js を上書き、GitHubにpushしてください。</p>
+
+      <div style="background:rgba(74,124,89,.08);border:1px solid rgba(74,124,89,.3);padding:1rem 1.2rem;margin-bottom:1.5rem">
+        <div style="font-weight:500;font-size:.78rem;letter-spacing:.04em;margin-bottom:.5rem;color:var(--success)">✨ 一番ラクな方法</div>
+        <ol style="margin:0 0 .3rem 1.2rem;padding:0;font-size:.78rem;line-height:1.9">
+          <li>下の <strong>「ダウンロード」</strong> ボタンを押す</li>
+          <li>Finder で <code style="background:rgba(17,16,16,.08);padding:.1rem .3rem">Documents / 01.Trunklii / 99.HP / Trunklii</code> を開く</li>
+          <li>その中の <code style="background:rgba(17,16,16,.08);padding:.1rem .3rem">update-site-data.command</code> を <strong>ダブルクリック</strong></li>
+          <li>ターミナルが開き、自動で GitHub に反映されます(1〜2分後)</li>
+        </ol>
+      </div>
+
+      <p class="global-note" style="margin-bottom:1rem">手動の場合: 下のコードをコピー → site-data.js を上書き → push</p>
       <pre class="export-pre" id="export-pre"></pre>
       <div class="btn-row">
-        <button class="btn btn-primary" onclick="copyExport()">コピー</button>
-        <button class="btn btn-ghost" onclick="downloadExport()">ダウンロード</button>
+        <button class="btn btn-primary" onclick="downloadExport()">ダウンロード</button>
+        <button class="btn btn-ghost" onclick="copyExport()">コピー(手動用)</button>
       </div>
     </div>
   `;
