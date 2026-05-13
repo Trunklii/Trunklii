@@ -715,7 +715,7 @@ window.SITE_DATA = {
         ],
         "contactEmail": "recruit@trunklii.com"
       },
-      "ctaHeading": "大切な記念日を、\n一緒に残しましょう。",
+      "ctaHeading": "今のあなたにいつでも会える。\nCelebrating you, my special, always.",
       "ctaNote": "ご予約・お問い合わせはお気軽に"
     },
     "nr": {
