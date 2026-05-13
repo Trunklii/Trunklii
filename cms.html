@@ -1213,16 +1213,51 @@ function saveRecruit(){ const r=d().recruit; r.heading=val('rc-heading'); r.body
 // ── CTA ──
 function renderCta(){
   const s=d();
+  // 旧データ(ctaHeading に "\n" 区切り)から新フィールドに自動分割
+  if(!s.ctaHeadingJa && !s.ctaHeadingEn && s.ctaHeading){
+    const lines = s.ctaHeading.split('\n');
+    s.ctaHeadingJa = lines[0] || '';
+    s.ctaHeadingEn = lines.slice(1).join(' ') || '';
+  }
   m().innerHTML = `
     <div class="panel">
       <div class="panel-title">CTA / Booking — ${esc(s.name)}</div>
-      <div class="row"><label>見出し (改行は \\n)</label><textarea id="cta-h">${esc(s.ctaHeading)}</textarea></div>
-      <div class="row"><label>サブテキスト</label><input id="cta-n" value="${esc(s.ctaNote)}"/></div>
-      <div class="btn-row"><button class="btn btn-primary" onclick="saveCta()">保存</button></div>
+      <p class="global-note">サイト最下部の黒背景セクション。日本語(セリフ体)+ 英語(イタリック)の2段組で表示されます。</p>
+
+      <div class="row">
+        <label>日本語の見出し</label>
+        <input id="cta-ja" value="${esc(s.ctaHeadingJa||'')}" placeholder="例: 今のあなたにいつでも会える。"/>
+      </div>
+      <div class="row">
+        <label>英語の見出し(イタリック表示)</label>
+        <input id="cta-en" value="${esc(s.ctaHeadingEn||'')}" placeholder="例: Celebrating you, my special, always."/>
+      </div>
+      <div class="row">
+        <label>サブテキスト(ボタン上の小文字)</label>
+        <input id="cta-n" value="${esc(s.ctaNote||'')}" placeholder="例: ご予約・お問い合わせはお気軽に"/>
+      </div>
+
+      <div class="preview-box" style="background:var(--ink);color:#fff;padding:2.5rem 2rem;text-align:center;margin-top:1.5rem;border:1px solid var(--border)">
+        <div style="font-family:'Noto Serif JP',serif;font-weight:300;font-size:1.6rem;letter-spacing:.03em;line-height:1.4;margin-bottom:.4rem">${esc(s.ctaHeadingJa||'(日本語見出し)')}</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:1.4rem;line-height:1.25;margin-bottom:1.4rem">${esc(s.ctaHeadingEn||'(English line)')}</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.78rem;letter-spacing:.18em;color:rgba(255,255,255,.5);margin-bottom:1.5rem">${esc(s.ctaNote||'(subtitle)')}</div>
+        <div style="display:inline-block;font-family:'Jost',sans-serif;font-size:.7rem;letter-spacing:.16em;color:#fff;border:1px solid rgba(255,255,255,.45);padding:.85rem 2.4rem">予約する →</div>
+      </div>
+
+      <div class="btn-row" style="margin-top:1.5rem"><button class="btn btn-primary" onclick="saveCta()">保存</button></div>
     </div>
   `;
 }
-function saveCta(){ d().ctaHeading=val('cta-h'); d().ctaNote=val('cta-n'); toast('保存しました ✓'); }
+function saveCta(){
+  const s=d();
+  s.ctaHeadingJa=val('cta-ja');
+  s.ctaHeadingEn=val('cta-en');
+  s.ctaNote=val('cta-n');
+  // 後方互換のため ctaHeading も更新
+  s.ctaHeading = (s.ctaHeadingJa || '') + (s.ctaHeadingEn ? '\n' + s.ctaHeadingEn : '');
+  toast('保存しました ✓');
+  renderCta(); // プレビュー更新
+}
 
 // ── EXPORT ──
 function renderExport(){
