@@ -5,7 +5,7 @@
 set -e
 
 REPO="/Users/kawashimadsk/Documents/01.Trunklii/99.HP/Trunklii"
-DOWNLOADS="$HOME/Downloads"
+DOWNLOADS="$HOME/Documents/01.Trunklii/99.HP"
 
 cd "$REPO"
 
@@ -18,9 +18,10 @@ echo ""
 LATEST=$(find "$DOWNLOADS" -maxdepth 1 -name "site-data*.js" -type f -print0 2>/dev/null | xargs -0 ls -t 2>/dev/null | head -n1)
 
 if [ -z "$LATEST" ]; then
-  echo "❌ ~/Downloads に site-data.js が見つかりません"
+  echo "❌ $DOWNLOADS に site-data.js が見つかりません"
   echo ""
   echo "   先にCMSで Export → ダウンロード してから再実行してください。"
+  echo "   保存先: $DOWNLOADS"
   echo ""
   read -p "Enterキーで閉じます..."
   exit 1
