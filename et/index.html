@@ -761,6 +761,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
           <a href="#gallery" onclick="filterGallery('birthday')">Birthday</a>
           <a href="#gallery" onclick="filterGallery('family')">Family</a>
           <a href="#gallery" onclick="filterGallery('maternity')">Maternity</a>
+          <a href="#gallery" onclick="filterGallery('other')">Other</a>
         </div>
       </li>
       <li class="nav-item"><a href="#kimono" class="nav-link">Kimono</a></li>
@@ -805,6 +806,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
         <a href="#gallery" onclick="filterGallery('birthday');closeMob()">Birthday</a>
         <a href="#gallery" onclick="filterGallery('family');closeMob()">Family</a>
         <a href="#gallery" onclick="filterGallery('maternity');closeMob()">Maternity</a>
+        <a href="#gallery" onclick="filterGallery('other');closeMob()">Other</a>
       </div>
     </div>
     <div class="mob-item"><div class="mob-item-top"><a href="#kimono" class="mob-item-label" onclick="closeMob()">Kimono</a></div></div>
@@ -881,6 +883,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
     <button class="g-filter" onclick="filterGallery('birthday',this)">Birthday</button>
     <button class="g-filter" onclick="filterGallery('family',this)">Family</button>
     <button class="g-filter" onclick="filterGallery('maternity',this)">Maternity</button>
+    <button class="g-filter" onclick="filterGallery('other',this)">Other</button>
   </div>
   <div class="g-carousel">
     <div class="g-grid" id="g-grid"></div>
@@ -1139,9 +1142,16 @@ async function init(){
   document.getElementById('about-btn').textContent = d.bookingLabel + ' →';
   document.getElementById('about-btn').href = d.bookingUrl;
 
-  // Gallery
-  lbImages = d.gallery.map(i=>i.file);
-  document.getElementById('g-grid').innerHTML = d.gallery.map((item,i)=>`
+  // Gallery: 日付の新しい順にソート(日付未設定は配列末尾の順)
+  const sortedGallery = d.gallery.slice().sort((a,b)=>{
+    const aHas = !!a.date, bHas = !!b.date;
+    if(aHas && bHas) return String(b.date).localeCompare(String(a.date));
+    if(aHas) return -1; // a has date → a comes first
+    if(bHas) return 1;  // b has date → b comes first
+    return 0;
+  });
+  lbImages = sortedGallery.map(i=>i.file);
+  document.getElementById('g-grid').innerHTML = sortedGallery.map((item,i)=>`
     <div class="g-item" data-cat="${item.category}">
       <img src="${item.file}" alt="${item.caption}" loading="lazy" onclick="openLb(${i})"/>
       <div class="g-cap">${item.caption}</div>

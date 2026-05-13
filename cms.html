@@ -451,6 +451,7 @@ function renderGallery(){
           ${cats.map(c=>`<option value="${c}" ${item.category===c?'selected':''}>${c}</option>`).join('')}
         </select>
         <input placeholder="キャプション" value="${esc(item.caption)}" oninput="D.studios['${currentStudio}'].gallery[${i}].caption=this.value"/>
+        <input type="date" value="${esc(item.date||'')}" title="撮影日" oninput="D.studios['${currentStudio}'].gallery[${i}].date=this.value"/>
         <button onclick="D.studios['${currentStudio}'].gallery.splice(${i},1);renderGallery()" style="border-color:rgba(255,100,100,.4);color:#ff9999">削除</button>
       </div>
     </div>
@@ -478,7 +479,8 @@ function galleryAdd(input){
   files.forEach(file=>{
     const r=new FileReader();
     r.onload=e=>{
-      d().gallery.push({file:e.target.result,caption:file.name.replace(/\.[^.]+$/,''),category:'other'});
+      const today = new Date().toISOString().slice(0,10);
+      d().gallery.push({file:e.target.result,caption:file.name.replace(/\.[^.]+$/,''),category:'other',date:today});
       done++;
       if(done===files.length){ renderGallery(); toast(`${files.length}枚追加 ✓`); }
     };
