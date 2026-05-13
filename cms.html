@@ -490,24 +490,46 @@ function galleryAdd(input){
 }
 
 // ── ITEMS (kimono / costume) ──
+const KIMONO_CATS = [
+  {key:'3y-girl',  jp:'三歳 女の子', sub:'3 Year Old Girl'},
+  {key:'3y-boy',   jp:'三歳 男の子', sub:'3 Year Old Boy'},
+  {key:'5y-boy',   jp:'五歳 男の子', sub:'5 Year Old Boy'},
+  {key:'7y-girl',  jp:'七歳 女の子', sub:'7 Year Old Girl'},
+  {key:'10y-girl', jp:'十歳 女の子', sub:'10 Year Old Girl'},
+  {key:'other',    jp:'その他',      sub:'Other'}
+];
 function renderItems(section, label){
   const s=d(); const sec=s[section];
-  const items = sec.items.map((item,i)=>`
+  const isKimono = section === 'kimono';
+  const items = sec.items.map((item,i)=>{
+    const extra = isKimono ? `
+      <select onchange="D.studios['${currentStudio}'].kimono.items[${i}].category=this.value;renderItems('kimono','Kimono')" style="width:100%;border:1px solid var(--border);background:var(--off);padding:.3rem .4rem;font-size:.7rem;font-family:var(--sans);outline:none;margin-bottom:.3rem">
+        <option value="">（カテゴリ未設定）</option>
+        ${KIMONO_CATS.map(c=>`<option value="${c.key}" ${item.category===c.key?'selected':''}>${c.jp}</option>`).join('')}
+      </select>
+      <input placeholder="オプション料金 (例: +¥2,200)" value="${esc(item.optionPrice||'')}" oninput="D.studios['${currentStudio}'].kimono.items[${i}].optionPrice=this.value"/>
+    ` : '';
+    return `
     <div class="icms-item">
       <img src="${esc(imgSrc(item.file))}" alt="${esc(item.name)}" onerror="this.style.opacity=0.3"/>
       <input placeholder="名前" value="${esc(item.name)}" oninput="D.studios['${currentStudio}']['${section}'].items[${i}].name=this.value"/>
-      <input placeholder="説明" value="${esc(item.desc)}" oninput="D.studios['${currentStudio}']['${section}'].items[${i}].desc=this.value"/>
+      <input placeholder="説明" value="${esc(item.desc||'')}" oninput="D.studios['${currentStudio}']['${section}'].items[${i}].desc=this.value"/>
+      ${extra}
       <div class="icms-item-btns">
         <label>変更<input type="file" accept="image/*" data-idx="${i}" onchange="itemReplace(this,'${section}')" style="display:none"/></label>
+        ${i>0?`<button onclick="arrMove(D.studios['${currentStudio}']['${section}'].items,${i},-1);renderItems('${section}','${label}')">↑</button>`:''}
+        ${i<sec.items.length-1?`<button onclick="arrMove(D.studios['${currentStudio}']['${section}'].items,${i},1);renderItems('${section}','${label}')">↓</button>`:''}
         <button class="del" onclick="D.studios['${currentStudio}']['${section}'].items.splice(${i},1);renderItems('${section}','${label}')">削除</button>
       </div>
     </div>
-  `).join('');
+    `;
+  }).join('');
   m().innerHTML = `
     <div class="panel">
       <div class="panel-title">${label} — ${esc(s.name)}</div>
       <div class="row"><label>見出し</label><input id="it-heading" value="${esc(sec.heading)}"/></div>
       <div class="row"><label>本文</label><textarea id="it-body">${esc(sec.body)}</textarea></div>
+      ${isKimono ? `<p class="global-note">各アイテムにカテゴリを設定すると、TOPページで「三歳 女の子」「七歳 女の子」など同じカテゴリの着物が1つのカルーセルにまとめられます。</p>` : ''}
       <div class="panel-sub">Items</div>
       <div class="items-cms">${items}</div>
       <div class="img-upload-area">
@@ -529,7 +551,9 @@ function itemAdd(input,sec,label){
   files.forEach(file=>{
     const r=new FileReader();
     r.onload=e=>{
-      d()[sec].items.push({file:e.target.result,name:file.name.replace(/\.[^.]+$/,''),desc:''});
+      const newItem = {file:e.target.result,name:file.name.replace(/\.[^.]+$/,''),desc:''};
+      if(sec === 'kimono'){ newItem.category=''; newItem.optionPrice=''; }
+      d()[sec].items.push(newItem);
       done++;
       if(done===files.length){ renderItems(sec,label); toast(`${files.length}件追加 ✓`); }
     };

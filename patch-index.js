@@ -78,34 +78,96 @@
     container.innerHTML = html;
   }
 
-  /* ── Render 5 Kimono category carousels into #kimono-grid ── */
-  function renderKimonoCats(){
+  /* ── Render Kimono category carousels (CMS データ参照) ── */
+  function renderKimonoCats(studio){
     var container = document.getElementById('kimono-grid');
     if(!container) return;
     var CATS = [
-      { sub:'3 Year Old Girl',  jp:'三歳 女の子' },
-      { sub:'3 Year Old Boy',   jp:'三歳 男の子' },
-      { sub:'5 Year Old Boy',   jp:'五歳 男の子' },
-      { sub:'7 Year Old Girl',  jp:'七歳 女の子' },
-      { sub:'10 Year Old Girl', jp:'十歳 女の子' }
+      { key:'3y-girl',  sub:'3 Year Old Girl',  jp:'三歳 女の子' },
+      { key:'3y-boy',   sub:'3 Year Old Boy',   jp:'三歳 男の子' },
+      { key:'5y-boy',   sub:'5 Year Old Boy',   jp:'五歳 男の子' },
+      { key:'7y-girl',  sub:'7 Year Old Girl',  jp:'七歳 女の子' },
+      { key:'10y-girl', sub:'10 Year Old Girl', jp:'十歳 女の子' }
     ];
+    // STUDIO_KEY を判定
+    var STUDIO_KEY = location.pathname.indexOf('/nr/') !== -1 ? 'nr' : 'et';
+    // CMS のアイテムをカテゴリ別にグルーピング
+    var allItems = (studio && studio.kimono && Array.isArray(studio.kimono.items)) ? studio.kimono.items : [];
+    var byCat = {};
+    CATS.forEach(function(c){ byCat[c.key] = []; });
+    byCat.other = [];
+    allItems.forEach(function(item){
+      var k = item.category || 'other';
+      if(!byCat[k]) byCat[k] = [];
+      byCat[k].push(item);
+    });
+
     container.className = 'kim-cats';
     container.innerHTML = CATS.map(function(c, i){
-      return '<div class="kim-cat" data-idx="'+i+'">'
+      var items = byCat[c.key] || [];
+      var hasItems = items.length > 0;
+      // 画像 path 解決(et/index.html 内なので相対パスはファイル名のみ)
+      function imgPath(item){
+        var f = item.file || '';
+        if(!f) return '';
+        if(f.indexOf('data:')===0 || f.indexOf('http')===0) return f;
+        return f;
+      }
+      var firstOpt = hasItems && items[0].optionPrice ? '<span class="kim-cat-opt">Option ' + items[0].optionPrice + '</span>' : '';
+      var mainHtml = hasItems
+        ? '<div class="kim-cat-main" style="background-image:url(\'' + imgPath(items[0]) + '\');background-size:cover;background-position:center"></div>'
+        : '<div class="kim-cat-main"><span>'+c.jp+'</span></div>';
+      var sub1 = items.length > 1
+        ? '<div class="kim-cat-sub-img" style="background-image:url(\'' + imgPath(items[1]) + '\');background-size:cover;background-position:center"></div>'
+        : '<div class="kim-cat-sub-img"><span>—</span></div>';
+      var sub2 = items.length > 2
+        ? '<div class="kim-cat-sub-img" style="background-image:url(\'' + imgPath(items[2]) + '\');background-size:cover;background-position:center"></div>'
+        : '<div class="kim-cat-sub-img"><span>—</span></div>';
+      // データ属性に全アイテムのファイル名を入れてカルーセル制御
+      var dataAttr = hasItems
+        ? ' data-items="' + items.map(function(it){ return encodeURIComponent(imgPath(it)); }).join(',') + '" data-idx="0"'
+        : '';
+      var showArrows = items.length > 1;
+      return '<div class="kim-cat"' + dataAttr + '>'
         + '<div class="kim-cat-head">'
           + '<div class="kim-cat-title">Studio Kimono</div>'
-          + '<div class="kim-cat-sub">'+c.sub+'</div>'
+          + '<div class="kim-cat-sub">'+c.sub+firstOpt+'</div>'
         + '</div>'
         + '<div class="kim-cat-carousel">'
-          + '<button class="kim-arrow kim-arrow-prev" type="button" aria-label="前へ">‹</button>'
-          + '<div class="kim-cat-main"><span>'+c.jp+'</span></div>'
-          + '<div class="kim-cat-sub-img"><span>—</span></div>'
-          + '<div class="kim-cat-sub-img"><span>—</span></div>'
-          + '<button class="kim-arrow kim-arrow-next" type="button" aria-label="次へ">›</button>'
+          + (showArrows ? '<button class="kim-arrow kim-arrow-prev" type="button" aria-label="前へ" onclick="kimCarousel(this,-1)">‹</button>' : '')
+          + mainHtml + sub1 + sub2
+          + (showArrows ? '<button class="kim-arrow kim-arrow-next" type="button" aria-label="次へ" onclick="kimCarousel(this,1)">›</button>' : '')
         + '</div>'
       + '</div>';
     }).join('');
   }
+
+  /* カルーセル制御(arrow ボタンから呼ばれる) */
+  window.kimCarousel = function(btn, dir){
+    var card = btn.closest('.kim-cat');
+    if(!card) return;
+    var items = (card.getAttribute('data-items')||'').split(',').filter(Boolean).map(decodeURIComponent);
+    if(items.length < 2) return;
+    var idx = parseInt(card.getAttribute('data-idx')||'0', 10);
+    idx = (idx + dir + items.length) % items.length;
+    card.setAttribute('data-idx', String(idx));
+    var carousel = card.querySelector('.kim-cat-carousel');
+    if(!carousel) return;
+    var main = carousel.querySelector('.kim-cat-main');
+    var subs = carousel.querySelectorAll('.kim-cat-sub-img');
+    function set(el, src){
+      if(!el) return;
+      if(src){
+        el.style.backgroundImage = "url('"+src+"')";
+        el.style.backgroundSize = 'cover';
+        el.style.backgroundPosition = 'center';
+        el.innerHTML = '';
+      }
+    }
+    set(main, items[idx]);
+    set(subs[0], items[(idx+1) % items.length]);
+    set(subs[1], items[(idx+2) % items.length]);
+  };
 
   /* ── Reservation: ブロックを動的に描画(CMSデータ参照) ── */
   function renderReservationBlocks(studio){
@@ -156,7 +218,7 @@
 
     renderCalTierLegend(studio);
     renderCalTop();
-    renderKimonoCats();
+    renderKimonoCats(studio);
     renderReservationBlocks(studio);
   }
 
