@@ -120,6 +120,7 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
 #### 2026-05-14 — レビュー反映
 - `.btn-line` がウォルナット背景で同化 → `#gallery` / `#calendar` 内のbtn-lineをクリーム色に上書き
 - Reservation以降5セクションが平坦 → `#cancel-policy` と `#flow` を `var(--cream)` に変更し、bg/cream の交互パターンに
+- カレンダー日付が `#calendar{color:--cream}` を継承し白セル上でクリーム化して不可視 → `.cal-top-day` を ink に戻し、`.sun-col` / `.sat-col` / `.holiday` を再宣言。dow/year/月境界もウォルナット向けに微調整
 
 #### 積み残し (Phase 4 以降で判断)
 - Calendar の tier 色 (`#f0c8a0`/`#b8cfe8`/`#f4b0bc`) が walnut 背景上で浮く
