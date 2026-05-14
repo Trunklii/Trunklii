@@ -211,6 +211,17 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
   - recruit: .recruit-copy 白透過、.pos-list 罫線白系
 - `.btn-line` 暗色 hover を12セクション全部で「bg白・文字ink」反転に統一
 
+#### 2026-05-14 — Maison nr. メインナビ暗色化
+- `.nav` bg `rgba(255,255,255,.9)` → **`#1C0909`** (nightwine)、border-bottom を `#1a1a1a` → `#fff` に
+- ナビ内テキスト・アイコンを白系に: `.brand-tab` / `.nav-logo` / `.nav-link` / `.icon-btn` / `.hamburger span` → `#fff`
+- `.brand-tab.active::after` (アクティブ下線) → `#fff`
+- `.icon-btn` border → `#fff`、hover で bg `#fff` + color `--ink` 反転
+- `.nav-bot` border-top → `rgba(255,255,255,.2)` (薄罫線)
+- ドロップダウン `.nav-drop` は白 surface 据え置き (暗ナビ上で浮かせる)
+- `.nav-link.important` (RECRUIT NEW) と `.nav-link sup` (NEW バッジ) は specificity が高く accent 色を維持
+- `.nav-book` (予約する CTA) は既存の rust accent のまま (暗ナビ上で映える)
+- HTML 構造・et/index.html ともに無変更
+
 #### 2026-05-14 — 6色 deep ローテーション v2 (showcase sections all dark) [旧]
 - `:root` に6変数追加:
   - `--sec-warmblack #1F130A` / `--sec-nightwine #1C0909` / `--sec-darkbrown #291A13`
