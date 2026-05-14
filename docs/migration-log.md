@@ -117,6 +117,10 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
 - `footer`: bg `#fff` → `var(--footer)` (#1A0F08)、border-top 撤去、padding 拡張
 - `.footer-logo` / `.footer-links a` / `.footer-copy`: cream系の文字色に反転
 
+#### 2026-05-14 — レビュー反映
+- `.btn-line` がウォルナット背景で同化 → `#gallery` / `#calendar` 内のbtn-lineをクリーム色に上書き
+- Reservation以降5セクションが平坦 → `#cancel-policy` と `#flow` を `var(--cream)` に変更し、bg/cream の交互パターンに
+
 #### 積み残し (Phase 4 以降で判断)
 - Calendar の tier 色 (`#f0c8a0`/`#b8cfe8`/`#f4b0bc`) が walnut 背景上で浮く
 - Plans 料金カード差別化 (Standard=rust / Maison=olive)
