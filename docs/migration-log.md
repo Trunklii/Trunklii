@@ -171,3 +171,18 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
 - Calendar の tier 色 (`#f0c8a0`/`#b8cfe8`/`#f4b0bc`) が walnut 背景上で浮く
 - Plans 料金カード差別化 (Standard=rust / Maison=olive)
 - Kimono の `.kim-cat` カード背景 `#efe9da` がラスト背景上で薄い
+
+---
+
+## デプロイインフラ
+
+### GitHub Actions プレビュー (2026-05-14)
+
+`.github/workflows/deploy.yml` を追加。GitHub Pages の Source を「Deploy from a branch」から「**GitHub Actions**」に切替えて運用する前提:
+
+- `main` push → サイト全体 (root) を再ビルド・公開
+- `feat/**` push → そのブランチのプレビューが `/preview/<branch-slug>/` に出現
+- `feat/**` 削除 → 対応プレビューが次の deploy で自動消滅 (workflow が `git fetch --prune` してから現存ブランチのみ再構築する)
+- 全プレビュー HTML に `<meta name="robots" content="noindex,nofollow"/>` を自動挿入 (検索エンジン除外)
+
+プレビュー共有URL例: `https://trunklii.github.io/Trunklii/preview/feat-midcentury-tonality/nr/`

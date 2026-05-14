@@ -1,0 +1,85 @@
+name: Deploy site (main + previews)
+
+on:
+  push:
+    branches:
+      - main
+      - 'feat/**'
+  delete:
+    branches:
+      - 'feat/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main with full history
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Prune deleted remote feat branches
+        run: git fetch --prune origin '+refs/heads/feat/*:refs/remotes/origin/feat/*'
+
+      - name: Build dist (main -> root, feat/** -> /preview/<slug>/)
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+
+          # main content -> dist root
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.DS_Store' \
+            --exclude='dist' \
+            ./ dist/
+
+          # feat/** branches -> dist/preview/<slug>/
+          mkdir -p dist/preview
+          for ref in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin/feat/); do
+            branch=${ref#origin/}
+            slug=$(echo "$branch" | tr '/' '-')
+            target="dist/preview/$slug"
+            echo "=== preview: $branch -> /preview/$slug/ ==="
+
+            mkdir -p "$target"
+            git archive "$ref" | tar -x -C "$target"
+
+            # Strip noise from preview tree
+            rm -rf "$target/.github" 2>/dev/null || true
+            find "$target" -name '.DS_Store' -delete 2>/dev/null || true
+
+            # Inject robots noindex meta into every preview HTML
+            find "$target" -name '*.html' -type f -exec \
+              sed -i 's|<head>|<head>\n<meta name="robots" content="noindex,nofollow"/>|' {} +
+          done
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
