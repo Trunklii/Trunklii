@@ -47,7 +47,7 @@ jobs:
 
           # feat/** branches -> dist/preview/<slug>/
           mkdir -p dist/preview
-          BUILD_TIME=$(date -u +"%Y-%m-%d %H:%M UTC")
+          BUILD_TIME=$(TZ='Asia/Tokyo' date +"%Y-%m-%d %H:%M JST")
           for ref in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin/feat/); do
             branch=${ref#origin/}
             slug=$(echo "$branch" | tr '/' '-')
