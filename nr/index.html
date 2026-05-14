@@ -125,10 +125,10 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
   transform:translateY(-50%);
   font-family:var(--sans);font-weight:600;font-size:.72rem;
   letter-spacing:.05em;text-transform:uppercase;
-  color:#fff;background:#050030;
+  color:#fff;background:var(--accent);
   text-decoration:none;padding:.55rem 1.3rem;transition:background .2s;
 }
-.nav-book:hover{background:#180030}
+.nav-book:hover{background:var(--walnut)}
 
 .hamburger{
   display:none;flex-direction:column;gap:5px;
@@ -447,9 +447,9 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .flow-wrap{max-width:780px;margin:0 auto;position:relative}
 .flow-step{position:relative;display:grid;grid-template-columns:80px 1fr;gap:2rem;padding:2.6rem 0;align-items:start}
 .flow-step + .flow-step{border-top:1px solid var(--border)}
-.flow-num{display:flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:#180030;color:#fff;font-family:var(--display);font-style:italic;font-weight:300;font-size:1.7rem;letter-spacing:-.02em;flex-shrink:0;position:relative;z-index:2}
-.flow-step:not(:last-child)::before{content:'';position:absolute;left:32px;top:108px;bottom:24px;width:1px;background:#fff;z-index:1}
-.flow-step:not(:last-child)::after{content:'';position:absolute;left:27px;bottom:18px;width:11px;height:11px;border-right:1.5px solid #fff;border-bottom:1.5px solid #fff;transform:rotate(45deg);z-index:1}
+.flow-num{display:flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:var(--accent-indigo);color:#fff;font-family:var(--display);font-style:italic;font-weight:300;font-size:1.7rem;letter-spacing:-.02em;flex-shrink:0;position:relative;z-index:2}
+.flow-step:not(:last-child)::before{content:'';position:absolute;left:32px;top:108px;bottom:24px;width:1px;background:var(--border);z-index:1}
+.flow-step:not(:last-child)::after{content:'';position:absolute;left:27px;bottom:18px;width:11px;height:11px;border-right:1.5px solid var(--accent-indigo);border-bottom:1.5px solid var(--accent-indigo);transform:rotate(45deg);z-index:1}
 .flow-body{padding-top:.4rem}
 .flow-title{font-family:var(--sans);font-weight:500;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:.5rem}
 .flow-desc{font-family:var(--serif);font-weight:300;font-size:.85rem;color:var(--mid);line-height:2}
@@ -485,6 +485,64 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);font-size:.8rem;padding:.6rem .9rem;cursor:pointer}
 .lb-prev{left:1.5rem}.lb-next{right:1.5rem}
 .lb-prev:hover,.lb-next:hover{color:#fff;border-color:rgba(255,255,255,.5)}
+
+/* === All-dark section overrides (about → recruit, 12 sections) === */
+:is(#about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa,#flow,#recruit){color:#fff}
+:is(#about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa,#flow,#recruit) .sec-num{color:rgba(255,255,255,.6)}
+:is(#about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa,#flow,#recruit) .sec-title{color:#fff}
+:is(#about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa,#flow,#recruit) .sec-rule{background:rgba(255,255,255,.25)}
+:is(#about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa,#flow,#recruit) .section-body-text{color:rgba(255,255,255,.85)}
+
+/* About: body paragraphs */
+#about .about-text p{color:rgba(255,255,255,.85)}
+
+/* Gallery filter chips on dark */
+#gallery .g-filter{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.25)}
+#gallery .g-filter.active,#gallery .g-filter:hover{background:#fff;border-color:#fff;color:var(--ink)}
+
+/* Calendar internals on dark (day cells are white cards) */
+#calendar .cal-top-note{color:rgba(255,255,255,.55)}
+#calendar .cal-top-lbl,#calendar .cal-top-price,#calendar .cal-top-days{color:#fff}
+#calendar .cal-top-day{color:var(--ink)}
+#calendar .cal-top-day.sun-col,#calendar .cal-top-day.holiday{color:#c0382e}
+#calendar .cal-top-day.sat-col{color:#2e6fc0}
+#calendar .cal-top-dow{color:rgba(255,255,255,.6)}
+#calendar .cal-top-dow.sun{color:#e9a39d}
+#calendar .cal-top-dow.sat{color:#a3c0e9}
+#calendar .cal-top-month-year{color:rgba(255,255,255,.5)}
+#calendar .cal-top-month-hd{border-bottom-color:rgba(255,255,255,.2)}
+
+/* Costume + Goods item text */
+#costume .item-name,#goods .item-name{color:#fff}
+#costume .item-price,#goods .item-price{color:var(--accent-orange)}
+#costume .item-desc,#goods .item-desc{color:rgba(255,255,255,.7)}
+
+/* Cancel policy table on dark */
+#cancel-policy .cancel-table tr{border-bottom-color:rgba(255,255,255,.18)}
+#cancel-policy .cancel-table th{color:rgba(255,255,255,.6)}
+#cancel-policy .cancel-table td{color:var(--accent-orange)}
+#cancel-policy .cancel-table tbody tr td:first-child{color:#fff}
+
+/* Q&A on dark */
+#qa .qa-list{border-top-color:rgba(255,255,255,.18)}
+#qa .qa-item{border-bottom-color:rgba(255,255,255,.18)}
+#qa .qa-q{color:#fff}
+#qa .qa-toggle{color:#fff}
+#qa .qa-a{color:rgba(255,255,255,.78)}
+
+/* Flow on dark */
+#flow .flow-step + .flow-step{border-top-color:rgba(255,255,255,.18)}
+#flow .flow-step:not(:last-child)::before{background:rgba(255,255,255,.18)}
+#flow .flow-title{color:#fff}
+#flow .flow-desc{color:rgba(255,255,255,.78)}
+
+/* Recruit on dark */
+#recruit .recruit-copy{color:rgba(255,255,255,.85)}
+#recruit .pos-list{background:rgba(255,255,255,.18)}
+
+/* btn-line on any dark section */
+:is(#about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa,#flow,#recruit) .btn-line{color:#fff;border-color:rgba(255,255,255,.4)}
+:is(#about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa,#flow,#recruit) .btn-line:hover{background:#fff;color:var(--ink);border-color:#fff}
 
 /* === Maison nr. nav (dark mode) === */
 .nav{background:#1C0909;border-bottom-color:#fff}
@@ -898,7 +956,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- ABOUT 01 -->
-<section id="about" style="background:var(--bg)">
+<section id="about" style="background:var(--sec-warmblack)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title" id="about-heading">About</h2><div class="sec-rule"></div></div>
   <div class="about-grid">
@@ -912,7 +970,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- GALLERY 02 -->
-<section id="gallery" style="background:var(--bg)">
+<section id="gallery" style="background:var(--sec-nightwine)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Gallery</h2><div class="sec-rule"></div></div>
   <div class="g-filters">
@@ -934,7 +992,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- KIMONO 03 -->
-<section id="kimono" style="background:var(--bg)">
+<section id="kimono" style="background:var(--sec-darkbrown)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title" id="kimono-heading">Kimono</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="kimono-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
@@ -943,7 +1001,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- COSTUME 04 -->
-<section id="costume" style="background:var(--bg)">
+<section id="costume" style="background:var(--sec-ash)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title" id="costume-heading">Costume</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="costume-body"></p>
@@ -952,7 +1010,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- PLANS 05 -->
-<section id="plans" style="background:var(--bg)">
+<section id="plans" style="background:var(--sec-bordeaux)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Plans & Pricing</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="plans-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
@@ -961,7 +1019,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- GOODS 06 -->
-<section id="goods" style="background:var(--bg)">
+<section id="goods" style="background:var(--sec-oak)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title" id="goods-heading">Goods</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="goods-body"></p>
@@ -970,7 +1028,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- CALENDAR 07 -->
-<section id="calendar" style="background:var(--bg)">
+<section id="calendar" style="background:var(--sec-warmblack)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title" id="calendar-heading">Calendar</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="calendar-body" style="text-align:center;max-width:640px;margin:0 auto 2rem"></p>
@@ -986,7 +1044,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- RESERVATION 08 -->
-<section id="reservation" style="background:var(--bg)">
+<section id="reservation" style="background:var(--sec-nightwine)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">08</span><h2 class="sec-title" id="reservation-heading">Reservation</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="reservation-body" style="text-align:center;max-width:640px;margin:0 auto 3rem">ご予約はオンラインまたはお電話・SNSで承っております。<br/>七五三のお詣り日着物レンタルも受付中です。</p>
@@ -1029,7 +1087,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- CANCEL POLICY 09 -->
-<section id="cancel-policy" style="background:var(--bg)">
+<section id="cancel-policy" style="background:var(--sec-darkbrown)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">09</span><h2 class="sec-title" id="cancel-heading">Cancellation Policy</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="cancel-body" style="text-align:center;max-width:780px;margin:0 auto 2.5rem"></p>
@@ -1038,7 +1096,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- Q&A 10 -->
-<section id="qa" style="background:var(--bg)">
+<section id="qa" style="background:var(--sec-ash)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">10</span><h2 class="sec-title" id="qa-heading">Q & A</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="qa-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
@@ -1047,7 +1105,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- FLOW 11 -->
-<section id="flow" style="background:var(--bg)">
+<section id="flow" style="background:var(--sec-bordeaux)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">11</span><h2 class="sec-title" id="flow-heading">Flow</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="flow-body" style="text-align:center;max-width:600px;margin:0 auto 3.5rem"></p>
@@ -1056,7 +1114,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- RECRUIT 12 -->
-<section id="recruit" style="background:var(--bg)">
+<section id="recruit" style="background:var(--sec-oak)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">12</span><h2 class="sec-title" id="recruit-heading">Recruit</h2><div class="sec-rule"></div></div>
   <p class="recruit-copy" id="recruit-body" style="text-align:center;max-width:640px;margin:0 auto 2rem"></p>
