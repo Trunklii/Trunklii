@@ -141,6 +141,10 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
 - teal: `.coming-banner` color (rust→teal)、border (stale gold rgba→teal rgba) → 未公開告知のパティーナ感
 - 旧 stale rgba(184,147,90,*) 値は全て新カラーに対応した rgba に置換
 
+#### 2026-05-14 — Plans/Goods 切り返し
+- `#goods` の inline bg を `var(--bg)` → `var(--cream)` に変更
+- Plans (明クリーム、料金カードが主役) と Goods (やや濃いクリーム、カタログ調) の視覚分離
+
 #### 積み残し (Phase 4 以降で判断)
 - Calendar の tier 色 (`#f0c8a0`/`#b8cfe8`/`#f4b0bc`) が walnut 背景上で浮く
 - Plans 料金カード差別化 (Standard=rust / Maison=olive)
