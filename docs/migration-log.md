@@ -167,13 +167,6 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
 - `patch-index.js` の STUDIO_KEY 条件分岐を撤去し、et/ と nr/ で共通の出力に統一: `.kim-cat-title` の中身は `c.sub` のみ、`.kim-cat-sub` div は出力しない
 - et/ の見た目（背景・カード色）は無変更。タイトル文字列だけ「Studio Kimono」を撤去し、カテゴリ名（例: `3 Year Old Girl`）のみを表示
 
-#### 2026-05-14 — 深色5色ローテーション適用 (nr 限定)
-- `:root` に5変数追加: `--sec-wine #320000` / `--sec-forest #193200` / `--sec-clay #982600` / `--sec-coffee #321900` / `--sec-plum #320026` (すべて HSL 100% sat、4個は L=10%・clay のみ L=30%)
-- 5セクションへローテーション割当: gallery→wine / kimono→forest / costume→clay / goods→coffee / calendar→plum
-- `#goods` は cream → coffee の暗色化に伴い、sec-num/sec-title/sec-rule/section-body-text/item-name/item-desc をすべて白cream系に反転 (item-price は orange のままで保持)
-- `.kim-cat` カード color を rust 系 (#C49989) → 森に調和するモス・セージ (#B5BA92) に、placeholder (.kim-cat-main / .kim-cat-sub-img) bg #B08574 → #8A9373 に
-- 旧 `--sec-walnut` / `--sec-rust` / `--sec-olive` の muted値は変数として残置 (再利用可能)
-
 #### 積み残し (Phase 4 以降で判断)
 - Calendar の tier 色 (`#f0c8a0`/`#b8cfe8`/`#f4b0bc`) が walnut 背景上で浮く
 - Plans 料金カード差別化 (Standard=rust / Maison=olive)
