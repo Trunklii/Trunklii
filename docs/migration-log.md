@@ -163,6 +163,10 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
 - `.section-body-text` が default `var(--mid)` で kimono/costume の暗色背景に埋もれていた → `#kimono .section-body-text, #costume .section-body-text{color:rgba(255,255,255,.85)}` を追加
 - `patch-index.js` の nr 分岐タイトルを `Studio Kimono — <c.sub>` → `<c.sub>` のみに (5カテゴリすべて簡素化)
 
+#### 2026-05-14 — et/ にもタイトル簡素化を反映 (JS のみ)
+- `patch-index.js` の STUDIO_KEY 条件分岐を撤去し、et/ と nr/ で共通の出力に統一: `.kim-cat-title` の中身は `c.sub` のみ、`.kim-cat-sub` div は出力しない
+- et/ の見た目（背景・カード色）は無変更。タイトル文字列だけ「Studio Kimono」を撤去し、カテゴリ名（例: `3 Year Old Girl`）のみを表示
+
 #### 積み残し (Phase 4 以降で判断)
 - Calendar の tier 色 (`#f0c8a0`/`#b8cfe8`/`#f4b0bc`) が walnut 背景上で浮く
 - Plans 料金カード差別化 (Standard=rust / Maison=olive)
