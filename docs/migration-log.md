@@ -112,6 +112,11 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
 - SECTIONS末尾に暗色背景セクション用の文字色オーバーライド追加
   (sec-num/sec-title/sec-rule、ギャラリーフィルター、カレンダーコピー、コスチュームアイテム)
 
+#### 2026-05-14 — Phase 3 (footer + nav-book CTA)
+- `.nav-book`: bg `var(--ink)` → `var(--accent)` (rust)、hover を `var(--walnut)` に
+- `footer`: bg `#fff` → `var(--footer)` (#1A0F08)、border-top 撤去、padding 拡張
+- `.footer-logo` / `.footer-links a` / `.footer-copy`: cream系の文字色に反転
+
 #### 積み残し (Phase 4 以降で判断)
 - Calendar の tier 色 (`#f0c8a0`/`#b8cfe8`/`#f4b0bc`) が walnut 背景上で浮く
 - Plans 料金カード差別化 (Standard=rust / Maison=olive)
