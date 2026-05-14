@@ -129,7 +129,7 @@
         : '';
       var showArrows = items.length > 1;
       var titleHtml = STUDIO_KEY === 'nr'
-        ? '<div class="kim-cat-title">Studio Kimono — '+c.sub+'</div>' + firstOpt
+        ? '<div class="kim-cat-title">'+c.sub+'</div>' + firstOpt
         : '<div class="kim-cat-title">Studio Kimono</div>'
           + '<div class="kim-cat-sub">'+c.sub+firstOpt+'</div>';
       return '<div class="kim-cat"' + dataAttr + '>'

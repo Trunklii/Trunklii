@@ -159,6 +159,10 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
 - `nr/index.html` の kim-cat CSS を rust 系統に調和: `.kim-cat` bg `#efe9da → #C49989` / `.kim-cat-main` / `.kim-cat-sub-img` bg `#d8cfb8 → #B08574`
 - 新背景上で可読性を担保するため `.kim-cat-title` color `#6e5a3a → #3A2A1F`、`.kim-cat-opt` color `#a08e6c → #5A4030`、ヘッダ罫線 `rgba(102,86,55,.25) → rgba(58,42,31,.3)`
 
+#### 2026-05-14 — kimono/costume の本文可読性 + タイトル簡素化
+- `.section-body-text` が default `var(--mid)` で kimono/costume の暗色背景に埋もれていた → `#kimono .section-body-text, #costume .section-body-text{color:rgba(255,255,255,.85)}` を追加
+- `patch-index.js` の nr 分岐タイトルを `Studio Kimono — <c.sub>` → `<c.sub>` のみに (5カテゴリすべて簡素化)
+
 #### 積み残し (Phase 4 以降で判断)
 - Calendar の tier 色 (`#f0c8a0`/`#b8cfe8`/`#f4b0bc`) が walnut 背景上で浮く
 - Plans 料金カード差別化 (Standard=rust / Maison=olive)
