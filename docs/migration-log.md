@@ -186,3 +186,25 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
 - 全プレビュー HTML に `<meta name="robots" content="noindex,nofollow"/>` を自動挿入 (検索エンジン除外)
 
 プレビュー共有URL例: `https://trunklii.github.io/Trunklii/preview/feat-midcentury-tonality/nr/`
+
+---
+
+## ページ別作業ログ (続き)
+
+### nr/index.html
+
+#### 2026-05-14 — 6色 deep ローテーション v2 (showcase sections all dark)
+- `:root` に6変数追加:
+  - `--sec-warmblack #1F130A` / `--sec-nightwine #1C0909` / `--sec-darkbrown #291A13`
+  - `--sec-ash #2E2223` / `--sec-bordeaux #301C1C` / `--sec-oak #381B00`
+- 6 showcase section の inline bg を新変数に差し替え:
+  - gallery→warmblack / kimono→nightwine / costume→darkbrown / **plans→ash** / **goods→bordeaux** / calendar→oak
+  - plans と goods が新たに暗色化（料金カード・商品グリッドが浮き上がる "ショーウィンドウ" 演出）
+- Dark-section text override を6セクション共通ルールに統合:
+  - `#gallery, #kimono, #costume, #plans, #goods, #calendar{color:var(--cream)}` 系
+  - 旧 `#kimono, #costume{color:#fff}` の白文字を cream に降ろし、palette と統一
+- `.kim-cat` カードを暗背景上で光らせるため cream に変更:
+  - `.kim-cat` bg `#C49989 → #E8DCC4` (var(--cream)相当)
+  - `.kim-cat-main` / `.kim-cat-sub-img` placeholder `#B08574 → #D5C5A5`
+- `#costume .item-name/desc` overrides を `#goods` も含むセレクタに統合 (item-price は orange のまま)
+- info zone (about/reservation/cancel-policy/qa/flow/recruit) は cream 系のまま据置 (リズム保持)
