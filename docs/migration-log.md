@@ -145,6 +145,15 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
 - `#goods` の inline bg を `var(--bg)` → `var(--cream)` に変更
 - Plans (明クリーム、料金カードが主役) と Goods (やや濃いクリーム、カタログ調) の視覚分離
 
+#### 2026-05-14 — nr の未公開解除 + kimono/costume/goods ダミー写真
+- `site-data.js` の `studios.nr.comingSoon: true → false`
+  - CTA ボタンが Instagram → 予約URL に切り替わる、Q&Aボット文言も coming-soon用から通常用へ
+- `studios.nr.kimono.items`: 空 → 15点 (5カテゴリ×3) のダミーを追加 (et と同じ画像群を再利用)、body も placeholder 文言に
+- `studios.nr.costume.items`: 空 → 3点 (Dress A/B/C)、body も更新
+- `studios.nr.goods.items`: 空 → 3点 (アルバム/フォトフレーム/データUSB)、body も更新
+- 画像は `nr/` フォルダに既に存在するファイル名を使用 (imgPath() 経由で `nr/<file>.jpg` に解決)
+- HTML 構造は無変更
+
 #### 積み残し (Phase 4 以降で判断)
 - Calendar の tier 色 (`#f0c8a0`/`#b8cfe8`/`#f4b0bc`) が walnut 背景上で浮く
 - Plans 料金カード差別化 (Standard=rust / Maison=olive)
