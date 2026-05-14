@@ -237,3 +237,13 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
   - `.kim-cat-main` / `.kim-cat-sub-img` placeholder `#B08574 → #D5C5A5`
 - `#costume .item-name/desc` overrides を `#goods` も含むセレクタに統合 (item-price は orange のまま)
 - info zone (about/reservation/cancel-policy/qa/flow/recruit) は cream 系のまま据置 (リズム保持)
+
+#### 2026-05-14 — サブナビ白化 + 予約CTA・flow指標を新色に
+- メインナビの **サブナビ帯 `.nav-bot`** (ABOUT〜RECRUIT が並ぶ下段) を **bg 白** に。
+  - `.nav-link` 文字色を `#fff` → `var(--ink)` (暗色) に戻し、白帯上で読める状態に
+  - ナビ上段 `.nav-top` は `#1C0909` 暗色のまま維持
+  - 12 sections の暗色は据え置き
+- `.nav-book` (予約する CTA) bg `var(--accent)` → **`#050030`** (deep navy)、hover `var(--walnut)` → `#180030`
+- `.flow-num` (ステップ番号丸) bg `var(--accent-indigo)` → **`#180030`**、文字は `#fff` 維持
+- `.flow-step::before` (ステップ間縦線) bg `var(--border)` → **`#fff`** (暗 flow bg 上で見える)
+- `.flow-step::after` (矢印 chevron) border `var(--accent-indigo)` → **`#fff`**
