@@ -252,3 +252,8 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
 - `.nav-link.important` (RECRUIT 文字): `var(--accent)` rust → **`#381B00`** (oak brown)
 - `.nav-book` (予約する) bg: `#050030` → **`#060036`**、hover: `#180030` → `#16002B`
 - `.flow-num` (ステップ番号丸) bg: `#180030` → **`#16002B`** (text/lines は引き続き白)
+
+#### 2026-05-14 — RECRUIT ボタン化 + NEW バッジ削除
+- HTML: `<a href="#recruit" class="nav-link important">Recruit<sup>NEW</sup></a>` → `Recruit` のみ (NEW 削除)
+- `.nav-link.important` を**ボタン状**に: `color:#fff`、`background:#381B00`、`padding:.5rem 1.1rem`、`height:auto`、`align-self:center` で 48px nav-bot 内に小さめに収まる
+- `.nav-link.important:hover` 追加: `background:#16002B` (booking CTA hoverと同色で統一感)

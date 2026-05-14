@@ -553,7 +553,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .icon-btn:hover{background:#fff;color:var(--ink)}
 .nav-bot{background:#fff;border-top-color:rgba(255,255,255,.2)}
 .nav-link{color:var(--ink)}
-.nav-link.important{color:#381B00}
+.nav-link.important{color:#fff;background:#381B00;height:auto;padding:.5rem 1.1rem;align-self:center;transition:background .2s}
+.nav-link.important:hover{background:#16002B;color:#fff}
 .nav-drop{background:#fff;border-color:rgba(255,255,255,.4)}
 .hamburger span{background:#fff}
 
@@ -871,7 +872,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
       <li class="nav-item"><a href="#cancel-policy" class="nav-link">Cancel Policy</a></li>
       <li class="nav-item"><a href="#qa" class="nav-link">Q&A</a></li>
       <li class="nav-item"><a href="#flow" class="nav-link">Flow</a></li>
-      <li class="nav-item"><a href="#recruit" class="nav-link important">Recruit<sup>NEW</sup></a></li>
+      <li class="nav-item"><a href="#recruit" class="nav-link important">Recruit</a></li>
     </ul>
     <a href="#booking" class="nav-book" id="nav-book">予約する</a>
   </nav>
