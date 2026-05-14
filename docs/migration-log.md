@@ -247,3 +247,8 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
 - `.flow-num` (ステップ番号丸) bg `var(--accent-indigo)` → **`#180030`**、文字は `#fff` 維持
 - `.flow-step::before` (ステップ間縦線) bg `var(--border)` → **`#fff`** (暗 flow bg 上で見える)
 - `.flow-step::after` (矢印 chevron) border `var(--accent-indigo)` → **`#fff`**
+
+#### 2026-05-14 — サブナビ RECRUIT 文字色 + 予約CTA + flow 円カラー微調整
+- `.nav-link.important` (RECRUIT 文字): `var(--accent)` rust → **`#381B00`** (oak brown)
+- `.nav-book` (予約する) bg: `#050030` → **`#060036`**、hover: `#180030` → `#16002B`
+- `.flow-num` (ステップ番号丸) bg: `#180030` → **`#16002B`** (text/lines は引き続き白)
