@@ -96,4 +96,23 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
 
 ## ページ別作業ログ
 
-（着手時に追記）
+### nr/index.html
+
+#### 2026-05-14 — Phase 1 (土台)
+- フォント読み込み: Jost を除去し Archivo Black + Inter を追加 (Cormorant Garamond / Noto Serif JP は維持)
+- `:root` を書き換え: `--ink #1F1410` / `--bg #F3EBDD` / `--mid #8B7E6F` / `--accent #C8553D`(rust)
+- 新規変数追加: `--walnut #3D2817` / `--olive #6B7548` / `--cream #E8DCC4` / `--footer #1A0F08` / `--label`(Archivo Black)
+- `--sans` を Jost → Inter に
+- 変数経由でサイト全体のトーンが mid-century パレットに切り替わる
+
+#### 2026-05-14 — Phase 2 (セクション塗り分け)
+- インライン `<section>` 8箇所の bg を更新:
+  - `#gallery` → walnut / `#kimono` → rust / `#costume` → olive / `#calendar` → walnut
+  - `#goods` / `#reservation` / `#qa` / `#recruit` → cream (旧 #f0eee9 ストライプ廃止)
+- SECTIONS末尾に暗色背景セクション用の文字色オーバーライド追加
+  (sec-num/sec-title/sec-rule、ギャラリーフィルター、カレンダーコピー、コスチュームアイテム)
+
+#### 積み残し (Phase 4 以降で判断)
+- Calendar の tier 色 (`#f0c8a0`/`#b8cfe8`/`#f4b0bc`) が walnut 背景上で浮く
+- Plans 料金カード差別化 (Standard=rust / Maison=olive)
+- Kimono の `.kim-cat` カード背景 `#efe9da` がラスト背景上で薄い

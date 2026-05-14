@@ -6,19 +6,24 @@
 <title id="page-title">Studio — Trunklii</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --ink:#111010;
+  --ink:#1F1410;
   --off:#fff;
-  --bg:#f8f6f2;
-  --mid:#888078;
-  --accent:#b8935a;
-  --border:rgba(17,16,16,.1);
+  --bg:#F3EBDD;
+  --mid:#8B7E6F;
+  --accent:#C8553D;
+  --walnut:#3D2817;
+  --olive:#6B7548;
+  --cream:#E8DCC4;
+  --footer:#1A0F08;
+  --border:rgba(31,20,16,.12);
   --serif:'Noto Serif JP',serif;
   --display:'Cormorant Garamond',serif;
-  --sans:'Jost',sans-serif;
+  --sans:'Inter',sans-serif;
+  --label:'Archivo Black',sans-serif;
   --ease:cubic-bezier(.25,.46,.45,.94);
 }
 html{scroll-behavior:smooth}
@@ -464,6 +469,28 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .lb-prev{left:1.5rem}.lb-next{right:1.5rem}
 .lb-prev:hover,.lb-next:hover{color:#fff;border-color:rgba(255,255,255,.5)}
 
+/* === Phase 2: Dark-bg section overrides === */
+#gallery, #calendar{color:var(--cream)}
+#gallery .sec-num, #calendar .sec-num{color:rgba(232,220,196,.6)}
+#gallery .sec-title, #calendar .sec-title{color:var(--cream)}
+#gallery .sec-rule, #calendar .sec-rule{background:rgba(232,220,196,.25)}
+
+#kimono, #costume{color:#fff}
+#kimono .sec-num, #costume .sec-num{color:rgba(255,255,255,.7)}
+#kimono .sec-title, #costume .sec-title{color:#fff}
+#kimono .sec-rule, #costume .sec-rule{background:rgba(255,255,255,.3)}
+
+#gallery .g-filter{color:rgba(232,220,196,.7);border-color:rgba(232,220,196,.25)}
+#gallery .g-filter.active,#gallery .g-filter:hover{background:var(--cream);border-color:var(--cream);color:var(--walnut)}
+
+#calendar .section-body-text{color:rgba(232,220,196,.75)}
+#calendar .cal-top-note{color:rgba(232,220,196,.55)}
+#calendar .cal-top-lbl,#calendar .cal-top-price,#calendar .cal-top-days{color:var(--cream)}
+
+#costume .item-name{color:#fff}
+#costume .item-price{color:var(--cream)}
+#costume .item-desc{color:rgba(255,255,255,.7)}
+
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;background:#fff}
 .footer-logo{font-family:var(--sans);font-weight:300;font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink);text-decoration:none}
@@ -878,7 +905,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- GALLERY 02 -->
-<section id="gallery" style="background:#f0eee9">
+<section id="gallery" style="background:var(--walnut)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Gallery</h2><div class="sec-rule"></div></div>
   <div class="g-filters">
@@ -900,7 +927,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- KIMONO 03 -->
-<section id="kimono" style="background:var(--bg)">
+<section id="kimono" style="background:var(--accent)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title" id="kimono-heading">Kimono</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="kimono-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
@@ -909,7 +936,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- COSTUME 04 -->
-<section id="costume" style="background:#f0eee9">
+<section id="costume" style="background:var(--olive)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title" id="costume-heading">Costume</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="costume-body"></p>
@@ -927,7 +954,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- GOODS 06 -->
-<section id="goods" style="background:#f0eee9">
+<section id="goods" style="background:var(--bg)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title" id="goods-heading">Goods</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="goods-body"></p>
@@ -936,7 +963,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- CALENDAR 07 -->
-<section id="calendar" style="background:var(--bg)">
+<section id="calendar" style="background:var(--walnut)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title" id="calendar-heading">Calendar</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="calendar-body" style="text-align:center;max-width:640px;margin:0 auto 2rem"></p>
@@ -952,7 +979,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- RESERVATION 08 -->
-<section id="reservation" style="background:#f0eee9">
+<section id="reservation" style="background:var(--bg)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">08</span><h2 class="sec-title" id="reservation-heading">Reservation</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="reservation-body" style="text-align:center;max-width:640px;margin:0 auto 3rem">ご予約はオンラインまたはお電話・SNSで承っております。<br/>七五三のお詣り日着物レンタルも受付中です。</p>
@@ -1004,7 +1031,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- Q&A 10 -->
-<section id="qa" style="background:#f0eee9">
+<section id="qa" style="background:var(--bg)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">10</span><h2 class="sec-title" id="qa-heading">Q & A</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="qa-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
@@ -1022,7 +1049,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- RECRUIT 12 -->
-<section id="recruit" style="background:#f0eee9">
+<section id="recruit" style="background:var(--bg)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">12</span><h2 class="sec-title" id="recruit-heading">Recruit</h2><div class="sec-rule"></div></div>
   <p class="recruit-copy" id="recruit-body" style="text-align:center;max-width:640px;margin:0 auto 2rem"></p>
