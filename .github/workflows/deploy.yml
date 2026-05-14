@@ -47,11 +47,13 @@ jobs:
 
           # feat/** branches -> dist/preview/<slug>/
           mkdir -p dist/preview
+          BUILD_TIME=$(date -u +"%Y-%m-%d %H:%M UTC")
           for ref in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin/feat/); do
             branch=${ref#origin/}
             slug=$(echo "$branch" | tr '/' '-')
             target="dist/preview/$slug"
-            echo "=== preview: $branch -> /preview/$slug/ ==="
+            short_sha=$(git rev-parse --short "$ref")
+            echo "=== preview: $branch ($short_sha) -> /preview/$slug/ ==="
 
             mkdir -p "$target"
             git archive "$ref" | tar -x -C "$target"
@@ -60,9 +62,14 @@ jobs:
             rm -rf "$target/.github" 2>/dev/null || true
             find "$target" -name '.DS_Store' -delete 2>/dev/null || true
 
-            # Inject robots noindex meta into every preview HTML
+            # Inject noindex + cache-busting meta into every preview HTML <head>
             find "$target" -name '*.html' -type f -exec \
-              sed -i 's|<head>|<head>\n<meta name="robots" content="noindex,nofollow"/>|' {} +
+              sed -i 's|<head>|<head>\n<meta name="robots" content="noindex,nofollow"/>\n<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>\n<meta http-equiv="Pragma" content="no-cache"/>\n<meta http-equiv="Expires" content="0"/>|' {} +
+
+            # Inject build-info badge before </body> (preview only)
+            badge="<div style=\"position:fixed;left:8px;bottom:8px;z-index:99999;background:rgba(0,0,0,0.78);color:#fff;font:11px/1.4 ui-monospace,Menlo,monospace;padding:6px 10px;border-radius:6px;letter-spacing:.02em;pointer-events:none\">PREVIEW \&middot; ${branch} \&middot; ${short_sha} \&middot; ${BUILD_TIME}</div>"
+            find "$target" -name '*.html' -type f -exec \
+              sed -i "s|</body>|${badge}</body>|" {} +
           done
 
       - name: Setup Pages
