@@ -135,6 +135,12 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
 - δ: `.item-price` の色を `var(--accent)` → `var(--accent-orange)` に (goods/costume の価格表記をフレッシュなオレンジに)
 - δ補足: `#costume .item-price` の cream override も orange に揃え、sage 背景上で価格がポップに映えるよう統一
 
+#### 2026-05-14 — 残り accent 配置 (indigo / mustard / teal)
+- indigo (藍): `.flow-num` 背景 (ink→indigo)、`.flow-step::after` (rust→indigo) → 工程セクションを建築的・冷静に
+- mustard (山吹): `.flow-note` color/border/bg (stale gold rgba を mustard rgba に置換)、`.pos-type` color (rust→mustard) → "手書きメモ" 風小ラベル
+- teal: `.coming-banner` color (rust→teal)、border (stale gold rgba→teal rgba) → 未公開告知のパティーナ感
+- 旧 stale rgba(184,147,90,*) 値は全て新カラーに対応した rgba に置換
+
 #### 積み残し (Phase 4 以降で判断)
 - Calendar の tier 色 (`#f0c8a0`/`#b8cfe8`/`#f4b0bc`) が walnut 背景上で浮く
 - Plans 料金カード差別化 (Standard=rust / Maison=olive)
