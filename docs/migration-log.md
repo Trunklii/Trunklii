@@ -193,7 +193,25 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
 
 ### nr/index.html
 
-#### 2026-05-14 — 6色 deep ローテーション v2 (showcase sections all dark)
+#### 2026-05-14 — 全12セクション暗色化 (about → recruit を6色 × 2ローテーション)
+- info zone を含む全12セクション (about / gallery / kimono / costume / plans / goods / calendar / reservation / cancel-policy / qa / flow / recruit) を暗色背景に
+- ローテーション (1巡目 about→goods, 2巡目 calendar→recruit):
+  - about / calendar → warmblack
+  - gallery / reservation → nightwine
+  - kimono / cancel-policy → darkbrown
+  - costume / qa → ash
+  - plans / flow → bordeaux
+  - goods / recruit → oak
+- 暗色背景上のテキストは cream → **白/グレー系**に統一 (`#fff` / `rgba(255,255,255,...)` 系)。`:is()` で12セクションを一括上書き
+- カード類は全て **白** に: `.kim-cat` `#E8DCC4 → #fff`、`.kim-cat-main` / `.kim-cat-sub-img` `#D5C5A5 → #F5F5F5`。plan-card / cal-block / res-block / pos-card は元々 `#fff` で維持
+- 各セクション固有の text/border/bg を新たに暗色対応 override 追加:
+  - cancel-policy: table の罫線・th・td・1列目を白系に
+  - qa: list/item罫線、.qa-q / .qa-toggle / .qa-a の文字を白系に
+  - flow: ステップ罫線・コネクタ・.flow-title / .flow-desc を白系に
+  - recruit: .recruit-copy 白透過、.pos-list 罫線白系
+- `.btn-line` 暗色 hover を12セクション全部で「bg白・文字ink」反転に統一
+
+#### 2026-05-14 — 6色 deep ローテーション v2 (showcase sections all dark) [旧]
 - `:root` に6変数追加:
   - `--sec-warmblack #1F130A` / `--sec-nightwine #1C0909` / `--sec-darkbrown #291A13`
   - `--sec-ash #2E2223` / `--sec-bordeaux #301C1C` / `--sec-oak #381B00`

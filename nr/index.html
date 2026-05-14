@@ -486,33 +486,63 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .lb-prev{left:1.5rem}.lb-next{right:1.5rem}
 .lb-prev:hover,.lb-next:hover{color:#fff;border-color:rgba(255,255,255,.5)}
 
-/* === Dark-bg section overrides (gallery / kimono / costume / plans / goods / calendar) === */
-#gallery, #kimono, #costume, #plans, #goods, #calendar{color:var(--cream)}
-#gallery .sec-num, #kimono .sec-num, #costume .sec-num, #plans .sec-num, #goods .sec-num, #calendar .sec-num{color:rgba(232,220,196,.6)}
-#gallery .sec-title, #kimono .sec-title, #costume .sec-title, #plans .sec-title, #goods .sec-title, #calendar .sec-title{color:var(--cream)}
-#gallery .sec-rule, #kimono .sec-rule, #costume .sec-rule, #plans .sec-rule, #goods .sec-rule, #calendar .sec-rule{background:rgba(232,220,196,.25)}
-#gallery .section-body-text, #kimono .section-body-text, #costume .section-body-text, #plans .section-body-text, #goods .section-body-text, #calendar .section-body-text{color:rgba(232,220,196,.85)}
+/* === All-dark section overrides (about → recruit, 12 sections) === */
+:is(#about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa,#flow,#recruit){color:#fff}
+:is(#about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa,#flow,#recruit) .sec-num{color:rgba(255,255,255,.6)}
+:is(#about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa,#flow,#recruit) .sec-title{color:#fff}
+:is(#about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa,#flow,#recruit) .sec-rule{background:rgba(255,255,255,.25)}
+:is(#about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa,#flow,#recruit) .section-body-text{color:rgba(255,255,255,.85)}
 
-#gallery .g-filter{color:rgba(232,220,196,.7);border-color:rgba(232,220,196,.25)}
-#gallery .g-filter.active,#gallery .g-filter:hover{background:var(--cream);border-color:var(--cream);color:var(--walnut)}
+/* About: body paragraphs */
+#about .about-text p{color:rgba(255,255,255,.85)}
 
-#calendar .cal-top-note{color:rgba(232,220,196,.55)}
-#calendar .cal-top-lbl,#calendar .cal-top-price,#calendar .cal-top-days{color:var(--cream)}
+/* Gallery filter chips on dark */
+#gallery .g-filter{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.25)}
+#gallery .g-filter.active,#gallery .g-filter:hover{background:#fff;border-color:#fff;color:var(--ink)}
+
+/* Calendar internals on dark (day cells are white cards) */
+#calendar .cal-top-note{color:rgba(255,255,255,.55)}
+#calendar .cal-top-lbl,#calendar .cal-top-price,#calendar .cal-top-days{color:#fff}
 #calendar .cal-top-day{color:var(--ink)}
 #calendar .cal-top-day.sun-col,#calendar .cal-top-day.holiday{color:#c0382e}
 #calendar .cal-top-day.sat-col{color:#2e6fc0}
-#calendar .cal-top-dow{color:rgba(232,220,196,.6)}
+#calendar .cal-top-dow{color:rgba(255,255,255,.6)}
 #calendar .cal-top-dow.sun{color:#e9a39d}
 #calendar .cal-top-dow.sat{color:#a3c0e9}
-#calendar .cal-top-month-year{color:rgba(232,220,196,.5)}
-#calendar .cal-top-month-hd{border-bottom-color:rgba(232,220,196,.2)}
+#calendar .cal-top-month-year{color:rgba(255,255,255,.5)}
+#calendar .cal-top-month-hd{border-bottom-color:rgba(255,255,255,.2)}
 
-#costume .item-name,#goods .item-name{color:var(--cream)}
+/* Costume + Goods item text */
+#costume .item-name,#goods .item-name{color:#fff}
 #costume .item-price,#goods .item-price{color:var(--accent-orange)}
-#costume .item-desc,#goods .item-desc{color:rgba(232,220,196,.7)}
+#costume .item-desc,#goods .item-desc{color:rgba(255,255,255,.7)}
 
-#gallery .btn-line,#calendar .btn-line{color:var(--cream);border-color:rgba(232,220,196,.4)}
-#gallery .btn-line:hover,#calendar .btn-line:hover{background:var(--cream);color:var(--walnut);border-color:var(--cream)}
+/* Cancel policy table on dark */
+#cancel-policy .cancel-table tr{border-bottom-color:rgba(255,255,255,.18)}
+#cancel-policy .cancel-table th{color:rgba(255,255,255,.6)}
+#cancel-policy .cancel-table td{color:var(--accent-orange)}
+#cancel-policy .cancel-table tbody tr td:first-child{color:#fff}
+
+/* Q&A on dark */
+#qa .qa-list{border-top-color:rgba(255,255,255,.18)}
+#qa .qa-item{border-bottom-color:rgba(255,255,255,.18)}
+#qa .qa-q{color:#fff}
+#qa .qa-toggle{color:#fff}
+#qa .qa-a{color:rgba(255,255,255,.78)}
+
+/* Flow on dark */
+#flow .flow-step + .flow-step{border-top-color:rgba(255,255,255,.18)}
+#flow .flow-step:not(:last-child)::before{background:rgba(255,255,255,.18)}
+#flow .flow-title{color:#fff}
+#flow .flow-desc{color:rgba(255,255,255,.78)}
+
+/* Recruit on dark */
+#recruit .recruit-copy{color:rgba(255,255,255,.85)}
+#recruit .pos-list{background:rgba(255,255,255,.18)}
+
+/* btn-line on any dark section */
+:is(#about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa,#flow,#recruit) .btn-line{color:#fff;border-color:rgba(255,255,255,.4)}
+:is(#about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa,#flow,#recruit) .btn-line:hover{background:#fff;color:var(--ink);border-color:#fff}
 
 /* FOOTER */
 footer{padding:2.5rem clamp(1.5rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;background:var(--footer);color:var(--cream)}
@@ -737,15 +767,15 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
    TOP: Kimono category carousels
 ═══════════════════════════════ */
 .kim-cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:1.5rem}
-.kim-cat{background:#E8DCC4;padding:2rem 1.8rem 2.2rem;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.kim-cat{background:#fff;padding:2rem 1.8rem 2.2rem;display:flex;flex-direction:column;position:relative;overflow:hidden}
 .kim-cat-head{margin-bottom:1.2rem;padding-bottom:.7rem;border-bottom:1px solid rgba(58,42,31,.3)}
 .kim-cat-title{font-family:var(--display);font-style:normal;font-weight:300;font-size:clamp(1.4rem,2.5vw,1.7rem);color:#3A2A1F;letter-spacing:.01em;margin-bottom:.25rem}
 .kim-cat-sub{font-family:var(--display);font-weight:300;font-size:.95rem;color:#897a5f;letter-spacing:.02em}
 .kim-cat-opt{font-family:var(--sans);font-weight:300;font-size:.7rem;color:#5A4030;display:block;margin-top:.2rem}
 .kim-cat-carousel{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
-.kim-cat-main{grid-column:1/-1;aspect-ratio:4/5;background:#D5C5A5;display:flex;align-items:center;justify-content:center;color:#9a8866;font-family:var(--display);font-style:italic;font-size:1rem;letter-spacing:.04em;overflow:hidden;position:relative}
+.kim-cat-main{grid-column:1/-1;aspect-ratio:4/5;background:#F5F5F5;display:flex;align-items:center;justify-content:center;color:#9a8866;font-family:var(--display);font-style:italic;font-size:1rem;letter-spacing:.04em;overflow:hidden;position:relative}
 .kim-cat-main::before{content:'';position:absolute;inset:0;background-image:linear-gradient(135deg,rgba(255,255,255,.15) 0%,rgba(0,0,0,.05) 100%);pointer-events:none}
-.kim-cat-sub-img{aspect-ratio:1/1;background:#D5C5A5;display:flex;align-items:center;justify-content:center;color:#9a8866;font-family:var(--display);font-style:italic;font-size:.8rem;position:relative}
+.kim-cat-sub-img{aspect-ratio:1/1;background:#F5F5F5;display:flex;align-items:center;justify-content:center;color:#9a8866;font-family:var(--display);font-style:italic;font-size:.8rem;position:relative}
 .kim-cat-sub-img::before{content:'';position:absolute;inset:0;background-image:linear-gradient(135deg,rgba(255,255,255,.15) 0%,rgba(0,0,0,.05) 100%);pointer-events:none}
 .kim-arrow{position:absolute;top:30%;width:44px;height:44px;border-radius:50%;background:rgba(80,68,50,.78);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.5rem;line-height:1;z-index:2;transition:background .2s;font-family:var(--sans);font-weight:300}
 .kim-arrow:hover{background:rgba(80,68,50,.95)}
@@ -914,7 +944,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- ABOUT 01 -->
-<section id="about" style="background:var(--bg)">
+<section id="about" style="background:var(--sec-warmblack)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title" id="about-heading">About</h2><div class="sec-rule"></div></div>
   <div class="about-grid">
@@ -928,7 +958,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- GALLERY 02 -->
-<section id="gallery" style="background:var(--sec-warmblack)">
+<section id="gallery" style="background:var(--sec-nightwine)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Gallery</h2><div class="sec-rule"></div></div>
   <div class="g-filters">
@@ -950,7 +980,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- KIMONO 03 -->
-<section id="kimono" style="background:var(--sec-nightwine)">
+<section id="kimono" style="background:var(--sec-darkbrown)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title" id="kimono-heading">Kimono</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="kimono-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
@@ -959,7 +989,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- COSTUME 04 -->
-<section id="costume" style="background:var(--sec-darkbrown)">
+<section id="costume" style="background:var(--sec-ash)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title" id="costume-heading">Costume</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="costume-body"></p>
@@ -968,7 +998,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- PLANS 05 -->
-<section id="plans" style="background:var(--sec-ash)">
+<section id="plans" style="background:var(--sec-bordeaux)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Plans & Pricing</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="plans-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
@@ -977,7 +1007,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- GOODS 06 -->
-<section id="goods" style="background:var(--sec-bordeaux)">
+<section id="goods" style="background:var(--sec-oak)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title" id="goods-heading">Goods</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="goods-body"></p>
@@ -986,7 +1016,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- CALENDAR 07 -->
-<section id="calendar" style="background:var(--sec-oak)">
+<section id="calendar" style="background:var(--sec-warmblack)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title" id="calendar-heading">Calendar</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="calendar-body" style="text-align:center;max-width:640px;margin:0 auto 2rem"></p>
@@ -1002,7 +1032,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- RESERVATION 08 -->
-<section id="reservation" style="background:var(--bg)">
+<section id="reservation" style="background:var(--sec-nightwine)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">08</span><h2 class="sec-title" id="reservation-heading">Reservation</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="reservation-body" style="text-align:center;max-width:640px;margin:0 auto 3rem">ご予約はオンラインまたはお電話・SNSで承っております。<br/>七五三のお詣り日着物レンタルも受付中です。</p>
@@ -1045,7 +1075,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- CANCEL POLICY 09 -->
-<section id="cancel-policy" style="background:var(--cream)">
+<section id="cancel-policy" style="background:var(--sec-darkbrown)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">09</span><h2 class="sec-title" id="cancel-heading">Cancellation Policy</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="cancel-body" style="text-align:center;max-width:780px;margin:0 auto 2.5rem"></p>
@@ -1054,7 +1084,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- Q&A 10 -->
-<section id="qa" style="background:var(--bg)">
+<section id="qa" style="background:var(--sec-ash)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">10</span><h2 class="sec-title" id="qa-heading">Q & A</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="qa-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
@@ -1063,7 +1093,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- FLOW 11 -->
-<section id="flow" style="background:var(--cream)">
+<section id="flow" style="background:var(--sec-bordeaux)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">11</span><h2 class="sec-title" id="flow-heading">Flow</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="flow-body" style="text-align:center;max-width:600px;margin:0 auto 3.5rem"></p>
@@ -1072,7 +1102,7 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 </section>
 
 <!-- RECRUIT 12 -->
-<section id="recruit" style="background:var(--bg)">
+<section id="recruit" style="background:var(--sec-oak)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">12</span><h2 class="sec-title" id="recruit-heading">Recruit</h2><div class="sec-rule"></div></div>
   <p class="recruit-copy" id="recruit-body" style="text-align:center;max-width:640px;margin:0 auto 2rem"></p>
