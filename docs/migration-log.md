@@ -211,6 +211,16 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
   - recruit: .recruit-copy 白透過、.pos-list 罫線白系
 - `.btn-line` 暗色 hover を12セクション全部で「bg白・文字ink」反転に統一
 
+#### 2026-05-14 — 全12セクションを白背景に戻す + 予約CTA・flow番号を新色に
+- 全12 sections (about → recruit) を `var(--bg)` (cream-white) に再revert (前commit ba0a0ab で導入した暗色化を撤回)
+- それに伴い `:is(#about,...,#recruit){color:#fff}` 系の暗色 overrides ブロックを丸ごと削除。デフォルトの ink テキストが復活
+- `.nav-book` (予約する CTA) bg `var(--accent)` → **`#050030`** (deep navy)、hover `var(--walnut)` → `#180030`
+- `.flow-num` (ステップ番号丸) bg `var(--accent-indigo)` → **`#180030`**、文字は `#fff` 維持
+- `.flow-step::before` (ステップ間縦線) bg `var(--border)` → **`#fff`**
+- `.flow-step::after` (ステップ間矢印) border `var(--accent-indigo)` → **`#fff`**
+- ナビは前commit (4d802fc) の暗色 nav `#1C0909` をそのまま維持
+- main 未マージ・プレビュー専用
+
 #### 2026-05-14 — Maison nr. メインナビ暗色化
 - `.nav` bg `rgba(255,255,255,.9)` → **`#1C0909`** (nightwine)、border-bottom を `#1a1a1a` → `#fff` に
 - ナビ内テキスト・アイコンを白系に: `.brand-tab` / `.nav-logo` / `.nav-link` / `.icon-btn` / `.hamburger span` → `#fff`
