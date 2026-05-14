@@ -154,6 +154,11 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
 - 画像は `nr/` フォルダに既に存在するファイル名を使用 (imgPath() 経由で `nr/<file>.jpg` に解決)
 - HTML 構造は無変更
 
+#### 2026-05-14 — kim-cat タイトル統合 + カード色調和 (nr 限定)
+- `patch-index.js`: `STUDIO_KEY === 'nr'` のときのみ `.kim-cat-title` を `Studio Kimono — <c.sub>` に統合、`.kim-cat-sub` div を出力しない (firstOpt span のみヘッダ内に残る)。et/ は従来通り
+- `nr/index.html` の kim-cat CSS を rust 系統に調和: `.kim-cat` bg `#efe9da → #C49989` / `.kim-cat-main` / `.kim-cat-sub-img` bg `#d8cfb8 → #B08574`
+- 新背景上で可読性を担保するため `.kim-cat-title` color `#6e5a3a → #3A2A1F`、`.kim-cat-opt` color `#a08e6c → #5A4030`、ヘッダ罫線 `rgba(102,86,55,.25) → rgba(58,42,31,.3)`
+
 #### 積み残し (Phase 4 以降で判断)
 - Calendar の tier 色 (`#f0c8a0`/`#b8cfe8`/`#f4b0bc`) が walnut 背景上で浮く
 - Plans 料金カード差別化 (Standard=rust / Maison=olive)

@@ -128,10 +128,13 @@
         ? ' data-items="' + items.map(function(it){ return encodeURIComponent(imgPath(it)); }).join(',') + '" data-idx="0"'
         : '';
       var showArrows = items.length > 1;
+      var titleHtml = STUDIO_KEY === 'nr'
+        ? '<div class="kim-cat-title">Studio Kimono — '+c.sub+'</div>' + firstOpt
+        : '<div class="kim-cat-title">Studio Kimono</div>'
+          + '<div class="kim-cat-sub">'+c.sub+firstOpt+'</div>';
       return '<div class="kim-cat"' + dataAttr + '>'
         + '<div class="kim-cat-head">'
-          + '<div class="kim-cat-title">Studio Kimono</div>'
-          + '<div class="kim-cat-sub">'+c.sub+firstOpt+'</div>'
+          + titleHtml
         + '</div>'
         + '<div class="kim-cat-carousel">'
           + (showArrows ? '<button class="kim-arrow kim-arrow-prev" type="button" aria-label="前へ" onclick="kimCarousel(this,-1)">‹</button>' : '')
