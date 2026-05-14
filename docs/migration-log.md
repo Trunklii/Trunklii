@@ -130,6 +130,11 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
 - accent パレットに 5色追加: `--accent-teal #7F9E96` / `--accent-wine #7E3F4E` (柄色) / `--accent-indigo #3D5A6E` (藍) / `--accent-mustard #C19440` (山吹) / `--accent-orange #E07A3F`
 - 新 accent は変数定義のみ・未使用。今後のスポット適用ポイントを指示待ち
 
+#### 2026-05-14 — accent スポット適用 (γ + δ)
+- γ: `.qa-q-mark` の色を `var(--accent)` → `var(--accent-wine)` に (Q&Aの "Q." マーカーを柄色に)
+- δ: `.item-price` の色を `var(--accent)` → `var(--accent-orange)` に (goods/costume の価格表記をフレッシュなオレンジに)
+- δ補足: `#costume .item-price` の cream override も orange に揃え、sage 背景上で価格がポップに映えるよう統一
+
 #### 積み残し (Phase 4 以降で判断)
 - Calendar の tier 色 (`#f0c8a0`/`#b8cfe8`/`#f4b0bc`) が walnut 背景上で浮く
 - Plans 料金カード差別化 (Standard=rust / Maison=olive)
