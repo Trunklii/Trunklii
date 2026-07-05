@@ -1,0 +1,99 @@
+# robots.txt for Trunklii HP (Studio et. / Maison nr.)
+# https://trunklii.github.io/Trunklii/
+
+# --- General web crawlers ---
+User-agent: *
+Allow: /
+Disallow: /cms.html
+Disallow: /cms_bk20260512.html
+Disallow: /preview/
+
+# --- AI crawlers: explicitly allowed for AEO (Answer Engine Optimization) ---
+# OpenAI (ChatGPT search / Web browse)
+User-agent: GPTBot
+Allow: /
+Disallow: /cms.html
+Disallow: /cms_bk20260512.html
+Disallow: /preview/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /cms.html
+Disallow: /cms_bk20260512.html
+Disallow: /preview/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /cms.html
+Disallow: /cms_bk20260512.html
+Disallow: /preview/
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+Disallow: /cms.html
+Disallow: /cms_bk20260512.html
+Disallow: /preview/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /cms.html
+Disallow: /cms_bk20260512.html
+Disallow: /preview/
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /cms.html
+Disallow: /cms_bk20260512.html
+Disallow: /preview/
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+Disallow: /cms.html
+Disallow: /cms_bk20260512.html
+Disallow: /preview/
+
+# Google AI (Gemini / AI Overviews)
+User-agent: Google-Extended
+Allow: /
+Disallow: /cms.html
+Disallow: /cms_bk20260512.html
+Disallow: /preview/
+
+# Apple (Applebot Extended for Apple Intelligence)
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /cms.html
+Disallow: /cms_bk20260512.html
+Disallow: /preview/
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /cms.html
+Disallow: /cms_bk20260512.html
+Disallow: /preview/
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+Disallow: /cms.html
+Disallow: /cms_bk20260512.html
+Disallow: /preview/
+
+# You.com
+User-agent: YouBot
+Allow: /
+Disallow: /cms.html
+Disallow: /cms_bk20260512.html
+Disallow: /preview/
+
+# Bytespider (TikTok / ByteDance)
+User-agent: Bytespider
+Allow: /
+Disallow: /cms.html
+Disallow: /cms_bk20260512.html
+Disallow: /preview/
+
+# --- Sitemap ---
+Sitemap: https://trunklii.github.io/Trunklii/sitemap.xml
