@@ -138,6 +138,20 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
   </div>
 </div>
 
+<style>
+.draft-bar{background:#8a5a00;color:#fff;padding:.55rem 1rem;font-family:var(--sans);font-size:.78rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;position:sticky;top:0;z-index:50}
+.draft-bar .draft-actions{display:flex;gap:.5rem;flex:0 0 auto}
+.draft-bar button{font-family:var(--sans);font-size:.72rem;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.55);padding:.32rem .7rem;border-radius:3px;cursor:pointer}
+.draft-bar button:hover{background:rgba(255,255,255,.3)}
+</style>
+<div class="draft-bar" id="draft-bar" style="display:none">
+  <span id="draft-msg">⚠ 未書き出しの変更があります — Export するまでサイトには反映されません</span>
+  <span class="draft-actions">
+    <button type="button" onclick="downloadExport()">書き出す</button>
+    <button type="button" onclick="discardDraft()">破棄して最新に戻す</button>
+  </span>
+</div>
+
 <div class="layout">
 
 <aside class="sidebar">
@@ -1429,9 +1443,57 @@ function copyExport(){ navigator.clipboard.writeText(genExport()).then(()=>toast
 function downloadExport(){
   const blob=new Blob([genExport()],{type:'text/javascript'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='site-data.js'; a.click();
-  toast('ダウンロード ✓');
+  toast('ダウンロード ✓（この内容がサイト反映の元になります）');
+  try{ localStorage.removeItem(DRAFT_KEY); }catch(e){}
+  const bar=document.getElementById('draft-bar'); if(bar) bar.style.display='none';
 }
 
+// ── 自動下書き保存（localStorage・その端末のみ／サイト反映にはExportが必要） ──
+const DRAFT_KEY='trunklii_cms_draft_v1';
+let _draftT, _draftWarned=false, _discarding=false;
+function saveDraft(){
+  if(_discarding) return;
+  try{
+    localStorage.setItem(DRAFT_KEY, JSON.stringify({t:Date.now(), data:D}));
+    const b=document.getElementById('draft-bar'); if(b && b.style.display==='none') b.style.display='';
+  }catch(e){
+    if(!_draftWarned){ _draftWarned=true; toast('下書きの自動保存に失敗（画像が多すぎる可能性）',true); }
+  }
+}
+function scheduleDraftSave(){ clearTimeout(_draftT); _draftT=setTimeout(saveDraft, 700); }
+function installDraftAutosave(){
+  ['input','change'].forEach(ev=>document.addEventListener(ev, scheduleDraftSave, true));
+  // 追加/削除/並替はボタンclick後にDが変わるので、レイアウト内クリック後も保存
+  document.addEventListener('click', e=>{ if(e.target.closest('.layout')) scheduleDraftSave(); }, true);
+  window.addEventListener('beforeunload', saveDraft);
+}
+function discardDraft(){
+  if(!confirm('未書き出しの下書きを破棄して、最新の保存内容に戻します。よろしいですか？')) return;
+  _discarding=true;
+  clearTimeout(_draftT);
+  window.removeEventListener('beforeunload', saveDraft);
+  try{ localStorage.removeItem(DRAFT_KEY); }catch(e){}
+  location.reload();
+}
+function initDraft(){
+  let raw; try{ raw=localStorage.getItem(DRAFT_KEY); }catch(e){ return; }
+  if(!raw) return;
+  let draft; try{ draft=JSON.parse(raw); }catch(e){ try{localStorage.removeItem(DRAFT_KEY);}catch(_){} return; }
+  if(!draft || !draft.data) return;
+  // 公開データと同一なら下書き不要 → 破棄
+  if(JSON.stringify(draft.data)===JSON.stringify(window.SITE_DATA)){ try{localStorage.removeItem(DRAFT_KEY);}catch(e){} return; }
+  D = draft.data;                         // 下書きを復元
+  const b=document.getElementById('draft-bar'); if(b) b.style.display='';
+  const msg=document.getElementById('draft-msg');
+  if(msg){
+    let stamp='';
+    if(draft.t){ const w=new Date(draft.t); stamp=`（自動保存 ${String(w.getHours()).padStart(2,'0')}:${String(w.getMinutes()).padStart(2,'0')}）`; }
+    msg.textContent=`⚠ 前回の未書き出し編集を復元しました${stamp} — Export するまでサイトには反映されません`;
+  }
+}
+
+initDraft();
+installDraftAutosave();
 show('global');
 </script>
 </body>
