@@ -8,7 +8,7 @@ window.SITE_DATA = {
   "studios": {
     "et": {
       "key": "et",
-      "simulator":       {
+      "simulator": {
         "enabled": true,
         "intro": "七五三の撮影について、いくつかお伺いします。概算のお見積りをご案内します。",
         "questions": [
@@ -19,11 +19,11 @@ window.SITE_DATA = {
             "options": [
               {
                 "id": "c50",
-                "label": "50カットプラン"
+                "label": "Family plan（50カット）"
               },
               {
                 "id": "c20",
-                "label": "20カットプラン"
+                "label": "One plan（20カット）"
               }
             ],
             "showIf": []
@@ -1045,30 +1045,117 @@ window.SITE_DATA = {
         "heading": "Kimono",
         "body": "厳選された着物をスタジオにてご用意。\n花飾りのヘアアレンジも含めたトータルコーディネートをご提供します。",
         "items": [
-          {"file":"18505164388065081.jpg","name":"着物 A","desc":"古典柄","category":"3y-girl"},
-          {"file":"18417574654096276.jpg","name":"着物 B","desc":"花柄","category":"3y-girl"},
-          {"file":"18387950968193350.jpg","name":"着物 C","desc":"桜色","category":"3y-girl"},
-          {"file":"18375330547181332.jpg","name":"袴 A","desc":"藍墨","category":"3y-boy"},
-          {"file":"18384987919132419.jpg","name":"袴 B","desc":"墨黒","category":"3y-boy"},
-          {"file":"18335184631230617.jpg","name":"袴 C","desc":"茶系","category":"3y-boy"},
-          {"file":"18334778899231083.jpg","name":"袴 A","desc":"古典柄","category":"5y-boy"},
-          {"file":"18345676999087256.jpg","name":"袴 B","desc":"幾何柄","category":"5y-boy"},
-          {"file":"18303974821264064.jpg","name":"袴 C","desc":"麻の葉","category":"5y-boy"},
-          {"file":"18364722763198059.jpg","name":"振袖 A","desc":"赤地花柄","category":"7y-girl"},
-          {"file":"18295179019220181.jpg","name":"振袖 B","desc":"金襴","category":"7y-girl"},
-          {"file":"18294900103268494.jpg","name":"振袖 C","desc":"白地刺繍","category":"7y-girl"},
-          {"file":"18282725923278968.jpg","name":"振袖 A","desc":"桃色","category":"10y-girl"},
-          {"file":"18273705787256865.jpg","name":"振袖 B","desc":"青地","category":"10y-girl"},
-          {"file":"17842722768624869.jpg","name":"振袖 C","desc":"白地","category":"10y-girl"}
+          {
+            "file": "18505164388065081.jpg",
+            "name": "着物 A",
+            "desc": "古典柄",
+            "category": "3y-girl"
+          },
+          {
+            "file": "18417574654096276.jpg",
+            "name": "着物 B",
+            "desc": "花柄",
+            "category": "3y-girl"
+          },
+          {
+            "file": "18387950968193350.jpg",
+            "name": "着物 C",
+            "desc": "桜色",
+            "category": "3y-girl"
+          },
+          {
+            "file": "18375330547181332.jpg",
+            "name": "袴 A",
+            "desc": "藍墨",
+            "category": "3y-boy"
+          },
+          {
+            "file": "18384987919132419.jpg",
+            "name": "袴 B",
+            "desc": "墨黒",
+            "category": "3y-boy"
+          },
+          {
+            "file": "18335184631230617.jpg",
+            "name": "袴 C",
+            "desc": "茶系",
+            "category": "3y-boy"
+          },
+          {
+            "file": "18334778899231083.jpg",
+            "name": "袴 A",
+            "desc": "古典柄",
+            "category": "5y-boy"
+          },
+          {
+            "file": "18345676999087256.jpg",
+            "name": "袴 B",
+            "desc": "幾何柄",
+            "category": "5y-boy"
+          },
+          {
+            "file": "18303974821264064.jpg",
+            "name": "袴 C",
+            "desc": "麻の葉",
+            "category": "5y-boy"
+          },
+          {
+            "file": "18364722763198059.jpg",
+            "name": "振袖 A",
+            "desc": "赤地花柄",
+            "category": "7y-girl"
+          },
+          {
+            "file": "18295179019220181.jpg",
+            "name": "振袖 B",
+            "desc": "金襴",
+            "category": "7y-girl"
+          },
+          {
+            "file": "18294900103268494.jpg",
+            "name": "振袖 C",
+            "desc": "白地刺繍",
+            "category": "7y-girl"
+          },
+          {
+            "file": "18282725923278968.jpg",
+            "name": "振袖 A",
+            "desc": "桃色",
+            "category": "10y-girl"
+          },
+          {
+            "file": "18273705787256865.jpg",
+            "name": "振袖 B",
+            "desc": "青地",
+            "category": "10y-girl"
+          },
+          {
+            "file": "17842722768624869.jpg",
+            "name": "振袖 C",
+            "desc": "白地",
+            "category": "10y-girl"
+          }
         ]
       },
       "costume": {
         "heading": "Costume",
         "body": "スタジオ独自にセレクトした衣装をご用意しています。\n洋装・和装どちらもご対応可能です。",
         "items": [
-          {"file":"AA-17856884340522635.jpg","name":"Dress A","desc":"クラシック・ホワイト"},
-          {"file":"AA-18103506649752477.jpg","name":"Dress B","desc":"ダスティ・ピンク"},
-          {"file":"AA-18116290120491565.jpg","name":"Dress C","desc":"ロイヤルブルー"}
+          {
+            "file": "AA-17856884340522635.jpg",
+            "name": "Dress A",
+            "desc": "クラシック・ホワイト"
+          },
+          {
+            "file": "AA-18103506649752477.jpg",
+            "name": "Dress B",
+            "desc": "ダスティ・ピンク"
+          },
+          {
+            "file": "AA-18116290120491565.jpg",
+            "name": "Dress C",
+            "desc": "ロイヤルブルー"
+          }
         ]
       },
       "plans": [
@@ -1117,9 +1204,24 @@ window.SITE_DATA = {
         "heading": "Goods",
         "body": "撮影と一緒にお選びいただけるオリジナルグッズをご用意しています。",
         "items": [
-          {"file":"18335184631230617.jpg","name":"アルバム","price":"¥22,000〜","desc":"厳選した写真を一冊に。"},
-          {"file":"18303974821264064.jpg","name":"フォトフレーム","price":"¥8,800〜","desc":"お気に入りの一枚を飾って。"},
-          {"file":"17842722768624869.jpg","name":"データUSB","price":"¥5,500〜","desc":"全データを記念にお持ち帰り。"}
+          {
+            "file": "18335184631230617.jpg",
+            "name": "アルバム",
+            "price": "¥22,000〜",
+            "desc": "厳選した写真を一冊に。"
+          },
+          {
+            "file": "18303974821264064.jpg",
+            "name": "フォトフレーム",
+            "price": "¥8,800〜",
+            "desc": "お気に入りの一枚を飾って。"
+          },
+          {
+            "file": "17842722768624869.jpg",
+            "name": "データUSB",
+            "price": "¥5,500〜",
+            "desc": "全データを記念にお持ち帰り。"
+          }
         ]
       },
       "calendar": {
