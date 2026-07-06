@@ -96,6 +96,11 @@ main{padding-top:64px}
 .chip:hover,.chip:focus-visible{background:var(--ink);color:#fff;outline:none}
 .chip .p{display:block;font-family:var(--display);font-style:italic;font-size:1rem;color:var(--accent);margin-top:.15rem}
 .chip:hover .p,.chip:focus-visible .p{color:#fff}
+.chip .chip-lb{display:block}
+.chip-img{padding:0;width:132px;overflow:hidden;text-align:left}
+.chip-thumb{width:100%;height:92px;object-fit:cover;display:block;background:#efece7}
+.chip-img .chip-lb{padding:.55rem .7rem;font-size:.78rem}
+.opt-thumb{width:46px;height:46px;flex:0 0 46px;object-fit:cover;border-radius:3px;background:#efece7}
 
 .opt-list{display:flex;flex-direction:column;gap:.15rem;margin-bottom:1rem}
 .opt{display:flex;align-items:center;gap:.8rem;padding:.7rem .3rem;border-bottom:1px solid var(--border);cursor:pointer}
@@ -328,9 +333,9 @@ async function askQuestion(q){
 function renderSingle(q){
   const c=document.createElement('div'); c.className='choices';
   (q.options||[]).forEach(o=>{
-    const b=document.createElement('button'); b.type='button'; b.className='chip';
-    b.textContent=o.label;
-    b.onclick=()=>{ answers[q.id]=o.id; userMsg(o.label); el.foot.innerHTML=''; advance(); };
+    const b=document.createElement('button'); b.type='button'; b.className='chip'+(o.image?' chip-img':'');
+    b.innerHTML=(o.image?'<img class="chip-thumb" src="'+esc(o.image)+'" alt="" onerror="this.remove()"/>':'')+'<span class="chip-lb">'+esc(o.label||'')+'</span>';
+    b.onclick=()=>{ answers[q.id]=o.id; userMsg(o.label||'選択'); el.foot.innerHTML=''; advance(); };
     c.appendChild(b);
   });
   el.foot.innerHTML=''; el.foot.appendChild(c);
@@ -342,7 +347,7 @@ function renderMulti(q){
   const list=document.createElement('div'); list.className='opt-list';
   (q.options||[]).forEach(o=>{
     const row=document.createElement('div'); row.className='opt';
-    row.innerHTML='<div class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg></div><div class="nm">'+esc(o.label)+'</div>';
+    row.innerHTML='<div class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg></div>'+(o.image?'<img class="opt-thumb" src="'+esc(o.image)+'" alt="" onerror="this.remove()"/>':'')+'<div class="nm">'+esc(o.label||'')+'</div>';
     row.onclick=()=>{ if(sel.has(o.id)){sel.delete(o.id);row.classList.remove('on');} else {sel.add(o.id);row.classList.add('on');} };
     list.appendChild(row);
   });
