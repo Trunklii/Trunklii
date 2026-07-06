@@ -340,6 +340,8 @@ function renderSimulator(){
         <div class="li-ctrl">${qi>0?`<button class="up" onclick="arrMove(${base}.questions,${qi},-1);renderSimulator()">↑</button>`:''}${qi<sim.questions.length-1?`<button class="dn" onclick="arrMove(${base}.questions,${qi},1);renderSimulator()">↓</button>`:''}<button class="del" onclick="if(confirm('この質問を削除しますか?')){${base}.questions.splice(${qi},1);renderSimulator()}">削除</button></div>
       </div>
       <div class="sim-row2"><label class="sim-field">タイプ ${simSel(qp+'.type',q.type||'single',SIM_QTYPES)}</label><span class="sim-id">ID: ${esc(q.id)}</span></div>
+      <div class="sim-sub">補足説明 <span class="sim-hint">任意・改行OK・**太字** とURLリンクが使えます</span></div>
+      <textarea class="sim-note" placeholder="お客様への案内文（例：※ 生後3週間以内が目安です）" oninput="${qp}.note=this.value">${esc(q.note||'')}</textarea>
       ${body}
       <div class="sim-sub">表示条件 <span class="sim-hint">空なら常に表示</span></div>
       ${(q.showIf||[]).map((c,ci)=>simCondRow(c,ci,`${qp}.showIf`,otherQ)).join('')}
@@ -405,6 +407,7 @@ function simInjectStyles(){
   .sim-field{font-family:var(--sans);font-size:.72rem;color:var(--mid);display:inline-flex;align-items:center;gap:.4rem}
   .sim-check{font-family:var(--sans);font-size:.72rem;color:var(--mid);display:inline-flex;align-items:center;gap:.35rem;cursor:pointer}
   .sim-sub{font-family:var(--sans);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);margin:.8rem 0 .4rem}
+  .sim-note{width:100%;min-height:54px;font-family:var(--sans);font-size:.8rem;border:1px solid var(--border);background:#fff;padding:.5rem .55rem;border-radius:2px;outline:none;color:var(--ink);resize:vertical;line-height:1.7;margin-bottom:.3rem}
   .sim-hint{font-size:.66rem;color:var(--mid);text-transform:none;letter-spacing:0;font-weight:300}
   .sim-opt-row{display:flex;gap:.5rem;align-items:center;margin-bottom:.35rem}
   .sim-thumb{width:44px;height:44px;flex:0 0 44px;border:1px dashed var(--border);border-radius:3px;display:grid;place-items:center;cursor:pointer;overflow:hidden;background:#fff}
