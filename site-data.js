@@ -8,6 +8,261 @@ window.SITE_DATA = {
   "studios": {
     "et": {
       "key": "et",
+      "simulator":       {
+        "enabled": true,
+        "intro": "七五三の撮影について、いくつかお伺いします。概算のお見積りをご案内します。",
+        "questions": [
+          {
+            "id": "q1",
+            "label": "カット数をお選びください",
+            "type": "single",
+            "options": [
+              {
+                "id": "c50",
+                "label": "50カットプラン"
+              },
+              {
+                "id": "c20",
+                "label": "20カットプラン"
+              }
+            ],
+            "showIf": []
+          },
+          {
+            "id": "q2",
+            "label": "着物レンタルを利用しますか",
+            "type": "single",
+            "options": [
+              {
+                "id": "y",
+                "label": "はい"
+              },
+              {
+                "id": "n",
+                "label": "いいえ（お持ち込み）"
+              }
+            ],
+            "showIf": []
+          },
+          {
+            "id": "q3",
+            "label": "着付けの追加人数（ご本人以外）",
+            "type": "number",
+            "unit": "人",
+            "min": 0,
+            "max": 6,
+            "showIf": [
+              {
+                "q": "q2",
+                "op": "eq",
+                "val": "y"
+              }
+            ]
+          },
+          {
+            "id": "q4",
+            "label": "出張撮影（神社）をご希望ですか",
+            "type": "single",
+            "options": [
+              {
+                "id": "y",
+                "label": "はい"
+              },
+              {
+                "id": "n",
+                "label": "いいえ"
+              }
+            ],
+            "showIf": []
+          },
+          {
+            "id": "q5",
+            "label": "兄弟同時撮影の人数",
+            "type": "number",
+            "unit": "人",
+            "min": 0,
+            "max": 5,
+            "showIf": []
+          },
+          {
+            "id": "q6",
+            "label": "アルバムを付けますか",
+            "type": "single",
+            "options": [
+              {
+                "id": "y",
+                "label": "はい"
+              },
+              {
+                "id": "n",
+                "label": "いいえ"
+              }
+            ],
+            "showIf": []
+          },
+          {
+            "id": "q7",
+            "label": "撮影時期",
+            "type": "single",
+            "options": [
+              {
+                "id": "weekday",
+                "label": "平日"
+              },
+              {
+                "id": "weekend",
+                "label": "土日祝"
+              },
+              {
+                "id": "peak",
+                "label": "七五三ピーク（9〜11月）"
+              }
+            ],
+            "showIf": []
+          },
+          {
+            "id": "q8",
+            "label": "データ追加の枚数",
+            "type": "number",
+            "unit": "枚",
+            "min": 0,
+            "max": 30,
+            "showIf": []
+          }
+        ],
+        "rules": [
+          {
+            "id": "r1",
+            "label": "基本料金（50カット）",
+            "effect": "base",
+            "amount": 77000,
+            "from": false,
+            "when": [
+              {
+                "q": "q1",
+                "op": "eq",
+                "val": "c50"
+              }
+            ]
+          },
+          {
+            "id": "r2",
+            "label": "基本料金（20カット）",
+            "effect": "base",
+            "amount": 55000,
+            "from": false,
+            "when": [
+              {
+                "q": "q1",
+                "op": "eq",
+                "val": "c20"
+              }
+            ]
+          },
+          {
+            "id": "r3",
+            "label": "着付け追加",
+            "effect": "perUnit",
+            "amount": 5500,
+            "per": "q3",
+            "from": true,
+            "when": []
+          },
+          {
+            "id": "r4",
+            "label": "出張撮影（神社）",
+            "effect": "add",
+            "amount": 22000,
+            "from": true,
+            "when": [
+              {
+                "q": "q4",
+                "op": "eq",
+                "val": "y"
+              }
+            ]
+          },
+          {
+            "id": "r5",
+            "label": "兄弟同時撮影",
+            "effect": "perUnit",
+            "amount": 11000,
+            "per": "q5",
+            "from": true,
+            "when": []
+          },
+          {
+            "id": "r6",
+            "label": "アルバム",
+            "effect": "add",
+            "amount": 22000,
+            "from": true,
+            "when": [
+              {
+                "q": "q6",
+                "op": "eq",
+                "val": "y"
+              }
+            ]
+          },
+          {
+            "id": "r7",
+            "label": "データ追加",
+            "effect": "perUnit",
+            "amount": 1100,
+            "per": "q8",
+            "from": false,
+            "when": []
+          },
+          {
+            "id": "r8",
+            "label": "セット割（出張＋アルバム）",
+            "effect": "discount",
+            "amount": 5000,
+            "from": false,
+            "when": [
+              {
+                "q": "q4",
+                "op": "eq",
+                "val": "y"
+              },
+              {
+                "q": "q6",
+                "op": "eq",
+                "val": "y"
+              }
+            ]
+          },
+          {
+            "id": "r9",
+            "label": "土日祝",
+            "effect": "add",
+            "amount": 5000,
+            "from": false,
+            "when": [
+              {
+                "q": "q7",
+                "op": "eq",
+                "val": "weekend"
+              }
+            ]
+          },
+          {
+            "id": "r10",
+            "label": "七五三ピーク",
+            "effect": "add",
+            "amount": 10000,
+            "from": false,
+            "when": [
+              {
+                "q": "q7",
+                "op": "eq",
+                "val": "peak"
+              }
+            ]
+          }
+        ]
+      },
       "name": "Studio et.",
       "shortName": "et.",
       "tagline": "I wish you have a healthy life filled with happiness",

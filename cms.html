@@ -158,6 +158,7 @@ body{background:var(--off);font-family:var(--sans);font-weight:300;font-size:13p
     <button class="sb-btn" onclick="show('kimono')">Kimono</button>
     <button class="sb-btn" onclick="show('costume')">Costume</button>
     <button class="sb-btn" onclick="show('plans')">Plans</button>
+    <button class="sb-btn" onclick="show('simulator')">Price Simulator</button>
     <button class="sb-btn" onclick="show('goods')">Goods</button>
     <button class="sb-btn" onclick="show('calendar')">Calendar</button>
     <button class="sb-btn" onclick="show('reservation')">Reservation</button>
@@ -256,6 +257,7 @@ function show(id){
     kimono: ()=>renderItems('kimono','Kimono'),
     costume: ()=>renderItems('costume','Costume'),
     plans: renderPlans,
+    simulator: renderSimulator,
     goods: renderGoods,
     calendar: renderCalendar,
     reservation: renderReservation,
@@ -290,6 +292,126 @@ function toast(msg,err){
 }
 
 function arrMove(arr,i,dir){ const t=arr[i]; arr[i]=arr[i+dir]; arr[i+dir]=t; }
+
+// ── PRICE SIMULATOR (料金シミュレーター マスタ) ──
+const SIM_OPS=[['eq','＝ に等しい'],['ne','≠ でない'],['includes','含む(複数選択)'],['gte','≧ 以上'],['lte','≦ 以下'],['answered','回答あり']];
+const SIM_EFFECTS=[['base','基本料金'],['add','加算(＋)'],['discount','割引(−)'],['perUnit','従量(数×単価)'],['percent','割合(％)']];
+const SIM_QTYPES=[['single','単一選択'],['multi','複数選択'],['number','数値入力']];
+
+function simData(){ const s=d(); if(!s.simulator)s.simulator={enabled:false,intro:'',questions:[],rules:[]}; if(!s.simulator.questions)s.simulator.questions=[]; if(!s.simulator.rules)s.simulator.rules=[]; return s.simulator; }
+function simUid(prefix,arr){ let n=1; const ids=arr.map(x=>x.id); while(ids.includes(prefix+n))n++; return prefix+n; }
+function simSel(path,cur,opts){ return `<select class="sim-sel" onchange="${path}=this.value;renderSimulator()">`+opts.map(o=>`<option value="${esc(o[0])}" ${cur===o[0]?'selected':''}>${esc(o[1])}</option>`).join('')+`</select>`; }
+
+function simCondValue(cond,path){
+  const sim=simData();
+  if(cond.op==='answered') return '<span class="sim-hint">（値なし）</span>';
+  const rq=sim.questions.find(q=>q.id===cond.q);
+  if(rq&&(rq.type==='single'||rq.type==='multi')){
+    const opts=[['','（選択）']].concat((rq.options||[]).map(o=>[o.id,o.label||o.id]));
+    return simSel(path+'.val',cond.val||'',opts);
+  }
+  return `<input class="sim-num" type="number" value="${esc(cond.val||'')}" oninput="${path}.val=this.value"/>`;
+}
+function simCondRow(c,ci,arrPath,qChoices){
+  const path=`${arrPath}[${ci}]`;
+  const qOpts=[['','（質問を選択）']].concat(qChoices);
+  return `<div class="sim-cond">${simSel(path+'.q',c.q||'',qOpts)}${simSel(path+'.op',c.op||'eq',SIM_OPS)}${simCondValue(c,path)}<button class="sim-x" title="条件を削除" onclick="${arrPath}.splice(${ci},1);renderSimulator()">×</button></div>`;
+}
+
+function renderSimulator(){
+  simInjectStyles();
+  const s=d(), sim=simData(), cs=currentStudio;
+  const base=`D.studios['${cs}'].simulator`;
+  const qAll=sim.questions.filter(q=>q.id).map(q=>[q.id,q.label||q.id]);
+
+  const questionsHtml=sim.questions.map((q,qi)=>{
+    const qp=`${base}.questions[${qi}]`;
+    const isChoice=(q.type==='single'||q.type==='multi');
+    const body=isChoice?`
+      <div class="sim-sub">選択肢</div>
+      ${(q.options||[]).map((o,oi)=>`<div class="sim-opt-row"><input class="sim-txt" placeholder="選択肢ラベル" value="${esc(o.label)}" oninput="${qp}.options[${oi}].label=this.value"/><span class="sim-id">${esc(o.id)}</span><button class="sim-x" title="削除" onclick="${qp}.options.splice(${oi},1);renderSimulator()">×</button></div>`).join('')}
+      <button class="sim-add-mini" onclick="${qp}.options.push({id:simUid('o',${qp}.options),label:''});renderSimulator()">＋ 選択肢</button>`
+    :`
+      <div class="sim-sub">数値設定</div>
+      <div class="sim-numset"><label>単位 <input class="sim-num" value="${esc(q.unit||'')}" placeholder="人 / 枚" oninput="${qp}.unit=this.value"/></label><label>最小 <input class="sim-num" type="number" value="${q.min!=null?q.min:0}" oninput="${qp}.min=parseInt(this.value)||0"/></label><label>最大 <input class="sim-num" type="number" value="${q.max!=null?q.max:20}" oninput="${qp}.max=parseInt(this.value)||0"/></label></div>`;
+    const otherQ=sim.questions.filter((x,xi)=>xi!==qi&&x.id).map(x=>[x.id,x.label||x.id]);
+    return `<div class="sim-card sim-q">
+      <div class="sim-card-head"><input class="sim-txt lg" placeholder="質問文（例：カット数を選ぶ）" value="${esc(q.label)}" oninput="${qp}.label=this.value"/>
+        <div class="li-ctrl">${qi>0?`<button class="up" onclick="arrMove(${base}.questions,${qi},-1);renderSimulator()">↑</button>`:''}${qi<sim.questions.length-1?`<button class="dn" onclick="arrMove(${base}.questions,${qi},1);renderSimulator()">↓</button>`:''}<button class="del" onclick="if(confirm('この質問を削除しますか?')){${base}.questions.splice(${qi},1);renderSimulator()}">削除</button></div>
+      </div>
+      <div class="sim-row2"><label class="sim-field">タイプ ${simSel(qp+'.type',q.type||'single',SIM_QTYPES)}</label><span class="sim-id">ID: ${esc(q.id)}</span></div>
+      ${body}
+      <div class="sim-sub">表示条件 <span class="sim-hint">空なら常に表示</span></div>
+      ${(q.showIf||[]).map((c,ci)=>simCondRow(c,ci,`${qp}.showIf`,otherQ)).join('')}
+      <button class="sim-add-mini" onclick="(${qp}.showIf=${qp}.showIf||[]).push({q:'',op:'eq',val:''});renderSimulator()">＋ 条件</button>
+    </div>`;
+  }).join('');
+
+  const rulesHtml=sim.rules.map((r,ri)=>{
+    const rp=`${base}.rules[${ri}]`;
+    const numQ=sim.questions.filter(q=>q.type==='number'&&q.id).map(q=>[q.id,q.label||q.id]);
+    const perControl=r.effect==='perUnit'?`<label class="sim-field">対象(数) ${simSel(rp+'.per',r.per||'',[['','（数値質問）']].concat(numQ))}</label>`:'';
+    const unitLabel=r.effect==='percent'?'%':(r.effect==='perUnit'?'円/単位':'円');
+    return `<div class="sim-card sim-r">
+      <div class="sim-card-head"><input class="sim-txt lg" placeholder="ルール名（内訳に表示：例 基本料金(50カット)）" value="${esc(r.label)}" oninput="${rp}.label=this.value"/>
+        <div class="li-ctrl">${ri>0?`<button class="up" onclick="arrMove(${base}.rules,${ri},-1);renderSimulator()">↑</button>`:''}${ri<sim.rules.length-1?`<button class="dn" onclick="arrMove(${base}.rules,${ri},1);renderSimulator()">↓</button>`:''}<button class="del" onclick="if(confirm('このルールを削除しますか?')){${base}.rules.splice(${ri},1);renderSimulator()}">削除</button></div>
+      </div>
+      <div class="sim-row2"><label class="sim-field">効果 ${simSel(rp+'.effect',r.effect||'add',SIM_EFFECTS)}</label><label class="sim-field">金額 <input class="sim-num" type="number" value="${r.amount!=null?r.amount:0}" oninput="${rp}.amount=parseInt(this.value)||0"/> ${unitLabel}</label>${perControl}<label class="sim-check"><input type="checkbox" ${r.from?'checked':''} onchange="${rp}.from=this.checked"/> 「〜」で表示</label></div>
+      <div class="sim-sub">適用条件 <span class="sim-hint">空なら常に適用</span></div>
+      ${(r.when||[]).map((c,ci)=>simCondRow(c,ci,`${rp}.when`,qAll)).join('')}
+      <button class="sim-add-mini" onclick="(${rp}.when=${rp}.when||[]).push({q:'',op:'eq',val:''});renderSimulator()">＋ 条件</button>
+    </div>`;
+  }).join('');
+
+  m().innerHTML=`<div class="panel">
+    <div class="panel-title">料金シミュレーター — ${esc(s.name)}</div>
+    <p style="font-family:var(--sans);font-size:.78rem;color:var(--mid);margin-bottom:1rem;line-height:1.7">「① 質問フロー」で何を聞くかを決め、「② 料金ルール」で条件ごとの金額を登録します。分岐・組み合わせ割・従量（数×単価）・時期加算は、すべてこの2つで表現できます。</p>
+    <label class="sim-enable"><input type="checkbox" ${sim.enabled?'checked':''} onchange="${base}.enabled=this.checked;renderSimulator()"/> このスタジオでシミュレーターを公開する</label>
+    <div class="row"><label>コンシェルジュ冒頭メッセージ</label><textarea placeholder="例：いくつかの質問にお答えいただくと、概算をご案内します。" oninput="${base}.intro=this.value">${esc(sim.intro||'')}</textarea></div>
+    <div class="sim-section-title sec-q">① 質問フロー</div>
+    ${questionsHtml||'<p class="sim-empty">まだ質問がありません。下のボタンから追加してください。</p>'}
+    <button class="btn-add" onclick="simData().questions.push({id:simUid('q',simData().questions),label:'',type:'single',options:[],showIf:[]});renderSimulator()">＋ 質問を追加</button>
+    <div class="sim-section-title sec-r">② 料金ルール</div>
+    ${rulesHtml||'<p class="sim-empty">まだルールがありません。下のボタンから追加してください。</p>'}
+    <button class="btn-add" onclick="simData().rules.push({id:simUid('r',simData().rules),label:'',effect:'add',amount:0,from:false,when:[]});renderSimulator()">＋ ルールを追加</button>
+    <div class="btn-row"><button class="btn btn-primary" onclick="toast('保存しました ✓（Exportで書き出してください）')">保存</button></div>
+  </div>`;
+}
+
+function simInjectStyles(){
+  if(document.getElementById('sim-styles'))return;
+  const st=document.createElement('style'); st.id='sim-styles';
+  st.textContent=`
+  .sim-section-title{font-family:var(--sans);font-weight:500;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:1.8rem 0 .8rem;padding:.15rem 0 .4rem .7rem;border-bottom:1px solid var(--border);border-left:4px solid var(--border)}
+  .sim-section-title.sec-q{border-left-color:#cf94ac}
+  .sim-section-title.sec-r{border-left-color:#b8935a}
+  .sim-empty{font-family:var(--sans);font-size:.78rem;color:var(--mid);padding:.8rem 0}
+  .sim-enable{display:flex;align-items:center;gap:.5rem;font-family:var(--sans);font-size:.82rem;margin-bottom:1rem;cursor:pointer}
+  .sim-card{border:1px solid var(--border);padding:1rem;margin-bottom:.8rem;border-radius:3px}
+  .sim-card.sim-q{background:#faeef2;border-left:3px solid #cf94ac}
+  .sim-card.sim-r{background:#f7efe1;border-left:3px solid #b8935a}
+  .sim-card-head{display:flex;gap:.6rem;align-items:flex-start;margin-bottom:.6rem}
+  .sim-txt,.sim-num{font-family:var(--sans);font-size:.8rem;border:1px solid var(--border);background:#fff;padding:.4rem .55rem;border-radius:2px;outline:none;color:var(--ink)}
+  .sim-txt{flex:1}.sim-txt.lg{font-size:.9rem;font-weight:500}
+  .sim-num{width:6rem}
+  .sim-sel{font-family:var(--sans);font-size:.78rem;border:1px solid var(--border);background:#fff;padding:.38rem .5rem;border-radius:2px;outline:none;color:var(--ink)}
+  .sim-row2{display:flex;flex-wrap:wrap;gap:.8rem 1.2rem;align-items:center;margin:.5rem 0}
+  .sim-field{font-family:var(--sans);font-size:.72rem;color:var(--mid);display:inline-flex;align-items:center;gap:.4rem}
+  .sim-check{font-family:var(--sans);font-size:.72rem;color:var(--mid);display:inline-flex;align-items:center;gap:.35rem;cursor:pointer}
+  .sim-sub{font-family:var(--sans);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);margin:.8rem 0 .4rem}
+  .sim-hint{font-size:.66rem;color:var(--mid);text-transform:none;letter-spacing:0;font-weight:300}
+  .sim-opt-row{display:flex;gap:.5rem;align-items:center;margin-bottom:.35rem}
+  .sim-id{font-family:ui-monospace,monospace;font-size:.66rem;color:var(--mid);white-space:nowrap}
+  .sim-cond{display:flex;gap:.4rem;align-items:center;margin-bottom:.35rem;flex-wrap:wrap}
+  .sim-numset{display:flex;gap:1rem;flex-wrap:wrap}
+  .sim-numset label{font-family:var(--sans);font-size:.72rem;color:var(--mid);display:inline-flex;align-items:center;gap:.35rem}
+  .sim-x{border:1px solid var(--border);background:#fff;color:var(--mid);width:26px;height:26px;border-radius:2px;cursor:pointer;font-size:1rem;line-height:1;flex:0 0 auto}
+  .sim-x:hover{background:#c0392b;color:#fff;border-color:#c0392b}
+  .sim-add-mini{font-family:var(--sans);font-size:.72rem;color:var(--ink);background:none;border:1px dashed var(--border);padding:.35rem .7rem;border-radius:2px;cursor:pointer;margin-top:.3rem}
+  .sim-add-mini:hover{border-color:var(--ink)}
+  `;
+  document.head.appendChild(st);
+}
 
 // ── GLOBAL ──
 function renderGlobal(){
