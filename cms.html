@@ -330,7 +330,7 @@ function renderSimulator(){
     const body=isChoice?`
       <div class="sim-sub">選択肢</div>
       ${(q.options||[]).map((o,oi)=>`<div class="sim-opt-row"><input class="sim-txt" placeholder="選択肢ラベル" value="${esc(o.label)}" oninput="${qp}.options[${oi}].label=this.value"/><span class="sim-id">${esc(o.id)}</span><button class="sim-x" title="削除" onclick="${qp}.options.splice(${oi},1);renderSimulator()">×</button></div>`).join('')}
-      <button class="sim-add-mini" onclick="${qp}.options.push({id:simUid('o',${qp}.options),label:''});renderSimulator()">＋ 選択肢</button>`
+      <button class="sim-add-mini" onclick="${qp}.options=${qp}.options||[];${qp}.options.push({id:simUid('o',${qp}.options),label:''});renderSimulator()">＋ 選択肢</button>`
     :`
       <div class="sim-sub">数値設定</div>
       <div class="sim-numset"><label>単位 <input class="sim-num" value="${esc(q.unit||'')}" placeholder="人 / 枚" oninput="${qp}.unit=this.value"/></label><label>最小 <input class="sim-num" type="number" value="${q.min!=null?q.min:0}" oninput="${qp}.min=parseInt(this.value)||0"/></label><label>最大 <input class="sim-num" type="number" value="${q.max!=null?q.max:20}" oninput="${qp}.max=parseInt(this.value)||0"/></label></div>`;
