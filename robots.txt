@@ -1,5 +1,5 @@
 # robots.txt for Trunklii HP (Studio et. / Maison nr.)
-# https://trunklii.github.io/Trunklii/
+# https://trunklii.com/
 
 # --- General web crawlers ---
 User-agent: *
@@ -96,4 +96,4 @@ Disallow: /cms_bk20260512.html
 Disallow: /preview/
 
 # --- Sitemap ---
-Sitemap: https://trunklii.github.io/Trunklii/sitemap.xml
+Sitemap: https://trunklii.com/sitemap.xml
