@@ -1454,6 +1454,12 @@ let _draftT, _draftWarned=false, _discarding=false;
 function saveDraft(){
   if(_discarding) return;
   try{
+    // 実質的な変更が無ければ下書きを作らない（クリック/ナビだけでバナーが出るのを防ぐ）
+    if(JSON.stringify(D)===JSON.stringify(window.SITE_DATA)){
+      localStorage.removeItem(DRAFT_KEY);
+      const b0=document.getElementById('draft-bar'); if(b0) b0.style.display='none';
+      return;
+    }
     localStorage.setItem(DRAFT_KEY, JSON.stringify({t:Date.now(), data:D}));
     const b=document.getElementById('draft-bar'); if(b && b.style.display==='none') b.style.display='';
   }catch(e){
