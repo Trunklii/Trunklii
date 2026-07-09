@@ -64,6 +64,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --sec-ash:#2E2223;
   --sec-bordeaux:#301C1C;
   --sec-oak:#381B00;
+  /* section palette v3 (mid-century, from client palette) */
+  --pal-wine:#452928;      /* dark  -> white text */
+  --pal-burgundy:#74362d;  /* dark  -> white text */
+  --pal-khaki:#a49250;     /* light -> dark text  */
+  --pal-bluegrey:#9dbcd1;  /* light -> dark text  */
+  --pal-cream:#f0ead8;     /* light -> dark text  */
+  --on-light-ink:#2a1c17;
+  --on-light-soft:rgba(42,28,23,.82);
+  --on-light-mid:rgba(42,28,23,.6);
+  --on-light-line:rgba(42,28,23,.2);
   /* accent palette (small-area use) */
   --accent-teal:#7F9E96;
   --accent-wine:#7E3F4E;
@@ -578,6 +588,27 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 :is(#about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa,#flow,#recruit) .btn-line{color:#fff;border-color:rgba(255,255,255,.4)}
 :is(#about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa,#flow,#recruit) .btn-line:hover{background:#fff;color:var(--ink);border-color:#fff}
 
+/* === Light-background sections: flip text to dark ink === */
+:is(#about,#kimono,#plans,#reservation,#qa,#recruit){color:var(--on-light-ink)}
+:is(#about,#kimono,#plans,#reservation,#qa,#recruit) .sec-num{color:var(--on-light-mid)}
+:is(#about,#kimono,#plans,#reservation,#qa,#recruit) .sec-title{color:var(--on-light-ink)}
+:is(#about,#kimono,#plans,#reservation,#qa,#recruit) .sec-rule{background:var(--on-light-line)}
+:is(#about,#kimono,#plans,#reservation,#qa,#recruit) .section-body-text{color:var(--on-light-soft)}
+#about .about-text p{color:var(--on-light-soft)}
+:is(#about,#kimono,#plans,#reservation,#qa,#recruit) .coming-banner{color:#7a3a34;border-color:rgba(122,58,52,.4)}
+#kimono .item-name{color:var(--on-light-ink)}
+#kimono .item-desc{color:var(--on-light-mid)}
+#kimono .item-price{color:#8a3a2c}
+#qa .qa-list{border-top-color:var(--on-light-line)}
+#qa .qa-item{border-bottom-color:var(--on-light-line)}
+#qa .qa-q{color:var(--on-light-ink)}
+#qa .qa-toggle{color:var(--on-light-ink)}
+#qa .qa-a{color:var(--on-light-soft)}
+#recruit .recruit-copy{color:var(--on-light-soft)}
+#recruit .pos-list{background:rgba(42,28,23,.08)}
+:is(#about,#kimono,#plans,#reservation,#qa,#recruit) .btn-line{color:var(--on-light-ink);border-color:var(--on-light-line)}
+:is(#about,#kimono,#plans,#reservation,#qa,#recruit) .btn-line:hover{background:var(--on-light-ink);color:#fff;border-color:var(--on-light-ink)}
+
 /* === Maison nr. nav (dark mode) === */
 .nav{background:#1C0909;border-bottom-color:#fff}
 .brand-tab{color:#fff}
@@ -998,7 +1029,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ABOUT 01 -->
-<section id="about" style="background:var(--sec-warmblack)">
+<section id="about" style="background:var(--pal-cream)" class="sec-light">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title" id="about-heading">About</h2><div class="sec-rule"></div></div>
   <div class="about-grid">
@@ -1012,7 +1043,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- GALLERY 02 -->
-<section id="gallery" style="background:var(--sec-nightwine)">
+<section id="gallery" style="background:var(--pal-wine)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Gallery</h2><div class="sec-rule"></div></div>
   <div class="g-filters">
@@ -1034,7 +1065,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- KIMONO 03 -->
-<section id="kimono" style="background:var(--sec-darkbrown)">
+<section id="kimono" style="background:var(--pal-khaki)" class="sec-light">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title" id="kimono-heading">Kimono</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="kimono-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
@@ -1043,7 +1074,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- COSTUME 04 -->
-<section id="costume" style="background:var(--sec-ash)">
+<section id="costume" style="background:var(--pal-burgundy)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title" id="costume-heading">Costume</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="costume-body"></p>
@@ -1052,7 +1083,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- PLANS 05 -->
-<section id="plans" style="background:var(--sec-bordeaux)">
+<section id="plans" style="background:var(--pal-bluegrey)" class="sec-light">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Plans & Pricing</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="plans-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
@@ -1061,7 +1092,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- GOODS 06 -->
-<section id="goods" style="background:var(--sec-oak)">
+<section id="goods" style="background:var(--pal-wine)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title" id="goods-heading">Goods</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="goods-body"></p>
@@ -1070,7 +1101,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- CALENDAR 07 -->
-<section id="calendar" style="background:var(--sec-warmblack)">
+<section id="calendar" style="background:var(--pal-burgundy)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title" id="calendar-heading">Calendar</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="calendar-body" style="text-align:center;max-width:640px;margin:0 auto 2rem"></p>
@@ -1086,7 +1117,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- RESERVATION 08 -->
-<section id="reservation" style="background:var(--sec-nightwine)">
+<section id="reservation" style="background:var(--pal-cream)" class="sec-light">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">08</span><h2 class="sec-title" id="reservation-heading">Reservation</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="reservation-body" style="text-align:center;max-width:640px;margin:0 auto 3rem">ご予約はオンラインまたはお電話・SNSで承っております。<br/>七五三のお詣り日着物レンタルも受付中です。</p>
@@ -1129,7 +1160,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- CANCEL POLICY 09 -->
-<section id="cancel-policy" style="background:var(--sec-darkbrown)">
+<section id="cancel-policy" style="background:var(--pal-wine)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">09</span><h2 class="sec-title" id="cancel-heading">Cancellation Policy</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="cancel-body" style="text-align:center;max-width:780px;margin:0 auto 2.5rem"></p>
@@ -1138,7 +1169,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- Q&A 10 -->
-<section id="qa" style="background:var(--sec-ash)">
+<section id="qa" style="background:var(--pal-bluegrey)" class="sec-light">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">10</span><h2 class="sec-title" id="qa-heading">Q & A</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="qa-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
@@ -1147,7 +1178,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- FLOW 11 -->
-<section id="flow" style="background:var(--sec-bordeaux)">
+<section id="flow" style="background:var(--pal-burgundy)">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">11</span><h2 class="sec-title" id="flow-heading">Flow</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="flow-body" style="text-align:center;max-width:600px;margin:0 auto 3.5rem"></p>
@@ -1156,7 +1187,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- RECRUIT 12 -->
-<section id="recruit" style="background:var(--sec-oak)">
+<section id="recruit" style="background:var(--pal-khaki)" class="sec-light">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">12</span><h2 class="sec-title" id="recruit-heading">Recruit</h2><div class="sec-rule"></div></div>
   <p class="recruit-copy" id="recruit-body" style="text-align:center;max-width:640px;margin:0 auto 2rem"></p>
