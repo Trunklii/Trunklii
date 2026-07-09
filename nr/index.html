@@ -1295,7 +1295,7 @@ async function init(){
   // Logo — Maison nr. ロゴ(assets/nr-logo.png)。明色ナビでは brightness(0) で黒く表示
   const logoLink = document.getElementById('nav-logo-link');
   const mobLogo = document.getElementById('mob-logo');
-  const navLogoImg = `<img src="../assets/nr-logo.png" alt="${d.name}" style="height:100%;width:auto;display:block"/>`;            // 暗いナビ上部 → 白のまま
+  const navLogoImg = `<span role="img" aria-label="${d.name}" style="display:block;height:100%;aspect-ratio:1600/821;background:currentColor;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span>`; // mask+currentColor: .nav-logo の color(#f0ead8)に追従
   const mobLogoImg = `<img src="../assets/nr-logo.png" alt="${d.name}" style="height:100%;width:auto;display:block;filter:brightness(0)"/>`; // 白いモバイルメニュー → 黒
   if(logoLink) logoLink.innerHTML = navLogoImg;
   if(mobLogo) mobLogo.innerHTML = mobLogoImg;
