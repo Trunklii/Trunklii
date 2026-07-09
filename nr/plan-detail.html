@@ -228,7 +228,7 @@ function render(){
   }
 
   const brandEl = document.getElementById('nav-brand');
-  brandEl.innerHTML = `${esc((studio.shortName||'').replace(/\.$/,''))}<span class="b-mark">.</span>`;
+  brandEl.innerHTML = '<img src="../assets/nr-logo.png" alt="Maison nr." style="height:34px;width:auto;display:block;margin:0 auto;filter:brightness(0)"/>';
   const bookingBtn = document.getElementById('booking-btn');
   bookingBtn.href = studio.bookingUrl || '#';
   bookingBtn.textContent = studio.bookingLabel || '予約する';

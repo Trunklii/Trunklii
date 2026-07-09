@@ -865,14 +865,11 @@ async function init(){
   document.getElementById('mob-tab-nr').classList.toggle('active', STUDIO_KEY==='nr');
 
   // Logo
-  const wideSvg = await loadSvg(`../../assets/${STUDIO_KEY}-wide.svg`);
   const logoLink = document.getElementById('nav-logo-link');
   const mobLogo = document.getElementById('mob-logo');
-  if(wideSvg){ logoLink.innerHTML = wideSvg; mobLogo.innerHTML = wideSvg; }
-  else {
-    logoLink.innerHTML = `<span style="font-family:var(--display);font-style:italic;font-size:1.6rem;font-weight:300">${d.name}</span>`;
-    mobLogo.innerHTML = `<span style="font-family:var(--display);font-style:italic;font-size:1.1rem;font-weight:300">${d.name}</span>`;
-  }
+  const logoImg = `<img src="../../assets/nr-logo.png" alt="${d.name}" style="height:100%;width:auto;display:block;filter:brightness(0)"/>`;
+  if(logoLink) logoLink.innerHTML = logoImg;
+  if(mobLogo) mobLogo.innerHTML = logoImg;
 
   // Header icons links
   document.getElementById('nav-ig').href = d.instagram;

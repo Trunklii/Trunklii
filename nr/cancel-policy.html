@@ -205,7 +205,7 @@ function init(){
   if(studio.accentColor) document.documentElement.style.setProperty('--accent', studio.accentColor);
 
   const name = studio.shortName || studio.name || '';
-  document.getElementById('nav-brand').innerHTML = `${esc(name.replace(/\.$/,''))}<span class="b-mark">.</span>`;
+  document.getElementById('nav-brand').innerHTML = '<img src="../assets/nr-logo.png" alt="Maison nr." style="height:34px;width:auto;display:block;margin:0 auto;filter:brightness(0)"/>';
 
   document.getElementById('booking-btn').href = studio.bookingUrl || '#';
   document.getElementById('booking-cta').href = studio.bookingUrl || '#';
