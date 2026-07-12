@@ -257,3 +257,22 @@ PNG ワイヤフレームから抽出した値。承認後に適用。
 - HTML: `<a href="#recruit" class="nav-link important">Recruit<sup>NEW</sup></a>` → `Recruit` のみ (NEW 削除)
 - `.nav-link.important` を**ボタン状**に: `color:#fff`、`background:#381B00`、`padding:.5rem 1.1rem`、`height:auto`、`align-self:center` で 48px nav-bot 内に小さめに収まる
 - `.nav-link.important:hover` 追加: `background:#16002B` (booking CTA hoverと同色で統一感)
+
+---
+
+## フォント刷新（游書体ファミリー）
+
+### 2026-11 — デザイナー提案フォントの適用（et/ + nr/ + root 全25ファイル）
+
+デザイナー提案（無料案）に基づき全ページのフォントを統一。ブランチ `feat/yu-font-family`。
+
+| 用途 | 変数 | 新スタック |
+|---|---|---|
+| 見出し | `--display` | Cormorant → 游明朝 → ヒラギノ明朝 → Noto Serif JP |
+| 本文・UI | `--sans` / `--serif`(et,nr) | 游ゴシック(Medium優先) → ヒラギノ角ゴ → Noto Sans JP |
+| root の `--serif` | ブランド名表示（見出し用途）のみ游明朝スタック |
+
+- 游明朝・游ゴシックは**システムフォント参照**（Webフォント読込なし・無料）。Android には游書体が無いため Noto Serif JP / Noto Sans JP にフォールバック
+- Google Fonts 読込は Cormorant + Noto Sans JP + Noto Serif JP の3familyに整理
+- 廃止: Cormorant Garamond / Jost / Inter / Archivo Black（`--label` 変数も削除、使用箇所ゼロを確認済）
+- 有料案（リュウミン／ヒラギノWebフォント）はライセンス契約後に `--display` / `--sans` の差し替えのみで移行可能な構造
