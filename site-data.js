@@ -281,15 +281,31 @@ window.SITE_DATA = {
       "heroImages": [
         {
           "file": "hero-pc-01.jpg",
-          "alt": "Studio et. hero — 松と着物の女の子"
+          "alt": "Studio et. hero（PC） 1"
         },
         {
           "file": "hero-pc-02.jpg",
-          "alt": "Studio et. hero — 花冠の双子"
+          "alt": "Studio et. hero（PC） 2"
         },
         {
           "file": "hero-pc-03.jpg",
-          "alt": "Studio et. hero — 黄色い花と姉妹"
+          "alt": "Studio et. hero（PC） 3"
+        },
+        {
+          "file": "hero-pc-04.jpg",
+          "alt": "Studio et. hero（PC） 4"
+        },
+        {
+          "file": "hero-pc-05.jpg",
+          "alt": "Studio et. hero（PC） 5"
+        },
+        {
+          "file": "hero-pc-06.jpg",
+          "alt": "Studio et. hero（PC） 6"
+        },
+        {
+          "file": "hero-pc-07.jpg",
+          "alt": "Studio et. hero（PC） 7"
         }
       ],
       "heroImagesSp": [
@@ -308,6 +324,34 @@ window.SITE_DATA = {
         {
           "file": "hero-sp-04.jpg",
           "alt": "Studio et. hero（スマホ） 4"
+        },
+        {
+          "file": "hero-sp-05.jpg",
+          "alt": "Studio et. hero（スマホ） 5"
+        },
+        {
+          "file": "hero-sp-06.jpg",
+          "alt": "Studio et. hero（スマホ） 6"
+        },
+        {
+          "file": "hero-sp-07.jpg",
+          "alt": "Studio et. hero（スマホ） 7"
+        },
+        {
+          "file": "hero-sp-08.jpg",
+          "alt": "Studio et. hero（スマホ） 8"
+        },
+        {
+          "file": "hero-sp-09.jpg",
+          "alt": "Studio et. hero（スマホ） 9"
+        },
+        {
+          "file": "hero-sp-10.jpg",
+          "alt": "Studio et. hero（スマホ） 10"
+        },
+        {
+          "file": "hero-sp-11.jpg",
+          "alt": "Studio et. hero（スマホ） 11"
         }
       ],
       "about": {
