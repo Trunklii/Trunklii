@@ -1190,7 +1190,7 @@ window.SITE_DATA = {
       "hours": "詳細は近日公開",
       "instagram": "https://www.instagram.com/maison_nr._",
       "instagramHandle": "@maison_nr._",
-      "mapUrl": "https://maps.app.goo.gl/itQNLUzV7xRpjfze6",
+      "mapUrl": "https://maps.app.goo.gl/gF8j4TbvhNziwHFd6",
       "bookingUrl": "https://nr.trunklii.com/reservation",
       "bookingLabel": "予約する",
       "comingSoon": false,
