@@ -934,19 +934,8 @@ window.SITE_DATA = {
       },
       "recruit": {
         "heading": "Recruit",
-        "body": "スタジオエトでは、フォトグラファー・ヘアメイクアーティストを募集しています。\n子どもたちの大切な瞬間をともに記録しませんか。",
-        "positions": [
-          {
-            "title": "フォトグラファー",
-            "type": "正社員 / 業務委託",
-            "desc": "子ども・家族のポートレート撮影経験者歓迎。"
-          },
-          {
-            "title": "ヘアメイクアーティスト",
-            "type": "業務委託",
-            "desc": "着物・洋装ヘアメイク経験者歓迎。"
-          }
-        ],
+        "body": "現在、募集しておりません。",
+        "positions": [],
         "contactEmail": "recruit@trunklii.com"
       },
       "ctaHeading": "今のあなたにいつでも会える。\nCelebrating you, my special, always.",
@@ -1259,7 +1248,7 @@ window.SITE_DATA = {
       },
       "recruit": {
         "heading": "Recruit",
-        "body": "Maison nr. スタッフ募集情報は近日公開予定です。",
+        "body": "現在、募集しておりません。",
         "positions": [],
         "contactEmail": "recruit@trunklii.com"
       },
