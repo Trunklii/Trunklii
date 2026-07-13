@@ -55,6 +55,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --ease:cubic-bezier(.25,.46,.45,.94);
 }
 html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:9.5rem}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:14px;line-height:1.8;overflow-x:hidden}
 
 /* ═══ NAV ═══ */
@@ -1704,6 +1705,41 @@ window.addEventListener('pageshow', function(e){
 });
 
 init();
+
+// ── アンカースクロール補正: 固定ヘッダー分のオフセット + 遅延画像によるレイアウトシフト補正 ──
+(function(){
+  const nav = document.getElementById('main-nav');
+  const headerOff = () => (nav ? nav.offsetHeight : 0) + 12;
+  let timers = [];
+  function cancelCorrections(){ timers.forEach(clearTimeout); timers = []; }
+  ['wheel','touchstart'].forEach(ev => window.addEventListener(ev, cancelCorrections, { passive: true }));
+  function goTo(el, smooth){
+    const y = el.getBoundingClientRect().top + window.scrollY - headerOff();
+    window.scrollTo({ top: y, behavior: smooth ? 'smooth' : 'auto' });
+  }
+  function correctLater(el){
+    cancelCorrections();
+    [800, 1600, 2600].forEach(ms => timers.push(setTimeout(() => {
+      if(Math.abs(el.getBoundingClientRect().top - headerOff()) > 6) goTo(el, false);
+    }, ms)));
+  }
+  document.addEventListener('click', function(e){
+    const a = e.target.closest('a[href^="#"]');
+    if(!a) return;
+    const id = decodeURIComponent((a.getAttribute('href') || '').slice(1));
+    if(!id) return;
+    const el = document.getElementById(id);
+    if(!el) return;
+    e.preventDefault();
+    history.pushState(null, '', '#' + id);
+    goTo(el, true);
+    correctLater(el);
+  });
+  if(location.hash){
+    const el = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if(el) window.addEventListener('load', () => { goTo(el, false); correctLater(el); });
+  }
+})();
 </script>
   <script src="../patch-index.js"></script>
 </body>
