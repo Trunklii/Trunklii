@@ -1184,9 +1184,21 @@ async function init(){
     return (portrait && Array.isArray(sp) && sp.length) ? sp : d.heroImages;
   };
   buildHero(pickHeroImages());
-  window.matchMedia('(orientation: portrait)').addEventListener('change', () => {
+  const heroMq = window.matchMedia('(orientation: portrait)');
+  let heroIsPortrait = heroMq.matches;
+  const onHeroOrientationChange = () => {
+    const nowPortrait = window.matchMedia('(orientation: portrait)').matches;
+    if (nowPortrait === heroIsPortrait) return;
+    heroIsPortrait = nowPortrait;
     clearInterval(heroTimer);
     buildHero(pickHeroImages());
+  };
+  heroMq.addEventListener('change', onHeroOrientationChange);
+  // resize フォールバック（MQL change が発火しない環境向け）
+  let heroResizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(heroResizeT);
+    heroResizeT = setTimeout(onHeroOrientationChange, 200);
   });
 
   // About
