@@ -621,6 +621,42 @@ window.SITE_DATA = {
                               "name": "十歳女の子 03",
                               "desc": "",
                               "category": "10y-girl"
+                      },
+                      {
+                              "file": "kimono-3g-09.jpg",
+                              "name": "三歳女の子 チュール 01",
+                              "desc": "",
+                              "category": "3y-girl"
+                      },
+                      {
+                              "file": "kimono-3g-10.jpg",
+                              "name": "三歳女の子 チュール 02",
+                              "desc": "",
+                              "category": "3y-girl"
+                      },
+                      {
+                              "file": "kimono-10b-01.jpg",
+                              "name": "十歳男の子 01",
+                              "desc": "",
+                              "category": "10y-boy"
+                      },
+                      {
+                              "file": "kimono-om-01.jpg",
+                              "name": "お宮参り 01",
+                              "desc": "",
+                              "category": "omairi"
+                      },
+                      {
+                              "file": "kimono-om-02.jpg",
+                              "name": "お宮参り 02",
+                              "desc": "",
+                              "category": "omairi"
+                      },
+                      {
+                              "file": "kimono-om-03.jpg",
+                              "name": "お宮参り 03",
+                              "desc": "",
+                              "category": "omairi"
                       }
               ]
       },

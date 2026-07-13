@@ -83,11 +83,13 @@
     var container = document.getElementById('kimono-grid');
     if(!container) return;
     var CATS = [
+      { key:'omairi',   sub:'Omiyamairi',       jp:'お宮参り' },
       { key:'3y-girl',  sub:'3 Year Old Girl',  jp:'三歳 女の子' },
       { key:'3y-boy',   sub:'3 Year Old Boy',   jp:'三歳 男の子' },
       { key:'5y-boy',   sub:'5 Year Old Boy',   jp:'五歳 男の子' },
       { key:'7y-girl',  sub:'7 Year Old Girl',  jp:'七歳 女の子' },
-      { key:'10y-girl', sub:'10 Year Old Girl', jp:'十歳 女の子' }
+      { key:'10y-girl', sub:'10 Year Old Girl', jp:'十歳 女の子' },
+      { key:'10y-boy',  sub:'10 Year Old Boy',  jp:'十歳 男の子' }
     ];
     // STUDIO_KEY を判定
     var STUDIO_KEY = location.pathname.indexOf('/nr/') !== -1 ? 'nr' : 'et';
