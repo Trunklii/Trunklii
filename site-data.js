@@ -516,12 +516,16 @@ window.SITE_DATA = {
               ],
               "options": [
                 {
-                  "name": "きょうだい撮影（撮影に入るお子様1人追加につき 撮影料 +¥2,200）",
+                  "name": "きょうだい撮影",
                   "price": "¥4,500"
                 },
                 {
-                  "name": "家族撮影（撮影に入るお子様1人追加につき 撮影料 +¥2,200）",
+                  "name": "家族撮影",
                   "price": "¥4,500"
+                },
+                {
+                  "name": "撮影料（きょうだい・家族撮影で撮影に入るお子様1人追加につき）",
+                  "price": "¥2,200"
                 },
                 {
                   "name": "＋データ 5cut",
@@ -540,16 +544,28 @@ window.SITE_DATA = {
                   "price": "¥3,300"
                 },
                 {
-                  "name": "ハーフ成人 撮影料金（女児 ¥15,000 / 男児 ¥11,000）",
-                  "price": "¥11,000〜"
+                  "name": "ハーフ成人 撮影料金（女児）",
+                  "price": "¥15,000"
+                },
+                {
+                  "name": "ハーフ成人 撮影料金（男児）",
+                  "price": "¥11,000"
                 },
                 {
                   "name": "et.Movie（約3分 / 撮影日の2週間前までにご予約ください）",
                   "price": "¥28,000"
                 },
                 {
-                  "name": "Art photo coordinate（生花コーディネート / 瓶差し・髪飾り・ランドセルなど）",
+                  "name": "Art photo coordinate（瓶差し・髪飾り・ランドセルなど）",
                   "price": "¥18,000〜"
+                },
+                {
+                  "name": "Art photo coordinate（空間装飾）",
+                  "price": "¥28,000〜"
+                },
+                {
+                  "name": "Art photo coordinate（空間装飾＋髪飾り）",
+                  "price": "¥37,000〜"
                 }
               ],
               "gallery": [
@@ -599,16 +615,28 @@ window.SITE_DATA = {
                   "price": "¥3,300"
                 },
                 {
-                  "name": "ハーフ成人 撮影料金（女児 ¥15,000 / 男児 ¥11,000）",
-                  "price": "¥11,000〜"
+                  "name": "ハーフ成人 撮影料金（女児）",
+                  "price": "¥15,000"
+                },
+                {
+                  "name": "ハーフ成人 撮影料金（男児）",
+                  "price": "¥11,000"
                 },
                 {
                   "name": "et.Movie（約3分 / 撮影日の2週間前までにご予約ください）",
                   "price": "¥28,000"
                 },
                 {
-                  "name": "Art photo coordinate（生花コーディネート / 瓶差し・髪飾り・ランドセルなど）",
+                  "name": "Art photo coordinate（瓶差し・髪飾り・ランドセルなど）",
                   "price": "¥18,000〜"
+                },
+                {
+                  "name": "Art photo coordinate（空間装飾）",
+                  "price": "¥28,000〜"
+                },
+                {
+                  "name": "Art photo coordinate（空間装飾＋髪飾り）",
+                  "price": "¥37,000〜"
                 }
               ],
               "gallery": [
