@@ -280,16 +280,34 @@ window.SITE_DATA = {
       "comingSoon": false,
       "heroImages": [
         {
-          "file": "AA-18116290120491565.jpg",
-          "alt": "Studio et. hero"
+          "file": "hero-pc-01.jpg",
+          "alt": "Studio et. hero — 松と着物の女の子"
         },
         {
-          "file": "AA-18103506649752477.jpg",
-          "alt": "Studio et. hero 2"
+          "file": "hero-pc-02.jpg",
+          "alt": "Studio et. hero — 花冠の双子"
         },
         {
-          "file": "AA-17856884340522635.jpg",
-          "alt": "Studio et. hero 3"
+          "file": "hero-pc-03.jpg",
+          "alt": "Studio et. hero — 黄色い花と姉妹"
+        }
+      ],
+      "heroImagesSp": [
+        {
+          "file": "hero-sp-01.jpg",
+          "alt": "Studio et. hero（スマホ） 1"
+        },
+        {
+          "file": "hero-sp-02.jpg",
+          "alt": "Studio et. hero（スマホ） 2"
+        },
+        {
+          "file": "hero-sp-03.jpg",
+          "alt": "Studio et. hero（スマホ） 3"
+        },
+        {
+          "file": "hero-sp-04.jpg",
+          "alt": "Studio et. hero（スマホ） 4"
         }
       ],
       "about": {
