@@ -962,6 +962,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Plans & Pricing</h2><div class="sec-rule"></div></div>
   <p class="section-body-text" id="plans-body" style="text-align:center;max-width:640px;margin:0 auto 2.5rem"></p>
   <div class="plans-grid" id="plans-grid"></div>
+  <div class="more-cta" id="plans-see-all"><a href="plans.html" class="btn-line">すべてのプランを見る →</a></div>
 </div>
 </section>
 
@@ -1275,9 +1276,7 @@ async function init(){
       if(nums.length===0) return p.variants[0].price || '近日公開';
       return `¥${Math.min(...nums).toLocaleString()}〜`;
     }
-    const tagged = plans.filter(p=>p.tag && p.tag.trim());
-    const others = plans.filter(p=>!p.tag || !p.tag.trim());
-    const digest = (tagged.concat(others)).slice(0, 3);
+    const digest = plans;
     const cardsHtml = digest.map(p=>{
       const hasDetail = p.detail && p.variants && p.variants.length>0;
       const href = hasDetail ? `plan-detail.html?key=${encodeURIComponent(p.key||'')}` : 'plans.html';
@@ -1289,11 +1288,8 @@ async function init(){
         <div class="plan-desc">${p.desc}</div>
       </a>`;
     }).join('');
-    const seeAllHtml = plans.length > 0 ? `
-      <div style="grid-column:1/-1;background:#fff;padding:1.5rem;text-align:center">
-        <a href="plans.html" style="display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:.7rem 1.6rem;border:1px solid var(--ink);transition:background .2s,color .2s" onmouseover="this.style.background='var(--ink)';this.style.color='#fff'" onmouseout="this.style.background='';this.style.color='var(--ink)'">すべてのプランを見る →</a>
-      </div>` : '';
-    document.getElementById('plans-grid').innerHTML = (cardsHtml + seeAllHtml) || '<p style="text-align:center;color:var(--mid);font-family:var(--display);font-style:italic;grid-column:1/-1">近日公開予定。</p>';
+    document.getElementById('plans-grid').innerHTML = cardsHtml || '<p style="text-align:center;color:var(--mid);font-family:var(--display);font-style:italic;grid-column:1/-1">近日公開予定。</p>';
+    document.getElementById('plans-see-all').style.display = plans.length > 0 ? '' : 'none';
   })();
 
   // Goods
