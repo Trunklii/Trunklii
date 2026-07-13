@@ -1174,11 +1174,20 @@ async function init(){
   document.getElementById('mob-book-btn').textContent = d.bookingLabel;
   document.getElementById('mob-book-btn').href = d.bookingUrl;
 
-  // Hero
+  // Hero（縦画面=スマホ用縦写真 / 横画面=PC用横写真 を自動切替）
   document.getElementById('hero-eyebrow').textContent = 'Trunklii / ' + d.name;
   document.getElementById('hero-name').textContent = d.shortName;
   document.getElementById('hero-tagline').textContent = d.tagline;
-  buildHero(d.heroImages);
+  const pickHeroImages = () => {
+    const portrait = window.matchMedia('(orientation: portrait)').matches;
+    const sp = d.heroImagesSp;
+    return (portrait && Array.isArray(sp) && sp.length) ? sp : d.heroImages;
+  };
+  buildHero(pickHeroImages());
+  window.matchMedia('(orientation: portrait)').addEventListener('change', () => {
+    clearInterval(heroTimer);
+    buildHero(pickHeroImages());
+  });
 
   // About
   document.getElementById('about-heading').textContent = d.about.heading;
