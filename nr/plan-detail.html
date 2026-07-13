@@ -252,7 +252,8 @@ function render(){
 
   const d = plan.detail;
   document.getElementById('page-title').textContent = `${plan.name} | ${studio.name}`;
-  document.getElementById('meta-desc').setAttribute('content',
+  const metaDesc = document.getElementById('meta-desc') || document.querySelector('meta[name="description"]');
+  if(metaDesc) metaDesc.setAttribute('content',
     `${plan.name} — ${d.tagline || plan.desc || ''} ${studio.name}の撮影プラン詳細。`);
 
   const variantsHtml = plan.variants.map(v=>{

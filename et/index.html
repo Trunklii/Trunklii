@@ -1317,6 +1317,13 @@ async function init(){
     document.getElementById('reservation-heading').textContent = d.reservation.heading;
     document.getElementById('reservation-body').textContent = d.reservation.body;
   }
+  (function(){
+    const blocks = (d.reservation && d.reservation.blocks) || [];
+    const b1 = document.getElementById('res-top-book-1');
+    const b2 = document.getElementById('res-top-book-2');
+    if(b1) b1.href = (blocks[0] && blocks[0].bookingUrl) || d.bookingUrl || 'reservation.html';
+    if(b2) b2.href = (blocks[1] && blocks[1].bookingUrl) || d.bookingUrl || 'reservation.html';
+  })();
 
   // Cancel Policy (LP: summary only)
   if(d.cancelPolicy){

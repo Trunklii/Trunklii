@@ -120,6 +120,7 @@ main{padding-top:64px}
 .omairi-table td .price-main{font-size:1rem;display:block;color:var(--ink)}
 .omairi-table td .price-add{font-size:.78rem;color:var(--mid);display:block;margin-top:.2rem;font-family:var(--sans);font-style:normal}
 .omairi-table-tax{text-align:right;font-family:var(--sans);font-size:.66rem;color:var(--mid);letter-spacing:.1em;margin-top:.5rem;text-transform:uppercase}
+.omairi-example{font-family:var(--serif);font-weight:300;font-size:.78rem;line-height:1.9;color:var(--mid);margin-top:1rem;padding:.9rem 1.1rem;background:rgba(17,16,16,.025);border:1px solid var(--border)}
 
 /* ─── Footer ─── */
 footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2rem clamp(1.4rem,5vw,3rem);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.2rem;font-family:var(--sans);font-weight:300;font-size:.7rem;letter-spacing:.08em}
@@ -240,9 +241,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <th colspan="3">スタジオ撮影月</th>
                 </tr>
                 <tr>
-                  <th class="period-hd">2025年<br/>4月〜9月</th>
-                  <th class="period-hd">2025年<br/>10月〜12月</th>
-                  <th class="period-hd">2026年<br/>1月〜3月</th>
+                  <th class="period-hd">2026年<br/>4月〜9月</th>
+                  <th class="period-hd">2026年<br/>10月〜12月</th>
+                  <th class="period-hd">2027年<br/>1月〜3月</th>
                 </tr>
               </thead>
               <tbody>
@@ -267,7 +268,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </tr>
                 <tr>
                   <td class="row-label">
-                    土日祝日<br/>
+                    土日祝日大安<br/>
                     <span style="font-size:.66rem;color:var(--mid);font-weight:300">(お子様1人追加料金)</span>
                   </td>
                   <td class="price-cell">
@@ -326,7 +327,14 @@ function renderBlocksFromData(studio){
     const sub = document.createElement('div');
     sub.className = 'subsec';
     const bookHref = b.bookingUrl || bookUrlFallback;
-    const notes = (b.notes||[]).map(n => `<li>${esc(n)}</li>`).join('');
+    const notes = (b.notes||[]).map(n => {
+      if(n && typeof n === 'object'){
+        const sub = n.sub ? `<span class="res-note-sub">${esc(n.sub)}</span>` : '';
+        const link = n.link && n.link.href ? `<span class="res-note-sub"><a href="${esc(n.link.href)}" class="res-note-link">${esc(n.link.label||n.link.href)}</a></span>` : '';
+        return `<li><span>${esc(n.text||'')}${sub}${link}</span></li>`;
+      }
+      return `<li>${esc(n)}</li>`;
+    }).join('');
     const isOmairi = (b.title||'').indexOf('お詣り') !== -1 || (b.title||'').indexOf('753') !== -1;
     sub.innerHTML = `
       <div class="subsec-head">
@@ -399,6 +407,7 @@ function renderOmairiHtml(op){
         </table>
       </div>
       <p class="omairi-table-tax">( tax in )</p>
+      ${op.example ? `<p class="omairi-example">${esc(op.example)}</p>` : ''}
     </div>
   `;
 }

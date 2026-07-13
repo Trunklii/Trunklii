@@ -194,6 +194,10 @@ function render(){
   document.getElementById('footer-copy').textContent = data.global.copyright;
   document.getElementById('page-title').textContent = `Plans | ${studio.name}`;
 
+  if(studio.plansLead){
+    document.getElementById('page-lead').innerHTML = esc(studio.plansLead).replace(/\n/g,'<br/>');
+  }
+
   const plans = studio.plans || [];
   const grid = document.getElementById('pl-grid');
 

@@ -12,7 +12,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title id="page-title">撮影プラン一覧 | Studio et.（岐阜県羽島市）</title>
 <!-- SEO Meta -->
-<meta name="description" content="Studio et.（岐阜県羽島市）の撮影プラン一覧。七五三・ニューボーン・バースデー・マタニティ・ファミリー撮影の料金とプラン内容をご案内。"/>
+<meta name="description" content="Studio et.（岐阜県羽島市）の撮影プラン一覧。One Plan・Family Plan・Maternity Plan・Furisode Plan（成人式）の料金と、七五三・お宮参り・バースデー・入園入学などの撮影メニューをご案内。"/>
 <meta name="keywords" content="写真スタジオ,フォトスタジオ,岐阜県,羽島市,七五三,ニューボーン,バースデー,マタニティ,ファミリーフォト,Studio et."/>
 <meta name="author" content="Trunklii"/>
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
@@ -20,7 +20,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Open Graph -->
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="撮影プラン一覧 | Studio et.（岐阜県羽島市）"/>
-<meta property="og:description" content="Studio et.（岐阜県羽島市）の撮影プラン一覧。七五三・ニューボーン・バースデー・マタニティ・ファミリー撮影の料金とプラン内容をご案内。"/>
+<meta property="og:description" content="Studio et.（岐阜県羽島市）の撮影プラン一覧。One Plan・Family Plan・Maternity Plan・Furisode Plan（成人式）の料金と、七五三・お宮参り・バースデー・入園入学などの撮影メニューをご案内。"/>
 <meta property="og:url" content="https://trunklii.com/et/plans.html"/>
 <meta property="og:image" content="https://trunklii.com/et/18295179019220181.jpg"/>
 <meta property="og:site_name" content="Studio et."/>
@@ -28,7 +28,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="撮影プラン一覧 | Studio et.（岐阜県羽島市）"/>
-<meta name="twitter:description" content="Studio et.（岐阜県羽島市）の撮影プラン一覧。七五三・ニューボーン・バースデー・マタニティ・ファミリー撮影の料金とプラン内容をご案内。"/>
+<meta name="twitter:description" content="Studio et.（岐阜県羽島市）の撮影プラン一覧。One Plan・Family Plan・Maternity Plan・Furisode Plan（成人式）の料金と、七五三・お宮参り・バースデー・入園入学などの撮影メニューをご案内。"/>
 <meta name="twitter:image" content="https://trunklii.com/et/18295179019220181.jpg"/>
 <!-- End SEO Meta -->
 <!-- Structured Data -->
@@ -193,6 +193,10 @@ function render(){
   document.getElementById('booking-btn').href = studio.bookingUrl || '#';
   document.getElementById('footer-copy').textContent = data.global.copyright;
   document.getElementById('page-title').textContent = `Plans | ${studio.name}`;
+
+  if(studio.plansLead){
+    document.getElementById('page-lead').innerHTML = esc(studio.plansLead).replace(/\n/g,'<br/>');
+  }
 
   const plans = studio.plans || [];
   const grid = document.getElementById('pl-grid');
