@@ -391,6 +391,12 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 /* Coming Soon 期間中はヒーロー左下のロゴ・タグラインを非表示（パネルと重なるため） */
 .hero .hero-content{display:none}
 
+/* ═══ Coming Soon 期間中の非表示: About〜Flow ═══
+   写真準備が整いリリースする際は、この下のブロックを丸ごと削除してください */
+#about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa,#flow{display:none!important}
+:is(.nav-item,.mob-item,.footer-links li):has(a:is([href="#about"],[href="#gallery"],[href="#kimono"],[href="#costume"],[href="#plans"],[href="#goods"],[href="#calendar"],[href="#reservation"],[href="#cancel-policy"],[href="#qa"],[href="#flow"])){display:none}
+/* ═══ Coming Soon 非表示ここまで ═══ */
+
 /* ACCESS */
 .access-grid{display:grid;grid-template-columns:minmax(260px,400px) 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
 .access-name{font-family:var(--display);font-style:italic;font-weight:300;font-size:1.7rem;color:var(--pal-wine);margin-bottom:1.2rem}
