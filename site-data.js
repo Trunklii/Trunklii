@@ -686,7 +686,7 @@ window.SITE_DATA = {
           "key": "one",
           "name": "One Plan",
           "desc": "「ちょっと気軽に\"いま\"を残したい」 メインのお子様1人のプラン。オプションで家族撮影・きょうだい撮影を追加できます。",
-          "tag": "20cut",
+          "tag": "20CUT - 1衣装",
           "detail": {
             "heroImage": "18334778899231083.jpg",
             "tagline": "ちょっと気軽に \"いま\" を残したい",
@@ -772,7 +772,7 @@ window.SITE_DATA = {
           "key": "family",
           "name": "Family Plan",
           "desc": "「家族みんなで一緒に撮影したい」 メインのお子様1人以上のプラン。家族撮影・きょうだい撮影は基本料金に含まれます。",
-          "tag": "50cut",
+          "tag": "50CUT - 2衣装",
           "detail": {
             "heroImage": "18303974821264064.jpg",
             "tagline": "家族みんなで一緒に撮影したい",
