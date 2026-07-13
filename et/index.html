@@ -761,6 +761,8 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
   .res-top-grid{grid-template-columns:1fr;gap:1.2rem}
   .res-top-btns{grid-template-columns:1fr}
 }
+/* 料金・数字表示はライニング数字で高さを揃える（Cormorantのオールドスタイル数字対策） */
+.plan-price,.item-price,.pd-variant-price,.pd-opt-price,.omairi-base-val,.omairi-table td.price-cell,.cp-table td.fee,.chip .p,.numctl .v,.total-bar .amt,.cal-month-name{font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1}
 </style>
 </head>
 <body>
