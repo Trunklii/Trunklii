@@ -416,9 +416,13 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 
 /* PLANS */
 .plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--border)}
-.plan-card{background:#fff;padding:2.2rem 1.8rem;transition:background .35s;position:relative}
+.plan-card{background:#fff;padding:0;position:relative;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:background .35s}
 .plan-card:hover{background:var(--ink)}
-.plan-tag{position:absolute;top:1.2rem;right:1.2rem;font-family:var(--sans);font-weight:400;font-size:.55rem;letter-spacing:.1em;color:#fff;background:var(--accent);padding:.18rem .55rem;text-transform:uppercase}
+.plan-card-img{aspect-ratio:4/3;width:100%;overflow:hidden;background:#eee}
+.plan-card-img-inner{width:100%;height:100%;background-size:cover;background-position:center;transition:transform .7s var(--ease)}
+.plan-card:hover .plan-card-img-inner{transform:scale(1.05)}
+.plan-card-body{padding:2rem 1.8rem 2.2rem;display:flex;flex-direction:column;flex:1;position:relative}
+.plan-tag{position:absolute;top:-1.2rem;right:1.2rem;font-family:var(--sans);font-weight:400;font-size:.55rem;letter-spacing:.1em;color:#fff;background:var(--accent);padding:.2rem .55rem;text-transform:uppercase;z-index:1}
 .plan-name{font-family:var(--sans);font-weight:500;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem;color:var(--ink);transition:color .35s}
 .plan-price{font-family:var(--display);font-weight:300;font-style:italic;font-size:1.7rem;color:var(--accent);margin-bottom:.9rem;transition:color .35s}
 .plan-desc{font-family:var(--serif);font-size:.78rem;color:var(--mid);line-height:1.9;transition:color .35s}
@@ -1398,16 +1402,21 @@ async function init(){
     const cardsHtml = digest.map(p=>{
       const hasDetail = p.detail && p.variants && p.variants.length>0;
       const href = hasDetail ? `plan-detail.html?key=${encodeURIComponent(p.key||'')}` : 'plans.html';
+      const heroImg = (p.detail && p.detail.heroImage) || '';
       return `
-      <a href="${href}" class="plan-card" style="text-decoration:none;color:inherit;display:block">
-        ${p.tag ? `<div class="plan-tag">${p.tag}</div>` : ''}
-        <div class="plan-name">${p.name}</div>
-        <div class="plan-price">${minPrice(p)}</div>
-        <div class="plan-desc">${p.desc}</div>
+      <a href="${href}" class="plan-card">
+        ${heroImg ? `<div class="plan-card-img"><div class="plan-card-img-inner" style="background-image:url('${heroImg}')"></div></div>` : ''}
+        <div class="plan-card-body">
+          ${p.tag ? `<div class="plan-tag">${p.tag}</div>` : ''}
+          <div class="plan-name">${p.name}</div>
+          <div class="plan-price">${minPrice(p)}</div>
+          <div class="plan-desc">${p.desc}</div>
+        </div>
       </a>`;
     }).join('');
     document.getElementById('plans-grid').innerHTML = cardsHtml || '<p style="text-align:center;color:var(--mid);font-family:var(--display);font-style:italic;grid-column:1/-1">近日公開予定。</p>';
-    document.getElementById('plans-see-all').style.display = plans.length > 0 ? '' : 'none';
+    // 「すべてのプランを見る」は5プラン以上になったら表示(4プラン以下は全カードがTOPに出ているため)
+    document.getElementById('plans-see-all').style.display = plans.length >= 5 ? '' : 'none';
   })();
 
   // Goods
