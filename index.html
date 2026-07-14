@@ -116,12 +116,12 @@ nav{
 .panel-sub{
   font-family:var(--serif);font-weight:200;
   font-size:clamp(.65rem,1.3vw,.78rem);
-  letter-spacing:.22em;color:rgba(244,242,238,.45);
+  letter-spacing:.22em;color:rgba(244,242,238,.65);
   margin-top:.9rem;
-  opacity:0;transform:translateY(7px);
-  transition:opacity .5s .1s,transform .5s .1s;
+  animation:fadeUp .9s ease both; /* ホバー表示だとスマホで見えないため常時表示+ロード時モーション */
 }
-.panel:hover .panel-sub{opacity:1;transform:translateY(0)}
+.panel-et .panel-sub{animation-delay:.4s}
+.panel-nr .panel-sub{animation-delay:.55s}
 
 .panel-rule{
   width:28px;height:1px;margin:1.6rem auto 0;
