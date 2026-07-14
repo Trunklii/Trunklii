@@ -109,6 +109,9 @@ nav{
   transition:letter-spacing .7s cubic-bezier(.25,.46,.45,.94);
 }
 .panel:hover .panel-name{letter-spacing:.14em}
+.panel-logo{display:block;height:clamp(64px,9vw,110px);width:auto;margin:0 auto;transition:transform .7s cubic-bezier(.25,.46,.45,.94)}
+.panel-nr .panel-logo{height:clamp(58px,8.2vw,100px)}
+.panel:hover .panel-logo{transform:scale(1.05)}
 
 .panel-sub{
   font-family:var(--serif);font-weight:200;
@@ -195,7 +198,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="panel-bg" id="bg-et"></div>
     <div class="divider"></div>
     <div class="panel-body">
-      <div class="panel-name">et.</div>
+      <div class="panel-name"><img class="panel-logo" src="assets/et-logo-mark-white.png" alt="et."/></div>
       <div class="panel-sub">Studio et.</div>
       <div class="panel-rule"></div>
     </div>
@@ -204,7 +207,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a class="panel panel-nr" href="./nr/" id="panel-nr">
     <div class="panel-bg" id="bg-nr"></div>
     <div class="panel-body">
-      <div class="panel-name">nr.</div>
+      <div class="panel-name"><img class="panel-logo" src="assets/nr-logo-mark-white.png" alt="nr."/></div>
       <div class="panel-sub">Maison nr.</div>
       <div class="panel-rule"></div>
     </div>
