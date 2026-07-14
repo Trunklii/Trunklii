@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>et.nr. HP 確認リスト（スタッフ用）</title>
+<style>
+  :root{
+    --ink:#2b2622; --sub:#7a726a; --line:#ddd5cb; --bg:#fbf9f5; --card:#fff;
+    --et:#b8935a; --nr:#7a9e95; --etbg:#f6efe4; --nrbg:#eaf1ef;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"游ゴシック","Yu Gothic",YuGothic,"Hiragino Sans","Noto Sans JP",sans-serif;
+    color:var(--ink); background:var(--bg); line-height:1.5;
+    -webkit-text-size-adjust:100%; -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .doc{max-width:760px;margin:0 auto;padding:16px 14px 40px}
+
+  .head h1{font-size:19px;margin:0 0 2px}
+  .head .date{font-size:12px;color:var(--sub)}
+  .intro{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:12px 0 18px;font-size:13px}
+  .intro b{color:var(--et)}
+  .intro ul{margin:6px 0 0;padding-left:18px}
+  .intro li{margin:2px 0}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:16px}
+  .card-head{display:flex;align-items:baseline;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line)}
+  .badge{font-size:13px;font-weight:700;padding:2px 10px;border-radius:4px;color:#fff;white-space:nowrap}
+  .badge.et{background:var(--et)} .badge.nr{background:var(--nr)}
+  .card-head .sub{font-size:12px;color:var(--sub)}
+
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border-bottom:1px solid var(--line);padding:8px 10px;vertical-align:middle}
+  thead th{font-size:11px;color:var(--sub);font-weight:600;text-align:center;background:var(--etbg)}
+  .nr thead th{background:var(--nrbg)}
+  thead th.col-sec{text-align:left}
+  .col-no{width:30px;text-align:center;color:var(--sub);font-weight:700;font-size:12px}
+  .col-sec{text-align:left}
+  .col-chk{width:44px;text-align:center}
+  .col-memo{display:none}
+  td.sec b{font-size:13.5px}
+  td.sec .en{color:var(--sub);font-weight:400;font-size:11.5px;margin-left:5px}
+  td.sec .hint{display:block;color:var(--sub);font-size:11.5px;margin-top:1px;line-height:1.4}
+  .box{display:inline-block;width:17px;height:17px;border:1.8px solid #b3aa9d;border-radius:4px;background:#fff}
+  tr.parent td{background:var(--etbg);font-weight:700;border-top:2px solid #cfc6b8}
+  .nr tr.parent td{background:var(--nrbg)}
+  tr.parent .col-chk{background:var(--card)}
+  td.child{padding-left:26px;position:relative}
+  td.child::before{content:"└";position:absolute;left:11px;color:var(--sub);font-size:12px}
+  .flag{color:#a2543a;font-weight:600}
+  tr.rgroup td{background:var(--etbg);border-top:2px solid #cfc6b8}
+  .nr tr.rgroup td{background:var(--nrbg)}
+
+  footer{font-size:11.5px;color:var(--sub);text-align:center;margin-top:8px}
+
+  /* ===== 印刷: A4 2枚 ===== */
+  @media print{
+    body{background:#fff}
+    .doc{max-width:none;padding:0}
+    .noprint{display:none}
+    .card{border:none;border-radius:0;margin:0}
+    .page{padding:12mm 12mm}
+    .page.p1{page-break-after:always}
+    .col-memo{display:table-cell;width:24%;color:var(--sub)}
+    @page{size:A4;margin:0}
+  }
+  @media screen and (max-width:420px){
+    td.sec b{font-size:13px}
+    .col-chk{width:40px}
+    th,td{padding:7px 7px}
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="head">
+    <h1>et.nr. HP 確認リスト</h1>
+    <div class="date">Studio et. / Maison nr. ・ 更新 2026-07-14</div>
+  </div>
+
+  <div class="intro noprint">
+    <b>スタッフのみなさまへ</b><br>
+    HP（ホームページ）の各ページを、<b>PC版・スマホ版の両方</b>で見て、下のポイントをご確認ください。<br>
+    <ul>
+      <li>誤字・古い情報・写真の違和感・料金の誤りなどに注意</li>
+      <li>気づいた点は <b>LINEでご報告</b>ください（項目名・PC/スマホ・内容を添えて）</li>
+      <li>このページはチェックを付ける機能はありません（確認用の一覧です）</li>
+    </ul>
+  </div>
+
+  <!-- ===== PAGE 1: et TOP ===== -->
+  <div class="page p1">
+    <div class="card">
+      <div class="card-head">
+        <span class="badge et">Studio et.</span>
+        <span class="sub">TOPページ（上から順に）</span>
+      </div>
+      <table class="et">
+        <thead>
+          <tr><th class="col-no">#</th><th class="col-sec">セクション（確認ポイント）</th><th class="col-chk">PC</th><th class="col-chk">スマホ</th><th class="col-memo">メモ</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="col-no">–</td><td class="sec"><b>ヒーロー</b><span class="en">Hero</span><span class="hint">メインビジュアル写真・スライド切替・キャッチコピー</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td class="col-no">01</td><td class="sec"><b>About</b><span class="en">自己紹介</span><span class="hint">文章・プロフィール写真</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td class="col-no">02</td><td class="sec"><b>Gallery</b><span class="en">ギャラリー</span><span class="hint">写真・カテゴリ表示・並び</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td class="col-no">03</td><td class="sec"><b>Kimono</b><span class="en">着物</span><span class="hint">写真・カテゴリの過不足</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td class="col-no">04</td><td class="sec"><b>Costume</b><span class="en">衣装</span><span class="hint">写真・内容</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td class="col-no">05</td><td class="sec"><b>Plans &amp; Pricing</b><span class="en">プラン＆料金</span><span class="hint">プラン構成・料金・オプション・注記</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td class="col-no">06</td><td class="sec"><b>Goods</b><span class="en">物販</span><span class="hint">写真・内容</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td class="col-no">07</td><td class="sec"><b>Calendar</b><span class="en">カレンダー</span><span class="hint">料金区分・営業日・定休日</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td class="col-no">08</td><td class="sec"><b>Reservation</b><span class="en">予約</span><span class="hint">予約導線・ブロック内容・電話番号</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td class="col-no">09</td><td class="sec"><b>Cancellation Policy</b><span class="en">キャンセル規定</span><span class="hint">文章・規定内容</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td class="col-no">10</td><td class="sec"><b>Q &amp; A</b><span class="en">よくある質問</span><span class="hint">項目の過不足・回答内容</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td class="col-no">11</td><td class="sec"><b>Flow</b><span class="en">撮影の流れ</span><span class="hint">文章・手順</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td class="col-no">12</td><td class="sec"><b>Recruit</b><span class="en">採用</span><span class="hint">文章・掲載可否</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td class="col-no">13</td><td class="sec"><b>Access</b><span class="en">アクセス</span><span class="hint">地図埋込（店舗ピン）・住所・店舗情報</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td class="col-no">–</td><td class="sec"><b>Booking / CTA</b><span class="en">予約導線</span><span class="hint">ボタン・電話番号・文言</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr class="rgroup"><td class="col-no">共</td><td class="sec"><b>ヘッダー / ナビ / フッター</b><span class="en">共通</span><span class="hint">ロゴ・メニュー・SNS・地図・表記ゆれ</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== PAGE 2: et 下層 + nr ===== -->
+  <div class="page p2">
+    <div class="card">
+      <div class="card-head">
+        <span class="badge et">Studio et.</span>
+        <span class="sub">下層ページ（TOP以外）</span>
+      </div>
+      <table class="et">
+        <thead>
+          <tr><th class="col-no"></th><th class="col-sec">ページ / 確認項目</th><th class="col-chk">PC</th><th class="col-chk">スマホ</th><th class="col-memo">メモ</th></tr>
+        </thead>
+        <tbody>
+          <tr class="parent"><td colspan="2">Plans（プラン一覧）</td><td class="col-chk"></td><td class="col-chk"></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="child">全プランの掲載・並び順</td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="child">料金・非公開（お問い合わせ）表記</td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="child">詳細ページへの導線</td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+
+          <tr class="parent"><td colspan="2">Plan Detail（プラン詳細）</td><td class="col-chk"></td><td class="col-chk"></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="child">各プランの説明文・料金</td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="child">掲載写真</td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="child">予約ボタンの導線</td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+
+          <tr class="parent"><td colspan="2">Calendar（カレンダー）</td><td class="col-chk"></td><td class="col-chk"></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="child">2ヶ月カレンダー表示・料金区分の色分け</td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="child">定休日・営業時間の正確性</td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+
+          <tr class="parent"><td colspan="2">Reservation（予約）</td><td class="col-chk"></td><td class="col-chk"></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="child">予約フローの説明</td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="child">STORES予約リンク（撮影／753お詣り）</td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="child">電話番号・注意事項</td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+
+          <tr class="parent"><td colspan="2">Cancellation Policy（キャンセル規定）</td><td class="col-chk"></td><td class="col-chk"></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="child">規定文章・料率・振替ルール</td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+
+          <tr class="parent"><td colspan="2">Simulator（料金シミュレーター）</td><td class="col-chk"></td><td class="col-chk"></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="child">質問フローの動作</td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="child"><span class="flag">料金の正確性（※現在は仮金額が公開中）</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="child">プランページからの導線</td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <span class="badge nr">Maison nr.</span>
+        <span class="sub">Coming Soon 期間中に表示される要素</span>
+      </div>
+      <table class="nr">
+        <thead>
+          <tr><th class="col-no"></th><th class="col-sec">セクション（確認ポイント）</th><th class="col-chk">PC</th><th class="col-chk">スマホ</th><th class="col-memo">メモ</th></tr>
+        </thead>
+        <tbody>
+          <tr><td></td><td class="sec"><b>ヒーロー / Coming Soon オーバーレイ</b><span class="hint">コンセプト文・「まもなくオープン」・Instagram/マップ導線</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="sec"><b>Coming Soon パネル</b><span class="hint">白抜きロゴ・nr.（ナル / narrative）ブランド定義・コンセプト文</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="sec"><b>Access</b><span class="en">アクセス</span><span class="hint">地図埋込（店舗ピン）・住所・店舗情報</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="sec"><b>Booking / CTA</b><span class="en">予約導線</span><span class="hint">ボタン・電話番号・文言</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="sec"><b>ヘッダー / ナビ / フッター</b><span class="en">共通</span><span class="hint">ロゴ・SNS・地図リンク・表記ゆれ</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+          <tr><td></td><td class="sec"><b>非表示確認</b><span class="hint">About〜Flow が Coming Soon 中に隠れているか（ナビ・フッターのリンク含む）</span></td><td class="col-chk"><span class="box"></span></td><td class="col-chk"><span class="box"></span></td><td class="col-memo"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer>Trunklii — et.nr. HP 確認リスト（スタッフ用・社内資料）</footer>
+</div>
+</body>
+</html>

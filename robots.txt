@@ -7,6 +7,7 @@ Allow: /
 Disallow: /cms.html
 Disallow: /cms_bk20260512.html
 Disallow: /preview/
+Disallow: /staff/
 
 # --- AI crawlers: explicitly allowed for AEO (Answer Engine Optimization) ---
 # OpenAI (ChatGPT search / Web browse)
