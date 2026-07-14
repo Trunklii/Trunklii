@@ -395,6 +395,13 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
    写真準備が整いリリースする際は、この下のブロックを丸ごと削除してください */
 #about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa,#flow{display:none!important}
 :is(.nav-item,.mob-item,.footer-links li):has(a:is([href="#about"],[href="#gallery"],[href="#kimono"],[href="#costume"],[href="#plans"],[href="#goods"],[href="#calendar"],[href="#reservation"],[href="#cancel-policy"],[href="#qa"],[href="#flow"])){display:none}
+/* ヘッダー下段メニュー(Recruit等)と予約導線も非表示(ページが短くリンク不要・予約ページ未公開) */
+.nav-bot{display:none}
+.hero{margin-top:80px;height:calc(100vh - 80px);height:calc(100svh - 80px)}
+@media(max-width:960px){.hero{margin-top:60px;height:calc(100vh - 60px);height:calc(100svh - 60px)}}
+.mob-item:has(a[href="#recruit"]){display:none}
+.mob-book-btn{display:none}
+#booking{display:none!important}
 /* ═══ Coming Soon 非表示ここまで ═══ */
 
 /* ACCESS */
