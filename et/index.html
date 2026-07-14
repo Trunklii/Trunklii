@@ -1237,8 +1237,9 @@ async function init(){
   const mobLogo = document.getElementById('mob-logo');
   const etLogoMask = `<span role="img" aria-label="${d.name}" style="display:block;height:100%;aspect-ratio:404/411;background:currentColor;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span>`;
   if(logoLink) logoLink.innerHTML = etLogoMask;
-  // ハンバーガーメニューは「et.」マークのみ(黒・assets/et-logo-mark.png)。上下に余白が出る高さに抑える
-  if(mobLogo) mobLogo.innerHTML = `<img src="../assets/et-logo-mark.png" alt="${d.name}" style="height:30px;width:auto;display:block"/>`;
+  // ハンバーガーメニューは「et.」マークのみ(黒・assets/et-logo-mark.png)。
+  // nr の maison nr. ロゴ(48px枠×インク92.8%≒44.5px)と目視の高さ・余白が揃う 44px に設定
+  if(mobLogo) mobLogo.innerHTML = `<img src="../assets/et-logo-mark.png" alt="${d.name}" style="height:44px;width:auto;display:block"/>`;
 
   // Header icons links
   document.getElementById('nav-ig').href = d.instagram;
