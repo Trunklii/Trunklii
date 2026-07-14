@@ -79,7 +79,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .brand-tab.active::after{content:'';position:absolute;bottom:-1px;left:1.2rem;right:1.2rem;height:2px;background:var(--ink)}
 
 .nav-logo-wrap{display:flex;align-items:center;justify-content:center}
-.nav-logo{display:block;height:42px;color:var(--ink)}
+.nav-logo{display:block;height:56px;color:var(--ink)}
 .nav-logo svg{height:100%;width:auto;display:block}
 
 /* Right action icons (square framed) */
@@ -107,6 +107,13 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .mob-icon-row a.mob-nr{border-color:#7a9e95;color:#5e837b}
 .mob-icon-row button{width:42px;height:42px;flex-shrink:0;border:1px solid var(--ink);color:var(--ink);display:flex;align-items:center;justify-content:center}
 .mob-icon-row button svg{width:16px;height:16px}
+
+/* ヒーローは写真を全面に(オーバーレイ文字は非表示・2026-07-14ユーザー指示) */
+.hero .hero-content{display:none}
+
+/* モバイルメニュー下部アイコンのブランドラベル(枠内右下) */
+.mob-icon-row a[data-brand]{position:relative}
+.mob-icon-row a[data-brand]::after{content:attr(data-brand);position:absolute;bottom:2px;right:3px;font-family:var(--display);font-style:italic;font-size:.55rem;line-height:1;pointer-events:none;opacity:.85}
 
 /* ACCESS */
 .access-grid{display:grid;grid-template-columns:minmax(260px,400px) 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
@@ -195,7 +202,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
   background:none;border:none;cursor:pointer;
   font-size:1.4rem;color:var(--ink);padding:.5rem;line-height:1;
 }
-.mob-logo{display:flex;align-items:center;justify-content:center;height:42px}
+.mob-logo{display:flex;align-items:center;justify-content:center;height:48px}
 .mob-logo svg{height:32px;width:auto}
 .mob-spacer{width:32px}
 
@@ -548,7 +555,7 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,5vw,4rem);di
   .hamburger{display:flex;position:relative;left:0;top:0;transform:none}
   .nav-right{gap:.4rem}
   .icon-btn{width:32px;height:32px}
-  .nav-logo{height:30px}
+  .nav-logo{height:40px}
   .hero{height:calc(100vh - 60px);height:calc(100svh - 60px);margin-top:60px}
   .about-grid,.recruit-body{grid-template-columns:1fr}
   .about-img-wrap{order:-1}
@@ -910,18 +917,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button onclick="closeMob();openSearch()" aria-label="Search" style="background:none;cursor:pointer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       </button>
-      <span class="mob-brand-chip">et.</span>
-      <a id="mob-map" href="#" target="_blank" rel="noopener" aria-label="Studio et. Access">
+      <a id="mob-map" data-brand="et." href="#" target="_blank" rel="noopener" aria-label="Studio et. Access">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-7-7-12a7 7 0 1 1 14 0c0 5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
       </a>
-      <a id="mob-ig" href="#" target="_blank" rel="noopener" aria-label="Studio et. Instagram">
+      <a id="mob-ig" data-brand="et." href="#" target="_blank" rel="noopener" aria-label="Studio et. Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
       </a>
-      <span class="mob-brand-chip chip-nr">nr.</span>
-      <a class="mob-nr" id="mob-map-nr" href="https://maps.app.goo.gl/gF8j4TbvhNziwHFd6" target="_blank" rel="noopener" aria-label="Maison nr. Access">
+      <a class="mob-nr" id="mob-map-nr" data-brand="nr." href="https://maps.app.goo.gl/gF8j4TbvhNziwHFd6" target="_blank" rel="noopener" aria-label="Maison nr. Access">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-7-7-12a7 7 0 1 1 14 0c0 5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
       </a>
-      <a class="mob-nr" id="mob-ig-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener" aria-label="Maison nr. Instagram">
+      <a class="mob-nr" id="mob-ig-nr" data-brand="nr." href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener" aria-label="Maison nr. Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
       </a>
     </div>
@@ -1227,15 +1232,12 @@ async function init(){
   document.getElementById('mob-tab-et').classList.toggle('active', STUDIO_KEY==='et');
   document.getElementById('mob-tab-nr').classList.toggle('active', STUDIO_KEY==='nr');
 
-  // Logo
-  const wideSvg = await loadSvg(`../assets/${STUDIO_KEY}-wide.svg`);
+  // Logo — Studio et. 正式ロゴ(assets/et-logo.png、白抜き)。mask+currentColor で .nav-logo の色に追従
   const logoLink = document.getElementById('nav-logo-link');
   const mobLogo = document.getElementById('mob-logo');
-  if(wideSvg){ logoLink.innerHTML = wideSvg; mobLogo.innerHTML = wideSvg; }
-  else {
-    logoLink.innerHTML = `<span style="font-family:var(--display);font-style:italic;font-size:1.6rem;font-weight:300">${d.name}</span>`;
-    mobLogo.innerHTML = `<span style="font-family:var(--display);font-style:italic;font-size:1.1rem;font-weight:300">${d.name}</span>`;
-  }
+  const etLogoMask = `<span role="img" aria-label="${d.name}" style="display:block;height:100%;aspect-ratio:404/411;background:currentColor;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span>`;
+  if(logoLink) logoLink.innerHTML = etLogoMask;
+  if(mobLogo) mobLogo.innerHTML = etLogoMask;
 
   // Header icons links
   document.getElementById('nav-ig').href = d.instagram;

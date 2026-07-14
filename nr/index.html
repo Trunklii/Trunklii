@@ -416,6 +416,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .icon-btn[data-brand]{position:relative}
 .icon-btn[data-brand]::after{content:attr(data-brand);position:absolute;bottom:1px;right:2px;font-family:var(--display);font-style:italic;font-size:.5rem;line-height:1;pointer-events:none;opacity:.85}
 .mob-brand-chip{display:inline-flex;align-items:center;font-family:var(--display);font-style:italic;font-size:.8rem;color:var(--ink);opacity:.7;padding:0 .1rem}
+.mob-icon-row a[data-brand]{position:relative}
+.mob-icon-row a[data-brand]::after{content:attr(data-brand);position:absolute;bottom:2px;right:3px;font-family:var(--display);font-style:italic;font-size:.55rem;line-height:1;pointer-events:none;opacity:.85}
 .mob-icon-row button{width:42px;height:42px;flex-shrink:0;border:1px solid var(--ink);color:var(--ink);display:flex;align-items:center;justify-content:center}
 .mob-icon-row button svg{width:16px;height:16px}
 
@@ -1069,11 +1071,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button onclick="closeMob();openSearch()" aria-label="Search" style="background:none;cursor:pointer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       </button>
-      <span class="mob-brand-chip">nr.</span>
-      <a id="mob-map" href="#" target="_blank" rel="noopener" aria-label="Maison nr. Access">
+      <a id="mob-map" data-brand="nr." href="#" target="_blank" rel="noopener" aria-label="Maison nr. Access">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-7-7-12a7 7 0 1 1 14 0c0 5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
       </a>
-      <a id="mob-ig" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+      <a id="mob-ig" data-brand="nr." href="#" target="_blank" rel="noopener" aria-label="Maison nr. Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
       </a>
     </div>
