@@ -1196,6 +1196,20 @@ window.SITE_DATA = {
       "comingSoon": false,
       "heroImages": [
         {
+          "file": "nr-hero-pc-01.jpg",
+          "alt": "Maison nr. 開業準備（PC） 1"
+        },
+        {
+          "file": "nr-hero-pc-02.jpg",
+          "alt": "Maison nr. 開業準備（PC） 2"
+        },
+        {
+          "file": "nr-hero-pc-03.jpg",
+          "alt": "Maison nr. 開業準備（PC） 3"
+        }
+      ],
+      "heroImagesSp": [
+        {
           "file": "nr-hero-01.jpg",
           "alt": "Maison nr. 開業準備 1"
         },
@@ -1234,6 +1248,22 @@ window.SITE_DATA = {
         {
           "file": "nr-hero-10.jpg",
           "alt": "Maison nr. 開業準備 10"
+        },
+        {
+          "file": "nr-hero-11.jpg",
+          "alt": "Maison nr. 開業準備 11"
+        },
+        {
+          "file": "nr-hero-12.jpg",
+          "alt": "Maison nr. 開業準備 12"
+        },
+        {
+          "file": "nr-hero-13.jpg",
+          "alt": "Maison nr. 開業準備 13"
+        },
+        {
+          "file": "nr-hero-14.jpg",
+          "alt": "Maison nr. 開業準備 14"
         }
       ],
       "about": {

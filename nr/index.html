@@ -1455,7 +1455,29 @@ async function init(){
   document.getElementById('hero-eyebrow').textContent = 'Trunklii / ' + d.name;
   { const hl=document.getElementById('hero-logo'); if(hl) hl.alt = d.name; }
   document.getElementById('hero-tagline').textContent = d.tagline;
-  buildHero(d.heroImages);
+  // Hero（縦画面=スマホ用縦写真 / 横画面=PC用横写真 を自動切替。et と同じ実装）
+  const pickHeroImages = () => {
+    const portrait = window.matchMedia('(orientation: portrait)').matches;
+    const sp = d.heroImagesSp;
+    return (portrait && Array.isArray(sp) && sp.length) ? sp : d.heroImages;
+  };
+  buildHero(pickHeroImages());
+  const heroMq = window.matchMedia('(orientation: portrait)');
+  let heroIsPortrait = heroMq.matches;
+  const onHeroOrientationChange = () => {
+    const nowPortrait = window.matchMedia('(orientation: portrait)').matches;
+    if (nowPortrait === heroIsPortrait) return;
+    heroIsPortrait = nowPortrait;
+    clearInterval(heroTimer);
+    buildHero(pickHeroImages());
+  };
+  heroMq.addEventListener('change', onHeroOrientationChange);
+  // resize フォールバック（MQL change が発火しない環境向け）
+  let heroResizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(heroResizeT);
+    heroResizeT = setTimeout(onHeroOrientationChange, 200);
+  });
 
   // About
   document.getElementById('about-heading').textContent = d.about.heading;
