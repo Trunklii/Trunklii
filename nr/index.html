@@ -405,7 +405,10 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 /* Coming Soon パネルは写真中央のロゴを避けて配置(PC=右寄せ・縦中央/スマホ=下部) */
 .hero-cs{align-items:center;justify-content:flex-end;padding:0 clamp(1.5rem,4vw,4rem) 0 1rem}
-.hero-cs-inner{max-width:min(380px,34vw);padding:1.6rem 1.5rem 1.7rem}
+.hero-cs-inner{max-width:min(380px,34vw);padding:1.6rem 1.5rem 1.7rem;background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;border:none}
+/* 背景透過に伴い、明るい写真上でも文字が読めるよう淡い影を付与 */
+.hero-cs-inner{text-shadow:0 1px 18px rgba(28,9,9,.45)}
+.hero-cs-btn{background:rgba(28,9,9,.28)}
 .hero-cs-logo{display:none}
 .hero-cs-def{margin-top:.8rem}
 .hero-cs-concept{margin-top:.9rem;line-height:2}
