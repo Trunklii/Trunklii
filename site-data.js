@@ -1197,71 +1197,39 @@ window.SITE_DATA = {
       "heroImages": [
         {
           "file": "nr-hero-pc-01.jpg",
-          "alt": "Maison nr. 開業準備 1"
-        },
-        {
-          "file": "nr-hero-01.jpg",
-          "alt": "Maison nr. 開業準備 2"
-        },
-        {
-          "file": "nr-hero-02.jpg",
-          "alt": "Maison nr. 開業準備 3"
-        },
-        {
-          "file": "nr-hero-03.jpg",
-          "alt": "Maison nr. 開業準備 4"
-        },
-        {
-          "file": "nr-hero-04.jpg",
-          "alt": "Maison nr. 開業準備 5"
+          "alt": "Maison nr. 開業準備（PC） 1"
         },
         {
           "file": "nr-hero-pc-02.jpg",
-          "alt": "Maison nr. 開業準備 6"
-        },
-        {
-          "file": "nr-hero-05.jpg",
-          "alt": "Maison nr. 開業準備 7"
-        },
-        {
-          "file": "nr-hero-06.jpg",
-          "alt": "Maison nr. 開業準備 8"
-        },
-        {
-          "file": "nr-hero-07.jpg",
-          "alt": "Maison nr. 開業準備 9"
-        },
-        {
-          "file": "nr-hero-08.jpg",
-          "alt": "Maison nr. 開業準備 10"
-        },
-        {
-          "file": "nr-hero-09.jpg",
-          "alt": "Maison nr. 開業準備 11"
+          "alt": "Maison nr. 開業準備（PC） 2"
         },
         {
           "file": "nr-hero-pc-03.jpg",
-          "alt": "Maison nr. 開業準備 12"
+          "alt": "Maison nr. 開業準備（PC） 3"
         },
         {
-          "file": "nr-hero-10.jpg",
-          "alt": "Maison nr. 開業準備 13"
+          "file": "nr-hero-pc-04.jpg",
+          "alt": "Maison nr. 開業準備（PC） 4"
         },
         {
-          "file": "nr-hero-11.jpg",
-          "alt": "Maison nr. 開業準備 14"
+          "file": "nr-hero-pc-05.jpg",
+          "alt": "Maison nr. 開業準備（PC） 5"
         },
         {
-          "file": "nr-hero-12.jpg",
-          "alt": "Maison nr. 開業準備 15"
+          "file": "nr-hero-pc-06.jpg",
+          "alt": "Maison nr. 開業準備（PC） 6"
         },
         {
-          "file": "nr-hero-13.jpg",
-          "alt": "Maison nr. 開業準備 16"
+          "file": "nr-hero-pc-07.jpg",
+          "alt": "Maison nr. 開業準備（PC） 7"
         },
         {
-          "file": "nr-hero-14.jpg",
-          "alt": "Maison nr. 開業準備 17"
+          "file": "nr-hero-pc-08.jpg",
+          "alt": "Maison nr. 開業準備（PC） 8"
+        },
+        {
+          "file": "nr-hero-pc-09.jpg",
+          "alt": "Maison nr. 開業準備（PC） 9"
         }
       ],
       "heroImagesSp": [
