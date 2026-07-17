@@ -188,6 +188,8 @@ nav{
   .panel{height:50vh;min-height:260px;flex:none!important}
   .divider{display:none}
   nav{background:rgba(17,16,16,.6);backdrop-filter:blur(8px)}
+  /* 固定フッターが下パネルの ENTER と重なるため、モバイルは通常配置に */
+  .bottom{position:static;justify-content:center;padding-bottom:calc(.9rem + env(safe-area-inset-bottom,0px))}
 }
 </style>
 </head>
