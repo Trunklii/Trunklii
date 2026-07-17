@@ -86,6 +86,11 @@ nav{
   transform:scale(1.06);
   filter:brightness(.35) saturate(.85);
 }
+/* パネル背景のスライドショー(クロスフェード) */
+.pbg-fade{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.8s ease}
+.pbg-fade.show{opacity:1}
+/* フッターメニューは非表示(2026-07-17 ユーザー指示。コピーライトは表示のまま) */
+.bottom .bottom-links{display:none}
 
 /* divider */
 .divider{
@@ -231,8 +236,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 (function(){
   const d = window.SITE_DATA;
   const et = d.studios.et, nr = d.studios.nr;
-  document.getElementById('bg-et').style.backgroundImage = `url('./et/${et.heroImages[0].file}')`;
-  document.getElementById('bg-nr').style.backgroundImage = `url('./nr/${nr.heroImages[0].file}')`;
+  // 各ブランドのヒーロー写真(縦リスト優先)をクロスフェードで切替。次の1枚だけ先読みして帯域を節約
+  function panelShow(el, images, offset){
+    if(!el || !images.length) return;
+    el.style.backgroundImage = `url('${images[0]}')`;
+    if(images.length < 2) return;
+    const fade = document.createElement('div');
+    fade.className = 'pbg-fade';
+    el.appendChild(fade);
+    let idx = 0, busy = false;
+    const tick = () => {
+      if(busy) return; busy = true;
+      const next = (idx + 1) % images.length;
+      const im = new Image();
+      im.onload = () => {
+        fade.style.backgroundImage = `url('${images[next]}')`;
+        requestAnimationFrame(() => fade.classList.add('show'));
+        setTimeout(() => {
+          el.style.backgroundImage = `url('${images[next]}')`;
+          fade.classList.remove('show');
+          idx = next; busy = false;
+        }, 1900);
+      };
+      im.onerror = () => { busy = false; };
+      im.src = images[next];
+    };
+    setTimeout(() => { tick(); setInterval(tick, 6500); }, offset);
+  }
+  const spOr = s => (Array.isArray(s.heroImagesSp) && s.heroImagesSp.length ? s.heroImagesSp : (s.heroImages || []));
+  panelShow(document.getElementById('bg-et'), spOr(et).map(x => `./et/${x.file}`), 2500);
+  panelShow(document.getElementById('bg-nr'), spOr(nr).map(x => `./nr/${x.file}`), 5800);
   document.getElementById('bottom-copy').textContent = d.global.copyright;
   if(!nr.comingSoon) document.querySelector('.coming-tag')?.remove();
 })();
