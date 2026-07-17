@@ -265,9 +265,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     };
     setTimeout(() => { tick(); setInterval(tick, 6500); }, offset);
   }
-  const spOr = s => (Array.isArray(s.heroImagesSp) && s.heroImagesSp.length ? s.heroImagesSp : (s.heroImages || []));
-  panelShow(document.getElementById('bg-et'), spOr(et).map(x => `./et/${x.file}`), 2500);
-  panelShow(document.getElementById('bg-nr'), spOr(nr).map(x => `./nr/${x.file}`), 5800);
+  // パネルの形に合わせて使用リストを選択:
+  // スマホ(上下分割=横長パネル)→ PC用の横位置写真 / PC(左右分割=縦長パネル)→ スマホ用の縦位置写真
+  const isMobileLayout = window.matchMedia('(max-width:600px)').matches;
+  const pickImages = s => {
+    const sp = (Array.isArray(s.heroImagesSp) && s.heroImagesSp.length) ? s.heroImagesSp : (s.heroImages || []);
+    const pc = (Array.isArray(s.heroImages) && s.heroImages.length) ? s.heroImages : sp;
+    return isMobileLayout ? pc : sp;
+  };
+  panelShow(document.getElementById('bg-et'), pickImages(et).map(x => `./et/${x.file}`), 2500);
+  panelShow(document.getElementById('bg-nr'), pickImages(nr).map(x => `./nr/${x.file}`), 5800);
   document.getElementById('bottom-copy').textContent = d.global.copyright;
   if(!nr.comingSoon) document.querySelector('.coming-tag')?.remove();
 })();
