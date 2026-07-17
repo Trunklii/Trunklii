@@ -1288,6 +1288,14 @@ window.SITE_DATA = {
         {
           "file": "nr-hero-14.jpg",
           "alt": "Maison nr. 開業準備 14"
+        },
+        {
+          "file": "nr-hero-15.jpg",
+          "alt": "Maison nr. 開業準備 15"
+        },
+        {
+          "file": "nr-hero-16.jpg",
+          "alt": "Maison nr. 開業準備 16"
         }
       ],
       "about": {

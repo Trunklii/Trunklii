@@ -425,11 +425,12 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
   .hero-cs-open{display:none}
   .hero-cs-inner{padding:1rem 1.1rem 1.1rem}
 }
-/* PC(横画面)はロゴなし写真のため、maison nr. ロゴを別ファイルで中央オーバーレイ
-   (縦画面=スマホ用写真はロゴ焼き込み済みのため非表示のまま) */
-@media(orientation:landscape){
-  .hero-logo-ov{display:flex;position:absolute;inset:0;align-items:center;justify-content:center;z-index:1;pointer-events:none}
-  .hero-logo-ov img{width:clamp(170px,14vw,250px);height:auto;filter:drop-shadow(0 2px 20px rgba(28,9,9,.35))}
+/* 写真はロゴなしのため、maison nr. ロゴを別ファイルでオーバーレイ表示(PC=中央/スマホ=中央やや上で下部パネルを回避) */
+.hero-logo-ov{display:flex;position:absolute;inset:0;align-items:center;justify-content:center;z-index:1;pointer-events:none}
+.hero-logo-ov img{width:clamp(170px,14vw,250px);height:auto;filter:drop-shadow(0 2px 20px rgba(28,9,9,.35))}
+@media(orientation:portrait){
+  .hero-logo-ov{align-items:flex-start;padding-top:34vh}
+  .hero-logo-ov img{width:clamp(150px,42vw,210px)}
 }
 /* ═══ Coming Soon 非表示ここまで ═══ */
 
