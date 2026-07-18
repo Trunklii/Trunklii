@@ -320,6 +320,10 @@ body.is-ready .float-book{opacity:1;transform:translateY(0)}
 .fb-brand{font-family:var(--display);font-style:italic;font-size:.85rem;margin-right:.4em}
 .fb-et{background:#b8935a}
 .fb-nr{background:#7a9e95}
+/* ページトップへ戻る(スクロール後に出現) */
+.to-top-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--ink);background:rgba(255,255,255,.85);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(17,16,16,.15);opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .3s,transform .3s}
+.to-top-btn.show{opacity:1;pointer-events:auto;transform:none}
+.to-top-btn svg{width:14px;height:14px}
 .qa-bot-pulse{
   position:absolute;top:-2px;right:-2px;
   width:10px;height:10px;border-radius:50%;
@@ -1200,6 +1204,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- フロー追随の予約メニュー(チャットボタンの直上に縦積み)
      nr. は STORES(春日井)未開設のため暫定で Instagram へ。開設後に href を差し替える -->
 <div class="float-book" aria-label="予約メニュー">
+  <button class="to-top-btn" id="to-top-btn" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="ページトップへ戻る">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 14 6-6 6 6"/></svg>
+  </button>
   <a class="float-book-btn fb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="fb-brand">et.</span>予約</a>
   <a class="float-book-btn fb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="fb-brand">nr.</span>予約</a>
 </div>
@@ -1766,6 +1773,14 @@ function askBot(i){
 function toggleBot(){
   document.getElementById('qa-bot').classList.toggle('open');
 }
+// ページトップへ戻るボタン(400pxスクロールで出現)
+(function(){
+  const b = document.getElementById('to-top-btn');
+  if(!b) return;
+  const onScroll = () => b.classList.toggle('show', window.scrollY > 400);
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
 // チャット/サイト内検索のタブ切替
 function botTab(btn){
   document.querySelectorAll('.qa-bot-tab').forEach(b=>b.classList.toggle('active', b===btn));
