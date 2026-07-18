@@ -571,15 +571,15 @@ body.is-ready .float-book{opacity:1;transform:translateY(0)}
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;background:#fff}
 /* フッター上段: サイト内検索+予約する(Maison Kitsuné 参考) */
-.footer-cta{width:100%;display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
-.footer-search{flex:1 1 260px;display:flex;align-items:center;border-bottom:1px solid var(--ink)}
+.footer-cta{width:100%;display:flex;flex-direction:column;gap:1.1rem;padding-bottom:1.6rem;border-bottom:1px solid var(--border)}
+.footer-search{width:100%;display:flex;align-items:center;border-bottom:1px solid var(--ink)}
 .footer-search-input{flex:1;border:none;outline:none;background:none;font-family:var(--sans);font-weight:300;font-size:.85rem;color:var(--ink);padding:.6rem 0}
 .footer-search-input::placeholder{color:var(--mid)}
 .footer-search-go{background:none;border:none;cursor:pointer;color:var(--ink);padding:.4rem;display:flex;align-items:center}
 .footer-search-go svg{width:16px;height:16px}
-.footer-book-btn{flex:0 0 auto;background:var(--ink);color:#fff;font-family:var(--sans);font-weight:500;font-size:.72rem;letter-spacing:.14em;padding:.85rem 2.4rem;text-decoration:none;text-align:center;transition:background .25s}
+/* Kitsuné の SHOP NOW 風: 全幅の黒帯ボタン */
+.footer-book-btn{display:block;width:100%;background:var(--ink);color:#fff;font-family:var(--sans);font-weight:500;font-size:.78rem;letter-spacing:.2em;padding:1.05rem 1rem;text-decoration:none;text-align:center;transition:background .25s}
 .footer-book-btn:hover{background:var(--accent)}
-@media(max-width:560px){.footer-book-btn{flex:1 1 100%}}
 .footer-logo{font-family:var(--sans);font-weight:300;font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink);text-decoration:none}
 .footer-links{display:flex;gap:1.2rem;list-style:none;flex-wrap:wrap}
 .footer-links a{font-family:var(--sans);font-weight:400;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color .2s}

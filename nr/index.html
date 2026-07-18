@@ -769,15 +769,15 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 /* FOOTER */
 footer{padding:2.5rem clamp(1.5rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;background:var(--footer);color:var(--cream)}
 /* フッター上段: サイト内検索+予約する(Maison Kitsuné 参考・ダーク配色) */
-.footer-cta{width:100%;display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;padding-bottom:1.5rem;border-bottom:1px solid rgba(232,220,196,.25)}
-.footer-search{flex:1 1 260px;display:flex;align-items:center;border-bottom:1px solid var(--cream)}
+.footer-cta{width:100%;display:flex;flex-direction:column;gap:1.1rem;padding-bottom:1.6rem;border-bottom:1px solid rgba(232,220,196,.25)}
+.footer-search{width:100%;display:flex;align-items:center;border-bottom:1px solid var(--cream)}
 .footer-search-input{flex:1;border:none;outline:none;background:none;font-family:var(--sans);font-weight:300;font-size:.85rem;color:var(--cream);padding:.6rem 0}
 .footer-search-input::placeholder{color:rgba(232,220,196,.5)}
 .footer-search-go{background:none;border:none;cursor:pointer;color:var(--cream);padding:.4rem;display:flex;align-items:center}
 .footer-search-go svg{width:16px;height:16px}
-.footer-book-btn{flex:0 0 auto;background:var(--cream);color:#1C0909;font-family:var(--sans);font-weight:500;font-size:.72rem;letter-spacing:.14em;padding:.85rem 2.4rem;text-decoration:none;text-align:center;transition:opacity .25s}
+/* Kitsuné の SHOP NOW 風: 全幅の帯ボタン(ダークフッターはクリーム) */
+.footer-book-btn{display:block;width:100%;background:var(--cream);color:#1C0909;font-family:var(--sans);font-weight:500;font-size:.78rem;letter-spacing:.2em;padding:1.05rem 1rem;text-decoration:none;text-align:center;transition:opacity .25s}
 .footer-book-btn:hover{opacity:.85}
-@media(max-width:560px){.footer-book-btn{flex:1 1 100%}}
 .footer-logo{font-family:var(--sans);font-weight:300;font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cream);text-decoration:none}
 .footer-links{display:flex;gap:1.2rem;list-style:none;flex-wrap:wrap}
 .footer-links a{font-family:var(--sans);font-weight:400;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,220,196,.6);text-decoration:none;transition:color .2s}
