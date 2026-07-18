@@ -104,6 +104,19 @@
       byCat[k].push(item);
     });
 
+    // カテゴリ絞り込みバー(スマホのみ表示・CSS制御)。ALL=全カテゴリ(現状どおり)
+    var bar = document.getElementById('kim-filter');
+    if(!bar){
+      bar = document.createElement('div');
+      bar.className = 'kim-filter';
+      bar.id = 'kim-filter';
+      container.parentNode.insertBefore(bar, container);
+    }
+    bar.innerHTML = '<button class="kim-filter-btn active" type="button" data-cat="all" onclick="kimFilter(this)">ALL</button>'
+      + CATS.map(function(c){
+          return '<button class="kim-filter-btn" type="button" data-cat="' + c.key + '" onclick="kimFilter(this)">' + c.jp + '</button>';
+        }).join('');
+
     container.className = 'kim-cats';
     container.innerHTML = CATS.map(function(c, i){
       var items = byCat[c.key] || [];
@@ -130,7 +143,7 @@
         ? ' data-items="' + items.map(function(it){ return encodeURIComponent(imgPath(it)); }).join(',') + '" data-idx="0"'
         : '';
       var showArrows = items.length > 1;
-      return '<div class="kim-cat"' + dataAttr + '>'
+      return '<div class="kim-cat" data-cat="' + c.key + '"' + dataAttr + '>'
         + '<div class="kim-cat-head">'
           + '<div class="kim-cat-title">'+c.sub+'</div>'
           + firstOpt
@@ -143,6 +156,18 @@
       + '</div>';
     }).join('');
   }
+
+  /* カテゴリ絞り込み(kim-filter のボタンから呼ばれる) */
+  window.kimFilter = function(btn){
+    var bar = btn.parentNode;
+    Array.prototype.forEach.call(bar.querySelectorAll('.kim-filter-btn'), function(b){
+      b.classList.toggle('active', b === btn);
+    });
+    var key = btn.getAttribute('data-cat');
+    Array.prototype.forEach.call(document.querySelectorAll('#kimono-grid .kim-cat'), function(card){
+      card.style.display = (key === 'all' || card.getAttribute('data-cat') === key) ? '' : 'none';
+    });
+  };
 
   /* カルーセル制御(arrow ボタンから呼ばれる) */
   window.kimCarousel = function(btn, dir){
