@@ -348,6 +348,20 @@ body.is-ready .float-book{opacity:1;transform:translateY(0)}
 }
 .qa-bot-title{font-family:var(--sans);font-weight:500;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
 .qa-bot-close{background:none;border:none;cursor:pointer;color:#fff;font-size:1rem;padding:.2rem}
+/* チャット/サイト内検索 タブ */
+.qa-bot-tabs{display:flex;border-bottom:1px solid var(--border);flex-shrink:0}
+.qa-bot-tab{flex:1;padding:.6rem;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.1em;background:none;border:none;color:var(--mid);cursor:pointer;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.qa-bot-tab.active{color:var(--ink);border-bottom-color:var(--accent)}
+.qa-bot-search{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.qa-bot-search[hidden]{display:none}
+.qa-bot-search-input{font-family:var(--sans);font-weight:300;font-size:.85rem;padding:.75rem 1.1rem;border:none;border-bottom:1px solid var(--border);outline:none;background:transparent;color:var(--ink);width:100%}
+.qa-bot-search-input::placeholder{color:var(--mid)}
+.qa-bot-search-results{flex:1;overflow-y:auto;padding:.5rem 1.1rem 1rem}
+.bot-sr-label{font-family:var(--sans);font-weight:500;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin:.8rem 0 .25rem}
+.bot-sr-item{display:block;padding:.45rem 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--ink)}
+.bot-sr-title{font-family:var(--sans);font-weight:500;font-size:.76rem}
+.bot-sr-snippet{font-family:var(--sans);font-weight:300;font-size:.66rem;color:var(--mid);line-height:1.6}
+.bot-sr-empty{font-family:var(--sans);font-weight:300;font-size:.74rem;color:var(--mid);padding:1rem 0;text-align:center}
 .qa-bot-body{flex:1;overflow-y:auto;padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.75rem}
 .qa-msg{max-width:85%;padding:.7rem .9rem;font-family:var(--sans);font-weight:400;font-size:.78rem;line-height:1.7}
 .qa-msg-bot{align-self:flex-start;background:#f0eee9;color:var(--ink)}
@@ -1203,8 +1217,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="qa-bot-title">Q&A</span>
     <button class="qa-bot-close" onclick="toggleBot()" aria-label="Close">✕</button>
   </div>
+  <div class="qa-bot-tabs">
+    <button class="qa-bot-tab active" type="button" data-tab="chat" onclick="botTab(this)">チャット</button>
+    <button class="qa-bot-tab" type="button" data-tab="search" onclick="botTab(this)">サイト内検索</button>
+  </div>
   <div class="qa-bot-body" id="qa-bot-body"></div>
-  <div class="qa-bot-foot"><a href="#qa">すべてのQ&Aを見る →</a></div>
+  <div class="qa-bot-search" id="qa-bot-search" hidden>
+    <input type="text" class="qa-bot-search-input" id="bot-search-input" placeholder="サイト内を検索..." oninput="runBotSearch()"/>
+    <div class="qa-bot-search-results" id="bot-search-results"></div>
+  </div>
+  <div class="qa-bot-foot" id="qa-bot-foot"><a href="#qa">すべてのQ&Aを見る →</a></div>
 </div>
 
 <footer>
@@ -1743,6 +1765,39 @@ function askBot(i){
 }
 function toggleBot(){
   document.getElementById('qa-bot').classList.toggle('open');
+}
+// チャット/サイト内検索のタブ切替
+function botTab(btn){
+  document.querySelectorAll('.qa-bot-tab').forEach(b=>b.classList.toggle('active', b===btn));
+  const isSearch = btn.getAttribute('data-tab')==='search';
+  document.getElementById('qa-bot-body').style.display = isSearch ? 'none' : '';
+  document.getElementById('qa-bot-foot').style.display = isSearch ? 'none' : '';
+  document.getElementById('qa-bot-search').hidden = !isSearch;
+  if(isSearch) setTimeout(()=>document.getElementById('bot-search-input').focus(), 50);
+}
+// パネル内サイト内検索(全画面検索と同じ SEARCH_INDEX を使用)
+function runBotSearch(){
+  const q = document.getElementById('bot-search-input').value.trim().toLowerCase();
+  const out = document.getElementById('bot-search-results');
+  if(!q){ out.innerHTML=''; return; }
+  const results = SEARCH_INDEX.filter(item=>{
+    return (item.title||'').toLowerCase().includes(q) || (item.snippet||'').toLowerCase().includes(q) || (item.label||'').toLowerCase().includes(q);
+  });
+  if(!results.length){
+    out.innerHTML = '<div class="bot-sr-empty">該当する結果が見つかりませんでした</div>';
+    return;
+  }
+  const groups = {};
+  results.forEach(r=>{ if(!groups[r.label]) groups[r.label]=[]; groups[r.label].push(r); });
+  out.innerHTML = Object.keys(groups).map(label=>`
+    <div class="bot-sr-label">${label}</div>
+    ${groups[label].map(r=>`
+      <a class="bot-sr-item" href="${r.anchor}" onclick="toggleBot()">
+        <div class="bot-sr-title">${r.title}</div>
+        <div class="bot-sr-snippet">${(r.snippet||'').slice(0,80)}</div>
+      </a>
+    `).join('')}
+  `).join('');
 }
 
 // ═══ MOTION ═══
