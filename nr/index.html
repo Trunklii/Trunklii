@@ -338,7 +338,7 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .book-sheet-btn.bs-nr:hover{background:#33201c}
 .bs-brand-lockup{display:block;height:1.68em;background:currentColor;flex-shrink:0}
 .bs-cta{display:inline-flex;align-items:center;gap:.6em;padding:.6em 1em;border:1px solid rgba(255,255,255,.4);white-space:nowrap;font-size:.66rem;letter-spacing:.08em}
-@media(min-width:961px){.book-sheet{left:1.25rem;right:auto;bottom:1.25rem;width:360px;border:1px solid rgba(17,16,16,.12)}}
+@media(min-width:961px){.book-sheet,.float-book{display:none!important}}
 
 /* ページトップへ戻る(スクロール後に出現) */
 /* フロートの「トップへ戻る」ボタン(400pxスクロールで出現) */
@@ -1098,8 +1098,15 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 .bb-sm{flex-wrap:nowrap;gap:.4rem}
 .bb-sm .bb-btn{flex:0 0 auto;padding:.4rem .55rem;font-size:.6rem;gap:.5em}
 .bb-sm .bb-cta{padding:.4em .6em;gap:.45em}
+.bb-btn{border:1px solid rgba(255,255,255,.25)}
+/* PCヘッダー(トップページ)は白背景・30%縮小 */
+.nav-book .bb-btn{background:#fff;color:#111010;border:1px solid rgba(17,16,16,.22);padding:.3rem .5rem}
+.nav-book .bb-btn:hover{opacity:.7}
+.nav-book .bb-btn.bb-nr{background:#fff;color:#1C0909}
+.nav-book .bb-logo{height:1.18em}
+.nav-book .bb-cta{border-color:rgba(17,16,16,.3);padding:.3em .5em;gap:.4em}
 /* PCヘッダーはナビと重なる幅では予約する枠を省略しロゴのみ */
-@media(max-width:1499px){.nav-book .bb-cta{display:none}.nav-book .bb-btn{padding:.45rem .7rem}}
+@media(max-width:1499px){.nav-book .bb-cta{display:none}}
 </style>
 </head>
 <body>
@@ -1500,7 +1507,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="cta-ja" id="cta-heading-ja"></span>
     <span class="cta-en" id="cta-heading-en"></span>
     <span class="cta-note" id="cta-note"></span>
-    <div class="bb-btns" style="margin-top:1.8rem;max-width:560px;margin-left:auto;margin-right:auto"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
+    
   </div>
 </section>
 
@@ -2124,6 +2131,7 @@ function accessTab(btn){
 (function(){
   const s = document.getElementById('book-sheet');
   if(!s) return;
+  if(window.matchMedia('(min-width:961px)').matches) return; // PC はポップアップ非表示
   let closed = false;
   try{ closed = sessionStorage.getItem('bookSheetClosed') === '1'; }catch(e){}
   if(!closed){ s.hidden = false; document.body.classList.add('sheet-open'); }

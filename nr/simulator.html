@@ -173,8 +173,15 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2rem clamp(1.4re
 .bb-sm{flex-wrap:nowrap;gap:.4rem}
 .bb-sm .bb-btn{flex:0 0 auto;padding:.4rem .55rem;font-size:.6rem;gap:.5em}
 .bb-sm .bb-cta{padding:.4em .6em;gap:.45em}
+.bb-btn{border:1px solid rgba(255,255,255,.25)}
+/* PCヘッダー(トップページ)は白背景・30%縮小 */
+.nav-book .bb-btn{background:#fff;color:#111010;border:1px solid rgba(17,16,16,.22);padding:.3rem .5rem}
+.nav-book .bb-btn:hover{opacity:.7}
+.nav-book .bb-btn.bb-nr{background:#fff;color:#1C0909}
+.nav-book .bb-logo{height:1.18em}
+.nav-book .bb-cta{border-color:rgba(17,16,16,.3);padding:.3em .5em;gap:.4em}
 /* PCヘッダーはナビと重なる幅では予約する枠を省略しロゴのみ */
-@media(max-width:1499px){.nav-book .bb-cta{display:none}.nav-book .bb-btn{padding:.45rem .7rem}}
+@media(max-width:1499px){.nav-book .bb-cta{display:none}}
 </style>
 </head>
 <body>
