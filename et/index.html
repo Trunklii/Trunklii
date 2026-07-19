@@ -119,10 +119,11 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .access-tabs{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.8rem}
 .access-tab{display:flex;align-items:center;gap:.5rem;font-family:var(--sans);font-weight:500;font-size:.72rem;letter-spacing:.06em;padding:.65rem 1.2rem;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;transition:background .2s,color .2s}
 .access-tab.active{background:var(--ink);color:#fff}
-.access-tab .at-brand{font-family:var(--display);font-style:italic;font-size:.9rem}
 .access-loc[hidden]{display:none}
 .access-grid{display:grid;grid-template-columns:minmax(260px,400px) 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
-.access-name{font-family:var(--display);font-style:italic;font-weight:300;font-size:1.7rem;color:var(--ink);margin-bottom:1.2rem}
+.access-name{font-family:var(--sans);font-style:normal;font-weight:400;font-size:1.45rem;letter-spacing:.04em;color:var(--ink);margin-bottom:1.2rem}
+.access-name-main{display:flex;align-items:center;gap:.6rem}
+.an-logo{display:inline-block;height:1.1em;background:currentColor;flex-shrink:0}
 .access-name-sub{display:block;font-family:var(--sans);font-style:normal;font-size:.62rem;letter-spacing:.22em;color:var(--mid);margin-top:.4rem;text-transform:uppercase}
 .access-dl{margin:0}
 .access-dl > div{display:flex;gap:1rem;padding:.6rem 0;border-bottom:1px solid var(--border)}
@@ -1225,13 +1226,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-head"><span class="sec-num">13</span><h2 class="sec-title">Access</h2><div class="sec-rule"></div></div>
   <!-- 店舗切替タブ(両ブランドのNAP・地図を1箇所で。Maison Kitsuné の Store Locator 参考) -->
   <div class="access-tabs">
-    <button class="access-tab active" type="button" data-loc="et" onclick="accessTab(this)"><span class="at-brand">et.</span>Studio et.（岐阜県羽島市）</button>
-    <button class="access-tab" type="button" data-loc="nr" onclick="accessTab(this)"><span class="at-brand">nr.</span>Maison nr.（愛知県春日井市）</button>
+    <button class="access-tab active" type="button" data-loc="et" onclick="accessTab(this)">Studio et.（岐阜県羽島市）</button>
+    <button class="access-tab" type="button" data-loc="nr" onclick="accessTab(this)">Maison nr.（愛知県春日井市）</button>
   </div>
   <div class="access-loc" data-loc="et">
   <div class="access-grid">
     <div class="access-info">
-      <div class="access-name">Studio et.<span class="access-name-sub">スタジオエト｜岐阜県羽島市のフォトスタジオ</span></div>
+      <div class="access-name"><span class="access-name-main"><span class="an-logo" role="img" aria-hidden="true" style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span>Studio et.</span><span class="access-name-sub">スタジオエト｜岐阜県羽島市のフォトスタジオ</span></div>
       <dl class="access-dl">
         <div><dt>所在地</dt><dd>〒501-6253<br/>岐阜県羽島市小熊町島新道76-9 2階</dd></div>
         <div><dt>電話</dt><dd><a href="tel:05017512601">050-1751-2601</a></dd></div>
@@ -1250,7 +1251,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="access-loc" data-loc="nr" hidden>
   <div class="access-grid">
     <div class="access-info">
-      <div class="access-name">Maison nr.<span class="access-name-sub">メゾンナル｜愛知県春日井市のフォトスタジオ</span></div>
+      <div class="access-name"><span class="access-name-main"><span class="an-logo" role="img" aria-hidden="true" style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span>Maison nr.</span><span class="access-name-sub">メゾンナル｜愛知県春日井市のフォトスタジオ</span></div>
       <dl class="access-dl">
         <div><dt>所在地</dt><dd>〒486-0806<br/>愛知県春日井市大手田酉町1丁目5-9</dd></div>
         <div><dt>電話</dt><dd><a href="tel:05017512601">050-1751-2601</a></dd></div>
