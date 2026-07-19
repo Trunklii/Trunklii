@@ -447,262 +447,262 @@ window.SITE_DATA = {
         }
       ],
       "kimono": {
-              "heading": "Kimono",
-              "body": "厳選された着物をスタジオにてご用意。\n花飾りのヘアアレンジも含めたトータルコーディネートをご提供します。",
-              "items": [
-                      {
-                              "file": "kimono-3g-01.jpg",
-                              "name": "三歳女の子 01",
-                              "desc": "",
-                              "category": "3y-girl"
-                      },
-                      {
-                              "file": "kimono-3g-02.jpg",
-                              "name": "三歳女の子 02",
-                              "desc": "",
-                              "category": "3y-girl"
-                      },
-                      {
-                              "file": "kimono-3g-03.jpg",
-                              "name": "三歳女の子 03",
-                              "desc": "",
-                              "category": "3y-girl"
-                      },
-                      {
-                              "file": "kimono-3g-04.jpg",
-                              "name": "三歳女の子 04",
-                              "desc": "",
-                              "category": "3y-girl"
-                      },
-                      {
-                              "file": "kimono-3g-05.jpg",
-                              "name": "三歳女の子 05",
-                              "desc": "",
-                              "category": "3y-girl"
-                      },
-                      {
-                              "file": "kimono-3g-06.jpg",
-                              "name": "三歳女の子 06",
-                              "desc": "",
-                              "category": "3y-girl"
-                      },
-                      {
-                              "file": "kimono-3g-07.jpg",
-                              "name": "三歳女の子 07",
-                              "desc": "",
-                              "category": "3y-girl"
-                      },
-                      {
-                              "file": "kimono-3g-08.jpg",
-                              "name": "三歳女の子 08",
-                              "desc": "",
-                              "category": "3y-girl"
-                      },
-                      {
-                              "file": "kimono-3b-01.jpg",
-                              "name": "三歳男の子 01",
-                              "desc": "",
-                              "category": "3y-boy"
-                      },
-                      {
-                              "file": "kimono-3b-02.jpg",
-                              "name": "三歳男の子 02",
-                              "desc": "",
-                              "category": "3y-boy"
-                      },
-                      {
-                              "file": "kimono-3b-03.jpg",
-                              "name": "三歳男の子 03",
-                              "desc": "",
-                              "category": "3y-boy"
-                      },
-                      {
-                              "file": "kimono-3b-04.jpg",
-                              "name": "三歳男の子 04",
-                              "desc": "",
-                              "category": "3y-boy"
-                      },
-                      {
-                              "file": "kimono-3b-05.jpg",
-                              "name": "三歳男の子 05",
-                              "desc": "",
-                              "category": "3y-boy"
-                      },
-                      {
-                              "file": "kimono-3b-06.jpg",
-                              "name": "三歳男の子 06",
-                              "desc": "",
-                              "category": "3y-boy"
-                      },
-                      {
-                              "file": "kimono-3b-07.jpg",
-                              "name": "三歳男の子 07",
-                              "desc": "",
-                              "category": "3y-boy"
-                      },
-                      {
-                              "file": "kimono-3b-08.jpg",
-                              "name": "三歳男の子 08",
-                              "desc": "",
-                              "category": "3y-boy"
-                      },
-                      {
-                              "file": "kimono-3b-09.jpg",
-                              "name": "三歳男の子 09",
-                              "desc": "",
-                              "category": "3y-boy"
-                      },
-                      {
-                              "file": "kimono-3b-10.jpg",
-                              "name": "三歳男の子 10",
-                              "desc": "",
-                              "category": "3y-boy"
-                      },
-                      {
-                              "file": "kimono-5b-01.jpg",
-                              "name": "五歳男の子 01",
-                              "desc": "",
-                              "category": "5y-boy"
-                      },
-                      {
-                              "file": "kimono-5b-02.jpg",
-                              "name": "五歳男の子 02",
-                              "desc": "",
-                              "category": "5y-boy"
-                      },
-                      {
-                              "file": "kimono-5b-03.jpg",
-                              "name": "五歳男の子 03",
-                              "desc": "",
-                              "category": "5y-boy"
-                      },
-                      {
-                              "file": "kimono-5b-04.jpg",
-                              "name": "五歳男の子 04",
-                              "desc": "",
-                              "category": "5y-boy"
-                      },
-                      {
-                              "file": "kimono-5b-05.jpg",
-                              "name": "五歳男の子 05",
-                              "desc": "",
-                              "category": "5y-boy"
-                      },
-                      {
-                              "file": "kimono-5b-06.jpg",
-                              "name": "五歳男の子 06",
-                              "desc": "",
-                              "category": "5y-boy"
-                      },
-                      {
-                              "file": "kimono-5b-07.jpg",
-                              "name": "五歳男の子 07",
-                              "desc": "",
-                              "category": "5y-boy"
-                      },
-                      {
-                              "file": "kimono-7g-01.jpg",
-                              "name": "七歳女の子 01",
-                              "desc": "",
-                              "category": "7y-girl"
-                      },
-                      {
-                              "file": "kimono-7g-02.jpg",
-                              "name": "七歳女の子 02",
-                              "desc": "",
-                              "category": "7y-girl"
-                      },
-                      {
-                              "file": "kimono-7g-03.jpg",
-                              "name": "七歳女の子 03",
-                              "desc": "",
-                              "category": "7y-girl"
-                      },
-                      {
-                              "file": "kimono-7g-04.jpg",
-                              "name": "七歳女の子 04",
-                              "desc": "",
-                              "category": "7y-girl"
-                      },
-                      {
-                              "file": "kimono-7g-05.jpg",
-                              "name": "七歳女の子 05",
-                              "desc": "",
-                              "category": "7y-girl"
-                      },
-                      {
-                              "file": "kimono-7g-06.jpg",
-                              "name": "七歳女の子 06",
-                              "desc": "",
-                              "category": "7y-girl"
-                      },
-                      {
-                              "file": "kimono-7g-07.jpg",
-                              "name": "七歳女の子 07",
-                              "desc": "",
-                              "category": "7y-girl"
-                      },
-                      {
-                              "file": "kimono-7g-08.jpg",
-                              "name": "七歳女の子 08",
-                              "desc": "",
-                              "category": "7y-girl"
-                      },
-                      {
-                              "file": "kimono-10g-01.jpg",
-                              "name": "十歳女の子 01",
-                              "desc": "",
-                              "category": "10y-girl"
-                      },
-                      {
-                              "file": "kimono-10g-02.jpg",
-                              "name": "十歳女の子 02",
-                              "desc": "",
-                              "category": "10y-girl"
-                      },
-                      {
-                              "file": "kimono-10g-03.jpg",
-                              "name": "十歳女の子 03",
-                              "desc": "",
-                              "category": "10y-girl"
-                      },
-                      {
-                              "file": "kimono-3g-09.jpg",
-                              "name": "三歳女の子 チュール 01",
-                              "desc": "",
-                              "category": "3y-girl"
-                      },
-                      {
-                              "file": "kimono-3g-10.jpg",
-                              "name": "三歳女の子 チュール 02",
-                              "desc": "",
-                              "category": "3y-girl"
-                      },
-                      {
-                              "file": "kimono-10b-01.jpg",
-                              "name": "十歳男の子 01",
-                              "desc": "",
-                              "category": "10y-boy"
-                      },
-                      {
-                              "file": "kimono-om-01.jpg",
-                              "name": "お宮参り 01",
-                              "desc": "",
-                              "category": "omairi"
-                      },
-                      {
-                              "file": "kimono-om-02.jpg",
-                              "name": "お宮参り 02",
-                              "desc": "",
-                              "category": "omairi"
-                      },
-                      {
-                              "file": "kimono-om-03.jpg",
-                              "name": "お宮参り 03",
-                              "desc": "",
-                              "category": "omairi"
-                      }
-              ]
+        "heading": "Kimono",
+        "body": "厳選された着物をスタジオにてご用意。\n花飾りのヘアアレンジも含めたトータルコーディネートをご提供します。",
+        "items": [
+          {
+            "file": "kimono-3g-01.jpg",
+            "name": "三歳女の子 01",
+            "desc": "",
+            "category": "3y-girl"
+          },
+          {
+            "file": "kimono-3g-02.jpg",
+            "name": "三歳女の子 02",
+            "desc": "",
+            "category": "3y-girl"
+          },
+          {
+            "file": "kimono-3g-03.jpg",
+            "name": "三歳女の子 03",
+            "desc": "",
+            "category": "3y-girl"
+          },
+          {
+            "file": "kimono-3g-04.jpg",
+            "name": "三歳女の子 04",
+            "desc": "",
+            "category": "3y-girl"
+          },
+          {
+            "file": "kimono-3g-05.jpg",
+            "name": "三歳女の子 05",
+            "desc": "",
+            "category": "3y-girl"
+          },
+          {
+            "file": "kimono-3g-06.jpg",
+            "name": "三歳女の子 06",
+            "desc": "",
+            "category": "3y-girl"
+          },
+          {
+            "file": "kimono-3g-07.jpg",
+            "name": "三歳女の子 07",
+            "desc": "",
+            "category": "3y-girl"
+          },
+          {
+            "file": "kimono-3g-08.jpg",
+            "name": "三歳女の子 08",
+            "desc": "",
+            "category": "3y-girl"
+          },
+          {
+            "file": "kimono-3b-01.jpg",
+            "name": "三歳男の子 01",
+            "desc": "",
+            "category": "3y-boy"
+          },
+          {
+            "file": "kimono-3b-02.jpg",
+            "name": "三歳男の子 02",
+            "desc": "",
+            "category": "3y-boy"
+          },
+          {
+            "file": "kimono-3b-03.jpg",
+            "name": "三歳男の子 03",
+            "desc": "",
+            "category": "3y-boy"
+          },
+          {
+            "file": "kimono-3b-04.jpg",
+            "name": "三歳男の子 04",
+            "desc": "",
+            "category": "3y-boy"
+          },
+          {
+            "file": "kimono-3b-05.jpg",
+            "name": "三歳男の子 05",
+            "desc": "",
+            "category": "3y-boy"
+          },
+          {
+            "file": "kimono-3b-06.jpg",
+            "name": "三歳男の子 06",
+            "desc": "",
+            "category": "3y-boy"
+          },
+          {
+            "file": "kimono-3b-07.jpg",
+            "name": "三歳男の子 07",
+            "desc": "",
+            "category": "3y-boy"
+          },
+          {
+            "file": "kimono-3b-08.jpg",
+            "name": "三歳男の子 08",
+            "desc": "",
+            "category": "3y-boy"
+          },
+          {
+            "file": "kimono-3b-09.jpg",
+            "name": "三歳男の子 09",
+            "desc": "",
+            "category": "3y-boy"
+          },
+          {
+            "file": "kimono-3b-10.jpg",
+            "name": "三歳男の子 10",
+            "desc": "",
+            "category": "3y-boy"
+          },
+          {
+            "file": "kimono-5b-01.jpg",
+            "name": "五歳男の子 01",
+            "desc": "",
+            "category": "5y-boy"
+          },
+          {
+            "file": "kimono-5b-02.jpg",
+            "name": "五歳男の子 02",
+            "desc": "",
+            "category": "5y-boy"
+          },
+          {
+            "file": "kimono-5b-03.jpg",
+            "name": "五歳男の子 03",
+            "desc": "",
+            "category": "5y-boy"
+          },
+          {
+            "file": "kimono-5b-04.jpg",
+            "name": "五歳男の子 04",
+            "desc": "",
+            "category": "5y-boy"
+          },
+          {
+            "file": "kimono-5b-05.jpg",
+            "name": "五歳男の子 05",
+            "desc": "",
+            "category": "5y-boy"
+          },
+          {
+            "file": "kimono-5b-06.jpg",
+            "name": "五歳男の子 06",
+            "desc": "",
+            "category": "5y-boy"
+          },
+          {
+            "file": "kimono-5b-07.jpg",
+            "name": "五歳男の子 07",
+            "desc": "",
+            "category": "5y-boy"
+          },
+          {
+            "file": "kimono-7g-01.jpg",
+            "name": "七歳女の子 01",
+            "desc": "",
+            "category": "7y-girl"
+          },
+          {
+            "file": "kimono-7g-02.jpg",
+            "name": "七歳女の子 02",
+            "desc": "",
+            "category": "7y-girl"
+          },
+          {
+            "file": "kimono-7g-03.jpg",
+            "name": "七歳女の子 03",
+            "desc": "",
+            "category": "7y-girl"
+          },
+          {
+            "file": "kimono-7g-04.jpg",
+            "name": "七歳女の子 04",
+            "desc": "",
+            "category": "7y-girl"
+          },
+          {
+            "file": "kimono-7g-05.jpg",
+            "name": "七歳女の子 05",
+            "desc": "",
+            "category": "7y-girl"
+          },
+          {
+            "file": "kimono-7g-06.jpg",
+            "name": "七歳女の子 06",
+            "desc": "",
+            "category": "7y-girl"
+          },
+          {
+            "file": "kimono-7g-07.jpg",
+            "name": "七歳女の子 07",
+            "desc": "",
+            "category": "7y-girl"
+          },
+          {
+            "file": "kimono-7g-08.jpg",
+            "name": "七歳女の子 08",
+            "desc": "",
+            "category": "7y-girl"
+          },
+          {
+            "file": "kimono-10g-01.jpg",
+            "name": "十歳女の子 01",
+            "desc": "",
+            "category": "10y-girl"
+          },
+          {
+            "file": "kimono-10g-02.jpg",
+            "name": "十歳女の子 02",
+            "desc": "",
+            "category": "10y-girl"
+          },
+          {
+            "file": "kimono-10g-03.jpg",
+            "name": "十歳女の子 03",
+            "desc": "",
+            "category": "10y-girl"
+          },
+          {
+            "file": "kimono-3g-09.jpg",
+            "name": "三歳女の子 チュール 01",
+            "desc": "",
+            "category": "3y-girl"
+          },
+          {
+            "file": "kimono-3g-10.jpg",
+            "name": "三歳女の子 チュール 02",
+            "desc": "",
+            "category": "3y-girl"
+          },
+          {
+            "file": "kimono-10b-01.jpg",
+            "name": "十歳男の子 01",
+            "desc": "",
+            "category": "10y-boy"
+          },
+          {
+            "file": "kimono-om-01.jpg",
+            "name": "お宮参り 01",
+            "desc": "",
+            "category": "omairi"
+          },
+          {
+            "file": "kimono-om-02.jpg",
+            "name": "お宮参り 02",
+            "desc": "",
+            "category": "omairi"
+          },
+          {
+            "file": "kimono-om-03.jpg",
+            "name": "お宮参り 03",
+            "desc": "",
+            "category": "omairi"
+          }
+        ]
       },
       "costume": {
         "heading": "Costume",
@@ -892,7 +892,7 @@ window.SITE_DATA = {
             "heroImage": "18273705787256865.jpg",
             "tagline": "もうすぐ会える喜びを残したい",
             "longDescription": "ママの\"好き\"を詰め込めるマタニティプランです。\n撮影料・編集済みデータ20カット・マタニティ衣装1着〜2着・ヘアセットがセットになっています。",
-            "notes": "※土日祝は +¥5,500 となります。\n※マタニティ衣装のインナーはご自身でご用意をお願いします。\n※料金の詳細は、お電話・Instagram DM・LINE にてお気軽にお問い合わせください。"
+            "notes": "※土日祝は +¥5,500 となります。\n※マタニティ衣装のインナーはご自身でご用意をお願いします。\n※料金の詳細は、Instagram DM・LINE にてお気軽にお問い合わせください。"
           },
           "variants": [
             {
@@ -944,7 +944,7 @@ window.SITE_DATA = {
             "heroImage": "plan-furisode-01.jpg",
             "tagline": "ハタチの輝きをわたしらしく残したい",
             "longDescription": "成人式の前撮り・後撮りプランです。\n振袖だけでなく、袴やスーツでの撮影も可能です。",
-            "notes": "※土日祝は +¥5,500 となります。\n※プラン内容・料金の詳細は、お電話・Instagram DM・LINE にてお気軽にお問い合わせください。"
+            "notes": "※土日祝は +¥5,500 となります。\n※プラン内容・料金の詳細は、Instagram DM・LINE にてお気軽にお問い合わせください。"
           },
           "variants": [
             {
@@ -1006,7 +1006,7 @@ window.SITE_DATA = {
       },
       "reservation": {
         "heading": "Reservation",
-        "body": "ご予約はSTORES予約（オンライン）またはお電話・SNSで承っております。\n七五三のお詣り日着物レンタルも受付中です。",
+        "body": "ご予約はSTORES予約（オンライン）またはInstagram DM・LINEで承っております。\n七五三のお詣り日着物レンタルも受付中です。",
         "formUrl": "https://studio-et.stores.jp/reserve/hashima/733693",
         "note": "ご予約後、10営業日以内に確認のお電話を差し上げます。",
         "blocks": [
@@ -1023,7 +1023,7 @@ window.SITE_DATA = {
               "日程変更・キャンセルは予約日時の4日前まで、予約サイトからお手続きいただけます。",
               "ご予約後、10営業日以内に確認のお電話（050-1751-2601）を差し上げます。（水曜・木曜は定休日をいただいております）",
               "ご予約は1家族様1枠でお願いいたします。",
-              "電話やInstagram・LINEでのご予約・ご相談も受付しております。いつでもお気軽にご連絡ください。",
+              "Instagram DM・LINEでのご予約・ご相談も受付しております。いつでもお気軽にご連絡ください。",
               {
                 "text": "キャンセルポリシー",
                 "sub": "ご予約後はキャンセルポリシーが適用されます。事前にご確認をお願いいたします。",
@@ -1044,7 +1044,7 @@ window.SITE_DATA = {
             "notes": [
               "スタジオ撮影×お詣り着物レンタルのセットプランです。スタジオ撮影日と神社へお詣りに行く日の2日間をご予約いただき、各日違うお着物をお選びいただけます。",
               "撮影がお済みでない方は、上記Aの撮影予約も併せてお取りください。（撮影予約は撮影日の3ヶ月前の20日 21:00 に受付開始）",
-              "お詣り日予約の受付：2026年5月1日(金) 21:00 〜。予約サイトからは2026年9月〜12月のご予約が可能です。それ以外の日程はお電話・Instagram DM・LINEへお問い合わせください。",
+              "お詣り日予約の受付：2026年5月1日(金) 21:00 〜。予約サイトからは2026年9月〜12月のご予約が可能です。それ以外の日程はInstagram DM・LINEへお問い合わせください。",
               "お詣り日・対象スタジオ撮影期間：2026年4月1日〜2027年3月31日（前撮り・後撮りどちらも対象）。",
               "予約受付は24時間前まで。日程変更・キャンセルは予約日時の2日前まで、予約サイトからお手続きいただけます。",
               "お詣りに行かれる神社はお客様でお選びいただけます（神社へのスタッフ同行はありません）。お着物は当日ご来店時にお選びいただき、お出かけ当日17時までにスタジオへご返却をお願いします。"
@@ -1144,7 +1144,7 @@ window.SITE_DATA = {
           {
             "title": "Web予約（STORES予約）",
             "desc": "予約サイトでご希望日時を選択し、撮影プラン（One / Family / Maternity / Furisode）と撮影メニューをお選びください。",
-            "note": "受付は撮影日の3ヶ月前の20日21:00から。電話・Instagram DM・LINEでのご予約も可能です"
+            "note": "受付は撮影日の3ヶ月前の20日21:00から。Instagram DM・LINEでのご予約も可能です"
           },
           {
             "title": "予約完了メール受信",
