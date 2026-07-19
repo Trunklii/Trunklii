@@ -135,7 +135,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .hdr-book-menu{position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid rgba(17,16,16,.15);box-shadow:0 10px 30px rgba(17,16,16,.15);padding:.6rem;display:flex;flex-direction:column;gap:.5rem;width:220px;z-index:300}
 .hdr-book-menu[hidden]{display:none}
 .hdr-book-menu .bb-btn{flex:none}
-@media(max-width:960px){.hdr-book-wrap{display:none}}
+.about-book .hdr-book-menu{left:0;right:auto}
+@media(max-width:960px){.nav-right .hdr-book-wrap{display:none}}
 
 .nav-bot{
   display:flex;align-items:center;justify-content:center;
@@ -805,7 +806,7 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 .nav-logo{color:#f0ead8}
 .icon-btn{color:#f0ead8;border-color:#f0ead8}
 .icon-btn:hover{background:#f0ead8;color:#1C0909}
-.hdr-book-toggle{background:#f0ead8;color:#1C0909;border-color:#f0ead8}
+.nav-right .hdr-book-toggle{background:#f0ead8;color:#1C0909;border-color:#f0ead8}
 .nav-bot{background:#fff;border-top-color:rgba(255,255,255,.2)}
 .nav-link{color:var(--ink)}
 .nav-link.important{color:#fff;background:#381B00;height:auto;padding:.5rem 1.1rem;align-self:center;transition:background .2s}
@@ -1314,7 +1315,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="about-grid">
     <div class="about-text">
       <p id="about-body"></p>
-      <div class="bb-btns" style="margin-top:1.4rem;max-width:540px"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
+      <div class="hdr-book-wrap about-book" style="margin-top:1.4rem"><button class="hdr-book-toggle" type="button" onclick="toggleHdrBook(event)" aria-haspopup="true" aria-expanded="false">予約する<span class="hdr-book-chev" aria-hidden="true">›</span></button><div class="hdr-book-menu" hidden><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div></div>
     </div>
     <div class="about-img-wrap"><img id="about-img" src="" alt="Studio"/></div>
   </div>
@@ -2161,19 +2162,21 @@ function accessTab(btn){
   // リロードのたびに毎回表示する(閉じた状態はセッションに保持しない)
   s.hidden = false; document.body.classList.add('sheet-open');
 })();
-// ヘッダー予約する › の展開メニュー
+// 予約する › の展開メニュー(ヘッダー/About 共通)
 function toggleHdrBook(e){
   e.stopPropagation();
-  const m = document.getElementById('hdr-book-menu');
+  const wrap = e.currentTarget.closest('.hdr-book-wrap');
+  const m = wrap.querySelector('.hdr-book-menu');
   const open = m.hidden;
+  document.querySelectorAll('.hdr-book-menu').forEach(x=>{ x.hidden = true; });
+  document.querySelectorAll('.hdr-book-toggle').forEach(b=>b.setAttribute('aria-expanded','false'));
   m.hidden = !open;
   e.currentTarget.setAttribute('aria-expanded', open ? 'true' : 'false');
 }
 document.addEventListener('click', function(ev){
-  const m = document.getElementById('hdr-book-menu');
-  if(m && !m.hidden && !ev.target.closest('.hdr-book-wrap')){
-    m.hidden = true;
-    const b = document.querySelector('.hdr-book-toggle'); if(b) b.setAttribute('aria-expanded','false');
+  if(!ev.target.closest('.hdr-book-wrap')){
+    document.querySelectorAll('.hdr-book-menu').forEach(x=>{ x.hidden = true; });
+    document.querySelectorAll('.hdr-book-toggle').forEach(b=>b.setAttribute('aria-expanded','false'));
   }
 });
 function closeBookSheet(){
