@@ -95,6 +95,13 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 }
 .icon-btn:hover{background:var(--ink);color:#fff}
 .icon-btn svg{width:15px;height:15px}
+/* ヘッダー予約ボタン(アイコン列の横・PCのみ) */
+.hdr-book{display:flex;align-items:center;gap:.5em;height:36px;padding:0 .8rem;border:1px solid var(--ink);color:var(--ink);background:transparent;text-decoration:none;font-family:var(--sans);font-weight:500;font-size:.62rem;letter-spacing:.08em;white-space:nowrap;transition:background .2s,color .2s}
+.hdr-book:hover{background:var(--ink);color:#fff}
+.hdr-book .bb-logo{height:1.8em}
+.hdr-book.hb-nr{color:#5e837b;border-color:#7a9e95}
+.hdr-book.hb-nr:hover{background:#7a9e95;color:#fff}
+@media(max-width:960px){.hdr-book{display:none}}
 
 /* ブランド別リンクの明示ラベル（et. / nr.） */
 .icon-btn[data-brand]{position:relative}
@@ -944,6 +951,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a class="icon-btn brand-nr" id="nav-ig-nr" data-brand="nr." href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener" aria-label="Maison nr. Instagram" title="Maison nr. の Instagram @maison_nr._">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
       </a>
+      <a class="hdr-book" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener" aria-label="Studio et. 予約する" title="Studio et. のご予約(STORES)"><span class="bb-logo" role="img" aria-hidden="true" style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span>予約する</a>
+      <a class="hdr-book hb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener" aria-label="Maison nr. 予約する" title="Maison nr. のご予約(Instagram)"><span class="bb-logo" role="img" aria-hidden="true" style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span>予約する</a>
     </div>
   </div>
   <nav class="nav-bot">
@@ -972,7 +981,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li class="nav-item"><a href="#flow" class="nav-link">Flow</a></li>
       <li class="nav-item"><a href="#recruit" class="nav-link">Recruit</a></li>
     </ul>
-    <div class="nav-book" style="background:none;padding:0"><div class="bb-btns bb-sm"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div></div>
+    
   </nav>
 </header>
 
