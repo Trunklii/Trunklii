@@ -1370,8 +1370,9 @@ async function init(){
   const mobLogo = document.getElementById('mob-logo');
   const etLogoMask = `<span role="img" aria-label="${d.name}" style="display:block;height:100%;aspect-ratio:672/445;background:currentColor;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span>`;
   if(logoLink) logoLink.innerHTML = etLogoMask;
-  // ハンバーガーメニューもヘッダーと同じ STUDIO 付きロックアップ(nr.と同じ48px枠)
-  if(mobLogo) mobLogo.innerHTML = etLogoMask;
+  // ハンバーガーメニューもヘッダーと同じ STUDIO 付きロックアップ(nr.と同じ48px枠)。
+  // Safari の aspect-ratio+height:100% の誤計算を避けるため固定寸法で指定
+  if(mobLogo) mobLogo.innerHTML = `<span role="img" aria-label="${d.name}" style="display:block;width:72px;height:48px;background:currentColor;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span>`;
 
   // Header icons links
   document.getElementById('nav-ig').href = d.instagram;
