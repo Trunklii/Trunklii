@@ -79,7 +79,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .brand-tab.active::after{content:'';position:absolute;bottom:-1px;left:1.2rem;right:1.2rem;height:2px;background:var(--ink)}
 
 .nav-logo-wrap{display:flex;align-items:center;justify-content:center}
-.nav-logo{display:block;height:56px;color:var(--ink)}
+.nav-logo{display:block;height:42px;color:var(--ink)}
 .nav-logo svg{height:100%;width:auto;display:block}
 
 /* Right action icons (square framed) */
@@ -617,7 +617,7 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,5vw,4rem);di
   .nav-right{order:2;margin-left:auto;gap:.4rem}
   .hamburger{order:3;display:flex;position:relative;left:0;top:0;transform:none}
   .icon-btn{width:32px;height:32px}
-  .nav-logo{height:40px}
+  .nav-logo{height:30px}
   .hero{height:calc(100vh - 60px);height:calc(100svh - 60px);margin-top:60px}
   .about-grid,.recruit-body{grid-template-columns:1fr}
   .about-img-wrap{order:-1}
@@ -1364,7 +1364,7 @@ async function init(){
   // Logo — Studio et. 正式ロゴ(assets/et-logo.png、白抜き)。mask+currentColor で .nav-logo の色に追従
   const logoLink = document.getElementById('nav-logo-link');
   const mobLogo = document.getElementById('mob-logo');
-  const etLogoMask = `<span role="img" aria-label="${d.name}" style="display:block;height:100%;aspect-ratio:672/412;background:currentColor;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span>`;
+  const etLogoMask = `<span role="img" aria-label="${d.name}" style="display:block;height:100%;aspect-ratio:672/445;background:currentColor;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span>`;
   if(logoLink) logoLink.innerHTML = etLogoMask;
   // ハンバーガーメニューは STUDIO を外した et. マーク単体。
   // 高さ24px = ロックアップ40px表示時の et. 部分の実寸(40×248/411)に合わせる
