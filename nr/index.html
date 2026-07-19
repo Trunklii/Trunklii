@@ -2147,10 +2147,8 @@ function accessTab(btn){
   const s = document.getElementById('book-sheet');
   if(!s) return;
   if(window.matchMedia('(min-width:961px)').matches) return; // PC はポップアップ非表示
-  let closed = false;
-  try{ closed = sessionStorage.getItem('bookSheetClosed') === '1'; }catch(e){}
-  if(!closed){ s.hidden = false; document.body.classList.add('sheet-open'); }
-  else { const t = document.getElementById('book-toggle'); if(t) t.hidden = false; }
+  // リロードのたびに毎回表示する(閉じた状態はセッションに保持しない)
+  s.hidden = false; document.body.classList.add('sheet-open');
 })();
 // ヘッダー予約する › の展開メニュー
 function toggleHdrBook(e){
@@ -2173,7 +2171,6 @@ function closeBookSheet(){
   document.body.classList.remove('sheet-open');
   const t = document.getElementById('book-toggle');
   if(t) t.hidden = false;
-  try{ sessionStorage.setItem('bookSheetClosed','1'); }catch(e){}
 }
 function openBookSheet(){
   const s = document.getElementById('book-sheet');
