@@ -145,7 +145,7 @@
       var showArrows = items.length > 1;
       return '<div class="kim-cat" data-cat="' + c.key + '"' + dataAttr + '>'
         + '<div class="kim-cat-head">'
-          + '<div class="kim-cat-title">'+c.sub+'</div>'
+          + '<div class="kim-cat-title">'+c.sub+'<span class="sec-jp">'+c.jp+'</span></div>'
           + firstOpt
         + '</div>'
         + '<div class="kim-cat-carousel">'
