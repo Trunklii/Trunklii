@@ -81,8 +81,8 @@ main{padding-top:64px}
 .cp-table th:last-child{text-align:right}
 .cp-table td{border-bottom:1px solid var(--border);padding:1.05rem 1.4rem;vertical-align:middle}
 .cp-table tr:last-child td{border-bottom:none}
-.cp-table td.when{font-family:var(--serif);font-weight:300;font-size:.92rem;color:var(--ink);letter-spacing:.02em}
-.cp-table td.fee{font-family:var(--sans);font-weight:500;font-style:normal;font-size:.82rem;letter-spacing:.04em;text-align:right;color:var(--accent)}
+.cp-table td.when{font-family:var(--serif);font-weight:300;font-size:.8rem;color:var(--ink);letter-spacing:.02em}
+.cp-table td.fee{font-family:var(--sans);font-weight:500;font-style:normal;font-size:.74rem;letter-spacing:.04em;text-align:right;color:var(--accent)}
 .cp-table td.fee-free{color:#4a9e6a}
 .cp-table td.fee-high{color:#c0382e}
 .cp-table tr:nth-child(even) td{background:rgba(17,16,16,.018)}
@@ -107,7 +107,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2rem clamp(1.4re
   .nav-brand{font-size:.95rem}
   .nav-right .booking-btn{padding:.5rem .8rem;font-size:.62rem}
   .cp-table th,.cp-table td{padding:.85rem 1rem}
-  .cp-table td.fee{font-size:1rem}
+  .cp-table td.fee{font-size:.74rem}
   .sec-head{gap:.8rem}
   footer{flex-direction:column;text-align:center}
   .footer-links{justify-content:center}
@@ -255,7 +255,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="more-cta">
-        <a href="#" id="booking-cta" class="btn-line">ご予約はこちら →</a>
+        <div class="hdr-book-wrap" style="display:inline-block"><button class="hdr-book-toggle" type="button" onclick="toggleHdrBook(event)" aria-haspopup="true" aria-expanded="false" style="margin:0 auto">予約する<span class="hdr-book-chev" aria-hidden="true">›</span></button><div class="hdr-book-menu" hidden style="left:50%;right:auto;transform:translateX(-50%)"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div></div>
       </div>
 
     </div>
@@ -320,7 +320,6 @@ function init(){
   const name = studio.shortName || studio.name || '';
   document.getElementById('nav-brand').innerHTML = `${esc(name.replace(/\.$/,''))}<span class="b-mark">.</span>`;
 
-  document.getElementById('booking-cta').href = studio.bookingUrl || '#';
   document.getElementById('footer-copy').textContent = data.global.copyright;
   document.getElementById('page-title').textContent = `Cancellation Policy | ${studio.name}`;
 

@@ -265,7 +265,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="more-cta">
-        <a href="#" class="btn-line" id="cta-btn">ご予約はこちら →</a>
+        <div class="hdr-book-wrap" style="display:inline-block"><button class="hdr-book-toggle" type="button" onclick="toggleHdrBook(event)" aria-haspopup="true" aria-expanded="false" style="margin:0 auto">予約する<span class="hdr-book-chev" aria-hidden="true">›</span></button><div class="hdr-book-menu" hidden style="left:50%;right:auto;transform:translateX(-50%)"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div></div>
       </div>
 
     </div>
@@ -404,7 +404,6 @@ function init(){
   const name = studio.shortName || studio.name || '';
   document.getElementById('nav-brand').innerHTML = `${esc(name.replace(/\.$/,''))}<span class="b-mark">.</span>`;
 
-  document.getElementById('cta-btn').href = studio.bookingUrl || '#';
   document.getElementById('footer-copy').textContent = data.global.copyright;
   document.getElementById('page-title').textContent = `Calendar | ${studio.name}`;
 
