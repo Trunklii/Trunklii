@@ -808,7 +808,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 function renderPage(d){
   const c = d.calendar || {};
-  document.getElementById('d-intro').textContent = c.body || '撮影可能日のご案内です。';
+  document.getElementById('d-intro').textContent = c.body || '日にちごとの撮影料金のご案内です。';
   const cb = document.getElementById('calendar-block');
   if(c.embedUrl){
     cb.innerHTML = `<iframe class="cal-embed" src="${c.embedUrl}" frameborder="0"></iframe>${c.note?`<div class="cal-note">${c.note}</div>`:''}`;

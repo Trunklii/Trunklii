@@ -1000,7 +1000,7 @@ window.SITE_DATA = {
       },
       "calendar": {
         "heading": "Calendar",
-        "body": "撮影可能日のご案内です。\n最新の空き状況は予約ページよりご確認ください。",
+        "body": "日にちごとの撮影料金のご案内です。\n最新の空き状況は予約ページよりご確認ください。",
         "embedUrl": "",
         "note": "※定休日：火曜日 / 撮影は完全予約制となっております。"
       },
@@ -1520,7 +1520,7 @@ window.SITE_DATA = {
       },
       "calendar": {
         "heading": "Calendar",
-        "body": "撮影可能日は近日公開予定です。",
+        "body": "料金カレンダーは近日公開予定です。",
         "embedUrl": "",
         "note": ""
       },
