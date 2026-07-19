@@ -336,7 +336,7 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .book-sheet-btn.bs-nr{background:#43261D;border-color:#43261D;color:#fff}
 .book-sheet-btn.bs-nr:hover{background:#583428}
 .bs-brand-lockup{display:block;height:1.5em;background:currentColor}
-.bs-cta{display:inline-flex;align-items:center;height:1.5em;padding:0 .55em;border:1px solid #fff;box-sizing:border-box}
+.bs-cta{display:inline-flex;align-items:center;gap:.7em;padding:.55em 1.1em;border:1px solid rgba(255,255,255,.9)}
 @media(min-width:961px){.book-sheet{left:1.25rem;right:auto;bottom:1.25rem;width:360px;border:1px solid rgba(17,16,16,.12)}}
 
 /* ページトップへ戻る(スクロール後に出現) */
@@ -1502,9 +1502,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <button class="book-sheet-close" type="button" onclick="closeBookSheet()" aria-label="閉じる">✕</button>
   <div class="book-sheet-title">Reservation</div>
   <div class="book-sheet-btns">
-  <a class="book-sheet-btn bs-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bs-brand-lockup" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bs-cta">予約する</span></a>
+  <a class="book-sheet-btn bs-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bs-brand-lockup" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bs-cta">予約する<span aria-hidden="true">→</span></span></a>
   <!-- nr. は STORES(春日井)未開設のため暫定で Instagram へ -->
-  <a class="book-sheet-btn bs-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bs-brand-lockup" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bs-cta">予約する</span></a>
+  <a class="book-sheet-btn bs-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bs-brand-lockup" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bs-cta">予約する<span aria-hidden="true">→</span></span></a>
   </div>
 </div>
 <button class="to-top-btn" id="to-top-btn" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="ページトップへ戻る">
