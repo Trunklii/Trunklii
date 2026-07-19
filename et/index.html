@@ -333,10 +333,11 @@ body.is-ready .float-book{opacity:1;transform:translateY(0)}
 .book-sheet-close{position:absolute;top:.8rem;right:.9rem;background:none;border:none;font-size:1.05rem;cursor:pointer;color:#111010;padding:.3rem;line-height:1}
 .book-sheet-title{font-family:var(--sans);font-weight:600;font-size:.92rem;letter-spacing:.16em;text-transform:uppercase;color:#111010}
 .book-sheet-sub{font-family:var(--sans);font-weight:300;font-size:.72rem;color:#888078;margin:.35rem 0 .9rem}
-.book-sheet-btn{display:flex;align-items:center;justify-content:center;gap:.4em;width:100%;background:#111010;color:#fff;font-family:var(--sans);font-weight:500;font-size:.76rem;letter-spacing:.18em;padding:.95rem;text-decoration:none;margin-top:.55rem;transition:opacity .2s}
-.book-sheet-btn:hover{opacity:.85}
-.book-sheet-btn.bs-nr{background:#7a9e95}
-.bs-brand-logo{height:15px;width:auto;display:block}
+.book-sheet-btn{display:flex;align-items:center;justify-content:center;gap:.55em;width:100%;background:transparent;color:#111010;border:1px solid #111010;font-family:var(--sans);font-weight:500;font-size:.76rem;letter-spacing:.18em;padding:.9rem;text-decoration:none;margin-top:.55rem;transition:background .2s}
+.book-sheet-btn:hover{background:rgba(17,16,16,.06)}
+.book-sheet-btn.bs-nr{color:#5e837b;border-color:#7a9e95}
+.book-sheet-btn.bs-nr:hover{background:rgba(122,158,149,.1)}
+.bs-brand-lockup{display:block;height:1.15em;background:currentColor}
 @media(min-width:961px){.book-sheet{left:1.25rem;right:auto;bottom:1.25rem;width:360px;border:1px solid rgba(17,16,16,.12)}}
 
 /* ページトップへ戻る(スクロール後に出現) */
@@ -1270,9 +1271,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <button class="book-sheet-close" type="button" onclick="closeBookSheet()" aria-label="閉じる">✕</button>
   <div class="book-sheet-title">Reservation</div>
   <div class="book-sheet-sub">撮影のご予約はこちらから。</div>
-  <a class="book-sheet-btn bs-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><img class="bs-brand-logo" src="../assets/et-logo-mark-white.png" alt="et."/>予約する</a>
+  <a class="book-sheet-btn bs-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bs-brand-lockup" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span>予約する</a>
   <!-- nr. は STORES(春日井)未開設のため暫定で Instagram へ -->
-  <a class="book-sheet-btn bs-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><img class="bs-brand-logo" src="../assets/nr-logo-mark-white.png" alt="nr."/>予約する</a>
+  <a class="book-sheet-btn bs-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bs-brand-lockup" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span>予約する</a>
 </div>
 <div class="float-book" aria-label="ページ操作">
   <button class="to-top-btn" id="to-top-btn" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="ページトップへ戻る">
