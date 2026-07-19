@@ -108,7 +108,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .icon-btn[data-brand]::after{content:attr(data-brand);position:absolute;bottom:1px;right:2px;font-family:var(--display);font-style:italic;font-size:.5rem;line-height:1;pointer-events:none;opacity:.85}
 .icon-btn.brand-nr{color:#5e837b;border-color:#7a9e95}
 .icon-btn.brand-nr:hover{background:#7a9e95;color:#fff}
-@media(max-width:960px){.icon-btn.brand-nr{display:none}}
+.icon-btn.brand-nr{display:none} /* et.ページでは nr. のマップ/Instagramアイコンは非表示 */
+.mob-icon-row a.mob-nr{display:none}
 .mob-brand-chip{display:inline-flex;align-items:center;font-family:var(--display);font-style:italic;font-size:.8rem;color:var(--ink);opacity:.7;padding:0 .1rem}
 .mob-brand-chip.chip-nr{color:#5e837b;opacity:1}
 .mob-icon-row a.mob-nr{border-color:#7a9e95;color:#5e837b}
