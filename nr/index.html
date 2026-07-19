@@ -2174,13 +2174,18 @@ function toggleHdrBook(e){
   m.hidden = !open;
   e.currentTarget.setAttribute('aria-expanded', open ? 'true' : 'false');
 }
-// iOS Safari は非インタラクティブ要素のタップで click が発火しないため pointerdown で判定
-document.addEventListener('pointerdown', function(ev){
-  if(!(ev.target instanceof Element) || !ev.target.closest('.hdr-book-wrap')){
-    document.querySelectorAll('.hdr-book-menu').forEach(x=>{ x.hidden = true; });
-    document.querySelectorAll('.hdr-book-toggle').forEach(b=>b.setAttribute('aria-expanded','false'));
+// エリア外タップで閉じる: capture 段階の pointerdown/touchstart で判定
+// (iOS の click 不発火や、他要素の stopPropagation に妨げられないように)
+(function(){
+  function closeIfOutside(ev){
+    if(!(ev.target instanceof Element) || !ev.target.closest('.hdr-book-wrap')){
+      document.querySelectorAll('.hdr-book-menu').forEach(x=>{ x.hidden = true; });
+      document.querySelectorAll('.hdr-book-toggle').forEach(b=>b.setAttribute('aria-expanded','false'));
+    }
   }
-});
+  document.addEventListener('pointerdown', closeIfOutside, {capture:true, passive:true});
+  document.addEventListener('touchstart', closeIfOutside, {capture:true, passive:true});
+})();
 function closeBookSheet(){
   const s = document.getElementById('book-sheet');
   if(s) s.hidden = true;
