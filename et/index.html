@@ -1356,7 +1356,7 @@ async function init(){
   // Logo — Studio et. 正式ロゴ(assets/et-logo.png、白抜き)。mask+currentColor で .nav-logo の色に追従
   const logoLink = document.getElementById('nav-logo-link');
   const mobLogo = document.getElementById('mob-logo');
-  const etLogoMask = `<span role="img" aria-label="${d.name}" style="display:block;height:100%;aspect-ratio:404/411;background:currentColor;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span>`;
+  const etLogoMask = `<span role="img" aria-label="${d.name}" style="display:block;height:100%;aspect-ratio:846/412;background:currentColor;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span>`;
   if(logoLink) logoLink.innerHTML = etLogoMask;
   // ハンバーガーメニューは STUDIO を外した et. マーク単体。
   // 高さ24px = ロックアップ40px表示時の et. 部分の実寸(40×248/411)に合わせる
