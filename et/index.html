@@ -345,6 +345,13 @@ body.is-ready .float-book:hover{opacity:1}
 .book-sheet{position:fixed;left:0;right:0;bottom:0;z-index:180;background:rgba(255,255,255,.22);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding:1rem clamp(1.2rem,4vw,2.5rem) calc(1rem + env(safe-area-inset-bottom,0px));text-align:center}
 .book-sheet[hidden]{display:none}
 /* シート表示中は背後のフロート(チャット・○^・カレンダー)を非表示(透過ごしの黒が視認性を下げるため) */
+/* スマホはフロート3種を店舗切替アイコンと同じ48pxに統一 */
+@media(max-width:960px){
+  .qa-bot-toggle,.book-toggle{width:48px;height:48px}
+  .qa-bot-toggle svg{width:20px;height:20px}
+  .book-toggle svg{width:18px;height:18px}
+  .float-book{bottom:calc(.5rem + 48px + .5rem + 48px + .5rem)}
+}
 /* 相互ブランド行き来アイコン(チャットの下・スマホのみ) */
 .brand-hop{position:fixed;right:1.25rem;bottom:.5rem;z-index:150;width:48px;height:48px;border-radius:50%;background:#fff;border:1px solid rgba(17,16,16,.25);display:flex;align-items:center;justify-content:center;opacity:.5;box-shadow:0 6px 20px rgba(17,16,16,.15);transition:opacity .3s}
 .brand-hop:hover{opacity:1}
