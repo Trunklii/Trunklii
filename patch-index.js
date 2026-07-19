@@ -217,7 +217,14 @@
     if(blocks && blocks.length > 0){
       grid.innerHTML = blocks.map(function(b){
         var bookHref = b.bookingUrl || bookUrlFallback;
-        var notes = (b.notes||[]).map(function(n){ return '<li>' + n + '</li>'; }).join('');
+        var notes = (b.notes||[]).map(function(n){
+          if(n && typeof n === 'object'){
+            var sub = n.sub ? '<span class="res-note-sub">' + n.sub + '</span>' : '';
+            var link = (n.link && n.link.href) ? '<span class="res-note-sub"><a href="' + n.link.href + '" class="res-note-link">' + (n.link.label||n.link.href) + '</a></span>' : '';
+            return '<li><span>' + (n.text||'') + sub + link + '</span></li>';
+          }
+          return '<li>' + n + '</li>';
+        }).join('');
         return '<div class="res-top-block">'
           + '<div class="res-top-head">'
             + '<span class="res-top-mark">' + (b.mark||'') + '</span>'
