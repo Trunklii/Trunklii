@@ -96,12 +96,14 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .icon-btn:hover{background:var(--ink);color:#fff}
 .icon-btn svg{width:15px;height:15px}
 /* ヘッダー予約ボタン(アイコン列の横・PCのみ) */
-.hdr-book{display:flex;align-items:center;gap:.5em;height:36px;padding:0 .8rem;border:1px solid var(--ink);color:var(--ink);background:transparent;text-decoration:none;font-family:var(--sans);font-weight:500;font-size:.62rem;letter-spacing:.08em;white-space:nowrap;transition:background .2s,color .2s}
-.hdr-book:hover{background:var(--ink);color:#fff}
-.hdr-book .bb-logo{height:15px}
-.hdr-book.hb-nr{color:#1C0909;border-color:#1C0909}
-.hdr-book.hb-nr:hover{background:#1C0909;color:#f0ead8}
-@media(max-width:960px){.hdr-book{display:none}}
+.hdr-book-wrap{position:relative}
+.hdr-book-toggle{display:flex;align-items:center;gap:.5em;height:36px;padding:0 .95rem;border:1px solid #111010;background:#111010;color:#fff;font-family:var(--sans);font-weight:500;font-size:.62rem;letter-spacing:.08em;cursor:pointer;transition:opacity .2s;white-space:nowrap}
+.hdr-book-toggle:hover{opacity:.8}
+.hdr-book-chev{font-size:1.2em;line-height:1;font-weight:300}
+.hdr-book-menu{position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid rgba(17,16,16,.15);box-shadow:0 10px 30px rgba(17,16,16,.15);padding:.6rem;display:flex;flex-direction:column;gap:.5rem;width:220px;z-index:300}
+.hdr-book-menu[hidden]{display:none}
+.hdr-book-menu .bb-btn{flex:none}
+@media(max-width:960px){.hdr-book-wrap{display:none}}
 
 /* ブランド別リンクの明示ラベル（et. / nr.） */
 .icon-btn[data-brand]{position:relative}
@@ -952,8 +954,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a class="icon-btn brand-nr" id="nav-ig-nr" data-brand="nr." href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener" aria-label="Maison nr. Instagram" title="Maison nr. の Instagram @maison_nr._">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
       </a>
-      <a class="hdr-book" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener" aria-label="Studio et. 予約する" title="Studio et. のご予約(STORES)"><span class="bb-logo" role="img" aria-hidden="true" style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span>予約する</a>
-      <a class="hdr-book hb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener" aria-label="Maison nr. 予約する" title="Maison nr. のご予約(Instagram)"><span class="bb-logo" role="img" aria-hidden="true" style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span>予約する</a>
+      <div class="hdr-book-wrap">
+        <button class="hdr-book-toggle" type="button" onclick="toggleHdrBook(event)" aria-haspopup="true" aria-expanded="false">予約する<span class="hdr-book-chev" aria-hidden="true">›</span></button>
+        <div class="hdr-book-menu" id="hdr-book-menu" hidden><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
+      </div>
     </div>
   </div>
   <nav class="nav-bot">
@@ -1943,6 +1947,21 @@ function accessTab(btn){
   if(!closed){ s.hidden = false; document.body.classList.add('sheet-open'); }
   else { const t = document.getElementById('book-toggle'); if(t) t.hidden = false; }
 })();
+// ヘッダー予約する › の展開メニュー
+function toggleHdrBook(e){
+  e.stopPropagation();
+  const m = document.getElementById('hdr-book-menu');
+  const open = m.hidden;
+  m.hidden = !open;
+  e.currentTarget.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+document.addEventListener('click', function(ev){
+  const m = document.getElementById('hdr-book-menu');
+  if(m && !m.hidden && !ev.target.closest('.hdr-book-wrap')){
+    m.hidden = true;
+    const b = document.querySelector('.hdr-book-toggle'); if(b) b.setAttribute('aria-expanded','false');
+  }
+});
 function closeBookSheet(){
   const s = document.getElementById('book-sheet');
   if(s) s.hidden = true;
