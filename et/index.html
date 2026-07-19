@@ -1779,10 +1779,23 @@ function closeSearch(){
   document.getElementById('search-input').value='';
   document.getElementById('search-results').innerHTML='';
 }
+// --- GA4/GTM 計測: サイト内検索 & チャットQA ---
+let __searchTrackTimer=null, __lastTrackedSearch='';
+function trackSiteSearch(q, src){
+  if(!q || q.length<2) return;
+  clearTimeout(__searchTrackTimer);
+  __searchTrackTimer=setTimeout(function(){
+    if(q===__lastTrackedSearch) return;
+    __lastTrackedSearch=q;
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push({event:'site_search', search_term:q, search_source:src});
+  }, 900);
+}
 function runSearch(){
   const q = document.getElementById('search-input').value.trim().toLowerCase();
   const out = document.getElementById('search-results');
   if(!q){ out.innerHTML=''; return; }
+  trackSiteSearch(q, 'overlay');
   const results = SEARCH_INDEX.filter(item=>{
     return (item.title||'').toLowerCase().includes(q) || (item.snippet||'').toLowerCase().includes(q) || (item.label||'').toLowerCase().includes(q);
   });
@@ -1841,6 +1854,8 @@ function buildQaBot(items, ctx){
 function askBot(i){
   const it = qaBotItems[i];
   if(!it) return;
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push({event:'qa_select', qa_question: it.q});
   const body = document.getElementById('qa-bot-body');
   body.insertAdjacentHTML('beforeend', `
     <div class="qa-msg qa-msg-user">${it.q}</div>
@@ -1926,6 +1941,7 @@ function runBotSearch(){
   const q = document.getElementById('bot-search-input').value.trim().toLowerCase();
   const out = document.getElementById('bot-search-results');
   if(!q){ out.innerHTML=''; return; }
+  trackSiteSearch(q, 'chat');
   const results = SEARCH_INDEX.filter(item=>{
     return (item.title||'').toLowerCase().includes(q) || (item.snippet||'').toLowerCase().includes(q) || (item.label||'').toLowerCase().includes(q);
   });
