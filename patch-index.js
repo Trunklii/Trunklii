@@ -225,13 +225,22 @@
           }
           return '<li>' + n + '</li>';
         }).join('');
+        // 撮影予約ブロックは et./nr. の予約する›展開メニューに(お詣り日等は専用リンクのまま)
+        var isSatsuei = (b.title||'').indexOf('撮影予約') !== -1;
+        var ET_BOOK='https://studio-et.stores.jp/reserve/hashima/733693';
+        var NR_BOOK='https://www.instagram.com/maison_nr._';
+        var pairHtml = '<a class="bb-btn bb-et" href="'+ET_BOOK+'" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a>'
+          + '<a class="bb-btn bb-nr" href="'+NR_BOOK+'" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a>';
+        var bookBtn = isSatsuei
+          ? '<div class="hdr-book-wrap" style="display:inline-block"><button class="hdr-book-toggle" type="button" onclick="toggleHdrBook(event)" aria-haspopup="true" aria-expanded="false">予約する<span class="hdr-book-chev" aria-hidden="true">›</span></button><div class="hdr-book-menu" hidden style="left:50%;right:auto;transform:translateX(-50%)">'+pairHtml+'</div></div>'
+          : '<a href="' + bookHref + '" class="btn-line filled">' + (b.bookingLabel||'ご予約はこちら') + '</a>';
         return '<div class="res-top-block">'
           + '<div class="res-top-head">'
             + '<span class="res-top-mark">' + (b.mark||'') + '</span>'
             + '<h3 class="res-top-title">' + (b.title||'') + '</h3>'
           + '</div>'
           + '<div class="res-top-btns">'
-            + '<a href="' + bookHref + '" class="btn-line filled">' + (b.bookingLabel||'ご予約はこちら') + '</a>'
+            + bookBtn
             + '<a href="' + (b.plansUrl||'plans.html') + '" class="btn-line">' + (b.plansLabel||'プラン・料金') + '</a>'
           + '</div>'
           + (notes ? '<ul class="res-top-notes">' + notes + '</ul>' : '')
