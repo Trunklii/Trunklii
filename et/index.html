@@ -331,7 +331,7 @@ body.is-ready .float-book{opacity:1;transform:translateY(0)}
 .book-sheet{position:fixed;left:0;right:0;bottom:0;z-index:180;background:rgba(255,255,255,.22);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding:1rem clamp(1.2rem,4vw,2.5rem) calc(1rem + env(safe-area-inset-bottom,0px));text-align:center}
 .book-sheet[hidden]{display:none}
 /* シート表示中は背後のフロート(チャット・○^・カレンダー)を非表示(透過ごしの黒が視認性を下げるため) */
-body.sheet-open .qa-bot-toggle,body.sheet-open .float-book{opacity:0;pointer-events:none}
+body.sheet-open .qa-bot-toggle,body.sheet-open .float-book{opacity:0!important;pointer-events:none!important}
 .book-sheet-close{position:absolute;top:.8rem;right:.9rem;background:none;border:none;font-size:1.05rem;cursor:pointer;color:#111010;padding:.3rem;line-height:1}
 .book-sheet-title{font-family:var(--sans);font-weight:600;font-size:.92rem;letter-spacing:.16em;text-transform:uppercase;color:#111010}
 .book-sheet-btns{display:flex;gap:.6rem;margin-top:.8rem}
