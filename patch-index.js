@@ -169,6 +169,15 @@
     });
   };
 
+  /* カテゴリキーで絞り込み(ハンバーガーメニューのKimonoサブメニューから呼ばれる) */
+  window.kimFilterCat = function(key){
+    var btn = document.querySelector('.kim-filter-btn[data-cat="' + key + '"]');
+    if(btn){ window.kimFilter(btn); return; }
+    Array.prototype.forEach.call(document.querySelectorAll('#kimono-grid .kim-cat'), function(card){
+      card.style.display = (key === 'all' || card.getAttribute('data-cat') === key) ? '' : 'none';
+    });
+  };
+
   /* カルーセル制御(arrow ボタンから呼ばれる) */
   window.kimCarousel = function(btn, dir){
     var card = btn.closest('.kim-cat');

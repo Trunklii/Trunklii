@@ -222,8 +222,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .mob-brand-tab{
   display:flex;align-items:center;justify-content:center;
   padding:1.1rem .5rem;text-decoration:none;color:var(--ink);
-  font-family:var(--display);font-style:italic;font-weight:300;
-  font-size:1.45rem;letter-spacing:-.005em;
+  font-family:var(--sans);font-style:normal;font-weight:400;
+  font-size:1rem;letter-spacing:.22em;
   position:relative;transition:background .25s,color .25s,opacity .25s;
   cursor:pointer;background:none;border:none;
   border-left:1px solid #1a1a1a;line-height:1;
@@ -237,19 +237,20 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .mob-item{border-bottom:1px solid #f0eee9}
 .mob-item-top{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;cursor:pointer}
 .mob-item-label{
-  font-family:var(--sans);font-weight:500;font-size:1rem;
+  font-family:var(--sans);font-weight:500;font-size:.8rem;
   letter-spacing:.02em;text-transform:uppercase;color:var(--ink);
   text-decoration:none;flex:1;
 }
 .mob-item-label.important{color:var(--accent)}
 .mob-item-label sup{font-size:.6rem;color:var(--accent);margin-left:.3rem;font-weight:500}
+.mob-jp{font-size:.6rem;font-weight:400;color:#9a968f;margin-left:.55rem;letter-spacing:.06em}
 .mob-arrow{font-size:1rem;color:var(--ink);transition:transform .3s;font-weight:300}
 .mob-item.open .mob-arrow{transform:rotate(90deg)}
 .mob-sub{display:none;background:#f8f6f2;padding:.5rem 0}
 .mob-item.open .mob-sub{display:block}
 .mob-sub a{
   display:block;padding:.75rem 2.5rem;
-  font-family:var(--sans);font-weight:400;font-size:.8rem;
+  font-family:var(--sans);font-weight:400;font-size:.72rem;
   letter-spacing:.05em;text-transform:uppercase;color:var(--ink);
   text-decoration:none;
 }
@@ -963,11 +964,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="mob-list">
-    <div class="mob-item"><div class="mob-item-top"><a href="#hero" class="mob-item-label" onclick="closeMob();scrollTopSmooth(event)">TOP</a></div></div>
-    <div class="mob-item"><div class="mob-item-top"><a href="#about" class="mob-item-label" onclick="closeMob()">About</a></div></div>
+    <div class="mob-item"><div class="mob-item-top"><a href="#hero" class="mob-item-label" onclick="closeMob();scrollTopSmooth(event)">TOP<span class="mob-jp">トップ</span></a></div></div>
+    <div class="mob-item"><div class="mob-item-top"><a href="#about" class="mob-item-label" onclick="closeMob()">About<span class="mob-jp">私たちについて</span></a></div></div>
     <div class="mob-item">
       <div class="mob-item-top" onclick="toggleMobItem(event,this)">
-        <span class="mob-item-label">Gallery</span><span class="mob-arrow">›</span>
+        <span class="mob-item-label">Gallery<span class="mob-jp">フォトギャラリー</span></span><span class="mob-arrow">›</span>
       </div>
       <div class="mob-sub">
         <a href="#gallery" onclick="filterGallery('all');closeMob()">All</a>
@@ -979,17 +980,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="#gallery" onclick="filterGallery('other');closeMob()">Other</a>
       </div>
     </div>
-    <div class="mob-item"><div class="mob-item-top"><a href="#kimono" class="mob-item-label" onclick="closeMob()">Kimono</a></div></div>
-    <div class="mob-item"><div class="mob-item-top"><a href="#costume" class="mob-item-label" onclick="closeMob()">Costume</a></div></div>
-    <div class="mob-item"><div class="mob-item-top"><a href="#plans" class="mob-item-label" onclick="closeMob()">Plans</a></div></div>
-    <div class="mob-item"><div class="mob-item-top"><a href="#goods" class="mob-item-label" onclick="closeMob()">Goods</a></div></div>
-    <div class="mob-item"><div class="mob-item-top"><a href="#calendar" class="mob-item-label" onclick="closeMob()">Calendar</a></div></div>
-    <div class="mob-item"><div class="mob-item-top"><a href="#reservation" class="mob-item-label" onclick="closeMob()">Reservation</a></div></div>
-    <div class="mob-item"><div class="mob-item-top"><a href="#cancel-policy" class="mob-item-label" onclick="closeMob()">Cancel Policy</a></div></div>
-    <div class="mob-item"><div class="mob-item-top"><a href="#qa" class="mob-item-label" onclick="closeMob()">Q&A</a></div></div>
-    <div class="mob-item"><div class="mob-item-top"><a href="#flow" class="mob-item-label" onclick="closeMob()">Flow</a></div></div>
-    <div class="mob-item"><div class="mob-item-top"><a href="#recruit" class="mob-item-label" onclick="closeMob()">Recruit</a></div></div>
-    <div class="mob-item"><div class="mob-item-top"><a href="#access" class="mob-item-label" onclick="closeMob()">Access</a></div></div>
+    <div class="mob-item">
+      <div class="mob-item-top" onclick="toggleMobItem(event,this)">
+        <span class="mob-item-label">Kimono<span class="mob-jp">着物</span></span><span class="mob-arrow">›</span>
+      </div>
+      <div class="mob-sub">
+        <a href="#kimono" onclick="kimFilterCat('all');closeMob()">All</a>
+        <a href="#kimono" onclick="kimFilterCat('omairi');closeMob()">お宮参り</a>
+        <a href="#kimono" onclick="kimFilterCat('3y-girl');closeMob()">三歳女の子</a>
+        <a href="#kimono" onclick="kimFilterCat('3y-boy');closeMob()">三歳男の子</a>
+        <a href="#kimono" onclick="kimFilterCat('5y-boy');closeMob()">五歳男の子</a>
+        <a href="#kimono" onclick="kimFilterCat('7y-girl');closeMob()">七歳女の子</a>
+        <a href="#kimono" onclick="kimFilterCat('10y-girl');closeMob()">十歳女の子</a>
+        <a href="#kimono" onclick="kimFilterCat('10y-boy');closeMob()">十歳男の子</a>
+      </div>
+    </div>
+    <div class="mob-item"><div class="mob-item-top"><a href="#costume" class="mob-item-label" onclick="closeMob()">Costume<span class="mob-jp">衣装</span></a></div></div>
+    <div class="mob-item"><div class="mob-item-top"><a href="#plans" class="mob-item-label" onclick="closeMob()">Plans<span class="mob-jp">撮影プラン・料金</span></a></div></div>
+    <div class="mob-item"><div class="mob-item-top"><a href="#goods" class="mob-item-label" onclick="closeMob()">Goods<span class="mob-jp">グッズ</span></a></div></div>
+    <div class="mob-item"><div class="mob-item-top"><a href="#calendar" class="mob-item-label" onclick="closeMob()">Calendar<span class="mob-jp">営業カレンダー</span></a></div></div>
+    <div class="mob-item"><div class="mob-item-top"><a href="#reservation" class="mob-item-label" onclick="closeMob()">Reservation<span class="mob-jp">ご予約</span></a></div></div>
+    <div class="mob-item"><div class="mob-item-top"><a href="#cancel-policy" class="mob-item-label" onclick="closeMob()">Cancel Policy<span class="mob-jp">キャンセルポリシー</span></a></div></div>
+    <div class="mob-item"><div class="mob-item-top"><a href="#qa" class="mob-item-label" onclick="closeMob()">Q&A<span class="mob-jp">よくあるご質問</span></a></div></div>
+    <div class="mob-item"><div class="mob-item-top"><a href="#flow" class="mob-item-label" onclick="closeMob()">Flow<span class="mob-jp">ご利用の流れ</span></a></div></div>
+    <div class="mob-item"><div class="mob-item-top"><a href="#recruit" class="mob-item-label" onclick="closeMob()">Recruit<span class="mob-jp">採用情報</span></a></div></div>
+    <div class="mob-item"><div class="mob-item-top"><a href="#access" class="mob-item-label" onclick="closeMob()">Access<span class="mob-jp">アクセス</span></a></div></div>
   </div>
 
   <div class="mob-actions">
