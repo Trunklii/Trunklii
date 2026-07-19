@@ -302,7 +302,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 
 /* ═══ Q&A BOT ═══ */
 .qa-bot-toggle{
-  position:fixed;bottom:1.25rem;right:1.25rem;z-index:150;
+  position:fixed;bottom:.5rem;right:1.25rem;z-index:150;
   display:flex;align-items:center;justify-content:center;
   width:54px;height:54px;border-radius:50%;
   background:var(--ink);color:#fff;
@@ -314,8 +314,9 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .qa-bot-toggle svg{width:22px;height:22px}
 
 /* フロー追随の予約メニュー(チャットボタン直上に縦積み) */
-.float-book{position:fixed;right:1.25rem;bottom:calc(1.25rem + 54px + .7rem);z-index:150;display:flex;flex-direction:column;gap:.5rem;align-items:flex-end;opacity:0;transform:translateY(20px);transition:transform .45s var(--motion-ease) 1.05s,opacity .45s ease 1.05s}
-body.is-ready .float-book{opacity:1;transform:translateY(0)}
+.float-book{position:fixed;right:1.25rem;bottom:calc(.5rem + 54px + .5rem);z-index:150;display:flex;flex-direction:column;gap:.5rem;align-items:flex-end;opacity:0;transform:translateY(20px);transition:transform .45s var(--motion-ease) 1.05s,opacity .45s ease 1.05s}
+body.is-ready .float-book{opacity:.5;transform:translateY(0)}
+body.is-ready .float-book:hover{opacity:1}
 .float-book-btn{display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.12em;color:#fff;padding:.55rem 1.05rem;border-radius:999px;text-decoration:none;box-shadow:0 6px 20px rgba(17,16,16,.18);transition:transform .2s}
 .float-book-btn:hover{transform:scale(1.05)}
 .fb-brand{font-family:var(--display);font-style:italic;font-size:.85rem;margin-right:.4em}
@@ -338,8 +339,9 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 
 /* ページトップへ戻る(スクロール後に出現) */
 /* フロートの「トップへ戻る」ボタン(400pxスクロールで出現) */
-.to-top-btn{position:fixed;left:50%;bottom:1.25rem;z-index:150;width:40px;height:40px;border-radius:50%;border:1px solid var(--ink);background:rgba(255,255,255,.85);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(17,16,16,.15);opacity:0;pointer-events:none;transform:translate(-50%,6px);transition:opacity .3s,transform .3s}
-.to-top-btn.show{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+.to-top-btn{position:fixed;left:50%;bottom:.5rem;z-index:150;width:40px;height:40px;border-radius:50%;border:1px solid var(--ink);background:rgba(255,255,255,.85);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(17,16,16,.15);opacity:0;pointer-events:none;transform:translate(-50%,6px);transition:opacity .3s,transform .3s}
+.to-top-btn.show{opacity:.5;pointer-events:auto;transform:translate(-50%,0)}
+.to-top-btn.show:hover{opacity:1}
 .to-top-btn svg{width:14px;height:14px}
 /* 予約シート再表示アイコン(シートを閉じた後に表示) */
 .book-toggle{width:54px;height:54px;border-radius:50%;border:none;background:var(--ink);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(17,16,16,.18);transition:transform .25s,background .25s}
@@ -976,8 +978,8 @@ body.is-ready .hero-tagline{opacity:1;transform:translateY(0)}
   opacity:0;transform:translateY(20px) scale(.9);
   transition:transform .45s var(--motion-ease) .9s,opacity .45s ease .9s,background .25s;
 }
-body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
-.qa-bot-toggle:hover{background:var(--accent);transform:translateY(0) scale(1.05);transition-delay:0s}
+body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
+.qa-bot-toggle:hover{background:var(--accent);transform:translateY(0) scale(1.05);transition-delay:0s;opacity:1}
 
 /* Reduced motion — kill all of it */
 @media (prefers-reduced-motion: reduce){
