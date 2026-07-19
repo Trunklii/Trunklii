@@ -199,7 +199,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 
 .mob-top{
   position:sticky;top:0;
-  display:grid;grid-template-columns:auto 1fr auto;
+  display:flex;
   align-items:center;padding:0 1rem;height:60px;
   background:#fff;border-bottom:1px solid #1a1a1a;z-index:2;
 }
@@ -209,7 +209,9 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 }
 .mob-logo{display:flex;align-items:center;justify-content:center;height:40px}
 .mob-logo svg{height:32px;width:auto}
-.mob-spacer{width:32px}
+.mob-spacer{display:none}
+.mob-close{order:3;margin-left:auto}
+.mob-logo{order:1}
 
 /* Brand switcher — italic display style (Maison Kitsuné inspired) */
 .mob-brand-row{
@@ -325,6 +327,17 @@ body.is-ready .float-book{opacity:1;transform:translateY(0)}
 .fb-brand{font-family:var(--display);font-style:italic;font-size:.85rem;margin-right:.4em}
 .fb-et{background:#b8935a}
 .fb-nr{background:#7a9e95}
+/* Kitsuné風 予約ポップアップ(下部シート) */
+.book-sheet{position:fixed;left:0;right:0;bottom:0;z-index:180;background:#fff;padding:1.3rem clamp(1.2rem,4vw,2.5rem) calc(1.2rem + env(safe-area-inset-bottom,0px));box-shadow:0 -8px 30px rgba(17,16,16,.14);text-align:center}
+.book-sheet[hidden]{display:none}
+.book-sheet-close{position:absolute;top:.8rem;right:.9rem;background:none;border:none;font-size:1.05rem;cursor:pointer;color:#111010;padding:.3rem;line-height:1}
+.book-sheet-title{font-family:var(--sans);font-weight:600;font-size:.92rem;letter-spacing:.16em;text-transform:uppercase;color:#111010}
+.book-sheet-sub{font-family:var(--sans);font-weight:300;font-size:.72rem;color:#888078;margin:.35rem 0 .9rem}
+.book-sheet-btn{display:flex;align-items:center;justify-content:center;gap:.4em;width:100%;background:#111010;color:#fff;font-family:var(--sans);font-weight:500;font-size:.76rem;letter-spacing:.18em;padding:.95rem;text-decoration:none;margin-top:.55rem;transition:opacity .2s}
+.book-sheet-btn:hover{opacity:.85}
+.book-sheet-btn.bs-nr{background:#7a9e95}
+@media(min-width:961px){.book-sheet{left:1.25rem;right:auto;bottom:1.25rem;width:360px;border:1px solid rgba(17,16,16,.12)}}
+
 /* ページトップへ戻る(スクロール後に出現) */
 .to-top-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--ink);background:rgba(255,255,255,.85);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(17,16,16,.15);opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .3s,transform .3s}
 .to-top-btn.show{opacity:1;pointer-events:auto;transform:none}
@@ -805,8 +818,9 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 /* Kimono カテゴリ絞り込み(スマホのみ表示。折返し配置で横スクロールなし) */
 .kim-filter{display:none}
 @media(max-width:760px){
-  .kim-filter{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin:0 0 1.6rem}
-  .kim-filter-btn{font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.08em;padding:.45rem .95rem;border:1px solid rgba(110,90,58,.4);background:transparent;color:#6e5a3a;cursor:pointer;transition:background .2s,color .2s}
+  /* 8ボタンを必ず2行に収める4列グリッド */
+  .kim-filter{display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem;margin:0 0 1.6rem}
+  .kim-filter-btn{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.03em;padding:.5rem .1rem;border:1px solid rgba(110,90,58,.4);background:transparent;color:#6e5a3a;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
   .kim-filter-btn.active{background:#6e5a3a;color:#fff;border-color:#6e5a3a}
 }
 .kim-cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:1.5rem}
@@ -1243,14 +1257,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <!-- Q&A BOT -->
-<!-- フロー追随の予約メニュー(チャットボタンの直上に縦積み)
-     nr. は STORES(春日井)未開設のため暫定で Instagram へ。開設後に href を差し替える -->
-<div class="float-book" aria-label="予約メニュー">
+<!-- Kitsuné風の予約ポップアップ(下部シート・✕で閉じる) -->
+<div class="book-sheet" id="book-sheet" hidden>
+  <button class="book-sheet-close" type="button" onclick="closeBookSheet()" aria-label="閉じる">✕</button>
+  <div class="book-sheet-title">Reservation</div>
+  <div class="book-sheet-sub">撮影のご予約はこちらから。</div>
+  <a class="book-sheet-btn bs-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="fb-brand">et.</span>予約する</a>
+  <!-- nr. は STORES(春日井)未開設のため暫定で Instagram へ -->
+  <a class="book-sheet-btn bs-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="fb-brand">nr.</span>予約する</a>
+</div>
+<div class="float-book" aria-label="ページ操作">
   <button class="to-top-btn" id="to-top-btn" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="ページトップへ戻る">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 14 6-6 6 6"/></svg>
   </button>
-  <a class="float-book-btn fb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="fb-brand">et.</span>予約</a>
-  <a class="float-book-btn fb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="fb-brand">nr.</span>予約</a>
 </div>
 <button class="qa-bot-toggle" id="qa-bot-toggle" onclick="toggleBot()" aria-label="Ask a question">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -1837,6 +1856,27 @@ function accessTab(btn){
     }
   });
 }
+// Kitsuné風 予約ポップアップ(セッション中に一度閉じたら再表示しない)
+(function(){
+  const s = document.getElementById('book-sheet');
+  if(!s) return;
+  let closed = false;
+  try{ closed = sessionStorage.getItem('bookSheetClosed') === '1'; }catch(e){}
+  if(!closed) s.hidden = false;
+})();
+function closeBookSheet(){
+  const s = document.getElementById('book-sheet');
+  if(s) s.hidden = true;
+  try{ sessionStorage.setItem('bookSheetClosed','1'); }catch(e){}
+}
+// チャットパネルはエリア外タップ/クリックで閉じる
+document.addEventListener('click', function(e){
+  const bot = document.getElementById('qa-bot');
+  if(!bot || !bot.classList.contains('open')) return;
+  if(bot.contains(e.target)) return;
+  if(e.target.closest && e.target.closest('#qa-bot-toggle')) return;
+  bot.classList.remove('open');
+});
 // フッター検索 → 全画面検索オーバーレイに引き継いで実行
 function footerSearch(e){
   e.preventDefault();
