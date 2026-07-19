@@ -43,7 +43,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 :root{
   --ink:#111010;--off:#fff;--bg:#f8f6f2;--mid:#888078;
   --accent:#b8935a;--border:rgba(17,16,16,.1);
-  --serif:'Yu Gothic Medium','YuGothic','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;--display:'Cormorant','Yu Mincho','YuMincho','Hiragino Mincho ProN','Noto Serif JP',serif;--sans:'Yu Gothic Medium','YuGothic','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;
+  --serif:'Yu Gothic Medium','YuGothic','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;--display:'Yu Gothic Medium','YuGothic','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;--sans:'Yu Gothic Medium','YuGothic','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;
   --ease:cubic-bezier(.25,.46,.45,.94);
 }
 html{scroll-behavior:smooth}
@@ -55,7 +55,7 @@ a{color:inherit}
 .wrap{max-width:1440px;margin:0 auto;padding:clamp(4rem,10vw,9rem) clamp(1.5rem,5vw,5rem)}
 .sec-head{display:flex;align-items:baseline;gap:1.2rem;margin-bottom:clamp(2.5rem,5vw,4.5rem)}
 .sec-num{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.22em;color:var(--mid)}
-.sec-title{font-family:var(--display);font-weight:300;font-style:italic;font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:-.01em}
+.sec-title{font-family:var(--display);font-weight:300;font-style:normal;font-size:clamp(1.45rem,3.6vw,2.4rem);letter-spacing:.05em}
 .sec-rule{flex:1;height:1px;background:var(--border);min-width:20px}
 .section-body-text{font-family:var(--serif);font-weight:300;font-size:.9rem;color:var(--mid);line-height:2.1;white-space:pre-line;margin-bottom:2.5rem}
 .btn-line{display:inline-block;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:.85rem 2rem;text-decoration:none;transition:all .3s;cursor:pointer;text-align:center}
@@ -69,7 +69,7 @@ a{color:inherit}
 .nav-top{display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:0 clamp(1rem,3vw,2.5rem);height:64px;gap:1rem}
 .back-link{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:.55rem .9rem;border:1px solid var(--ink);transition:background .2s,color .2s}
 .back-link:hover{background:var(--ink);color:#fff}
-.nav-brand{font-family:var(--display);font-style:italic;font-weight:300;font-size:1.1rem;letter-spacing:.04em;text-align:center}
+.nav-brand{font-family:var(--display);font-style:normal;font-weight:300;font-size:1.1rem;letter-spacing:.04em;text-align:center}
 .nav-brand .b-mark{color:var(--accent);font-style:normal;font-weight:400}
 .nav-right .booking-btn{display:inline-flex;align-items:center;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:#fff;text-decoration:none;padding:.6rem 1.1rem;transition:background .25s}
 .nav-right .booking-btn:hover{background:var(--accent)}
@@ -81,7 +81,7 @@ main{padding-top:64px}
 .subsec:last-child{margin-bottom:0}
 .subsec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:2rem;padding-bottom:.8rem;border-bottom:1px solid var(--border)}
 .subsec-mark{font-family:var(--sans);font-weight:500;font-size:.62rem;letter-spacing:.22em;color:var(--accent);text-transform:uppercase}
-.subsec-title{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1.15rem,2.5vw,1.5rem);letter-spacing:-.005em}
+.subsec-title{font-family:var(--display);font-style:normal;font-weight:400;font-size:clamp(1.15rem,2.5vw,1.5rem);letter-spacing:-.005em}
 
 /* ─── Buttons row ─── */
 .res-btns{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:2rem}
@@ -99,15 +99,15 @@ main{padding-top:64px}
 .omairi-plan{margin-top:2.5rem;padding:clamp(1.5rem,4vw,2.8rem);background:#fff;border:1px solid var(--border)}
 .omairi-plan-head{text-align:center;margin-bottom:1.8rem}
 .omairi-plan-label{display:inline-block;font-family:var(--sans);font-weight:500;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:.7rem}
-.omairi-plan-title{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1.1rem,2.5vw,1.5rem);line-height:1.3;letter-spacing:-.005em}
+.omairi-plan-title{font-family:var(--display);font-style:normal;font-weight:400;font-size:clamp(1.1rem,2.5vw,1.5rem);line-height:1.3;letter-spacing:-.005em}
 .omairi-plan-desc{font-family:var(--serif);font-weight:300;font-size:.85rem;line-height:2;color:var(--mid);margin-top:.8rem}
 .omairi-plan-includes{font-family:var(--sans);font-weight:300;font-size:.72rem;letter-spacing:.08em;color:var(--mid);margin:1rem 0 .3rem;text-align:center}
 
 .omairi-base{text-align:center;margin:1.2rem 0;padding:1.1rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .omairi-base-label{font-family:var(--sans);font-weight:500;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mid);margin-bottom:.4rem}
-.omairi-base-val{font-family:var(--display);font-style:italic;font-weight:400;font-size:1.1rem;color:var(--ink)}
+.omairi-base-val{font-family:var(--display);font-style:normal;font-weight:400;font-size:1.1rem;color:var(--ink)}
 
-.plus-sign{text-align:center;font-family:var(--display);font-size:1.8rem;font-weight:200;color:var(--mid);margin:.4rem 0;line-height:1;font-style:italic}
+.plus-sign{text-align:center;font-family:var(--display);font-size:1.8rem;font-weight:200;color:var(--mid);margin:.4rem 0;line-height:1;font-style:normal}
 
 /* ─── Pricing table ─── */
 .omairi-table-wrap{overflow-x:auto;margin:0 0 .5rem}
@@ -116,7 +116,7 @@ main{padding-top:64px}
 .omairi-table th{background:var(--ink);color:#fff;font-weight:400;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase}
 .omairi-table th.period-hd{background:rgba(17,16,16,.78);font-size:.7rem;letter-spacing:.04em;text-transform:none}
 .omairi-table td.row-label{text-align:left;background:rgba(17,16,16,.025);font-weight:500;font-size:.78rem;letter-spacing:.04em}
-.omairi-table td.price-cell{background:#fff;font-family:var(--display);font-style:italic;font-weight:400}
+.omairi-table td.price-cell{background:#fff;font-family:var(--display);font-style:normal;font-weight:400}
 .omairi-table td .price-main{font-size:1rem;display:block;color:var(--ink)}
 .omairi-table td .price-add{font-size:.78rem;color:var(--mid);display:block;margin-top:.2rem;font-family:var(--sans);font-style:normal}
 .omairi-table-tax{text-align:right;font-family:var(--sans);font-size:.66rem;color:var(--mid);letter-spacing:.1em;margin-top:.5rem;text-transform:uppercase}
@@ -124,7 +124,7 @@ main{padding-top:64px}
 
 /* ─── Footer ─── */
 footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2rem clamp(1.4rem,5vw,3rem);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.2rem;font-family:var(--sans);font-weight:300;font-size:.7rem;letter-spacing:.08em}
-.footer-logo{font-family:var(--display);font-style:italic;font-weight:400;font-size:1.1rem;color:#fff;letter-spacing:.04em;text-decoration:none}
+.footer-logo{font-family:var(--display);font-style:normal;font-weight:400;font-size:1.1rem;color:#fff;letter-spacing:.04em;text-decoration:none}
 .footer-links{list-style:none;display:flex;flex-wrap:wrap;gap:1rem}
 .footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
 .footer-links a:hover{color:#fff}
@@ -174,7 +174,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2rem clamp(1.4re
 .icon-btn:hover{background:var(--ink);color:#fff}
 .icon-btn svg{width:15px;height:15px}
 .icon-btn[data-brand]{position:relative}
-.icon-btn[data-brand]::after{content:attr(data-brand);position:absolute;bottom:1px;right:2px;font-family:var(--display);font-style:italic;font-size:.5rem;line-height:1;pointer-events:none;opacity:.85}
+.icon-btn[data-brand]::after{content:attr(data-brand);position:absolute;bottom:1px;right:2px;font-family:var(--display);font-style:normal;font-size:.5rem;line-height:1;pointer-events:none;opacity:.85}
 .nav-right{display:flex;align-items:center;gap:.5rem}
 .hdr-book-wrap{position:relative}
 .hdr-book-toggle{display:flex;align-items:center;gap:.5em;height:36px;padding:0 .95rem;border:1px solid #111010;background:#111010;color:#fff;font-family:var(--sans);font-weight:500;font-size:.62rem;letter-spacing:.08em;cursor:pointer;transition:opacity .2s;white-space:nowrap}
@@ -185,7 +185,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2rem clamp(1.4re
 .hdr-book-menu .bb-btn{flex:none}
 @media(max-width:600px){.icon-btn{width:32px;height:32px}.hdr-book-toggle{height:32px;padding:0 .7rem}}
 .footer-cta-sub{flex-basis:100%;display:flex;flex-direction:column;align-items:center;gap:.9rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.15)}
-.footer-cta-sub .cta-note{font-family:var(--display);font-style:italic;font-weight:300;font-size:.7rem;letter-spacing:.18em;color:rgba(255,255,255,.5)}
+.footer-cta-sub .cta-note{font-family:var(--display);font-style:normal;font-weight:300;font-size:.7rem;letter-spacing:.18em;color:rgba(255,255,255,.5)}
 .footer-cta-sub .bb-btns{width:100%;max-width:560px}
 </style>
 </head>
