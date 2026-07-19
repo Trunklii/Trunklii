@@ -2202,6 +2202,10 @@ function toggleHdrBook(e){
   document.addEventListener('pointerdown', closeIfOutside, {capture:true, passive:true});
   document.addEventListener('touchstart', closeIfOutside, {capture:true, passive:true});
 })();
+// 下層ページのチャットアイコンから遷移した場合はチャットを開く
+if(location.hash === '#bot'){
+  setTimeout(function(){ if(typeof toggleBot === 'function') toggleBot(); }, 500);
+}
 function closeBookSheet(){
   const s = document.getElementById('book-sheet');
   if(s) s.hidden = true;
