@@ -9,7 +9,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-P3H6H7NT');</script>
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/>
 <title id="page-title">Studio et. — 岐阜県羽島市の写真スタジオ | 七五三・ニューボーン・バースデー撮影</title>
 <!-- SEO Meta -->
 <meta name="description" content="岐阜県羽島市の写真スタジオ Studio et.（スタジオエト）。自然光の温かなアトリエで、七五三・ニューボーン・バースデー・マタニティ・ファミリー写真を撮影。予約制。"/>
@@ -597,6 +597,8 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,5vw,4rem);di
 .footer-search{width:100%;display:flex;align-items:center;border-bottom:1px solid var(--ink)}
 .footer-search-input{flex:1;border:none;outline:none;background:none;font-family:var(--sans);font-weight:300;font-size:.85rem;color:var(--ink);padding:.6rem 0}
 .footer-search-input::placeholder{color:var(--mid)}
+/* iOSは16px未満の入力欄フォーカスで自動ズームするため、モバイルは16px指定 */
+@media(max-width:960px){.footer-search-input,.qa-bot-search-input{font-size:16px}}
 .footer-search-go{background:none;border:none;cursor:pointer;color:var(--ink);padding:.4rem;display:flex;align-items:center}
 .footer-search-go svg{width:16px;height:16px}
 /* Kitsuné の SHOP NOW 風: 全幅の黒帯ボタン */
@@ -1372,7 +1374,7 @@ async function init(){
   if(logoLink) logoLink.innerHTML = etLogoMask;
   // ハンバーガーメニューもヘッダーと同じ STUDIO 付きロックアップ(nr.と同じ48px枠)。
   // Safari の aspect-ratio+height:100% の誤計算を避けるため固定寸法で指定
-  if(mobLogo) mobLogo.innerHTML = `<span role="img" aria-label="${d.name}" style="display:block;width:72px;height:48px;background:currentColor;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span>`;
+  if(mobLogo) mobLogo.innerHTML = `<span role="img" aria-label="${d.name}" style="display:block;width:57px;height:38px;background:currentColor;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span>`;
 
   // Header icons links
   document.getElementById('nav-ig').href = d.instagram;

@@ -9,7 +9,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-P3H6H7NT');</script>
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,viewport-fit=cover"/>
 <meta name="theme-color" content="#1C0909"/>
 <title id="page-title">Maison nr.（メゾンナル）— 愛知県春日井市のフォトスタジオ・写真スタジオ（Coming Soon）| 七五三・和モダン撮影</title>
 <!-- SEO Meta -->
@@ -792,6 +792,8 @@ footer{padding:2.5rem clamp(1.5rem,5vw,4rem);display:flex;align-items:center;jus
 .footer-search{width:100%;display:flex;align-items:center;border-bottom:1px solid var(--cream)}
 .footer-search-input{flex:1;border:none;outline:none;background:none;font-family:var(--sans);font-weight:300;font-size:.85rem;color:var(--cream);padding:.6rem 0}
 .footer-search-input::placeholder{color:rgba(232,220,196,.5)}
+/* iOSは16px未満の入力欄フォーカスで自動ズームするため、モバイルは16px指定 */
+@media(max-width:960px){.footer-search-input,.qa-bot-search-input{font-size:16px}}
 .footer-search-go{background:none;border:none;cursor:pointer;color:var(--cream);padding:.4rem;display:flex;align-items:center}
 .footer-search-go svg{width:16px;height:16px}
 /* Kitsuné の SHOP NOW 風: 全幅の帯ボタン(ダークフッターはクリーム) */
