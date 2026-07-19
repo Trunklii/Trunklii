@@ -809,6 +809,7 @@ footer{padding:2.5rem clamp(1.5rem,5vw,4rem);display:flex;align-items:center;jus
 /* PCではフッターの検索・予約帯は非表示(モバイルのみ) */
 @media(min-width:961px){.footer-cta{display:none}}
 .footer-cta{width:100%;display:flex;flex-direction:column;gap:1.1rem;padding-bottom:1.6rem;border-bottom:1px solid rgba(232,220,196,.25)}
+.footer-cta .cta-note{color:rgba(240,234,216,.6);margin-bottom:0;text-align:center}
 .footer-search{width:100%;display:flex;align-items:center;border-bottom:1px solid var(--cream)}
 .footer-search-input{flex:1;border:none;outline:none;background:none;font-family:var(--sans);font-weight:300;font-size:.85rem;color:var(--cream);padding:.6rem 0}
 .footer-search-input::placeholder{color:rgba(232,220,196,.5)}
@@ -1520,7 +1521,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="cta-inner">
     <span class="cta-ja" id="cta-heading-ja"></span>
     <span class="cta-en" id="cta-heading-en"></span>
-    <span class="cta-note" id="cta-note"></span>
     
   </div>
 </section>
@@ -1586,6 +1586,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       </button>
     </form>
+    <span class="cta-note" id="cta-note"></span>
     <!-- nr. は STORES(春日井)未開設のため暫定で Instagram へ。開設後に href を差し替える -->
     <div class="bb-btns"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
   </div>
