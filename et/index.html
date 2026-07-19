@@ -336,6 +336,7 @@ body.is-ready .float-book{opacity:1;transform:translateY(0)}
 .book-sheet-btn{display:flex;align-items:center;justify-content:center;gap:.4em;width:100%;background:#111010;color:#fff;font-family:var(--sans);font-weight:500;font-size:.76rem;letter-spacing:.18em;padding:.95rem;text-decoration:none;margin-top:.55rem;transition:opacity .2s}
 .book-sheet-btn:hover{opacity:.85}
 .book-sheet-btn.bs-nr{background:#7a9e95}
+.bs-brand-logo{height:15px;width:auto;display:block}
 @media(min-width:961px){.book-sheet{left:1.25rem;right:auto;bottom:1.25rem;width:360px;border:1px solid rgba(17,16,16,.12)}}
 
 /* ページトップへ戻る(スクロール後に出現) */
@@ -1267,9 +1268,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <button class="book-sheet-close" type="button" onclick="closeBookSheet()" aria-label="閉じる">✕</button>
   <div class="book-sheet-title">Reservation</div>
   <div class="book-sheet-sub">撮影のご予約はこちらから。</div>
-  <a class="book-sheet-btn bs-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="fb-brand">et.</span>予約する</a>
+  <a class="book-sheet-btn bs-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><img class="bs-brand-logo" src="../assets/et-logo-mark-white.png" alt="et."/>予約する</a>
   <!-- nr. は STORES(春日井)未開設のため暫定で Instagram へ -->
-  <a class="book-sheet-btn bs-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="fb-brand">nr.</span>予約する</a>
+  <a class="book-sheet-btn bs-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><img class="bs-brand-logo" src="../assets/nr-logo-mark-white.png" alt="nr."/>予約する</a>
 </div>
 <div class="float-book" aria-label="ページ操作">
   <button class="to-top-btn" id="to-top-btn" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="ページトップへ戻る">
