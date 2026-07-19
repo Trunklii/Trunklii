@@ -610,6 +610,8 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 .bb-sm{flex-wrap:nowrap;gap:.4rem}
 .bb-sm .bb-btn{flex:0 0 auto;padding:.4rem .55rem;font-size:.6rem;gap:.5em}
 .bb-sm .bb-cta{padding:.4em .6em;gap:.45em}
+/* PCヘッダーはナビと重なる幅では予約する枠を省略しロゴのみ */
+@media(max-width:1499px){.nav-book .bb-cta{display:none}.nav-book .bb-btn{padding:.45rem .7rem}}
 </style>
 </head>
 
