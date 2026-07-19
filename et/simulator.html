@@ -183,6 +183,27 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2rem clamp(1.4re
 /* PCヘッダーはナビと重なる幅では予約する枠を省略しロゴのみ */
 @media(max-width:1499px){.nav-book .bb-cta{display:none}}
 </style>
+<style>
+/* ─── TOPページ準拠のヘッダー/フッターUI ─── */
+.nav-brand-logo{display:flex;align-items:center;justify-content:center;color:var(--ink);text-decoration:none}
+.icon-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;color:var(--ink);text-decoration:none;border:1px solid var(--ink);background:transparent;cursor:pointer;transition:background .2s,color .2s;padding:0;flex-shrink:0}
+.icon-btn:hover{background:var(--ink);color:#fff}
+.icon-btn svg{width:15px;height:15px}
+.icon-btn[data-brand]{position:relative}
+.icon-btn[data-brand]::after{content:attr(data-brand);position:absolute;bottom:1px;right:2px;font-family:var(--display);font-style:italic;font-size:.5rem;line-height:1;pointer-events:none;opacity:.85}
+.nav-right{display:flex;align-items:center;gap:.5rem}
+.hdr-book-wrap{position:relative}
+.hdr-book-toggle{display:flex;align-items:center;gap:.5em;height:36px;padding:0 .95rem;border:1px solid #111010;background:#111010;color:#fff;font-family:var(--sans);font-weight:500;font-size:.62rem;letter-spacing:.08em;cursor:pointer;transition:opacity .2s;white-space:nowrap}
+.hdr-book-toggle:hover{opacity:.8}
+.hdr-book-chev{font-size:1.2em;line-height:1;font-weight:300}
+.hdr-book-menu{position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid rgba(17,16,16,.15);box-shadow:0 10px 30px rgba(17,16,16,.15);padding:.6rem;display:flex;flex-direction:column;gap:.5rem;width:220px;z-index:300}
+.hdr-book-menu[hidden]{display:none}
+.hdr-book-menu .bb-btn{flex:none}
+@media(max-width:600px){.icon-btn{width:32px;height:32px}.hdr-book-toggle{height:32px;padding:0 .7rem}}
+.footer-cta-sub{flex-basis:100%;display:flex;flex-direction:column;align-items:center;gap:.9rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.15)}
+.footer-cta-sub .cta-note{font-family:var(--display);font-style:italic;font-weight:300;font-size:.7rem;letter-spacing:.18em;color:rgba(255,255,255,.5)}
+.footer-cta-sub .bb-btns{width:100%;max-width:560px}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -193,9 +214,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav class="nav">
   <div class="nav-top">
     <a href="./" class="back-link"><span>‹</span> <span>Top</span></a>
-    <div class="nav-brand" id="nav-brand">Studio <span class="b-mark">·</span></div>
+    <div class="nav-brand" id="nav-brand" hidden></div>
+    <a href="./" class="nav-brand-logo" aria-label="Studio et. トップへ"><span role="img" aria-label="Studio et." style="display:block;width:45px;height:30px;background:currentColor;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span></a>
     <div class="nav-right">
-      <div class="bb-btns bb-sm"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
+      <a class="icon-btn" id="sub-map" data-brand="et." href="#" target="_blank" rel="noopener" aria-label="Studio et. Access"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-7-7-12a7 7 0 1 1 14 0c0 5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
+      <a class="icon-btn" id="sub-ig" data-brand="et." href="#" target="_blank" rel="noopener" aria-label="Studio et. Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      <div class="hdr-book-wrap">
+        <button class="hdr-book-toggle" type="button" onclick="toggleHdrBook(event)" aria-haspopup="true" aria-expanded="false">予約する<span class="hdr-book-chev" aria-hidden="true">›</span></button>
+        <div class="hdr-book-menu" hidden><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
+      </div>
     </div>
   </div>
 </nav>
@@ -229,6 +256,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </main>
 
 <footer>
+  <div class="footer-cta-sub">
+    <span class="cta-note">ご予約・お問い合わせはお気軽に</span>
+    <div class="bb-btns"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
+  </div>
   <a href="../" class="footer-logo">TRUNKLII</a>
   <ul class="footer-links">
     <li><a href="./">Top</a></li>
@@ -479,6 +510,36 @@ function boot(){
 }
 setTimeout(()=>document.body.classList.add('is-ready'), 1500);
 boot();
+</script>
+<script>
+// 予約する › 展開メニュー(TOPページと同仕様)
+function toggleHdrBook(e){
+  e.stopPropagation();
+  const wrap = e.currentTarget.closest('.hdr-book-wrap');
+  const m = wrap.querySelector('.hdr-book-menu');
+  const open = m.hidden;
+  document.querySelectorAll('.hdr-book-menu').forEach(x=>{ x.hidden = true; });
+  document.querySelectorAll('.hdr-book-toggle').forEach(b=>b.setAttribute('aria-expanded','false'));
+  m.hidden = !open;
+  e.currentTarget.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+(function(){
+  function closeIfOutside(ev){
+    if(!(ev.target instanceof Element) || !ev.target.closest('.hdr-book-wrap')){
+      document.querySelectorAll('.hdr-book-menu').forEach(x=>{ x.hidden = true; });
+      document.querySelectorAll('.hdr-book-toggle').forEach(b=>b.setAttribute('aria-expanded','false'));
+    }
+  }
+  document.addEventListener('pointerdown', closeIfOutside, {capture:true, passive:true});
+  document.addEventListener('touchstart', closeIfOutside, {capture:true, passive:true});
+  // ヘッダーのマップ/Instagram リンクを site-data から設定
+  var key = location.pathname.includes('/nr/') ? 'nr' : 'et';
+  var d = (window.SITE_DATA && SITE_DATA.studios) ? SITE_DATA.studios[key] : null;
+  if(d){
+    var m=document.getElementById('sub-map'); if(m && d.mapUrl) m.href=d.mapUrl;
+    var g=document.getElementById('sub-ig'); if(g && d.instagram) g.href=d.instagram;
+  }
+})();
 </script>
 </body>
 </html>
