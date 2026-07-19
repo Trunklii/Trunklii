@@ -1969,8 +1969,9 @@ function toggleHdrBook(e){
   m.hidden = !open;
   e.currentTarget.setAttribute('aria-expanded', open ? 'true' : 'false');
 }
-document.addEventListener('click', function(ev){
-  if(!ev.target.closest('.hdr-book-wrap')){
+// iOS Safari は非インタラクティブ要素のタップで click が発火しないため pointerdown で判定
+document.addEventListener('pointerdown', function(ev){
+  if(!(ev.target instanceof Element) || !ev.target.closest('.hdr-book-wrap')){
     document.querySelectorAll('.hdr-book-menu').forEach(x=>{ x.hidden = true; });
     document.querySelectorAll('.hdr-book-toggle').forEach(b=>b.setAttribute('aria-expanded','false'));
   }
