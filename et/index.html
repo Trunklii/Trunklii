@@ -590,6 +590,8 @@ body.is-ready .float-book{opacity:1;transform:translateY(0)}
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;background:#fff}
 /* フッター上段: サイト内検索+予約する(Maison Kitsuné 参考) */
+/* PCではフッターの検索・予約帯は非表示(モバイルのみ) */
+@media(min-width:961px){.footer-cta{display:none}}
 .footer-cta{width:100%;display:flex;flex-direction:column;gap:1.1rem;padding-bottom:1.6rem;border-bottom:1px solid var(--border)}
 .footer-search{width:100%;display:flex;align-items:center;border-bottom:1px solid var(--ink)}
 .footer-search-input{flex:1;border:none;outline:none;background:none;font-family:var(--sans);font-weight:300;font-size:.85rem;color:var(--ink);padding:.6rem 0}
