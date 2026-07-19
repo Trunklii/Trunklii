@@ -889,6 +889,19 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 /* 料金・数字表示はライニング数字で高さを揃える（Cormorantのオールドスタイル数字対策） */
 .plan-price,.item-price,.pd-variant-price,.pd-opt-price,.omairi-base-val,.omairi-table td.price-cell,.cp-table td.fee,.chip .p,.numctl .v,.total-bar .amt,.cal-month-name{font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1}
 </style>
+<style>
+/* ブランド予約ボタン(et./nr.ペア) — RESERVATIONシートと同デザイン */
+.bb-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.bb-btn{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;gap:.7em;background:#111010;color:#fff;text-decoration:none;padding:.8rem .4rem;font-family:var(--sans);font-weight:500;font-size:.72rem;letter-spacing:.12em;transition:opacity .2s}
+.bb-btn:hover{opacity:.85}
+.bb-btn.bb-nr{background:#1C0909;color:#f0ead8}
+.bb-logo{display:block;height:1.68em;background:currentColor;flex-shrink:0}
+.bb-cta{display:inline-flex;align-items:center;gap:.6em;padding:.6em 1em;border:1px solid rgba(255,255,255,.4);white-space:nowrap;font-size:.66rem;letter-spacing:.08em}
+.bb-nr .bb-cta{border-color:rgba(240,234,216,.45)}
+.bb-sm{flex-wrap:nowrap;gap:.4rem}
+.bb-sm .bb-btn{flex:0 0 auto;padding:.4rem .55rem;font-size:.6rem;gap:.5em}
+.bb-sm .bb-cta{padding:.4em .6em;gap:.45em}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -950,7 +963,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li class="nav-item"><a href="#flow" class="nav-link">Flow</a></li>
       <li class="nav-item"><a href="#recruit" class="nav-link">Recruit</a></li>
     </ul>
-    <a href="#booking" class="nav-book" id="nav-book">予約する</a>
+    <div class="nav-book" style="background:none;padding:0"><div class="bb-btns bb-sm"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div></div>
   </nav>
 </header>
 
@@ -1012,7 +1025,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="mob-actions">
-    <a href="#booking" class="mob-book-btn" id="mob-book-btn" onclick="closeMob()">予約する</a>
+    <div class="bb-btns"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
     <div class="mob-icon-row">
       <button onclick="closeMob();openSearch()" aria-label="Search" style="background:none;cursor:pointer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -1061,7 +1074,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="about-grid">
     <div class="about-text">
       <p id="about-body"></p>
-      <a href="#booking" class="btn-line" id="about-btn">予約する →</a>
+      <div class="bb-btns" style="margin-top:1.4rem;max-width:540px"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
     </div>
     <div class="about-img-wrap"><img id="about-img" src="" alt="Studio"/></div>
   </div>
@@ -1279,7 +1292,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="cta-ja" id="cta-heading-ja"></span>
     <span class="cta-en" id="cta-heading-en"></span>
     <span class="cta-note" id="cta-note"></span>
-    <a href="#" class="btn-line-light" id="cta-btn">予約する →</a>
+    <div class="bb-btns" style="margin-top:1.8rem;max-width:560px;margin-left:auto;margin-right:auto"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
   </div>
 </section>
 
@@ -1344,7 +1357,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       </button>
     </form>
-    <a class="footer-book-btn" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener">予約する</a>
+    <div class="bb-btns"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
   </div>
   <a href="../" class="footer-logo" id="footer-logo">TRUNKLII</a>
   <ul class="footer-links">
@@ -1413,10 +1426,6 @@ async function init(){
   });
 
   // Booking buttons
-  document.getElementById('nav-book').textContent = d.bookingLabel;
-  document.getElementById('nav-book').href = d.bookingUrl;
-  document.getElementById('mob-book-btn').textContent = d.bookingLabel;
-  document.getElementById('mob-book-btn').href = d.bookingUrl;
 
   // Hero（縦画面=スマホ用縦写真 / 横画面=PC用横写真 を自動切替）
   document.getElementById('hero-eyebrow').textContent = 'Trunklii / ' + d.name;
@@ -1449,8 +1458,6 @@ async function init(){
   document.getElementById('about-heading').textContent = d.about.heading;
   document.getElementById('about-body').textContent = d.about.body;
   document.getElementById('about-img').src = d.about.image;
-  document.getElementById('about-btn').textContent = d.bookingLabel + ' →';
-  document.getElementById('about-btn').href = d.bookingUrl;
 
   // Gallery: 日付の新しい順にソート(日付未設定は配列末尾の順)
   const sortedGallery = d.gallery.slice().sort((a,b)=>{
@@ -1623,9 +1630,6 @@ async function init(){
   document.getElementById('cta-heading-ja').textContent = ctaJa || '';
   document.getElementById('cta-heading-en').textContent = ctaEn || '';
   document.getElementById('cta-note').textContent = d.ctaNote || '';
-  const ctaBtn = document.getElementById('cta-btn');
-  ctaBtn.textContent = d.comingSoon ? '最新情報はInstagramで →' : (d.bookingLabel || '予約する') + ' →';
-  ctaBtn.href = d.comingSoon ? d.instagram : d.bookingUrl;
 
   document.getElementById('footer-copy').textContent = g.copyright;
   document.getElementById('footer-logo').textContent = g.brandName.toUpperCase();

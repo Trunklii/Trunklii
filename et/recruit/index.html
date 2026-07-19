@@ -598,6 +598,19 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
   body.is-leaving{opacity:1!important}
 }
 </style>
+<style>
+/* ブランド予約ボタン(et./nr.ペア) — RESERVATIONシートと同デザイン */
+.bb-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.bb-btn{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;gap:.7em;background:#111010;color:#fff;text-decoration:none;padding:.8rem .4rem;font-family:var(--sans);font-weight:500;font-size:.72rem;letter-spacing:.12em;transition:opacity .2s}
+.bb-btn:hover{opacity:.85}
+.bb-btn.bb-nr{background:#1C0909;color:#f0ead8}
+.bb-logo{display:block;height:1.68em;background:currentColor;flex-shrink:0}
+.bb-cta{display:inline-flex;align-items:center;gap:.6em;padding:.6em 1em;border:1px solid rgba(255,255,255,.4);white-space:nowrap;font-size:.66rem;letter-spacing:.08em}
+.bb-nr .bb-cta{border-color:rgba(240,234,216,.45)}
+.bb-sm{flex-wrap:nowrap;gap:.4rem}
+.bb-sm .bb-btn{flex:0 0 auto;padding:.4rem .55rem;font-size:.6rem;gap:.5em}
+.bb-sm .bb-cta{padding:.4em .6em;gap:.45em}
+</style>
 </head>
 
 <style>
@@ -668,7 +681,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li class="nav-item"><a href="#flow" class="nav-link">Flow</a></li>
       <li class="nav-item"><a href="#recruit" class="nav-link">Recruit</a></li>
     </ul>
-    <a href="#booking" class="nav-book" id="nav-book">予約する</a>
+    <div class="nav-book" style="background:none;padding:0"><div class="bb-btns bb-sm"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div></div>
   </nav>
 </header>
 
@@ -714,7 +727,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="mob-actions">
-    <a href="#booking" class="mob-book-btn" id="mob-book-btn" onclick="closeMob()">予約する</a>
+    <div class="bb-btns"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
     <div class="mob-icon-row">
       <button onclick="closeMob();openSearch()" aria-label="Search" style="background:none;cursor:pointer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -881,10 +894,6 @@ async function init(){
   document.getElementById('mob-map').href = d.mapUrl || '#';
 
   // Booking buttons
-  document.getElementById('nav-book').textContent = d.bookingLabel;
-  document.getElementById('nav-book').href = d.bookingUrl;
-  document.getElementById('mob-book-btn').textContent = d.bookingLabel;
-  document.getElementById('mob-book-btn').href = d.bookingUrl;
 
   // Studio name in detail hero
   const dhStudio = document.getElementById('dh-studio');
