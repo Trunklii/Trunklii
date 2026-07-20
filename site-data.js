@@ -271,7 +271,7 @@ window.SITE_DATA = {
       "accentColor": "#b8935a",
       "address": "〒501-6253 岐阜県羽島市小熊町島新道76-9 2階",
       "tel": "050-1751-2601",
-      "hours": "10:00 – 18:00（火曜定休）",
+      "hours": "10:00 – 18:00（水・木曜定休）",
       "instagram": "https://www.instagram.com/studio_et._",
       "instagramHandle": "@studio_et._",
       "mapUrl": "https://goo.gl/maps/ZVSCkidKRbLqAvU19",
@@ -1002,7 +1002,7 @@ window.SITE_DATA = {
         "heading": "Calendar",
         "body": "日にちごとの撮影料金のご案内です。\n最新の空き状況は予約ページよりご確認ください。",
         "embedUrl": "",
-        "note": "※定休日：火曜日 / 撮影は完全予約制となっております。"
+        "note": "※定休日：水曜・木曜 / 撮影は完全予約制となっております。"
       },
       "reservation": {
         "heading": "Reservation",
