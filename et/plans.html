@@ -97,11 +97,11 @@ main{padding-top:64px}
 .plans-soon{display:block;text-align:center;padding:4rem 1.5rem;font-family:var(--display);font-style:normal;font-size:1.25rem;color:var(--mid)}
 
 /* ─── Footer ─── */
-footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2rem clamp(1.4rem,5vw,3rem);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.2rem;font-family:var(--sans);font-weight:300;font-size:.7rem;letter-spacing:.08em}
-.footer-logo{font-family:var(--display);font-style:normal;font-weight:400;font-size:1.1rem;color:#fff;letter-spacing:.04em;text-decoration:none}
+footer{border-top:1px solid var(--border);background:#fff;color:var(--mid);padding:2rem clamp(1.5rem,5vw,4rem);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.2rem;font-family:var(--sans);font-weight:300;font-size:.7rem;letter-spacing:.08em}
+.footer-logo{font-family:var(--sans);font-weight:300;font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink);text-decoration:none}
 .footer-links{list-style:none;display:flex;flex-wrap:wrap;gap:1rem}
-.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
-.footer-links a:hover{color:#fff}
+.footer-links a{color:var(--mid);text-decoration:none;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.footer-links a:hover{color:var(--ink)}
 .footer-copy{font-size:.66rem;letter-spacing:.1em}
 
 @media(max-width:560px){
@@ -158,8 +158,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2rem clamp(1.4re
 .hdr-book-menu[hidden]{display:none}
 .hdr-book-menu .bb-btn{flex:none}
 @media(max-width:600px){.icon-btn{width:32px;height:32px}.hdr-book-toggle{height:32px;padding:0 .7rem}}
-.footer-cta-sub{flex-basis:100%;display:flex;flex-direction:column;align-items:center;gap:.9rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.15)}
-.footer-cta-sub .cta-note{font-family:var(--display);font-style:normal;font-weight:300;font-size:.7rem;letter-spacing:.18em;color:rgba(255,255,255,.5)}
+.footer-cta-sub{flex-basis:100%;width:100%;max-width:720px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:.9rem;padding-bottom:1.4rem;border-bottom:1px solid var(--border)}
+.footer-cta-sub .cta-note{font-family:var(--sans);font-weight:300;font-size:.7rem;letter-spacing:.18em;color:var(--mid)}
 .footer-cta-sub .bb-btns{width:100%;max-width:560px}
 </style>
 <style>
