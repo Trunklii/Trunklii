@@ -6,7 +6,7 @@
   <!-- ルート -->
   <url>
     <loc>https://trunklii.com/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -14,7 +14,7 @@
   <!-- Studio et. -->
   <url>
     <loc>https://trunklii.com/et/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -24,61 +24,61 @@
   </url>
   <url>
     <loc>https://trunklii.com/et/plans.html</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://trunklii.com/et/plans/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://trunklii.com/et/plan-detail.html</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://trunklii.com/et/calendar.html</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://trunklii.com/et/calendar/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://trunklii.com/et/reservation.html</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://trunklii.com/et/reservation/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://trunklii.com/et/cancel-policy.html</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://trunklii.com/et/cancel-policy/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://trunklii.com/et/recruit/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -86,7 +86,7 @@
   <!-- Maison nr. -->
   <url>
     <loc>https://trunklii.com/nr/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -96,61 +96,61 @@
   </url>
   <url>
     <loc>https://trunklii.com/nr/plans.html</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://trunklii.com/nr/plans/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://trunklii.com/nr/plan-detail.html</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://trunklii.com/nr/calendar.html</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://trunklii.com/nr/calendar/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://trunklii.com/nr/reservation.html</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://trunklii.com/nr/reservation/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://trunklii.com/nr/cancel-policy.html</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://trunklii.com/nr/cancel-policy/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://trunklii.com/nr/recruit/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
