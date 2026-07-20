@@ -236,6 +236,11 @@ body.sheet-open .to-top-btn{opacity:0!important;pointer-events:none!important}
 body.sheet-open .qa-bot-toggle{opacity:0!important;pointer-events:none!important}
 @media(min-width:961px){.qa-bot-toggle{bottom:.5rem;width:54px;height:54px}.qa-bot-toggle svg{width:22px;height:22px}}
 </style>
+<style>
+.res-btns .hdr-book-wrap{display:block;position:relative;z-index:5}
+.res-btns .hdr-book-toggle{width:100%;height:auto;justify-content:center;padding:.85rem .8rem;font-size:.7rem;letter-spacing:.08em;line-height:1.3}
+.res-btns .hdr-book-menu{left:0;right:0;width:auto;transform:none}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -461,13 +466,20 @@ function renderBlocksFromData(studio){
       return `<li>${esc(n)}</li>`;
     }).join('');
     const isOmairi = (b.title||'').indexOf('お詣り') !== -1 || (b.title||'').indexOf('753') !== -1;
+    // 撮影予約ブロックは et./nr. の予約する›展開メニュー(TOPと同仕様)
+    const isSatsuei = (b.title||'').indexOf('撮影予約') !== -1;
+    const pairHtml = '<a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a>'
+      + '<a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a>';
+    const bookBtn = isSatsuei
+      ? '<div class="hdr-book-wrap"><button class="hdr-book-toggle" type="button" onclick="toggleHdrBook(event)" aria-haspopup="true" aria-expanded="false">予約する<span class="hdr-book-chev" aria-hidden="true">›</span></button><div class="hdr-book-menu" hidden>' + pairHtml + '</div></div>'
+      : '<a href="' + esc(bookHref) + '" class="btn-line filled">' + esc(b.bookingLabel||'ご予約はこちら') + '</a>';
     sub.innerHTML = `
       <div class="subsec-head">
         <span class="subsec-mark">${esc(b.mark||'')}</span>
         <h2 class="subsec-title">${esc(b.title||'')}</h2>
       </div>
       <div class="res-btns">
-        <a href="${esc(bookHref)}" class="btn-line filled">${esc(b.bookingLabel||'ご予約はこちら')}</a>
+        ${bookBtn}
         <a href="${esc(b.plansUrl||'plans.html')}" class="btn-line">${esc(b.plansLabel||'プラン・料金')}</a>
       </div>
       ${notes ? `<ul class="res-notes">${notes}</ul>` : ''}
