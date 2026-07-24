@@ -16,6 +16,14 @@
     '2026-10-12':1,'2026-11-03':1,'2026-11-23':1
   };
 
+  /* ── 大安(日本の六曜)。繁忙期のみ強調: 1/10/11/12月 ── */
+  var TAIAN = {
+    '2026-01-01':1,'2026-01-07':1,'2026-01-13':1,'2026-01-24':1,'2026-01-30':1,
+    '2026-10-02':1,'2026-10-08':1,'2026-10-13':1,'2026-10-19':1,'2026-10-25':1,'2026-10-31':1,
+    '2026-11-06':1,'2026-11-10':1,'2026-11-16':1,'2026-11-22':1,'2026-11-28':1,
+    '2026-12-04':1,'2026-12-09':1,'2026-12-15':1,'2026-12-21':1,'2026-12-27':1
+  };
+
   function pad(n){ return ('0'+n).slice(-2); }
   function dKey(y,m,d){ return y+'-'+pad(m+1)+'-'+pad(d); }
   function getTier(y,m,d){
@@ -66,7 +74,8 @@
         if(dow===6) cls += ' sat-col';
         if(JP_HOLIDAYS[k] && dow!==0) cls += ' holiday';
         if(k === todayKey) cls += ' today';
-        cells += '<div class="'+cls+'">'+d+'</div>';
+        var taian = TAIAN[k] ? '<span class="cal-top-taian">大安</span>' : '';
+        cells += '<div class="'+cls+'">'+d+taian+'</div>';
       }
       html += '<div class="cal-top-month">'
         + '<div class="cal-top-month-hd"><span class="cal-top-month-name">'+MONTHS_JA[m]+'</span><span class="cal-top-month-year">'+y+'</span></div>'

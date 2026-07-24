@@ -100,6 +100,7 @@ main{padding-top:64px}
 .cal-day.sun-col{color:#c0382e}
 .cal-day.sat-col{color:#2e6fc0}
 .cal-day.holiday{color:#c0382e}
+.cal-taian{display:block;font-family:var(--sans);font-weight:400;font-size:.5rem;letter-spacing:.02em;color:var(--mid);line-height:1;margin-top:.15rem}
 .cal-day::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px}
 .cal-day.tier-a::after{background:var(--tier-a)}
 .cal-day.tier-b::after{background:var(--tier-b)}
@@ -347,6 +348,14 @@ const JP_HOLIDAYS = new Set([
   '2026-11-03','2026-11-23',
 ]);
 
+// 大安(日本の六曜)。ご祈祷・記念撮影の繁忙期のみ強調表示: 1月・10月・11月・12月
+const TAIAN = new Set([
+  '2026-01-01','2026-01-07','2026-01-13','2026-01-24','2026-01-30',
+  '2026-10-02','2026-10-08','2026-10-13','2026-10-19','2026-10-25','2026-10-31',
+  '2026-11-06','2026-11-10','2026-11-16','2026-11-22','2026-11-28',
+  '2026-12-04','2026-12-09','2026-12-15','2026-12-21','2026-12-27',
+]);
+
 function pad(n){ return String(n).padStart(2,'0'); }
 function dateKey(y,m,d){ return `${y}-${pad(m+1)}-${pad(d)}`; }
 
@@ -377,7 +386,8 @@ function renderMonth(year, month){
     if(dow === 6) cls += ' sat-col';
     if(JP_HOLIDAYS.has(key) && dow !== 0) cls += ' holiday';
     if(key === todayKey) cls += ' today';
-    cells += `<div class="${esc(cls)}">${d}</div>`;
+    const taian = TAIAN.has(key) ? '<span class="cal-taian">大安</span>' : '';
+    cells += `<div class="${esc(cls)}">${d}${taian}</div>`;
   }
 
   return `
