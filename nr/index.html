@@ -2437,6 +2437,7 @@ init();
       // 静的要素 + 後から生成されるモバイルナビの両方に対応
       document.addEventListener('DOMContentLoaded',rebind);
       rebind();
+      try{ new MutationObserver(rebind).observe(document.documentElement,{childList:true,subtree:true}); }catch(_){}
       // 動的生成のフォールバック(capture でインライン onclick より先に握る)
       document.addEventListener('click',function(e){
         var t=e.target.closest && e.target.closest(SEL);
