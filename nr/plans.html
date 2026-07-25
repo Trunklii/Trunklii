@@ -37,13 +37,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Structured Data -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@200;300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --ink:#2b2825;--off:#fff;--bg:#f8f6f2;--mid:#888078;
   --accent:#b8935a;--border:rgba(17,16,16,.1);
-  --serif:'Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic Medium','YuGothic',sans-serif;--display:'Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic Medium','YuGothic',sans-serif;--sans:'Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic Medium','YuGothic',sans-serif;
+  --serif:'Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic Medium','YuGothic',sans-serif;--display:'Cormorant','Noto Serif JP','Hiragino Mincho ProN','Yu Mincho','YuMincho',serif;--sans:'Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic Medium','YuGothic',sans-serif;
   --ease:cubic-bezier(.25,.46,.45,.94);
 }
 html{scroll-behavior:smooth}
@@ -84,7 +84,7 @@ main{padding-top:64px}
 .plan-card:hover .plan-card-img-inner{transform:scale(1.05)}
 .plan-card-body{padding:2rem 1.8rem 2.2rem;display:flex;flex-direction:column;flex:1;position:relative}
 .plan-tag{position:absolute;top:-1.2rem;right:1.2rem;font-family:var(--sans);font-weight:400;font-size:.55rem;letter-spacing:.1em;color:#fff;background:var(--accent);padding:.2rem .55rem;text-transform:uppercase}
-.plan-name{font-family:var(--sans);font-weight:400;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem;color:var(--ink);transition:color .35s}
+.plan-name{font-family:var(--display);font-weight:400;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem;color:var(--ink);transition:color .35s}
 .plan-price{font-family:var(--display);font-weight:400;font-style:normal;font-size:1.45rem;color:var(--accent);margin-bottom:.9rem;transition:color .35s}
 .plan-desc{font-family:var(--serif);font-size:.8rem;color:var(--mid);line-height:1.95;margin-bottom:1rem;flex:1;transition:color .35s}
 .plan-meta{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin-bottom:1rem;transition:color .35s}
@@ -209,6 +209,11 @@ body.sheet-open .to-top-btn{opacity:0!important;pointer-events:none!important;tr
 .qa-bot-toggle svg{width:20px;height:20px}
 body.sheet-open .qa-bot-toggle{opacity:0!important;pointer-events:none!important;transition:none!important}
 @media(min-width:961px){.qa-bot-toggle{bottom:.5rem;width:54px;height:54px}.qa-bot-toggle svg{width:22px;height:22px}}
+</style>
+<style>
+/* B'（デザイナー提案）: 英数=Cormorant / 日本語見出し=Noto Serif JP / 本文=Noto Sans JP。数字はライニング数字で高さ・ベースラインを揃える */
+.sec-num{font-family:var(--display);font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0;letter-spacing:.14em}
+.sec-title,.hero-name,.plan-price,.item-price,.price,.qa-q-mark,.flow-num,.cta-en,.cal-top-price,.res-top-mark,.subsec-mark{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0}
 </style>
 </head>
 <body>
