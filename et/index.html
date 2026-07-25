@@ -965,6 +965,10 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 .sec-num{font-family:var(--display);font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0;letter-spacing:.1em;font-size:1.05rem;font-weight:500;align-self:baseline}
 .sec-title,.hero-name,.plan-price,.item-price,.price,.qa-q-mark,.flow-num,.cta-en,.cal-top-price,.res-top-mark,.subsec-mark{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0}
 </style>
+<style>
+.kim-cat-empty{padding-bottom:1.2rem}
+.kim-cat-ph{display:flex;align-items:center;justify-content:center;height:96px;background:rgba(110,90,55,.05);border:1px dashed rgba(110,90,55,.28);font-family:var(--display);font-weight:500;font-size:.8rem;letter-spacing:.12em;color:#a08e6c}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -2119,7 +2123,7 @@ function enhanceMotion(){
     entries.forEach(e=>{
       if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  }, { threshold: 0.01, rootMargin: '0px 0px -60px 0px' });
 
   document.querySelectorAll('.reveal,.g-item,.plan-card,.item-card,.pos-card,.pos-chip,.flow-step').forEach(el=>io.observe(el));
 }
