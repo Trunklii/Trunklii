@@ -1154,6 +1154,16 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 .res-top-notes .res-note-sub{display:block;font-family:var(--sans);font-weight:300;font-size:.78rem;color:var(--mid);margin-top:.3rem}
 .res-top-notes .res-note-link{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 </style>
+<style>
+/* 着物グループ見出し(スタジオ撮影着物 / お詣り着物) */
+.kim-group{margin-bottom:2.5rem}
+.kim-group + .kim-group{margin-top:1rem}
+.kim-group-head{display:flex;align-items:baseline;gap:.8rem;margin:0 0 1.4rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)}
+.kim-group-en{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mid)}
+.kim-group-jp{font-family:var(--sans);font-weight:400;font-size:1rem;letter-spacing:.06em;color:var(--ink)}
+.kim-group-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1rem,2.5vw,2rem)}
+@media(max-width:760px){.kim-group-cards{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->

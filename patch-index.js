@@ -91,14 +91,23 @@
   function renderKimonoCats(studio){
     var container = document.getElementById('kimono-grid');
     if(!container) return;
+    // スタジオ撮影着物(既存カテゴリを流用=現行写真を自動表示)＋お詣り着物(新カテゴリ・後日データはめ込み)
+    var GROUPS = [
+      { key:'studio', label:'スタジオ撮影着物', en:'Studio Kimono' },
+      { key:'mairi',  label:'お詣り着物',       en:'Omairi Kimono' }
+    ];
     var CATS = [
-      { key:'omairi',   sub:'Omiyamairi',       jp:'お宮参り' },
-      { key:'3y-girl',  sub:'3 Year Old Girl',  jp:'三歳女の子' },
-      { key:'3y-boy',   sub:'3 Year Old Boy',   jp:'三歳男の子' },
-      { key:'5y-boy',   sub:'5 Year Old Boy',   jp:'五歳男の子' },
-      { key:'7y-girl',  sub:'7 Year Old Girl',  jp:'七歳女の子' },
-      { key:'10y-girl', sub:'10 Year Old Girl', jp:'十歳女の子' },
-      { key:'10y-boy',  sub:'10 Year Old Boy',  jp:'十歳男の子' }
+      { key:'3y-girl',  sub:'3 Year Old Girl',  jp:'三歳女の子', group:'studio' },
+      { key:'7y-girl',  sub:'7 Year Old Girl',  jp:'七歳女の子', group:'studio' },
+      { key:'10y-girl', sub:'10 Year Old Girl', jp:'十歳女の子', group:'studio' },
+      { key:'omairi',   sub:'Omiyamairi',       jp:'お宮参り',   group:'studio' },
+      { key:'3y-boy',   sub:'3 Year Old Boy',   jp:'三歳男の子', group:'studio' },
+      { key:'5y-boy',   sub:'5 Year Old Boy',   jp:'五歳男の子', group:'studio' },
+      { key:'10y-boy',  sub:'10 Year Old Boy',  jp:'十歳男の子', group:'studio' },
+      { key:'mairi-3g', sub:'3 Year Old Girl',  jp:'三歳女の子', group:'mairi' },
+      { key:'mairi-7g', sub:'7 Year Old Girl',  jp:'七歳女の子', group:'mairi' },
+      { key:'mairi-3b', sub:'3 Year Old Boy',   jp:'三歳男の子', group:'mairi' },
+      { key:'mairi-5b', sub:'5 Year Old Boy',   jp:'五歳男の子', group:'mairi' }
     ];
     // STUDIO_KEY を判定
     var STUDIO_KEY = location.pathname.indexOf('/nr/') !== -1 ? 'nr' : 'et';
@@ -122,12 +131,12 @@
       container.parentNode.insertBefore(bar, container);
     }
     bar.innerHTML = '<button class="kim-filter-btn active" type="button" data-cat="all" onclick="kimFilter(this)">ALL</button>'
-      + CATS.map(function(c){
-          return '<button class="kim-filter-btn" type="button" data-cat="' + c.key + '" onclick="kimFilter(this)">' + c.jp + '</button>';
+      + GROUPS.map(function(g){
+          return '<button class="kim-filter-btn" type="button" data-group="' + g.key + '" onclick="kimFilter(this)">' + g.label + '</button>';
         }).join('');
 
     container.className = 'kim-cats';
-    container.innerHTML = CATS.map(function(c, i){
+    function cardHtml(c){
       var items = byCat[c.key] || [];
       var hasItems = items.length > 0;
       // 画像 path 解決(et/index.html 内なので相対パスはファイル名のみ)
@@ -152,7 +161,7 @@
         ? ' data-items="' + items.map(function(it){ return encodeURIComponent(imgPath(it)); }).join(',') + '" data-idx="0"'
         : '';
       var showArrows = items.length > 1;
-      return '<div class="kim-cat" data-cat="' + c.key + '"' + dataAttr + '>'
+      return '<div class="kim-cat" data-cat="' + c.key + '" data-group="' + c.group + '"' + dataAttr + '>'
         + '<div class="kim-cat-head">'
           + '<div class="kim-cat-title">'+c.sub+'<span class="sec-jp">'+c.jp+'</span></div>'
           + firstOpt
@@ -163,6 +172,13 @@
           + (showArrows ? '<button class="kim-arrow kim-arrow-next" type="button" aria-label="次へ" onclick="kimCarousel(this,1)">›</button>' : '')
         + '</div>'
       + '</div>';
+    }
+    container.innerHTML = GROUPS.map(function(g){
+      var cards = CATS.filter(function(c){ return c.group === g.key; }).map(cardHtml).join('');
+      return '<div class="kim-group" data-group="' + g.key + '">'
+        + '<div class="kim-group-head"><span class="kim-group-en">' + g.en + '</span><h3 class="kim-group-jp">' + g.label + '</h3></div>'
+        + '<div class="kim-group-cards">' + cards + '</div>'
+      + '</div>';
     }).join('');
   }
 
@@ -172,9 +188,16 @@
     Array.prototype.forEach.call(bar.querySelectorAll('.kim-filter-btn'), function(b){
       b.classList.toggle('active', b === btn);
     });
-    var key = btn.getAttribute('data-cat');
+    var cat = btn.getAttribute('data-cat');
+    var grp = btn.getAttribute('data-group');
+    // グループ見出しの表示制御
+    Array.prototype.forEach.call(document.querySelectorAll('#kimono-grid .kim-group'), function(gEl){
+      gEl.style.display = (!grp || gEl.getAttribute('data-group') === grp) ? '' : 'none';
+    });
     Array.prototype.forEach.call(document.querySelectorAll('#kimono-grid .kim-cat'), function(card){
-      card.style.display = (key === 'all' || card.getAttribute('data-cat') === key) ? '' : 'none';
+      var show = (cat === 'all' || !cat) || card.getAttribute('data-cat') === cat;
+      if(grp) show = card.getAttribute('data-group') === grp;
+      card.style.display = show ? '' : 'none';
     });
   };
 
