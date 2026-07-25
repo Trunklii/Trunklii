@@ -51,14 +51,28 @@
   .c-a .body{font-family:var(--noto-sans)}
   .c-a .price,.c-a .num-line{font-family:var(--noto-sans);font-weight:400}
   .c-a .btn,.c-a .eyebrow,.c-a .sec-jp{font-family:var(--noto-sans);font-weight:400}
-  /* B: デザイナー無料案 = 見出し游明朝 / 本文游ゴシック / 英数 Cormorant */
-  .c-b .sec-en{font-family:var(--cormorant);font-weight:500;letter-spacing:.02em}
+  /* B: デザイナー無料案 = 見出し游明朝 / 本文游ゴシック / 英数 Cormorant（数字拡大・ベースライン補正） */
+  .c-b .sec-en{font-family:var(--cormorant);font-weight:500;letter-spacing:.01em;font-size:clamp(1.95rem,4.8vw,2.95rem);line-height:1;transform:translateY(.06em)}
   .c-b .jp-head{font-family:var(--yumin);font-weight:400}
   .c-b .body{font-family:var(--yugo);font-weight:400}
-  .c-b .price{font-family:var(--cormorant);font-weight:500}
-  .c-b .num-line{font-family:var(--yugo)}
-  .c-b .btn,.c-b .eyebrow{font-family:var(--cormorant);font-weight:500}
+  .c-b .price{font-family:var(--cormorant);font-weight:500;font-size:2.35rem;line-height:1}
+  .c-b .price small{font-size:.62em}
+  .c-b .num-line{font-family:var(--yugo);font-feature-settings:"palt"}
+  .c-b .btn,.c-b .eyebrow{font-family:var(--cormorant);font-weight:600;font-size:.72rem}
+  .c-b .btn{font-size:.78rem;letter-spacing:.06em}
   .c-b .sec-jp{font-family:var(--yugo)}
+  .c-b .sec-head{align-items:baseline}
+  /* B-fallback: 游明朝が無い端末の代替（Noto Serif JP を游明朝の見え方に寄せて縮小・軽量化） */
+  .c-bf .sec-en{font-family:var(--cormorant);font-weight:500;letter-spacing:.01em;font-size:clamp(1.95rem,4.8vw,2.95rem);line-height:1;transform:translateY(.06em)}
+  .c-bf .jp-head{font-family:var(--noto-serif);font-weight:300;font-size:calc(clamp(1.3rem,3.5vw,1.9rem) * .92);letter-spacing:.04em}
+  .c-bf .body{font-family:var(--noto-sans);font-weight:300}
+  .c-bf .price{font-family:var(--cormorant);font-weight:500;font-size:2.35rem;line-height:1}
+  .c-bf .price small{font-size:.62em}
+  .c-bf .num-line{font-family:var(--noto-sans)}
+  .c-bf .btn,.c-bf .eyebrow{font-family:var(--cormorant);font-weight:600}
+  .c-bf .btn{font-size:.78rem;letter-spacing:.06em}
+  .c-bf .sec-jp{font-family:var(--noto-sans)}
+  .c-bf .sec-head{align-items:baseline}
   /* C: Webフォント安全版 = 見出しNoto Serif JP / 本文Noto Sans JP / 英数Cormorant */
   .c-c .sec-en{font-family:var(--cormorant);font-weight:500;letter-spacing:.02em}
   .c-c .jp-head{font-family:var(--noto-serif);font-weight:300}
@@ -122,6 +136,21 @@
         <div class="w"><span style="font-family:var(--cormorant);font-weight:500">Plans</span><em>Cormorant 500</em></div>
         <div class="w"><span style="font-family:var(--cormorant);font-weight:600">Plans</span><em>Cormorant 600</em></div>
       </div>
+    </div>
+
+    <!-- B-fallback -->
+    <div class="combo c-bf">
+      <div class="combo-tag"><span class="no">B'</span><span class="nm">B の代替表示（游明朝が無い端末）</span><span class="sp">見出し=Noto Serif JP（游明朝の見え方に縮小・軽量化）/ 本文=Noto Sans JP / 英数=Cormorant</span><span class="cost free">無料</span></div>
+      <div class="demo">
+        <div class="eyebrow">05 — PLANS</div>
+        <div class="sec-head"><span class="sec-en">Plans &amp; Pricing</span><span class="sec-jp">撮影プラン・料金</span></div>
+        <div class="jp-head">撮影予約について</div>
+        <p class="body">子どもたちの輝く瞬間を、花とともに。衣装、ヘアメイク、撮影まですべてを取り揃えてお待ちしております。生花を使用したヘアアレンジや空間装飾で、トータルコーディネートもご提供可能です。</p>
+        <div class="price">¥25,000<small>〜</small></div>
+        <div class="row"><a class="btn" href="#">Google Map →</a><a class="btn" href="#">Reservation</a></div>
+        <div class="num-line">10:00 – 18:00（水・木曜定休） / TEL 050-1751-2601</div>
+      </div>
+      <div class="note">※ B と並べても日本語見出しの大きさが揃うよう、代替の Noto Serif JP を約92%・ウェイト300に調整しています。B と B' を見比べてください。</div>
     </div>
 
     <!-- C -->
