@@ -1175,7 +1175,7 @@ window.SITE_DATA = {
       },
       "ctaHeading": "今のあなたにいつでも会える。\nCelebrating you, my special, always.",
       "ctaNote": "ご予約・お問い合わせはお気軽に",
-      "plansLead": "Studio et. の撮影は One / Family / Maternity / Furisode の4プランです。\n753・お宮参り・バースデー・入園入学などの撮影メニューは、One PlanとFamily Plan のどちらでもお選びいただけます。"
+      "plansLead": "Studio et. の撮影は One / Family / Maternity / Furisode の4プランです。\n753・お宮参り・バースデー・入園入学などの撮影メニューは、One PlanとFamily Plan のどちらでもお選びいただけます。\n\n表示の料金は目安です。オプションや詳しいお見積り・ご不明点は、お気軽にお問い合わせください。"
     },
     "nr": {
       "key": "nr",
