@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="robots" content="noindex,nofollow"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>フォント比較 — Trunklii</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@200;300;400;500&family=Noto+Serif+JP:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --ink:#2b2825; --mid:#888078; --bg:#f8f6f2; --accent:#b8935a; --border:rgba(17,16,16,.12);
+    --yumin:'Yu Mincho','YuMincho','游明朝','Hiragino Mincho ProN','Noto Serif JP',serif;
+    --yugo:'Yu Gothic Medium','YuGothic','游ゴシック','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;
+    --noto-sans:'Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic Medium',sans-serif;
+    --noto-serif:'Noto Serif JP','Hiragino Mincho ProN','Yu Mincho',serif;
+    --cormorant:'Cormorant',serif;
+    --garamond:'Cormorant Garamond',serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--noto-sans);line-height:1.8;-webkit-font-smoothing:antialiased;padding:0 0 6rem}
+  .page-head{padding:2.5rem clamp(1.2rem,5vw,4rem) 1rem;border-bottom:1px solid var(--border);background:#fff;position:sticky;top:0;z-index:5}
+  .page-head h1{font-family:var(--noto-sans);font-weight:400;font-size:1.05rem;letter-spacing:.08em}
+  .page-head p{font-size:.72rem;color:var(--mid);margin-top:.5rem;line-height:1.7}
+  .wrap{max-width:920px;margin:0 auto;padding:0 clamp(1.2rem,5vw,3rem)}
+  .combo{background:#fff;border:1px solid var(--border);margin-top:2.2rem;overflow:hidden}
+  .combo-tag{display:flex;flex-wrap:wrap;gap:.5rem .9rem;align-items:baseline;padding:1rem 1.4rem;border-bottom:1px solid var(--border);background:#faf8f4}
+  .combo-tag .no{font-family:var(--noto-sans);font-weight:500;font-size:.7rem;letter-spacing:.14em;color:var(--accent)}
+  .combo-tag .nm{font-family:var(--noto-sans);font-weight:500;font-size:.9rem}
+  .combo-tag .sp{font-family:var(--noto-sans);font-weight:300;font-size:.66rem;color:var(--mid);letter-spacing:.02em}
+  .combo-tag .cost{margin-left:auto;font-family:var(--noto-sans);font-size:.62rem;letter-spacing:.1em;padding:.2rem .6rem;border:1px solid var(--border);border-radius:2px;color:var(--mid)}
+  .combo-tag .cost.free{color:#4a9e6a;border-color:rgba(74,158,106,.4)}
+  .combo-tag .cost.paid{color:#c0754a;border-color:rgba(192,117,74,.4)}
+  .demo{padding:clamp(1.6rem,4vw,2.8rem) clamp(1.4rem,4vw,2.6rem)}
+  .eyebrow{font-size:.6rem;letter-spacing:.22em;color:var(--mid);margin-bottom:.6rem}
+  .sec-head{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:1px solid var(--border)}
+  .sec-en{font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:.04em;line-height:1.15}
+  .sec-jp{font-size:.66rem;letter-spacing:.1em;color:var(--mid)}
+  .jp-head{font-size:clamp(1.3rem,3.5vw,1.9rem);letter-spacing:.06em;margin:1.6rem 0 .8rem}
+  .body{font-size:.92rem;font-weight:300;line-height:2;margin-bottom:1.4rem;max-width:640px}
+  .price{font-size:1.9rem;letter-spacing:.02em;color:var(--accent);margin:.4rem 0 1.4rem;font-variant-numeric:lining-nums}
+  .price small{font-size:.9rem}
+  .row{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center}
+  .btn{display:inline-block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:.75rem 1.5rem;text-decoration:none}
+  .num-line{font-size:.95rem;color:var(--mid);letter-spacing:.03em;margin-top:.6rem;font-variant-numeric:lining-nums}
+  .note{font-size:.66rem;color:var(--mid);padding:0 1.4rem 1.4rem;line-height:1.7}
+  /* ── フォント割り当て ── */
+  /* A: 現状 = すべて Noto Sans JP */
+  .c-a .sec-en,.c-a .jp-head{font-family:var(--noto-sans);font-weight:300}
+  .c-a .body{font-family:var(--noto-sans)}
+  .c-a .price,.c-a .num-line{font-family:var(--noto-sans);font-weight:400}
+  .c-a .btn,.c-a .eyebrow,.c-a .sec-jp{font-family:var(--noto-sans);font-weight:400}
+  /* B: デザイナー無料案 = 見出し游明朝 / 本文游ゴシック / 英数 Cormorant */
+  .c-b .sec-en{font-family:var(--cormorant);font-weight:500;letter-spacing:.02em}
+  .c-b .jp-head{font-family:var(--yumin);font-weight:400}
+  .c-b .body{font-family:var(--yugo);font-weight:400}
+  .c-b .price{font-family:var(--cormorant);font-weight:500}
+  .c-b .num-line{font-family:var(--yugo)}
+  .c-b .btn,.c-b .eyebrow{font-family:var(--cormorant);font-weight:500}
+  .c-b .sec-jp{font-family:var(--yugo)}
+  /* C: Webフォント安全版 = 見出しNoto Serif JP / 本文Noto Sans JP / 英数Cormorant */
+  .c-c .sec-en{font-family:var(--cormorant);font-weight:500;letter-spacing:.02em}
+  .c-c .jp-head{font-family:var(--noto-serif);font-weight:300}
+  .c-c .body{font-family:var(--noto-sans)}
+  .c-c .price{font-family:var(--cormorant);font-weight:500}
+  .c-c .num-line{font-family:var(--noto-sans)}
+  .c-c .btn,.c-c .eyebrow{font-family:var(--cormorant);font-weight:500}
+  .c-c .sec-jp{font-family:var(--noto-sans)}
+  /* D: 有料イメージ = 見出し游明朝 / 本文游ゴシック / 英数 Garamond風 */
+  .c-d .sec-en{font-family:var(--garamond);font-weight:500;letter-spacing:.02em}
+  .c-d .jp-head{font-family:var(--yumin);font-weight:400}
+  .c-d .body{font-family:var(--yugo);font-weight:400}
+  .c-d .price{font-family:var(--garamond);font-weight:500}
+  .c-d .num-line{font-family:var(--yugo)}
+  .c-d .btn,.c-d .eyebrow{font-family:var(--garamond);font-weight:500}
+  .c-d .sec-jp{font-family:var(--yugo)}
+  /* ウェイト見本 */
+  .weights{display:flex;flex-wrap:wrap;gap:1.4rem;padding:1.2rem 1.4rem 1.6rem;border-top:1px solid var(--border)}
+  .weights .w{text-align:center}
+  .weights .w span{display:block;font-size:1.5rem;line-height:1.2}
+  .weights .w em{font-size:.58rem;color:var(--mid);font-style:normal;letter-spacing:.08em}
+</style>
+</head>
+<body>
+  <div class="page-head">
+    <h1>フォント比較見本 — Studio et. / Maison nr.</h1>
+    <p>同じ内容を4パターンのフォント構成で表示しています。※游明朝・游ゴシックはお使いの端末に搭載されている場合に表示されます（PCはほぼ表示可）。CormorantはGoogle Fonts（無料）です。</p>
+  </div>
+  <div class="wrap">
+
+    <!-- A -->
+    <div class="combo c-a">
+      <div class="combo-tag"><span class="no">A</span><span class="nm">現状（Noto Sans JP 統一）</span><span class="sp">見出し・本文・英数字すべて Noto Sans JP</span><span class="cost free">無料</span></div>
+      <div class="demo">
+        <div class="eyebrow">05 — PLANS</div>
+        <div class="sec-head"><span class="sec-en">Plans &amp; Pricing</span><span class="sec-jp">撮影プラン・料金</span></div>
+        <div class="jp-head">撮影予約について</div>
+        <p class="body">子どもたちの輝く瞬間を、花とともに。衣装、ヘアメイク、撮影まですべてを取り揃えてお待ちしております。生花を使用したヘアアレンジや空間装飾で、トータルコーディネートもご提供可能です。</p>
+        <div class="price">¥25,000<small>〜</small></div>
+        <div class="row"><a class="btn" href="#">Google Map →</a><a class="btn" href="#">Reservation</a></div>
+        <div class="num-line">10:00 – 18:00（水・木曜定休） / TEL 050-1751-2601</div>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="combo c-b">
+      <div class="combo-tag"><span class="no">B</span><span class="nm">デザイナー提案（無料）</span><span class="sp">見出し=游明朝 / 本文=游ゴシック / 英数=Cormorant</span><span class="cost free">無料</span></div>
+      <div class="demo">
+        <div class="eyebrow">05 — PLANS</div>
+        <div class="sec-head"><span class="sec-en">Plans &amp; Pricing</span><span class="sec-jp">撮影プラン・料金</span></div>
+        <div class="jp-head">撮影予約について</div>
+        <p class="body">子どもたちの輝く瞬間を、花とともに。衣装、ヘアメイク、撮影まですべてを取り揃えてお待ちしております。生花を使用したヘアアレンジや空間装飾で、トータルコーディネートもご提供可能です。</p>
+        <div class="price">¥25,000<small>〜</small></div>
+        <div class="row"><a class="btn" href="#">Google Map →</a><a class="btn" href="#">Reservation</a></div>
+        <div class="num-line">10:00 – 18:00（水・木曜定休） / TEL 050-1751-2601</div>
+      </div>
+      <div class="weights">
+        <div class="w"><span style="font-family:var(--yumin);font-weight:200">撮影予約</span><em>游明朝 200</em></div>
+        <div class="w"><span style="font-family:var(--yumin);font-weight:400">撮影予約</span><em>游明朝 400</em></div>
+        <div class="w"><span style="font-family:var(--cormorant);font-weight:300">Plans</span><em>Cormorant 300</em></div>
+        <div class="w"><span style="font-family:var(--cormorant);font-weight:500">Plans</span><em>Cormorant 500</em></div>
+        <div class="w"><span style="font-family:var(--cormorant);font-weight:600">Plans</span><em>Cormorant 600</em></div>
+      </div>
+    </div>
+
+    <!-- C -->
+    <div class="combo c-c">
+      <div class="combo-tag"><span class="no">C</span><span class="nm">Webフォント安全版（無料）</span><span class="sp">見出し=Noto Serif JP / 本文=Noto Sans JP / 英数=Cormorant</span><span class="cost free">無料</span></div>
+      <div class="demo">
+        <div class="eyebrow">05 — PLANS</div>
+        <div class="sec-head"><span class="sec-en">Plans &amp; Pricing</span><span class="sec-jp">撮影プラン・料金</span></div>
+        <div class="jp-head">撮影予約について</div>
+        <p class="body">子どもたちの輝く瞬間を、花とともに。衣装、ヘアメイク、撮影まですべてを取り揃えてお待ちしております。生花を使用したヘアアレンジや空間装飾で、トータルコーディネートもご提供可能です。</p>
+        <div class="price">¥25,000<small>〜</small></div>
+        <div class="row"><a class="btn" href="#">Google Map →</a><a class="btn" href="#">Reservation</a></div>
+        <div class="num-line">10:00 – 18:00（水・木曜定休） / TEL 050-1751-2601</div>
+      </div>
+      <div class="note">※ 全端末で同じ見え方になります（游明朝が出ない端末でも品位を保てる安全版）。</div>
+    </div>
+
+    <!-- D -->
+    <div class="combo c-d">
+      <div class="combo-tag"><span class="no">D</span><span class="nm">有料イメージ（参考）</span><span class="sp">見出し=游明朝 / 本文=游ゴシック / 英数=Garamond系</span><span class="cost paid">有料フォント要契約</span></div>
+      <div class="demo">
+        <div class="eyebrow">05 — PLANS</div>
+        <div class="sec-head"><span class="sec-en">Plans &amp; Pricing</span><span class="sec-jp">撮影プラン・料金</span></div>
+        <div class="jp-head">撮影予約について</div>
+        <p class="body">子どもたちの輝く瞬間を、花とともに。衣装、ヘアメイク、撮影まですべてを取り揃えてお待ちしております。生花を使用したヘアアレンジや空間装飾で、トータルコーディネートもご提供可能です。</p>
+        <div class="price">¥25,000<small>〜</small></div>
+        <div class="row"><a class="btn" href="#">Google Map →</a><a class="btn" href="#">Reservation</a></div>
+        <div class="num-line">10:00 – 18:00（水・木曜定休） / TEL 050-1751-2601</div>
+      </div>
+      <div class="note">※ リュウミン／ヒラギノ角ゴ／Garamond は有料Webフォント契約が必要です。ここでは近似フォントで雰囲気のみ表示しています（実フォントとは異なります）。</div>
+    </div>
+
+  </div>
+</body>
+</html>
