@@ -671,81 +671,15 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,5vw,4rem);di
   .items-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:560px){
-  /* Galleryカルーセル: stagger アニメ無効化(横スクロールで visible 判定されないため) */
-  #g-grid .g-item{
-    opacity:1 !important;
-    transform:none !important;
-    transition:none !important;
-  }
-  .g-grid{
-    columns:auto;
-    display:flex;
-    gap:.6rem;
-    overflow-x:auto;
-    overflow-y:hidden;
-    scroll-snap-type:x mandatory;
-    scroll-behavior:smooth;
-    -webkit-overflow-scrolling:touch;
-    padding:0 0 .5rem 0;
-    margin:0 -1.2rem; /* 画面端いっぱいまで広げる */
-    padding-left:10%; /* 左に前の画像チラ見えスペース */
-    padding-right:10%; /* 右に次の画像チラ見えスペース */
-    scrollbar-width:none;
-  }
+  /* Gallery(スマホ): カルーセル廃止 → 全写真を masonry で一覧表示。横写真は横長・縦写真は縦長で自然表示 */
+  #g-grid .g-item{opacity:1;transform:none;transition:none}
+  .g-grid{columns:2;column-gap:.5rem;display:block;overflow:visible;margin:0;padding:0}
   .g-grid::-webkit-scrollbar{display:none}
-  .g-item{
-    flex:0 0 80%; /* 画面の80%幅 = 両端に10%ずつチラ見え */
-    margin-bottom:0;
-    scroll-snap-align:center;
-    aspect-ratio:3/4;
-  }
-  .g-item img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-  }
+  .g-item{break-inside:avoid;margin:0 0 .5rem;scroll-snap-align:none;aspect-ratio:auto;overflow:hidden}
+  .g-item img{width:100%;height:auto;display:block}
   .g-item.hidden{display:none}
-  .g-cap{
-    opacity:1; /* スマホはホバーなしなので常時表示 */
-    font-size:.7rem;
-    padding:1.6rem .7rem .55rem;
-  }
-  .g-carousel{position:relative}
-  .g-nav{
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    width:36px;height:36px;
-    border-radius:50%;
-    background:rgba(255,255,255,.85);
-    backdrop-filter:blur(8px);
-    -webkit-backdrop-filter:blur(8px);
-    border:1px solid var(--border);
-    color:var(--ink);
-    font-family:var(--display);
-    font-size:1.4rem;
-    line-height:1;
-    cursor:pointer;
-    z-index:5;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:0;
-    transition:opacity .25s, background .25s;
-  }
-  .g-nav:active{background:var(--ink);color:#fff}
-  .g-nav-prev{left:.4rem}
-  .g-nav-next{right:.4rem}
-  .g-nav[disabled]{opacity:.3;pointer-events:none}
-  .g-counter{
-    display:block;
-    text-align:center;
-    margin-top:.8rem;
-    font-family:var(--sans);
-    font-size:.7rem;
-    letter-spacing:.12em;
-    color:var(--mid);
-  }
+  .g-cap{opacity:1;font-size:.6rem;padding:1.2rem .5rem .45rem}
+  .g-nav,.g-counter{display:none}
   .items-grid{grid-template-columns:1fr}
   .plans-grid{grid-template-columns:1fr}
   footer{flex-direction:column;text-align:center}
@@ -875,7 +809,7 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
   .kim-filter-btn{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.03em;padding:.5rem .1rem;border:1px solid rgba(110,90,58,.4);background:transparent;color:#6e5a3a;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
   .kim-filter-btn.active{background:#6e5a3a;color:#fff;border-color:#6e5a3a}
 }
-.kim-cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:1.5rem}
+.kim-cats{display:grid;grid-template-columns:3fr 1fr;gap:clamp(1.5rem,3vw,2.5rem);align-items:start}
 .kim-cat{background:#efe9da;padding:.3rem;display:flex;flex-direction:column;position:relative;overflow:hidden}
 .kim-cat-head{margin:.3rem .3rem .5rem;padding-bottom:.5rem;border-bottom:1px solid rgba(102,86,55,.25)}
 .kim-cat-title{font-family:var(--display);font-style:normal;font-weight:300;font-size:clamp(1.4rem,2.5vw,1.7rem);color:#6e5a3a;letter-spacing:.01em;margin-bottom:.25rem;font-variant-numeric:lining-nums}
@@ -953,13 +887,29 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 <style>
 /* 着物グループ見出し(スタジオ撮影着物 / お詣り着物) */
 .kim-group{margin-bottom:2.5rem}
-.kim-group + .kim-group{margin-top:1rem}
+.kim-group + .kim-group{margin-top:0}
 .kim-group-head{display:flex;align-items:baseline;gap:.8rem;margin:0 0 1.4rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)}
 .kim-group-en{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mid)}
 .kim-group-jp{font-family:var(--display);font-weight:400;font-size:1rem;letter-spacing:.06em;color:var(--ink)}
-.kim-group-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1rem,2.5vw,2rem)}
-@media(max-width:760px){.kim-group-cards{grid-template-columns:1fr}}
-@media(max-width:760px){.kim-cat-sub-img{aspect-ratio:8/7}.kim-arrow{top:38%}}
+.kim-group-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1rem,2.2vw,1.6rem)}
+/* PC: スタジオ=3列 / お詣り=1列。タイトル罫線は kim-cats の align-items:start で横並び揃え */
+.kim-group[data-group="studio"] .kim-group-cards{grid-template-columns:repeat(3,1fr)}
+.kim-group[data-group="mairi"] .kim-group-cards{grid-template-columns:1fr}
+/* スマホ: 着物をカード式の横スクロール(スタジオ→お詣りへ連続スクロール)・高さを抑える */
+@media(max-width:760px){
+  .kim-cats{display:flex;flex-direction:row;grid-template-columns:none;overflow-x:auto;gap:1.4rem;align-items:flex-start;margin:0 -1.2rem;padding:0 1.2rem .6rem;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .kim-cats::-webkit-scrollbar{display:none}
+  .kim-group{flex:0 0 auto;margin:0;min-width:0}
+  .kim-group + .kim-group{margin-top:0}
+  .kim-group-head{margin-bottom:.9rem}
+  .kim-group-cards{display:flex;flex-direction:row;grid-template-columns:none;gap:.7rem}
+  .kim-cat{flex:0 0 62vw;scroll-snap-align:start}
+  /* 高さ抑制: サブサムネ2枚を隠しメイン画像のみ(矢印でカテゴリ内送り) */
+  .kim-cat-sub-img{display:none}
+  .kim-cat-carousel{display:block}
+  .kim-cat-main{aspect-ratio:4/5}
+  .kim-arrow{top:50%}
+}
 </style>
 <style>
 /* B'（デザイナー提案）: 英数=Cormorant / 日本語見出し=Noto Serif JP / 本文=Noto Sans JP。数字はライニング数字で高さ・ベースラインを揃える */
