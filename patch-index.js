@@ -97,17 +97,17 @@
       { key:'mairi',  label:'お詣り着物',       en:'Omairi Kimono' }
     ];
     var CATS = [
-      { key:'3y-girl',  sub:'3 Year Old Girl',  jp:'三歳女の子', group:'studio' },
-      { key:'7y-girl',  sub:'7 Year Old Girl',  jp:'七歳女の子', group:'studio' },
-      { key:'10y-girl', sub:'10 Year Old Girl', jp:'十歳女の子', group:'studio' },
-      { key:'omairi',   sub:'Omiyamairi',       jp:'お宮参り',   group:'studio' },
-      { key:'3y-boy',   sub:'3 Year Old Boy',   jp:'三歳男の子', group:'studio' },
-      { key:'5y-boy',   sub:'5 Year Old Boy',   jp:'五歳男の子', group:'studio' },
-      { key:'10y-boy',  sub:'10 Year Old Boy',  jp:'十歳男の子', group:'studio' },
-      { key:'mairi-3g', sub:'3 Year Old Girl',  jp:'三歳女の子', group:'mairi' },
-      { key:'mairi-7g', sub:'7 Year Old Girl',  jp:'七歳女の子', group:'mairi' },
-      { key:'mairi-3b', sub:'3 Year Old Boy',   jp:'三歳男の子', group:'mairi' },
-      { key:'mairi-5b', sub:'5 Year Old Boy',   jp:'五歳男の子', group:'mairi' }
+      { key:'3y-girl',  sub:'3 Year Old Girl',  jp:'三歳女の子', group:'studio', gender:'girl' },
+      { key:'7y-girl',  sub:'7 Year Old Girl',  jp:'七歳女の子', group:'studio', gender:'girl' },
+      { key:'10y-girl', sub:'10 Year Old Girl', jp:'十歳女の子', group:'studio', gender:'girl' },
+      { key:'omairi',   sub:'Omiyamairi',       jp:'お宮参り',   group:'studio', gender:'' },
+      { key:'3y-boy',   sub:'3 Year Old Boy',   jp:'三歳男の子', group:'studio', gender:'boy' },
+      { key:'5y-boy',   sub:'5 Year Old Boy',   jp:'五歳男の子', group:'studio', gender:'boy' },
+      { key:'10y-boy',  sub:'10 Year Old Boy',  jp:'十歳男の子', group:'studio', gender:'boy' },
+      { key:'mairi-3g', sub:'3 Year Old Girl',  jp:'三歳女の子', group:'mairi', gender:'girl' },
+      { key:'mairi-7g', sub:'7 Year Old Girl',  jp:'七歳女の子', group:'mairi', gender:'girl' },
+      { key:'mairi-3b', sub:'3 Year Old Boy',   jp:'三歳男の子', group:'mairi', gender:'boy' },
+      { key:'mairi-5b', sub:'5 Year Old Boy',   jp:'五歳男の子', group:'mairi', gender:'boy' }
     ];
     // STUDIO_KEY を判定
     var STUDIO_KEY = location.pathname.indexOf('/nr/') !== -1 ? 'nr' : 'et';
@@ -133,7 +133,9 @@
     bar.innerHTML = '<button class="kim-filter-btn active" type="button" data-cat="all" onclick="kimFilter(this)">ALL</button>'
       + GROUPS.map(function(g){
           return '<button class="kim-filter-btn" type="button" data-group="' + g.key + '" onclick="kimFilter(this)">' + g.label + '</button>';
-        }).join('');
+        }).join('')
+      + '<button class="kim-filter-btn" type="button" data-gender="girl" onclick="kimFilter(this)">女の子</button>'
+      + '<button class="kim-filter-btn" type="button" data-gender="boy" onclick="kimFilter(this)">男の子</button>';
 
     container.className = 'kim-cats';
     function cardHtml(c){
@@ -162,12 +164,12 @@
         : '';
       var showArrows = items.length > 1;
       if(!hasItems){
-        return '<div class="kim-cat kim-cat-empty" data-cat="' + c.key + '" data-group="' + c.group + '">'
+        return '<div class="kim-cat kim-cat-empty" data-cat="' + c.key + '" data-group="' + c.group + '" data-gender="' + (c.gender||'') + '">'
           + '<div class="kim-cat-head"><div class="kim-cat-title">' + c.sub + '<span class="sec-jp">' + c.jp + '</span></div></div>'
           + '<div class="kim-cat-ph">Coming Soon</div>'
         + '</div>';
       }
-      return '<div class="kim-cat" data-cat="' + c.key + '" data-group="' + c.group + '"' + dataAttr + '>'
+      return '<div class="kim-cat" data-cat="' + c.key + '" data-group="' + c.group + '" data-gender="' + (c.gender||'') + '"' + dataAttr + '>'
         + '<div class="kim-cat-head">'
           + '<div class="kim-cat-title">'+c.sub+'<span class="sec-jp">'+c.jp+'</span></div>'
           + firstOpt
@@ -196,14 +198,18 @@
     });
     var cat = btn.getAttribute('data-cat');
     var grp = btn.getAttribute('data-group');
-    // グループ見出しの表示制御
-    Array.prototype.forEach.call(document.querySelectorAll('#kimono-grid .kim-group'), function(gEl){
-      gEl.style.display = (!grp || gEl.getAttribute('data-group') === grp) ? '' : 'none';
-    });
+    var gen = btn.getAttribute('data-gender');
+    // カードの表示判定
     Array.prototype.forEach.call(document.querySelectorAll('#kimono-grid .kim-cat'), function(card){
       var show = (cat === 'all' || !cat) || card.getAttribute('data-cat') === cat;
       if(grp) show = card.getAttribute('data-group') === grp;
+      if(gen) show = card.getAttribute('data-gender') === gen;
       card.style.display = show ? '' : 'none';
+    });
+    // グループ見出しは、そのグループに表示中カードが1枚でもあれば表示
+    Array.prototype.forEach.call(document.querySelectorAll('#kimono-grid .kim-group'), function(gEl){
+      var visible = gEl.querySelectorAll('.kim-cat:not([style*="display: none"])').length > 0;
+      gEl.style.display = visible ? '' : 'none';
     });
   };
 
