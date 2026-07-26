@@ -96,18 +96,19 @@
       { key:'studio', label:'スタジオ撮影着物', en:'Studio Kimono' },
       { key:'mairi',  label:'お詣り着物',       en:'Omairi Kimono' }
     ];
+    // 七五三の年齢順(各年齢で 女→男 を交互)。男の子が女の子の下に埋もれないようにする
     var CATS = [
       { key:'3y-girl',  sub:'3 Year Old Girl',  jp:'三歳女の子', group:'studio', gender:'girl' },
-      { key:'7y-girl',  sub:'7 Year Old Girl',  jp:'七歳女の子', group:'studio', gender:'girl' },
-      { key:'10y-girl', sub:'10 Year Old Girl', jp:'十歳女の子', group:'studio', gender:'girl' },
-      { key:'omairi',   sub:'Omiyamairi',       jp:'お宮参り',   group:'studio', gender:'' },
       { key:'3y-boy',   sub:'3 Year Old Boy',   jp:'三歳男の子', group:'studio', gender:'boy' },
       { key:'5y-boy',   sub:'5 Year Old Boy',   jp:'五歳男の子', group:'studio', gender:'boy' },
+      { key:'7y-girl',  sub:'7 Year Old Girl',  jp:'七歳女の子', group:'studio', gender:'girl' },
+      { key:'10y-girl', sub:'10 Year Old Girl', jp:'十歳女の子', group:'studio', gender:'girl' },
       { key:'10y-boy',  sub:'10 Year Old Boy',  jp:'十歳男の子', group:'studio', gender:'boy' },
+      { key:'omairi',   sub:'Omiyamairi',       jp:'お宮参り',   group:'studio', gender:'' },
       { key:'mairi-3g', sub:'3 Year Old Girl',  jp:'三歳女の子', group:'mairi', gender:'girl' },
-      { key:'mairi-7g', sub:'7 Year Old Girl',  jp:'七歳女の子', group:'mairi', gender:'girl' },
       { key:'mairi-3b', sub:'3 Year Old Boy',   jp:'三歳男の子', group:'mairi', gender:'boy' },
-      { key:'mairi-5b', sub:'5 Year Old Boy',   jp:'五歳男の子', group:'mairi', gender:'boy' }
+      { key:'mairi-5b', sub:'5 Year Old Boy',   jp:'五歳男の子', group:'mairi', gender:'boy' },
+      { key:'mairi-7g', sub:'7 Year Old Girl',  jp:'七歳女の子', group:'mairi', gender:'girl' }
     ];
     // STUDIO_KEY を判定
     var STUDIO_KEY = location.pathname.indexOf('/nr/') !== -1 ? 'nr' : 'et';
