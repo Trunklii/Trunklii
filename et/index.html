@@ -1689,8 +1689,22 @@ let heroImagesCur = [];
 function applyHeroLogoPos(idx){
   const ov = document.querySelector('.hero-logo-ov');
   if(!ov) return;
+  const mark = ov.querySelector('.et-mark');
   const pos = (heroImagesCur[idx] && heroImagesCur[idx].logoPos) || 'tc';
-  ov.className = 'hero-logo-ov lp-' + pos;
+  const newCls = 'hero-logo-ov lp-' + pos;
+  const posChanged = ov.className !== newCls;
+  // 「場所が移動する時だけ」新位置でフェイドイン(写真の切替と同速=1.6s)。同位置は即時(フェイドなし)
+  if(posChanged && mark){
+    mark.style.transition = 'none';
+    mark.style.opacity = '0';
+    ov.className = newCls;
+    void mark.offsetWidth; // reflow を挟んでからフェイド開始
+    mark.style.transition = 'opacity 1.6s ease';
+    mark.style.opacity = '1';
+  } else {
+    ov.className = newCls;
+    if(mark){ mark.style.transition = 'none'; mark.style.opacity = '1'; }
+  }
 }
 function buildHero(images){
   heroImagesCur = images || [];
