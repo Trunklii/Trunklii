@@ -324,12 +324,12 @@ window.SITE_DATA = {
               {
                       "file": "hero-sp-03.jpg",
                       "alt": "Studio et. hero（スマホ） 3",
-                      "logoPos": "tc"
+                      "logoPos": "c"
               },
               {
                       "file": "hero-sp-04.jpg",
                       "alt": "Studio et. hero（スマホ） 4",
-                      "logoPos": "bl"
+                      "logoPos": "c"
               },
               {
                       "file": "hero-sp-05.jpg",
@@ -339,32 +339,32 @@ window.SITE_DATA = {
               {
                       "file": "hero-sp-06.jpg",
                       "alt": "Studio et. hero（スマホ） 6",
-                      "logoPos": "tc"
+                      "logoPos": "c"
               },
               {
                       "file": "hero-sp-07.jpg",
                       "alt": "Studio et. hero（スマホ） 7",
-                      "logoPos": "tl"
+                      "logoPos": "c"
               },
               {
                       "file": "hero-sp-08.jpg",
                       "alt": "Studio et. hero（スマホ） 8",
-                      "logoPos": "tc"
+                      "logoPos": "c"
               },
               {
                       "file": "hero-sp-09.jpg",
                       "alt": "Studio et. hero（スマホ） 9",
-                      "logoPos": "bl"
+                      "logoPos": "c"
               },
               {
                       "file": "hero-sp-10.jpg",
                       "alt": "Studio et. hero（スマホ） 10",
-                      "logoPos": "tc"
+                      "logoPos": "c"
               },
               {
                       "file": "hero-sp-11.jpg",
                       "alt": "Studio et. hero（スマホ） 11",
-                      "logoPos": "tc"
+                      "logoPos": "c"
               },
               {
                       "file": "hero-sp-01.jpg",
