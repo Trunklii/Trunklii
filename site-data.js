@@ -279,80 +279,98 @@ window.SITE_DATA = {
       "bookingLabel": "予約する",
       "comingSoon": false,
       "heroImages": [
-        {
-          "file": "hero-pc-02.jpg",
-          "alt": "Studio et. hero（PC） 2"
-        },
-        {
-          "file": "hero-pc-03.jpg",
-          "alt": "Studio et. hero（PC） 3"
-        },
-        {
-          "file": "hero-pc-04.jpg",
-          "alt": "Studio et. hero（PC） 4"
-        },
-        {
-          "file": "hero-pc-05.jpg",
-          "alt": "Studio et. hero（PC） 5"
-        },
-        {
-          "file": "hero-pc-06.jpg",
-          "alt": "Studio et. hero（PC） 6"
-        },
-        {
-          "file": "hero-pc-07.jpg",
-          "alt": "Studio et. hero（PC） 7"
-        },
-        {
-          "file": "hero-pc-01.jpg",
-          "alt": "Studio et. hero（PC） 1"
-        }
+              {
+                      "file": "hero-pc-02.jpg",
+                      "alt": "Studio et. hero（PC） 2",
+                      "logoPos": "tl"
+              },
+              {
+                      "file": "hero-pc-03.jpg",
+                      "alt": "Studio et. hero（PC） 3",
+                      "logoPos": "cl"
+              },
+              {
+                      "file": "hero-pc-04.jpg",
+                      "alt": "Studio et. hero（PC） 4",
+                      "logoPos": "cl"
+              },
+              {
+                      "file": "hero-pc-05.jpg",
+                      "alt": "Studio et. hero（PC） 5",
+                      "logoPos": "tl"
+              },
+              {
+                      "file": "hero-pc-06.jpg",
+                      "alt": "Studio et. hero（PC） 6",
+                      "logoPos": "cr"
+              },
+              {
+                      "file": "hero-pc-07.jpg",
+                      "alt": "Studio et. hero（PC） 7",
+                      "logoPos": "bl"
+              },
+              {
+                      "file": "hero-pc-01.jpg",
+                      "alt": "Studio et. hero（PC） 1",
+                      "logoPos": "tc"
+              }
       ],
       "heroImagesSp": [
-        {
-          "file": "hero-sp-02.jpg",
-          "alt": "Studio et. hero（スマホ） 2"
-        },
-        {
-          "file": "hero-sp-03.jpg",
-          "alt": "Studio et. hero（スマホ） 3"
-        },
-        {
-          "file": "hero-sp-04.jpg",
-          "alt": "Studio et. hero（スマホ） 4"
-        },
-        {
-          "file": "hero-sp-05.jpg",
-          "alt": "Studio et. hero（スマホ） 5"
-        },
-        {
-          "file": "hero-sp-06.jpg",
-          "alt": "Studio et. hero（スマホ） 6"
-        },
-        {
-          "file": "hero-sp-07.jpg",
-          "alt": "Studio et. hero（スマホ） 7"
-        },
-        {
-          "file": "hero-sp-08.jpg",
-          "alt": "Studio et. hero（スマホ） 8"
-        },
-        {
-          "file": "hero-sp-09.jpg",
-          "alt": "Studio et. hero（スマホ） 9"
-        },
-        {
-          "file": "hero-sp-10.jpg",
-          "alt": "Studio et. hero（スマホ） 10"
-        },
-        {
-          "file": "hero-sp-11.jpg",
-          "alt": "Studio et. hero（スマホ） 11"
-        },
-        {
-          "file": "hero-sp-01.jpg",
-          "alt": "Studio et. hero（スマホ） 1"
-        }
+              {
+                      "file": "hero-sp-02.jpg",
+                      "alt": "Studio et. hero（スマホ） 2",
+                      "logoPos": "tc"
+              },
+              {
+                      "file": "hero-sp-03.jpg",
+                      "alt": "Studio et. hero（スマホ） 3",
+                      "logoPos": "tc"
+              },
+              {
+                      "file": "hero-sp-04.jpg",
+                      "alt": "Studio et. hero（スマホ） 4",
+                      "logoPos": "bl"
+              },
+              {
+                      "file": "hero-sp-05.jpg",
+                      "alt": "Studio et. hero（スマホ） 5",
+                      "logoPos": "tc"
+              },
+              {
+                      "file": "hero-sp-06.jpg",
+                      "alt": "Studio et. hero（スマホ） 6",
+                      "logoPos": "tc"
+              },
+              {
+                      "file": "hero-sp-07.jpg",
+                      "alt": "Studio et. hero（スマホ） 7",
+                      "logoPos": "tl"
+              },
+              {
+                      "file": "hero-sp-08.jpg",
+                      "alt": "Studio et. hero（スマホ） 8",
+                      "logoPos": "tc"
+              },
+              {
+                      "file": "hero-sp-09.jpg",
+                      "alt": "Studio et. hero（スマホ） 9",
+                      "logoPos": "bl"
+              },
+              {
+                      "file": "hero-sp-10.jpg",
+                      "alt": "Studio et. hero（スマホ） 10",
+                      "logoPos": "tc"
+              },
+              {
+                      "file": "hero-sp-11.jpg",
+                      "alt": "Studio et. hero（スマホ） 11",
+                      "logoPos": "tc"
+              },
+              {
+                      "file": "hero-sp-01.jpg",
+                      "alt": "Studio et. hero（スマホ） 1",
+                      "logoPos": "tc"
+              }
       ],
       "about": {
         "image": "18295179019220181.jpg",

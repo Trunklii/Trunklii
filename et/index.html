@@ -445,7 +445,17 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .hero-slide.active{opacity:1}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(248,246,242,.04) 0%,rgba(17,16,16,.38) 100%)}
 /* ヒーロー中央のロゴ オーバーレイ(白マスク＋ドロップシャドウで明暗どちらの写真でも視認) */
-.hero-logo-ov{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;z-index:2;pointer-events:none;padding:clamp(4.5rem,13vh,8rem) 1rem 1rem}
+/* ヒーローロゴ: 写真ごとに位置指定(lp-*)で被写体の顔を避ける。既定は上部中央 */
+.hero-logo-ov{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;z-index:2;pointer-events:none;padding:clamp(4.5rem,13vh,7rem) clamp(1.4rem,5vw,3rem) clamp(3rem,9vh,5rem)}
+.hero-logo-ov.lp-tl{align-items:flex-start;justify-content:flex-start}
+.hero-logo-ov.lp-tc{align-items:flex-start;justify-content:center}
+.hero-logo-ov.lp-tr{align-items:flex-start;justify-content:flex-end}
+.hero-logo-ov.lp-cl{align-items:center;justify-content:flex-start}
+.hero-logo-ov.lp-c{align-items:center;justify-content:center}
+.hero-logo-ov.lp-cr{align-items:center;justify-content:flex-end}
+.hero-logo-ov.lp-bl{align-items:flex-end;justify-content:flex-start}
+.hero-logo-ov.lp-bc{align-items:flex-end;justify-content:center}
+.hero-logo-ov.lp-br{align-items:flex-end;justify-content:flex-end}
 .hero-logo-ov .et-mark{display:block;width:clamp(40px,5vw,83px);aspect-ratio:404/411;background:#fff;-webkit-mask:url(../assets/et-logo-hero.png) center/contain no-repeat;mask:url(../assets/et-logo-hero.png) center/contain no-repeat;filter:drop-shadow(0 2px 18px rgba(17,16,16,.45))}
 .hero-content{position:absolute;bottom:clamp(3rem,8vw,7rem);left:clamp(1.5rem,6vw,6rem);z-index:2}
 .hero-eyebrow{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:.8rem}
@@ -1674,7 +1684,16 @@ async function init(){
   });
 }
 
+let heroImagesCur = [];
+// スライドごとにロゴ位置(logoPos)を .hero-logo-ov に反映。既定は上部中央(tc)
+function applyHeroLogoPos(idx){
+  const ov = document.querySelector('.hero-logo-ov');
+  if(!ov) return;
+  const pos = (heroImagesCur[idx] && heroImagesCur[idx].logoPos) || 'tc';
+  ov.className = 'hero-logo-ov lp-' + pos;
+}
 function buildHero(images){
+  heroImagesCur = images || [];
   const slides = document.getElementById('hero-slides');
   const dots = document.getElementById('hero-dots');
   slides.innerHTML = ''; dots.innerHTML = '';
@@ -1688,6 +1707,7 @@ function buildHero(images){
     d.onclick = ()=>goSlide(i);
     dots.appendChild(d);
   });
+  applyHeroLogoPos(0);
   if(images.length>1){
     let idx=0;
     heroTimer = setInterval(()=>{
@@ -1696,6 +1716,7 @@ function buildHero(images){
       sl[idx].classList.remove('active'); dt[idx].classList.remove('active');
       idx=(idx+1)%sl.length;
       sl[idx].classList.add('active'); dt[idx].classList.add('active');
+      applyHeroLogoPos(idx);
     },5000);
   }
 }
@@ -1706,6 +1727,7 @@ function goSlide(i){
   sl.forEach(s=>s.classList.remove('active'));
   dt.forEach(d=>d.classList.remove('active'));
   sl[i]?.classList.add('active'); dt[i]?.classList.add('active');
+  applyHeroLogoPos(i);
 }
 
 function filterGallery(cat, btn){
