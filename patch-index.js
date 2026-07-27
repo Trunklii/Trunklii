@@ -132,11 +132,8 @@
       container.parentNode.insertBefore(bar, container);
     }
     bar.innerHTML = '<button class="kim-filter-btn active" type="button" data-cat="all" onclick="kimFilter(this)">ALL</button>'
-      + GROUPS.map(function(g){
-          return '<button class="kim-filter-btn" type="button" data-group="' + g.key + '" onclick="kimFilter(this)">' + g.label + '</button>';
-        }).join('')
-      + '<button class="kim-filter-btn" type="button" data-gender="girl" onclick="kimFilter(this)">女の子</button>'
-      + '<button class="kim-filter-btn" type="button" data-gender="boy" onclick="kimFilter(this)">男の子</button>';
+      + '<button class="kim-filter-btn" type="button" data-gender="girl" onclick="kimFilter(this)">Girl</button>'
+      + '<button class="kim-filter-btn" type="button" data-gender="boy" onclick="kimFilter(this)">Boy</button>';
 
     container.className = 'kim-cats';
     function cardHtml(c){

@@ -444,6 +444,9 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .hero-slide{position:absolute;inset:0;opacity:0;background-size:cover;background-position:center;transition:opacity 1.6s ease}
 .hero-slide.active{opacity:1}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(248,246,242,.04) 0%,rgba(17,16,16,.38) 100%)}
+/* ヒーロー中央のロゴ オーバーレイ(白マスク＋ドロップシャドウで明暗どちらの写真でも視認) */
+.hero-logo-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;pointer-events:none;padding:1rem}
+.hero-logo-ov .et-mark{display:block;width:clamp(190px,24vw,400px);aspect-ratio:672/445;background:#fff;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat;filter:drop-shadow(0 2px 18px rgba(17,16,16,.45))}
 .hero-content{position:absolute;bottom:clamp(3rem,8vw,7rem);left:clamp(1.5rem,6vw,6rem);z-index:2}
 .hero-eyebrow{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:.8rem}
 .hero-name{font-family:var(--display);font-weight:300;font-style:normal;font-size:clamp(3.5rem,10vw,9rem);letter-spacing:-.01em;line-height:1;color:#fff}
@@ -805,7 +808,7 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 .kim-filter{display:none}
 @media(max-width:760px){
   /* 8ボタンを必ず2行に収める4列グリッド */
-  .kim-filter{display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem;margin:0 0 1.6rem}
+  .kim-filter{display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem;margin:0 0 1.6rem}
   .kim-filter-btn{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.03em;padding:.5rem .1rem;border:1px solid rgba(110,90,58,.4);background:transparent;color:#6e5a3a;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
   .kim-filter-btn.active{background:#6e5a3a;color:#fff;border-color:#6e5a3a}
 }
@@ -907,11 +910,9 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
   .kim-group[data-group="studio"] .kim-group-cards,
   .kim-group[data-group="mairi"] .kim-group-cards{display:grid;grid-template-columns:1fr;gap:1rem}
   .kim-cat{width:100%}
-  /* 高さ抑制: サブサムネ2枚を隠しメイン画像のみ(矢印でカテゴリ内送り) */
-  .kim-cat-sub-img{display:none}
-  .kim-cat-carousel{display:block}
+  /* カードは PC同様「メイン画像＋下に2枚サムネ」のまま(矢印でカテゴリ内送り) */
   .kim-cat-main{aspect-ratio:4/5}
-  .kim-arrow{top:50%}
+  .kim-arrow{top:38%}
 }
 </style>
 <style>
@@ -1084,6 +1085,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="hero" id="hero">
   <div id="hero-slides"></div>
   <div class="hero-overlay"></div>
+  <div class="hero-logo-ov" aria-hidden="true"><span class="et-mark"></span></div>
   <div class="hero-content">
     <div class="hero-eyebrow" id="hero-eyebrow">Trunklii</div>
     <div class="hero-name" id="hero-name">et.</div>
