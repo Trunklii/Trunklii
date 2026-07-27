@@ -895,15 +895,18 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 /* PC: スタジオ=3列 / お詣り=1列。タイトル罫線は kim-cats の align-items:start で横並び揃え */
 .kim-group[data-group="studio"] .kim-group-cards{grid-template-columns:repeat(3,1fr)}
 .kim-group[data-group="mairi"] .kim-group-cards{grid-template-columns:1fr}
-/* スマホ: 着物をカード式の横スクロール(スタジオ→お詣りへ連続スクロール)・高さを抑える */
+/* スマホ: グループ(スタジオ/お詣り)を横スクロールで横並び。各グループ内の①〜⑦カードは縦積み */
 @media(max-width:760px){
-  .kim-cats{display:flex;flex-direction:row;grid-template-columns:none;overflow-x:auto;gap:1.4rem;align-items:flex-start;margin:0 -1.2rem;padding:0 1.2rem .6rem;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .kim-cats{display:flex;flex-direction:row;grid-template-columns:none;overflow-x:auto;gap:1.2rem;align-items:flex-start;margin:0 -1.2rem;padding:0 1.2rem .6rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .kim-cats::-webkit-scrollbar{display:none}
-  .kim-group{flex:0 0 auto;margin:0;min-width:0}
+  .kim-group{flex:0 0 86vw;scroll-snap-align:start;margin:0;min-width:0}
   .kim-group + .kim-group{margin-top:0}
   .kim-group-head{margin-bottom:.9rem}
-  .kim-group-cards{display:flex;flex-direction:row;grid-template-columns:none;gap:.7rem}
-  .kim-cat{flex:0 0 62vw;scroll-snap-align:start}
+  /* PCのstudio3列ルール(詳細度0,3,0)を同詳細度で上書き→縦1列 */
+  .kim-group-cards,
+  .kim-group[data-group="studio"] .kim-group-cards,
+  .kim-group[data-group="mairi"] .kim-group-cards{display:grid;grid-template-columns:1fr;gap:1rem}
+  .kim-cat{width:100%}
   /* 高さ抑制: サブサムネ2枚を隠しメイン画像のみ(矢印でカテゴリ内送り) */
   .kim-cat-sub-img{display:none}
   .kim-cat-carousel{display:block}
