@@ -1075,7 +1075,9 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
   .kim-filter-btn{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.03em;padding:.5rem .1rem;border:1px solid rgba(110,90,58,.4);background:transparent;color:#6e5a3a;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
   .kim-filter-btn.active{background:#6e5a3a;color:#fff;border-color:#6e5a3a}
 }
-.kim-cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:1.5rem}
+.kim-cats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2.2vw,1.6rem);align-items:start}
+.kim-cats > .kim-group[data-group="studio"]{grid-column:span 3}
+.kim-cats > .kim-group[data-group="mairi"]{grid-column:span 1}
 .kim-cat{background:#fff;padding:.3rem;display:flex;flex-direction:column;position:relative;overflow:hidden}
 .kim-cat-head{margin:.3rem .3rem .5rem;padding-bottom:.5rem;border-bottom:1px solid rgba(58,42,31,.3)}
 .kim-cat-title{font-family:var(--display);font-style:normal;font-weight:300;font-size:clamp(1.4rem,2.5vw,1.7rem);color:#3A2A1F;letter-spacing:.01em;margin-bottom:.25rem;font-variant-numeric:lining-nums}
@@ -1176,13 +1178,6 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 <style>
 .kim-cat-empty{padding-bottom:1.2rem}
 .kim-cat-ph{display:flex;align-items:center;justify-content:center;height:96px;background:rgba(110,90,55,.05);border:1px dashed rgba(110,90,55,.28);font-family:var(--display);font-weight:500;font-size:.8rem;letter-spacing:.12em;color:#a08e6c}
-</style>
-<style>
-/* 着物グループは縦積み・カード幅を全グループ共通に(高さを揃える) */
-#kimono-grid{display:block}
-#kimono-grid .kim-group-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2.2vw,1.6rem);align-items:start}
-@media(max-width:1100px){#kimono-grid .kim-group-cards{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:760px){#kimono-grid .kim-group-cards{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
