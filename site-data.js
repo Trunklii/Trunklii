@@ -279,98 +279,98 @@ window.SITE_DATA = {
       "bookingLabel": "予約する",
       "comingSoon": false,
       "heroImages": [
-              {
-                      "file": "hero-pc-02.jpg",
-                      "alt": "Studio et. hero（PC） 2",
-                      "logoPos": "tl"
-              },
-              {
-                      "file": "hero-pc-03.jpg",
-                      "alt": "Studio et. hero（PC） 3",
-                      "logoPos": "cl"
-              },
-              {
-                      "file": "hero-pc-04.jpg",
-                      "alt": "Studio et. hero（PC） 4",
-                      "logoPos": "cl"
-              },
-              {
-                      "file": "hero-pc-05.jpg",
-                      "alt": "Studio et. hero（PC） 5",
-                      "logoPos": "tl"
-              },
-              {
-                      "file": "hero-pc-06.jpg",
-                      "alt": "Studio et. hero（PC） 6",
-                      "logoPos": "cr"
-              },
-              {
-                      "file": "hero-pc-07.jpg",
-                      "alt": "Studio et. hero（PC） 7",
-                      "logoPos": "bl"
-              },
-              {
-                      "file": "hero-pc-01.jpg",
-                      "alt": "Studio et. hero（PC） 1",
-                      "logoPos": "tc"
-              }
+        {
+          "file": "hero-pc-02.jpg",
+          "alt": "Studio et. hero（PC） 2",
+          "logoPos": "tl"
+        },
+        {
+          "file": "hero-pc-03.jpg",
+          "alt": "Studio et. hero（PC） 3",
+          "logoPos": "cl"
+        },
+        {
+          "file": "hero-pc-04.jpg",
+          "alt": "Studio et. hero（PC） 4",
+          "logoPos": "cl"
+        },
+        {
+          "file": "hero-pc-05.jpg",
+          "alt": "Studio et. hero（PC） 5",
+          "logoPos": "tl"
+        },
+        {
+          "file": "hero-pc-06.jpg",
+          "alt": "Studio et. hero（PC） 6",
+          "logoPos": "cr"
+        },
+        {
+          "file": "hero-pc-07.jpg",
+          "alt": "Studio et. hero（PC） 7",
+          "logoPos": "bl"
+        },
+        {
+          "file": "hero-pc-01.jpg",
+          "alt": "Studio et. hero（PC） 1",
+          "logoPos": "tc"
+        }
       ],
       "heroImagesSp": [
-              {
-                      "file": "hero-sp-02.jpg",
-                      "alt": "Studio et. hero（スマホ） 2",
-                      "logoPos": "tc"
-              },
-              {
-                      "file": "hero-sp-03.jpg",
-                      "alt": "Studio et. hero（スマホ） 3",
-                      "logoPos": "c"
-              },
-              {
-                      "file": "hero-sp-04.jpg",
-                      "alt": "Studio et. hero（スマホ） 4",
-                      "logoPos": "c"
-              },
-              {
-                      "file": "hero-sp-05.jpg",
-                      "alt": "Studio et. hero（スマホ） 5",
-                      "logoPos": "tc"
-              },
-              {
-                      "file": "hero-sp-06.jpg",
-                      "alt": "Studio et. hero（スマホ） 6",
-                      "logoPos": "c"
-              },
-              {
-                      "file": "hero-sp-07.jpg",
-                      "alt": "Studio et. hero（スマホ） 7",
-                      "logoPos": "c"
-              },
-              {
-                      "file": "hero-sp-08.jpg",
-                      "alt": "Studio et. hero（スマホ） 8",
-                      "logoPos": "c"
-              },
-              {
-                      "file": "hero-sp-09.jpg",
-                      "alt": "Studio et. hero（スマホ） 9",
-                      "logoPos": "c"
-              },
-              {
-                      "file": "hero-sp-10.jpg",
-                      "alt": "Studio et. hero（スマホ） 10",
-                      "logoPos": "c"
-              },
-              {
-                      "file": "hero-sp-11.jpg",
-                      "alt": "Studio et. hero（スマホ） 11",
-                      "logoPos": "c"
-              },
-              {
-                      "file": "hero-sp-01.jpg",
-                      "alt": "Studio et. hero（スマホ） 1",
-                      "logoPos": "tc"
-              }
+        {
+          "file": "hero-sp-02.jpg",
+          "alt": "Studio et. hero（スマホ） 2",
+          "logoPos": "tc"
+        },
+        {
+          "file": "hero-sp-03.jpg",
+          "alt": "Studio et. hero（スマホ） 3",
+          "logoPos": "c"
+        },
+        {
+          "file": "hero-sp-04.jpg",
+          "alt": "Studio et. hero（スマホ） 4",
+          "logoPos": "c"
+        },
+        {
+          "file": "hero-sp-05.jpg",
+          "alt": "Studio et. hero（スマホ） 5",
+          "logoPos": "tc"
+        },
+        {
+          "file": "hero-sp-06.jpg",
+          "alt": "Studio et. hero（スマホ） 6",
+          "logoPos": "c"
+        },
+        {
+          "file": "hero-sp-07.jpg",
+          "alt": "Studio et. hero（スマホ） 7",
+          "logoPos": "c"
+        },
+        {
+          "file": "hero-sp-08.jpg",
+          "alt": "Studio et. hero（スマホ） 8",
+          "logoPos": "c"
+        },
+        {
+          "file": "hero-sp-09.jpg",
+          "alt": "Studio et. hero（スマホ） 9",
+          "logoPos": "c"
+        },
+        {
+          "file": "hero-sp-10.jpg",
+          "alt": "Studio et. hero（スマホ） 10",
+          "logoPos": "c"
+        },
+        {
+          "file": "hero-sp-11.jpg",
+          "alt": "Studio et. hero（スマホ） 11",
+          "logoPos": "c"
+        },
+        {
+          "file": "hero-sp-01.jpg",
+          "alt": "Studio et. hero（スマホ） 1",
+          "logoPos": "tc"
+        }
       ],
       "about": {
         "image": "18295179019220181.jpg",
@@ -517,6 +517,90 @@ window.SITE_DATA = {
             "category": "3y-girl"
           },
           {
+            "file": "kimono-3g-09.jpg",
+            "name": "三歳女の子 09",
+            "desc": "",
+            "category": "3y-girl"
+          },
+          {
+            "file": "kimono-3g-10.jpg",
+            "name": "三歳女の子 10",
+            "desc": "",
+            "category": "3y-girl"
+          },
+          {
+            "file": "kimono-3g-11.jpg",
+            "name": "三歳女の子 11",
+            "desc": "",
+            "category": "3y-girl"
+          },
+          {
+            "file": "kimono-7g-01.jpg",
+            "name": "七歳女の子 01",
+            "desc": "",
+            "category": "7y-girl"
+          },
+          {
+            "file": "kimono-7g-02.jpg",
+            "name": "七歳女の子 02",
+            "desc": "",
+            "category": "7y-girl"
+          },
+          {
+            "file": "kimono-7g-03.jpg",
+            "name": "七歳女の子 03",
+            "desc": "",
+            "category": "7y-girl"
+          },
+          {
+            "file": "kimono-7g-04.jpg",
+            "name": "七歳女の子 04",
+            "desc": "",
+            "category": "7y-girl"
+          },
+          {
+            "file": "kimono-10g-01.jpg",
+            "name": "十歳女の子 01",
+            "desc": "",
+            "category": "10y-girl"
+          },
+          {
+            "file": "kimono-10g-02.jpg",
+            "name": "十歳女の子 02",
+            "desc": "",
+            "category": "10y-girl"
+          },
+          {
+            "file": "kimono-10g-03.jpg",
+            "name": "十歳女の子 03",
+            "desc": "",
+            "category": "10y-girl"
+          },
+          {
+            "file": "kimono-10g-04.jpg",
+            "name": "十歳女の子 04",
+            "desc": "",
+            "category": "10y-girl"
+          },
+          {
+            "file": "kimono-omi-01.jpg",
+            "name": "お宮参り 01",
+            "desc": "",
+            "category": "omairi"
+          },
+          {
+            "file": "kimono-omi-02.jpg",
+            "name": "お宮参り 02",
+            "desc": "",
+            "category": "omairi"
+          },
+          {
+            "file": "kimono-omi-03.jpg",
+            "name": "お宮参り 03",
+            "desc": "",
+            "category": "omairi"
+          },
+          {
             "file": "kimono-3b-01.jpg",
             "name": "三歳男の子 01",
             "desc": "",
@@ -559,24 +643,6 @@ window.SITE_DATA = {
             "category": "3y-boy"
           },
           {
-            "file": "kimono-3b-08.jpg",
-            "name": "三歳男の子 08",
-            "desc": "",
-            "category": "3y-boy"
-          },
-          {
-            "file": "kimono-3b-09.jpg",
-            "name": "三歳男の子 09",
-            "desc": "",
-            "category": "3y-boy"
-          },
-          {
-            "file": "kimono-3b-10.jpg",
-            "name": "三歳男の子 10",
-            "desc": "",
-            "category": "3y-boy"
-          },
-          {
             "file": "kimono-5b-01.jpg",
             "name": "五歳男の子 01",
             "desc": "",
@@ -613,112 +679,88 @@ window.SITE_DATA = {
             "category": "5y-boy"
           },
           {
-            "file": "kimono-5b-07.jpg",
-            "name": "五歳男の子 07",
-            "desc": "",
-            "category": "5y-boy"
-          },
-          {
-            "file": "kimono-7g-01.jpg",
-            "name": "七歳女の子 01",
-            "desc": "",
-            "category": "7y-girl"
-          },
-          {
-            "file": "kimono-7g-02.jpg",
-            "name": "七歳女の子 02",
-            "desc": "",
-            "category": "7y-girl"
-          },
-          {
-            "file": "kimono-7g-03.jpg",
-            "name": "七歳女の子 03",
-            "desc": "",
-            "category": "7y-girl"
-          },
-          {
-            "file": "kimono-7g-04.jpg",
-            "name": "七歳女の子 04",
-            "desc": "",
-            "category": "7y-girl"
-          },
-          {
-            "file": "kimono-7g-05.jpg",
-            "name": "七歳女の子 05",
-            "desc": "",
-            "category": "7y-girl"
-          },
-          {
-            "file": "kimono-7g-06.jpg",
-            "name": "七歳女の子 06",
-            "desc": "",
-            "category": "7y-girl"
-          },
-          {
-            "file": "kimono-7g-07.jpg",
-            "name": "七歳女の子 07",
-            "desc": "",
-            "category": "7y-girl"
-          },
-          {
-            "file": "kimono-7g-08.jpg",
-            "name": "七歳女の子 08",
-            "desc": "",
-            "category": "7y-girl"
-          },
-          {
-            "file": "kimono-10g-01.jpg",
-            "name": "十歳女の子 01",
-            "desc": "",
-            "category": "10y-girl"
-          },
-          {
-            "file": "kimono-10g-02.jpg",
-            "name": "十歳女の子 02",
-            "desc": "",
-            "category": "10y-girl"
-          },
-          {
-            "file": "kimono-10g-03.jpg",
-            "name": "十歳女の子 03",
-            "desc": "",
-            "category": "10y-girl"
-          },
-          {
-            "file": "kimono-3g-09.jpg",
-            "name": "三歳女の子 チュール 01",
-            "desc": "",
-            "category": "3y-girl"
-          },
-          {
-            "file": "kimono-3g-10.jpg",
-            "name": "三歳女の子 チュール 02",
-            "desc": "",
-            "category": "3y-girl"
-          },
-          {
             "file": "kimono-10b-01.jpg",
             "name": "十歳男の子 01",
             "desc": "",
             "category": "10y-boy"
           },
           {
-            "file": "kimono-om-01.jpg",
-            "name": "お宮参り 01",
+            "file": "kimono-m3g-01.jpg",
+            "name": "お詣り 三歳女の子 01",
             "desc": "",
-            "category": "omairi"
+            "category": "mairi-3g"
           },
           {
-            "file": "kimono-om-02.jpg",
-            "name": "お宮参り 02",
+            "file": "kimono-m3g-02.jpg",
+            "name": "お詣り 三歳女の子 02",
             "desc": "",
-            "category": "omairi"
+            "category": "mairi-3g"
           },
           {
-            "file": "kimono-om-03.jpg",
-            "name": "お宮参り 03",
+            "file": "kimono-m3g-03.jpg",
+            "name": "お詣り 三歳女の子 03",
             "desc": "",
-            "category": "omairi"
+            "category": "mairi-3g"
+          },
+          {
+            "file": "kimono-m7g-01.jpg",
+            "name": "お詣り 七歳女の子 01",
+            "desc": "",
+            "category": "mairi-7g"
+          },
+          {
+            "file": "kimono-m7g-02.jpg",
+            "name": "お詣り 七歳女の子 02",
+            "desc": "",
+            "category": "mairi-7g"
+          },
+          {
+            "file": "kimono-m7g-03.jpg",
+            "name": "お詣り 七歳女の子 03",
+            "desc": "",
+            "category": "mairi-7g"
+          },
+          {
+            "file": "kimono-m7g-04.jpg",
+            "name": "お詣り 七歳女の子 04",
+            "desc": "",
+            "category": "mairi-7g"
+          },
+          {
+            "file": "kimono-m3b-01.jpg",
+            "name": "お詣り 三歳男の子 01",
+            "desc": "",
+            "category": "mairi-3b"
+          },
+          {
+            "file": "kimono-m3b-02.jpg",
+            "name": "お詣り 三歳男の子 02",
+            "desc": "",
+            "category": "mairi-3b"
+          },
+          {
+            "file": "kimono-m3b-03.jpg",
+            "name": "お詣り 三歳男の子 03",
+            "desc": "",
+            "category": "mairi-3b"
+          },
+          {
+            "file": "kimono-m5b-01.jpg",
+            "name": "お詣り 五歳男の子 01",
+            "desc": "",
+            "category": "mairi-5b"
+          },
+          {
+            "file": "kimono-m5b-02.jpg",
+            "name": "お詣り 五歳男の子 02",
+            "desc": "",
+            "category": "mairi-5b"
+          },
+          {
+            "file": "kimono-m5b-03.jpg",
+            "name": "お詣り 五歳男の子 03",
+            "desc": "",
+            "category": "mairi-5b"
           }
         ]
       },
