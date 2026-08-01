@@ -2013,15 +2013,21 @@ function toggleFloatPanel(ev){
   function updateFloatVisibility(){
     // タグ列の末尾(注記=No.検索の手前)を基準にする。No.検索は含めない
     const tagsEnd = document.querySelector('.g-filters .filter-note') || document.querySelector('.g-filters');
-    const sec = document.getElementById('gallery');
     const fl = document.getElementById('g-float');
-    if(!tagsEnd || !sec || !fl) return;
+    if(!tagsEnd || !fl) return;
     const vh = window.innerHeight || document.documentElement.clientHeight;
     const tagsBottom = tagsEnd.getBoundingClientRect().bottom;   // タグ列の下端
-    const sBottom = sec.getBoundingClientRect().bottom;          // ギャラリーの下端
-    // タグ列が画面上へスクロールアウトし、かつギャラリーがまだ表示範囲にある間だけ表示
-    fl.classList.toggle('on', tagsBottom < 70 && sBottom > vh*0.2);
+    // 下端の基準: View More(表示中) / 全件表示なら写真グリッドの下端
+    const fade = document.getElementById('g-fade');
+    const grid = document.getElementById('g-grid');
+    const ref = (fade && getComputedStyle(fade).display !== 'none') ? fade : grid;
+    if(!ref) return;
+    const refBottom = ref.getBoundingClientRect().bottom;
+    const floatTop = vh/2 - (fl.offsetHeight || 140)/2;          // フロートは上下中央
+    // タグ列が画面上へ出た後、フロートが View More より下に来たら非表示
+    fl.classList.toggle('on', tagsBottom < 70 && refBottom > floatTop);
   }
+  window.updateGalleryFloat = updateFloatVisibility;
   window.addEventListener('scroll', updateFloatVisibility, { passive:true });
   window.addEventListener('resize', updateFloatVisibility);
   updateFloatVisibility();
@@ -2056,14 +2062,17 @@ function toggleKimPanel(ev){
 (function initKimFloat(){
   function updateKimFloatVisibility(){
     const bar = document.getElementById('kim-filter');
-    const sec = document.getElementById('kimono');
+    const grid = document.getElementById('kimono-grid');
     const fl = document.getElementById('k-float');
-    if(!bar || !sec || !fl) return;
+    if(!bar || !grid || !fl) return;
     const vh = window.innerHeight || document.documentElement.clientHeight;
     const barBottom = bar.getBoundingClientRect().bottom;   // 着物フィルタ列の下端
-    const sBottom = sec.getBoundingClientRect().bottom;
-    fl.classList.toggle('on', barBottom < 70 && sBottom > vh*0.2);
+    const gridBottom = grid.getBoundingClientRect().bottom; // 着物カードの下端
+    const floatTop = vh/2 - (fl.offsetHeight || 46)/2;
+    // フィルタ列が画面上へ出た後、フロートがカード群より下に来たら非表示
+    fl.classList.toggle('on', barBottom < 70 && gridBottom > floatTop);
   }
+  window.updateKimFloat = updateKimFloatVisibility;
   window.addEventListener('scroll', updateKimFloatVisibility, { passive:true });
   window.addEventListener('resize', updateKimFloatVisibility);
   window.addEventListener('load', ()=>{ buildKimFloatPanel(); updateKimFloatVisibility(); });
