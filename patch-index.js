@@ -131,6 +131,15 @@
       bar.id = 'kim-filter';
       container.parentNode.insertBefore(bar, container);
     }
+    // 複数選択の注釈(バー直後に1つだけ)
+    var kimNote = document.getElementById('kim-filter-note');
+    if(!kimNote){
+      kimNote = document.createElement('p');
+      kimNote.className = 'filter-note';
+      kimNote.id = 'kim-filter-note';
+      kimNote.textContent = '※ タグは複数選択できます（ALLで解除）';
+      bar.parentNode.insertBefore(kimNote, bar.nextSibling);
+    }
     // カードのタイトル別タグ(三歳女の子/七歳女の子…)。同名カードはスタジオ/お詣り両方を絞り込む
     var seenT = {}, tags = [];
     CATS.forEach(function(c){ if(seenT[c.jp]) return; seenT[c.jp] = true; tags.push(c.jp); });

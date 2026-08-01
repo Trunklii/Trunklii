@@ -493,6 +493,8 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 
 /* GALLERY */
 .g-filters{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.filter-note{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.06em;color:var(--mid);margin:-1.9rem 0 2.5rem}
+.kim-filter + .filter-note{margin:-1.2rem 0 1.8rem}
 .g-filter{background:none;border:1px solid var(--border);cursor:pointer;font-family:var(--sans);font-weight:400;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);padding:.42rem 1rem;transition:all .25s}
 .g-filter.active,.g-filter:hover{background:var(--ink);border-color:var(--ink);color:#fff}
 .g-grid{columns:3;column-gap:1rem}
@@ -1157,6 +1159,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="g-filter" data-cat="furisode" onclick="filterGallery('furisode',this)">振袖</button>
     <button class="g-filter" data-cat="other" onclick="filterGallery('other',this)">Other</button>
   </div>
+  <p class="filter-note">※ タグは複数選択できます（ALLで解除）</p>
   <div class="g-carousel">
     <div class="g-grid" id="g-grid"></div>
     <button class="g-nav g-nav-prev" type="button" aria-label="前の写真" onclick="galleryScroll(-1)">‹</button>
@@ -2248,7 +2251,7 @@ init();
   }
 })();
 </script>
-  <script src="../patch-index.js?v=202608011447"></script>
+  <script src="../patch-index.js?v=202608011612"></script>
 
   <!-- Maison nr. は予約受付前: nr. の「予約する」導線を Coming Soon ポップアップに(et. の予約は温存) -->
   <div id="nr-cs" class="nr-cs" hidden aria-hidden="true">
