@@ -1995,15 +1995,16 @@ function toggleFloatPanel(ev){
     }
   });
   function updateFloatVisibility(){
-    const filt = document.querySelector('.g-filters');
+    // タグ列の末尾(注記=No.検索の手前)を基準にする。No.検索は含めない
+    const tagsEnd = document.querySelector('.g-filters .filter-note') || document.querySelector('.g-filters');
     const sec = document.getElementById('gallery');
     const fl = document.getElementById('g-float');
-    if(!filt || !sec || !fl) return;
+    if(!tagsEnd || !sec || !fl) return;
     const vh = window.innerHeight || document.documentElement.clientHeight;
-    const fBottom = filt.getBoundingClientRect().bottom;   // フィルタタグの下端
-    const sBottom = sec.getBoundingClientRect().bottom;    // ギャラリーの下端
-    // フィルタタグが画面上へスクアウトし、かつギャラリーがまだ表示範囲にある間だけ表示
-    fl.classList.toggle('on', fBottom < 60 && sBottom > vh*0.2);
+    const tagsBottom = tagsEnd.getBoundingClientRect().bottom;   // タグ列の下端
+    const sBottom = sec.getBoundingClientRect().bottom;          // ギャラリーの下端
+    // タグ列が画面上へスクロールアウトし、かつギャラリーがまだ表示範囲にある間だけ表示
+    fl.classList.toggle('on', tagsBottom < 70 && sBottom > vh*0.2);
   }
   window.addEventListener('scroll', updateFloatVisibility, { passive:true });
   window.addEventListener('resize', updateFloatVisibility);
