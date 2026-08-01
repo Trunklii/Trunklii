@@ -2035,7 +2035,8 @@ function buildKimFloatPanel(){
   box.innerHTML = btns.map(b=>'<button class="gfp-tag" type="button" data-title="'+b.getAttribute('data-title')+'">'+b.textContent+'</button>').join('');
   box.querySelectorAll('.gfp-tag').forEach(pb=>pb.addEventListener('click', ()=>{
     const real = bar.querySelector('.kim-filter-btn[data-title="'+pb.getAttribute('data-title')+'"]');
-    if(real){ real.click(); syncKimFloat(); }
+    // real.click() だと合成クリックが「フロート外タップ」と誤検知され伝播が止まるため、関数を直接呼ぶ
+    if(real && window.kimFilter){ window.kimFilter(real); syncKimFloat(); }
   }));
   syncKimFloat();
 }
