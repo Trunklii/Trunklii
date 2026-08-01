@@ -53,7 +53,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --display:'Cormorant','Noto Serif JP','Hiragino Mincho ProN','Yu Mincho','YuMincho',serif;
   --sans:'Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic Medium','YuGothic',sans-serif;
   --ease:cubic-bezier(.25,.46,.45,.94);
+  --fab:46px;            /* 丸フローティングボタン共通サイズ(ギャラリー±・予約・チャット・店舗切替) */
 }
+@media(max-width:560px){:root{--fab:42px}}
 html{scroll-behavior:smooth}
 section[id]{scroll-margin-top:9.5rem}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:14px;line-height:1.8;overflow-x:hidden}
@@ -325,19 +327,19 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 
 /* ═══ Q&A BOT ═══ */
 .qa-bot-toggle{
-  position:fixed;bottom:calc(.5rem + 48px + .5rem);right:1.25rem;z-index:150;
+  position:fixed;bottom:calc(.5rem + var(--fab) + .5rem);right:1.25rem;z-index:150;
   display:flex;align-items:center;justify-content:center;
-  width:54px;height:54px;border-radius:50%;
+  width:var(--fab);height:var(--fab);border-radius:50%;
   background:var(--ink);color:#fff;
   border:none;cursor:pointer;
   box-shadow:0 6px 20px rgba(17,16,16,.18);
   transition:transform .25s,background .25s;
 }
 .qa-bot-toggle:hover{background:var(--accent);transform:scale(1.05)}
-.qa-bot-toggle svg{width:22px;height:22px}
+.qa-bot-toggle svg{width:18px;height:18px}
 
 /* フロー追随の予約メニュー(チャットボタン直上に縦積み) */
-.float-book{position:fixed;right:1.25rem;bottom:calc(.5rem + 48px + .5rem + 54px + .5rem);z-index:150;display:flex;flex-direction:column;gap:.5rem;align-items:flex-end;opacity:0;transform:translateY(20px);transition:transform .45s var(--motion-ease) 1.05s,opacity .45s ease 1.05s}
+.float-book{position:fixed;right:1.25rem;bottom:calc(.5rem + var(--fab) + .5rem + var(--fab) + .5rem);z-index:150;display:flex;flex-direction:column;gap:.5rem;align-items:flex-end;opacity:0;transform:translateY(20px);transition:transform .45s var(--motion-ease) 1.05s,opacity .45s ease 1.05s}
 body.is-ready .float-book{opacity:.5;transform:translateY(0)}
 body.is-ready .float-book:hover{opacity:1}
 .float-book-btn{display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.12em;color:#fff;padding:.55rem 1.05rem;border-radius:999px;text-decoration:none;box-shadow:0 6px 20px rgba(17,16,16,.18);transition:transform .2s}
@@ -349,15 +351,12 @@ body.is-ready .float-book:hover{opacity:1}
 .book-sheet{position:fixed;left:0;right:0;bottom:0;z-index:180;background:rgba(255,255,255,.22);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding:1rem clamp(1.2rem,4vw,2.5rem) calc(1rem + env(safe-area-inset-bottom,0px));text-align:center}
 .book-sheet[hidden]{display:none}
 /* シート表示中は背後のフロート(チャット・○^・カレンダー)を非表示(透過ごしの黒が視認性を下げるため) */
-/* スマホはフロート3種を店舗切替アイコンと同じ48pxに統一 */
+/* フロート丸ボタンは全て --fab で統一(ギャラリー±・予約・チャット・店舗切替) */
 @media(max-width:960px){
-  .qa-bot-toggle,.float-book .book-toggle{width:48px;height:48px}
-  .qa-bot-toggle svg{width:20px;height:20px}
   .float-book .book-toggle svg{width:18px;height:18px}
-  .float-book{bottom:calc(.5rem + 48px + .5rem + 48px + .5rem)}
 }
 /* 相互ブランド行き来アイコン(チャットの下・スマホのみ) */
-.brand-hop{position:fixed;right:1.25rem;bottom:.5rem;z-index:150;width:48px;height:48px;border-radius:50%;background:#fff;border:1px solid rgba(17,16,16,.25);display:flex;align-items:center;justify-content:center;opacity:.5;box-shadow:0 6px 20px rgba(17,16,16,.15);transition:opacity .3s}
+.brand-hop{position:fixed;right:1.25rem;bottom:.5rem;z-index:150;width:var(--fab);height:var(--fab);border-radius:50%;background:#fff;border:1px solid rgba(17,16,16,.25);display:flex;align-items:center;justify-content:center;opacity:.5;box-shadow:0 6px 20px rgba(17,16,16,.15);transition:opacity .3s}
 .brand-hop:hover{opacity:1}
 body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-top-btn,body.sheet-open .brand-hop{opacity:0!important;pointer-events:none!important;transition:none!important}
 .book-sheet-close{position:absolute;top:.8rem;right:.9rem;background:none;border:none;font-size:1.05rem;cursor:pointer;color:#111010;padding:.3rem;line-height:1}
@@ -379,7 +378,7 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .to-top-btn.show:hover{opacity:1}
 .to-top-btn svg{width:14px;height:14px}
 /* 予約シート再表示アイコン(シートを閉じた後に表示) */
-.book-toggle{width:54px;height:54px;border-radius:50%;border:none;background:var(--ink);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(17,16,16,.18);transition:transform .25s,background .25s}
+.book-toggle{width:var(--fab);height:var(--fab);border-radius:50%;border:none;background:var(--ink);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(17,16,16,.18);transition:transform .25s,background .25s}
 .book-toggle:hover{background:var(--accent);transform:scale(1.05)}
 .book-toggle svg{width:20px;height:20px}
 .book-toggle[hidden]{display:none}
@@ -524,7 +523,7 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 /* Gallery float menu（右・上下中央で追従） */
 .g-float{position:fixed;right:1.3rem;top:50%;z-index:40;display:flex;flex-direction:column;gap:.55rem;align-items:flex-end;opacity:0;visibility:hidden;transform:translateY(-50%) translateX(14px);transition:opacity .4s var(--ease),transform .4s var(--ease),visibility .4s}
 .g-float.on{opacity:1;visibility:visible;transform:translateY(-50%)}
-.g-fab{position:relative;width:46px;height:46px;border-radius:50%;border:1px solid var(--border);background:rgba(255,255,255,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(17,16,16,.12);font-family:var(--display);font-size:1.5rem;line-height:1;transition:all .25s var(--ease)}
+.g-fab{position:relative;width:var(--fab);height:var(--fab);border-radius:50%;border:1px solid var(--border);background:rgba(255,255,255,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(17,16,16,.12);font-family:var(--display);font-size:1.5rem;line-height:1;transition:all .25s var(--ease)}
 .g-fab:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 .g-fab:disabled{opacity:.35;cursor:default;box-shadow:none}
 .g-fab:disabled:hover{background:rgba(255,255,255,.9);color:var(--ink);border-color:var(--border)}
@@ -538,7 +537,7 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .gfp-tags{display:flex;flex-wrap:wrap;gap:.35rem}
 .gfp-tag{font-family:var(--sans);font-weight:400;font-size:.63rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mid);background:none;border:1px solid var(--border);padding:.34rem .72rem;border-radius:999px;cursor:pointer;transition:all .2s}
 .gfp-tag.active,.gfp-tag:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-@media(max-width:560px){.g-float{right:.9rem;bottom:auto;gap:.45rem}.g-fab{width:42px;height:42px;font-size:1.35rem}}
+@media(max-width:560px){.g-float{right:.9rem;bottom:auto;gap:.45rem}.g-fab{font-size:1.35rem}}
 
 /* ITEMS (kimono / costume / goods) */
 .items-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
@@ -1194,7 +1193,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="filter-note">※ タグは複数選択できます（ALLで解除）</span>
     <span class="g-no-search">
       <span>No. で探す</span>
-      <input id="g-no-input" type="text" inputmode="numeric" placeholder="例 42" aria-label="番号で探す"
+      <input id="g-no-input" type="text" inputmode="numeric" placeholder="例 75" aria-label="番号で探す"
         onkeydown="if(event.key==='Enter')gotoGalleryNo()">
       <button type="button" onclick="gotoGalleryNo()">表示</button>
       <span class="g-no-msg" id="g-no-msg"></span>
