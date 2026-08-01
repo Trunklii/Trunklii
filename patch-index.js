@@ -156,10 +156,10 @@
         : '<div class="kim-cat-main"><span>'+c.jp+'</span></div>';
       var sub1 = items.length > 1
         ? '<div class="kim-cat-sub-img" onclick="kimCarousel(this,1)" style="cursor:pointer;background-image:url(\'' + imgPath(items[1]) + '\');background-size:cover;background-position:center"></div>'
-        : '<div class="kim-cat-sub-img"><span>—</span></div>';
+        : '<div class="kim-cat-sub-img is-empty"><span>—</span></div>';
       var sub2 = items.length > 2
         ? '<div class="kim-cat-sub-img" onclick="kimCarousel(this,2)" style="cursor:pointer;background-image:url(\'' + imgPath(items[2]) + '\');background-size:cover;background-position:center"></div>'
-        : '<div class="kim-cat-sub-img"><span>—</span></div>';
+        : '<div class="kim-cat-sub-img is-empty"><span>—</span></div>';
       // データ属性に全アイテムのファイル名を入れてカルーセル制御
       var dataAttr = hasItems
         ? ' data-items="' + items.map(function(it){ return encodeURIComponent(imgPath(it)); }).join(',') + '" data-idx="0"'
