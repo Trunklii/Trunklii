@@ -336,7 +336,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
   transition:transform .25s,background .25s;
 }
 .qa-bot-toggle:hover{background:var(--accent);transform:scale(1.05)}
-.qa-bot-toggle svg{width:18px;height:18px}
+.qa-bot-toggle svg{width:calc(var(--fab) * .52);height:calc(var(--fab) * .52)}  /* ＋と同じ余白比 */
 
 /* フロー追随の予約メニュー(チャットボタン直上に縦積み) */
 .float-book{position:fixed;right:1.25rem;bottom:calc(.5rem + var(--fab) + .5rem + var(--fab) + .5rem);z-index:150;display:flex;flex-direction:column;gap:.5rem;align-items:flex-end;opacity:0;transform:translateY(20px);transition:transform .45s var(--motion-ease) 1.05s,opacity .45s ease 1.05s}
@@ -352,9 +352,6 @@ body.is-ready .float-book:hover{opacity:1}
 .book-sheet[hidden]{display:none}
 /* シート表示中は背後のフロート(チャット・○^・カレンダー)を非表示(透過ごしの黒が視認性を下げるため) */
 /* フロート丸ボタンは全て --fab で統一(ギャラリー±・予約・チャット・店舗切替) */
-@media(max-width:960px){
-  .float-book .book-toggle svg{width:18px;height:18px}
-}
 /* 相互ブランド行き来アイコン(チャットの下・スマホのみ) */
 .brand-hop{position:fixed;right:1.25rem;bottom:.5rem;z-index:150;width:var(--fab);height:var(--fab);border-radius:50%;background:#fff;border:1px solid rgba(17,16,16,.25);display:flex;align-items:center;justify-content:center;opacity:.5;box-shadow:0 6px 20px rgba(17,16,16,.15);transition:opacity .3s}
 .brand-hop:hover{opacity:1}
@@ -380,7 +377,7 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 /* 予約シート再表示アイコン(シートを閉じた後に表示) */
 .book-toggle{width:var(--fab);height:var(--fab);border-radius:50%;border:none;background:var(--ink);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(17,16,16,.18);transition:transform .25s,background .25s}
 .book-toggle:hover{background:var(--accent);transform:scale(1.05)}
-.book-toggle svg{width:20px;height:20px}
+.book-toggle svg{width:calc(var(--fab) * .52);height:calc(var(--fab) * .52)}  /* ＋と同じ余白比 */
 .book-toggle[hidden]{display:none}
 .qa-bot-pulse{
   position:absolute;top:-2px;right:-2px;
