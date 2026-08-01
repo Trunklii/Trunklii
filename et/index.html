@@ -1149,14 +1149,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="g-filters">
     <button class="g-filter active" data-cat="all" onclick="filterGallery('all',this)">All</button>
     <button class="g-filter" data-cat="753" onclick="filterGallery('753',this)">七五三</button>
+    <button class="g-filter" data-cat="753boy" onclick="filterGallery('753boy',this)">753-boy</button>
+    <button class="g-filter" data-cat="753girl" onclick="filterGallery('753girl',this)">753-girl</button>
+    <button class="g-filter" data-cat="halfseijin" onclick="filterGallery('halfseijin',this)">1/2成人式</button>
     <button class="g-filter" data-cat="omiyamairi" onclick="filterGallery('omiyamairi',this)">お宮参り</button>
     <button class="g-filter" data-cat="100days" onclick="filterGallery('100days',this)">百日祝い</button>
     <button class="g-filter" data-cat="birthday" onclick="filterGallery('birthday',this)">バースデー</button>
-    <button class="g-filter" data-cat="half-bd" onclick="filterGallery('half-bd',this)">1/2 BD</button>
-    <button class="g-filter" data-cat="school" onclick="filterGallery('school',this)">入学</button>
+    <button class="g-filter" data-cat="halfbd" onclick="filterGallery('halfbd',this)">1/2 BD</button>
+    <button class="g-filter" data-cat="school" onclick="filterGallery('school',this)">入園・入学</button>
     <button class="g-filter" data-cat="maternity" onclick="filterGallery('maternity',this)">マタニティ</button>
+    <button class="g-filter" data-cat="family" onclick="filterGallery('family',this)">家族・きょうだい</button>
     <button class="g-filter" data-cat="seijin" onclick="filterGallery('seijin',this)">成人式</button>
     <button class="g-filter" data-cat="furisode" onclick="filterGallery('furisode',this)">振袖</button>
+    <button class="g-filter" data-cat="event" onclick="filterGallery('event',this)">イベント</button>
     <button class="g-filter" data-cat="other" onclick="filterGallery('other',this)">Other</button>
   </div>
   <p class="filter-note">※ タグは複数選択できます（ALLで解除）</p>
@@ -1537,7 +1542,7 @@ async function init(){
   });
   lbImages = sortedGallery.map(i=>i.file);
   document.getElementById('g-grid').innerHTML = sortedGallery.map((item,i)=>`
-    <div class="g-item" data-cat="${item.category}">
+    <div class="g-item" data-cat="${(item.tags||[item.category||'other']).join(' ')}">
       <img src="${item.file}" alt="${item.caption}" loading="lazy" onclick="openLb(${i})"/>
       <div class="g-cap">${item.caption}</div>
     </div>
@@ -1781,7 +1786,7 @@ function goSlide(i){
 
 function filterGallery(cat, btn){
   const bar = document.querySelector('.g-filters');
-  const KNOWN = ['753','omiyamairi','100days','birthday','half-bd','school','maternity','seijin','furisode','other'];
+  const KNOWN = ['753','753boy','753girl','halfseijin','omiyamairi','100days','birthday','halfbd','school','maternity','family','seijin','furisode','event','other'];
   if(bar){
     const allBtn = bar.querySelector('.g-filter[data-cat="all"]');
     if(cat === 'all'){
@@ -1805,9 +1810,9 @@ function filterGallery(cat, btn){
   }
   const sel = bar ? Array.from(bar.querySelectorAll('.g-filter.active')).map(b=>b.dataset.cat).filter(c=>c && c!=='all') : [];
   document.querySelectorAll('.g-item').forEach(item=>{
-    let c = item.dataset.cat || 'other';
-    if(KNOWN.indexOf(c) === -1) c = 'other';    // 未定義カテゴリは Other 扱い
-    item.classList.toggle('hidden', sel.length > 0 && sel.indexOf(c) === -1);
+    const cats = (item.dataset.cat || 'other').split(' ').filter(Boolean);   // 1枚に複数タグ
+    const match = sel.length === 0 || cats.some(c=>sel.indexOf(c) !== -1);   // いずれか一致で表示
+    item.classList.toggle('hidden', !match);
   });
   const grid = document.getElementById('g-grid');
   if(grid){ grid.scrollLeft = 0; }
