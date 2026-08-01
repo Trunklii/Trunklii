@@ -162,12 +162,12 @@
         : '';
       var showArrows = items.length > 1;
       if(!hasItems){
-        return '<div class="kim-cat kim-cat-empty" data-cat="' + c.key + '" data-group="' + c.group + '" data-gender="' + (c.gender||'') + '">'
+        return '<div class="kim-cat kim-cat-empty" data-cat="' + c.key + '" data-group="' + c.group + '" data-gender="' + (c.gender||'') + '" data-title="' + c.jp + '">'
           + '<div class="kim-cat-head"><div class="kim-cat-title">' + c.sub + '<span class="sec-jp">' + c.jp + '</span></div></div>'
           + '<div class="kim-cat-ph">Coming Soon</div>'
         + '</div>';
       }
-      return '<div class="kim-cat" data-cat="' + c.key + '" data-group="' + c.group + '" data-gender="' + (c.gender||'') + '"' + dataAttr + '>'
+      return '<div class="kim-cat" data-cat="' + c.key + '" data-group="' + c.group + '" data-gender="' + (c.gender||'') + '" data-title="' + c.jp + '"' + dataAttr + '>'
         + '<div class="kim-cat-head">'
           + '<div class="kim-cat-title">'+c.sub+'<span class="sec-jp">'+c.jp+'</span></div>'
           + firstOpt
