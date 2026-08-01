@@ -503,15 +503,39 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .g-item:hover img{transform:scale(1.04)}
 .g-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(17,16,16,.55));color:#fff;font-family:var(--display);font-style:normal;font-size:.78rem;letter-spacing:.06em;padding:2rem .75rem .6rem;opacity:0;transition:opacity .3s}
 .g-item:hover .g-cap{opacity:1}
-.g-no{position:absolute;bottom:.5rem;right:.5rem;z-index:2;background:rgba(255,255,255,.55);color:var(--ink);font-family:var(--display);font-size:.6rem;letter-spacing:.08em;padding:.14rem .42rem;border-radius:3px;pointer-events:none}
+.g-no{position:absolute;bottom:.5rem;right:.5rem;z-index:2;background:rgba(255,255,255,.28);color:var(--ink);font-family:var(--display);font-size:.6rem;letter-spacing:.08em;padding:.14rem .42rem;border-radius:3px;pointer-events:none}
 .g-no-search{display:inline-flex;align-items:center;gap:.45rem;margin:0 0 0 .5rem;font-size:.66rem;letter-spacing:.06em;color:var(--mid)}
 .g-no-search input{width:5.5rem;border:1px solid var(--border);padding:.36rem .5rem;font-family:var(--sans);font-size:.78rem;letter-spacing:.05em}
 .g-no-search button{border:1px solid var(--ink);background:var(--ink);color:#fff;font-family:var(--sans);font-size:.62rem;letter-spacing:.08em;padding:.4rem .85rem;cursor:pointer;text-transform:uppercase}
 .g-no-search .g-no-msg{color:var(--accent)}
 .lb-no{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.85);font-family:var(--display);font-size:.9rem;letter-spacing:.12em;z-index:3;pointer-events:none}
 .g-item.hidden{display:none}
+.g-item.g-over{display:none}
 .g-carousel{position:relative}
 .g-nav,.g-counter{display:none}
+/* View More */
+.g-more-wrap{text-align:center;margin-top:2.8rem}
+.g-more{background:none;border:1px solid var(--ink);color:var(--ink);font-family:var(--display);font-style:italic;font-size:1.05rem;letter-spacing:.14em;padding:.7rem 2.6rem;cursor:pointer;transition:all .3s var(--ease)}
+.g-more:hover{background:var(--ink);color:#fff}
+.g-more-count{display:block;font-family:var(--sans);font-style:normal;font-weight:300;font-size:.6rem;letter-spacing:.16em;color:var(--mid);margin-top:1rem;text-transform:uppercase}
+/* Gallery float menu */
+.g-float{position:fixed;right:1.3rem;bottom:1.5rem;z-index:40;display:flex;flex-direction:column;gap:.55rem;align-items:flex-end;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .4s var(--ease),transform .4s var(--ease),visibility .4s}
+.g-float.on{opacity:1;visibility:visible;transform:none}
+.g-fab{position:relative;width:46px;height:46px;border-radius:50%;border:1px solid var(--border);background:rgba(255,255,255,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(17,16,16,.12);font-family:var(--display);font-size:1.5rem;line-height:1;transition:all .25s var(--ease)}
+.g-fab:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.g-fab:disabled{opacity:.35;cursor:default;box-shadow:none}
+.g-fab:disabled:hover{background:rgba(255,255,255,.9);color:var(--ink);border-color:var(--border)}
+.g-fab svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round}
+.g-fab.act{background:var(--ink);color:#fff;border-color:var(--ink)}
+.g-fab .g-fab-dot{position:absolute;top:2px;right:2px;width:8px;height:8px;border-radius:50%;background:var(--accent);display:none}
+.g-fab.act .g-fab-dot{display:block}
+.g-float-panel{position:absolute;right:0;bottom:calc(100% + .6rem);width:min(78vw,300px);max-height:54vh;overflow:auto;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:16px;box-shadow:0 12px 36px rgba(17,16,16,.18);padding:1rem 1.1rem;display:none}
+.g-float-panel.open{display:block}
+.gfp-title{font-family:var(--display);font-style:italic;font-size:1rem;letter-spacing:.08em;color:var(--ink);margin-bottom:.8rem}
+.gfp-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.gfp-tag{font-family:var(--sans);font-weight:400;font-size:.63rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mid);background:none;border:1px solid var(--border);padding:.34rem .72rem;border-radius:999px;cursor:pointer;transition:all .2s}
+.gfp-tag.active,.gfp-tag:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+@media(max-width:560px){.g-float{right:.9rem;bottom:1rem;gap:.45rem}.g-fab{width:42px;height:42px;font-size:1.35rem}}
 
 /* ITEMS (kimono / costume / goods) */
 .items-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
@@ -1184,6 +1208,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="g-nav g-nav-next" type="button" aria-label="次の写真" onclick="galleryScroll(1)">›</button>
     <div class="g-counter" id="g-counter" aria-live="polite">1 / 1</div>
   </div>
+  <div class="g-more-wrap">
+    <button class="g-more" id="g-more" type="button" onclick="galleryMore(30)">View More
+      <span class="g-more-count" id="g-more-count"></span>
+    </button>
+  </div>
+</div>
+<div class="g-float" id="g-float">
+  <div class="g-float-panel" id="g-float-panel">
+    <div class="gfp-title">タグで絞り込み</div>
+    <div class="gfp-tags" id="gfp-tags"></div>
+  </div>
+  <button class="g-fab" id="g-fab-filter" type="button" onclick="toggleFloatPanel(event)" aria-label="タグで絞り込み" title="タグで絞り込み">
+    <svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+    <span class="g-fab-dot"></span>
+  </button>
+  <button class="g-fab" id="g-fab-more" type="button" onclick="galleryMore(30)" aria-label="表示を30枚増やす" title="表示を30枚増やす">＋</button>
+  <button class="g-fab" id="g-fab-less" type="button" onclick="galleryMore(-30)" aria-label="表示を30枚減らす" title="表示を30枚減らす">－</button>
 </div>
 </section>
 
@@ -1579,6 +1620,9 @@ async function init(){
     }, { passive: true });
     updateGalleryCounter();
   })();
+  galleryLimit = 30;
+  applyGalleryLimit();
+  buildFloatFilters();
 
   // Kimono
   document.getElementById('kimono-heading').textContent = d.kimono.heading;
@@ -1833,7 +1877,79 @@ function filterGallery(cat, btn){
   const grid = document.getElementById('g-grid');
   if(grid){ grid.scrollLeft = 0; }
   updateGalleryCounter();
+  galleryLimit = 30;      // フィルタ変更で表示枚数をリセット
+  applyGalleryLimit();
+  syncFloatFilters();
 }
+
+// ===== Gallery ページング（30枚デフォルト・±30） =====
+let galleryLimit = 30;
+function applyGalleryLimit(){
+  let shown = 0;
+  document.querySelectorAll('#g-grid .g-item').forEach(it=>{
+    if(it.classList.contains('hidden')){ it.classList.remove('g-over'); return; }  // 絞り込みで除外
+    if(shown < galleryLimit){ it.classList.remove('g-over'); shown++; }
+    else it.classList.add('g-over');
+  });
+  updateGalleryMoreUI();
+}
+function updateGalleryMoreUI(){
+  const total = document.querySelectorAll('#g-grid .g-item:not(.hidden)').length;
+  const shown = Math.min(galleryLimit, total);
+  const rem = total - shown;
+  const more = document.getElementById('g-more');
+  if(more) more.style.display = rem > 0 ? '' : 'none';
+  const cnt = document.getElementById('g-more-count');
+  if(cnt) cnt.textContent = shown + ' / ' + total + '　（あと ' + rem + ' 枚）';
+  const fMore = document.getElementById('g-fab-more'); if(fMore) fMore.disabled = rem <= 0;
+  const fLess = document.getElementById('g-fab-less'); if(fLess) fLess.disabled = galleryLimit <= 30;
+}
+function galleryMore(delta){
+  const total = document.querySelectorAll('#g-grid .g-item:not(.hidden)').length;
+  let lim = Math.max(30, galleryLimit + delta);
+  lim = Math.min(lim, Math.max(30, total));
+  galleryLimit = lim;
+  applyGalleryLimit();
+}
+// ===== Gallery フロートメニュー =====
+function buildFloatFilters(){
+  const box = document.getElementById('gfp-tags');
+  if(!box) return;
+  const src = [...document.querySelectorAll('.g-filters .g-filter')];
+  box.innerHTML = src.map(b=>'<button class="gfp-tag" type="button" data-cat="'+b.dataset.cat+'">'+b.textContent+'</button>').join('');
+  box.querySelectorAll('.gfp-tag').forEach(b=>b.addEventListener('click', ()=> filterGallery(b.dataset.cat)));
+  syncFloatFilters();
+}
+function syncFloatFilters(){
+  const active = new Set([...document.querySelectorAll('.g-filters .g-filter.active')].map(b=>b.dataset.cat));
+  document.querySelectorAll('#gfp-tags .gfp-tag').forEach(b=>b.classList.toggle('active', active.has(b.dataset.cat)));
+  const fBtn = document.getElementById('g-fab-filter');
+  if(fBtn) fBtn.classList.toggle('act', active.size>0 && !active.has('all'));
+}
+function toggleFloatPanel(ev){
+  if(ev){ ev.stopPropagation(); }
+  document.getElementById('g-float-panel').classList.toggle('open');
+}
+(function initGalleryFloat(){
+  document.addEventListener('click', e=>{
+    const panel = document.getElementById('g-float-panel');
+    const fBtn = document.getElementById('g-fab-filter');
+    if(panel && panel.classList.contains('open') && !panel.contains(e.target) && e.target!==fBtn && !fBtn.contains(e.target)){
+      panel.classList.remove('open');
+    }
+  });
+  function updateFloatVisibility(){
+    const sec = document.getElementById('gallery'), fl = document.getElementById('g-float');
+    if(!sec || !fl) return;
+    const r = sec.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    // ギャラリーがビューポートに掛かっている間だけフロートを表示
+    fl.classList.toggle('on', r.top < vh*0.85 && r.bottom > vh*0.3);
+  }
+  window.addEventListener('scroll', updateFloatVisibility, { passive:true });
+  window.addEventListener('resize', updateFloatVisibility);
+  updateFloatVisibility();
+})();
 
 function visibleGalleryItems(){
   return Array.from(document.querySelectorAll('#g-grid .g-item')).filter(el=>!el.classList.contains('hidden'));
