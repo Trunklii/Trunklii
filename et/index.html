@@ -168,6 +168,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .nav-link sup{font-size:.55rem;font-weight:500;letter-spacing:.05em;margin-left:.25rem;color:var(--accent)}
 
 .nav-item{position:relative}
+.nav-item + .nav-item::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:1px;height:11px;background:rgba(17,16,16,.16);pointer-events:none}
 .nav-drop{
   position:absolute;top:100%;left:0;
   background:#fff;border:1px solid #e5e2dc;
