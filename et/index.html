@@ -508,6 +508,7 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .g-no-search input{width:5.5rem;border:1px solid var(--border);padding:.36rem .5rem;font-family:var(--sans);font-size:.78rem;letter-spacing:.05em}
 .g-no-search button{border:1px solid var(--ink);background:var(--ink);color:#fff;font-family:var(--sans);font-size:.62rem;letter-spacing:.08em;padding:.4rem .85rem;cursor:pointer;text-transform:uppercase}
 .g-no-search .g-no-msg{color:var(--accent)}
+.g-filters .filter-note{margin:0 0 0 .6rem;align-self:center;white-space:nowrap}
 .lb-no{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.85);font-family:var(--display);font-size:.9rem;letter-spacing:.12em;z-index:3;pointer-events:none}
 .g-item.hidden{display:none}
 .g-item.g-over{display:none}
@@ -1189,6 +1190,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="g-filter" data-cat="furisode" onclick="filterGallery('furisode',this)">振袖</button>
     <button class="g-filter" data-cat="event" onclick="filterGallery('event',this)">イベント</button>
     <button class="g-filter" data-cat="other" onclick="filterGallery('other',this)">Other</button>
+    <span class="filter-note">※ タグは複数選択できます（ALLで解除）</span>
     <span class="g-no-search">
       <span>No. で探す</span>
       <input id="g-no-input" type="text" inputmode="numeric" placeholder="例 42" aria-label="番号で探す"
@@ -1197,7 +1199,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="g-no-msg" id="g-no-msg"></span>
     </span>
   </div>
-  <p class="filter-note">※ タグは複数選択できます（ALLで解除）</p>
   <div class="g-carousel">
     <div class="g-grid" id="g-grid"></div>
     <button class="g-nav g-nav-prev" type="button" aria-label="前の写真" onclick="galleryScroll(-1)">‹</button>
@@ -1209,18 +1210,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="g-more-count" id="g-more-count"></span>
     </button>
   </div>
-</div>
-<div class="g-float" id="g-float">
-  <div class="g-float-panel" id="g-float-panel">
-    <div class="gfp-title">タグで絞り込み</div>
-    <div class="gfp-tags" id="gfp-tags"></div>
-  </div>
-  <button class="g-fab" id="g-fab-filter" type="button" onclick="toggleFloatPanel(event)" aria-label="タグで絞り込み" title="タグで絞り込み">
-    <svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
-    <span class="g-fab-dot"></span>
-  </button>
-  <button class="g-fab" id="g-fab-more" type="button" onclick="galleryMore(30)" aria-label="表示を30枚増やす" title="表示を30枚増やす">＋</button>
-  <button class="g-fab" id="g-fab-less" type="button" onclick="galleryMore(-30)" aria-label="表示を30枚減らす" title="表示を30枚減らす">－</button>
 </div>
 </section>
 
@@ -1418,6 +1407,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- LIGHTBOX -->
+<div class="g-float" id="g-float">
+  <div class="g-float-panel" id="g-float-panel">
+    <div class="gfp-title">タグで絞り込み</div>
+    <div class="gfp-tags" id="gfp-tags"></div>
+  </div>
+  <button class="g-fab" id="g-fab-filter" type="button" onclick="toggleFloatPanel(event)" aria-label="タグで絞り込み" title="タグで絞り込み">
+    <svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+    <span class="g-fab-dot"></span>
+  </button>
+  <button class="g-fab" id="g-fab-more" type="button" onclick="galleryMore(30)" aria-label="表示を30枚増やす" title="表示を30枚増やす">＋</button>
+  <button class="g-fab" id="g-fab-less" type="button" onclick="galleryMore(-30)" aria-label="表示を30枚減らす" title="表示を30枚減らす">－</button>
+</div>
 <div class="lightbox" id="lightbox">
   <button class="lb-close" onclick="closeLb()">✕</button>
   <button class="lb-prev" onclick="lbNav(-1)">‹</button>
