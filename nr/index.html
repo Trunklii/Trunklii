@@ -1219,16 +1219,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="#gallery" class="nav-link">Gallery</a>
         <div class="nav-drop">
           <a href="#gallery" onclick="filterGallery('all')">All</a>
-          <a href="#gallery" onclick="filterGallery('maternity')">マタニティ</a>
-          <a href="#gallery" onclick="filterGallery('furisode')">振袖</a>
-          <a href="#gallery" onclick="filterGallery('omairi')">お詣り</a>
           <a href="#gallery" onclick="filterGallery('753')">七五三</a>
           <a href="#gallery" onclick="filterGallery('omiyamairi')">お宮参り</a>
           <a href="#gallery" onclick="filterGallery('100days')">百日祝い</a>
           <a href="#gallery" onclick="filterGallery('birthday')">バースデー</a>
           <a href="#gallery" onclick="filterGallery('half-bd')">1/2 BD</a>
           <a href="#gallery" onclick="filterGallery('school')">入学</a>
+          <a href="#gallery" onclick="filterGallery('maternity')">マタニティ</a>
           <a href="#gallery" onclick="filterGallery('seijin')">成人式</a>
+          <a href="#gallery" onclick="filterGallery('furisode')">振袖</a>
           <a href="#gallery" onclick="filterGallery('other')">Other</a>
         </div>
       </li>
@@ -1269,16 +1268,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="mob-sub">
         <a href="#gallery" onclick="filterGallery('all');closeMob()">All</a>
-        <a href="#gallery" onclick="filterGallery('maternity');closeMob()">マタニティ</a>
-        <a href="#gallery" onclick="filterGallery('furisode');closeMob()">振袖</a>
-        <a href="#gallery" onclick="filterGallery('omairi');closeMob()">お詣り</a>
         <a href="#gallery" onclick="filterGallery('753');closeMob()">七五三</a>
         <a href="#gallery" onclick="filterGallery('omiyamairi');closeMob()">お宮参り</a>
         <a href="#gallery" onclick="filterGallery('100days');closeMob()">百日祝い</a>
         <a href="#gallery" onclick="filterGallery('birthday');closeMob()">バースデー</a>
         <a href="#gallery" onclick="filterGallery('half-bd');closeMob()">1/2 BD</a>
         <a href="#gallery" onclick="filterGallery('school');closeMob()">入学</a>
+        <a href="#gallery" onclick="filterGallery('maternity');closeMob()">マタニティ</a>
         <a href="#gallery" onclick="filterGallery('seijin');closeMob()">成人式</a>
+        <a href="#gallery" onclick="filterGallery('furisode');closeMob()">振袖</a>
         <a href="#gallery" onclick="filterGallery('other');closeMob()">Other</a>
       </div>
     </div>
@@ -1387,16 +1385,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Gallery</h2><span class="sec-jp">フォトギャラリー</span><div class="sec-rule"></div></div>
   <div class="g-filters">
     <button class="g-filter active" data-cat="all" onclick="filterGallery('all',this)">All</button>
-    <button class="g-filter" data-cat="maternity" onclick="filterGallery('maternity',this)">マタニティ</button>
-    <button class="g-filter" data-cat="furisode" onclick="filterGallery('furisode',this)">振袖</button>
-    <button class="g-filter" data-cat="omairi" onclick="filterGallery('omairi',this)">お詣り</button>
     <button class="g-filter" data-cat="753" onclick="filterGallery('753',this)">七五三</button>
     <button class="g-filter" data-cat="omiyamairi" onclick="filterGallery('omiyamairi',this)">お宮参り</button>
     <button class="g-filter" data-cat="100days" onclick="filterGallery('100days',this)">百日祝い</button>
     <button class="g-filter" data-cat="birthday" onclick="filterGallery('birthday',this)">バースデー</button>
     <button class="g-filter" data-cat="half-bd" onclick="filterGallery('half-bd',this)">1/2 BD</button>
     <button class="g-filter" data-cat="school" onclick="filterGallery('school',this)">入学</button>
+    <button class="g-filter" data-cat="maternity" onclick="filterGallery('maternity',this)">マタニティ</button>
     <button class="g-filter" data-cat="seijin" onclick="filterGallery('seijin',this)">成人式</button>
+    <button class="g-filter" data-cat="furisode" onclick="filterGallery('furisode',this)">振袖</button>
     <button class="g-filter" data-cat="other" onclick="filterGallery('other',this)">Other</button>
   </div>
   <div class="g-carousel">
@@ -1986,7 +1983,7 @@ function goSlide(i){
 
 function filterGallery(cat, btn){
   const bar = document.querySelector('.g-filters');
-  const KNOWN = ['maternity','furisode','omairi','753','omiyamairi','100days','birthday','half-bd','school','seijin','other'];
+  const KNOWN = ['753','omiyamairi','100days','birthday','half-bd','school','maternity','seijin','furisode','other'];
   if(bar){
     const allBtn = bar.querySelector('.g-filter[data-cat="all"]');
     if(cat === 'all'){
