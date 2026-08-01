@@ -324,7 +324,7 @@ window.SITE_DATA = {
         {
           "file": "hero-sp-03.jpg",
           "alt": "Studio et. hero（スマホ） 3",
-          "logoPos": "c"
+          "logoPos": "tc"
         },
         {
           "file": "hero-sp-04.jpg",
@@ -339,7 +339,7 @@ window.SITE_DATA = {
         {
           "file": "hero-sp-06.jpg",
           "alt": "Studio et. hero（スマホ） 6",
-          "logoPos": "c"
+          "logoPos": "tc"
         },
         {
           "file": "hero-sp-07.jpg",
@@ -349,7 +349,7 @@ window.SITE_DATA = {
         {
           "file": "hero-sp-08.jpg",
           "alt": "Studio et. hero（スマホ） 8",
-          "logoPos": "c"
+          "logoPos": "tc"
         },
         {
           "file": "hero-sp-09.jpg",
@@ -359,7 +359,7 @@ window.SITE_DATA = {
         {
           "file": "hero-sp-10.jpg",
           "alt": "Studio et. hero（スマホ） 10",
-          "logoPos": "c"
+          "logoPos": "tc"
         },
         {
           "file": "hero-sp-11.jpg",
