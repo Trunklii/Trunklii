@@ -504,7 +504,7 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .g-item:hover img{transform:scale(1.04)}
 .g-cap{display:none}
 .g-item:hover .g-cap{opacity:1}
-.g-no{position:absolute;bottom:.5rem;right:.5rem;z-index:2;background:rgba(255,255,255,.28);color:var(--ink);font-family:var(--display);font-size:.6rem;letter-spacing:.08em;padding:.14rem .42rem;border-radius:3px;pointer-events:none}
+.g-no{position:absolute;bottom:.5rem;right:.5rem;z-index:2;background:rgba(255,255,255,.28);color:#111010;font-family:var(--display);font-weight:500;font-size:.6rem;line-height:1;letter-spacing:.05em;padding:.03rem .32rem;border-radius:3px;pointer-events:none}
 .g-no-search{display:flex;align-items:center;gap:.45rem;flex-basis:100%;justify-content:flex-end;margin:.35rem 0 0;font-size:.66rem;letter-spacing:.06em;color:var(--mid)}
 .g-no-search input{width:5.5rem;border:1px solid var(--border);padding:.36rem .5rem;font-family:var(--sans);font-size:.78rem;letter-spacing:.05em}
 .g-no-search button{border:1px solid var(--ink);background:var(--ink);color:#fff;font-family:var(--sans);font-size:.62rem;letter-spacing:.08em;padding:.4rem .85rem;cursor:pointer;text-transform:uppercase}
@@ -534,7 +534,7 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .g-fab.act .g-fab-dot{display:block}
 .g-float-panel{position:absolute;right:0;bottom:calc(100% + .6rem);width:min(78vw,300px);max-height:54vh;overflow:auto;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:16px;box-shadow:0 12px 36px rgba(17,16,16,.18);padding:1rem 1.1rem;display:none}
 .g-float-panel.open{display:block}
-.gfp-title{font-family:var(--display);font-style:italic;font-size:1rem;letter-spacing:.08em;color:var(--ink);margin-bottom:.8rem}
+.gfp-title{font-family:var(--sans);font-weight:500;font-style:normal;font-size:.82rem;letter-spacing:.1em;color:var(--ink);margin-bottom:.8rem}
 .gfp-tags{display:flex;flex-wrap:wrap;gap:.35rem}
 .gfp-tag{font-family:var(--sans);font-weight:400;font-size:.63rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mid);background:none;border:1px solid var(--border);padding:.34rem .72rem;border-radius:999px;cursor:pointer;transition:all .2s}
 .gfp-tag.active,.gfp-tag:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
@@ -1947,7 +1947,7 @@ function galleryMore(delta){
       }
     });
     updateGalleryMoreUI();
-  } else {                             // 減らす分をフェードアウト → 完了後に非表示、写真先頭へ
+  } else {                             // 減らす分をフェードアウト → 非表示反映後、ViewMoreが画面下に来るまでスクロール
     items.forEach((it,idx)=>{
       if(idx >= lim && idx < oldLimit){
         it.style.opacity = '0';
@@ -1955,8 +1955,17 @@ function galleryMore(delta){
       }
     });
     updateGalleryMoreUI();
-    scrollToGalleryTop();
+    setTimeout(scrollToViewMore, 520);
   }
+}
+function scrollToViewMore(){
+  const btn = document.getElementById('g-more');
+  const fade = document.getElementById('g-fade');
+  if(!btn || !fade || getComputedStyle(fade).display === 'none') return;
+  const vh = window.innerHeight || document.documentElement.clientHeight;
+  const bottom = btn.getBoundingClientRect().bottom;
+  const y = window.scrollY + bottom - vh + 28;   // ViewMoreの下端をウィンドウ下端付近へ
+  window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
 }
 // ===== Gallery フロートメニュー =====
 function buildFloatFilters(){
@@ -1986,12 +1995,15 @@ function toggleFloatPanel(ev){
     }
   });
   function updateFloatVisibility(){
-    const sec = document.getElementById('gallery'), fl = document.getElementById('g-float');
-    if(!sec || !fl) return;
-    const r = sec.getBoundingClientRect();
+    const filt = document.querySelector('.g-filters');
+    const sec = document.getElementById('gallery');
+    const fl = document.getElementById('g-float');
+    if(!filt || !sec || !fl) return;
     const vh = window.innerHeight || document.documentElement.clientHeight;
-    // ギャラリーがビューポートに掛かっている間だけフロートを表示
-    fl.classList.toggle('on', r.top < vh*0.85 && r.bottom > vh*0.3);
+    const fBottom = filt.getBoundingClientRect().bottom;   // フィルタタグの下端
+    const sBottom = sec.getBoundingClientRect().bottom;    // ギャラリーの下端
+    // フィルタタグが画面上へスクアウトし、かつギャラリーがまだ表示範囲にある間だけ表示
+    fl.classList.toggle('on', fBottom < 60 && sBottom > vh*0.2);
   }
   window.addEventListener('scroll', updateFloatVisibility, { passive:true });
   window.addEventListener('resize', updateFloatVisibility);
