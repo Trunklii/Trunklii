@@ -177,9 +177,9 @@
           + firstOpt
         + '</div>'
         + '<div class="kim-cat-carousel">'
-          + (showArrows ? '<button class="kim-arrow kim-arrow-prev" type="button" aria-label="前へ" onclick="kimCarousel(this,-1)">‹</button>' : '')
+          + (showArrows ? '<button class="kim-arrow kim-arrow-prev" type="button" aria-label="前へ" onclick="kimCarousel(this,-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg></button>' : '')
           + mainHtml + sub1 + sub2
-          + (showArrows ? '<button class="kim-arrow kim-arrow-next" type="button" aria-label="次へ" onclick="kimCarousel(this,1)">›</button>' : '')
+          + (showArrows ? '<button class="kim-arrow kim-arrow-next" type="button" aria-label="次へ" onclick="kimCarousel(this,1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></button>' : '')
         + '</div>'
       + '</div>';
     }
