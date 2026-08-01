@@ -499,24 +499,6 @@ window.SITE_DATA = {
             "category": "3y-girl"
           },
           {
-            "file": "kimono-3g-06.jpg",
-            "name": "三歳女の子 06",
-            "desc": "",
-            "category": "3y-girl"
-          },
-          {
-            "file": "kimono-3g-07.jpg",
-            "name": "三歳女の子 07",
-            "desc": "",
-            "category": "3y-girl"
-          },
-          {
-            "file": "kimono-3g-08.jpg",
-            "name": "三歳女の子 08",
-            "desc": "",
-            "category": "3y-girl"
-          },
-          {
             "file": "kimono-7g-01.jpg",
             "name": "七歳女の子 01",
             "desc": "",
@@ -537,30 +519,6 @@ window.SITE_DATA = {
           {
             "file": "kimono-7g-04.jpg",
             "name": "七歳女の子 04",
-            "desc": "",
-            "category": "7y-girl"
-          },
-          {
-            "file": "kimono-7g-05.jpg",
-            "name": "七歳女の子 05",
-            "desc": "",
-            "category": "7y-girl"
-          },
-          {
-            "file": "kimono-7g-06.jpg",
-            "name": "七歳女の子 06",
-            "desc": "",
-            "category": "7y-girl"
-          },
-          {
-            "file": "kimono-7g-07.jpg",
-            "name": "七歳女の子 07",
-            "desc": "",
-            "category": "7y-girl"
-          },
-          {
-            "file": "kimono-7g-08.jpg",
-            "name": "七歳女の子 08",
             "desc": "",
             "category": "7y-girl"
           },
@@ -661,24 +619,6 @@ window.SITE_DATA = {
             "category": "3y-boy"
           },
           {
-            "file": "kimono-3b-11.jpg",
-            "name": "三歳男の子 11",
-            "desc": "",
-            "category": "3y-boy"
-          },
-          {
-            "file": "kimono-3b-12.jpg",
-            "name": "三歳男の子 12",
-            "desc": "",
-            "category": "3y-boy"
-          },
-          {
-            "file": "kimono-3b-13.jpg",
-            "name": "三歳男の子 13",
-            "desc": "",
-            "category": "3y-boy"
-          },
-          {
             "file": "kimono-5b-01.jpg",
             "name": "五歳男の子 01",
             "desc": "",
@@ -699,24 +639,6 @@ window.SITE_DATA = {
           {
             "file": "kimono-5b-04.jpg",
             "name": "五歳男の子 04",
-            "desc": "",
-            "category": "5y-boy"
-          },
-          {
-            "file": "kimono-5b-05.jpg",
-            "name": "五歳男の子 05",
-            "desc": "",
-            "category": "5y-boy"
-          },
-          {
-            "file": "kimono-5b-06.jpg",
-            "name": "五歳男の子 06",
-            "desc": "",
-            "category": "5y-boy"
-          },
-          {
-            "file": "kimono-5b-07.jpg",
-            "name": "五歳男の子 07",
             "desc": "",
             "category": "5y-boy"
           },
