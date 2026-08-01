@@ -226,7 +226,21 @@
       var visible = Array.prototype.slice.call(gEl.querySelectorAll('.kim-cat')).some(function(c){ return c.style.display !== 'none'; });
       gEl.style.display = visible ? '' : 'none';
     });
+    scrollToKimonoTop();
   };
+
+  /* 絞り込んだらカードの先頭へ(Galleryと同じ挙動)。フロートメニューが消えない位置までに制限 */
+  function scrollToKimonoTop(){
+    var grid = document.getElementById('kimono-grid');
+    if(!grid) return;
+    var y = grid.getBoundingClientRect().top + window.scrollY - 72;   // 固定ヘッダー分オフセット
+    var bar = document.getElementById('kim-filter');
+    if(bar){
+      var minY = bar.getBoundingClientRect().bottom + window.scrollY - 50;  // フィルタ列を画面上端付近に保つ
+      y = Math.max(y, minY);
+    }
+    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+  }
 
   window.kimFilterCat = function(key){
     var btn = document.querySelector('.kim-filter-btn[data-cat="' + key + '"]');
