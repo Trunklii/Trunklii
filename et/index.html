@@ -503,13 +503,15 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .g-item:hover img{transform:scale(1.04)}
 .g-cap{display:none}
 .g-item:hover .g-cap{opacity:1}
-.g-no{position:absolute;bottom:.5rem;right:.5rem;z-index:2;background:rgba(255,255,255,.28);color:#111010;font-family:var(--display);font-weight:500;font-size:.6rem;line-height:1;letter-spacing:.05em;padding:.03rem .32rem;border-radius:3px;pointer-events:none}
+.g-no{position:absolute;bottom:.5rem;right:.5rem;z-index:2;background:rgba(255,255,255,.28);color:#111010;font-family:var(--display);font-weight:500;font-size:.6rem;line-height:1;letter-spacing:.05em;padding:.03rem .32rem;border-radius:3px;pointer-events:none;
+  /* 数字を大文字(N)と同じ高さのライニング数字にして上下バランスを揃える */
+  font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0}
 .g-no-search{display:flex;align-items:center;gap:.45rem;flex-basis:100%;justify-content:flex-end;margin:.35rem 0 0;font-size:.66rem;letter-spacing:.06em;color:var(--mid)}
 .g-no-search input{width:5.5rem;border:1px solid var(--border);padding:.36rem .5rem;font-family:var(--sans);font-size:.78rem;letter-spacing:.05em}
 .g-no-search button{border:1px solid var(--ink);background:var(--ink);color:#fff;font-family:var(--sans);font-size:.62rem;letter-spacing:.08em;padding:.4rem .85rem;cursor:pointer;text-transform:uppercase}
 .g-no-search .g-no-msg{color:var(--accent)}
 .g-filters .filter-note{margin:0 0 0 .6rem;align-self:center;white-space:nowrap}
-.lb-no{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.85);font-family:var(--display);font-size:.9rem;letter-spacing:.12em;z-index:3;pointer-events:none}
+.lb-no{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.85);font-family:var(--display);font-size:.9rem;letter-spacing:.12em;z-index:3;pointer-events:none;font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0}
 .g-item.hidden{display:none}
 .g-item.g-over{display:none}
 .g-carousel{position:relative}
@@ -1894,11 +1896,18 @@ function filterGallery(cat, btn){
 
 // ===== Gallery ページング（30枚デフォルト・±30） =====
 let galleryLimit = 30;
+// フロートメニューが消えない位置(タグ列が画面上に隠れたまま)までに戻り量を制限する
+function clampToKeepFloat(y){
+  const tagsEnd = document.querySelector('.g-filters .filter-note') || document.querySelector('.g-filters');
+  if(!tagsEnd) return y;
+  const minY = tagsEnd.getBoundingClientRect().bottom + window.scrollY - 50;  // タグ列下端を画面上端付近に保つ
+  return Math.max(y, minY);
+}
 function scrollToGalleryTop(){
-  const g = document.getElementById('gallery');
-  if(!g) return;
-  const y = g.getBoundingClientRect().top + window.scrollY - 72;   // 固定ヘッダー分オフセット
-  window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+  const grid = document.getElementById('g-grid');
+  if(!grid) return;
+  const y = grid.getBoundingClientRect().top + window.scrollY - 72;   // 写真の先頭(固定ヘッダー分オフセット)
+  window.scrollTo({ top: Math.max(0, clampToKeepFloat(y)), behavior: 'smooth' });
 }
 // グリッド・メーソンリー: DOM順を保ったまま縦横比で高さを割り当て（追加は下に積まれる）
 function layoutMasonry(){
@@ -1974,7 +1983,7 @@ function scrollToViewMore(){
   const vh = window.innerHeight || document.documentElement.clientHeight;
   const bottom = btn.getBoundingClientRect().bottom;
   const y = window.scrollY + bottom - vh + 28;   // ViewMoreの下端をウィンドウ下端付近へ
-  window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+  window.scrollTo({ top: Math.max(0, clampToKeepFloat(y)), behavior: 'smooth' });
 }
 // ===== Gallery フロートメニュー =====
 function buildFloatFilters(){
