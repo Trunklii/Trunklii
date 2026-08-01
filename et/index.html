@@ -379,13 +379,7 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .book-toggle:hover{background:var(--accent);transform:scale(1.05)}
 .book-toggle svg{width:calc(var(--fab) * .52);height:calc(var(--fab) * .52)}  /* ＋と同じ余白比 */
 .book-toggle[hidden]{display:none}
-.qa-bot-pulse{
-  position:absolute;top:-2px;right:-2px;
-  width:10px;height:10px;border-radius:50%;
-  background:var(--accent);
-  box-shadow:0 0 0 0 rgba(184,147,90,.6);
-  animation:pulse 2s infinite;
-}
+.qa-bot-pulse{display:none}
 @keyframes pulse{
   0%{box-shadow:0 0 0 0 rgba(184,147,90,.6)}
   70%{box-shadow:0 0 0 12px rgba(184,147,90,0)}
