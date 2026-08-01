@@ -1166,7 +1166,9 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 .kim-group-head{display:flex;align-items:baseline;gap:.8rem;margin:0 0 1.4rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)}
 .kim-group-en{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mid)}
 .kim-group-jp{font-family:var(--display);font-weight:400;font-size:1rem;letter-spacing:.06em;color:var(--ink)}
-.kim-group-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1rem,2.5vw,2rem)}
+.kim-group-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2.5vw,2rem)}
+.kim-group + .kim-group{margin-top:clamp(2rem,4vw,3.5rem)}
+@media(max-width:1100px){.kim-group-cards{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){.kim-group-cards{grid-template-columns:1fr}}
 @media(max-width:760px){.kim-cat-sub-img{aspect-ratio:8/7}.kim-arrow{top:38%}}
 </style>
