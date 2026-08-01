@@ -503,8 +503,8 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .g-item:hover img{transform:scale(1.04)}
 .g-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(17,16,16,.55));color:#fff;font-family:var(--display);font-style:normal;font-size:.78rem;letter-spacing:.06em;padding:2rem .75rem .6rem;opacity:0;transition:opacity .3s}
 .g-item:hover .g-cap{opacity:1}
-.g-no{position:absolute;top:.5rem;left:.5rem;z-index:2;background:rgba(17,16,16,.5);color:#fff;font-family:var(--display);font-size:.6rem;letter-spacing:.08em;padding:.14rem .42rem;border-radius:3px;pointer-events:none}
-.g-no-search{display:flex;align-items:center;gap:.45rem;margin:-1rem 0 2rem;font-size:.66rem;letter-spacing:.06em;color:var(--mid)}
+.g-no{position:absolute;bottom:.5rem;right:.5rem;z-index:2;background:rgba(255,255,255,.55);color:var(--ink);font-family:var(--display);font-size:.6rem;letter-spacing:.08em;padding:.14rem .42rem;border-radius:3px;pointer-events:none}
+.g-no-search{display:inline-flex;align-items:center;gap:.45rem;margin:0 0 0 .5rem;font-size:.66rem;letter-spacing:.06em;color:var(--mid)}
 .g-no-search input{width:5.5rem;border:1px solid var(--border);padding:.36rem .5rem;font-family:var(--sans);font-size:.78rem;letter-spacing:.05em}
 .g-no-search button{border:1px solid var(--ink);background:var(--ink);color:#fff;font-family:var(--sans);font-size:.62rem;letter-spacing:.08em;padding:.4rem .85rem;cursor:pointer;text-transform:uppercase}
 .g-no-search .g-no-msg{color:var(--accent)}
@@ -1169,15 +1169,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="g-filter" data-cat="furisode" onclick="filterGallery('furisode',this)">振袖</button>
     <button class="g-filter" data-cat="event" onclick="filterGallery('event',this)">イベント</button>
     <button class="g-filter" data-cat="other" onclick="filterGallery('other',this)">Other</button>
+    <span class="g-no-search">
+      <span>No. で探す</span>
+      <input id="g-no-input" type="text" inputmode="numeric" placeholder="例 42" aria-label="番号で探す"
+        onkeydown="if(event.key==='Enter')gotoGalleryNo()">
+      <button type="button" onclick="gotoGalleryNo()">表示</button>
+      <span class="g-no-msg" id="g-no-msg"></span>
+    </span>
   </div>
   <p class="filter-note">※ タグは複数選択できます（ALLで解除）</p>
-  <div class="g-no-search">
-    <span>No. で探す</span>
-    <input id="g-no-input" type="text" inputmode="numeric" placeholder="例 42" aria-label="番号で探す"
-      onkeydown="if(event.key==='Enter')gotoGalleryNo()">
-    <button type="button" onclick="gotoGalleryNo()">表示</button>
-    <span class="g-no-msg" id="g-no-msg"></span>
-  </div>
   <div class="g-carousel">
     <div class="g-grid" id="g-grid"></div>
     <button class="g-nav g-nav-prev" type="button" aria-label="前の写真" onclick="galleryScroll(-1)">‹</button>
