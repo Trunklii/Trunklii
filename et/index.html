@@ -503,6 +503,12 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .g-item:hover img{transform:scale(1.04)}
 .g-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(17,16,16,.55));color:#fff;font-family:var(--display);font-style:normal;font-size:.78rem;letter-spacing:.06em;padding:2rem .75rem .6rem;opacity:0;transition:opacity .3s}
 .g-item:hover .g-cap{opacity:1}
+.g-no{position:absolute;top:.5rem;left:.5rem;z-index:2;background:rgba(17,16,16,.5);color:#fff;font-family:var(--display);font-size:.6rem;letter-spacing:.08em;padding:.14rem .42rem;border-radius:3px;pointer-events:none}
+.g-no-search{display:flex;align-items:center;gap:.45rem;margin:-1rem 0 2rem;font-size:.66rem;letter-spacing:.06em;color:var(--mid)}
+.g-no-search input{width:5.5rem;border:1px solid var(--border);padding:.36rem .5rem;font-family:var(--sans);font-size:.78rem;letter-spacing:.05em}
+.g-no-search button{border:1px solid var(--ink);background:var(--ink);color:#fff;font-family:var(--sans);font-size:.62rem;letter-spacing:.08em;padding:.4rem .85rem;cursor:pointer;text-transform:uppercase}
+.g-no-search .g-no-msg{color:var(--accent)}
+.lb-no{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.85);font-family:var(--display);font-size:.9rem;letter-spacing:.12em;z-index:3;pointer-events:none}
 .g-item.hidden{display:none}
 .g-carousel{position:relative}
 .g-nav,.g-counter{display:none}
@@ -1165,6 +1171,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="g-filter" data-cat="other" onclick="filterGallery('other',this)">Other</button>
   </div>
   <p class="filter-note">※ タグは複数選択できます（ALLで解除）</p>
+  <div class="g-no-search">
+    <span>No. で探す</span>
+    <input id="g-no-input" type="text" inputmode="numeric" placeholder="例 42" aria-label="番号で探す"
+      onkeydown="if(event.key==='Enter')gotoGalleryNo()">
+    <button type="button" onclick="gotoGalleryNo()">表示</button>
+    <span class="g-no-msg" id="g-no-msg"></span>
+  </div>
   <div class="g-carousel">
     <div class="g-grid" id="g-grid"></div>
     <button class="g-nav g-nav-prev" type="button" aria-label="前の写真" onclick="galleryScroll(-1)">‹</button>
@@ -1372,6 +1385,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <button class="lb-close" onclick="closeLb()">✕</button>
   <button class="lb-prev" onclick="lbNav(-1)">‹</button>
   <img class="lb-img" id="lb-img" src="" alt=""/>
+  <div class="lb-no" id="lb-no"></div>
   <button class="lb-next" onclick="lbNav(1)">›</button>
 </div>
 
@@ -1453,7 +1467,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="../site-data.js"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
-let heroTimer, lbImages=[], lbIdx=0;
+let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
 let SEARCH_INDEX = [];
 
 // Safety net — ensure body fades in even if init() stalls (e.g. slow SVG fetch)
@@ -1541,9 +1555,11 @@ async function init(){
     return 0;
   });
   lbImages = sortedGallery.map(i=>i.file);
+  lbNos = sortedGallery.map(i=>i.no||'');
   document.getElementById('g-grid').innerHTML = sortedGallery.map((item,i)=>`
-    <div class="g-item" data-cat="${(item.tags||[item.category||'other']).join(' ')}">
+    <div class="g-item" data-cat="${(item.tags||[item.category||'other']).join(' ')}" data-no="${item.no||''}">
       <img src="${item.file}" alt="${item.caption}" loading="lazy" onclick="openLb(${i})"/>
+      ${item.no?`<div class="g-no">No.${item.no}</div>`:''}
       <div class="g-cap">${item.caption}</div>
     </div>
   `).join('');
@@ -1872,10 +1888,23 @@ function updateGalleryCounter(){
   if(nextBtn) nextBtn.disabled = (idx === items.length - 1);
 }
 
-function openLb(idx){ lbIdx=idx; document.getElementById('lb-img').src=lbImages[lbIdx]; document.getElementById('lightbox').classList.add('open'); }
-function openLbSrc(src){ lbIdx=-1; document.getElementById('lb-img').src=src; document.getElementById('lightbox').classList.add('open'); }
+function setLbNo(){ const el=document.getElementById('lb-no'); if(!el) return;
+  const no=(lbIdx>=0 && lbNos[lbIdx]) ? ('No.'+lbNos[lbIdx]) : '';
+  el.textContent=no; el.style.display=no?'':'none'; }
+function openLb(idx){ lbIdx=idx; document.getElementById('lb-img').src=lbImages[lbIdx]; setLbNo(); document.getElementById('lightbox').classList.add('open'); }
+function openLbSrc(src){ lbIdx=-1; document.getElementById('lb-img').src=src; setLbNo(); document.getElementById('lightbox').classList.add('open'); }
+function gotoGalleryNo(){
+  const inp=document.getElementById('g-no-input'), msg=document.getElementById('g-no-msg');
+  let v=(inp.value||'').trim().replace(/^(no\.?|#)/i,'').replace(/\s/g,'');
+  if(!v){ msg.textContent=''; return; }
+  const items=[...document.querySelectorAll('#g-grid .g-item')];
+  let idx=items.findIndex(el=>el.dataset.no===v);
+  if(idx<0 && /^\d+$/.test(v)) idx=items.findIndex(el=>el.dataset.no===v.padStart(4,'0'));
+  if(idx<0){ msg.textContent='No.'+v+' は見つかりません'; return; }
+  msg.textContent=''; openLb(idx);
+}
 function closeLb(){ document.getElementById('lightbox').classList.remove('open'); }
-function lbNav(dir){ if(lbIdx<0) return; lbIdx=(lbIdx+dir+lbImages.length)%lbImages.length; document.getElementById('lb-img').src=lbImages[lbIdx]; }
+function lbNav(dir){ if(lbIdx<0) return; lbIdx=(lbIdx+dir+lbImages.length)%lbImages.length; document.getElementById('lb-img').src=lbImages[lbIdx]; setLbNo(); }
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){ closeLb(); closeSearch(); }
   if(e.key==='ArrowRight') lbNav(1);
