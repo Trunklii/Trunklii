@@ -1420,6 +1420,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <button class="g-fab" id="g-fab-more" type="button" onclick="galleryMore(30)" aria-label="表示を30枚増やす" title="表示を30枚増やす">＋</button>
   <button class="g-fab" id="g-fab-less" type="button" onclick="galleryMore(-30)" aria-label="表示を30枚減らす" title="表示を30枚減らす">－</button>
 </div>
+<div class="g-float" id="k-float">
+  <div class="g-float-panel" id="k-float-panel">
+    <div class="gfp-title">着物で絞り込み</div>
+    <div class="gfp-tags" id="kfp-tags"></div>
+  </div>
+  <button class="g-fab" id="k-fab-filter" type="button" onclick="toggleKimPanel(event)" aria-label="着物で絞り込み" title="着物で絞り込み">
+    <svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+    <span class="g-fab-dot"></span>
+  </button>
+</div>
 <div class="lightbox" id="lightbox">
   <button class="lb-close" onclick="closeLb()">✕</button>
   <button class="lb-prev" onclick="lbNav(-1)">‹</button>
@@ -1987,13 +1997,18 @@ function toggleFloatPanel(ev){
   document.getElementById('g-float-panel').classList.toggle('open');
 }
 (function initGalleryFloat(){
+  // パネル展開中にフロートメニュー外をタップ → 閉じるだけ（そのタップは無効化=画像は拡大しない）
   document.addEventListener('click', e=>{
-    const panel = document.getElementById('g-float-panel');
-    const fBtn = document.getElementById('g-fab-filter');
-    if(panel && panel.classList.contains('open') && !panel.contains(e.target) && e.target!==fBtn && !fBtn.contains(e.target)){
-      panel.classList.remove('open');
-    }
-  });
+    [['g-float-panel','g-float'],['k-float-panel','k-float']].forEach(function(p){
+      const panel = document.getElementById(p[0]);
+      const fl = document.getElementById(p[1]);
+      if(panel && panel.classList.contains('open') && fl && !fl.contains(e.target)){
+        panel.classList.remove('open');
+        e.stopPropagation();
+        e.preventDefault();
+      }
+    });
+  }, true);   // capture: 写真のonclick(openLb)より先に処理して伝播を止める
   function updateFloatVisibility(){
     // タグ列の末尾(注記=No.検索の手前)を基準にする。No.検索は含めない
     const tagsEnd = document.querySelector('.g-filters .filter-note') || document.querySelector('.g-filters');
@@ -2009,6 +2024,48 @@ function toggleFloatPanel(ev){
   window.addEventListener('scroll', updateFloatVisibility, { passive:true });
   window.addEventListener('resize', updateFloatVisibility);
   updateFloatVisibility();
+})();
+
+// ===== Kimono フロートメニュー（フィルタのみ） =====
+function buildKimFloatPanel(){
+  const bar = document.getElementById('kim-filter');
+  const box = document.getElementById('kfp-tags');
+  if(!bar || !box) return;
+  const btns = [...bar.querySelectorAll('.kim-filter-btn')];
+  box.innerHTML = btns.map(b=>'<button class="gfp-tag" type="button" data-title="'+b.getAttribute('data-title')+'">'+b.textContent+'</button>').join('');
+  box.querySelectorAll('.gfp-tag').forEach(pb=>pb.addEventListener('click', ()=>{
+    const real = bar.querySelector('.kim-filter-btn[data-title="'+pb.getAttribute('data-title')+'"]');
+    if(real){ real.click(); syncKimFloat(); }
+  }));
+  syncKimFloat();
+}
+function syncKimFloat(){
+  const bar = document.getElementById('kim-filter'); if(!bar) return;
+  const active = new Set([...bar.querySelectorAll('.kim-filter-btn.active')].map(b=>b.getAttribute('data-title')));
+  document.querySelectorAll('#kfp-tags .gfp-tag').forEach(pb=>pb.classList.toggle('active', active.has(pb.getAttribute('data-title'))));
+  const fBtn = document.getElementById('k-fab-filter');
+  if(fBtn) fBtn.classList.toggle('act', active.size>0 && !active.has('all'));
+}
+function toggleKimPanel(ev){
+  if(ev) ev.stopPropagation();
+  if(!document.querySelector('#kfp-tags .gfp-tag')) buildKimFloatPanel();
+  document.getElementById('k-float-panel').classList.toggle('open');
+}
+(function initKimFloat(){
+  function updateKimFloatVisibility(){
+    const bar = document.getElementById('kim-filter');
+    const sec = document.getElementById('kimono');
+    const fl = document.getElementById('k-float');
+    if(!bar || !sec || !fl) return;
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const barBottom = bar.getBoundingClientRect().bottom;   // 着物フィルタ列の下端
+    const sBottom = sec.getBoundingClientRect().bottom;
+    fl.classList.toggle('on', barBottom < 70 && sBottom > vh*0.2);
+  }
+  window.addEventListener('scroll', updateKimFloatVisibility, { passive:true });
+  window.addEventListener('resize', updateKimFloatVisibility);
+  window.addEventListener('load', ()=>{ buildKimFloatPanel(); updateKimFloatVisibility(); });
+  updateKimFloatVisibility();
 })();
 
 function visibleGalleryItems(){
