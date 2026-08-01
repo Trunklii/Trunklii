@@ -131,9 +131,13 @@
       bar.id = 'kim-filter';
       container.parentNode.insertBefore(bar, container);
     }
-    bar.innerHTML = '<button class="kim-filter-btn active" type="button" data-cat="all" onclick="kimFilter(this)">ALL</button>'
-      + '<button class="kim-filter-btn" type="button" data-gender="girl" onclick="kimFilter(this)">Girl</button>'
-      + '<button class="kim-filter-btn" type="button" data-gender="boy" onclick="kimFilter(this)">Boy</button>';
+    // カードのタイトル別タグ(三歳女の子/七歳女の子…)。同名カードはスタジオ/お詣り両方を絞り込む
+    var seenT = {}, tags = [];
+    CATS.forEach(function(c){ if(seenT[c.jp]) return; seenT[c.jp] = true; tags.push(c.jp); });
+    bar.innerHTML = '<button class="kim-filter-btn active" type="button" data-title="all" onclick="kimFilter(this)">ALL</button>'
+      + tags.map(function(t){
+          return '<button class="kim-filter-btn" type="button" data-title="' + t + '" onclick="kimFilter(this)">' + t + '</button>';
+        }).join('');
 
     container.className = 'kim-cats';
     function cardHtml(c){
@@ -194,12 +198,15 @@
     Array.prototype.forEach.call(bar.querySelectorAll('.kim-filter-btn'), function(b){
       b.classList.toggle('active', b === btn);
     });
+    var title = btn.getAttribute('data-title');
     var cat = btn.getAttribute('data-cat');
     var grp = btn.getAttribute('data-group');
     var gen = btn.getAttribute('data-gender');
-    // カードの表示判定
+    // カードの表示判定(タイトル別タグが基本。旧属性も後方互換で残す)
     Array.prototype.forEach.call(document.querySelectorAll('#kimono-grid .kim-cat'), function(card){
-      var show = (cat === 'all' || !cat) || card.getAttribute('data-cat') === cat;
+      var show = true;
+      if(title && title !== 'all') show = card.getAttribute('data-title') === title;
+      else if(cat && cat !== 'all') show = card.getAttribute('data-cat') === cat;
       if(grp) show = card.getAttribute('data-group') === grp;
       if(gen) show = card.getAttribute('data-gender') === gen;
       card.style.display = show ? '' : 'none';
