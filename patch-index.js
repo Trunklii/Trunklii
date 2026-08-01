@@ -195,30 +195,30 @@
   /* カテゴリ絞り込み(kim-filter のボタンから呼ばれる) */
   window.kimFilter = function(btn){
     var bar = btn.parentNode;
-    Array.prototype.forEach.call(bar.querySelectorAll('.kim-filter-btn'), function(b){
-      b.classList.toggle('active', b === btn);
-    });
-    var title = btn.getAttribute('data-title');
-    var cat = btn.getAttribute('data-cat');
-    var grp = btn.getAttribute('data-group');
-    var gen = btn.getAttribute('data-gender');
-    // カードの表示判定(タイトル別タグが基本。旧属性も後方互換で残す)
+    var isAll = (btn.getAttribute('data-title') === 'all') || (btn.getAttribute('data-cat') === 'all');
+    var allBtn = bar.querySelector('.kim-filter-btn[data-title="all"]') || bar.querySelector('.kim-filter-btn[data-cat="all"]');
+    if(isAll){
+      Array.prototype.forEach.call(bar.querySelectorAll('.kim-filter-btn'), function(b){ b.classList.remove('active'); });
+      if(allBtn) allBtn.classList.add('active');
+    } else {
+      btn.classList.toggle('active');            // ALL以外は複数選択(トグル)
+      if(allBtn) allBtn.classList.remove('active');
+      if(!bar.querySelector('.kim-filter-btn.active') && allBtn) allBtn.classList.add('active');
+    }
+    var sel = Array.prototype.slice.call(bar.querySelectorAll('.kim-filter-btn.active'))
+      .map(function(b){ return b.getAttribute('data-title'); })
+      .filter(function(t){ return t && t !== 'all'; });
     Array.prototype.forEach.call(document.querySelectorAll('#kimono-grid .kim-cat'), function(card){
-      var show = true;
-      if(title && title !== 'all') show = card.getAttribute('data-title') === title;
-      else if(cat && cat !== 'all') show = card.getAttribute('data-cat') === cat;
-      if(grp) show = card.getAttribute('data-group') === grp;
-      if(gen) show = card.getAttribute('data-gender') === gen;
+      var show = sel.length === 0 || sel.indexOf(card.getAttribute('data-title')) !== -1;
       card.style.display = show ? '' : 'none';
     });
     // グループ見出しは、そのグループに表示中カードが1枚でもあれば表示
     Array.prototype.forEach.call(document.querySelectorAll('#kimono-grid .kim-group'), function(gEl){
-      var visible = gEl.querySelectorAll('.kim-cat:not([style*="display: none"])').length > 0;
+      var visible = Array.prototype.slice.call(gEl.querySelectorAll('.kim-cat')).some(function(c){ return c.style.display !== 'none'; });
       gEl.style.display = visible ? '' : 'none';
     });
   };
 
-  /* カテゴリキーで絞り込み(ハンバーガーメニューのKimonoサブメニューから呼ばれる) */
   window.kimFilterCat = function(key){
     var btn = document.querySelector('.kim-filter-btn[data-cat="' + key + '"]');
     if(btn){ window.kimFilter(btn); return; }

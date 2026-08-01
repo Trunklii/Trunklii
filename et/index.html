@@ -1784,6 +1784,16 @@ function filterGallery(cat, btn){
       if(!bar.querySelector('.g-filter.active') && allBtn) allBtn.classList.add('active');
     }
   }
+  // メニュー等から btn なしで呼ばれた場合も、対応するタグをトグルして複数選択に揃える
+  if(!btn && cat !== 'all' && bar){
+    const target = bar.querySelector('.g-filter[data-cat="'+cat+'"]');
+    if(target){
+      target.classList.toggle('active');
+      const ab = bar.querySelector('.g-filter[data-cat="all"]');
+      if(ab) ab.classList.remove('active');
+      if(!bar.querySelector('.g-filter.active') && ab) ab.classList.add('active');
+    }
+  }
   const sel = bar ? Array.from(bar.querySelectorAll('.g-filter.active')).map(b=>b.dataset.cat).filter(c=>c && c!=='all') : [];
   document.querySelectorAll('.g-item').forEach(item=>{
     let c = item.dataset.cat || 'other';
