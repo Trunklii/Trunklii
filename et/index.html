@@ -816,17 +816,17 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 /* ═══════════════════════════════
    TOP: Kimono category carousels
 ═══════════════════════════════ */
-/* Kimono カテゴリ絞り込み(スマホのみ表示。折返し配置で横スクロールなし) */
-.kim-filter{display:none}
+/* Kimono カテゴリ絞り込み(PC=横並びタグ / スマホ=3列グリッド) */
+.kim-filter{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.8rem}
+.kim-filter .kim-filter-btn{font-family:var(--sans);font-weight:400;font-size:.66rem;letter-spacing:.05em;padding:.5rem 1rem;border:1px solid rgba(110,90,58,.4);background:transparent;color:#6e5a3a;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.kim-filter .kim-filter-btn.active{background:#6e5a3a;color:#fff;border-color:#6e5a3a}
 @media(max-width:760px){
   /* 8ボタンを必ず2行に収める4列グリッド */
   .kim-filter{display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem;margin:0 0 1.6rem}
   .kim-filter-btn{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.03em;padding:.5rem .1rem;border:1px solid rgba(110,90,58,.4);background:transparent;color:#6e5a3a;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
   .kim-filter-btn.active{background:#6e5a3a;color:#fff;border-color:#6e5a3a}
 }
-.kim-cats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2.2vw,1.6rem);align-items:start}
-.kim-cats > .kim-group[data-group="studio"]{grid-column:span 3}
-.kim-cats > .kim-group[data-group="mairi"]{grid-column:span 1}
+.kim-cats{display:block}
 .kim-cat{background:#efe9da;padding:.3rem;display:flex;flex-direction:column;position:relative;overflow:hidden}
 .kim-cat-head{margin:.3rem .3rem .5rem;padding-bottom:.5rem;border-bottom:1px solid rgba(102,86,55,.25)}
 .kim-cat-title{font-family:var(--display);font-style:normal;font-weight:300;font-size:clamp(1.4rem,2.5vw,1.7rem);color:#6e5a3a;letter-spacing:.01em;margin-bottom:.25rem;font-variant-numeric:lining-nums}
@@ -911,8 +911,14 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 .kim-group-jp{font-family:var(--display);font-weight:400;font-size:1rem;letter-spacing:.06em;color:var(--ink)}
 .kim-group-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1rem,2.2vw,1.6rem)}
 /* PC: スタジオ=3列 / お詣り=1列。タイトル罫線は kim-cats の align-items:start で横並び揃え */
-.kim-group[data-group="studio"] .kim-group-cards{grid-template-columns:repeat(3,1fr)}
-.kim-group[data-group="mairi"] .kim-group-cards{grid-template-columns:1fr}
+/* PC: 両グループとも4列(スタジオ=3女/7女/10女/お宮参り → 3男/5男/10男、お詣り=3女/7女/3男/5男) */
+.kim-group[data-group="studio"] .kim-group-cards,
+.kim-group[data-group="mairi"] .kim-group-cards{grid-template-columns:repeat(4,1fr)}
+.kim-group + .kim-group{margin-top:clamp(2rem,4vw,3.5rem)}
+@media(max-width:1100px){
+  .kim-group[data-group="studio"] .kim-group-cards,
+  .kim-group[data-group="mairi"] .kim-group-cards{grid-template-columns:repeat(2,1fr)}
+}
 /* スマホ: グループ(スタジオ/お詣り)を横スクロールで横並び。各グループ内の①〜⑦カードは縦積み */
 @media(max-width:760px){
   .kim-cats{display:flex;flex-direction:row;grid-template-columns:none;overflow-x:auto;gap:1.2rem;align-items:flex-start;margin:0 -1.2rem;padding:0 1.2rem .6rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
