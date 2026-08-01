@@ -226,6 +226,7 @@
       var visible = Array.prototype.slice.call(gEl.querySelectorAll('.kim-cat')).some(function(c){ return c.style.display !== 'none'; });
       gEl.style.display = visible ? '' : 'none';
     });
+    if(typeof window.syncKimFloat === 'function') window.syncKimFloat();   // フロートパネルの選択状態も合わせる
     scrollToKimonoTop();
   };
 
