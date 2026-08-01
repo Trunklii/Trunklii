@@ -383,6 +383,7 @@ window.SITE_DATA = {
           "file": "g/17900542530473270.jpg",
           "caption": "七五三",
           "date": "2026.07.27",
+          "ar": 0.6667,
           "tags": [
             "753",
             "family",
@@ -394,6 +395,7 @@ window.SITE_DATA = {
           "file": "g/18027187787664838.jpg",
           "caption": "七五三",
           "date": "2026.07.22",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -404,6 +406,7 @@ window.SITE_DATA = {
           "file": "g/18124988209786766.jpg",
           "caption": "1/2バースデー",
           "date": "2026.07.21",
+          "ar": 1.2491,
           "tags": [
             "halfbd"
           ]
@@ -413,6 +416,7 @@ window.SITE_DATA = {
           "file": "g/18127324858678687.jpg",
           "caption": "1/2バースデー",
           "date": "2026.07.21",
+          "ar": 1.2491,
           "tags": [
             "halfbd"
           ]
@@ -422,6 +426,7 @@ window.SITE_DATA = {
           "file": "g/17933825613300001.jpg",
           "caption": "七五三",
           "date": "2026.07.07",
+          "ar": 1.25,
           "tags": [
             "753",
             "753girl"
@@ -432,6 +437,7 @@ window.SITE_DATA = {
           "file": "g/17914383492421812.jpg",
           "caption": "七五三",
           "date": "2026.07.05",
+          "ar": 0.6667,
           "tags": [
             "753",
             "family",
@@ -443,6 +449,7 @@ window.SITE_DATA = {
           "file": "g/17961609072131540.jpg",
           "caption": "七五三",
           "date": "2026.07.05",
+          "ar": 0.6667,
           "tags": [
             "753",
             "family",
@@ -454,6 +461,7 @@ window.SITE_DATA = {
           "file": "g/17888768967590090.jpg",
           "caption": "七五三",
           "date": "2026.06.29",
+          "ar": 1.25,
           "tags": [
             "753",
             "family"
@@ -464,6 +472,7 @@ window.SITE_DATA = {
           "file": "g/18129362836626085.jpg",
           "caption": "七五三",
           "date": "2026.06.29",
+          "ar": 1.2491,
           "tags": [
             "753",
             "family"
@@ -474,6 +483,7 @@ window.SITE_DATA = {
           "file": "g/18125732971643036.jpg",
           "caption": "七五三",
           "date": "2026.06.27",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -484,6 +494,7 @@ window.SITE_DATA = {
           "file": "g/18010183097865073.jpg",
           "caption": "七五三",
           "date": "2026.06.27",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -494,6 +505,7 @@ window.SITE_DATA = {
           "file": "g/18022193681838818.jpg",
           "caption": "七五三",
           "date": "2026.06.21",
+          "ar": 1.25,
           "tags": [
             "753",
             "753girl"
@@ -504,6 +516,7 @@ window.SITE_DATA = {
           "file": "g/17893514121536950.jpg",
           "caption": "七五三",
           "date": "2026.06.20",
+          "ar": 1.25,
           "tags": [
             "753",
             "family",
@@ -515,6 +528,7 @@ window.SITE_DATA = {
           "file": "g/18032651432811785.jpg",
           "caption": "七五三",
           "date": "2026.06.13",
+          "ar": 1.25,
           "tags": [
             "753",
             "753boy"
@@ -525,6 +539,7 @@ window.SITE_DATA = {
           "file": "g/17882296557596423.jpg",
           "caption": "マタニティ",
           "date": "2026.06.10",
+          "ar": 0.6667,
           "tags": [
             "maternity"
           ]
@@ -534,6 +549,7 @@ window.SITE_DATA = {
           "file": "g/17880890727598242.jpg",
           "caption": "七五三",
           "date": "2026.06.07",
+          "ar": 1.25,
           "tags": [
             "753",
             "family"
@@ -544,6 +560,7 @@ window.SITE_DATA = {
           "file": "g/18112990255675458.jpg",
           "caption": "七五三",
           "date": "2026.06.01",
+          "ar": 1.25,
           "tags": [
             "753",
             "family"
@@ -554,6 +571,7 @@ window.SITE_DATA = {
           "file": "g/18092742464189297.jpg",
           "caption": "バースデー",
           "date": "2026.05.27",
+          "ar": 1.25,
           "tags": [
             "birthday"
           ]
@@ -563,6 +581,7 @@ window.SITE_DATA = {
           "file": "g/17926422525329026.jpg",
           "caption": "お宮参り",
           "date": "2026.05.21",
+          "ar": 1.25,
           "tags": [
             "753",
             "omiyamairi",
@@ -574,6 +593,7 @@ window.SITE_DATA = {
           "file": "g/18082327571419398.jpg",
           "caption": "バースデー",
           "date": "2026.05.19",
+          "ar": 1.25,
           "tags": [
             "birthday",
             "family",
@@ -585,6 +605,7 @@ window.SITE_DATA = {
           "file": "g/18152237314476562.jpg",
           "caption": "バースデー",
           "date": "2026.05.19",
+          "ar": 1.2491,
           "tags": [
             "birthday",
             "family",
@@ -596,6 +617,7 @@ window.SITE_DATA = {
           "file": "g/18124737775614859.jpg",
           "caption": "七五三",
           "date": "2026.05.18",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753boy"
@@ -606,6 +628,7 @@ window.SITE_DATA = {
           "file": "g/18053808911726560.jpg",
           "caption": "1/2バースデー",
           "date": "2026.05.08",
+          "ar": 0.6667,
           "tags": [
             "halfbd"
           ]
@@ -615,6 +638,7 @@ window.SITE_DATA = {
           "file": "g/18106921145488526.jpg",
           "caption": "1/2バースデー",
           "date": "2026.05.08",
+          "ar": 0.6667,
           "tags": [
             "halfbd"
           ]
@@ -624,6 +648,7 @@ window.SITE_DATA = {
           "file": "g/18102795757790250.jpg",
           "caption": "七五三",
           "date": "2026.05.04",
+          "ar": 1.25,
           "tags": [
             "753",
             "753girl"
@@ -634,6 +659,7 @@ window.SITE_DATA = {
           "file": "g/18134896864559435.jpg",
           "caption": "七五三",
           "date": "2026.05.04",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -644,6 +670,7 @@ window.SITE_DATA = {
           "file": "g/18068477078669680.jpg",
           "caption": "バースデー",
           "date": "2026.04.30",
+          "ar": 0.6667,
           "tags": [
             "birthday",
             "family",
@@ -655,6 +682,7 @@ window.SITE_DATA = {
           "file": "g/18100767890053716.jpg",
           "caption": "バースデー",
           "date": "2026.04.30",
+          "ar": 0.6667,
           "tags": [
             "birthday",
             "family",
@@ -666,6 +694,7 @@ window.SITE_DATA = {
           "file": "g/17987838110987031.jpg",
           "caption": "七五三",
           "date": "2026.04.23",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -676,6 +705,7 @@ window.SITE_DATA = {
           "file": "g/18108514594844259.jpg",
           "caption": "七五三",
           "date": "2026.04.14",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -686,6 +716,7 @@ window.SITE_DATA = {
           "file": "g/18146950135470238.jpg",
           "caption": "七五三",
           "date": "2026.04.09",
+          "ar": 1.25,
           "tags": [
             "753",
             "753girl"
@@ -696,6 +727,7 @@ window.SITE_DATA = {
           "file": "g/18080067620385267.jpg",
           "caption": "バースデー",
           "date": "2026.04.07",
+          "ar": 1.25,
           "tags": [
             "birthday"
           ]
@@ -705,6 +737,7 @@ window.SITE_DATA = {
           "file": "g/18572913430034509.jpg",
           "caption": "バースデー",
           "date": "2026.04.07",
+          "ar": 1.2491,
           "tags": [
             "birthday"
           ]
@@ -714,6 +747,7 @@ window.SITE_DATA = {
           "file": "g/18109809160837690.jpg",
           "caption": "七五三",
           "date": "2026.04.02",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -724,6 +758,7 @@ window.SITE_DATA = {
           "file": "g/18353416921226772.jpg",
           "caption": "七五三",
           "date": "2026.03.30",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -734,6 +769,7 @@ window.SITE_DATA = {
           "file": "g/17945631645136356.jpg",
           "caption": "バースデー",
           "date": "2026.03.21",
+          "ar": 0.6667,
           "tags": [
             "birthday"
           ]
@@ -743,6 +779,7 @@ window.SITE_DATA = {
           "file": "g/18089438080915181.jpg",
           "caption": "バースデー",
           "date": "2026.03.21",
+          "ar": 0.6667,
           "tags": [
             "birthday"
           ]
@@ -752,6 +789,7 @@ window.SITE_DATA = {
           "file": "g/18071562569216376.jpg",
           "caption": "バースデー",
           "date": "2026.03.19",
+          "ar": 1.25,
           "tags": [
             "birthday"
           ]
@@ -761,6 +799,7 @@ window.SITE_DATA = {
           "file": "g/18069591632269067.jpg",
           "caption": "バースデー",
           "date": "2026.03.19",
+          "ar": 1.25,
           "tags": [
             "birthday"
           ]
@@ -770,6 +809,7 @@ window.SITE_DATA = {
           "file": "g/18445010710108095.jpg",
           "caption": "七五三",
           "date": "2026.03.17",
+          "ar": 1.25,
           "tags": [
             "753",
             "753boy"
@@ -780,6 +820,7 @@ window.SITE_DATA = {
           "file": "g/18114193909645849.jpg",
           "caption": "入園・入学",
           "date": "2026.03.15",
+          "ar": 0.6681,
           "tags": [
             "school"
           ]
@@ -789,6 +830,7 @@ window.SITE_DATA = {
           "file": "g/17999611919872153.jpg",
           "caption": "入園・入学",
           "date": "2026.03.15",
+          "ar": 0.6681,
           "tags": [
             "school"
           ]
@@ -798,6 +840,7 @@ window.SITE_DATA = {
           "file": "g/18343607383209777.jpg",
           "caption": "七五三",
           "date": "2026.03.13",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -808,6 +851,7 @@ window.SITE_DATA = {
           "file": "g/18097091923805334.jpg",
           "caption": "1/2成人式",
           "date": "2026.03.12",
+          "ar": 1.25,
           "tags": [
             "halfseijin"
           ]
@@ -817,6 +861,7 @@ window.SITE_DATA = {
           "file": "g/18162790162422112.jpg",
           "caption": "1/2成人式",
           "date": "2026.03.12",
+          "ar": 1.2491,
           "tags": [
             "halfseijin"
           ]
@@ -826,6 +871,7 @@ window.SITE_DATA = {
           "file": "g/18570325252008744.jpg",
           "caption": "1/2成人式",
           "date": "2026.03.12",
+          "ar": 1.2491,
           "tags": [
             "halfseijin"
           ]
@@ -835,6 +881,7 @@ window.SITE_DATA = {
           "file": "g/18040504553765340.jpg",
           "caption": "1/2バースデー",
           "date": "2026.03.10",
+          "ar": 1.25,
           "tags": [
             "halfbd"
           ]
@@ -844,6 +891,7 @@ window.SITE_DATA = {
           "file": "g/17988916007780855.jpg",
           "caption": "1/2バースデー",
           "date": "2026.03.10",
+          "ar": 1.2491,
           "tags": [
             "halfbd"
           ]
@@ -853,6 +901,7 @@ window.SITE_DATA = {
           "file": "g/18122654344571751.jpg",
           "caption": "マタニティ",
           "date": "2026.03.03",
+          "ar": 1.25,
           "tags": [
             "maternity"
           ]
@@ -862,6 +911,7 @@ window.SITE_DATA = {
           "file": "g/17852356587635625.jpg",
           "caption": "マタニティ",
           "date": "2026.03.03",
+          "ar": 1.2491,
           "tags": [
             "maternity"
           ]
@@ -871,6 +921,7 @@ window.SITE_DATA = {
           "file": "g/18094639867953132.jpg",
           "caption": "七五三",
           "date": "2026.03.02",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -881,6 +932,7 @@ window.SITE_DATA = {
           "file": "g/18063694436682891.jpg",
           "caption": "七五三",
           "date": "2026.03.01",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -891,6 +943,7 @@ window.SITE_DATA = {
           "file": "g/17883660729452309.jpg",
           "caption": "1/2バースデー",
           "date": "2026.02.24",
+          "ar": 0.6667,
           "tags": [
             "halfbd"
           ]
@@ -900,6 +953,7 @@ window.SITE_DATA = {
           "file": "g/18119230111607180.jpg",
           "caption": "1/2バースデー",
           "date": "2026.02.24",
+          "ar": 0.6667,
           "tags": [
             "halfbd"
           ]
@@ -909,6 +963,7 @@ window.SITE_DATA = {
           "file": "g/18426767137142752.jpg",
           "caption": "マタニティ",
           "date": "2026.02.12",
+          "ar": 1.25,
           "tags": [
             "maternity"
           ]
@@ -918,6 +973,7 @@ window.SITE_DATA = {
           "file": "g/18072177689393503.jpg",
           "caption": "マタニティ",
           "date": "2026.02.12",
+          "ar": 1.2491,
           "tags": [
             "maternity"
           ]
@@ -927,6 +983,7 @@ window.SITE_DATA = {
           "file": "g/18178234477331512.jpg",
           "caption": "バースデー",
           "date": "2026.02.05",
+          "ar": 1.25,
           "tags": [
             "birthday"
           ]
@@ -936,6 +993,7 @@ window.SITE_DATA = {
           "file": "g/18554155105012944.jpg",
           "caption": "バースデー",
           "date": "2026.02.05",
+          "ar": 1.2491,
           "tags": [
             "birthday"
           ]
@@ -945,6 +1003,7 @@ window.SITE_DATA = {
           "file": "g/18115595737529418.jpg",
           "caption": "バースデー",
           "date": "2026.02.01",
+          "ar": 0.6667,
           "tags": [
             "birthday"
           ]
@@ -954,6 +1013,7 @@ window.SITE_DATA = {
           "file": "g/18067431596227602.jpg",
           "caption": "七五三",
           "date": "2026.01.31",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -964,6 +1024,7 @@ window.SITE_DATA = {
           "file": "g/18005745155841631.jpg",
           "caption": "七五三",
           "date": "2026.01.30",
+          "ar": 0.6681,
           "tags": [
             "753",
             "753girl"
@@ -974,6 +1035,7 @@ window.SITE_DATA = {
           "file": "g/18071601764449236.jpg",
           "caption": "七五三",
           "date": "2026.01.30",
+          "ar": 0.6681,
           "tags": [
             "753",
             "753girl"
@@ -984,6 +1046,7 @@ window.SITE_DATA = {
           "file": "g/18377434435092352.jpg",
           "caption": "マタニティ",
           "date": "2026.01.29",
+          "ar": 1.25,
           "tags": [
             "maternity"
           ]
@@ -993,6 +1056,7 @@ window.SITE_DATA = {
           "file": "g/18395970094180019.jpg",
           "caption": "マタニティ",
           "date": "2026.01.29",
+          "ar": 1.2491,
           "tags": [
             "maternity"
           ]
@@ -1002,6 +1066,7 @@ window.SITE_DATA = {
           "file": "g/18066504938226799.jpg",
           "caption": "七五三",
           "date": "2026.01.28",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -1012,6 +1077,7 @@ window.SITE_DATA = {
           "file": "g/18555668389056966.jpg",
           "caption": "七五三",
           "date": "2026.01.26",
+          "ar": 1.25,
           "tags": [
             "753",
             "753girl"
@@ -1022,6 +1088,7 @@ window.SITE_DATA = {
           "file": "g/18107531605663022.jpg",
           "caption": "七五三",
           "date": "2026.01.26",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -1032,6 +1099,7 @@ window.SITE_DATA = {
           "file": "g/17880260748350239.jpg",
           "caption": "七五三",
           "date": "2026.01.05",
+          "ar": 1.25,
           "tags": [
             "753",
             "753girl"
@@ -1042,6 +1110,7 @@ window.SITE_DATA = {
           "file": "g/18103506649752477.jpg",
           "caption": "七五三",
           "date": "2026.01.05",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -1052,6 +1121,7 @@ window.SITE_DATA = {
           "file": "g/18107800942644155.jpg",
           "caption": "七五三",
           "date": "2026.01.02",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -1062,6 +1132,7 @@ window.SITE_DATA = {
           "file": "g/18071483321618895.jpg",
           "caption": "七五三",
           "date": "2026.01.02",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -1072,6 +1143,7 @@ window.SITE_DATA = {
           "file": "g/18097918885853684.jpg",
           "caption": "バースデー",
           "date": "2025.12.23",
+          "ar": 1.2491,
           "tags": [
             "birthday"
           ]
@@ -1081,6 +1153,7 @@ window.SITE_DATA = {
           "file": "g/18107644246631413.jpg",
           "caption": "バースデー",
           "date": "2025.12.23",
+          "ar": 1.2491,
           "tags": [
             "birthday"
           ]
@@ -1090,6 +1163,7 @@ window.SITE_DATA = {
           "file": "g/18303974821264064.jpg",
           "caption": "七五三",
           "date": "2025.12.13",
+          "ar": 1.25,
           "tags": [
             "753",
             "753girl"
@@ -1100,6 +1174,7 @@ window.SITE_DATA = {
           "file": "g/17856884340522635.jpg",
           "caption": "七五三",
           "date": "2025.12.13",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -1110,6 +1185,7 @@ window.SITE_DATA = {
           "file": "g/18096737881852852.jpg",
           "caption": "バースデー",
           "date": "2025.12.05",
+          "ar": 0.6667,
           "tags": [
             "birthday"
           ]
@@ -1119,6 +1195,7 @@ window.SITE_DATA = {
           "file": "g/17965821032847076.jpg",
           "caption": "バースデー",
           "date": "2025.12.05",
+          "ar": 0.6667,
           "tags": [
             "birthday"
           ]
@@ -1128,6 +1205,7 @@ window.SITE_DATA = {
           "file": "g/18085142594002723.jpg",
           "caption": "七五三",
           "date": "2025.12.01",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -1138,6 +1216,7 @@ window.SITE_DATA = {
           "file": "g/17869055451473094.jpg",
           "caption": "七五三",
           "date": "2025.11.29",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -1148,6 +1227,7 @@ window.SITE_DATA = {
           "file": "g/18120458143535591.jpg",
           "caption": "七五三",
           "date": "2025.11.29",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -1158,6 +1238,7 @@ window.SITE_DATA = {
           "file": "g/17842722768624869.jpg",
           "caption": "マタニティ",
           "date": "2025.11.28",
+          "ar": 1.25,
           "tags": [
             "maternity"
           ]
@@ -1167,6 +1248,7 @@ window.SITE_DATA = {
           "file": "g/18048919040678801.jpg",
           "caption": "マタニティ",
           "date": "2025.11.28",
+          "ar": 1.2491,
           "tags": [
             "maternity"
           ]
@@ -1176,6 +1258,7 @@ window.SITE_DATA = {
           "file": "g/17914117275091823.jpg",
           "caption": "マタニティ",
           "date": "2025.11.24",
+          "ar": 1.2489,
           "tags": [
             "maternity"
           ]
@@ -1185,6 +1268,7 @@ window.SITE_DATA = {
           "file": "g/17944833078073087.jpg",
           "caption": "バースデー",
           "date": "2025.11.23",
+          "ar": 1.2489,
           "tags": [
             "birthday"
           ]
@@ -1194,6 +1278,7 @@ window.SITE_DATA = {
           "file": "g/18087704677769228.jpg",
           "caption": "バースデー",
           "date": "2025.11.21",
+          "ar": 1.2489,
           "tags": [
             "birthday"
           ]
@@ -1203,6 +1288,7 @@ window.SITE_DATA = {
           "file": "g/18116290120491565.jpg",
           "caption": "百日祝い",
           "date": "2025.11.15",
+          "ar": 0.6667,
           "tags": [
             "100days"
           ]
@@ -1212,6 +1298,7 @@ window.SITE_DATA = {
           "file": "g/17984310989869442.jpg",
           "caption": "百日祝い",
           "date": "2025.11.15",
+          "ar": 0.6667,
           "tags": [
             "100days"
           ]
@@ -1221,6 +1308,7 @@ window.SITE_DATA = {
           "file": "g/18064232993435736.jpg",
           "caption": "百日祝い",
           "date": "2025.11.15",
+          "ar": 0.6667,
           "tags": [
             "100days"
           ]
@@ -1230,6 +1318,7 @@ window.SITE_DATA = {
           "file": "g/18084472790474221.jpg",
           "caption": "家族",
           "date": "2025.11.14",
+          "ar": 0.6667,
           "tags": [
             "family"
           ]
@@ -1239,6 +1328,7 @@ window.SITE_DATA = {
           "file": "g/17851904943581545.jpg",
           "caption": "家族",
           "date": "2025.11.14",
+          "ar": 0.6667,
           "tags": [
             "family"
           ]
@@ -1248,6 +1338,7 @@ window.SITE_DATA = {
           "file": "g/17895921774202891.jpg",
           "caption": "家族",
           "date": "2025.11.14",
+          "ar": 0.6667,
           "tags": [
             "family"
           ]
@@ -1257,6 +1348,7 @@ window.SITE_DATA = {
           "file": "g/18104762338712897.jpg",
           "caption": "七五三",
           "date": "2025.11.10",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -1267,6 +1359,7 @@ window.SITE_DATA = {
           "file": "g/17915279493218524.jpg",
           "caption": "七五三",
           "date": "2025.11.02",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -1277,6 +1370,7 @@ window.SITE_DATA = {
           "file": "g/18062538398553215.jpg",
           "caption": "七五三",
           "date": "2025.11.02",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -1287,6 +1381,7 @@ window.SITE_DATA = {
           "file": "g/17915006202208299.jpg",
           "caption": "七五三",
           "date": "2025.11.01",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -1297,6 +1392,7 @@ window.SITE_DATA = {
           "file": "g/18095938291639892.jpg",
           "caption": "バースデー",
           "date": "2025.10.31",
+          "ar": 0.6667,
           "tags": [
             "birthday"
           ]
@@ -1306,6 +1402,7 @@ window.SITE_DATA = {
           "file": "g/18070051841197619.jpg",
           "caption": "バースデー",
           "date": "2025.10.31",
+          "ar": 0.6667,
           "tags": [
             "birthday"
           ]
@@ -1315,6 +1412,7 @@ window.SITE_DATA = {
           "file": "g/18078967652043024.jpg",
           "caption": "七五三",
           "date": "2025.10.28",
+          "ar": 1.25,
           "tags": [
             "753",
             "753girl"
@@ -1325,6 +1423,7 @@ window.SITE_DATA = {
           "file": "g/18168947098371962.jpg",
           "caption": "七五三",
           "date": "2025.10.23",
+          "ar": 1.25,
           "tags": [
             "753",
             "753boy"
@@ -1335,6 +1434,7 @@ window.SITE_DATA = {
           "file": "g/18334778899231083.jpg",
           "caption": "七五三",
           "date": "2025.10.23",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753boy"
@@ -1345,6 +1445,7 @@ window.SITE_DATA = {
           "file": "g/18384987919132419.jpg",
           "caption": "バースデー",
           "date": "2025.10.19",
+          "ar": 0.6667,
           "tags": [
             "birthday"
           ]
@@ -1354,6 +1455,7 @@ window.SITE_DATA = {
           "file": "g/18173098450366023.jpg",
           "caption": "バースデー",
           "date": "2025.10.18",
+          "ar": 0.6667,
           "tags": [
             "birthday"
           ]
@@ -1363,6 +1465,7 @@ window.SITE_DATA = {
           "file": "g/18335184631230617.jpg",
           "caption": "七五三",
           "date": "2025.10.01",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -1373,6 +1476,7 @@ window.SITE_DATA = {
           "file": "g/18081274384944969.jpg",
           "caption": "七五三",
           "date": "2025.09.25",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -1383,6 +1487,7 @@ window.SITE_DATA = {
           "file": "g/17902170486267690.jpg",
           "caption": "七五三",
           "date": "2025.09.24",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -1393,6 +1498,7 @@ window.SITE_DATA = {
           "file": "g/18126752878472310.jpg",
           "caption": "1/2成人式",
           "date": "2025.09.21",
+          "ar": 0.6667,
           "tags": [
             "753",
             "halfseijin",
@@ -1404,6 +1510,7 @@ window.SITE_DATA = {
           "file": "g/18094645522679067.jpg",
           "caption": "七五三",
           "date": "2025.09.18",
+          "ar": 1.25,
           "tags": [
             "753",
             "753girl"
@@ -1414,6 +1521,7 @@ window.SITE_DATA = {
           "file": "g/18121607086497963.jpg",
           "caption": "七五三",
           "date": "2025.09.18",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -1424,6 +1532,7 @@ window.SITE_DATA = {
           "file": "g/17925798369000870.jpg",
           "caption": "七五三",
           "date": "2025.09.10",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -1434,6 +1543,7 @@ window.SITE_DATA = {
           "file": "g/18070604018274162.jpg",
           "caption": "七五三",
           "date": "2025.09.10",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -1444,6 +1554,7 @@ window.SITE_DATA = {
           "file": "g/18079778386748885.jpg",
           "caption": "バースデー",
           "date": "2025.09.06",
+          "ar": 1.2491,
           "tags": [
             "birthday"
           ]
@@ -1453,6 +1564,7 @@ window.SITE_DATA = {
           "file": "g/18282725923278968.jpg",
           "caption": "バースデー",
           "date": "2025.08.30",
+          "ar": 1.2489,
           "tags": [
             "birthday"
           ]
@@ -1462,6 +1574,7 @@ window.SITE_DATA = {
           "file": "g/18294900103268494.jpg",
           "caption": "七五三",
           "date": "2025.08.28",
+          "ar": 1.25,
           "tags": [
             "753",
             "753boy"
@@ -1472,6 +1585,7 @@ window.SITE_DATA = {
           "file": "g/18074944580491233.jpg",
           "caption": "七五三",
           "date": "2025.08.28",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753boy"
@@ -1482,6 +1596,7 @@ window.SITE_DATA = {
           "file": "g/17944471578040571.jpg",
           "caption": "七五三",
           "date": "2025.08.18",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753boy"
@@ -1492,6 +1607,7 @@ window.SITE_DATA = {
           "file": "g/18077582999491345.jpg",
           "caption": "お宮参り",
           "date": "2025.08.17",
+          "ar": 0.6667,
           "tags": [
             "omiyamairi"
           ]
@@ -1501,6 +1617,7 @@ window.SITE_DATA = {
           "file": "g/18063235289196610.jpg",
           "caption": "お宮参り",
           "date": "2025.08.17",
+          "ar": 0.6667,
           "tags": [
             "omiyamairi"
           ]
@@ -1510,6 +1627,7 @@ window.SITE_DATA = {
           "file": "g/18061834565048534.jpg",
           "caption": "七五三",
           "date": "2025.08.13",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -1520,6 +1638,7 @@ window.SITE_DATA = {
           "file": "g/18068721842147825.jpg",
           "caption": "七五三",
           "date": "2025.08.13",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -1530,6 +1649,7 @@ window.SITE_DATA = {
           "file": "g/18074861168056705.jpg",
           "caption": "七五三",
           "date": "2025.08.06",
+          "ar": 1.25,
           "tags": [
             "753",
             "753girl"
@@ -1540,6 +1660,7 @@ window.SITE_DATA = {
           "file": "g/17958430952968746.jpg",
           "caption": "七五三",
           "date": "2025.08.06",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -1550,6 +1671,7 @@ window.SITE_DATA = {
           "file": "g/17990368589686562.jpg",
           "caption": "七五三",
           "date": "2025.08.04",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -1560,6 +1682,7 @@ window.SITE_DATA = {
           "file": "g/18062340169993627.jpg",
           "caption": "七五三",
           "date": "2025.07.22",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -1570,6 +1693,7 @@ window.SITE_DATA = {
           "file": "g/18417574654096276.jpg",
           "caption": "七五三",
           "date": "2025.07.22",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -1580,6 +1704,7 @@ window.SITE_DATA = {
           "file": "g/18070319380853943.jpg",
           "caption": "七五三",
           "date": "2025.07.10",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -1590,6 +1715,7 @@ window.SITE_DATA = {
           "file": "g/17942877645009503.jpg",
           "caption": "七五三",
           "date": "2025.07.10",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -1600,6 +1726,7 @@ window.SITE_DATA = {
           "file": "g/18144508888400632.jpg",
           "caption": "七五三",
           "date": "2025.07.09",
+          "ar": 0.6681,
           "tags": [
             "753",
             "753girl"
@@ -1610,6 +1737,7 @@ window.SITE_DATA = {
           "file": "g/18166886509359070.jpg",
           "caption": "七五三",
           "date": "2025.07.08",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753boy"
@@ -1620,6 +1748,7 @@ window.SITE_DATA = {
           "file": "g/18015071951743889.jpg",
           "caption": "七五三",
           "date": "2025.07.08",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753boy"
@@ -1630,6 +1759,7 @@ window.SITE_DATA = {
           "file": "g/17964938684927430.jpg",
           "caption": "七五三",
           "date": "2025.07.08",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753boy"
@@ -1640,6 +1770,7 @@ window.SITE_DATA = {
           "file": "g/18055252679587089.jpg",
           "caption": "七五三",
           "date": "2025.06.29",
+          "ar": 1.2489,
           "tags": [
             "753",
             "753girl"
@@ -1650,6 +1781,7 @@ window.SITE_DATA = {
           "file": "g/17939505582034689.jpg",
           "caption": "七五三",
           "date": "2025.06.27",
+          "ar": 1.25,
           "tags": [
             "753"
           ]
@@ -1659,6 +1791,7 @@ window.SITE_DATA = {
           "file": "g/17984911520830063.jpg",
           "caption": "七五三",
           "date": "2025.06.27",
+          "ar": 1.2491,
           "tags": [
             "753"
           ]
@@ -1668,6 +1801,7 @@ window.SITE_DATA = {
           "file": "g/18102521965539371.jpg",
           "caption": "1/2成人式",
           "date": "2025.06.14",
+          "ar": 1.25,
           "tags": [
             "753",
             "halfseijin",
@@ -1679,6 +1813,7 @@ window.SITE_DATA = {
           "file": "g/18088116283722673.jpg",
           "caption": "1/2成人式",
           "date": "2025.06.14",
+          "ar": 1.2491,
           "tags": [
             "753",
             "halfseijin",
@@ -1690,6 +1825,7 @@ window.SITE_DATA = {
           "file": "g/18067618766072849.jpg",
           "caption": "マタニティ",
           "date": "2025.06.10",
+          "ar": 1.2489,
           "tags": [
             "maternity"
           ]
@@ -1699,6 +1835,7 @@ window.SITE_DATA = {
           "file": "g/17934589050023102.jpg",
           "caption": "1/2成人式",
           "date": "2025.06.08",
+          "ar": 0.6667,
           "tags": [
             "753",
             "halfseijin",
@@ -1710,6 +1847,7 @@ window.SITE_DATA = {
           "file": "g/17964315284779208.jpg",
           "caption": "1/2成人式",
           "date": "2025.06.08",
+          "ar": 0.6667,
           "tags": [
             "753",
             "halfseijin",
@@ -1721,6 +1859,7 @@ window.SITE_DATA = {
           "file": "g/18050543228605989.jpg",
           "caption": "七五三",
           "date": "2025.06.04",
+          "ar": 1.25,
           "tags": [
             "753",
             "753girl"
@@ -1731,6 +1870,7 @@ window.SITE_DATA = {
           "file": "g/18505164388065081.jpg",
           "caption": "七五三",
           "date": "2025.06.04",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -1741,6 +1881,7 @@ window.SITE_DATA = {
           "file": "g/17996082494796386.jpg",
           "caption": "入園・入学",
           "date": "2025.06.01",
+          "ar": 1.25,
           "tags": [
             "school"
           ]
@@ -1750,6 +1891,7 @@ window.SITE_DATA = {
           "file": "g/17927943711063881.jpg",
           "caption": "入園・入学",
           "date": "2025.06.01",
+          "ar": 1.2491,
           "tags": [
             "school"
           ]
@@ -1759,6 +1901,7 @@ window.SITE_DATA = {
           "file": "g/18087356767652731.jpg",
           "caption": "七五三",
           "date": "2025.05.29",
+          "ar": 1.25,
           "tags": [
             "753",
             "753boy"
@@ -1769,6 +1912,7 @@ window.SITE_DATA = {
           "file": "g/18083648689668288.jpg",
           "caption": "七五三",
           "date": "2025.05.29",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753boy"
@@ -1779,6 +1923,7 @@ window.SITE_DATA = {
           "file": "g/17847159123455522.jpg",
           "caption": "バースデー",
           "date": "2025.05.27",
+          "ar": 0.6667,
           "tags": [
             "birthday"
           ]
@@ -1788,6 +1933,7 @@ window.SITE_DATA = {
           "file": "g/18066577910044833.jpg",
           "caption": "バースデー",
           "date": "2025.05.27",
+          "ar": 0.6667,
           "tags": [
             "birthday"
           ]
@@ -1797,6 +1943,7 @@ window.SITE_DATA = {
           "file": "g/18295179019220181.jpg",
           "caption": "家族",
           "date": "2025.05.26",
+          "ar": 0.6667,
           "tags": [
             "family"
           ]
@@ -1806,6 +1953,7 @@ window.SITE_DATA = {
           "file": "g/17844428364479104.jpg",
           "caption": "七五三",
           "date": "2025.05.24",
+          "ar": 0.6667,
           "tags": [
             "753"
           ]
@@ -1815,6 +1963,7 @@ window.SITE_DATA = {
           "file": "g/17912229381109149.jpg",
           "caption": "七五三",
           "date": "2025.05.24",
+          "ar": 0.6667,
           "tags": [
             "753"
           ]
@@ -1824,6 +1973,7 @@ window.SITE_DATA = {
           "file": "g/18345676999087256.jpg",
           "caption": "七五三",
           "date": "2025.05.24",
+          "ar": 0.6667,
           "tags": [
             "753"
           ]
@@ -1833,6 +1983,7 @@ window.SITE_DATA = {
           "file": "g/17863080522401500.jpg",
           "caption": "七五三",
           "date": "2025.05.18",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -1843,6 +1994,7 @@ window.SITE_DATA = {
           "file": "g/18273705787256865.jpg",
           "caption": "七五三",
           "date": "2025.05.18",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -1853,6 +2005,7 @@ window.SITE_DATA = {
           "file": "g/18185886247314654.jpg",
           "caption": "七五三",
           "date": "2025.05.10",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -1863,6 +2016,7 @@ window.SITE_DATA = {
           "file": "g/17960158796785757.jpg",
           "caption": "1/2成人式",
           "date": "2025.05.08",
+          "ar": 1.25,
           "tags": [
             "halfseijin"
           ]
@@ -1872,6 +2026,7 @@ window.SITE_DATA = {
           "file": "g/18055366712241070.jpg",
           "caption": "1/2成人式",
           "date": "2025.05.08",
+          "ar": 1.2491,
           "tags": [
             "halfseijin"
           ]
@@ -1881,6 +2036,7 @@ window.SITE_DATA = {
           "file": "g/17910977091017528.jpg",
           "caption": "マタニティ",
           "date": "2025.05.05",
+          "ar": 0.6667,
           "tags": [
             "maternity"
           ]
@@ -1890,6 +2046,7 @@ window.SITE_DATA = {
           "file": "g/17878072014205244.jpg",
           "caption": "七五三",
           "date": "2025.04.24",
+          "ar": 1.25,
           "tags": [
             "753"
           ]
@@ -1899,6 +2056,7 @@ window.SITE_DATA = {
           "file": "g/18270034150284930.jpg",
           "caption": "七五三",
           "date": "2025.04.24",
+          "ar": 1.2491,
           "tags": [
             "753"
           ]
@@ -1908,6 +2066,7 @@ window.SITE_DATA = {
           "file": "g/18062246405098626.jpg",
           "caption": "七五三",
           "date": "2025.04.24",
+          "ar": 1.2491,
           "tags": [
             "753"
           ]
@@ -1917,6 +2076,7 @@ window.SITE_DATA = {
           "file": "g/18364927843120831.jpg",
           "caption": "バースデー",
           "date": "2025.04.21",
+          "ar": 1.25,
           "tags": [
             "birthday"
           ]
@@ -1926,6 +2086,7 @@ window.SITE_DATA = {
           "file": "g/17849599059444370.jpg",
           "caption": "バースデー",
           "date": "2025.04.21",
+          "ar": 1.2491,
           "tags": [
             "birthday"
           ]
@@ -1935,6 +2096,7 @@ window.SITE_DATA = {
           "file": "g/17848195350445578.jpg",
           "caption": "七五三",
           "date": "2025.04.13",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -1945,6 +2107,7 @@ window.SITE_DATA = {
           "file": "g/17935654055896219.jpg",
           "caption": "七五三",
           "date": "2025.04.13",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -1955,6 +2118,7 @@ window.SITE_DATA = {
           "file": "g/18057135097901788.jpg",
           "caption": "七五三",
           "date": "2025.04.08",
+          "ar": 1.2491,
           "tags": [
             "753",
             "event",
@@ -1966,6 +2130,7 @@ window.SITE_DATA = {
           "file": "g/18345821935154696.jpg",
           "caption": "七五三",
           "date": "2025.04.08",
+          "ar": 1.2491,
           "tags": [
             "753",
             "event",
@@ -1977,6 +2142,7 @@ window.SITE_DATA = {
           "file": "g/18039144725214119.jpg",
           "caption": "七五三",
           "date": "2025.03.27",
+          "ar": 0.6667,
           "tags": [
             "753",
             "event",
@@ -1988,6 +2154,7 @@ window.SITE_DATA = {
           "file": "g/17919746942960242.jpg",
           "caption": "七五三",
           "date": "2025.03.27",
+          "ar": 0.6667,
           "tags": [
             "753",
             "event",
@@ -1999,6 +2166,7 @@ window.SITE_DATA = {
           "file": "g/18093028129553239.jpg",
           "caption": "七五三",
           "date": "2025.03.22",
+          "ar": 1.25,
           "tags": [
             "753",
             "753girl"
@@ -2009,6 +2177,7 @@ window.SITE_DATA = {
           "file": "g/18000508442765223.jpg",
           "caption": "七五三",
           "date": "2025.03.22",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -2019,6 +2188,7 @@ window.SITE_DATA = {
           "file": "g/18109908421478596.jpg",
           "caption": "1/2成人式",
           "date": "2025.03.13",
+          "ar": 1.25,
           "tags": [
             "halfseijin"
           ]
@@ -2028,6 +2198,7 @@ window.SITE_DATA = {
           "file": "g/18060552172998353.jpg",
           "caption": "1/2成人式",
           "date": "2025.03.13",
+          "ar": 1.2491,
           "tags": [
             "halfseijin"
           ]
@@ -2037,6 +2208,7 @@ window.SITE_DATA = {
           "file": "g/17938461425991812.jpg",
           "caption": "1/2成人式",
           "date": "2025.03.13",
+          "ar": 1.2491,
           "tags": [
             "halfseijin"
           ]
@@ -2046,6 +2218,7 @@ window.SITE_DATA = {
           "file": "g/17913582716983984.jpg",
           "caption": "七五三",
           "date": "2025.03.09",
+          "ar": 0.6667,
           "tags": [
             "753"
           ]
@@ -2055,6 +2228,7 @@ window.SITE_DATA = {
           "file": "g/18002273696725463.jpg",
           "caption": "七五三",
           "date": "2025.03.08",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753boy"
@@ -2065,6 +2239,7 @@ window.SITE_DATA = {
           "file": "g/17895562749175112.jpg",
           "caption": "七五三",
           "date": "2025.03.08",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753boy"
@@ -2075,6 +2250,7 @@ window.SITE_DATA = {
           "file": "g/18003351380726788.jpg",
           "caption": "七五三",
           "date": "2025.03.05",
+          "ar": 1.25,
           "tags": [
             "753",
             "753boy"
@@ -2085,6 +2261,7 @@ window.SITE_DATA = {
           "file": "g/18039255608170096.jpg",
           "caption": "入園・入学",
           "date": "2025.03.04",
+          "ar": 1.25,
           "tags": [
             "school"
           ]
@@ -2094,6 +2271,7 @@ window.SITE_DATA = {
           "file": "g/18204455494306637.jpg",
           "caption": "入園・入学",
           "date": "2025.03.04",
+          "ar": 1.2491,
           "tags": [
             "school"
           ]
@@ -2103,6 +2281,7 @@ window.SITE_DATA = {
           "file": "g/17898260517054470.jpg",
           "caption": "1/2成人式",
           "date": "2025.03.02",
+          "ar": 1.25,
           "tags": [
             "halfseijin"
           ]
@@ -2112,6 +2291,7 @@ window.SITE_DATA = {
           "file": "g/18008723054710965.jpg",
           "caption": "1/2成人式",
           "date": "2025.03.02",
+          "ar": 1.2491,
           "tags": [
             "halfseijin"
           ]
@@ -2121,6 +2301,7 @@ window.SITE_DATA = {
           "file": "g/18042170015380056.jpg",
           "caption": "1/2成人式",
           "date": "2025.03.01",
+          "ar": 1.25,
           "tags": [
             "halfseijin"
           ]
@@ -2130,6 +2311,7 @@ window.SITE_DATA = {
           "file": "g/18392912029105585.jpg",
           "caption": "1/2成人式",
           "date": "2025.03.01",
+          "ar": 1.2491,
           "tags": [
             "halfseijin"
           ]
@@ -2139,6 +2321,7 @@ window.SITE_DATA = {
           "file": "g/18038026937613470.jpg",
           "caption": "入園・入学",
           "date": "2025.02.27",
+          "ar": 0.6667,
           "tags": [
             "school"
           ]
@@ -2148,6 +2331,7 @@ window.SITE_DATA = {
           "file": "g/18040256129380112.jpg",
           "caption": "入園・入学",
           "date": "2025.02.27",
+          "ar": 0.6667,
           "tags": [
             "school"
           ]
@@ -2157,6 +2341,7 @@ window.SITE_DATA = {
           "file": "g/18487361362018235.jpg",
           "caption": "入園・入学",
           "date": "2025.02.27",
+          "ar": 0.6667,
           "tags": [
             "school"
           ]
@@ -2166,6 +2351,7 @@ window.SITE_DATA = {
           "file": "g/18055525262284570.jpg",
           "caption": "入園・入学",
           "date": "2025.02.24",
+          "ar": 1.2489,
           "tags": [
             "school"
           ]
@@ -2175,6 +2361,7 @@ window.SITE_DATA = {
           "file": "g/18026904923338420.jpg",
           "caption": "七五三",
           "date": "2025.02.23",
+          "ar": 0.6681,
           "tags": [
             "753",
             "753girl"
@@ -2185,6 +2372,7 @@ window.SITE_DATA = {
           "file": "g/17924220435043851.jpg",
           "caption": "七五三",
           "date": "2025.02.21",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -2195,6 +2383,7 @@ window.SITE_DATA = {
           "file": "g/18091597852553939.jpg",
           "caption": "七五三",
           "date": "2025.02.21",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -2205,6 +2394,7 @@ window.SITE_DATA = {
           "file": "g/18446291713078265.jpg",
           "caption": "バースデー",
           "date": "2025.02.17",
+          "ar": 1.25,
           "tags": [
             "birthday"
           ]
@@ -2214,6 +2404,7 @@ window.SITE_DATA = {
           "file": "g/18085693330582864.jpg",
           "caption": "バースデー",
           "date": "2025.02.17",
+          "ar": 1.2491,
           "tags": [
             "birthday"
           ]
@@ -2223,6 +2414,7 @@ window.SITE_DATA = {
           "file": "g/18067500085846282.jpg",
           "caption": "七五三",
           "date": "2025.02.09",
+          "ar": 1.25,
           "tags": [
             "753"
           ]
@@ -2232,6 +2424,7 @@ window.SITE_DATA = {
           "file": "g/18044051720523462.jpg",
           "caption": "七五三",
           "date": "2025.02.09",
+          "ar": 1.2491,
           "tags": [
             "753"
           ]
@@ -2241,6 +2434,7 @@ window.SITE_DATA = {
           "file": "g/17949709859794067.jpg",
           "caption": "七五三",
           "date": "2025.02.05",
+          "ar": 1.25,
           "tags": [
             "753",
             "753girl"
@@ -2251,6 +2445,7 @@ window.SITE_DATA = {
           "file": "g/17990393837773616.jpg",
           "caption": "七五三",
           "date": "2025.01.31",
+          "ar": 1.25,
           "tags": [
             "753",
             "753boy"
@@ -2261,6 +2456,7 @@ window.SITE_DATA = {
           "file": "g/18047418845232513.jpg",
           "caption": "七五三",
           "date": "2025.01.31",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753boy"
@@ -2271,6 +2467,7 @@ window.SITE_DATA = {
           "file": "g/17987325365632258.jpg",
           "caption": "お宮参り",
           "date": "2025.01.29",
+          "ar": 1.25,
           "tags": [
             "omiyamairi"
           ]
@@ -2280,6 +2477,7 @@ window.SITE_DATA = {
           "file": "g/17862069456264509.jpg",
           "caption": "お宮参り",
           "date": "2025.01.29",
+          "ar": 1.2491,
           "tags": [
             "omiyamairi"
           ]
@@ -2289,6 +2487,7 @@ window.SITE_DATA = {
           "file": "g/17920695339035589.jpg",
           "caption": "七五三",
           "date": "2025.01.24",
+          "ar": 1.2489,
           "tags": [
             "753",
             "753girl"
@@ -2299,6 +2498,7 @@ window.SITE_DATA = {
           "file": "g/18044957645211896.jpg",
           "caption": "七五三",
           "date": "2025.01.18",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -2309,6 +2509,7 @@ window.SITE_DATA = {
           "file": "g/18075356164570531.jpg",
           "caption": "1/2バースデー",
           "date": "2025.01.12",
+          "ar": 1.25,
           "tags": [
             "halfbd"
           ]
@@ -2318,6 +2519,7 @@ window.SITE_DATA = {
           "file": "g/18357031180133333.jpg",
           "caption": "1/2バースデー",
           "date": "2025.01.12",
+          "ar": 1.2491,
           "tags": [
             "halfbd"
           ]
@@ -2327,6 +2529,7 @@ window.SITE_DATA = {
           "file": "g/17896857438122064.jpg",
           "caption": "1/2成人式",
           "date": "2025.01.07",
+          "ar": 0.6667,
           "tags": [
             "halfseijin"
           ]
@@ -2336,6 +2539,7 @@ window.SITE_DATA = {
           "file": "g/18033421934185380.jpg",
           "caption": "1/2成人式",
           "date": "2025.01.07",
+          "ar": 0.6667,
           "tags": [
             "halfseijin"
           ]
@@ -2345,6 +2549,7 @@ window.SITE_DATA = {
           "file": "g/18092752129516061.jpg",
           "caption": "1/2成人式",
           "date": "2025.01.07",
+          "ar": 0.6667,
           "tags": [
             "halfseijin"
           ]
@@ -2354,6 +2559,7 @@ window.SITE_DATA = {
           "file": "g/18068525311688371.jpg",
           "caption": "七五三",
           "date": "2025.01.04",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -2364,6 +2570,7 @@ window.SITE_DATA = {
           "file": "g/17947117703919956.jpg",
           "caption": "七五三",
           "date": "2025.01.04",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -2374,6 +2581,7 @@ window.SITE_DATA = {
           "file": "g/17883043329199127.jpg",
           "caption": "七五三",
           "date": "2025.01.04",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -2384,6 +2592,7 @@ window.SITE_DATA = {
           "file": "g/17975206094668595.jpg",
           "caption": "お宮参り",
           "date": "2024.12.30",
+          "ar": 1.25,
           "tags": [
             "omiyamairi"
           ]
@@ -2393,6 +2602,7 @@ window.SITE_DATA = {
           "file": "g/18034683515421387.jpg",
           "caption": "お宮参り",
           "date": "2024.12.30",
+          "ar": 1.2491,
           "tags": [
             "omiyamairi"
           ]
@@ -2402,6 +2612,7 @@ window.SITE_DATA = {
           "file": "g/18052979408313797.jpg",
           "caption": "家族",
           "date": "2024.12.26",
+          "ar": 0.6667,
           "tags": [
             "family"
           ]
@@ -2411,6 +2622,7 @@ window.SITE_DATA = {
           "file": "g/18045792002175911.jpg",
           "caption": "家族",
           "date": "2024.12.26",
+          "ar": 0.6667,
           "tags": [
             "family"
           ]
@@ -2420,6 +2632,7 @@ window.SITE_DATA = {
           "file": "g/18102827152476940.jpg",
           "caption": "家族",
           "date": "2024.12.26",
+          "ar": 0.6667,
           "tags": [
             "family"
           ]
@@ -2429,6 +2642,7 @@ window.SITE_DATA = {
           "file": "g/17901766377091411.jpg",
           "caption": "七五三",
           "date": "2024.12.13",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -2439,6 +2653,7 @@ window.SITE_DATA = {
           "file": "g/17877071658208290.jpg",
           "caption": "バースデー",
           "date": "2024.12.11",
+          "ar": 0.6667,
           "tags": [
             "birthday"
           ]
@@ -2448,6 +2663,7 @@ window.SITE_DATA = {
           "file": "g/18066597364683702.jpg",
           "caption": "七五三",
           "date": "2024.11.28",
+          "ar": 0.6667,
           "tags": [
             "753",
             "family"
@@ -2458,6 +2674,7 @@ window.SITE_DATA = {
           "file": "g/18113919397424241.jpg",
           "caption": "七五三",
           "date": "2024.11.28",
+          "ar": 0.6667,
           "tags": [
             "753",
             "family"
@@ -2468,6 +2685,7 @@ window.SITE_DATA = {
           "file": "g/17950173620859844.jpg",
           "caption": "七五三",
           "date": "2024.11.28",
+          "ar": 0.6667,
           "tags": [
             "753",
             "family"
@@ -2478,6 +2696,7 @@ window.SITE_DATA = {
           "file": "g/18052672438799379.jpg",
           "caption": "七五三",
           "date": "2024.11.24",
+          "ar": 1.25,
           "tags": [
             "753",
             "753girl"
@@ -2488,6 +2707,7 @@ window.SITE_DATA = {
           "file": "g/17992617353577422.jpg",
           "caption": "七五三",
           "date": "2024.11.24",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -2498,6 +2718,7 @@ window.SITE_DATA = {
           "file": "g/18063781228755383.jpg",
           "caption": "七五三",
           "date": "2024.11.21",
+          "ar": 1.2491,
           "tags": [
             "753",
             "753girl"
@@ -2508,6 +2729,7 @@ window.SITE_DATA = {
           "file": "g/18286404058214849.jpg",
           "caption": "バースデー",
           "date": "2024.11.14",
+          "ar": 1.25,
           "tags": [
             "birthday"
           ]
@@ -2517,6 +2739,7 @@ window.SITE_DATA = {
           "file": "g/18026086325220855.jpg",
           "caption": "バースデー",
           "date": "2024.11.14",
+          "ar": 1.2491,
           "tags": [
             "birthday"
           ]
@@ -2526,6 +2749,7 @@ window.SITE_DATA = {
           "file": "g/18084361630525775.jpg",
           "caption": "七五三",
           "date": "2024.10.30",
+          "ar": 0.6652,
           "tags": [
             "753",
             "event",
@@ -2537,6 +2761,7 @@ window.SITE_DATA = {
           "file": "g/18011592215423954.jpg",
           "caption": "七五三",
           "date": "2024.10.30",
+          "ar": 0.6667,
           "tags": [
             "753",
             "event",
@@ -2548,6 +2773,7 @@ window.SITE_DATA = {
           "file": "g/18051516499933200.jpg",
           "caption": "バースデー",
           "date": "2024.10.23",
+          "ar": 1.2489,
           "tags": [
             "birthday"
           ]
@@ -2557,6 +2783,7 @@ window.SITE_DATA = {
           "file": "g/17913520454918535.jpg",
           "caption": "七五三",
           "date": "2024.10.22",
+          "ar": 1.2489,
           "tags": [
             "753",
             "753girl"
@@ -2567,6 +2794,7 @@ window.SITE_DATA = {
           "file": "g/17886110322124458.jpg",
           "caption": "1/2成人式",
           "date": "2024.10.21",
+          "ar": 1.2489,
           "tags": [
             "halfseijin"
           ]
@@ -2576,6 +2804,7 @@ window.SITE_DATA = {
           "file": "g/18281346511240085.jpg",
           "caption": "バースデー",
           "date": "2024.10.20",
+          "ar": 0.6648,
           "tags": [
             "birthday"
           ]
@@ -2585,6 +2814,7 @@ window.SITE_DATA = {
           "file": "g/18011864354397032.jpg",
           "caption": "バースデー",
           "date": "2024.10.20",
+          "ar": 0.6667,
           "tags": [
             "birthday"
           ]
@@ -2594,6 +2824,7 @@ window.SITE_DATA = {
           "file": "g/18035849693236111.jpg",
           "caption": "七五三",
           "date": "2024.10.14",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -2604,6 +2835,7 @@ window.SITE_DATA = {
           "file": "g/18066610078572886.jpg",
           "caption": "七五三",
           "date": "2024.10.14",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -2614,6 +2846,7 @@ window.SITE_DATA = {
           "file": "g/18037736348141569.jpg",
           "caption": "家族",
           "date": "2024.09.25",
+          "ar": 0.6652,
           "tags": [
             "family"
           ]
@@ -2623,6 +2856,7 @@ window.SITE_DATA = {
           "file": "g/17942239112857223.jpg",
           "caption": "家族",
           "date": "2024.09.25",
+          "ar": 0.6652,
           "tags": [
             "family"
           ]
@@ -2632,6 +2866,7 @@ window.SITE_DATA = {
           "file": "g/18333090199176916.jpg",
           "caption": "入園・入学",
           "date": "2024.09.24",
+          "ar": 1.25,
           "tags": [
             "school"
           ]
@@ -2641,6 +2876,7 @@ window.SITE_DATA = {
           "file": "g/18002309138494850.jpg",
           "caption": "七五三",
           "date": "2024.09.19",
+          "ar": 0.6667,
           "tags": [
             "753",
             "753girl"
@@ -2651,6 +2887,7 @@ window.SITE_DATA = {
           "file": "g/17876237004154519.jpg",
           "caption": "バースデー",
           "date": "2024.09.17",
+          "ar": 0.6644,
           "tags": [
             "birthday"
           ]
@@ -2660,6 +2897,7 @@ window.SITE_DATA = {
           "file": "g/17866592766207195.jpg",
           "caption": "バースデー",
           "date": "2024.09.15",
+          "ar": 0.6648,
           "tags": [
             "birthday"
           ]
@@ -2669,6 +2907,7 @@ window.SITE_DATA = {
           "file": "g/18056712571693724.jpg",
           "caption": "七五三",
           "date": "2024.09.13",
+          "ar": 0.6667,
           "tags": [
             "753",
             "event",
@@ -2680,6 +2919,7 @@ window.SITE_DATA = {
           "file": "g/18076465927481024.jpg",
           "caption": "七五三",
           "date": "2024.09.02",
+          "ar": 1.25,
           "tags": [
             "753",
             "event",
@@ -2691,6 +2931,7 @@ window.SITE_DATA = {
           "file": "g/17867627982127787.jpg",
           "caption": "七五三",
           "date": "2024.08.28",
+          "ar": 0.6667,
           "tags": [
             "753",
             "event",
@@ -2702,6 +2943,7 @@ window.SITE_DATA = {
           "file": "g/18047220961911459.jpg",
           "caption": "七五三",
           "date": "2024.08.27",
+          "ar": 0.6652,
           "tags": [
             "753",
             "event",
@@ -2713,6 +2955,7 @@ window.SITE_DATA = {
           "file": "g/17935235924910281.jpg",
           "caption": "七五三",
           "date": "2024.08.27",
+          "ar": 0.6667,
           "tags": [
             "753",
             "event",
@@ -2724,6 +2967,7 @@ window.SITE_DATA = {
           "file": "g/17930806664916163.jpg",
           "caption": "バースデー",
           "date": "2024.08.24",
+          "ar": 0.6652,
           "tags": [
             "birthday",
             "event"
@@ -2734,6 +2978,7 @@ window.SITE_DATA = {
           "file": "g/18035507527934480.jpg",
           "caption": "バースデー",
           "date": "2024.08.24",
+          "ar": 0.6652,
           "tags": [
             "birthday",
             "event"
@@ -2744,6 +2989,7 @@ window.SITE_DATA = {
           "file": "g/18052913023808578.jpg",
           "caption": "バースデー",
           "date": "2024.08.23",
+          "ar": 1.2435,
           "tags": [
             "birthday",
             "family",
@@ -2755,6 +3001,7 @@ window.SITE_DATA = {
           "file": "g/18055175026690044.jpg",
           "caption": "七五三",
           "date": "2024.08.18",
+          "ar": 1.25,
           "tags": [
             "753",
             "753girl"
@@ -2765,6 +3012,7 @@ window.SITE_DATA = {
           "file": "g/17913632165989083.jpg",
           "caption": "七五三",
           "date": "2024.08.18",
+          "ar": 1.2489,
           "tags": [
             "753",
             "753girl"
@@ -2775,6 +3023,7 @@ window.SITE_DATA = {
           "file": "g/18026507066062949.jpg",
           "caption": "七五三",
           "date": "2024.08.13",
+          "ar": 1.25,
           "tags": [
             "753",
             "753girl"
@@ -2785,6 +3034,7 @@ window.SITE_DATA = {
           "file": "g/18310240444080071.jpg",
           "caption": "七五三",
           "date": "2024.08.13",
+          "ar": 1.25,
           "tags": [
             "753",
             "753girl"
@@ -2795,6 +3045,7 @@ window.SITE_DATA = {
           "file": "g/18456801520037444.jpg",
           "caption": "バースデー",
           "date": "2024.08.12",
+          "ar": 0.6652,
           "tags": [
             "birthday"
           ]
@@ -2804,6 +3055,7 @@ window.SITE_DATA = {
           "file": "g/18072657691477639.jpg",
           "caption": "1/2成人式",
           "date": "2024.07.28",
+          "ar": 0.6599,
           "tags": [
             "753",
             "halfseijin"
@@ -2814,6 +3066,7 @@ window.SITE_DATA = {
           "file": "g/18038104439309219.jpg",
           "caption": "1/2成人式",
           "date": "2024.07.28",
+          "ar": 0.6637,
           "tags": [
             "753",
             "halfseijin"
@@ -2824,6 +3077,7 @@ window.SITE_DATA = {
           "file": "g/18012679844593592.jpg",
           "caption": "七五三",
           "date": "2024.07.26",
+          "ar": 1.2489,
           "tags": [
             "753",
             "753girl"
@@ -2834,6 +3088,7 @@ window.SITE_DATA = {
           "file": "g/18012799412278894.jpg",
           "caption": "七五三",
           "date": "2024.07.26",
+          "ar": 1.25,
           "tags": [
             "753",
             "753girl"
@@ -2844,6 +3099,7 @@ window.SITE_DATA = {
           "file": "g/18007697690555264.jpg",
           "caption": "入園・入学",
           "date": "2024.07.11",
+          "ar": 0.6644,
           "tags": [
             "school"
           ]
@@ -2853,6 +3109,7 @@ window.SITE_DATA = {
           "file": "g/18049977955692586.jpg",
           "caption": "入園・入学",
           "date": "2024.07.11",
+          "ar": 0.6648,
           "tags": [
             "school"
           ]
@@ -2862,6 +3119,7 @@ window.SITE_DATA = {
           "file": "g/17994292295495473.jpg",
           "caption": "バースデー",
           "date": "2024.07.09",
+          "ar": 1.2489,
           "tags": [
             "birthday",
             "event"
@@ -2872,6 +3130,7 @@ window.SITE_DATA = {
           "file": "g/17921676110928642.jpg",
           "caption": "バースデー",
           "date": "2024.07.09",
+          "ar": 1.25,
           "tags": [
             "birthday",
             "event"
@@ -2882,6 +3141,7 @@ window.SITE_DATA = {
           "file": "g/18057728536623520.jpg",
           "caption": "マタニティ",
           "date": "2024.06.29",
+          "ar": 1.25,
           "tags": [
             "maternity",
             "event"
@@ -2892,6 +3152,7 @@ window.SITE_DATA = {
           "file": "g/17958726521788163.jpg",
           "caption": "マタニティ",
           "date": "2024.06.29",
+          "ar": 1.2489,
           "tags": [
             "maternity",
             "event"
@@ -2902,6 +3163,7 @@ window.SITE_DATA = {
           "file": "g/17860406490177361.jpg",
           "caption": "マタニティ",
           "date": "2024.06.26",
+          "ar": 1.25,
           "tags": [
             "maternity",
             "event"
@@ -2912,6 +3174,7 @@ window.SITE_DATA = {
           "file": "g/18012396176224966.jpg",
           "caption": "マタニティ",
           "date": "2024.06.26",
+          "ar": 1.2489,
           "tags": [
             "maternity",
             "event"
@@ -2922,6 +3185,7 @@ window.SITE_DATA = {
           "file": "g/17894837895014604.jpg",
           "caption": "マタニティ",
           "date": "2024.06.26",
+          "ar": 1.25,
           "tags": [
             "maternity",
             "event"
@@ -2932,6 +3196,7 @@ window.SITE_DATA = {
           "file": "g/18056293843560062.jpg",
           "caption": "バースデー",
           "date": "2024.06.24",
+          "ar": 0.6652,
           "tags": [
             "753",
             "birthday",
@@ -2944,6 +3209,7 @@ window.SITE_DATA = {
           "file": "g/18437123899061404.jpg",
           "caption": "バースデー",
           "date": "2024.06.20",
+          "ar": 0.6652,
           "tags": [
             "birthday"
           ]
@@ -2953,6 +3219,7 @@ window.SITE_DATA = {
           "file": "g/18012271079222991.jpg",
           "caption": "バースデー",
           "date": "2024.06.20",
+          "ar": 0.6644,
           "tags": [
             "birthday"
           ]
@@ -2962,6 +3229,7 @@ window.SITE_DATA = {
           "file": "g/18133857613341597.jpg",
           "caption": "バースデー",
           "date": "2024.06.20",
+          "ar": 0.6648,
           "tags": [
             "birthday"
           ]
@@ -2971,6 +3239,7 @@ window.SITE_DATA = {
           "file": "g/18053326201642383.jpg",
           "caption": "七五三",
           "date": "2024.06.15",
+          "ar": 0.6667,
           "tags": [
             "753",
             "school",
@@ -2982,6 +3251,7 @@ window.SITE_DATA = {
           "file": "g/17914571000943782.jpg",
           "caption": "七五三",
           "date": "2024.06.15",
+          "ar": 0.6667,
           "tags": [
             "753",
             "school",
@@ -2993,6 +3263,7 @@ window.SITE_DATA = {
           "file": "g/18025886806982053.jpg",
           "caption": "七五三",
           "date": "2024.06.15",
+          "ar": 0.6667,
           "tags": [
             "753",
             "school",
@@ -3004,6 +3275,7 @@ window.SITE_DATA = {
           "file": "g/18011064908228175.jpg",
           "caption": "バースデー",
           "date": "2024.06.11",
+          "ar": 0.6652,
           "tags": [
             "birthday",
             "event"
@@ -3014,6 +3286,7 @@ window.SITE_DATA = {
           "file": "g/18039040375760078.jpg",
           "caption": "バースデー",
           "date": "2024.06.11",
+          "ar": 0.6652,
           "tags": [
             "birthday",
             "event"
@@ -3024,6 +3297,7 @@ window.SITE_DATA = {
           "file": "g/18010390751420378.jpg",
           "caption": "マタニティ",
           "date": "2024.06.08",
+          "ar": 1.25,
           "tags": [
             "maternity"
           ]
@@ -3033,6 +3307,7 @@ window.SITE_DATA = {
           "file": "g/18004010633614902.jpg",
           "caption": "マタニティ",
           "date": "2024.06.08",
+          "ar": 1.25,
           "tags": [
             "maternity"
           ]
@@ -3042,6 +3317,7 @@ window.SITE_DATA = {
           "file": "g/18324184633130799.jpg",
           "caption": "マタニティ",
           "date": "2024.06.08",
+          "ar": 1.25,
           "tags": [
             "maternity"
           ]
@@ -3051,6 +3327,7 @@ window.SITE_DATA = {
           "file": "g/18033167932983857.jpg",
           "caption": "マタニティ",
           "date": "2024.06.03",
+          "ar": 1.25,
           "tags": [
             "maternity"
           ]
@@ -3060,6 +3337,7 @@ window.SITE_DATA = {
           "file": "g/18234610270261938.jpg",
           "caption": "マタニティ",
           "date": "2024.06.03",
+          "ar": 1.25,
           "tags": [
             "maternity"
           ]
@@ -3069,6 +3347,7 @@ window.SITE_DATA = {
           "file": "g/18023494421485903.jpg",
           "caption": "イベント",
           "date": "2024.05.31",
+          "ar": 0.6652,
           "tags": [
             "event"
           ]
@@ -3078,6 +3357,7 @@ window.SITE_DATA = {
           "file": "g/18028989233034165.jpg",
           "caption": "イベント",
           "date": "2024.05.31",
+          "ar": 0.6652,
           "tags": [
             "event"
           ]
@@ -3087,6 +3367,7 @@ window.SITE_DATA = {
           "file": "g/18061974391560177.jpg",
           "caption": "イベント",
           "date": "2024.05.31",
+          "ar": 0.6652,
           "tags": [
             "event"
           ]
@@ -3096,6 +3377,7 @@ window.SITE_DATA = {
           "file": "g/18058935211525016.jpg",
           "caption": "七五三",
           "date": "2024.05.19",
+          "ar": 0.6663,
           "tags": [
             "753",
             "event",
@@ -3107,6 +3389,7 @@ window.SITE_DATA = {
           "file": "g/17963513801727199.jpg",
           "caption": "バースデー",
           "date": "2024.04.27",
+          "ar": 0.6667,
           "tags": [
             "birthday"
           ]
@@ -3116,6 +3399,7 @@ window.SITE_DATA = {
           "file": "g/17996106218620517.jpg",
           "caption": "バースデー",
           "date": "2024.04.27",
+          "ar": 0.6667,
           "tags": [
             "birthday"
           ]
@@ -3125,6 +3409,7 @@ window.SITE_DATA = {
           "file": "g/18006739970411970.jpg",
           "caption": "マタニティ",
           "date": "2024.04.17",
+          "ar": 0.6659,
           "tags": [
             "maternity"
           ]
@@ -3134,6 +3419,7 @@ window.SITE_DATA = {
           "file": "g/18091100827421057.jpg",
           "caption": "マタニティ",
           "date": "2024.04.17",
+          "ar": 0.6652,
           "tags": [
             "maternity"
           ]
@@ -3143,6 +3429,7 @@ window.SITE_DATA = {
           "file": "g/18025272047017157.jpg",
           "caption": "マタニティ",
           "date": "2024.04.09",
+          "ar": 1.25,
           "tags": [
             "maternity"
           ]
@@ -3152,6 +3439,7 @@ window.SITE_DATA = {
           "file": "g/17859156249134061.jpg",
           "caption": "マタニティ",
           "date": "2024.04.09",
+          "ar": 1.2489,
           "tags": [
             "maternity"
           ]
@@ -3161,6 +3449,7 @@ window.SITE_DATA = {
           "file": "g/18043188544670887.jpg",
           "caption": "マタニティ",
           "date": "2024.04.05",
+          "ar": 1.25,
           "tags": [
             "753",
             "maternity",
@@ -3174,6 +3463,7 @@ window.SITE_DATA = {
           "file": "g/18129446413336619.jpg",
           "caption": "入園・入学",
           "date": "2024.03.24",
+          "ar": 0.6667,
           "tags": [
             "school"
           ]
@@ -3183,6 +3473,7 @@ window.SITE_DATA = {
           "file": "g/18050735074546504.jpg",
           "caption": "入園・入学",
           "date": "2024.03.24",
+          "ar": 0.6667,
           "tags": [
             "school"
           ]
@@ -3192,6 +3483,7 @@ window.SITE_DATA = {
           "file": "g/18045508564651148.jpg",
           "caption": "入園・入学",
           "date": "2024.03.22",
+          "ar": 1.2489,
           "tags": [
             "school"
           ]
@@ -3201,6 +3493,7 @@ window.SITE_DATA = {
           "file": "g/18331758109112429.jpg",
           "caption": "入園・入学",
           "date": "2024.03.22",
+          "ar": 1.2489,
           "tags": [
             "school"
           ]
@@ -3210,6 +3503,7 @@ window.SITE_DATA = {
           "file": "g/18018529934499363.jpg",
           "caption": "バースデー",
           "date": "2024.03.14",
+          "ar": 1.2493,
           "tags": [
             "birthday"
           ]
@@ -3219,6 +3513,7 @@ window.SITE_DATA = {
           "file": "g/17998055813578610.jpg",
           "caption": "マタニティ",
           "date": "2024.03.12",
+          "ar": 1.25,
           "tags": [
             "maternity"
           ]
@@ -3228,6 +3523,7 @@ window.SITE_DATA = {
           "file": "g/17845234965165966.jpg",
           "caption": "マタニティ",
           "date": "2024.03.07",
+          "ar": 1.25,
           "tags": [
             "maternity"
           ]
@@ -3237,6 +3533,7 @@ window.SITE_DATA = {
           "file": "g/18023816644978976.jpg",
           "caption": "マタニティ",
           "date": "2024.03.07",
+          "ar": 1.2489,
           "tags": [
             "maternity"
           ]
@@ -3246,6 +3543,7 @@ window.SITE_DATA = {
           "file": "g/18043816690633840.jpg",
           "caption": "入園・入学",
           "date": "2024.02.29",
+          "ar": 0.6648,
           "tags": [
             "school"
           ]
@@ -3255,6 +3553,7 @@ window.SITE_DATA = {
           "file": "g/18094690492395751.jpg",
           "caption": "入園・入学",
           "date": "2024.02.29",
+          "ar": 0.6648,
           "tags": [
             "school"
           ]
@@ -3264,6 +3563,7 @@ window.SITE_DATA = {
           "file": "g/18114170008360333.jpg",
           "caption": "バースデー",
           "date": "2024.02.26",
+          "ar": 1.25,
           "tags": [
             "birthday"
           ]
@@ -3273,6 +3573,7 @@ window.SITE_DATA = {
           "file": "g/18008417564340127.jpg",
           "caption": "マタニティ",
           "date": "2024.02.20",
+          "ar": 1.2489,
           "tags": [
             "maternity"
           ]
@@ -3282,6 +3583,7 @@ window.SITE_DATA = {
           "file": "g/18005691608139837.jpg",
           "caption": "マタニティ",
           "date": "2024.02.20",
+          "ar": 1.2489,
           "tags": [
             "maternity"
           ]
@@ -3291,6 +3593,7 @@ window.SITE_DATA = {
           "file": "g/17852764671135566.jpg",
           "caption": "マタニティ",
           "date": "2024.02.20",
+          "ar": 1.2489,
           "tags": [
             "maternity"
           ]
@@ -3300,6 +3603,7 @@ window.SITE_DATA = {
           "file": "g/17875576923042220.jpg",
           "caption": "マタニティ",
           "date": "2024.02.19",
+          "ar": 0.6652,
           "tags": [
             "maternity"
           ]
@@ -3309,6 +3613,7 @@ window.SITE_DATA = {
           "file": "g/17863673133086065.jpg",
           "caption": "入園・入学",
           "date": "2024.02.17",
+          "ar": 1.2489,
           "tags": [
             "school"
           ]
@@ -3318,6 +3623,7 @@ window.SITE_DATA = {
           "file": "g/18030801472808205.jpg",
           "caption": "入園・入学",
           "date": "2024.02.17",
+          "ar": 1.2489,
           "tags": [
             "school"
           ]
@@ -3327,6 +3633,7 @@ window.SITE_DATA = {
           "file": "g/18011253323331345.jpg",
           "caption": "入園・入学",
           "date": "2024.02.12",
+          "ar": 1.2489,
           "tags": [
             "school"
           ]
@@ -3336,6 +3643,7 @@ window.SITE_DATA = {
           "file": "g/18074377882456497.jpg",
           "caption": "入園・入学",
           "date": "2024.02.12",
+          "ar": 1.2489,
           "tags": [
             "school"
           ]
@@ -3345,6 +3653,7 @@ window.SITE_DATA = {
           "file": "g/17944947674774159.jpg",
           "caption": "マタニティ",
           "date": "2024.02.04",
+          "ar": 0.6648,
           "tags": [
             "753",
             "maternity",
@@ -3358,6 +3667,7 @@ window.SITE_DATA = {
           "file": "g/17891183522972763.jpg",
           "caption": "マタニティ",
           "date": "2024.02.04",
+          "ar": 0.667,
           "tags": [
             "753",
             "maternity",
@@ -3371,6 +3681,7 @@ window.SITE_DATA = {
           "file": "g/18003571262341232.jpg",
           "caption": "Photo",
           "date": "2024.01.27",
+          "ar": 0.6667,
           "tags": [
             "other"
           ]
@@ -3380,6 +3691,7 @@ window.SITE_DATA = {
           "file": "g/18045434134546990.jpg",
           "caption": "Photo",
           "date": "2024.01.27",
+          "ar": 0.6667,
           "tags": [
             "other"
           ]
@@ -3389,6 +3701,7 @@ window.SITE_DATA = {
           "file": "g/18070210780461857.jpg",
           "caption": "Photo",
           "date": "2024.01.27",
+          "ar": 0.6667,
           "tags": [
             "other"
           ]
@@ -3398,6 +3711,7 @@ window.SITE_DATA = {
           "file": "g/17896159139949558.jpg",
           "caption": "マタニティ",
           "date": "2024.01.26",
+          "ar": 0.6652,
           "tags": [
             "753",
             "maternity",
@@ -3411,6 +3725,7 @@ window.SITE_DATA = {
           "file": "g/17871166745997621.jpg",
           "caption": "マタニティ",
           "date": "2024.01.26",
+          "ar": 0.6667,
           "tags": [
             "753",
             "maternity",
@@ -3424,6 +3739,7 @@ window.SITE_DATA = {
           "file": "g/18079202026427729.jpg",
           "caption": "マタニティ",
           "date": "2024.01.18",
+          "ar": 0.6663,
           "tags": [
             "maternity"
           ]
@@ -3433,6 +3749,7 @@ window.SITE_DATA = {
           "file": "g/18052336792554150.jpg",
           "caption": "マタニティ",
           "date": "2024.01.18",
+          "ar": 0.6663,
           "tags": [
             "maternity"
           ]
@@ -3442,6 +3759,7 @@ window.SITE_DATA = {
           "file": "g/18009398786490009.jpg",
           "caption": "マタニティ",
           "date": "2024.01.13",
+          "ar": 1.25,
           "tags": [
             "maternity"
           ]
@@ -3451,6 +3769,7 @@ window.SITE_DATA = {
           "file": "g/18095394799377024.jpg",
           "caption": "振袖",
           "date": "2024.01.08",
+          "ar": 0.6667,
           "tags": [
             "furisode",
             "event"
@@ -3461,6 +3780,7 @@ window.SITE_DATA = {
           "file": "g/18014021819123783.jpg",
           "caption": "振袖",
           "date": "2024.01.08",
+          "ar": 0.6667,
           "tags": [
             "furisode",
             "event"
@@ -3471,6 +3791,7 @@ window.SITE_DATA = {
           "file": "g/17960605202591112.jpg",
           "caption": "振袖",
           "date": "2024.01.08",
+          "ar": 0.6667,
           "tags": [
             "furisode",
             "event"
@@ -3481,6 +3802,7 @@ window.SITE_DATA = {
           "file": "g/18009514619505998.jpg",
           "caption": "振袖",
           "date": "2024.01.08",
+          "ar": 0.6667,
           "tags": [
             "furisode",
             "event"
@@ -3491,6 +3813,7 @@ window.SITE_DATA = {
           "file": "g/18008957114148469.jpg",
           "caption": "七五三",
           "date": "2023.12.15",
+          "ar": 0.6629,
           "tags": [
             "753",
             "event"
@@ -3501,6 +3824,7 @@ window.SITE_DATA = {
           "file": "g/18005209214032825.jpg",
           "caption": "七五三",
           "date": "2023.12.15",
+          "ar": 0.6629,
           "tags": [
             "753",
             "event"
@@ -3511,6 +3835,7 @@ window.SITE_DATA = {
           "file": "g/18402182998056001.jpg",
           "caption": "バースデー",
           "date": "2023.12.10",
+          "ar": 1.25,
           "tags": [
             "birthday",
             "event"
@@ -3521,6 +3846,7 @@ window.SITE_DATA = {
           "file": "g/17972772506641069.jpg",
           "caption": "バースデー",
           "date": "2023.12.10",
+          "ar": 1.2489,
           "tags": [
             "birthday",
             "event"
@@ -3531,6 +3857,7 @@ window.SITE_DATA = {
           "file": "g/18205312549279312.jpg",
           "caption": "七五三",
           "date": "2023.12.05",
+          "ar": 1.2489,
           "tags": [
             "753",
             "event",
@@ -3542,6 +3869,7 @@ window.SITE_DATA = {
           "file": "g/18027139414685350.jpg",
           "caption": "バースデー",
           "date": "2023.11.18",
+          "ar": 1.2489,
           "tags": [
             "753",
             "birthday",
@@ -3554,6 +3882,7 @@ window.SITE_DATA = {
           "file": "g/18071461195432388.jpg",
           "caption": "バースデー",
           "date": "2023.11.18",
+          "ar": 1.2489,
           "tags": [
             "753",
             "birthday",
@@ -3566,6 +3895,7 @@ window.SITE_DATA = {
           "file": "g/18013886383931704.jpg",
           "caption": "バースデー",
           "date": "2023.11.04",
+          "ar": 0.6667,
           "tags": [
             "753",
             "birthday",
@@ -3578,6 +3908,7 @@ window.SITE_DATA = {
           "file": "g/18003110045165429.jpg",
           "caption": "バースデー",
           "date": "2023.11.04",
+          "ar": 0.6652,
           "tags": [
             "753",
             "birthday",
@@ -3590,6 +3921,7 @@ window.SITE_DATA = {
           "file": "g/17990611553182743.jpg",
           "caption": "マタニティ",
           "date": "2023.08.14",
+          "ar": 0.6629,
           "tags": [
             "maternity"
           ]
@@ -3599,6 +3931,7 @@ window.SITE_DATA = {
           "file": "g/17866712648934772.jpg",
           "caption": "マタニティ",
           "date": "2023.08.14",
+          "ar": 0.6648,
           "tags": [
             "maternity"
           ]
@@ -3608,6 +3941,7 @@ window.SITE_DATA = {
           "file": "g/18021988726718914.jpg",
           "caption": "七五三",
           "date": "2023.08.08",
+          "ar": 0.6629,
           "tags": [
             "753"
           ]
@@ -3617,6 +3951,7 @@ window.SITE_DATA = {
           "file": "g/17929941095723966.jpg",
           "caption": "七五三",
           "date": "2023.08.08",
+          "ar": 0.6659,
           "tags": [
             "753"
           ]
@@ -3626,6 +3961,7 @@ window.SITE_DATA = {
           "file": "g/17964187928559089.jpg",
           "caption": "七五三",
           "date": "2023.08.02",
+          "ar": 0.6674,
           "tags": [
             "753"
           ]
@@ -3635,6 +3971,7 @@ window.SITE_DATA = {
           "file": "g/17967936656348565.jpg",
           "caption": "バースデー",
           "date": "2023.08.01",
+          "ar": 0.6648,
           "tags": [
             "753",
             "birthday",
@@ -3646,6 +3983,7 @@ window.SITE_DATA = {
           "file": "g/17967821414349278.jpg",
           "caption": "バースデー",
           "date": "2023.08.01",
+          "ar": 0.6648,
           "tags": [
             "753",
             "birthday",
