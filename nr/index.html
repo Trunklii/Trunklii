@@ -428,6 +428,10 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .bot-sr-title{font-family:var(--sans);font-weight:500;font-size:.76rem}
 .bot-sr-snippet{font-family:var(--sans);font-weight:300;font-size:.66rem;color:var(--mid);line-height:1.6}
 .bot-sr-empty{font-family:var(--sans);font-weight:300;font-size:.74rem;color:var(--mid);padding:1rem 0;text-align:center}
+.bot-sr-item.has-thumb{display:flex;gap:.6rem;align-items:center}
+.bot-sr-thumb{width:40px;height:40px;object-fit:cover;border-radius:6px;flex-shrink:0;background:#efe9e0}
+.bot-sr-txt{min-width:0;flex:1}
+.bot-sr-txt .bot-sr-snippet{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .qa-bot-body{flex:1;overflow-y:auto;padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.75rem}
 .qa-msg{max-width:85%;padding:.7rem .9rem;font-family:var(--sans);font-weight:400;font-size:.78rem;line-height:1.7}
 .qa-msg-bot{align-self:flex-start;background:#f0eee9;color:var(--ink)}
@@ -2420,16 +2424,36 @@ function botTab(btn){
   if(isSearch) setTimeout(()=>document.getElementById('bot-search-input').focus(), 50);
 }
 // パネル内サイト内検索(全画面検索と同じ SEARCH_INDEX を使用)
+function botGo(e, href){
+  if(e){ if(e.preventDefault) e.preventDefault(); if(e.stopPropagation) e.stopPropagation(); }
+  var bot=document.getElementById('qa-bot'); if(bot) bot.classList.remove('open');
+  if(!href) return;
+  if(href.charAt(0)==='#'){
+    var id=decodeURIComponent(href.slice(1)); var el=document.getElementById(id);
+    if(el){
+      if(history.pushState) history.pushState(null,'','#'+id);
+      setTimeout(function(){
+        var nav=document.querySelector('header.nav')||document.querySelector('.nav')||document.querySelector('header');
+        var off=(nav?nav.offsetHeight:64)+12;
+        window.scrollTo({top: el.getBoundingClientRect().top+window.scrollY-off, behavior:'smooth'});
+      }, 50);
+    }
+  } else {
+    window.location.href=href;
+  }
+}
 function runBotSearch(){
   const q = document.getElementById('bot-search-input').value.trim().toLowerCase();
   const out = document.getElementById('bot-search-results');
   if(!q){ out.innerHTML=''; return; }
   trackSiteSearch(q, 'chat');
-  const results = SEARCH_INDEX.filter(item=>{
-    return (item.title||'').toLowerCase().includes(q) || (item.snippet||'').toLowerCase().includes(q) || (item.label||'').toLowerCase().includes(q);
+  const terms = expandQuery(q);
+  const results = SEARCH_INDEX.filter(function(item){
+    var hay=((item.title||'')+' '+(item.snippet||'')+' '+(item.label||'')).toLowerCase();
+    return terms.some(function(t){ return t && hay.indexOf(t)>=0; });
   });
   if(!results.length){
-    out.innerHTML = '<div class="bot-sr-empty">該当する結果が見つかりませんでした</div>';
+    out.innerHTML = '<div class="bot-sr-empty">別のキーワードでもお試しください</div>';
     return;
   }
   const groups = {};
@@ -2437,9 +2461,12 @@ function runBotSearch(){
   out.innerHTML = Object.keys(groups).map(label=>`
     <div class="bot-sr-label">${label}</div>
     ${groups[label].map(r=>`
-      <a class="bot-sr-item" href="${r.anchor}" onclick="toggleBot()">
-        <div class="bot-sr-title">${r.title}</div>
-        <div class="bot-sr-snippet">${(r.snippet||'').slice(0,80)}</div>
+      <a class="bot-sr-item${r.img?' has-thumb':''}" href="${r.anchor}" onclick="botGo(event,'${r.anchor}')">
+        ${r.img?`<img class="bot-sr-thumb" src="${r.img}" alt="" loading="lazy" onerror="this.remove()"/>`:''}
+        <div class="bot-sr-txt">
+          <div class="bot-sr-title">${hlSearch(r.title, terms)}</div>
+          <div class="bot-sr-snippet">${hlSearch((r.snippet||'').slice(0,80), terms)}</div>
+        </div>
       </a>
     `).join('')}
   `).join('');
