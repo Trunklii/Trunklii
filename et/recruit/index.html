@@ -1145,11 +1145,17 @@ function runSearch(){
   const groups = {};
   results.forEach(r=>{ if(!groups[r.label]) groups[r.label]=[]; groups[r.label].push(r); });
   Object.keys(groups).forEach(function(label){
-    var seen={}, arr=[];
+    var byBase={}, order=[];
     groups[label].forEach(function(r){
-      var k=(r.title||'')+'|'+(r.anchor||'');
-      if(seen[k]){ seen[k].count++; if(!seen[k].img && r.img) seen[k].img=r.img; }
-      else { seen[k]={r:r, count:1, img:r.img}; arr.push(seen[k]); }
+      var base=((r.title||'').replace(/\s*[0-9０-９]+\s*$/,'').trim())||(r.title||'');
+      var k=base+'|'+(r.anchor||'');
+      if(byBase[k]){ byBase[k].items.push(r); if(!byBase[k].img && r.img) byBase[k].img=r.img; }
+      else { byBase[k]={base:base, items:[r], img:r.img}; order.push(k); }
+    });
+    var arr=[];
+    order.forEach(function(k){ var g=byBase[k];
+      if(g.items.length>=3){ arr.push({r:{title:g.base, snippet:g.items[0].snippet, anchor:g.items[0].anchor}, count:g.items.length, img:g.img}); }
+      else { g.items.forEach(function(it){ arr.push({r:it, count:1, img:it.img}); }); }
     });
     groups[label]=arr;
   });
@@ -1160,7 +1166,7 @@ function runSearch(){
         <a class="search-result-item${im?' has-thumb':''}" href="${r.anchor}" onclick="searchGo(event,this.getAttribute('href'))">
           ${im?`<img class="search-result-thumb" src="${im}" alt="" loading="lazy" onerror="this.remove()"/>`:''}
           <div class="search-result-txt">
-            <div class="search-result-title">${hlSearch(r.title, terms)}${e.count>1?' <span class="sr-count">'+e.count+(label==='Gallery'?'枚':'件')+'</span>':''}</div>
+            <div class="search-result-title">${hlSearch(r.title, terms)}${e.count>1?' <span class="sr-count">'+e.count+(im?'枚':'件')+'</span>':''}</div>
             <div class="search-result-snippet">${hlSearch((r.snippet||'').slice(0,110), terms)}</div>
           </div>
         </a>
