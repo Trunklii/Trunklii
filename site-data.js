@@ -381,13 +381,11 @@ window.SITE_DATA = {
         {
           "no": "0812",
           "file": "g/17900542530473270.jpg",
-          "caption": "七五三",
+          "caption": "家族",
           "date": "2026.07.27",
           "ar": 0.6667,
           "tags": [
-            "753",
-            "family",
-            "753girl"
+            "family"
           ]
         },
         {
@@ -481,34 +479,31 @@ window.SITE_DATA = {
         {
           "no": "0790",
           "file": "g/18010183097865073.jpg",
-          "caption": "七五三",
+          "caption": "Photo",
           "date": "2026.06.27",
           "ar": 0.6667,
           "tags": [
-            "753",
-            "753girl"
+            "other"
           ]
         },
         {
           "no": "0792",
           "file": "g/18125732971643036.jpg",
-          "caption": "七五三",
+          "caption": "Photo",
           "date": "2026.06.27",
           "ar": 0.6667,
           "tags": [
-            "753",
-            "753girl"
+            "other"
           ]
         },
         {
           "no": "0787",
           "file": "g/18022193681838818.jpg",
-          "caption": "七五三",
+          "caption": "Photo",
           "date": "2026.06.21",
           "ar": 1.25,
           "tags": [
-            "753",
-            "753girl"
+            "other"
           ]
         },
         {
@@ -579,24 +574,20 @@ window.SITE_DATA = {
         {
           "no": "0761",
           "file": "g/18082327571419398.jpg",
-          "caption": "バースデー",
+          "caption": "イベント",
           "date": "2026.05.19",
           "ar": 1.25,
           "tags": [
-            "birthday",
-            "family",
             "event"
           ]
         },
         {
           "no": "0762",
           "file": "g/18152237314476562.jpg",
-          "caption": "バースデー",
+          "caption": "イベント",
           "date": "2026.05.19",
           "ar": 1.2491,
           "tags": [
-            "birthday",
-            "family",
             "event"
           ]
         },
@@ -656,24 +647,20 @@ window.SITE_DATA = {
         {
           "no": "0749",
           "file": "g/18068477078669680.jpg",
-          "caption": "バースデー",
+          "caption": "イベント",
           "date": "2026.04.30",
           "ar": 0.6667,
           "tags": [
-            "birthday",
-            "family",
             "event"
           ]
         },
         {
           "no": "0750",
           "file": "g/18100767890053716.jpg",
-          "caption": "バースデー",
+          "caption": "イベント",
           "date": "2026.04.30",
           "ar": 0.6667,
           "tags": [
-            "birthday",
-            "family",
             "event"
           ]
         },
@@ -1954,7 +1941,8 @@ window.SITE_DATA = {
           "date": "2025.05.24",
           "ar": 0.6667,
           "tags": [
-            "753"
+            "753",
+            "753boy"
           ]
         },
         {
@@ -1964,7 +1952,8 @@ window.SITE_DATA = {
           "date": "2025.05.24",
           "ar": 0.6667,
           "tags": [
-            "753"
+            "753",
+            "753boy"
           ]
         },
         {
@@ -1974,7 +1963,8 @@ window.SITE_DATA = {
           "date": "2025.05.24",
           "ar": 0.6667,
           "tags": [
-            "753"
+            "753",
+            "753boy"
           ]
         },
         {
@@ -2047,7 +2037,8 @@ window.SITE_DATA = {
           "date": "2025.04.24",
           "ar": 1.25,
           "tags": [
-            "753"
+            "753",
+            "753boy"
           ]
         },
         {
@@ -2057,7 +2048,8 @@ window.SITE_DATA = {
           "date": "2025.04.24",
           "ar": 1.2491,
           "tags": [
-            "753"
+            "753",
+            "753boy"
           ]
         },
         {
@@ -2067,7 +2059,8 @@ window.SITE_DATA = {
           "date": "2025.04.24",
           "ar": 1.2491,
           "tags": [
-            "753"
+            "753",
+            "753boy"
           ]
         },
         {
@@ -2144,7 +2137,6 @@ window.SITE_DATA = {
           "ar": 0.6667,
           "tags": [
             "753",
-            "event",
             "753girl"
           ]
         },
@@ -2156,7 +2148,6 @@ window.SITE_DATA = {
           "ar": 0.6667,
           "tags": [
             "753",
-            "event",
             "753girl"
           ]
         },
@@ -2219,7 +2210,8 @@ window.SITE_DATA = {
           "date": "2025.03.09",
           "ar": 0.6667,
           "tags": [
-            "753"
+            "753",
+            "753girl"
           ]
         },
         {
@@ -2415,7 +2407,8 @@ window.SITE_DATA = {
           "date": "2025.02.09",
           "ar": 1.2491,
           "tags": [
-            "753"
+            "753",
+            "753boy"
           ]
         },
         {
@@ -2425,7 +2418,8 @@ window.SITE_DATA = {
           "date": "2025.02.09",
           "ar": 1.25,
           "tags": [
-            "753"
+            "753",
+            "753boy"
           ]
         },
         {
@@ -3000,12 +2994,10 @@ window.SITE_DATA = {
         {
           "no": "0219",
           "file": "g/18052913023808578.jpg",
-          "caption": "バースデー",
+          "caption": "イベント",
           "date": "2024.08.23",
           "ar": 1.2437,
           "tags": [
-            "birthday",
-            "family",
             "event"
           ]
         },
