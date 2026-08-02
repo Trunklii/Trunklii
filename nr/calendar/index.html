@@ -267,7 +267,10 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 }
 .search-result-item:hover{background:#f8f6f2}
 .search-result-title{font-family:var(--sans);font-weight:400;font-size:.9rem;letter-spacing:.04em;margin-bottom:.2rem}
-.search-result-snippet{font-family:var(--serif);font-size:.78rem;color:var(--mid);line-height:1.6}
+.search-result-snippet{font-family:var(--serif);font-size:.78rem;color:var(--mid);line-height:1.6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.search-result-item.has-thumb{display:flex;gap:.75rem;align-items:center}
+.search-result-thumb{width:52px;height:52px;object-fit:cover;border-radius:8px;flex-shrink:0;background:#efe9e0}
+.search-result-txt{min-width:0;flex:1}
 .search-empty{text-align:center;padding:3rem 1rem;color:var(--mid);font-family:var(--display);font-style:normal;font-size:1rem}
 
 /* ═══ Q&A BOT ═══ */
@@ -1006,7 +1009,7 @@ function filterGallery(cat){ /* navigate back to LP */ location.href = '../#gall
 
 function buildSearchIndex(d){
   SEARCH_INDEX = [];
-  const add = (label, title, snippet, anchor)=>SEARCH_INDEX.push({label,title,snippet,anchor});
+  const add = (label, title, snippet, anchor, img)=>SEARCH_INDEX.push({label,title,snippet,anchor,img:img||''});
   add('About', d.about.heading, d.about.body, '../#about');
   add('Flow', d.flow.heading, d.flow.body, '../#flow');
   d.flow.steps.forEach(s=>add('Flow', s.title, s.desc, '../#flow'));
@@ -1050,23 +1053,63 @@ function closeSearch(){
   document.getElementById('search-input').value='';
   document.getElementById('search-results').innerHTML='';
 }
+var SEARCH_SYN=[
+  ['七五三','753','しちごさん','シチゴサン','七五三詣り','７５３'],
+  ['お宮参り','おみやまいり','宮参り','初宮','お宮まいり'],
+  ['お食い初め','百日','100日','ももか','ハーフバースデー'],
+  ['ニューボーン','newborn','新生児','ねんね','赤ちゃん'],
+  ['マタニティ','maternity','妊婦','マタ','妊娠'],
+  ['バースデー','birthday','誕生日','記念日'],
+  ['家族','ファミリー','family','親子'],
+  ['きょうだい','兄弟','姉妹'],
+  ['プラン','料金','価格','値段','いくら','費用','お金','price','コース','メニュー'],
+  ['予約','ご予約','booking','reserve','reservation','申込','申し込み'],
+  ['アクセス','場所','所在地','地図','マップ','行き方','駐車','駐車場','map','住所'],
+  ['着物','きもの','kimono','和装'],
+  ['振袖','ふりそで','成人式'],
+  ['衣装','コスチューム','ドレス','洋装','costume'],
+  ['キャンセル','cancel','変更','日程変更','キャンセルポリシー'],
+  ['ギャラリー','写真','作例','フォト','gallery','photo','ポートフォリオ'],
+  ['カレンダー','空き','空き状況','日程','スケジュール','calendar'],
+  ['採用','求人','スタッフ募集','recruit','バイト','アルバイト','スタッフ'],
+  ['グッズ','物販','アルバム','フォトフレーム','goods','商品'],
+  ['お詣り','おまいり','神社','出張撮影','ロケ','ロケーション','出張']
+];
+function expandQuery(q){
+  var terms=[q];
+  SEARCH_SYN.forEach(function(g){
+    if(g.some(function(t){ t=String(t).toLowerCase(); return t.indexOf(q)>=0 || q.indexOf(t)>=0; })){
+      g.forEach(function(t){ terms.push(String(t).toLowerCase()); });
+    }
+  });
+  return terms;
+}
 function runSearch(){
   const q = document.getElementById('search-input').value.trim().toLowerCase();
   const out = document.getElementById('search-results');
   if(!q){ out.innerHTML=searchIntroHTML(); return; }
-  const results = SEARCH_INDEX.filter(item=>{
-    return (item.title||'').toLowerCase().includes(q) || (item.snippet||'').toLowerCase().includes(q) || (item.label||'').toLowerCase().includes(q);
+  const terms = expandQuery(q);
+  const results = SEARCH_INDEX.filter(function(item){
+    var hay=((item.title||'')+' '+(item.snippet||'')+' '+(item.label||'')).toLowerCase();
+    return terms.some(function(t){ return t && hay.indexOf(t)>=0; });
   });
-  if(!results.length){ out.innerHTML = '<div class="search-empty">該当する結果が見つかりませんでした</div>'; return; }
+  if(!results.length){
+    // ヒットなしは出さず、ガイド(カテゴリ)を表示
+    out.innerHTML = searchIntroHTML();
+    return;
+  }
   const groups = {};
   results.forEach(r=>{ if(!groups[r.label]) groups[r.label]=[]; groups[r.label].push(r); });
   out.innerHTML = Object.keys(groups).map(label=>`
     <div class="search-result-group">
       <div class="search-result-label">${label}</div>
       ${groups[label].map(r=>`
-        <a class="search-result-item" href="${r.anchor}" onclick="closeSearch()">
-          <div class="search-result-title">${r.title}</div>
-          <div class="search-result-snippet">${(r.snippet||'').slice(0,140)}</div>
+        <a class="search-result-item${r.img?' has-thumb':''}" href="${r.anchor}" onclick="closeSearch()">
+          ${r.img?`<img class="search-result-thumb" src="${r.img}" alt="" loading="lazy" onerror="this.remove()"/>`:''}
+          <div class="search-result-txt">
+            <div class="search-result-title">${r.title}</div>
+            <div class="search-result-snippet">${(r.snippet||'').slice(0,110)}</div>
+          </div>
         </a>
       `).join('')}
     </div>
