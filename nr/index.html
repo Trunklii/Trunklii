@@ -282,27 +282,35 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 /* ═══ SEARCH OVERLAY ═══ */
 .search-overlay{
   position:fixed;inset:0;z-index:400;
-  background:rgba(255,255,255,.98);backdrop-filter:blur(10px);
-  opacity:0;pointer-events:none;transition:opacity .3s;
-  display:flex;flex-direction:column;
+  opacity:0;pointer-events:none;transition:opacity .25s;
+  display:flex;align-items:flex-start;justify-content:center;padding:11vh 20px 20px;
 }
+.search-backdrop{position:absolute;inset:0;background:rgba(20,16,16,.45);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.search-modal{position:relative;width:100%;max-width:560px;max-height:78vh;background:var(--bg,#fff);border-radius:16px;box-shadow:0 24px 70px rgba(0,0,0,.35);display:flex;flex-direction:column;overflow:hidden;transform:translateY(10px) scale(.98);transition:transform .25s}
+.search-ico{font-size:1.35rem;color:var(--accent);line-height:1}
 .search-overlay.open{opacity:1;pointer-events:all}
+.search-overlay.open .search-modal{transform:none}
 .search-top{
-  display:flex;align-items:center;gap:1rem;
-  padding:1.5rem 2rem;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:.7rem;
+  padding:1rem 1.2rem;border-bottom:1px solid var(--border);
 }
 .search-input{
   flex:1;background:none;border:none;outline:none;
   font-family:var(--sans);font-style:normal;
-  font-size:clamp(1.4rem,3.5vw,2.4rem);font-weight:300;
-  color:var(--ink);padding:.5rem 0;
+  font-size:1.1rem;font-weight:400;
+  color:var(--ink);padding:.4rem 0;
 }
 .search-input::placeholder{color:var(--mid);font-style:normal}
 .search-close{
   background:none;border:none;cursor:pointer;
   font-size:1.4rem;color:var(--ink);padding:.5rem;
 }
-.search-results{flex:1;overflow-y:auto;padding:2rem;max-width:900px;width:100%;margin:0 auto}
+.search-results{flex:1;overflow-y:auto;padding:1.1rem 1.2rem 1.3rem;width:100%}
+.search-intro-h{font-family:var(--sans);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);margin:.15rem 0 .9rem}
+.search-chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.search-chip{display:inline-flex;align-items:center;padding:.55rem .95rem;border:1px solid var(--border);border-radius:999px;background:none;color:var(--ink);text-decoration:none;font-family:var(--sans);font-size:.82rem;letter-spacing:.03em;transition:all .18s;cursor:pointer}
+.search-chip:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.search-hint{margin-top:1.1rem;font-family:var(--serif);font-size:.76rem;color:var(--mid)}
 .search-result-group{margin-bottom:2rem}
 .search-result-label{font-family:var(--sans);font-weight:500;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);margin-bottom:.75rem}
 .search-result-item{
@@ -1333,11 +1341,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- SEARCH OVERLAY -->
 <div class="search-overlay" id="search-overlay">
-  <div class="search-top">
-    <input type="text" class="search-input" id="search-input" placeholder="サイト内を検索..." oninput="runSearch()" />
-    <button class="search-close" onclick="closeSearch()" aria-label="Close">✕</button>
+  <div class="search-backdrop" onclick="closeSearch()"></div>
+  <div class="search-modal" role="dialog" aria-modal="true" aria-label="サイト内検索">
+    <div class="search-top">
+      <span class="search-ico" aria-hidden="true">⌕</span>
+      <input type="text" class="search-input" id="search-input" placeholder="キーワードで探す…" oninput="runSearch()" autocomplete="off" />
+      <button class="search-close" onclick="closeSearch()" aria-label="Close">✕</button>
+    </div>
+    <div class="search-results" id="search-results"></div>
   </div>
-  <div class="search-results" id="search-results"></div>
 </div>
 
 <!-- HERO -->
@@ -2119,7 +2131,7 @@ function buildSearchIndex(d){
   d.kimono.items.forEach(i=>add('Kimono', i.name, i.desc, '#kimono'));
   add('Costume', d.costume.heading, d.costume.body, '#costume');
   d.costume.items.forEach(i=>add('Costume', i.name, i.desc, '#costume'));
-  d.plans.forEach(p=>add('Plans', p.name, p.desc + ' ' + p.price, '#plans'));
+  d.plans.forEach(p=>add('Plans', p.name, p.desc + ' ' + (p.price||(p.variants&&p.variants[0]&&p.variants[0].price)||''), '#plans'));
   if(d.goods){
     add('Goods', d.goods.heading, d.goods.body, '#goods');
     d.goods.items.forEach(i=>add('Goods', i.name, i.desc + ' ' + (i.price||''), '#goods'));
@@ -2138,8 +2150,13 @@ function buildSearchIndex(d){
   d.recruit.positions.forEach(p=>add('Recruit', p.title, p.desc, '#recruit'));
 }
 
+function searchIntroHTML(){
+  var chips=[['#plans','プラン & 料金'],['#calendar','カレンダー'],['#reservation','ご予約'],['#gallery','ギャラリー'],['#access','アクセス'],['#qa','Q & A']];
+  return '<div class="search-intro-h">何をお探しですか？</div><div class="search-chips">'+chips.map(function(c){return '<a class="search-chip" href="'+c[0]+'" onclick="closeSearch()">'+c[1]+'</a>';}).join('')+'</div><div class="search-hint">またはキーワードを入力してサイト内を検索できます。</div>';
+}
 function openSearch(){
   document.getElementById('search-overlay').classList.add('open');
+  document.getElementById('search-results').innerHTML=searchIntroHTML();
   setTimeout(()=>document.getElementById('search-input').focus(), 50);
   document.body.style.overflow='hidden';
 }
@@ -2164,7 +2181,7 @@ function trackSiteSearch(q, src){
 function runSearch(){
   const q = document.getElementById('search-input').value.trim().toLowerCase();
   const out = document.getElementById('search-results');
-  if(!q){ out.innerHTML=''; return; }
+  if(!q){ out.innerHTML=searchIntroHTML(); return; }
   trackSiteSearch(q, 'overlay');
   const results = SEARCH_INDEX.filter(item=>{
     return (item.title||'').toLowerCase().includes(q) || (item.snippet||'').toLowerCase().includes(q) || (item.label||'').toLowerCase().includes(q);
