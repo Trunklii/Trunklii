@@ -574,17 +574,6 @@ window.SITE_DATA = {
           ]
         },
         {
-          "no": "0774",
-          "file": "g/18591228061055401.jpg",
-          "caption": "1/2バースデー",
-          "date": "2026.05.27",
-          "ar": 1.25,
-          "tags": [
-            "halfbd",
-            "birthday"
-          ]
-        },
-        {
           "no": "0761",
           "file": "g/18082327571419398.jpg",
           "caption": "バースデー",
@@ -1964,17 +1953,6 @@ window.SITE_DATA = {
           ]
         },
         {
-          "no": "0491",
-          "file": "g/18048127325609032.jpg",
-          "caption": "1/2バースデー",
-          "date": "2025.05.27",
-          "ar": 0.6667,
-          "tags": [
-            "halfbd",
-            "birthday"
-          ]
-        },
-        {
           "no": "0487",
           "file": "g/18295179019220181.jpg",
           "caption": "家族",
@@ -2707,17 +2685,6 @@ window.SITE_DATA = {
           "date": "2024.12.11",
           "ar": 0.6667,
           "tags": [
-            "birthday"
-          ]
-        },
-        {
-          "no": "0324",
-          "file": "g/18053226268815972.jpg",
-          "caption": "1/2バースデー",
-          "date": "2024.12.11",
-          "ar": 0.6667,
-          "tags": [
-            "halfbd",
             "birthday"
           ]
         },
