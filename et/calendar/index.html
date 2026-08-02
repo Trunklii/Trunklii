@@ -259,6 +259,16 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .search-chip{display:inline-flex;align-items:center;padding:.55rem .95rem;border:1px solid var(--border);border-radius:999px;background:none;color:var(--ink);text-decoration:none;font-family:var(--sans);font-size:.82rem;letter-spacing:.03em;transition:all .18s;cursor:pointer}
 .search-chip:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 .search-hint{margin-top:1.1rem;font-family:var(--serif);font-size:.76rem;color:var(--mid)}
+.search-menu-label{font-family:var(--sans);font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mid);margin:.1rem 0 .35rem}
+.search-menu{display:flex;flex-direction:column}
+.search-menu-item{display:flex;align-items:baseline;gap:.9rem;padding:.95rem .1rem;border-bottom:1px solid var(--border);text-decoration:none;color:var(--ink);transition:color .2s,padding .2s}
+.search-menu-item:last-child{border-bottom:none}
+.smi-ja{font-family:var(--display);font-style:normal;font-size:1.05rem;letter-spacing:.04em;flex:1}
+.smi-en{font-family:var(--sans);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);transition:color .2s}
+.smi-arw{color:var(--mid);font-size:.85rem;transition:transform .25s,color .2s}
+.search-menu-item:hover{color:var(--accent);padding-left:.55rem}
+.search-menu-item:hover .smi-en{color:var(--accent)}
+.search-menu-item:hover .smi-arw{color:var(--accent);transform:translateX(4px)}
 .search-result-group{margin-bottom:2rem}
 .search-result-label{font-family:var(--sans);font-weight:500;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);margin-bottom:.75rem}
 .search-result-item{
@@ -1039,8 +1049,8 @@ function buildSearchIndex(d){
 }
 
 function searchIntroHTML(){
-  var chips=[['../plans/','プラン & 料金'],['../calendar/','カレンダー'],['../reservation/','ご予約'],['../cancel-policy/','キャンセル規定'],['../recruit/','採用'],['../','TOPへ']];
-  return '<div class="search-intro-h">何をお探しですか？</div><div class="search-chips">'+chips.map(function(c){return '<a class="search-chip" href="'+c[0]+'" onclick="searchGo(event,&#39;'+c[0]+'&#39;)">'+c[1]+'</a>';}).join('')+'</div><div class="search-hint">またはキーワードを入力してサイト内を検索できます。</div>';
+  var items=[['../plans/','プラン & 料金','Plans'],['../calendar/','カレンダー','Calendar'],['../reservation/','ご予約','Reservation'],['../cancel-policy/','キャンセル規定','Cancel'],['../recruit/','採用','Recruit'],['../','TOP へ','Home']];
+  return '<div class="search-menu-label">Browse</div><div class="search-menu">'+items.map(function(c){return '<a class="search-menu-item" href="'+c[0]+'" onclick="searchGo(event,&#39;'+c[0]+'&#39;)"><span class="smi-ja">'+c[1]+'</span><span class="smi-en">'+c[2]+'</span><span class="smi-arw">&#8594;</span></a>';}).join('')+'</div>';
 }
 function openSearch(){
   document.getElementById('search-overlay').classList.add('open');
