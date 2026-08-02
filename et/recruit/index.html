@@ -1042,7 +1042,7 @@ function buildSearchIndex(d){
 
 function searchIntroHTML(){
   var chips=[['../plans/','プラン & 料金'],['../calendar/','カレンダー'],['../reservation/','ご予約'],['../cancel-policy/','キャンセル規定'],['../recruit/','採用'],['../','TOPへ']];
-  return '<div class="search-intro-h">何をお探しですか？</div><div class="search-chips">'+chips.map(function(c){return '<a class="search-chip" href="'+c[0]+'" onclick="closeSearch()">'+c[1]+'</a>';}).join('')+'</div><div class="search-hint">またはキーワードを入力してサイト内を検索できます。</div>';
+  return '<div class="search-intro-h">何をお探しですか？</div><div class="search-chips">'+chips.map(function(c){return '<a class="search-chip" href="'+c[0]+'" onclick="searchGo(event,&#39;'+c[0]+'&#39;)">'+c[1]+'</a>';}).join('')+'</div><div class="search-hint">またはキーワードを入力してサイト内を検索できます。</div>';
 }
 function openSearch(){
   document.getElementById('search-overlay').classList.add('open');
@@ -1055,6 +1055,27 @@ function closeSearch(){
   document.body.style.overflow='';
   document.getElementById('search-input').value='';
   document.getElementById('search-results').innerHTML='';
+}
+function searchGo(e, href){
+  if(e){ if(e.preventDefault) e.preventDefault(); if(e.stopPropagation) e.stopPropagation(); }
+  var ov=document.getElementById('search-overlay'); if(ov) ov.classList.remove('open');
+  document.body.style.overflow='';
+  var inp=document.getElementById('search-input'); if(inp) inp.value='';
+  var res=document.getElementById('search-results'); if(res) res.innerHTML='';
+  if(!href) return;
+  if(href.charAt(0)==='#'){
+    var id=decodeURIComponent(href.slice(1)); var el=document.getElementById(id);
+    if(el){
+      if(history.pushState) history.pushState(null,'','#'+id);
+      setTimeout(function(){
+        var nav=document.querySelector('header.nav')||document.querySelector('.nav')||document.querySelector('header');
+        var off=(nav?nav.offsetHeight:64)+12;
+        window.scrollTo({top: el.getBoundingClientRect().top+window.scrollY-off, behavior:'smooth'});
+      }, 50);
+    }
+  } else {
+    window.location.href=href;
+  }
 }
 var SEARCH_SYN=[
   ['七五三','753','しちごさん','シチゴサン','七五三詣り','７５３'],
@@ -1107,7 +1128,7 @@ function runSearch(){
     <div class="search-result-group">
       <div class="search-result-label">${label}</div>
       ${groups[label].map(r=>`
-        <a class="search-result-item${r.img?' has-thumb':''}" href="${r.anchor}" onclick="closeSearch()">
+        <a class="search-result-item${r.img?' has-thumb':''}" href="${r.anchor}" onclick="searchGo(event,this.getAttribute('href'))">
           ${r.img?`<img class="search-result-thumb" src="${r.img}" alt="" loading="lazy" onerror="this.remove()"/>`:''}
           <div class="search-result-txt">
             <div class="search-result-title">${r.title}</div>
