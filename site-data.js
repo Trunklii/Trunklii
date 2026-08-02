@@ -4390,6 +4390,24 @@ window.SITE_DATA = {
             "category": "3y-girl"
           },
           {
+            "file": "kimono-3g-06.jpg",
+            "name": "三歳女の子 06",
+            "desc": "",
+            "category": "3y-girl"
+          },
+          {
+            "file": "kimono-3g-07.jpg",
+            "name": "三歳女の子 07",
+            "desc": "",
+            "category": "3y-girl"
+          },
+          {
+            "file": "kimono-3g-08.jpg",
+            "name": "三歳女の子 08",
+            "desc": "",
+            "category": "3y-girl"
+          },
+          {
             "file": "kimono-7g-01.jpg",
             "name": "七歳女の子 01",
             "desc": "",
