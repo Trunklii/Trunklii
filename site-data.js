@@ -4790,7 +4790,7 @@ window.SITE_DATA = {
       "accentColor": "#7a9e95",
       "address": "〒486-0806 愛知県春日井市大手田酉町1丁目5-9",
       "tel": "050-1751-2601",
-      "hours": "詳細は近日公開",
+      "hours": "受付 9:00–17:00 ／ 撮影 9:00–18:00（火・水曜定休）",
       "instagram": "https://www.instagram.com/maison_nr._",
       "instagramHandle": "@maison_nr._",
       "mapUrl": "https://maps.app.goo.gl/gF8j4TbvhNziwHFd6",
