@@ -5115,7 +5115,7 @@ window.SITE_DATA = {
       "name": "Maison nr.",
       "shortName": "nr.",
       "tagline": "A new chapter begins",
-      "description": "まもなくオープン。\nMaison nr. は、独自の世界観で\n新たな表現とスタイルをご提供する\nフォトスタジオです。",
+      "description": "2026年10月1日 OPEN。\nMaison nr. は、独自の世界観で\n新たな表現とスタイルをご提供する\nフォトスタジオです。",
       "accentColor": "#7a9e95",
       "address": "〒486-0806 愛知県春日井市大手田酉町1丁目5-9",
       "tel": "050-1751-2601",
@@ -5233,7 +5233,7 @@ window.SITE_DATA = {
       "about": {
         "image": "18303974821264064.jpg",
         "heading": "About Maison nr.",
-        "body": "まもなくオープン。\nMaison nr. は、独自の世界観で\n新たな表現とスタイルをご提供するフォトスタジオです。\n\n詳細は近日公開予定です。"
+        "body": "2026年10月1日 OPEN。\nMaison nr. は、独自の世界観で\n新たな表現とスタイルをご提供するフォトスタジオです。\n\n詳細は2026年10月1日に公開予定です。"
       },
       "gallery": [
         {
@@ -5452,25 +5452,25 @@ window.SITE_DATA = {
       },
       "calendar": {
         "heading": "Calendar",
-        "body": "料金カレンダーは近日公開予定です。",
+        "body": "料金カレンダーは2026年10月1日に公開予定です。",
         "embedUrl": "",
         "note": ""
       },
       "reservation": {
         "heading": "Reservation",
-        "body": "予約受付は近日開始予定です。",
+        "body": "予約受付は2026年10月1日に開始予定です。",
         "formUrl": "",
         "note": ""
       },
       "cancelPolicy": {
         "heading": "Cancellation Policy",
-        "body": "キャンセルポリシーの詳細は近日公開予定です。",
+        "body": "キャンセルポリシーの詳細は2026年10月1日に公開予定です。",
         "items": [],
         "note": ""
       },
       "qa": {
         "heading": "Q & A",
-        "body": "よくいただくご質問は近日公開予定です。",
+        "body": "よくいただくご質問は2026年10月1日に公開予定です。",
         "items": []
       },
       "flow": {
@@ -5510,7 +5510,7 @@ window.SITE_DATA = {
         "positions": [],
         "contactEmail": "recruit@trunklii.com"
       },
-      "ctaHeading": "まもなくオープン。\nお楽しみに。",
+      "ctaHeading": "2026年10月1日 OPEN。\nお楽しみに。",
       "ctaNote": "最新情報はInstagramで"
     }
   }
