@@ -267,7 +267,7 @@ window.SITE_DATA = {
       "name": "Studio et.",
       "shortName": "et.",
       "tagline": "I wish you have a healthy life filled with happiness",
-      "description": "子どもたちの輝く瞬間を、花とともに。\nスタジオエトでは、七五三・ニューボーン・バースデーなど\n大切な記念日を美しい写真に残します。",
+      "description": "子どもたちの輝く瞬間を、花とともに。\nスタジオエトでは、七五三・お宮参り・バースデーなど\n大切な記念日を美しい写真に残します。",
       "accentColor": "#b8935a",
       "address": "〒501-6253 岐阜県羽島市小熊町島新道76-9 2階",
       "tel": "050-1751-2601",
@@ -375,7 +375,7 @@ window.SITE_DATA = {
       "about": {
         "image": "18067431596227602.jpg",
         "heading": "About Studio et.",
-        "body": "子どもたちの輝く瞬間を、花とともに。\nスタジオエトでは、七五三・ニューボーン・バースデーなど\n大切な記念日を美しい写真に残します。\n\n衣装、ヘアメイク、撮影まですべてを取り揃えてお待ちしております。\n生花を使用したヘアアレンジや空間装飾で、トータルコーディネートもご提供可能です。"
+        "body": "子どもたちの輝く瞬間を、花とともに。\nスタジオエトでは、七五三・お宮参り・バースデーなど\n大切な記念日を美しい写真に残します。\n\n衣装、ヘアメイク、撮影まですべてを取り揃えてお待ちしております。\n生花を使用したヘアアレンジや空間装飾で、トータルコーディネートもご提供可能です。"
       },
       "gallery": [
         {
@@ -5252,19 +5252,9 @@ window.SITE_DATA = {
           "category": "753"
         },
         {
-          "file": "18335184631230617.jpg",
-          "caption": "Newborn",
-          "category": "newborn"
-        },
-        {
           "file": "18303974821264064.jpg",
           "caption": "Family",
           "category": "family"
-        },
-        {
-          "file": "18294900103268494.jpg",
-          "caption": "Newborn",
-          "category": "newborn"
         }
       ],
       "kimono": {
@@ -5385,14 +5375,6 @@ window.SITE_DATA = {
         ]
       },
       "plans": [
-        {
-          "key": "newborn",
-          "name": "Newborn Plan",
-          "desc": "生後3週間以内の新生児撮影。",
-          "tag": "",
-          "detail": null,
-          "variants": []
-        },
         {
           "key": "birthday",
           "name": "Birthday Plan",

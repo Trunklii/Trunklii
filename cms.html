@@ -592,7 +592,7 @@ function saveAbout(){ d().about.heading=val('ab-heading'); d().about.body=val('a
 // ── GALLERY ──
 function renderGallery(){
   const s=d();
-  const cats=['753','newborn','birthday','family','maternity','other'];
+  const cats=['753','omiyamairi','birthday','family','maternity','other'];
   const items = s.gallery.map((item,i)=>`
     <div class="gcms-item">
       <img src="${esc(imgSrc(item.file))}" alt="${esc(item.caption)}" onerror="this.style.opacity=0.3"/>
@@ -732,7 +732,7 @@ function renderPlans(){
     <div class="list-item">
       <div class="li-body">
         <input placeholder="プラン名" value="${esc(p.name)}" oninput="D.studios['${currentStudio}'].plans[${i}].name=this.value"/>
-        <input placeholder="URLキー (例: 753, newborn) — 半角英数のみ" value="${esc(p.key||'')}" oninput="D.studios['${currentStudio}'].plans[${i}].key=this.value.toLowerCase().replace(/[^a-z0-9_-]/g,'')"/>
+        <input placeholder="URLキー (例: 753, omiyamairi) — 半角英数のみ" value="${esc(p.key||'')}" oninput="D.studios['${currentStudio}'].plans[${i}].key=this.value.toLowerCase().replace(/[^a-z0-9_-]/g,'')"/>
         <textarea placeholder="一覧用の短い説明文" oninput="D.studios['${currentStudio}'].plans[${i}].desc=this.value">${esc(p.desc)}</textarea>
         <input placeholder="タグ (例: 人気No.1) — 不要なら空白" value="${esc(p.tag||'')}" oninput="D.studios['${currentStudio}'].plans[${i}].tag=this.value"/>
         <div style="display:flex;gap:.6rem;align-items:center;margin-top:.4rem;font-family:var(--sans);font-size:.7rem;color:var(--mid)">

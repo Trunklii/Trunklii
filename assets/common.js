@@ -32,7 +32,6 @@ const NAV_ITEMS = [
   { id:'gallery', label:'Gallery', href:BASE+'#gallery', sub:[
     { label:'All', href:BASE+'#gallery' },
     { label:'七五三', href:BASE+'#gallery?cat=753' },
-    { label:'Newborn', href:BASE+'#gallery?cat=newborn' },
     { label:'Birthday', href:BASE+'#gallery?cat=birthday' },
     { label:'Family', href:BASE+'#gallery?cat=family' },
     { label:'Maternity', href:BASE+'#gallery?cat=maternity' }
