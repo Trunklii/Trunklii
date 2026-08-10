@@ -384,12 +384,9 @@ body.is-ready .float-book:hover{opacity:1}
 .brand-hop{position:fixed;right:1.25rem;bottom:.5rem;z-index:150;width:var(--fab);height:var(--fab);border-radius:50%;background:#fff;border:1px solid rgba(17,16,16,.25);display:flex;align-items:center;justify-content:center;opacity:.5;box-shadow:0 6px 20px rgba(17,16,16,.15);transition:opacity .3s}
 .brand-hop:hover{opacity:1}
 body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-top-btn,body.sheet-open .brand-hop{opacity:0!important;pointer-events:none!important;transition:none!important}
-/* 予約バー: 初回のみ表示する使い方ヒント */
-.bs-tip{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.5rem .9rem;margin:0 0 .6rem;padding:.5rem .7rem;background:rgba(255,255,255,.75);border:1px solid var(--border);border-radius:10px}
-.bs-tip[hidden]{display:none}
-.bs-tip-text{font-family:var(--serif);font-weight:300;font-size:.68rem;line-height:1.7;color:#111010;margin:0}
-.bs-tip-chk{display:flex;align-items:center;gap:.35rem;font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.03em;color:#5d5852;cursor:pointer;white-space:nowrap}
-.bs-tip-chk input{width:13px;height:13px;accent-color:var(--accent);cursor:pointer}
+/* 予約バー: シートの上に浮かぶ吹き出し(✕を指す) */
+.bs-tip{right:.9rem;bottom:calc(100% + .6rem);width:min(80vw,330px);z-index:2}
+.bs-tip::after{right:16px;bottom:-7px;border-right:1px solid rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.8)}
 .book-sheet-close{position:absolute;top:.8rem;right:.9rem;background:none;border:none;font-size:1.05rem;cursor:pointer;color:#111010;padding:.3rem;line-height:1}
 .book-sheet-title{font-family:var(--sans);font-weight:400;font-size:.92rem;letter-spacing:.16em;text-transform:uppercase;color:#111010}
 .book-sheet-btns{display:flex;gap:.6rem;margin-top:.8rem}
@@ -562,16 +559,23 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .g-fab.act{background:var(--ink);color:#fff;border-color:var(--ink)}
 .g-fab .g-fab-dot{position:absolute;top:2px;right:2px;width:8px;height:8px;border-radius:50%;background:var(--accent);display:none}
 .g-fab.act .g-fab-dot{display:block}
-/* 初回のみ表示する絞り込みヒント */
-.g-tip{position:absolute;right:calc(100% + .7rem);top:0;width:min(74vw,264px);background:rgba(255,255,255,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:14px;box-shadow:0 12px 30px rgba(17,16,16,.16);padding:.85rem .95rem;text-align:left}
-.g-tip[hidden]{display:none}
-.g-tip::after{content:"";position:absolute;right:-7px;top:16px;width:12px;height:12px;background:inherit;border-right:1px solid var(--border);border-top:1px solid var(--border);transform:rotate(45deg)}
-.g-tip-text{font-family:var(--serif);font-weight:300;font-size:.74rem;line-height:1.8;color:var(--ink);margin:0 0 .7rem}
-.g-tip-foot{display:flex;align-items:center;justify-content:space-between;gap:.6rem}
-.g-tip-chk{display:flex;align-items:center;gap:.35rem;font-family:var(--sans);font-weight:300;font-size:.66rem;letter-spacing:.03em;color:var(--mid);cursor:pointer}
-.g-tip-chk input{width:14px;height:14px;accent-color:var(--accent);cursor:pointer}
-.g-tip-close{font-family:var(--sans);font-size:.66rem;letter-spacing:.08em;color:var(--ink);background:none;border:1px solid var(--border);border-radius:999px;padding:.28rem .8rem;cursor:pointer}
-.g-tip-close:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+/* 初回のみ表示するヒント(共通): すりガラス調の吹き出し */
+.g-tip,.bs-tip{position:absolute;background:linear-gradient(140deg,rgba(255,255,255,.88) 0%,rgba(250,247,242,.70) 100%);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);border:1px solid rgba(255,255,255,.8);border-radius:16px;box-shadow:0 14px 38px rgba(17,16,16,.16),inset 0 1px 0 rgba(255,255,255,.85);padding:.9rem 1rem .8rem;text-align:left;overflow:visible}
+.g-tip[hidden],.bs-tip[hidden]{display:none}
+@keyframes tipIn{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+.g-tip:not([hidden]),.bs-tip:not([hidden]){animation:tipIn .5s var(--ease) both}
+/* 上端の細いアクセントライン */
+.g-tip::before,.bs-tip::before{content:"";position:absolute;left:1rem;right:1rem;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.55}
+/* 吹き出しの尖り(すりガラスと同じ質感) */
+.g-tip::after,.bs-tip::after{content:"";position:absolute;width:13px;height:13px;background:linear-gradient(140deg,rgba(255,255,255,.88),rgba(250,247,242,.70));-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);transform:rotate(45deg)}
+.g-tip{right:calc(100% + .8rem);top:0;width:min(74vw,272px)}
+.g-tip::after{right:-7px;top:16px;border-right:1px solid rgba(255,255,255,.8);border-top:1px solid rgba(255,255,255,.8)}
+.g-tip-text,.bs-tip-text{font-family:var(--serif);font-weight:300;font-size:.74rem;line-height:1.85;color:var(--ink);margin:0 0 .75rem}
+.g-tip-foot,.bs-tip-foot{display:flex;align-items:center;justify-content:space-between;gap:.7rem}
+.g-tip-chk,.bs-tip-chk{display:flex;align-items:center;gap:.4rem;font-family:var(--sans);font-weight:300;font-size:.64rem;letter-spacing:.03em;color:var(--mid);cursor:pointer;white-space:nowrap}
+.g-tip-chk input,.bs-tip-chk input{width:14px;height:14px;accent-color:var(--accent);cursor:pointer}
+.g-tip-close,.bs-tip-close{font-family:var(--sans);font-size:.64rem;letter-spacing:.08em;color:var(--ink);background:rgba(255,255,255,.55);border:1px solid rgba(17,16,16,.14);border-radius:999px;padding:.3rem .85rem;cursor:pointer;transition:all .25s}
+.g-tip-close:hover,.bs-tip-close:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 .g-float-panel{position:absolute;right:0;bottom:calc(100% + .6rem);width:min(78vw,300px);max-height:54vh;overflow:auto;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:16px;box-shadow:0 12px 36px rgba(17,16,16,.18);padding:1rem 1.1rem;display:none}
 .g-float-panel.open{display:block}
 .gfp-title{font-family:var(--sans);font-weight:400;font-style:normal;font-size:.82rem;letter-spacing:.1em;color:var(--ink);margin-bottom:.8rem}
@@ -1496,7 +1500,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <button class="book-sheet-close" type="button" onclick="closeBookSheet()" aria-label="閉じる">✕</button>
   <div class="bs-tip" id="bs-tip" hidden>
     <p class="bs-tip-text">✕ で閉じられます。閉じたあとは、右下のカレンダーアイコンからいつでも再表示できます。</p>
-    <label class="bs-tip-chk"><input type="checkbox" id="bs-tip-never">今後表示しない</label>
+    <div class="bs-tip-foot">
+      <label class="bs-tip-chk"><input type="checkbox" id="bs-tip-never">今後表示しない</label>
+      <button type="button" class="bs-tip-close" id="bs-tip-close">閉じる</button>
+    </div>
   </div>
   <div class="book-sheet-title">Reservation</div>
   <div class="book-sheet-btns">
@@ -2115,7 +2122,7 @@ function toggleFloatPanel(ev){
     if(on) showFilterTip();
   }
   // 初回のみ「絞り込みできます」ヒントを表示（今後表示しない を選ぶと二度と出さない）
-  const TIP_KEY='et_filter_tip_hidden';
+  const TIP_KEY='et_filter_tip_v2';
   let tipShown=false;
   function showFilterTip(){
     const tip=document.getElementById('g-tip');
@@ -2560,15 +2567,21 @@ if(location.hash === '#bot'){
 }
 
 /* 予約バーの使い方ヒント(初回のみ・「今後表示しない」で以後非表示) */
-const BOOK_TIP_KEY='et_book_tip_hidden';
+const BOOK_TIP_KEY='et_book_tip_v2';
 (function initBookTip(){
   const tip=document.getElementById('bs-tip'); if(!tip) return;
   let hidden=false; try{ hidden=!!localStorage.getItem(BOOK_TIP_KEY); }catch(e){}
   if(!hidden) tip.hidden=false;
   const never=document.getElementById('bs-tip-never');
+  function dismiss(){
+    tip.hidden=true;
+    if(never && never.checked){ try{ localStorage.setItem(BOOK_TIP_KEY,'1'); }catch(e){} }
+  }
   if(never) never.addEventListener('change', function(){
-    if(never.checked){ try{ localStorage.setItem(BOOK_TIP_KEY,'1'); }catch(e){} tip.hidden=true; }
+    if(never.checked){ try{ localStorage.setItem(BOOK_TIP_KEY,'1'); }catch(e){} }
   });
+  const close=document.getElementById('bs-tip-close');
+  if(close) close.addEventListener('click', function(e){ e.stopPropagation(); dismiss(); });
 })();
 function closeBookSheet(){
   const s = document.getElementById('book-sheet');
