@@ -384,6 +384,12 @@ body.is-ready .float-book:hover{opacity:1}
 .brand-hop{position:fixed;right:1.25rem;bottom:.5rem;z-index:150;width:var(--fab);height:var(--fab);border-radius:50%;background:#fff;border:1px solid rgba(17,16,16,.25);display:flex;align-items:center;justify-content:center;opacity:.5;box-shadow:0 6px 20px rgba(17,16,16,.15);transition:opacity .3s}
 .brand-hop:hover{opacity:1}
 body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-top-btn,body.sheet-open .brand-hop{opacity:0!important;pointer-events:none!important;transition:none!important}
+/* 予約バー: 初回のみ表示する使い方ヒント */
+.bs-tip{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.5rem .9rem;margin:0 0 .6rem;padding:.5rem .7rem;background:rgba(255,255,255,.75);border:1px solid var(--border);border-radius:10px}
+.bs-tip[hidden]{display:none}
+.bs-tip-text{font-family:var(--serif);font-weight:300;font-size:.68rem;line-height:1.7;color:#111010;margin:0}
+.bs-tip-chk{display:flex;align-items:center;gap:.35rem;font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.03em;color:#5d5852;cursor:pointer;white-space:nowrap}
+.bs-tip-chk input{width:13px;height:13px;accent-color:var(--accent);cursor:pointer}
 .book-sheet-close{position:absolute;top:.8rem;right:.9rem;background:none;border:none;font-size:1.05rem;cursor:pointer;color:#111010;padding:.3rem;line-height:1}
 .book-sheet-title{font-family:var(--sans);font-weight:400;font-size:.92rem;letter-spacing:.16em;text-transform:uppercase;color:#111010}
 .book-sheet-btns{display:flex;gap:.6rem;margin-top:.8rem}
@@ -556,6 +562,16 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .g-fab.act{background:var(--ink);color:#fff;border-color:var(--ink)}
 .g-fab .g-fab-dot{position:absolute;top:2px;right:2px;width:8px;height:8px;border-radius:50%;background:var(--accent);display:none}
 .g-fab.act .g-fab-dot{display:block}
+/* 初回のみ表示する絞り込みヒント */
+.g-tip{position:absolute;right:calc(100% + .7rem);top:0;width:min(74vw,264px);background:rgba(255,255,255,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:14px;box-shadow:0 12px 30px rgba(17,16,16,.16);padding:.85rem .95rem;text-align:left}
+.g-tip[hidden]{display:none}
+.g-tip::after{content:"";position:absolute;right:-7px;top:16px;width:12px;height:12px;background:inherit;border-right:1px solid var(--border);border-top:1px solid var(--border);transform:rotate(45deg)}
+.g-tip-text{font-family:var(--serif);font-weight:300;font-size:.74rem;line-height:1.8;color:var(--ink);margin:0 0 .7rem}
+.g-tip-foot{display:flex;align-items:center;justify-content:space-between;gap:.6rem}
+.g-tip-chk{display:flex;align-items:center;gap:.35rem;font-family:var(--sans);font-weight:300;font-size:.66rem;letter-spacing:.03em;color:var(--mid);cursor:pointer}
+.g-tip-chk input{width:14px;height:14px;accent-color:var(--accent);cursor:pointer}
+.g-tip-close{font-family:var(--sans);font-size:.66rem;letter-spacing:.08em;color:var(--ink);background:none;border:1px solid var(--border);border-radius:999px;padding:.28rem .8rem;cursor:pointer}
+.g-tip-close:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 .g-float-panel{position:absolute;right:0;bottom:calc(100% + .6rem);width:min(78vw,300px);max-height:54vh;overflow:auto;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:16px;box-shadow:0 12px 36px rgba(17,16,16,.18);padding:1rem 1.1rem;display:none}
 .g-float-panel.open{display:block}
 .gfp-title{font-family:var(--sans);font-weight:400;font-style:normal;font-size:.82rem;letter-spacing:.1em;color:var(--ink);margin-bottom:.8rem}
@@ -1438,6 +1454,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- LIGHTBOX -->
 <div class="g-float" id="g-float">
+  <div class="g-tip" id="g-tip" hidden>
+    <p class="g-tip-text">ここをタップして絞り込みが可能です。<br>お子様の年齢・性別にマッチした写真だけを見ることができます。</p>
+    <div class="g-tip-foot">
+      <label class="g-tip-chk"><input type="checkbox" id="g-tip-never">今後表示しない</label>
+      <button type="button" class="g-tip-close" id="g-tip-close">閉じる</button>
+    </div>
+  </div>
   <div class="g-float-panel" id="g-float-panel">
     <div class="gfp-title">タグで絞り込み</div>
     <div class="gfp-tags" id="gfp-tags"></div>
@@ -1471,6 +1494,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Kitsuné風の予約ポップアップ(下部シート・✕で閉じる) -->
 <div class="book-sheet" id="book-sheet" hidden>
   <button class="book-sheet-close" type="button" onclick="closeBookSheet()" aria-label="閉じる">✕</button>
+  <div class="bs-tip" id="bs-tip" hidden>
+    <p class="bs-tip-text">✕ で閉じられます。閉じたあとは、右下のカレンダーアイコンからいつでも再表示できます。</p>
+    <label class="bs-tip-chk"><input type="checkbox" id="bs-tip-never">今後表示しない</label>
+  </div>
   <div class="book-sheet-title">Reservation</div>
   <div class="book-sheet-btns">
   <a class="book-sheet-btn bs-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bs-brand-lockup" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bs-cta">予約する<span aria-hidden="true">→</span></span></a>
@@ -2071,6 +2098,8 @@ function toggleFloatPanel(ev){
     const tagsEnd = document.querySelector('.g-filters .filter-note') || document.querySelector('.g-filters');
     const fl = document.getElementById('g-float');
     if(!tagsEnd || !fl) return;
+    const gsec = document.getElementById('gallery');          // セクション非表示中は出さない
+    if(!gsec || getComputedStyle(gsec).display === 'none'){ fl.classList.remove('on'); return; }
     const vh = window.innerHeight || document.documentElement.clientHeight;
     const tagsBottom = tagsEnd.getBoundingClientRect().bottom;   // タグ列の下端
     // 下端の基準: View More(表示中) / 全件表示なら写真グリッドの下端
@@ -2081,8 +2110,36 @@ function toggleFloatPanel(ev){
     const refBottom = ref.getBoundingClientRect().bottom;
     const floatTop = vh/2 - (fl.offsetHeight || 140)/2;          // フロートは上下中央
     // タグ列が画面上へ出た後、フロートが View More より下に来たら非表示
-    fl.classList.toggle('on', tagsBottom < 70 && refBottom > floatTop);
+    const on = tagsBottom < 70 && refBottom > floatTop;
+    fl.classList.toggle('on', on);
+    if(on) showFilterTip();
   }
+  // 初回のみ「絞り込みできます」ヒントを表示（今後表示しない を選ぶと二度と出さない）
+  const TIP_KEY='et_filter_tip_hidden';
+  let tipShown=false;
+  function showFilterTip(){
+    const tip=document.getElementById('g-tip');
+    if(!tip || tipShown) return;
+    try{ if(localStorage.getItem(TIP_KEY)) return; }catch(e){}
+    tip.hidden=false; tipShown=true;
+  }
+  function hideFilterTip(){
+    const tip=document.getElementById('g-tip');
+    if(!tip) return;
+    tip.hidden=true;
+    const never=document.getElementById('g-tip-never');
+    if(never && never.checked){ try{ localStorage.setItem(TIP_KEY,'1'); }catch(e){} }
+  }
+  window.hideFilterTip = hideFilterTip;
+  (function bindTip(){
+    const close=document.getElementById('g-tip-close');
+    if(close) close.addEventListener('click', e=>{ e.stopPropagation(); hideFilterTip(); });
+    const never=document.getElementById('g-tip-never');
+    if(never) never.addEventListener('change', ()=>{ if(never.checked){ try{ localStorage.setItem(TIP_KEY,'1'); }catch(e){} } });
+    const fab=document.getElementById('g-fab-filter');
+    if(fab) fab.addEventListener('click', ()=>{ const t=document.getElementById('g-tip'); if(t) t.hidden=true; });
+  })();
+
   window.updateGalleryFloat = updateFloatVisibility;
   window.addEventListener('scroll', updateFloatVisibility, { passive:true });
   window.addEventListener('resize', updateFloatVisibility);
@@ -2121,6 +2178,8 @@ function toggleKimPanel(ev){
     const grid = document.getElementById('kimono-grid');
     const fl = document.getElementById('k-float');
     if(!bar || !grid || !fl) return;
+    const ksec = document.getElementById('kimono');           // セクション非表示中は出さない
+    if(!ksec || getComputedStyle(ksec).display === 'none'){ fl.classList.remove('on'); return; }
     const vh = window.innerHeight || document.documentElement.clientHeight;
     const barBottom = bar.getBoundingClientRect().bottom;   // 着物フィルタ列の下端
     const gridBottom = grid.getBoundingClientRect().bottom; // 着物カードの下端
@@ -2499,6 +2558,18 @@ function toggleHdrBook(e){
 if(location.hash === '#bot'){
   setTimeout(function(){ if(typeof toggleBot === 'function') toggleBot(); }, 500);
 }
+
+/* 予約バーの使い方ヒント(初回のみ・「今後表示しない」で以後非表示) */
+const BOOK_TIP_KEY='et_book_tip_hidden';
+(function initBookTip(){
+  const tip=document.getElementById('bs-tip'); if(!tip) return;
+  let hidden=false; try{ hidden=!!localStorage.getItem(BOOK_TIP_KEY); }catch(e){}
+  if(!hidden) tip.hidden=false;
+  const never=document.getElementById('bs-tip-never');
+  if(never) never.addEventListener('change', function(){
+    if(never.checked){ try{ localStorage.setItem(BOOK_TIP_KEY,'1'); }catch(e){} tip.hidden=true; }
+  });
+})();
 function closeBookSheet(){
   const s = document.getElementById('book-sheet');
   if(s) s.hidden = true;
