@@ -566,12 +566,12 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 /* 吹き出しの尖り(三角) */
 .g-tip::after,.bs-tip::after,.k-tip::after{content:"";position:absolute;width:0;height:0;border:9px solid transparent;filter:drop-shadow(0 1px 1px rgba(17,16,16,.06))}
 .g-tip{right:calc(100% + .8rem);top:0;width:min(74vw,272px)}
-.g-tip::after{right:-17px;top:14px;border-left-color:rgba(252,249,244,.80);border-right-width:0}
+.g-tip::after{right:-8px;top:14px;border-left-color:rgba(252,249,244,.80);border-right-width:0}
 .k-tip{right:calc(100% + .8rem);top:0;width:min(74vw,272px)}
-.k-tip::after{right:-17px;top:14px;border-left-color:rgba(252,249,244,.80);border-right-width:0}
+.k-tip::after{right:-8px;top:14px;border-left-color:rgba(252,249,244,.80);border-right-width:0}
 /* 予約バー: シートの上に浮かぶ吹き出し(✕を指す) */
 .bs-tip{right:.9rem;bottom:calc(100% + .6rem);width:min(80vw,330px);z-index:2}
-.bs-tip::after{right:16px;bottom:-17px;border-top-color:rgba(252,249,244,.80);border-bottom-width:0}
+.bs-tip::after{right:16px;bottom:-8px;border-top-color:rgba(252,249,244,.80);border-bottom-width:0}
 .g-tip-text,.bs-tip-text,.k-tip-text{font-family:var(--serif);font-weight:300;font-size:.74rem;line-height:1.85;color:var(--ink);margin:0 0 .75rem}
 .g-tip-foot,.bs-tip-foot,.k-tip-foot{display:flex;align-items:center;justify-content:space-between;gap:.7rem}
 .g-tip-chk,.bs-tip-chk,.k-tip-chk{display:flex;align-items:center;gap:.4rem;font-family:var(--sans);font-weight:300;font-size:.64rem;letter-spacing:.03em;color:var(--mid);cursor:pointer;white-space:nowrap}
@@ -2562,13 +2562,35 @@ function accessTab(btn){
     }
   });
 }
-// Kitsuné風 予約ポップアップ(セッション中に一度閉じたら再表示しない)
+// 予約ポップアップ: ヒーロー画像には重ねず、About までスクロールしたら初めて表示する
 (function(){
   const s = document.getElementById('book-sheet');
   if(!s) return;
   if(window.matchMedia('(min-width:961px)').matches) return; // PC はポップアップ非表示
-  // リロードのたびに毎回表示する(閉じた状態はセッションに保持しない)
-  s.hidden = false; document.body.classList.add('sheet-open');
+  let closedByUser = false;
+  document.addEventListener('click', e=>{            // 手動で閉じたら自動では戻さない
+    if(e.target.closest('.book-sheet-close')) closedByUser = true;
+  }, true);
+  function reveal(){
+    if(closedByUser || !s.hidden) return;
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const about = document.getElementById('about');
+    const hero  = document.querySelector('.hero');
+    let passed = false;
+    if(about && getComputedStyle(about).display !== 'none'){
+      passed = about.getBoundingClientRect().top <= vh * 0.85;   // Aboutが見え始めたら
+    } else if(hero){
+      passed = hero.getBoundingClientRect().bottom <= 0;         // About非表示時はヒーローを通過したら
+    }
+    if(passed){
+      s.hidden = false; document.body.classList.add('sheet-open');
+      const t = document.getElementById('book-toggle'); if(t) t.hidden = true;
+      window.removeEventListener('scroll', reveal);
+    }
+  }
+  window.addEventListener('scroll', reveal, { passive:true });
+  window.addEventListener('resize', reveal);
+  reveal();
 })();
 // 予約する › の展開メニュー(ヘッダー/About 共通)
 function toggleHdrBook(e){
