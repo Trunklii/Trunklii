@@ -519,7 +519,8 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .filter-note{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.06em;color:var(--mid);margin:-1.9rem 0 2.5rem}
 .kim-filter + .filter-note{margin:-1.2rem 0 1.8rem}
 .g-filter{background:none;border:1px solid var(--border);cursor:pointer;font-family:var(--sans);font-weight:400;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);padding:.42rem 1rem;transition:all .25s}
-.g-filter.active,.g-filter:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.g-filter.active{background:var(--ink);border-color:var(--ink);color:#fff}
+@media(hover:hover){.g-filter:hover:not(.active){background:rgba(17,16,16,.06);border-color:var(--mid)}}
 .g-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:4px;column-gap:1rem;row-gap:1rem;align-items:start}
 .g-item{overflow:hidden;position:relative;cursor:pointer;transition:opacity .5s var(--ease)}
 .g-item img{width:100%;height:auto;display:block;transition:transform .7s var(--ease)}  /* height:auto必須(width/height属性の固定高を打ち消す) */
@@ -578,10 +579,14 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .g-tip-close:hover,.bs-tip-close:hover,.k-tip-close:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 .g-float-panel{position:absolute;right:0;bottom:calc(100% + .6rem);width:min(78vw,300px);max-height:54vh;overflow:auto;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:16px;box-shadow:0 12px 36px rgba(17,16,16,.18);padding:1rem 1.1rem;display:none}
 .g-float-panel.open{display:block}
+.gfp-head{display:flex;align-items:flex-start;justify-content:space-between;gap:.6rem}
+.gfp-close{flex:0 0 auto;width:26px;height:26px;margin:-.2rem -.2rem 0 0;border:none;background:none;color:var(--mid);font-family:var(--sans);font-size:1rem;line-height:1;cursor:pointer;border-radius:50%;transition:all .2s}
+@media(hover:hover){.gfp-close:hover{background:rgba(17,16,16,.07);color:var(--ink)}}
 .gfp-title{font-family:var(--sans);font-weight:400;font-style:normal;font-size:.82rem;letter-spacing:.1em;color:var(--ink);margin-bottom:.8rem}
 .gfp-tags{display:flex;flex-wrap:wrap;gap:.35rem}
 .gfp-tag{font-family:var(--sans);font-weight:400;font-size:.63rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mid);background:none;border:1px solid var(--border);padding:.34rem .72rem;border-radius:999px;cursor:pointer;transition:all .2s}
-.gfp-tag.active,.gfp-tag:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.gfp-tag.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+@media(hover:hover){.gfp-tag:hover:not(.active){background:rgba(17,16,16,.06)}}
 @media(max-width:560px){.g-float{right:.9rem;bottom:auto;gap:.45rem}.g-fab{font-size:1.35rem}}
 
 /* ITEMS (kimono / costume / goods) */
@@ -1466,7 +1471,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="g-float-panel" id="g-float-panel">
-    <div class="gfp-title">タグで絞り込み</div>
+    <div class="gfp-head"><span class="gfp-title">タグで絞り込み</span><button type="button" class="gfp-close" data-panel="g-float-panel" aria-label="閉じる">✕</button></div>
     <div class="gfp-tags" id="gfp-tags"></div>
   </div>
   <button class="g-fab" id="g-fab-filter" type="button" onclick="toggleFloatPanel(event)" aria-label="タグで絞り込み" title="タグで絞り込み">
@@ -1485,7 +1490,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="g-float-panel" id="k-float-panel">
-    <div class="gfp-title">着物で絞り込み</div>
+    <div class="gfp-head"><span class="gfp-title">着物で絞り込み</span><button type="button" class="gfp-close" data-panel="k-float-panel" aria-label="閉じる">✕</button></div>
     <div class="gfp-tags" id="kfp-tags"></div>
   </div>
   <button class="g-fab" id="k-fab-filter" type="button" onclick="toggleKimPanel(event)" aria-label="着物で絞り込み" title="着物で絞り込み">
@@ -1996,6 +2001,9 @@ function galleryAlt(item){
 function scrollToGalleryTop(){
   const grid = document.getElementById('g-grid');
   if(!grid) return;
+  // タグは複数選択するので基本スクロールしない。結果が画面より上に外れた時だけ戻す
+  const vhNow = window.innerHeight || document.documentElement.clientHeight;
+  if(grid.getBoundingClientRect().bottom > vhNow * 0.25) return;
   const y = grid.getBoundingClientRect().top + window.scrollY - 72;   // 写真の先頭(固定ヘッダー分オフセット)
   window.scrollTo({ top: Math.max(0, clampToKeepFloat(y)), behavior: 'smooth' });
 }
@@ -2231,6 +2239,17 @@ function toggleKimPanel(ev){
   updateKimFloatVisibility();
 })();
 
+
+/* 絞り込みパネルの × で閉じる */
+(function closePanelBtns(){
+  document.querySelectorAll('.gfp-close').forEach(function(b){
+    b.addEventListener('click', function(e){
+      e.stopPropagation();
+      var p=document.getElementById(b.getAttribute('data-panel'));
+      if(p) p.classList.remove('open');
+    });
+  });
+})();
 function visibleGalleryItems(){
   return Array.from(document.querySelectorAll('#g-grid .g-item')).filter(el=>!el.classList.contains('hidden'));
 }

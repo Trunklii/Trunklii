@@ -230,10 +230,14 @@
     scrollToKimonoTop();
   };
 
-  /* 絞り込んだらカードの先頭へ(Galleryと同じ挙動)。フロートメニューが消えない位置までに制限 */
+  /* タグは複数選択するので基本スクロールしない。
+     絞り込み結果が画面より上に外れて何も見えない時だけ、カード先頭へ戻す */
   function scrollToKimonoTop(){
     var grid = document.getElementById('kimono-grid');
     if(!grid) return;
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var rect = grid.getBoundingClientRect();
+    if(rect.bottom > vh * 0.25) return;      // まだ見えているので動かさない
     var y = grid.getBoundingClientRect().top + window.scrollY - 72;   // 固定ヘッダー分オフセット
     var bar = document.getElementById('kim-filter');
     if(bar){
