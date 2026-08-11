@@ -641,21 +641,21 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 .g-fab .g-fab-dot{position:absolute;top:2px;right:2px;width:8px;height:8px;border-radius:50%;background:var(--accent);display:none}
 .g-fab.act .g-fab-dot{display:block}
 /* 初回のみ表示するヒント(共通): すりガラス調の吹き出し */
-.g-tip,.bs-tip,.k-tip{position:absolute;background:linear-gradient(140deg,rgba(255,255,255,.88) 0%,rgba(250,247,242,.70) 100%);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);border:1px solid rgba(255,255,255,.8);border-radius:16px;box-shadow:0 14px 38px rgba(17,16,16,.16),inset 0 1px 0 rgba(255,255,255,.85);padding:.9rem 1rem .8rem;text-align:left;overflow:visible}
+.g-tip,.bs-tip,.k-tip{position:absolute;background:linear-gradient(140deg,rgba(255,255,255,.88) 0%,rgba(250,247,242,.70) 100%);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);border:1px solid rgba(255,255,255,.45);border-radius:16px;box-shadow:0 10px 28px rgba(17,16,16,.10),inset 0 1px 0 rgba(255,255,255,.6);padding:.9rem 1rem .8rem;text-align:left;overflow:visible}
 .g-tip[hidden],.bs-tip[hidden],.k-tip[hidden]{display:none}
 @keyframes tipIn{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
 .g-tip:not([hidden]),.bs-tip:not([hidden]),.k-tip:not([hidden]){animation:tipIn .5s var(--ease) both}
 /* 上端の細いアクセントライン */
-.g-tip::before,.bs-tip::before,.k-tip::before{content:"";position:absolute;left:1rem;right:1rem;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.55}
-/* 吹き出しの尖り(三角) */
-.g-tip::after,.bs-tip::after,.k-tip::after{content:"";position:absolute;width:0;height:0;border:9px solid transparent;filter:drop-shadow(0 1px 1px rgba(17,16,16,.06))}
+.g-tip::before,.bs-tip::before,.k-tip::before{content:"";position:absolute;left:1rem;right:1rem;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.35}
+/* 吹き出しの尖り: 本体と同じすりガラスを三角に切り抜く(色・質感を一致させる) */
+.g-tip::after,.bs-tip::after,.k-tip::after{content:"";position:absolute;background:linear-gradient(140deg,rgba(255,255,255,.88) 0%,rgba(250,247,242,.70) 100%);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%)}
 .g-tip{right:calc(100% + .8rem);top:0;width:min(74vw,272px)}
-.g-tip::after{right:-8px;top:14px;border-left-color:rgba(252,249,244,.80);border-right-width:0}
+.g-tip::after{right:-13px;top:13px;width:13px;height:22px;clip-path:polygon(0 0,100% 50%,0 100%)}
 .k-tip{right:calc(100% + .8rem);top:0;width:min(74vw,272px)}
-.k-tip::after{right:-8px;top:14px;border-left-color:rgba(252,249,244,.80);border-right-width:0}
+.k-tip::after{right:-13px;top:13px;width:13px;height:22px;clip-path:polygon(0 0,100% 50%,0 100%)}
 /* 予約バー: シートの上に浮かぶ吹き出し(✕を指す) */
 .bs-tip{right:.9rem;bottom:calc(100% + .6rem);width:min(80vw,330px);z-index:2}
-.bs-tip::after{right:16px;bottom:-8px;border-top-color:rgba(252,249,244,.80);border-bottom-width:0}
+.bs-tip::after{right:16px;bottom:-13px;width:22px;height:13px;clip-path:polygon(0 0,100% 0,50% 100%)}
 .g-tip-text,.bs-tip-text,.k-tip-text{font-family:var(--serif);font-weight:300;font-size:.74rem;line-height:1.85;color:var(--ink);margin:0 0 .75rem}
 .g-tip-foot,.bs-tip-foot,.k-tip-foot{display:flex;align-items:center;justify-content:space-between;gap:.7rem}
 .g-tip-chk,.bs-tip-chk,.k-tip-chk{display:flex;align-items:center;gap:.4rem;font-family:var(--sans);font-weight:300;font-size:.64rem;letter-spacing:.03em;color:var(--mid);cursor:pointer;white-space:nowrap}
