@@ -24,6 +24,7 @@
     '2026-12-04':1,'2026-12-09':1,'2026-12-15':1,'2026-12-21':1,'2026-12-27':1
   };
 
+  var CAT_JP = {};   // 着物カテゴリ key -> 日本語タグ名
   function pad(n){ return ('0'+n).slice(-2); }
   function dKey(y,m,d){ return y+'-'+pad(m+1)+'-'+pad(d); }
   function getTier(y,m,d){
@@ -110,6 +111,7 @@
       { key:'mairi-3b', sub:'3 Year Old Boy',   jp:'三歳男の子', group:'mairi', gender:'boy' },
       { key:'mairi-5b', sub:'5 Year Old Boy',   jp:'五歳男の子', group:'mairi', gender:'boy' }
     ];
+    CATS.forEach(function(c){ if(!CAT_JP[c.key]) CAT_JP[c.key] = c.jp; });   // メニュー(key)→タグ(日本語)の対応
     // STUDIO_KEY を判定
     var STUDIO_KEY = location.pathname.indexOf('/nr/') !== -1 ? 'nr' : 'et';
     // CMS のアイテムをカテゴリ別にグルーピング
@@ -247,12 +249,19 @@
     window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
   }
 
+  /* ヘッダー/サイドメニューからの絞り込み。
+     直接カードを操作するとタグバー・フロートメニューの表示と食い違うため、必ずタグバー経由で行う。
+     メニューは「その1件を見る」操作なので、既存の選択は解除してから適用する(単一選択) */
   window.kimFilterCat = function(key){
-    var btn = document.querySelector('.kim-filter-btn[data-cat="' + key + '"]');
-    if(btn){ window.kimFilter(btn); return; }
-    Array.prototype.forEach.call(document.querySelectorAll('#kimono-grid .kim-cat'), function(card){
-      card.style.display = (key === 'all' || card.getAttribute('data-cat') === key) ? '' : 'none';
-    });
+    var bar = document.getElementById('kim-filter');
+    if(!bar) return;
+    var allBtn = bar.querySelector('.kim-filter-btn[data-title="all"]');
+    Array.prototype.forEach.call(bar.querySelectorAll('.kim-filter-btn'), function(b){ b.classList.remove('active'); });
+    if(key === 'all'){ if(allBtn) window.kimFilter(allBtn); return; }
+    var jp = CAT_JP[key];
+    var target = jp ? bar.querySelector('.kim-filter-btn[data-title="' + jp + '"]') : null;
+    if(target) window.kimFilter(target);          // 解除済みなので active になる
+    else if(allBtn) window.kimFilter(allBtn);     // 対応タグが無ければ全表示
   };
 
   /* カルーセル制御(arrow ボタンから呼ばれる) */

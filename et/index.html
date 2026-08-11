@@ -1005,6 +1005,12 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 }
 /* スマホ: グループ(スタジオ/お詣り)を横スクロールで横並び。各グループ内の①〜⑦カードは縦積み */
 @media(max-width:760px){
+  /* カード見出しはスマホだと小さすぎたので拡大 */
+  .kim-cat-title{font-size:1.18rem}
+  .kim-cat-title .sec-jp{font-size:.72rem}
+  .kim-cat-sub{font-size:1rem}
+}
+@media(max-width:760px){
   .kim-cats{display:flex;flex-direction:row;grid-template-columns:none;overflow-x:auto;gap:1.2rem;align-items:flex-start;margin:0 -1.2rem;padding:0 1.2rem .6rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .kim-cats::-webkit-scrollbar{display:none}
   .kim-group{flex:0 0 86vw;scroll-snap-align:start;margin:0;min-width:0}
