@@ -1305,7 +1305,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="c-gal-head"><span class="c-gal-title">Costume Gallery</span><span class="c-gal-jp">洋装の撮影例</span></div>
     <div class="g-grid" id="c-grid"></div>
     <div class="g-fade" id="c-fade">
-      <button class="g-more" id="c-more" type="button" onclick="costumeMore(30)">View More
+      <button class="g-more" id="c-more" type="button" onclick="costumeMore(10)">View More
         <span class="g-more-count" id="c-more-count"></span>
       </button>
     </div>
@@ -1317,7 +1317,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <style>
 /* ─── et.movie ─── */
 .movie-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
-.movie-grid iframe{width:100%;aspect-ratio:16/9;border:0;display:block;background:#000}
+.movie-item{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;padding:0;border:0;background:#000;cursor:pointer}
+.movie-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease),opacity .3s}
+.movie-item:hover img{transform:scale(1.03);opacity:.92}
+.movie-play{position:absolute;inset:0;margin:auto;width:62px;height:62px;border-radius:50%;background:rgba(17,16,16,.5);transition:background .25s}
+.movie-play::after{content:'';position:absolute;left:50%;top:50%;transform:translate(-38%,-50%);border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent #fff}
+.movie-item:hover .movie-play{background:rgba(17,16,16,.78)}
+.movie-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000}
+.movie-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .movie-notes{list-style:none;margin-top:2.2rem}
 .movie-notes li{display:flex;gap:.85rem;padding:.9rem 0;border-bottom:1px solid var(--border);font-family:var(--serif);font-weight:300;font-size:.88rem;line-height:1.9}
 .movie-notes li:first-child{border-top:1px solid var(--border)}
@@ -1332,10 +1339,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 可愛い姿をありのまま形にできる、お子様が主役の et. オリジナルムービーです。
 写真には残しきれない撮影の裏側や愛情溢れる家族との触れ合いを、表情・仕草・声とともに特別な映像で残せます。</p>
   <div class="movie-grid">
-    <iframe src="https://www.youtube-nocookie.com/embed/akHOIGcKQ2M?rel=0" title="et.movie サンプル 1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe src="https://www.youtube-nocookie.com/embed/p4OP7Y5o0cU?rel=0" title="et.movie サンプル 2" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe src="https://www.youtube-nocookie.com/embed/rlZJzzd3cYQ?rel=0" title="et.movie サンプル 3" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe src="https://www.youtube-nocookie.com/embed/K0QVNdE0Euo?rel=0" title="et.movie サンプル 4" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button type="button" class="movie-item" data-vid="akHOIGcKQ2M" aria-label="動画を再生">
+      <img src="https://i.ytimg.com/vi/akHOIGcKQ2M/maxres1.jpg" alt="et.movie サンプル" loading="lazy"/>
+      <span class="movie-play" aria-hidden="true"></span>
+    </button>
+    <button type="button" class="movie-item" data-vid="p4OP7Y5o0cU" aria-label="動画を再生">
+      <img src="https://i.ytimg.com/vi/p4OP7Y5o0cU/maxresdefault.jpg" alt="et.movie サンプル" loading="lazy"/>
+      <span class="movie-play" aria-hidden="true"></span>
+    </button>
+    <button type="button" class="movie-item" data-vid="rlZJzzd3cYQ" aria-label="動画を再生">
+      <img src="https://i.ytimg.com/vi/rlZJzzd3cYQ/maxresdefault.jpg" alt="et.movie サンプル" loading="lazy"/>
+      <span class="movie-play" aria-hidden="true"></span>
+    </button>
+    <button type="button" class="movie-item" data-vid="K0QVNdE0Euo" aria-label="動画を再生">
+      <img src="https://i.ytimg.com/vi/K0QVNdE0Euo/maxresdefault.jpg" alt="et.movie サンプル" loading="lazy"/>
+      <span class="movie-play" aria-hidden="true"></span>
+    </button>
   </div>
   <ul class="movie-notes">
     <li>料金：¥28,000（約3分）。One / Family / Maternity / Furisode 各プランに追加できます。</li>
@@ -1348,6 +1367,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="https://www.instagram.com/studio_et._/" target="_blank" rel="noopener" class="btn-line">Instagramで最新のmovieを見る →</a>
   </div>
 </div>
+<script>
+document.querySelectorAll('.movie-item').forEach((btn)=>{
+  btn.addEventListener('click', ()=>{
+    const wrap = document.createElement('div');
+    wrap.className = 'movie-frame';
+    const f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + btn.dataset.vid + '?rel=0&autoplay=1&playsinline=1';
+    f.title = 'et.movie';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    f.allowFullscreen = true;
+    wrap.appendChild(f);
+    btn.replaceWith(wrap);
+  });
+});
+</script>
 </section>
 
 <!-- PLANS 06 -->
@@ -2186,8 +2220,9 @@ function galleryMore(delta){
     setTimeout(scrollToViewMore, 520);
   }
 }
-// ===== Costume Gallery ページング（Galleryと同じ 30枚 + View More） =====
-let costumeLimit = 30;
+// ===== Costume Gallery ページング（Galleryと同じ作りでデフォルト10枚 + View More） =====
+const COSTUME_STEP = 10;
+let costumeLimit = COSTUME_STEP;
 function applyCostumeLimit(){
   let shown = 0;
   document.querySelectorAll('#c-grid .g-item').forEach(it=>{
@@ -2210,7 +2245,7 @@ function costumeMore(delta){
   const items = [...document.querySelectorAll('#c-grid .g-item')];
   const total = items.length;
   const oldLimit = costumeLimit;
-  costumeLimit = Math.min(Math.max(30, costumeLimit + delta), Math.max(30, total));
+  costumeLimit = Math.min(Math.max(COSTUME_STEP, costumeLimit + delta), Math.max(COSTUME_STEP, total));
   items.forEach((it,idx)=>{
     if(idx >= oldLimit && idx < costumeLimit){
       it.classList.remove('g-over');
