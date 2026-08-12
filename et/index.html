@@ -1369,7 +1369,7 @@ document.querySelectorAll('.movie-item').forEach((btn)=>{
     const wrap = document.createElement('div');
     wrap.className = 'movie-frame';
     const f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + btn.dataset.vid + '?rel=0&autoplay=1&playsinline=1';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + btn.dataset.vid + '?rel=0&autoplay=1&playsinline=1&controls=0&fs=0&iv_load_policy=3&disablekb=1';
     f.title = 'et.movie';
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     f.allowFullscreen = true;
