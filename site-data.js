@@ -5180,7 +5180,7 @@ window.SITE_DATA = {
             "file": "goods-key-ring-studio-et-hashima-06.jpg",
             "name": "キーリング",
             "price": "¥3,800〜",
-            "desc": "イタリアから輸入した本革を使用し、写真フレームは一点ずつ削り出しました。\n刻印なし ¥3,800 ／ 刻印あり ¥4,800（大文字アルファベット最大7文字・記号は「.」「&」が使用できます）"
+            "desc": "イタリアから輸入した本革を使用し、写真フレームは一点ずつ削り出しました。お気に入りの一枚を入れたプレートを差し込んで、いつも持ち歩けます。\n全10色：Black／Milk／Cinnamon／Sakura／Momo／Cocoa／Caramel／Oimo／Maccha／Blueberry\n刻印なし ¥3,800 ／ 刻印あり ¥4,800（大文字アルファベット最大7文字・記号は「.」「&」が使用できます）"
           },
           {
             "file": "goods-usb-studio-et-hashima-07.jpg",
