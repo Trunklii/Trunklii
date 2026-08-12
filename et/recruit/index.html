@@ -648,6 +648,11 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
 .sec-num{font-family:var(--display);font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0;letter-spacing:.1em;font-size:1.05rem;font-weight:500;align-self:baseline}
 .sec-title,.hero-name,.plan-price,.item-price,.price,.qa-q-mark,.flow-num,.cta-en,.cal-top-price,.res-top-mark,.subsec-mark{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0}
 </style>
+<style>
+/* 数字はすべて等高数字(lining)に統一。Cormorantのオールドスタイル数字は小さく・上下にばらつくため全体で無効化 */
+body,input,button,select,textarea{font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"onum" 0}
+.flow-note,.cal-top-note,.res-top-notes,.pd-note,.cp-note{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0}
+</style>
 </head>
 
 <style>

@@ -192,6 +192,11 @@ nav{
   .bottom{position:static;justify-content:center;padding-bottom:calc(.9rem + env(safe-area-inset-bottom,0px))}
 }
 </style>
+<style>
+/* 数字はすべて等高数字(lining)に統一。Cormorantのオールドスタイル数字は小さく・上下にばらつくため全体で無効化 */
+body,input,button,select,textarea{font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"onum" 0}
+.flow-note,.cal-top-note,.res-top-notes,.pd-note,.cp-note{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->

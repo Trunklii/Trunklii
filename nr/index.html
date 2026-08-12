@@ -688,7 +688,7 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 .item-info{padding:1rem .2rem .5rem}
 .item-name{font-family:var(--sans);font-weight:500;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
 .item-price{font-family:var(--display);font-style:normal;font-size:1rem;color:var(--accent-orange);margin-top:.25rem}
-.item-desc{font-family:var(--serif);font-size:.72rem;color:var(--mid);margin-top:.3rem}
+.item-desc{font-family:var(--serif);font-size:.72rem;color:var(--mid);margin-top:.3rem;white-space:pre-line;line-height:1.85}
 
 /* PLANS */
 .plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--border)}
@@ -1275,10 +1275,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </li>
       <li class="nav-item"><a href="#kimono" class="nav-link">Kimono</a></li>
-      <li class="nav-item"><a href="#costume" class="nav-link">Costume</a></li>
       <li class="nav-item"><a href="#plans" class="nav-link">Plans</a></li>
-      <li class="nav-item"><a href="#goods" class="nav-link">Goods</a></li>
       <li class="nav-item"><a href="#calendar" class="nav-link">Calendar</a></li>
+      <li class="nav-item"><a href="#costume" class="nav-link">Costume</a></li>
+      <li class="nav-item"><a href="#goods" class="nav-link">Goods</a></li>
       <li class="nav-item"><a href="#reservation" class="nav-link">Reservation</a></li>
       <li class="nav-item"><a href="#flow" class="nav-link">Flow</a></li>
       <li class="nav-item"><a href="#cancel-policy" class="nav-link">Cancel Policy</a></li>
@@ -1338,18 +1338,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="#kimono" onclick="kimFilterCat('10y-boy');closeMob()">十歳男の子</a>
       </div>
     </div>
-    <div class="mob-item"><div class="mob-item-top"><a href="#costume" class="mob-item-label" onclick="closeMob()">Costume<span class="mob-jp">衣装</span></a></div></div>
     <div class="mob-item"><div class="mob-item-top"><a href="#plans" class="mob-item-label" onclick="closeMob()">Plans<span class="mob-jp">撮影プラン・料金</span></a></div></div>
-    <div class="mob-item"><div class="mob-item-top"><a href="#goods" class="mob-item-label" onclick="closeMob()">Goods<span class="mob-jp">グッズ</span></a></div></div>
     <div class="mob-item"><div class="mob-item-top"><a href="#calendar" class="mob-item-label" onclick="closeMob()">Calendar<span class="mob-jp">料金カレンダー</span></a></div></div>
+    <div class="mob-item"><div class="mob-item-top"><a href="#costume" class="mob-item-label" onclick="closeMob()">Costume<span class="mob-jp">衣装</span></a></div></div>
+    <div class="mob-item"><div class="mob-item-top"><a href="#goods" class="mob-item-label" onclick="closeMob()">Goods<span class="mob-jp">グッズ</span></a></div></div>
     <div class="mob-item"><div class="mob-item-top"><a href="#reservation" class="mob-item-label" onclick="closeMob()">Reservation<span class="mob-jp">ご予約</span></a></div></div>
     <div class="mob-item"><div class="mob-item-top"><a href="#flow" class="mob-item-label" onclick="closeMob()">Flow<span class="mob-jp">ご利用の流れ</span></a></div></div>
     <div class="mob-item"><div class="mob-item-top"><a href="#cancel-policy" class="mob-item-label" onclick="closeMob()">Cancel Policy<span class="mob-jp">キャンセルポリシー</span></a></div></div>
     <div class="mob-item"><div class="mob-item-top"><a href="#qa" class="mob-item-label" onclick="closeMob()">Q&A<span class="mob-jp">よくあるご質問</span></a></div></div>
     <div class="mob-item"><div class="mob-item-top"><a href="#recruit" class="mob-item-label" onclick="closeMob()">Recruit<span class="mob-jp">採用情報</span></a></div></div>
     <div class="mob-item"><div class="mob-item-top"><a href="#access" class="mob-item-label" onclick="closeMob()">Access<span class="mob-jp">アクセス</span></a></div></div>
-  </div>
-
   <div class="mob-actions">
     <div class="bb-btns"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._/" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
     <div class="mob-icon-row">
@@ -1427,7 +1425,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- GALLERY 02 -->
-<!-- Gallery: 写真の準備ができるまで非表示（display:none を外せば公開される） -->
 <section id="gallery" style="background:var(--pal-wine);display:none">
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Gallery</h2><span class="sec-jp">フォトギャラリー</span><div class="sec-rule"></div></div>
@@ -1481,10 +1478,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </section>
 
-<!-- COSTUME 04 -->
+<!-- PLANS 04 -->
+<section id="plans" style="background:var(--pal-bluegrey)" class="sec-light">
+<div class="wrap">
+  <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Plans & Pricing</h2><span class="sec-jp">撮影プラン・料金</span><div class="sec-rule"></div></div>
+  <p class="section-body-text" id="plans-body" style="max-width:640px;margin:0 0 2.5rem"></p>
+  <div class="plans-grid" id="plans-grid"></div>
+  <div class="more-cta" id="plans-see-all"><a href="plans.html" class="btn-line">すべてのプランを見る →</a></div>
+</div>
+</section>
+
+<!-- CALENDAR 05 -->
+<section id="calendar" style="background:var(--pal-burgundy)">
+<div class="wrap">
+  <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title" id="calendar-heading">Calendar</h2><span class="sec-jp">料金カレンダー</span><div class="sec-rule"></div></div>
+  <p class="section-body-text" id="calendar-body" style="max-width:640px;margin:0 0 2rem"></p>
+  <div class="cal-top-tiers">
+    <div class="cal-top-tier"><span class="cal-top-dot" style="background:#f0c8a0"></span><span class="cal-top-lbl">A</span><span class="cal-top-price">¥6,600</span><span class="cal-top-days">平日</span></div>
+    <div class="cal-top-tier"><span class="cal-top-dot" style="background:#b8cfe8"></span><span class="cal-top-lbl">B</span><span class="cal-top-price">¥8,800</span><span class="cal-top-days">土曜</span></div>
+    <div class="cal-top-tier"><span class="cal-top-dot" style="background:#f4b0bc"></span><span class="cal-top-lbl">C</span><span class="cal-top-price">¥9,900</span><span class="cal-top-days">日曜・祝日</span></div>
+  </div>
+  <div class="cal-top-months" id="cal-top-months"></div>
+  <p class="cal-top-note">※3ヶ月以降の料金カレンダーはリンク先ページよりご確認ください。</p>
+  <div class="more-cta"><a href="calendar.html" class="btn-line" id="calendar-more-btn">カレンダーを詳しく見る →</a></div>
+</div>
+</section>
+
+<!-- COSTUME 06 -->
 <section id="costume" style="background:var(--pal-burgundy)">
 <div class="wrap">
-  <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title" id="costume-heading">Costume</h2><span class="sec-jp">衣装</span><div class="sec-rule"></div></div>
+  <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title" id="costume-heading">Costume</h2><span class="sec-jp">衣装</span><div class="sec-rule"></div></div>
   <p class="section-body-text" id="costume-body"></p>
   <div class="items-grid" id="costume-grid"></div>
   <!-- 洋装の撮影例（Galleryと同じメーソンリー。写真が0件のときは非表示） -->
@@ -1500,38 +1523,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </section>
 
-<!-- PLANS 05 -->
-<section id="plans" style="background:var(--pal-bluegrey)" class="sec-light">
-<div class="wrap">
-  <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Plans & Pricing</h2><span class="sec-jp">撮影プラン・料金</span><div class="sec-rule"></div></div>
-  <p class="section-body-text" id="plans-body" style="max-width:640px;margin:0 0 2.5rem"></p>
-  <div class="plans-grid" id="plans-grid"></div>
-  <div class="more-cta" id="plans-see-all"><a href="plans.html" class="btn-line">すべてのプランを見る →</a></div>
-</div>
-</section>
-
-<!-- GOODS 06 -->
+<!-- GOODS 07 -->
 <section id="goods" style="background:var(--pal-wine)">
 <div class="wrap">
-  <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title" id="goods-heading">Goods</h2><span class="sec-jp">グッズ</span><div class="sec-rule"></div></div>
+  <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title" id="goods-heading">Goods</h2><span class="sec-jp">グッズ</span><div class="sec-rule"></div></div>
   <p class="section-body-text" id="goods-body"></p>
   <div class="items-grid" id="goods-grid"></div>
-</div>
-</section>
-
-<!-- CALENDAR 07 -->
-<section id="calendar" style="background:var(--pal-burgundy)">
-<div class="wrap">
-  <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title" id="calendar-heading">Calendar</h2><span class="sec-jp">料金カレンダー</span><div class="sec-rule"></div></div>
-  <p class="section-body-text" id="calendar-body" style="max-width:640px;margin:0 0 2rem"></p>
-  <div class="cal-top-tiers">
-    <div class="cal-top-tier"><span class="cal-top-dot" style="background:#f0c8a0"></span><span class="cal-top-lbl">A</span><span class="cal-top-price">¥6,600</span><span class="cal-top-days">平日</span></div>
-    <div class="cal-top-tier"><span class="cal-top-dot" style="background:#b8cfe8"></span><span class="cal-top-lbl">B</span><span class="cal-top-price">¥8,800</span><span class="cal-top-days">土曜</span></div>
-    <div class="cal-top-tier"><span class="cal-top-dot" style="background:#f4b0bc"></span><span class="cal-top-lbl">C</span><span class="cal-top-price">¥9,900</span><span class="cal-top-days">日曜・祝日</span></div>
-  </div>
-  <div class="cal-top-months" id="cal-top-months"></div>
-  <p class="cal-top-note">※3ヶ月以降の料金カレンダーはリンク先ページよりご確認ください。</p>
-  <div class="more-cta"><a href="calendar.html" class="btn-line" id="calendar-more-btn">カレンダーを詳しく見る →</a></div>
 </div>
 </section>
 
@@ -1605,7 +1602,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </section>
 
-
 <!-- RECRUIT 12 -->
 <section id="recruit" style="background:var(--pal-khaki)" class="sec-light">
 <div class="wrap">
@@ -1616,7 +1612,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </section>
 
-<!-- CTA -->
 <!-- ACCESS 13 -->
 <section id="access" style="background:var(--pal-cream)" class="sec-light">
 <div class="wrap">
@@ -1666,6 +1661,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 </section>
+
 
 <section class="cta" id="booking">
   <div class="cta-inner">
@@ -1790,10 +1786,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="#about">About</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#kimono">Kimono</a></li>
-    <li><a href="#costume">Costume</a></li>
     <li><a href="#plans">Plans</a></li>
-    <li><a href="#goods">Goods</a></li>
     <li><a href="#calendar">Calendar</a></li>
+    <li><a href="#costume">Costume</a></li>
+    <li><a href="#goods">Goods</a></li>
     <li><a href="#reservation">Reservation</a></li>
     <li><a href="#flow">Flow</a></li>
     <li><a href="#cancel-policy">Cancel Policy</a></li>
