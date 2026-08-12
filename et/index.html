@@ -548,6 +548,11 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .g-more:hover{background:var(--ink);color:#fff}
 .g-more-count{display:block;font-family:var(--sans);font-weight:300;font-size:.6rem;letter-spacing:.14em;color:var(--mid);text-transform:none;margin-top:.6rem}
 .g-more:hover .g-more-count{color:rgba(255,255,255,.7)}
+/* Costume Gallery（洋装の撮影例。Galleryのメーソンリーを流用） */
+.c-gallery{margin-top:4rem}
+.c-gal-head{display:flex;align-items:baseline;gap:.8rem;margin-bottom:1.6rem}
+.c-gal-title{font-family:var(--display);font-weight:300;font-size:1.05rem;letter-spacing:.06em;color:var(--ink)}
+.c-gal-jp{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.14em;color:var(--mid)}
 /* Gallery float menu（右・上下中央で追従） */
 .g-float{position:fixed;right:1.3rem;top:50%;z-index:40;display:flex;flex-direction:column;gap:.55rem;align-items:flex-end;opacity:0;visibility:hidden;transform:translateY(-50%) translateX(14px);transition:opacity .4s var(--ease),transform .4s var(--ease),visibility .4s}
 .g-float.on{opacity:1;visibility:visible;transform:translateY(-50%)}
@@ -599,7 +604,7 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .item-info{padding:1rem .2rem .5rem}
 .item-name{font-family:var(--sans);font-weight:400;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
 .item-price{font-family:var(--display);font-style:normal;font-size:1rem;color:var(--accent);margin-top:.25rem}
-.item-desc{font-family:var(--serif);font-size:.72rem;color:var(--mid);margin-top:.3rem}
+.item-desc{font-family:var(--serif);font-size:.72rem;color:var(--mid);margin-top:.3rem;white-space:pre-line;line-height:1.85}
 
 /* PLANS */
 .plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--border)}
@@ -1098,6 +1103,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </li>
       <li class="nav-item"><a href="#kimono" class="nav-link">Kimono</a></li>
       <li class="nav-item"><a href="#costume" class="nav-link">Costume</a></li>
+      <li class="nav-item"><a href="#et-movie" class="nav-link">et.movie</a></li>
       <li class="nav-item"><a href="#plans" class="nav-link">Plans</a></li>
       <li class="nav-item"><a href="#goods" class="nav-link">Goods</a></li>
       <li class="nav-item"><a href="#calendar" class="nav-link">Calendar</a></li>
@@ -1161,6 +1167,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div class="mob-item"><div class="mob-item-top"><a href="#costume" class="mob-item-label" onclick="closeMob()">Costume<span class="mob-jp">衣装</span></a></div></div>
+    <div class="mob-item"><div class="mob-item-top"><a href="#et-movie" class="mob-item-label" onclick="closeMob()">et.movie<span class="mob-jp">ムービー</span></a></div></div>
     <div class="mob-item"><div class="mob-item-top"><a href="#plans" class="mob-item-label" onclick="closeMob()">Plans<span class="mob-jp">撮影プラン・料金</span></a></div></div>
     <div class="mob-item"><div class="mob-item-top"><a href="#goods" class="mob-item-label" onclick="closeMob()">Goods<span class="mob-jp">グッズ</span></a></div></div>
     <div class="mob-item"><div class="mob-item-top"><a href="#calendar" class="mob-item-label" onclick="closeMob()">Calendar<span class="mob-jp">料金カレンダー</span></a></div></div>
@@ -1293,32 +1300,79 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title" id="costume-heading">Costume</h2><span class="sec-jp">衣装</span><div class="sec-rule"></div></div>
   <p class="section-body-text" id="costume-body"></p>
   <div class="items-grid" id="costume-grid"></div>
+  <!-- 洋装の撮影例（Galleryと同じメーソンリー。写真が0件のときは非表示） -->
+  <div class="c-gallery" id="c-gallery" hidden>
+    <div class="c-gal-head"><span class="c-gal-title">Costume Gallery</span><span class="c-gal-jp">洋装の撮影例</span></div>
+    <div class="g-grid" id="c-grid"></div>
+    <div class="g-fade" id="c-fade">
+      <button class="g-more" id="c-more" type="button" onclick="costumeMore(30)">View More
+        <span class="g-more-count" id="c-more-count"></span>
+      </button>
+    </div>
+  </div>
 </div>
 </section>
 
-<!-- PLANS 05 -->
-<section id="plans" style="background:var(--bg)">
+<!-- ET.MOVIE 05 -->
+<style>
+/* ─── et.movie ─── */
+.movie-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.movie-grid iframe{width:100%;aspect-ratio:16/9;border:0;display:block;background:#000}
+.movie-notes{list-style:none;margin-top:2.2rem}
+.movie-notes li{display:flex;gap:.85rem;padding:.9rem 0;border-bottom:1px solid var(--border);font-family:var(--serif);font-weight:300;font-size:.88rem;line-height:1.9}
+.movie-notes li:first-child{border-top:1px solid var(--border)}
+.movie-notes li::before{content:'●';flex-shrink:0;font-size:.45rem;margin-top:.85rem;color:var(--accent)}
+.movie-cta{display:flex;justify-content:center;gap:.9rem;flex-wrap:wrap;margin-top:2.5rem}
+@media(max-width:700px){.movie-grid{grid-template-columns:1fr;gap:.8rem}}
+</style>
+<section id="et-movie" style="background:var(--bg)">
 <div class="wrap">
-  <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Plans & Pricing</h2><span class="sec-jp">撮影プラン・料金</span><div class="sec-rule"></div></div>
+  <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">et.movie</h2><span class="sec-jp">ムービー</span><div class="sec-rule"></div></div>
+  <p class="section-body-text">愛おしくて忘れたくない瞬間の連続を、特別な日だからこそしっかり未来に残したい。
+可愛い姿をありのまま形にできる、お子様が主役の et. オリジナルムービーです。
+写真には残しきれない撮影の裏側や愛情溢れる家族との触れ合いを、表情・仕草・声とともに特別な映像で残せます。</p>
+  <div class="movie-grid">
+    <iframe src="https://www.youtube-nocookie.com/embed/akHOIGcKQ2M?rel=0" title="et.movie サンプル 1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="https://www.youtube-nocookie.com/embed/p4OP7Y5o0cU?rel=0" title="et.movie サンプル 2" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="https://www.youtube-nocookie.com/embed/rlZJzzd3cYQ?rel=0" title="et.movie サンプル 3" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="https://www.youtube-nocookie.com/embed/K0QVNdE0Euo?rel=0" title="et.movie サンプル 4" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <ul class="movie-notes">
+    <li>料金：¥28,000（約3分）。One / Family / Maternity / Furisode 各プランに追加できます。</li>
+    <li>ご希望の場合は撮影日の2週間前までにご予約ください。（お受けできる日が限られております）</li>
+    <li>納品は1ヶ月前後いただいております。公式LINEにてご連絡させていただきますので、お友だち追加のご協力をお願いいたします。</li>
+    <li>Instagramにて新しいmovieも公開しています。</li>
+  </ul>
+  <div class="movie-cta">
+    <a href="#reservation" class="btn-line filled">ご予約はこちら</a>
+    <a href="https://www.instagram.com/studio_et._/" target="_blank" rel="noopener" class="btn-line">Instagramで最新のmovieを見る →</a>
+  </div>
+</div>
+</section>
+
+<!-- PLANS 06 -->
+<section id="plans" style="background:#f0eee9">
+<div class="wrap">
+  <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title">Plans & Pricing</h2><span class="sec-jp">撮影プラン・料金</span><div class="sec-rule"></div></div>
   <p class="section-body-text" id="plans-body" style="max-width:640px;margin:0 0 2.5rem"></p>
   <div class="plans-grid" id="plans-grid"></div>
   <div class="more-cta" id="plans-see-all"><a href="plans.html" class="btn-line">すべてのプランを見る →</a></div>
 </div>
 </section>
 
-<!-- GOODS 06 -->
-<section id="goods" style="background:#f0eee9">
+<!-- GOODS 07 -->
+<section id="goods" style="background:var(--bg)">
 <div class="wrap">
-  <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title" id="goods-heading">Goods</h2><span class="sec-jp">グッズ</span><div class="sec-rule"></div></div>
+  <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title" id="goods-heading">Goods</h2><span class="sec-jp">グッズ</span><div class="sec-rule"></div></div>
   <p class="section-body-text" id="goods-body"></p>
   <div class="items-grid" id="goods-grid"></div>
 </div>
 </section>
 
-<!-- CALENDAR 07 -->
-<section id="calendar" style="background:var(--bg)">
+<!-- CALENDAR 08 -->
+<section id="calendar" style="background:#f0eee9">
 <div class="wrap">
-  <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title" id="calendar-heading">Calendar</h2><span class="sec-jp">料金カレンダー</span><div class="sec-rule"></div></div>
+  <div class="sec-head"><span class="sec-num">08</span><h2 class="sec-title" id="calendar-heading">Calendar</h2><span class="sec-jp">料金カレンダー</span><div class="sec-rule"></div></div>
   <p class="section-body-text" id="calendar-body" style="max-width:640px;margin:0 0 2rem"></p>
   <div class="cal-top-tiers">
     <div class="cal-top-tier"><span class="cal-top-dot" style="background:#f0c8a0"></span><span class="cal-top-lbl">A</span><span class="cal-top-price">¥6,600</span><span class="cal-top-days">平日</span></div>
@@ -1331,10 +1385,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </section>
 
-<!-- RESERVATION 08 -->
-<section id="reservation" style="background:#f0eee9">
+<!-- RESERVATION 09 -->
+<section id="reservation" style="background:var(--bg)">
 <div class="wrap">
-  <div class="sec-head"><span class="sec-num">08</span><h2 class="sec-title" id="reservation-heading">Reservation</h2><span class="sec-jp">ご予約</span><div class="sec-rule"></div></div>
+  <div class="sec-head"><span class="sec-num">09</span><h2 class="sec-title" id="reservation-heading">Reservation</h2><span class="sec-jp">ご予約</span><div class="sec-rule"></div></div>
   <p class="section-body-text" id="reservation-body" style="max-width:640px;margin:0 0 3rem">ご予約はオンライン（STORES予約）またはInstagram DM・LINEで承っております。<br/>七五三のお詣り日着物レンタルも受付中です。</p>
 
   <div class="res-top-grid">
@@ -1374,48 +1428,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </section>
 
-<!-- FLOW 09 -->
-<section id="flow" style="background:var(--bg)">
+<!-- FLOW 10 -->
+<section id="flow" style="background:#f0eee9">
 <div class="wrap">
-  <div class="sec-head"><span class="sec-num">09</span><h2 class="sec-title" id="flow-heading">Flow</h2><span class="sec-jp">ご利用の流れ</span><div class="sec-rule"></div></div>
+  <div class="sec-head"><span class="sec-num">10</span><h2 class="sec-title" id="flow-heading">Flow</h2><span class="sec-jp">ご利用の流れ</span><div class="sec-rule"></div></div>
   <p class="section-body-text" id="flow-body" style="max-width:600px;margin:0 0 3.5rem"></p>
   <div class="flow-wrap" id="flow-list"></div>
 </div>
 </section>
 
-<!-- CANCEL POLICY 10 -->
-<section id="cancel-policy" style="background:#f0eee9">
+<!-- CANCEL POLICY 11 -->
+<section id="cancel-policy" style="background:var(--bg)">
 <div class="wrap">
-  <div class="sec-head"><span class="sec-num">10</span><h2 class="sec-title" id="cancel-heading">Cancellation Policy</h2><span class="sec-jp">キャンセルポリシー</span><div class="sec-rule"></div></div>
+  <div class="sec-head"><span class="sec-num">11</span><h2 class="sec-title" id="cancel-heading">Cancellation Policy</h2><span class="sec-jp">キャンセルポリシー</span><div class="sec-rule"></div></div>
   <p class="section-body-text" id="cancel-body" style="max-width:780px;margin:0 0 2.5rem"></p>
   <div class="more-cta"><a href="cancel-policy.html" class="btn-line" id="cancel-more-btn">キャンセル料金表を見る →</a></div>
 </div>
 </section>
 
-<!-- Q&A 11 -->
-<section id="qa" style="background:var(--bg)">
+<!-- Q&A 12 -->
+<section id="qa" style="background:#f0eee9">
 <div class="wrap">
-  <div class="sec-head"><span class="sec-num">11</span><h2 class="sec-title" id="qa-heading">Q & A</h2><span class="sec-jp">よくあるご質問</span><div class="sec-rule"></div></div>
+  <div class="sec-head"><span class="sec-num">12</span><h2 class="sec-title" id="qa-heading">Q & A</h2><span class="sec-jp">よくあるご質問</span><div class="sec-rule"></div></div>
   <p class="section-body-text" id="qa-body" style="max-width:640px;margin:0 0 2.5rem"></p>
   <div style="max-width:780px;margin:0 auto"><div class="qa-list" id="qa-list"></div></div>
 </div>
 </section>
 
 
-<!-- RECRUIT 12 -->
-<section id="recruit" style="background:#f0eee9">
+<!-- RECRUIT 13 -->
+<section id="recruit" style="background:var(--bg)">
 <div class="wrap">
-  <div class="sec-head"><span class="sec-num">12</span><h2 class="sec-title" id="recruit-heading">Recruit</h2><span class="sec-jp">採用情報</span><div class="sec-rule"></div></div>
+  <div class="sec-head"><span class="sec-num">13</span><h2 class="sec-title" id="recruit-heading">Recruit</h2><span class="sec-jp">採用情報</span><div class="sec-rule"></div></div>
   <p class="recruit-copy" id="recruit-body" style="max-width:640px;margin:0 0 2rem"></p>
   <div class="pos-list-lite" id="pos-list"></div>
   <div class="more-cta" style="margin-top:2.5rem"><a href="recruit/" class="btn-line" id="recruit-more-btn">採用情報を詳しく見る →</a></div>
 </div>
 </section>
 
-<!-- ACCESS 13 -->
-<section id="access" style="background:var(--bg)">
+<!-- ACCESS 14 -->
+<section id="access" style="background:#f0eee9">
 <div class="wrap">
-  <div class="sec-head"><span class="sec-num">13</span><h2 class="sec-title">Access</h2><span class="sec-jp">アクセス</span><div class="sec-rule"></div></div>
+  <div class="sec-head"><span class="sec-num">14</span><h2 class="sec-title">Access</h2><span class="sec-jp">アクセス</span><div class="sec-rule"></div></div>
   <!-- 店舗切替タブ(両ブランドのNAP・地図を1箇所で。Maison Kitsuné の Store Locator 参考) -->
   <div class="access-tabs">
     <button class="access-tab active" type="button" data-loc="et" onclick="accessTab(this)">Studio et.（岐阜県羽島市）</button>
@@ -1586,6 +1640,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#kimono">Kimono</a></li>
     <li><a href="#costume">Costume</a></li>
+    <li><a href="#et-movie">et.movie</a></li>
     <li><a href="#plans">Plans</a></li>
     <li><a href="#goods">Goods</a></li>
     <li><a href="#calendar">Calendar</a></li>
@@ -1602,6 +1657,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
+// 拡大表示は Gallery / Costume Gallery で配列を切り替える
+let galleryImages=[], galleryNos=[], costumeImages=[], costumeNos=[];
 let SEARCH_INDEX = [];
 
 // Safety net — ensure body fades in even if init() stalls (e.g. slow SVG fetch)
@@ -1688,8 +1745,9 @@ async function init(){
     if(bHas) return 1;  // b has date → b comes first
     return 0;
   });
-  lbImages = sortedGallery.map(i=>i.file);
-  lbNos = sortedGallery.map(i=>i.no||'');
+  galleryImages = sortedGallery.map(i=>i.file);
+  galleryNos = sortedGallery.map(i=>i.no||'');
+  lbImages = galleryImages; lbNos = galleryNos;
   document.getElementById('g-grid').innerHTML = sortedGallery.map((item,i)=>{
     const ar = item.ar || 1.33;
     const w = 1000, h = Math.round(1000*ar);   // 比率をブラウザに伝えてCLSを防ぐ
@@ -1739,6 +1797,34 @@ async function init(){
       <div class="item-info"><div class="item-name">${item.name}</div><div class="item-desc">${item.desc}</div></div>
     </div>
   `).join('') || '<p style="color:var(--mid);font-size:.85rem;font-family:var(--display);font-style:normal">近日公開予定。</p>';
+
+  // Costume Gallery（洋装の撮影例）: Galleryと同じメーソンリー。0件なら丸ごと非表示
+  (function(){
+    const wrap = document.getElementById('c-gallery');
+    if(!wrap) return;
+    const cg = (d.costume.gallery || []).slice().sort((a,b)=>{
+      const aHas = !!a.date, bHas = !!b.date;
+      if(aHas && bHas) return String(b.date).localeCompare(String(a.date));
+      if(aHas) return -1;
+      if(bHas) return 1;
+      return 0;
+    });
+    if(!cg.length){ wrap.hidden = true; return; }
+    wrap.hidden = false;
+    costumeImages = cg.map(i=>i.file);
+    costumeNos    = cg.map(i=>i.no||'');
+    document.getElementById('c-grid').innerHTML = cg.map((item,i)=>{
+      const ar = item.ar || 1.33;
+      const w = 1000, h = Math.round(1000*ar);
+      return `
+      <div class="g-item" data-cat="${(item.tags||['other']).join(' ')}" data-no="${item.no||''}" data-ar="${ar}">
+        <img src="${item.file}" alt="${costumeAlt(item)}" width="${w}" height="${h}" loading="lazy" decoding="async" style="aspect-ratio:1 / ${ar}" onclick="openLbC(${i})"/>
+        ${item.no?`<div class="g-no">No.${item.no}</div>`:''}
+      </div>`;
+    }).join('');
+    applyCostumeLimit();
+    layoutMasonry();
+  })();
 
   // Plans (digest: top 3 — prefer entries with tag, fallback to first 3)
   (function(){
@@ -2017,9 +2103,25 @@ function scrollToGalleryTop(){
   const y = grid.getBoundingClientRect().top + window.scrollY - 72;   // 写真の先頭(固定ヘッダー分オフセット)
   window.scrollTo({ top: Math.max(0, clampToKeepFloat(y)), behavior: 'smooth' });
 }
+/* 洋装ギャラリーのalt（衣装が主題であることを明示してSEO/読み上げに効かせる） */
+function costumeAlt(item){
+  const tags = item.tags || ['other'];
+  let subject = '記念写真';
+  for(const k of ALT_ORDER){ if(tags.includes(k)){ subject = ALT_SUBJECT[k]; break; } }
+  const detail = [];
+  if(tags.includes('753girl')) detail.push('女の子');
+  if(tags.includes('753boy'))  detail.push('男の子');
+  if(tags.includes('family'))  detail.push('家族・きょうだい撮影');
+  const d = detail.length ? '（' + detail.join('・') + '）' : '';
+  const no = item.no ? ' No.' + item.no : '';
+  return '洋装（ドレス・カジュアル衣装）の' + subject + d + '｜Studio et. 岐阜県羽島市のフォトスタジオ' + no;
+}
 // グリッド・メーソンリー: DOM順を保ったまま縦横比で高さを割り当て（追加は下に積まれる）
+// Gallery と Costume Gallery の両方（.g-grid すべて）が対象
 function layoutMasonry(){
-  const grid = document.getElementById('g-grid');
+  document.querySelectorAll('.g-grid').forEach(layoutMasonryGrid);
+}
+function layoutMasonryGrid(grid){
   if(!grid) return;
   const gs = getComputedStyle(grid);
   const rowH = parseFloat(gs.gridAutoRows) || 4;
@@ -2083,6 +2185,40 @@ function galleryMore(delta){
     updateGalleryMoreUI();
     setTimeout(scrollToViewMore, 520);
   }
+}
+// ===== Costume Gallery ページング（Galleryと同じ 30枚 + View More） =====
+let costumeLimit = 30;
+function applyCostumeLimit(){
+  let shown = 0;
+  document.querySelectorAll('#c-grid .g-item').forEach(it=>{
+    it.style.opacity = '';
+    if(shown < costumeLimit){ it.classList.remove('g-over'); shown++; }
+    else it.classList.add('g-over');
+  });
+  updateCostumeMoreUI();
+}
+function updateCostumeMoreUI(){
+  const total = document.querySelectorAll('#c-grid .g-item').length;
+  const shown = Math.min(costumeLimit, total);
+  const rem = total - shown;
+  const fade = document.getElementById('c-fade');
+  if(fade) fade.style.display = rem > 0 ? '' : 'none';
+  const cnt = document.getElementById('c-more-count');
+  if(cnt) cnt.textContent = shown + ' / ' + total + '　（あと ' + rem + ' 枚）';
+}
+function costumeMore(delta){
+  const items = [...document.querySelectorAll('#c-grid .g-item')];
+  const total = items.length;
+  const oldLimit = costumeLimit;
+  costumeLimit = Math.min(Math.max(30, costumeLimit + delta), Math.max(30, total));
+  items.forEach((it,idx)=>{
+    if(idx >= oldLimit && idx < costumeLimit){
+      it.classList.remove('g-over');
+      it.style.opacity = '0';
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{ it.style.opacity = '1'; }));
+    }
+  });
+  updateCostumeMoreUI();
 }
 function scrollToViewMore(){
   const btn = document.getElementById('g-more');
@@ -2316,17 +2452,25 @@ function updateGalleryCounter(){
 function setLbNo(){ const el=document.getElementById('lb-no'); if(!el) return;
   const no=(lbIdx>=0 && lbNos[lbIdx]) ? ('No.'+lbNos[lbIdx]) : '';
   el.textContent=no; el.style.display=no?'':'none'; }
-function openLb(idx){ lbIdx=idx; document.getElementById('lb-img').src=lbImages[lbIdx]; setLbNo(); document.getElementById('lightbox').classList.add('open'); }
+function openLb(idx){ lbImages=galleryImages; lbNos=galleryNos; lbIdx=idx; document.getElementById('lb-img').src=lbImages[lbIdx]; setLbNo(); document.getElementById('lightbox').classList.add('open'); }
+/* Costume Gallery の拡大表示（前後送りは洋装の写真だけを巡る） */
+function openLbC(idx){ lbImages=costumeImages; lbNos=costumeNos; lbIdx=idx; document.getElementById('lb-img').src=lbImages[lbIdx]; setLbNo(); document.getElementById('lightbox').classList.add('open'); }
 function openLbSrc(src){ lbIdx=-1; document.getElementById('lb-img').src=src; setLbNo(); document.getElementById('lightbox').classList.add('open'); }
 function gotoGalleryNo(){
   const inp=document.getElementById('g-no-input'), msg=document.getElementById('g-no-msg');
   let v=(inp.value||'').trim().replace(/^(no\.?|#)/i,'').replace(/\s/g,'');
   if(!v){ msg.textContent=''; return; }
-  const items=[...document.querySelectorAll('#g-grid .g-item')];
-  let idx=items.findIndex(el=>el.dataset.no===v);
-  if(idx<0 && /^\d+$/.test(v)) idx=items.findIndex(el=>el.dataset.no===v.padStart(4,'0'));
-  if(idx<0){ msg.textContent='No.'+v+' は見つかりません'; return; }
-  msg.textContent=''; openLb(idx);
+  const find=(sel)=>{
+    const items=[...document.querySelectorAll(sel+' .g-item')];
+    let i=items.findIndex(el=>el.dataset.no===v);
+    if(i<0 && /^\d+$/.test(v)) i=items.findIndex(el=>el.dataset.no===v.padStart(4,'0'));
+    return i;
+  };
+  let idx=find('#g-grid');
+  if(idx>=0){ msg.textContent=''; openLb(idx); return; }
+  const cidx=find('#c-grid');           // 洋装ギャラリーの番号でも探せるようにする
+  if(cidx>=0){ msg.textContent=''; openLbC(cidx); return; }
+  msg.textContent='No.'+v+' は見つかりません';
 }
 function closeLb(){ document.getElementById('lightbox').classList.remove('open'); }
 function lbNav(dir){ if(lbIdx<0) return; lbIdx=(lbIdx+dir+lbImages.length)%lbImages.length; document.getElementById('lb-img').src=lbImages[lbIdx]; setLbNo(); }
@@ -2367,6 +2511,7 @@ function buildSearchIndex(d){
   d.kimono.items.forEach(i=>add('Kimono', i.name, i.desc, '#kimono', i.file));
   add('Costume', d.costume.heading, d.costume.body, '#costume');
   d.costume.items.forEach(i=>add('Costume', i.name, i.desc, '#costume', i.file));
+  add('et.movie', 'et.movie オリジナルムービー', 'お子様が主役の撮影ムービー。表情・仕草・声を映像で残します（¥28,000・約3分）', '#et-movie');
   d.plans.forEach(p=>add('Plans', p.name, p.desc + ' ' + (p.price||(p.variants&&p.variants[0]&&p.variants[0].price)||''), '#plans', p.detail&&p.detail.heroImage));
   if(d.goods){
     add('Goods', d.goods.heading, d.goods.body, '#goods');
