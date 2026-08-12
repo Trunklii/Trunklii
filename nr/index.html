@@ -632,6 +632,11 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 .g-more:hover{background:var(--ink);color:#fff}
 .g-more-count{display:block;font-family:var(--sans);font-weight:300;font-size:.6rem;letter-spacing:.14em;color:var(--mid);text-transform:none;margin-top:.6rem}
 .g-more:hover .g-more-count{color:rgba(255,255,255,.7)}
+/* Costume Gallery（洋装の撮影例。Galleryのメーソンリーを流用） */
+.c-gallery{margin-top:4rem}
+.c-gal-head{display:flex;align-items:baseline;gap:.8rem;margin-bottom:1.6rem}
+.c-gal-title{font-family:var(--display);font-weight:300;font-size:1.05rem;letter-spacing:.06em;color:var(--ink)}
+.c-gal-jp{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.14em;color:var(--mid)}
 /* Gallery float menu（右・上下中央で追従） */
 .g-float{position:fixed;right:1.3rem;top:50%;z-index:40;display:flex;flex-direction:column;gap:.55rem;align-items:flex-end;opacity:0;visibility:hidden;transform:translateY(-50%) translateX(14px);transition:opacity .4s var(--ease),transform .4s var(--ease),visibility .4s}
 .g-float.on{opacity:1;visibility:visible;transform:translateY(-50%)}
@@ -1482,6 +1487,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title" id="costume-heading">Costume</h2><span class="sec-jp">衣装</span><div class="sec-rule"></div></div>
   <p class="section-body-text" id="costume-body"></p>
   <div class="items-grid" id="costume-grid"></div>
+  <!-- 洋装の撮影例（Galleryと同じメーソンリー。写真が0件のときは非表示） -->
+  <div class="c-gallery" id="c-gallery" hidden>
+    <div class="c-gal-head"><span class="c-gal-title">Costume Gallery</span><span class="c-gal-jp">洋装の撮影例</span></div>
+    <div class="g-grid" id="c-grid"></div>
+    <div class="g-fade" id="c-fade">
+      <button class="g-more" id="c-more" type="button" onclick="costumeMore(10)">View More
+        <span class="g-more-count" id="c-more-count"></span>
+      </button>
+    </div>
+  </div>
 </div>
 </section>
 
@@ -1792,6 +1807,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
+// 拡大表示は Gallery / Costume Gallery で配列を切り替える
+let galleryImages=[], galleryNos=[], costumeImages=[], costumeNos=[];
 let SEARCH_INDEX = [];
 
 // Safety net — ensure body fades in even if init() stalls (e.g. slow SVG fetch)
@@ -1875,8 +1892,9 @@ async function init(){
     if(bHas) return 1;  // b has date → b comes first
     return 0;
   });
-  lbImages = sortedGallery.map(i=>i.file);
-  lbNos = sortedGallery.map(i=>i.no||'');
+  galleryImages = sortedGallery.map(i=>i.file);
+  galleryNos = sortedGallery.map(i=>i.no||'');
+  lbImages = galleryImages; lbNos = galleryNos;
   document.getElementById('g-grid').innerHTML = sortedGallery.map((item,i)=>{
     const ar = item.ar || 1.33;
     const w = 1000, h = Math.round(1000*ar);   // 比率をブラウザに伝えてCLSを防ぐ
@@ -1926,6 +1944,34 @@ async function init(){
       <div class="item-info"><div class="item-name">${item.name}</div><div class="item-desc">${item.desc}</div></div>
     </div>
   `).join('') || '<p style="color:var(--mid);font-size:.85rem;font-family:var(--display);font-style:normal">近日公開予定。</p>';
+
+  // Costume Gallery（洋装の撮影例）: Galleryと同じメーソンリー。0件なら丸ごと非表示
+  (function(){
+    const wrap = document.getElementById('c-gallery');
+    if(!wrap) return;
+    const cg = (d.costume.gallery || []).slice().sort((a,b)=>{
+      const aHas = !!a.date, bHas = !!b.date;
+      if(aHas && bHas) return String(b.date).localeCompare(String(a.date));
+      if(aHas) return -1;
+      if(bHas) return 1;
+      return 0;
+    });
+    if(!cg.length){ wrap.hidden = true; return; }
+    wrap.hidden = false;
+    costumeImages = cg.map(i=>i.file);
+    costumeNos    = cg.map(i=>i.no||'');
+    document.getElementById('c-grid').innerHTML = cg.map((item,i)=>{
+      const ar = item.ar || 1.33;
+      const w = 1000, h = Math.round(1000*ar);
+      return `
+      <div class="g-item" data-cat="${(item.tags||['other']).join(' ')}" data-no="${item.no||''}" data-ar="${ar}">
+        <img src="${item.file}" alt="${costumeAlt(item)}" width="${w}" height="${h}" loading="lazy" decoding="async" style="aspect-ratio:1 / ${ar}" onclick="openLbC(${i})"/>
+        ${item.no?`<div class="g-no">No.${item.no}</div>`:''}
+      </div>`;
+    }).join('');
+    applyCostumeLimit();
+    layoutMasonry();
+  })();
 
   // Plans (digest: top 3 — prefer entries with tag, fallback to first 3)
   (function(){
@@ -2170,9 +2216,25 @@ function scrollToGalleryTop(){
   const y = grid.getBoundingClientRect().top + window.scrollY - 72;   // 写真の先頭(固定ヘッダー分オフセット)
   window.scrollTo({ top: Math.max(0, clampToKeepFloat(y)), behavior: 'smooth' });
 }
+/* 洋装ギャラリーのalt（衣装が主題であることを明示してSEO/読み上げに効かせる） */
+function costumeAlt(item){
+  const tags = item.tags || ['other'];
+  let subject = '記念写真';
+  for(const k of ALT_ORDER){ if(tags.includes(k)){ subject = ALT_SUBJECT[k]; break; } }
+  const detail = [];
+  if(tags.includes('753girl')) detail.push('女の子');
+  if(tags.includes('753boy'))  detail.push('男の子');
+  if(tags.includes('family'))  detail.push('家族・きょうだい撮影');
+  const d = detail.length ? '（' + detail.join('・') + '）' : '';
+  const no = item.no ? ' No.' + item.no : '';
+  return '洋装（ドレス・カジュアル衣装）の' + subject + d + '｜Maison nr. 愛知県春日井市のフォトスタジオ' + no;
+}
 // グリッド・メーソンリー: DOM順を保ったまま縦横比で高さを割り当て（追加は下に積まれる）
+// Gallery と Costume Gallery の両方（.g-grid すべて）が対象
 function layoutMasonry(){
-  const grid = document.getElementById('g-grid');
+  document.querySelectorAll('.g-grid').forEach(layoutMasonryGrid);
+}
+function layoutMasonryGrid(grid){
   if(!grid) return;
   const gs = getComputedStyle(grid);
   const rowH = parseFloat(gs.gridAutoRows) || 4;
@@ -2237,6 +2299,41 @@ function galleryMore(delta){
     updateGalleryMoreUI();
     setTimeout(scrollToViewMore, 520);
   }
+}
+// ===== Costume Gallery ページング（Galleryと同じ作りでデフォルト10枚 + View More） =====
+const COSTUME_STEP = 10;
+let costumeLimit = COSTUME_STEP;
+function applyCostumeLimit(){
+  let shown = 0;
+  document.querySelectorAll('#c-grid .g-item').forEach(it=>{
+    it.style.opacity = '';
+    if(shown < costumeLimit){ it.classList.remove('g-over'); shown++; }
+    else it.classList.add('g-over');
+  });
+  updateCostumeMoreUI();
+}
+function updateCostumeMoreUI(){
+  const total = document.querySelectorAll('#c-grid .g-item').length;
+  const shown = Math.min(costumeLimit, total);
+  const rem = total - shown;
+  const fade = document.getElementById('c-fade');
+  if(fade) fade.style.display = rem > 0 ? '' : 'none';
+  const cnt = document.getElementById('c-more-count');
+  if(cnt) cnt.textContent = shown + ' / ' + total + '　（あと ' + rem + ' 枚）';
+}
+function costumeMore(delta){
+  const items = [...document.querySelectorAll('#c-grid .g-item')];
+  const total = items.length;
+  const oldLimit = costumeLimit;
+  costumeLimit = Math.min(Math.max(COSTUME_STEP, costumeLimit + delta), Math.max(COSTUME_STEP, total));
+  items.forEach((it,idx)=>{
+    if(idx >= oldLimit && idx < costumeLimit){
+      it.classList.remove('g-over');
+      it.style.opacity = '0';
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{ it.style.opacity = '1'; }));
+    }
+  });
+  updateCostumeMoreUI();
 }
 function scrollToViewMore(){
   const btn = document.getElementById('g-more');
@@ -2471,17 +2568,25 @@ function closeLb(){ document.getElementById('lightbox').classList.remove('open')
 function setLbNo(){ const el=document.getElementById('lb-no'); if(!el) return;
   const no=(lbIdx>=0 && lbNos[lbIdx]) ? ('No.'+lbNos[lbIdx]) : '';
   el.textContent=no; el.style.display=no?'':'none'; }
-function openLb(idx){ lbIdx=idx; document.getElementById('lb-img').src=lbImages[lbIdx]; setLbNo(); document.getElementById('lightbox').classList.add('open'); }
+function openLb(idx){ lbImages=galleryImages; lbNos=galleryNos; lbIdx=idx; document.getElementById('lb-img').src=lbImages[lbIdx]; setLbNo(); document.getElementById('lightbox').classList.add('open'); }
+/* Costume Gallery の拡大表示（前後送りは洋装の写真だけを巡る） */
+function openLbC(idx){ lbImages=costumeImages; lbNos=costumeNos; lbIdx=idx; document.getElementById('lb-img').src=lbImages[lbIdx]; setLbNo(); document.getElementById('lightbox').classList.add('open'); }
 function openLbSrc(src){ lbIdx=-1; document.getElementById('lb-img').src=src; setLbNo(); document.getElementById('lightbox').classList.add('open'); }
 function gotoGalleryNo(){
   const inp=document.getElementById('g-no-input'), msg=document.getElementById('g-no-msg');
   let v=(inp.value||'').trim().replace(/^(no\.?|#)/i,'').replace(/\s/g,'');
   if(!v){ msg.textContent=''; return; }
-  const items=[...document.querySelectorAll('#g-grid .g-item')];
-  let idx=items.findIndex(el=>el.dataset.no===v);
-  if(idx<0 && /^\d+$/.test(v)) idx=items.findIndex(el=>el.dataset.no===v.padStart(4,'0'));
-  if(idx<0){ msg.textContent='No.'+v+' は見つかりません'; return; }
-  msg.textContent=''; openLb(idx);
+  const find=(sel)=>{
+    const items=[...document.querySelectorAll(sel+' .g-item')];
+    let i=items.findIndex(el=>el.dataset.no===v);
+    if(i<0 && /^\d+$/.test(v)) i=items.findIndex(el=>el.dataset.no===v.padStart(4,'0'));
+    return i;
+  };
+  let idx=find('#g-grid');
+  if(idx>=0){ msg.textContent=''; openLb(idx); return; }
+  const cidx=find('#c-grid');           // 洋装ギャラリーの番号でも探せるようにする
+  if(cidx>=0){ msg.textContent=''; openLbC(cidx); return; }
+  msg.textContent='No.'+v+' は見つかりません';
 }
 function lbNav(dir){ if(lbIdx<0) return; lbIdx=(lbIdx+dir+lbImages.length)%lbImages.length; document.getElementById('lb-img').src=lbImages[lbIdx]; setLbNo(); }
 document.addEventListener('keydown',e=>{
