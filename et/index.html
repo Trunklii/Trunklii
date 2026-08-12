@@ -549,10 +549,7 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .g-more-count{display:block;font-family:var(--sans);font-weight:300;font-size:.6rem;letter-spacing:.14em;color:var(--mid);text-transform:none;margin-top:.6rem}
 .g-more:hover .g-more-count{color:rgba(255,255,255,.7)}
 /* Costume Gallery（洋装の撮影例。Galleryのメーソンリーを流用） */
-.c-gallery{margin-top:4rem}
-.c-gal-head{display:flex;align-items:baseline;gap:.8rem;margin-bottom:1.6rem}
-.c-gal-title{font-family:var(--display);font-weight:300;font-size:1.05rem;letter-spacing:.06em;color:var(--ink)}
-.c-gal-jp{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.14em;color:var(--mid)}
+.c-gallery{margin-top:0}
 /* Gallery float menu（右・上下中央で追従） */
 .g-float{position:fixed;right:1.3rem;top:50%;z-index:40;display:flex;flex-direction:column;gap:.55rem;align-items:flex-end;opacity:0;visibility:hidden;transform:translateY(-50%) translateX(14px);transition:opacity .4s var(--ease),transform .4s var(--ease),visibility .4s}
 .g-float.on{opacity:1;visibility:visible;transform:translateY(-50%)}
@@ -1302,7 +1299,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="items-grid" id="costume-grid"></div>
   <!-- 洋装の撮影例（Galleryと同じメーソンリー。写真が0件のときは非表示） -->
   <div class="c-gallery" id="c-gallery" hidden>
-    <div class="c-gal-head"><span class="c-gal-title">Costume Gallery</span><span class="c-gal-jp">洋装の撮影例</span></div>
     <div class="g-grid" id="c-grid"></div>
     <div class="g-fade" id="c-fade">
       <button class="g-more" id="c-more" type="button" onclick="costumeMore(10)">View More
@@ -1825,12 +1821,18 @@ async function init(){
   // Costume
   document.getElementById('costume-heading').textContent = d.costume.heading;
   document.getElementById('costume-body').textContent = d.costume.body;
-  document.getElementById('costume-grid').innerHTML = d.costume.items.map(item=>`
+  // 衣装カード（0件なら枠ごと非表示。撮影例のギャラリーだけを見せる）
+  (function(){
+    const items = d.costume.items || [];
+    const grid = document.getElementById('costume-grid');
+    grid.innerHTML = items.map(item=>`
     <div class="item-card">
       <img src="${item.file}" alt="${item.name}" loading="lazy" onclick="openLbSrc('${item.file}')"/>
       <div class="item-info"><div class="item-name">${item.name}</div><div class="item-desc">${item.desc}</div></div>
     </div>
-  `).join('') || '<p style="color:var(--mid);font-size:.85rem;font-family:var(--display);font-style:normal">近日公開予定。</p>';
+  `).join('');
+    grid.style.display = items.length ? '' : 'none';
+  })();
 
   // Costume Gallery（洋装の撮影例）: Galleryと同じメーソンリー。0件なら丸ごと非表示
   (function(){

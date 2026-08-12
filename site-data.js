@@ -4640,23 +4640,7 @@ window.SITE_DATA = {
       "costume": {
         "heading": "Costume",
         "body": "スタジオ独自にセレクトした衣装をご用意しています。\n洋装・和装どちらもご対応可能です。",
-        "items": [
-          {
-            "file": "costume-dress-studio-et-hashima-01.jpg",
-            "name": "Dress A",
-            "desc": "ホワイトチュールドレス"
-          },
-          {
-            "file": "costume-dress-studio-et-hashima-02.jpg",
-            "name": "Dress B",
-            "desc": "ピンクフローラルドレス"
-          },
-          {
-            "file": "costume-dress-studio-et-hashima-03.jpg",
-            "name": "Dress C",
-            "desc": "ブルーシルクドレス"
-          }
-        ],
+        "items": [],
         "gallery": [
           {
             "no": "0806",
