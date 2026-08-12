@@ -4656,6 +4656,254 @@ window.SITE_DATA = {
             "name": "Dress C",
             "desc": "ブルーシルクドレス"
           }
+        ],
+        "gallery": [
+          {
+            "no": "0806",
+            "file": "c/costume-half-birthday-studio-et-hashima-07.jpg",
+            "caption": "1/2バースデー",
+            "date": "2026.07.21",
+            "ar": 1.2491,
+            "tags": [
+              "halfbd",
+              "birthday"
+            ]
+          },
+          {
+            "no": "0775",
+            "file": "c/costume-shichigosan-family-studio-et-hashima-01.jpg",
+            "caption": "七五三",
+            "date": "2026.06.01",
+            "ar": 1.2491,
+            "tags": [
+              "753",
+              "family"
+            ]
+          },
+          {
+            "no": "0772",
+            "file": "c/costume-half-birthday-studio-et-hashima-06.jpg",
+            "caption": "1/2バースデー",
+            "date": "2026.05.27",
+            "ar": 1.25,
+            "tags": [
+              "halfbd",
+              "birthday"
+            ]
+          },
+          {
+            "no": "0755",
+            "file": "c/costume-half-birthday-studio-et-hashima-05.jpg",
+            "caption": "1/2バースデー",
+            "date": "2026.05.08",
+            "ar": 0.6667,
+            "tags": [
+              "halfbd",
+              "birthday"
+            ]
+          },
+          {
+            "no": "0729",
+            "file": "c/costume-photo-studio-et-hashima-02.jpg",
+            "caption": "Photo",
+            "date": "2026.04.07",
+            "ar": 1.25,
+            "tags": [
+              "other"
+            ]
+          },
+          {
+            "no": "0719",
+            "file": "c/costume-half-birthday-studio-et-hashima-04.jpg",
+            "caption": "1/2バースデー",
+            "date": "2026.03.21",
+            "ar": 0.6667,
+            "tags": [
+              "birthday",
+              "halfbd"
+            ]
+          },
+          {
+            "no": "0642",
+            "file": "c/costume-half-birthday-studio-et-hashima-03.jpg",
+            "caption": "1/2バースデー",
+            "date": "2025.12.23",
+            "ar": 1.2491,
+            "tags": [
+              "birthday",
+              "halfbd"
+            ]
+          },
+          {
+            "no": "0635",
+            "file": "c/costume-birthday-family-studio-et-hashima-02.jpg",
+            "caption": "バースデー",
+            "date": "2025.12.05",
+            "ar": 0.6667,
+            "tags": [
+              "birthday",
+              "family"
+            ]
+          },
+          {
+            "no": "0615",
+            "file": "c/costume-half-birthday-family-studio-et-hashima-01.jpg",
+            "caption": "1/2バースデー",
+            "date": "2025.11.14",
+            "ar": 0.6667,
+            "tags": [
+              "family",
+              "birthday",
+              "halfbd"
+            ]
+          },
+          {
+            "no": "0602",
+            "file": "c/costume-birthday-studio-et-hashima-08.jpg",
+            "caption": "バースデー",
+            "date": "2025.10.31",
+            "ar": 0.6667,
+            "tags": [
+              "birthday"
+            ]
+          },
+          {
+            "no": "0565",
+            "file": "c/costume-birthday-studio-et-hashima-07.jpg",
+            "caption": "バースデー",
+            "date": "2025.09.06",
+            "ar": 1.25,
+            "tags": [
+              "school",
+              "birthday"
+            ]
+          },
+          {
+            "no": "0435",
+            "file": "c/costume-half-coming-of-age-studio-et-hashima-01.jpg",
+            "caption": "1/2成人式",
+            "date": "2025.03.13",
+            "ar": 1.25,
+            "tags": [
+              "halfseijin",
+              "other"
+            ]
+          },
+          {
+            "no": "0334",
+            "file": "c/costume-photo-family-studio-et-hashima-01.jpg",
+            "caption": "家族",
+            "date": "2024.12.26",
+            "ar": 0.6667,
+            "tags": [
+              "family"
+            ]
+          },
+          {
+            "no": "0277",
+            "file": "c/costume-birthday-studio-et-hashima-06.jpg",
+            "caption": "バースデー",
+            "date": "2024.10.23",
+            "ar": 1.2486,
+            "tags": [
+              "birthday"
+            ]
+          },
+          {
+            "no": "0243",
+            "file": "c/costume-birthday-studio-et-hashima-05.jpg",
+            "caption": "バースデー",
+            "date": "2024.09.17",
+            "ar": 0.6644,
+            "tags": [
+              "birthday",
+              "other"
+            ]
+          },
+          {
+            "no": "0224",
+            "file": "c/costume-half-birthday-studio-et-hashima-02.jpg",
+            "caption": "1/2バースデー",
+            "date": "2024.08.24",
+            "ar": 0.6652,
+            "tags": [
+              "birthday",
+              "halfbd"
+            ]
+          },
+          {
+            "no": "0185",
+            "file": "c/costume-half-birthday-studio-et-hashima-01.jpg",
+            "caption": "1/2バースデー",
+            "date": "2024.07.09",
+            "ar": 1.25,
+            "tags": [
+              "birthday",
+              "halfbd"
+            ]
+          },
+          {
+            "no": "0164",
+            "file": "c/costume-birthday-studio-et-hashima-04.jpg",
+            "caption": "バースデー",
+            "date": "2024.06.11",
+            "ar": 0.6652,
+            "tags": [
+              "birthday"
+            ]
+          },
+          {
+            "no": "0140",
+            "file": "c/costume-birthday-studio-et-hashima-03.jpg",
+            "caption": "バースデー",
+            "date": "2024.04.27",
+            "ar": 0.6667,
+            "tags": [
+              "birthday"
+            ]
+          },
+          {
+            "no": "0088",
+            "file": "c/costume-birthday-studio-et-hashima-02.jpg",
+            "caption": "バースデー",
+            "date": "2024.02.16",
+            "ar": 0.6667,
+            "tags": [
+              "birthday"
+            ]
+          },
+          {
+            "no": "0051",
+            "file": "c/costume-birthday-studio-et-hashima-01.jpg",
+            "caption": "バースデー",
+            "date": "2023.12.10",
+            "ar": 1.25,
+            "tags": [
+              "birthday"
+            ]
+          },
+          {
+            "no": "0039",
+            "file": "c/costume-photo-studio-et-hashima-01.jpg",
+            "caption": "Photo",
+            "date": "2023.11.19",
+            "ar": 0.6659,
+            "tags": [
+              "other"
+            ]
+          },
+          {
+            "no": "0005",
+            "file": "c/costume-birthday-family-studio-et-hashima-01.jpg",
+            "caption": "バースデー",
+            "date": "2023.08.02",
+            "ar": 0.6674,
+            "tags": [
+              "family",
+              "birthday",
+              "school"
+            ]
+          }
         ]
       },
       "plans": [
@@ -4748,13 +4996,13 @@ window.SITE_DATA = {
         {
           "key": "family",
           "name": "Family Plan",
-          "desc": "「家族みんなで一緒に撮影したい」 メインのお子様1人以上のプラン。家族撮影・きょうだい撮影は基本料金に含まれます。",
+          "desc": "「家族みんなで一緒に撮影したい」 メインのお子様が2人以上のプラン。衣装は2着まで着られ、家族撮影・きょうだい撮影も基本料金に含まれます。",
           "tag": "50CUT - 2衣装",
           "detail": {
             "heroImage": "goods-studio-et-hashima-02.jpg",
             "tagline": "家族みんなで一緒に撮影したい",
-            "longDescription": "メインのお子様1人以上の撮影プランです。\n衣装を2着まで着られるのも Family Plan の特長です。\n家族写真・ごきょうだい写真は追加料金なく撮影できます。\n\n753（3才・5才・7才）/ お宮参り / 100日祝 / ハーフバースデー / 1才バースデー / 2才以上のバースデー / 入園・入学 / ハーフ成人式 などの撮影メニューに対応しています。",
-            "notes": "※土日祝は +¥5,500 となります。\n※ご予約は1家族様1枠（1親等まで）となります。\n※ご家族撮影の場合、ママのヘアセット1回分をサービスで承れます（ママがお着物の場合はヘアセットを承っておりません。撮影までに外部で着付け・ヘアセットのうえお越しください）。\n※お宮参りの産着レンタル：当日スタジオ撮影×外レンタル ¥11,000 / 別日外レンタルのみ ¥11,000"
+            "longDescription": "メインのお子様が2人以上の撮影プランです。\n衣装を2着まで着られるのが Family Plan の大きな特長。着物と洋装など、雰囲気の違う2パターンを1回の撮影で残せます。\n家族写真・ごきょうだい写真は追加料金なく撮影できます。\n\n753（3才・5才・7才）/ お宮参り / 100日祝 / ハーフバースデー / 1才バースデー / 2才以上のバースデー / 入園・入学 / ハーフ成人式 などの撮影メニューに対応しています。",
+            "notes": "※メインのお子様が1人の場合は One Plan をお選びください。\n※土日祝は +¥5,500 となります。\n※ご予約は1家族様1枠（1親等まで）となります。\n※ご家族撮影の場合、ママのヘアセット1回分をサービスで承れます（ママがお着物の場合はヘアセットを承っておりません。撮影までに外部で着付け・ヘアセットのうえお越しください）。\n※お宮参りの産着レンタル：当日スタジオ撮影×外レンタル ¥11,000 / 別日外レンタルのみ ¥11,000"
           },
           "variants": [
             {
@@ -4762,11 +5010,11 @@ window.SITE_DATA = {
               "label": "Family Plan（50cut）",
               "price": "¥43,000",
               "duration": "",
-              "description": "撮影料（お子様1人分）+ 撮影データ50cut + 衣装1着〜2着 / ヘアメイク（土日祝 +¥5,500）",
+              "description": "撮影料（お子様1人分）+ 撮影データ50cut + 衣装2着 / ヘアメイク（土日祝 +¥5,500）",
               "includes": [
                 "撮影料（お子様1人分）",
                 "編集済みデータ 50カット",
-                "衣装1着〜2着",
+                "衣装2着（1着でも可）",
                 "ヘアメイク",
                 "家族撮影・きょうだい撮影 込み"
               ],
