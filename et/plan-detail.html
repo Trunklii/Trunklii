@@ -400,9 +400,8 @@ function render(){
         <div class="pd-opt-name">${esc(o.name)}</div>
         <div class="pd-opt-price">${esc(o.price)}</div>
       </div>`).join('');
-    const gallery = (v.gallery||[]).map((g,i)=>`
-      <a href="javascript:void(0)" onclick="openLb('${esc(g)}')"><img src="${esc(g)}" alt="${esc(plan.name)} ${esc(v.label)} ${i+1}" loading="lazy"/></a>
-    `).join('');
+    // プラン詳細内のギャラリーは非表示(Galleryセクションに集約)
+    const gallery = '';
     return `
       <article class="pd-variant">
         <div class="pd-variant-label">${esc(v.cuts != null ? v.cuts + ' cuts' : 'Variant')}</div>
@@ -412,7 +411,6 @@ function render(){
         ${v.description?`<div class="pd-variant-desc">${esc(v.description)}</div>`:''}
         ${includes?`<div class="pd-sub-heading">Includes</div><ul class="pd-list">${includes}</ul>`:''}
         ${options?`<div class="pd-sub-heading">Options</div><div class="pd-options">${options}</div>`:''}
-        ${gallery?`<div class="pd-sub-heading">Gallery</div><div class="pd-vgallery">${gallery}</div>`:''}
         <div class="pd-variant-cta"><a href="${esc(studio.bookingUrl||'#')}">このプランで予約する →</a></div>
       </article>
     `;
