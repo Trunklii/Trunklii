@@ -5216,9 +5216,9 @@ window.SITE_DATA = {
       },
       "calendar": {
         "heading": "Calendar",
-        "body": "日にちごとの撮影料金のご案内です。\n最新の空き状況は予約ページよりご確認ください。",
+        "body": "七五三撮影の料金カレンダーです。\nシーズンや曜日によって撮影料金が変動します。最新の空き状況は予約ページよりご確認ください。",
         "embedUrl": "",
-        "note": "※定休日：水曜・木曜 / 撮影は完全予約制となっております。"
+        "note": "※A / B / C は753撮影料金の区分です。 / ※定休日：水曜・木曜 / 撮影は完全予約制となっております。"
       },
       "reservation": {
         "heading": "Reservation",
@@ -5749,9 +5749,9 @@ window.SITE_DATA = {
       },
       "calendar": {
         "heading": "Calendar",
-        "body": "料金カレンダーは2026年10月1日に公開予定です。",
+        "body": "七五三撮影の料金カレンダーです。\nシーズンや曜日によって撮影料金が変動します。最新の空き状況は予約ページよりご確認ください。",
         "embedUrl": "",
-        "note": ""
+        "note": "※A / B / C は753撮影料金の区分です。 / "
       },
       "reservation": {
         "heading": "Reservation",
