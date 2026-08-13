@@ -1222,6 +1222,11 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 .kim-cat-carousel:has(.kim-cat-sub-img.is-empty:only-of-type) .kim-cat-main{grid-column:1/-1}
 .kim-cat-ph{display:flex;align-items:center;justify-content:center;height:96px;background:rgba(110,90,55,.05);border:1px dashed rgba(110,90,55,.28);font-family:var(--display);font-weight:500;font-size:.8rem;letter-spacing:.12em;color:#a08e6c}
 </style>
+<style>
+/* GLOBAL-LINING-NUMS */
+/* 数字はすべて等高数字(lining)に統一。Cormorant のオールドスタイル数字は小さく上下にばらつくため無効化 */
+body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filter-note{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->

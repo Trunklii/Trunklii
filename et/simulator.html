@@ -258,6 +258,11 @@ body.sheet-open .qa-bot-toggle{opacity:0!important;pointer-events:none!important
 .sec-num{font-family:var(--display);font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0;letter-spacing:.1em;font-size:1.05rem;font-weight:500;align-self:baseline}
 .sec-title,.hero-name,.plan-price,.item-price,.price,.qa-q-mark,.flow-num,.cta-en,.cal-top-price,.res-top-mark,.subsec-mark{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0}
 </style>
+<style>
+/* GLOBAL-LINING-NUMS */
+/* 数字はすべて等高数字(lining)に統一。Cormorant のオールドスタイル数字は小さく上下にばらつくため無効化 */
+body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filter-note{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
