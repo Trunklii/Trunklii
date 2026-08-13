@@ -251,6 +251,11 @@ body.sheet-open .qa-bot-toggle{opacity:0!important;pointer-events:none!important
 /* 数字はすべて等高数字(lining)に統一。Cormorant のオールドスタイル数字は小さく上下にばらつくため無効化 */
 body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filter-note{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0}
 </style>
+<style>
+/* JA-WRAP */
+/* 日本語本文は文節単位で折り返す(未対応ブラウザは既定動作) */
+.section-body-text,.lead,.about-text p,.plan-desc,.pd-desc{word-break:auto-phrase;overflow-wrap:break-word}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
