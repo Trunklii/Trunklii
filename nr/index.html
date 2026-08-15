@@ -2369,9 +2369,33 @@ function syncFloatFilters(){
   const fBtn = document.getElementById('g-fab-filter');
   if(fBtn) fBtn.classList.toggle('act', active.size>0 && !active.has('all'));
 }
+/* 絞り込みパネルがヘッダーに潜り込まないよう、高さと位置を画面に合わせる。
+   縦の狭いディスプレイだと、FABの上に開いたパネルの上端がヘッダーに隠れてしまうため。 */
+function sizeFloatPanel(panel){
+  if(!panel || !panel.classList.contains('open')) return;
+  const wrap = panel.closest('.g-float');
+  if(!wrap) return;
+  const nav  = document.getElementById('main-nav');
+  const vh   = window.innerHeight || document.documentElement.clientHeight;
+  const top0 = (nav ? nav.offsetHeight : 0) + 12;   // ヘッダーの高さ＋余白(スクロールで一時的に隠れていても戻る前提で確保)
+  panel.style.top = ''; panel.style.bottom = ''; panel.style.right = ''; panel.style.maxHeight = '';
+  const r = panel.getBoundingClientRect();     // 既定(FABの上に開く)状態で測り直す
+  if(r.top >= top0) return;                    // ヘッダーに掛からない画面ではそのまま
+  const wr = wrap.getBoundingClientRect();     // 掛かる → ヘッダー直下〜画面下端のバンドに開き直す
+  panel.style.bottom = 'auto';
+  panel.style.top = Math.round(top0 - wr.top) + 'px';
+  panel.style.maxHeight = Math.round(vh - 12 - top0) + 'px';
+  if(wr.left - 12 >= r.width + 10) panel.style.right = 'calc(100% + .6rem)';   // ボタンに被らないよう左横へ
+}
+function sizeOpenFloatPanels(){
+  ['g-float-panel','k-float-panel'].forEach(id=>sizeFloatPanel(document.getElementById(id)));
+}
+window.addEventListener('resize', sizeOpenFloatPanels);
 function toggleFloatPanel(ev){
   if(ev){ ev.stopPropagation(); }
-  document.getElementById('g-float-panel').classList.toggle('open');
+  const panel = document.getElementById('g-float-panel');
+  panel.classList.toggle('open');
+  sizeFloatPanel(panel);
 }
 (function initGalleryFloat(){
   // パネル展開中にフロートメニュー外をタップ → 閉じるだけ（そのタップは無効化=画像は拡大しない）
@@ -2463,7 +2487,9 @@ function syncKimFloat(){
 function toggleKimPanel(ev){
   if(ev) ev.stopPropagation();
   if(!document.querySelector('#kfp-tags .gfp-tag')) buildKimFloatPanel();
-  document.getElementById('k-float-panel').classList.toggle('open');
+  const panel = document.getElementById('k-float-panel');
+  panel.classList.toggle('open');
+  sizeFloatPanel(panel);
 }
 (function initKimFloat(){
   function updateKimFloatVisibility(){
