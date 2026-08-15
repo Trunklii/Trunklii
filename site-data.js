@@ -5448,7 +5448,7 @@ window.SITE_DATA = {
       "hours": "受付 9:00–17:00 ／ 撮影 9:00–18:00（火・水曜定休）",
       "instagram": "https://www.instagram.com/maison_nr._/",
       "instagramHandle": "@maison_nr._",
-      "mapUrl": "https://maps.app.goo.gl/gF8j4TbvhNziwHFd6",
+      "mapUrl": "https://maps.google.com/?q=%E3%80%92486-0806%20%E6%84%9B%E7%9F%A5%E7%9C%8C%E6%98%A5%E6%97%A5%E4%BA%95%E5%B8%82%E5%A4%A7%E6%89%8B%E7%94%B0%E9%85%89%E7%94%BA1%E4%B8%81%E7%9B%AE5-9%20Maison%20nr.&ftid=0x6003734a78e48dbf:0x5816e7367a122c44",
       "bookingUrl": "https://www.instagram.com/maison_nr._/",
       "bookingLabel": "予約する",
       "comingSoon": false,
