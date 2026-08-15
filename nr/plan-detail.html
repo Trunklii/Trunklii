@@ -107,6 +107,9 @@ main{padding-top:64px}
 
 .pd-options{display:flex;flex-direction:column;gap:.5rem}
 .opt-row{display:flex;justify-content:space-between;align-items:baseline;padding:.55rem 0;border-bottom:1px dotted var(--border);font-family:var(--sans)}
+.opt-row-sub{padding-left:1.4rem}
+.opt-row-sub .pd-opt-name{font-size:.76rem;color:var(--mid)}
+.opt-row-sub .pd-opt-price{font-size:.85rem}
 .pd-opt-name{font-family:var(--serif);font-weight:300;font-size:.82rem;color:var(--ink)}
 .pd-opt-price{font-family:var(--display);font-style:normal;font-weight:400;font-size:.95rem;color:var(--accent);white-space:nowrap;margin-left:1rem}
 
@@ -401,8 +404,8 @@ function render(){
   const variantsHtml = plan.variants.map(v=>{
     const includes = (v.includes||[]).map(it=>`<li>${esc(it)}</li>`).join('');
     const options = (v.options||[]).map(o=>`
-      <div class="opt-row">
-        <div class="pd-opt-name">${esc(o.name)}</div>
+      <div class="opt-row${o.sub?' opt-row-sub':''}">
+        <div class="pd-opt-name">${o.sub?'＋ ':''}${esc(o.name)}</div>
         <div class="pd-opt-price">${esc(o.price)}</div>
       </div>`).join('');
     // プラン詳細内のギャラリーは非表示(Galleryセクションに集約)
@@ -450,8 +453,6 @@ function render(){
           <h2 class="sec-title">Choose your plan</h2><span class="sec-jp">プランを選ぶ</span>
           <div class="sec-rule"></div>
         </div>
-        <p class="section-body-text" style="text-align:center;max-width:560px;margin:0 auto 3rem">カット数からお選びください。</p>
-
         <div class="pd-variants">${variantsHtml}</div>
 
         ${d.notes?`
