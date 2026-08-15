@@ -106,6 +106,8 @@ main{padding-top:64px}
 .pd-list li::before{content:'─';position:absolute;left:0;color:var(--accent)}
 
 .pd-options{display:flex;flex-direction:column;gap:.5rem}
+.pd-opt-note{font-family:var(--serif);font-weight:300;font-size:.78rem;line-height:1.9;color:var(--mid);margin-top:1rem}
+.pd-opt-note a{color:var(--ink);border-bottom:1px solid var(--border);padding-bottom:1px;white-space:nowrap;margin-left:.4em}
 .opt-row{display:flex;justify-content:space-between;align-items:baseline;padding:.55rem 0;border-bottom:1px dotted var(--border);font-family:var(--sans)}
 .opt-row-sub{padding-left:1.4rem}
 .opt-row-sub .pd-opt-name{font-size:.76rem;color:var(--mid)}
@@ -418,7 +420,7 @@ function render(){
         ${v.duration?`<div class="pd-variant-duration">撮影時間 ${esc(v.duration)}</div>`:'<div class="pd-variant-duration"></div>'}
         ${v.description?`<div class="pd-variant-desc">${esc(v.description)}</div>`:''}
         ${includes?`<div class="pd-sub-heading">Includes</div><ul class="pd-list">${includes}</ul>`:''}
-        ${options?`<div class="pd-sub-heading">Options</div><div class="pd-options">${options}</div>`:''}
+        ${options?`<div class="pd-sub-heading">Options</div><div class="pd-options">${options}</div><p class="pd-opt-note">アルバムやフレームなどは別途ご購入いただけます。<a href="./#goods">Goods を見る →</a></p>`:''}
         <div class="pd-variant-cta"><a href="${esc(studio.bookingUrl||'#')}">このプランで予約する →</a></div>
       </article>
     `;
