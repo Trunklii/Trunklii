@@ -392,7 +392,7 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .book-sheet-btn.bs-nr{background:#1C0909;border-color:#1C0909;color:#f0ead8}
 .book-sheet-btn.bs-nr .bs-cta{border-color:rgba(240,234,216,.45)}
 .book-sheet-btn.bs-nr:hover{background:#33201c}
-.bs-brand-lockup{display:block;height:1.68em;background:currentColor;flex-shrink:0}
+.bs-brand-lockup{display:block;height:2.4em;background:currentColor;flex-shrink:0}
 .bs-cta{display:inline-flex;align-items:center;gap:.5em;padding:.45em .8em;border:1px solid rgba(255,255,255,.4);white-space:nowrap;font-size:.6rem;letter-spacing:.08em}
 @media(min-width:961px){.book-sheet,.float-book,.brand-hop{display:none!important}.qa-bot-toggle{bottom:.5rem}}
 
@@ -745,7 +745,7 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,5vw,4rem);di
 /* Kitsuné の SHOP NOW 風: 全幅の黒帯ボタン */
 .footer-book-btn{display:block;width:100%;background:var(--ink);color:#fff;font-family:var(--sans);font-weight:400;font-size:.78rem;letter-spacing:.2em;padding:1.05rem 1rem;text-decoration:none;text-align:center;transition:background .25s}
 .footer-book-btn:hover{background:var(--accent)}
-.footer-logo{font-family:var(--sans);font-weight:300;font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+.footer-logo{font-family:var(--sans);font-weight:300;font-size:.85rem;letter-spacing:.3em;color:var(--ink);text-decoration:none}
 .footer-links{display:flex;gap:1.2rem;list-style:none;flex-wrap:wrap}
 .footer-links a{font-family:var(--sans);font-weight:400;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color .2s}
 .footer-links a:hover{color:var(--ink)}
@@ -890,6 +890,8 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 .cal-top-day.sat-col{color:#2e6fc0}
 .cal-top-day.holiday{color:#c0382e}
 .cal-top-day::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px}
+.cal-top-day.closed{color:var(--mid);opacity:.5}
+.cal-top-day.closed::after{background:none}
 .cal-top-day.tier-a::after{background:#f0c8a0}
 .cal-top-day.tier-b::after{background:#b8cfe8}
 .cal-top-day.tier-c::after{background:#f4b0bc}
@@ -970,7 +972,7 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 .bb-btn{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;gap:.6em;background:#111010;color:#fff;text-decoration:none;padding:.35rem .4rem;font-family:var(--sans);font-weight:400;font-size:.62rem;letter-spacing:.12em;transition:opacity .2s}
 .bb-btn:hover{opacity:.85}
 .bb-btn.bb-nr{background:#1C0909;color:#f0ead8}
-.bb-logo{display:block;height:1.68em;background:currentColor;flex-shrink:0}
+.bb-logo{display:block;height:2.4em;background:currentColor;flex-shrink:0}
 .bb-cta{display:inline-flex;align-items:center;gap:.5em;padding:.45em .8em;border:1px solid rgba(255,255,255,.4);white-space:nowrap;font-size:.6rem;letter-spacing:.08em}
 .bb-nr .bb-cta{border-color:rgba(240,234,216,.45)}
 .bb-sm{flex-wrap:nowrap;gap:.4rem}
@@ -981,7 +983,7 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 .nav-book .bb-btn{background:#fff;color:#111010;border:1px solid rgba(17,16,16,.22);padding:.3rem .5rem}
 .nav-book .bb-btn:hover{opacity:.7}
 .nav-book .bb-btn.bb-nr{background:#fff;color:#1C0909}
-.nav-book .bb-logo{height:1.18em}
+.nav-book .bb-logo{height:1.7em}
 .nav-book .bb-cta{border-color:rgba(17,16,16,.3);padding:.3em .5em;gap:.4em}
 /* PCヘッダーはナビと重なる幅では予約する枠を省略しロゴのみ */
 @media(max-width:1499px){.nav-book .bb-cta{display:none}}
@@ -1086,7 +1088,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </a>
       <div class="hdr-book-wrap">
         <button class="hdr-book-toggle" type="button" onclick="toggleHdrBook(event)" aria-haspopup="true" aria-expanded="false">予約する<span class="hdr-book-chev" aria-hidden="true">›</span></button>
-        <div class="hdr-book-menu" id="hdr-book-menu" hidden><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._/" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
+        <div class="hdr-book-menu" id="hdr-book-menu" hidden><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._/" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
       </div>
     </div>
   </div>
@@ -1097,7 +1099,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="#gallery" class="nav-link">Gallery</a>
         <div class="nav-drop">
           <a href="#gallery" onclick="filterGallery('all')">All</a>
-          <a href="#gallery" onclick="filterGallery('753')">七五三</a>
+          <a href="#gallery" onclick="filterGallery('753')">753</a>
           <a href="#gallery" onclick="filterGallery('omiyamairi')">お宮参り</a>
           <a href="#gallery" onclick="filterGallery('100days')">百日祝い</a>
           <a href="#gallery" onclick="filterGallery('birthday')">バースデー</a>
@@ -1147,7 +1149,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="mob-sub">
         <a href="#gallery" onclick="filterGallery('all');closeMob()">All</a>
-        <a href="#gallery" onclick="filterGallery('753');closeMob()">七五三</a>
+        <a href="#gallery" onclick="filterGallery('753');closeMob()">753</a>
         <a href="#gallery" onclick="filterGallery('omiyamairi');closeMob()">お宮参り</a>
         <a href="#gallery" onclick="filterGallery('100days');closeMob()">百日祝い</a>
         <a href="#gallery" onclick="filterGallery('birthday');closeMob()">バースデー</a>
@@ -1188,7 +1190,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="mob-actions">
-    <div class="bb-btns"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._/" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
+    <div class="bb-btns"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._/" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
     <div class="mob-icon-row">
       <button onclick="closeMob();openSearch()" aria-label="Search" style="background:none;cursor:pointer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -1242,7 +1244,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="about-grid">
     <div class="about-text">
       <p id="about-body"></p>
-      <div class="hdr-book-wrap about-book" style="margin-top:1.4rem"><button class="hdr-book-toggle" type="button" onclick="toggleHdrBook(event)" aria-haspopup="true" aria-expanded="false">予約する<span class="hdr-book-chev" aria-hidden="true">›</span></button><div class="hdr-book-menu" hidden><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._/" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div></div>
+      <div class="hdr-book-wrap about-book" style="margin-top:1.4rem"><button class="hdr-book-toggle" type="button" onclick="toggleHdrBook(event)" aria-haspopup="true" aria-expanded="false">予約する<span class="hdr-book-chev" aria-hidden="true">›</span></button><div class="hdr-book-menu" hidden><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._/" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div></div>
     </div>
     <div class="about-img-wrap"><img id="about-img" src="" alt="Studio"/></div>
   </div>
@@ -1255,7 +1257,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Gallery</h2><span class="sec-jp">フォトギャラリー</span><div class="sec-rule"></div></div>
   <div class="g-filters">
     <button class="g-filter active" data-cat="all" onclick="filterGallery('all',this)">All</button>
-    <button class="g-filter" data-cat="753" onclick="filterGallery('753',this)">七五三</button>
+    <button class="g-filter" data-cat="753" onclick="filterGallery('753',this)">753</button>
     <button class="g-filter" data-cat="753boy" onclick="filterGallery('753boy',this)">753-boy</button>
     <button class="g-filter" data-cat="753girl" onclick="filterGallery('753girl',this)">753-girl</button>
     <button class="g-filter" data-cat="halfseijin" onclick="filterGallery('halfseijin',this)">1/2成人式</button>
@@ -1541,7 +1543,7 @@ document.querySelectorAll('.movie-item').forEach((btn)=>{
       <div class="access-name"><span class="access-name-main"><span class="an-logo" role="img" aria-hidden="true" style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span>Maison nr.</span><span class="access-name-sub">メゾンナル｜愛知県春日井市のフォトスタジオ</span></div>
       <dl class="access-dl">
         <div><dt>所在地</dt><dd>〒486-0806<br/>愛知県春日井市大手田酉町1丁目5-9</dd></div>
-        <div><dt>電話</dt><dd><a href="tel:05017512601">050-1751-2601</a></dd></div>
+        <div><dt>電話</dt><dd><a href="tel:05017329505">050-1732-9505</a></dd></div>
         <div><dt>営業時間</dt><dd>詳細は近日公開（2026年10月1日OPEN）</dd></div>
       </dl>
       <div class="access-links">
@@ -1625,9 +1627,9 @@ document.querySelectorAll('.movie-item').forEach((btn)=>{
   </div>
   <div class="book-sheet-title">Reservation</div>
   <div class="book-sheet-btns">
-  <a class="book-sheet-btn bs-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bs-brand-lockup" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bs-cta">予約する<span aria-hidden="true">→</span></span></a>
+  <a class="book-sheet-btn bs-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bs-brand-lockup" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bs-cta">予約する<span aria-hidden="true">→</span></span></a>
   <!-- nr. は STORES(春日井)未開設のため暫定で Instagram へ -->
-  <a class="book-sheet-btn bs-nr" href="https://www.instagram.com/maison_nr._/" target="_blank" rel="noopener"><span class="bs-brand-lockup" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bs-cta">予約する<span aria-hidden="true">→</span></span></a>
+  <a class="book-sheet-btn bs-nr" href="https://www.instagram.com/maison_nr._/" target="_blank" rel="noopener"><span class="bs-brand-lockup" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bs-cta">予約する<span aria-hidden="true">→</span></span></a>
   </div>
 </div>
 <button class="to-top-btn" id="to-top-btn" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="ページトップへ戻る">
@@ -1674,9 +1676,9 @@ document.querySelectorAll('.movie-item').forEach((btn)=>{
       </button>
     </form>
     <span class="cta-note" id="cta-note"></span>
-    <div class="bb-btns"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._/" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
+    <div class="bb-btns"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://www.instagram.com/maison_nr._/" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
   </div>
-  <a href="../" class="footer-logo" id="footer-logo">TRUNKLII</a>
+  <a href="../" class="footer-logo" id="footer-logo">Trunklii</a>
   <ul class="footer-links">
     <li><a href="#about">About</a></li>
     <li><a href="#gallery">Gallery</a></li>

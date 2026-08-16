@@ -25,6 +25,11 @@
   };
 
   var CAT_JP = {};   // 着物カテゴリ key -> 日本語タグ名
+  /* ── 年末年始休業(色分けなし) ── */
+  var CLOSED = {
+    '2026-12-28':1,'2026-12-29':1,'2026-12-30':1,'2026-12-31':1,
+    '2027-01-01':1,'2027-01-02':1,'2027-01-03':1,'2027-01-04':1
+  };
   function pad(n){ return ('0'+n).slice(-2); }
   function dKey(y,m,d){ return y+'-'+pad(m+1)+'-'+pad(d); }
   function getTier(y,m,d){
@@ -70,7 +75,7 @@
         var dow = new Date(y,m,d).getDay();
         var k = dKey(y,m,d);
         var tier = getTier(y,m,d);
-        var cls = 'cal-top-day tier-' + tier;
+        var cls = CLOSED[k] ? 'cal-top-day closed' : 'cal-top-day tier-' + tier;
         if(dow===0) cls += ' sun-col';
         if(dow===6) cls += ' sat-col';
         if(JP_HOLIDAYS[k] && dow!==0) cls += ' holiday';
@@ -297,7 +302,7 @@
     if(!grid) return;
     var blocks = studio && studio.reservation && Array.isArray(studio.reservation.blocks) ? studio.reservation.blocks : null;
     var bookUrlFallback = (studio && studio.bookingUrl) || '#';
-    var phone = (studio && studio.phone) || '050-1751-2601';
+    var phone = (studio && (studio.tel || studio.phone)) || '050-1751-2601';
 
     // CMSにブロックがあれば動的描画。なければ既存HTMLのフォールバックを使う
     if(blocks && blocks.length > 0){
@@ -315,8 +320,8 @@
         var isSatsuei = (b.title||'').indexOf('撮影予約') !== -1;
         var ET_BOOK='https://studio-et.stores.jp/reserve/hashima/733693';
         var NR_BOOK='https://www.instagram.com/maison_nr._/';
-        var pairHtml = '<a class="bb-btn bb-et" href="'+ET_BOOK+'" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:404/248;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a>'
-          + '<a class="bb-btn bb-nr" href="'+NR_BOOK+'" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:572/267;-webkit-mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/nr-logo-mark-white.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a>';
+        var pairHtml = '<a class="bb-btn bb-et" href="'+ET_BOOK+'" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a>'
+          + '<a class="bb-btn bb-nr" href="'+NR_BOOK+'" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a>';
         var bookBtn = isSatsuei
           ? '<div class="hdr-book-wrap"><button class="hdr-book-toggle" type="button" onclick="toggleHdrBook(event)" aria-haspopup="true" aria-expanded="false">予約する<span class="hdr-book-chev" aria-hidden="true">›</span></button><div class="hdr-book-menu" hidden>'+pairHtml+'</div></div>'
           : '<a href="' + bookHref + '" class="btn-line filled">' + (b.bookingLabel||'ご予約はこちら') + '</a>';
