@@ -571,12 +571,7 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 
 /* ブランド別リンクの明示ラベル */
 .icon-btn[data-brand]{position:relative}
-/* ICON-BRAND-LOGO: 小さいアイコンは et. / nr. のマークロゴ(Studio/Maisonなし)を使用 */
-.icon-btn[data-brand]{width:44px;height:44px;flex-direction:column;gap:1px;padding-bottom:2px}
-.icon-btn[data-brand] svg{width:14px;height:14px}
-.icon-btn[data-brand]::after{content:'';display:block;width:22px;height:13px;background:currentColor;pointer-events:none;opacity:.9;
-  -webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat}
-.icon-btn[data-brand="nr."]::after{-webkit-mask-image:url(../assets/nr-logo-mark-white.png);mask-image:url(../assets/nr-logo-mark-white.png)}
+.icon-btn[data-brand]::after{content:attr(data-brand);position:absolute;bottom:1px;right:2px;font-family:var(--display);font-style:normal;font-size:.5rem;line-height:1;pointer-events:none;opacity:.85}
 .mob-brand-chip{display:inline-flex;align-items:center;font-family:var(--display);font-style:normal;font-size:.8rem;color:var(--ink);opacity:.7;padding:0 .1rem}
 .mob-icon-row a[data-brand]{position:relative}
 .mob-icon-row a[data-brand]::after{content:attr(data-brand);position:absolute;bottom:2px;right:3px;font-family:var(--display);font-style:normal;font-size:.55rem;line-height:1;pointer-events:none;opacity:.85}
@@ -1857,7 +1852,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260817j"></script>
+<script src="../site-data.js?v=20260817k"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
@@ -3240,7 +3235,7 @@ init();
   }
 })();
 </script>
-  <script src="../patch-index.js?v=20260817j"></script>
+  <script src="../patch-index.js?v=20260817k"></script>
 
   <!-- Maison nr. は予約受付前: 「予約する」導線を Coming Soon ポップアップに -->
   <div id="nr-cs" class="nr-cs" hidden aria-hidden="true">
