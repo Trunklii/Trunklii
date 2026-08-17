@@ -117,12 +117,12 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 
 /* ブランド別リンクの明示ラベル（et. / nr.） */
 .icon-btn[data-brand]{position:relative}
-/* ICON-BRAND-LOGO: 正式ロゴ(Studio et./Maison nr.)をバッジに使用 */
+/* ICON-BRAND-LOGO: 小さいアイコンは et. / nr. のマークロゴ(Studio/Maisonなし)を使用 */
 .icon-btn[data-brand]{width:44px;height:44px;flex-direction:column;gap:1px;padding-bottom:2px}
 .icon-btn[data-brand] svg{width:14px;height:14px}
-.icon-btn[data-brand]::after{content:'';display:block;width:24px;height:16px;background:currentColor;pointer-events:none;opacity:.9;
-  -webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat}
-.icon-btn[data-brand="nr."]::after{-webkit-mask-image:url(../assets/nr-logo.png);mask-image:url(../assets/nr-logo.png)}
+.icon-btn[data-brand]::after{content:'';display:block;width:22px;height:13px;background:currentColor;pointer-events:none;opacity:.9;
+  -webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat}
+.icon-btn[data-brand="nr."]::after{-webkit-mask-image:url(../assets/nr-logo-mark-white.png);mask-image:url(../assets/nr-logo-mark-white.png)}
 .icon-btn.brand-nr{color:#5e837b;border-color:#7a9e95}
 .icon-btn.brand-nr:hover{background:#7a9e95;color:#fff}
 .icon-btn.brand-nr{display:none} /* et.ページでは nr. のマップ/Instagramアイコンは非表示 */
@@ -1715,7 +1715,7 @@ document.querySelectorAll('.movie-item').forEach((btn)=>{
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260817g"></script>
+<script src="../site-data.js?v=20260817h"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
@@ -3028,7 +3028,7 @@ init();
   }
 })();
 </script>
-  <script src="../patch-index.js?v=20260818a"></script>
+  <script src="../patch-index.js?v=20260817h"></script>
 
   <!-- Maison nr. は予約受付前: nr. の「予約する」導線を Coming Soon ポップアップに(et. の予約は温存) -->
   <div id="nr-cs" class="nr-cs" hidden aria-hidden="true">

@@ -174,12 +174,12 @@ footer{border-top:1px solid var(--border);background:#fff;color:var(--mid);paddi
 .icon-btn:hover{background:var(--ink);color:#fff}
 .icon-btn svg{width:15px;height:15px}
 .icon-btn[data-brand]{position:relative}
-/* ICON-BRAND-LOGO: 正式ロゴ(Studio et./Maison nr.)をバッジに使用 */
+/* ICON-BRAND-LOGO: 小さいアイコンは et. / nr. のマークロゴ(Studio/Maisonなし)を使用 */
 .icon-btn[data-brand]{width:44px;height:44px;flex-direction:column;gap:1px;padding-bottom:2px}
 .icon-btn[data-brand] svg{width:14px;height:14px}
-.icon-btn[data-brand]::after{content:'';display:block;width:24px;height:16px;background:currentColor;pointer-events:none;opacity:.9;
-  -webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat}
-.icon-btn[data-brand="nr."]::after{-webkit-mask-image:url(../assets/nr-logo.png);mask-image:url(../assets/nr-logo.png)}
+.icon-btn[data-brand]::after{content:'';display:block;width:22px;height:13px;background:currentColor;pointer-events:none;opacity:.9;
+  -webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat}
+.icon-btn[data-brand="nr."]::after{-webkit-mask-image:url(../assets/nr-logo-mark-white.png);mask-image:url(../assets/nr-logo-mark-white.png)}
 .nav-right{display:flex;align-items:center;gap:.5rem}
 .hdr-book-wrap{position:relative}
 .hdr-book-toggle{display:flex;align-items:center;gap:.5em;height:36px;padding:0 .95rem;border:1px solid #111010;background:#111010;color:#fff;font-family:var(--sans);font-weight:500;font-size:.62rem;letter-spacing:.08em;cursor:pointer;transition:opacity .2s;white-space:nowrap}
@@ -466,7 +466,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260817g"></script>
+<script src="../site-data.js?v=20260817h"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 
