@@ -1134,14 +1134,21 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 .kim-mini-grid .kim-group + .kim-group{margin-top:clamp(2.4rem,5vw,3.6rem)}
 .kim-mini-grid .kim-group-cards{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:clamp(.5rem,1.6vw,1rem)}
 @media(min-width:961px){.kim-mini-grid .kim-group-cards{grid-template-columns:repeat(4,1fr)!important}}
-.kim-mini{display:block;text-decoration:none;color:inherit}
-.kim-mini-img{width:100%;aspect-ratio:3/4;background-size:cover;background-position:center;background-color:#efece7;transition:opacity .3s}
-.kim-mini:hover .kim-mini-img{opacity:.86}
-.kim-mini-img.is-empty{display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:.6rem;letter-spacing:.12em;color:var(--mid)}
-.kim-mini-cap{display:flex;align-items:baseline;gap:.5em;flex-wrap:wrap;padding:.5rem .1rem 0}
-.kim-mini-en{font-family:var(--display);font-size:.78rem;letter-spacing:.02em;color:var(--ink)}
-.kim-mini-jp{font-family:var(--sans);font-size:.62rem;letter-spacing:.06em;color:var(--mid)}
-.kim-mini-count{margin-left:auto;font-family:var(--display);font-size:.68rem;color:var(--mid)}
+.kim-mini{position:relative;display:block;text-decoration:none;color:inherit;background:none!important;padding:0!important;border:none!important;box-shadow:none!important;overflow:hidden}
+.kim-mini-img{width:100%;aspect-ratio:3/4;background-size:cover;background-position:center;background-color:#d8d3cb;transition:transform .6s var(--ease),opacity .3s}
+.kim-mini:hover .kim-mini-img{transform:scale(1.03)}
+.kim-mini-img.is-empty{display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:.6rem;letter-spacing:.12em;color:#fff}
+/* キャプションは写真の上にオーバーレイ */
+.kim-mini-cap{
+  position:absolute;left:0;right:0;bottom:0;
+  display:flex;align-items:baseline;gap:.5em;
+  padding:2.4rem .7rem .65rem;
+  background:linear-gradient(to top,rgba(24,21,18,.62) 0%,rgba(24,21,18,.28) 45%,rgba(24,21,18,0) 100%);
+  pointer-events:none;
+}
+.kim-mini-en{font-family:var(--display);font-weight:400;font-size:.82rem;letter-spacing:.05em;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.25)}
+.kim-mini-jp{font-family:var(--sans);font-weight:400;font-size:.58rem;letter-spacing:.12em;color:rgba(255,255,255,.88);text-shadow:0 1px 3px rgba(0,0,0,.25)}
+.kim-mini-count{margin-left:auto;font-family:var(--display);font-size:.66rem;color:rgba(255,255,255,.7);font-variant-numeric:lining-nums}
 .kim-more{margin-top:clamp(2rem,4vw,3rem);text-align:center}
 .kim-cat{background:#fff;padding:.3rem;display:flex;flex-direction:column;position:relative;overflow:hidden}
 .kim-cat-head{margin:.3rem .3rem .5rem;padding-bottom:.5rem;border-bottom:1px solid rgba(58,42,31,.3)}
@@ -1852,7 +1859,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260817k"></script>
+<script src="../site-data.js?v=20260817m"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
@@ -3235,7 +3242,7 @@ init();
   }
 })();
 </script>
-  <script src="../patch-index.js?v=20260817k"></script>
+  <script src="../patch-index.js?v=20260817m"></script>
 
   <!-- Maison nr. は予約受付前: 「予約する」導線を Coming Soon ポップアップに -->
   <div id="nr-cs" class="nr-cs" hidden aria-hidden="true">
