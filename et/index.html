@@ -556,8 +556,6 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .g-more:hover{background:var(--ink);color:#fff}
 .g-more-count{display:block;font-family:var(--sans);font-weight:300;font-size:.6rem;letter-spacing:.14em;color:var(--mid);text-transform:none;margin-top:.6rem}
 .g-more:hover .g-more-count{color:rgba(255,255,255,.7)}
-/* Costume Gallery（洋装の撮影例。Galleryのメーソンリーを流用） */
-.c-gallery{margin-top:0}
 /* Gallery float menu（右・上下中央で追従） */
 .g-float{position:fixed;right:1.3rem;top:50%;z-index:40;display:flex;flex-direction:column;gap:.55rem;align-items:flex-end;opacity:0;visibility:hidden;transform:translateY(-50%) translateX(14px);transition:opacity .4s var(--ease),transform .4s var(--ease),visibility .4s}
 .g-float.on{opacity:1;visibility:visible;transform:translateY(-50%)}
@@ -1365,16 +1363,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title" id="costume-heading">Costume</h2><span class="sec-jp">衣装</span><div class="sec-rule"></div></div>
   <p class="section-body-text" id="costume-body"></p>
-  <div class="items-grid" id="costume-grid"></div>
-  <!-- 洋装の撮影例（Galleryと同じメーソンリー。写真が0件のときは非表示） -->
-  <div class="c-gallery" id="c-gallery" hidden>
-    <div class="g-grid" id="c-grid"></div>
-    <div class="g-fade" id="c-fade">
-      <button class="g-more" id="c-more" type="button" onclick="costumeMore(10)">View More
-        <span class="g-more-count" id="c-more-count"></span>
-      </button>
-    </div>
-  </div>
+  <div class="kim-mini-grid" id="costume-grid"></div>
 </div>
 </section>
 
@@ -1730,8 +1719,7 @@ document.querySelectorAll('.movie-item').forEach((btn)=>{
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
-// 拡大表示は Gallery / Costume Gallery で配列を切り替える
-let galleryImages=[], galleryNos=[], costumeImages=[], costumeNos=[];
+let galleryImages=[], galleryNos=[];
 let SEARCH_INDEX = [];
 
 // Safety net — ensure body fades in even if init() stalls (e.g. slow SVG fetch)
@@ -1864,46 +1852,7 @@ async function init(){
   // Costume
   document.getElementById('costume-heading').textContent = d.costume.heading;
   document.getElementById('costume-body').textContent = d.costume.body;
-  // 衣装カード（0件なら枠ごと非表示。撮影例のギャラリーだけを見せる）
-  (function(){
-    const items = d.costume.items || [];
-    const grid = document.getElementById('costume-grid');
-    grid.innerHTML = items.map(item=>`
-    <div class="item-card">
-      <img src="${item.file}" alt="${item.name}" loading="lazy" onclick="openLbSrc('${item.file}')"/>
-      <div class="item-info"><div class="item-name">${item.name}</div><div class="item-desc">${item.desc}</div></div>
-    </div>
-  `).join('');
-    grid.style.display = items.length ? '' : 'none';
-  })();
-
-  // Costume Gallery（洋装の撮影例）: Galleryと同じメーソンリー。0件なら丸ごと非表示
-  (function(){
-    const wrap = document.getElementById('c-gallery');
-    if(!wrap) return;
-    const cg = (d.costume.gallery || []).slice().sort((a,b)=>{
-      const aHas = !!a.date, bHas = !!b.date;
-      if(aHas && bHas) return String(b.date).localeCompare(String(a.date));
-      if(aHas) return -1;
-      if(bHas) return 1;
-      return 0;
-    });
-    if(!cg.length){ wrap.hidden = true; return; }
-    wrap.hidden = false;
-    costumeImages = cg.map(i=>i.file);
-    costumeNos    = cg.map(i=>i.no||'');
-    document.getElementById('c-grid').innerHTML = cg.map((item,i)=>{
-      const ar = item.ar || 1.33;
-      const w = 1000, h = Math.round(1000*ar);
-      return `
-      <div class="g-item" data-cat="${(item.tags||['other']).join(' ')}" data-no="${item.no||''}" data-ar="${ar}">
-        <img src="${item.file}" alt="${costumeAlt(item)}" width="${w}" height="${h}" loading="lazy" decoding="async" style="aspect-ratio:1 / ${ar}" onclick="openLbC(${i})"/>
-        ${item.no?`<div class="g-no">No.${item.no}</div>`:''}
-      </div>`;
-    }).join('');
-    applyCostumeLimit();
-    layoutMasonry();
-  })();
+  // Costume（カジュアル衣装の物撮り）は patch-index.js の renderCostumeCats が描画する
 
   // Plans (digest: top 3 — prefer entries with tag, fallback to first 3)
   (function(){
@@ -2182,19 +2131,6 @@ function scrollToGalleryTop(){
   const y = grid.getBoundingClientRect().top + window.scrollY - 72;   // 写真の先頭(固定ヘッダー分オフセット)
   window.scrollTo({ top: Math.max(0, clampToKeepFloat(y)), behavior: 'smooth' });
 }
-/* 洋装ギャラリーのalt（衣装が主題であることを明示してSEO/読み上げに効かせる） */
-function costumeAlt(item){
-  const tags = item.tags || ['other'];
-  let subject = '記念写真';
-  for(const k of ALT_ORDER){ if(tags.includes(k)){ subject = ALT_SUBJECT[k]; break; } }
-  const detail = [];
-  if(tags.includes('753girl')) detail.push('女の子');
-  if(tags.includes('753boy'))  detail.push('男の子');
-  if(tags.includes('family'))  detail.push('家族・きょうだい撮影');
-  const d = detail.length ? '（' + detail.join('・') + '）' : '';
-  const no = item.no ? ' No.' + item.no : '';
-  return '洋装（ドレス・カジュアル衣装）の' + subject + d + '｜Studio et. 岐阜県羽島市のフォトスタジオ' + no;
-}
 // グリッド・メーソンリー: DOM順を保ったまま縦横比で高さを割り当て（追加は下に積まれる）
 // Gallery と Costume Gallery の両方（.g-grid すべて）が対象
 function layoutMasonry(){
@@ -2264,41 +2200,6 @@ function galleryMore(delta){
     updateGalleryMoreUI();
     setTimeout(scrollToViewMore, 520);
   }
-}
-// ===== Costume Gallery ページング（Galleryと同じ作りでデフォルト10枚 + View More） =====
-const COSTUME_STEP = 10;
-let costumeLimit = COSTUME_STEP;
-function applyCostumeLimit(){
-  let shown = 0;
-  document.querySelectorAll('#c-grid .g-item').forEach(it=>{
-    it.style.opacity = '';
-    if(shown < costumeLimit){ it.classList.remove('g-over'); shown++; }
-    else it.classList.add('g-over');
-  });
-  updateCostumeMoreUI();
-}
-function updateCostumeMoreUI(){
-  const total = document.querySelectorAll('#c-grid .g-item').length;
-  const shown = Math.min(costumeLimit, total);
-  const rem = total - shown;
-  const fade = document.getElementById('c-fade');
-  if(fade) fade.style.display = rem > 0 ? '' : 'none';
-  const cnt = document.getElementById('c-more-count');
-  if(cnt) cnt.textContent = shown + ' / ' + total + '　（あと ' + rem + ' 枚）';
-}
-function costumeMore(delta){
-  const items = [...document.querySelectorAll('#c-grid .g-item')];
-  const total = items.length;
-  const oldLimit = costumeLimit;
-  costumeLimit = Math.min(Math.max(COSTUME_STEP, costumeLimit + delta), Math.max(COSTUME_STEP, total));
-  items.forEach((it,idx)=>{
-    if(idx >= oldLimit && idx < costumeLimit){
-      it.classList.remove('g-over');
-      it.style.opacity = '0';
-      requestAnimationFrame(()=>requestAnimationFrame(()=>{ it.style.opacity = '1'; }));
-    }
-  });
-  updateCostumeMoreUI();
 }
 function scrollToViewMore(){
   const btn = document.getElementById('g-more');
@@ -2559,8 +2460,6 @@ function setLbNo(){ const el=document.getElementById('lb-no'); if(!el) return;
   const no=(lbIdx>=0 && lbNos[lbIdx]) ? ('No.'+lbNos[lbIdx]) : '';
   el.textContent=no; el.style.display=no?'':'none'; }
 function openLb(idx){ lbImages=galleryImages; lbNos=galleryNos; lbIdx=idx; document.getElementById('lb-img').src=lbImages[lbIdx]; setLbNo(); document.getElementById('lightbox').classList.add('open'); }
-/* Costume Gallery の拡大表示（前後送りは洋装の写真だけを巡る） */
-function openLbC(idx){ lbImages=costumeImages; lbNos=costumeNos; lbIdx=idx; document.getElementById('lb-img').src=lbImages[lbIdx]; setLbNo(); document.getElementById('lightbox').classList.add('open'); }
 function openLbSrc(src){ lbIdx=-1; document.getElementById('lb-img').src=src; setLbNo(); document.getElementById('lightbox').classList.add('open'); }
 function gotoGalleryNo(){
   const inp=document.getElementById('g-no-input'), msg=document.getElementById('g-no-msg');
@@ -2572,10 +2471,8 @@ function gotoGalleryNo(){
     if(i<0 && /^\d+$/.test(v)) i=items.findIndex(el=>el.dataset.no===v.padStart(4,'0'));
     return i;
   };
-  let idx=find('#g-grid');
+  const idx=find('#g-grid');
   if(idx>=0){ msg.textContent=''; openLb(idx); return; }
-  const cidx=find('#c-grid');           // 洋装ギャラリーの番号でも探せるようにする
-  if(cidx>=0){ msg.textContent=''; openLbC(cidx); return; }
   msg.textContent='No.'+v+' は見つかりません';
 }
 function closeLb(){ document.getElementById('lightbox').classList.remove('open'); }
@@ -3131,7 +3028,7 @@ init();
   }
 })();
 </script>
-  <script src="../patch-index.js?v=20260817g"></script>
+  <script src="../patch-index.js?v=20260818a"></script>
 
   <!-- Maison nr. は予約受付前: nr. の「予約する」導線を Coming Soon ポップアップに(et. の予約は温存) -->
   <div id="nr-cs" class="nr-cs" hidden aria-hidden="true">

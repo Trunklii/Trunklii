@@ -4640,7 +4640,296 @@ window.SITE_DATA = {
       "costume": {
         "heading": "Costume",
         "body": "スタジオの空間と調和する衣装を独自にセレクトしています。\nカジュアル衣装やジャケットスタイルなど、お子様の自然な表情が引き立つ一着をご用意しています。",
-        "items": [],
+        "items": [
+          {
+            "file": "co/costume-baby-girl-studio-et-hashima-01.jpg",
+            "name": "ベビー女の子 01",
+            "desc": "",
+            "category": "baby-girl"
+          },
+          {
+            "file": "co/costume-baby-girl-studio-et-hashima-02.jpg",
+            "name": "ベビー女の子 02",
+            "desc": "",
+            "category": "baby-girl"
+          },
+          {
+            "file": "co/costume-baby-girl-studio-et-hashima-03.jpg",
+            "name": "ベビー女の子 03",
+            "desc": "",
+            "category": "baby-girl"
+          },
+          {
+            "file": "co/costume-baby-girl-studio-et-hashima-04.jpg",
+            "name": "ベビー女の子 04",
+            "desc": "",
+            "category": "baby-girl"
+          },
+          {
+            "file": "co/costume-baby-girl-studio-et-hashima-05.jpg",
+            "name": "ベビー女の子 05",
+            "desc": "",
+            "category": "baby-girl"
+          },
+          {
+            "file": "co/costume-baby-girl-studio-et-hashima-06.jpg",
+            "name": "ベビー女の子 06",
+            "desc": "",
+            "category": "baby-girl"
+          },
+          {
+            "file": "co/costume-1y-girl-studio-et-hashima-01.jpg",
+            "name": "1歳女の子 01",
+            "desc": "",
+            "category": "1y-girl"
+          },
+          {
+            "file": "co/costume-1y-girl-studio-et-hashima-02.jpg",
+            "name": "1歳女の子 02",
+            "desc": "",
+            "category": "1y-girl"
+          },
+          {
+            "file": "co/costume-1y-girl-studio-et-hashima-03.jpg",
+            "name": "1歳女の子 03",
+            "desc": "",
+            "category": "1y-girl"
+          },
+          {
+            "file": "co/costume-1y-girl-studio-et-hashima-04.jpg",
+            "name": "1歳女の子 04",
+            "desc": "",
+            "category": "1y-girl"
+          },
+          {
+            "file": "co/costume-1y-girl-studio-et-hashima-05.jpg",
+            "name": "1歳女の子 05",
+            "desc": "",
+            "category": "1y-girl"
+          },
+          {
+            "file": "co/costume-1y-girl-studio-et-hashima-06.jpg",
+            "name": "1歳女の子 06",
+            "desc": "",
+            "category": "1y-girl"
+          },
+          {
+            "file": "co/costume-2y6y-girl-studio-et-hashima-01.jpg",
+            "name": "2〜6歳女の子 01",
+            "desc": "",
+            "category": "2y6y-girl"
+          },
+          {
+            "file": "co/costume-2y6y-girl-studio-et-hashima-02.jpg",
+            "name": "2〜6歳女の子 02",
+            "desc": "",
+            "category": "2y6y-girl"
+          },
+          {
+            "file": "co/costume-2y6y-girl-studio-et-hashima-03.jpg",
+            "name": "2〜6歳女の子 03",
+            "desc": "",
+            "category": "2y6y-girl"
+          },
+          {
+            "file": "co/costume-2y6y-girl-studio-et-hashima-04.jpg",
+            "name": "2〜6歳女の子 04",
+            "desc": "",
+            "category": "2y6y-girl"
+          },
+          {
+            "file": "co/costume-2y6y-girl-studio-et-hashima-05.jpg",
+            "name": "2〜6歳女の子 05",
+            "desc": "",
+            "category": "2y6y-girl"
+          },
+          {
+            "file": "co/costume-2y6y-girl-studio-et-hashima-06.jpg",
+            "name": "2〜6歳女の子 06",
+            "desc": "",
+            "category": "2y6y-girl"
+          },
+          {
+            "file": "co/costume-3y8y-girl-studio-et-hashima-01.jpg",
+            "name": "3〜8歳女の子 01",
+            "desc": "",
+            "category": "3y8y-girl"
+          },
+          {
+            "file": "co/costume-3y8y-girl-studio-et-hashima-02.jpg",
+            "name": "3〜8歳女の子 02",
+            "desc": "",
+            "category": "3y8y-girl"
+          },
+          {
+            "file": "co/costume-3y8y-girl-studio-et-hashima-03.jpg",
+            "name": "3〜8歳女の子 03",
+            "desc": "",
+            "category": "3y8y-girl"
+          },
+          {
+            "file": "co/costume-3y8y-girl-studio-et-hashima-04.jpg",
+            "name": "3〜8歳女の子 04",
+            "desc": "",
+            "category": "3y8y-girl"
+          },
+          {
+            "file": "co/costume-3y8y-girl-studio-et-hashima-05.jpg",
+            "name": "3〜8歳女の子 05",
+            "desc": "",
+            "category": "3y8y-girl"
+          },
+          {
+            "file": "co/costume-3y8y-girl-studio-et-hashima-06.jpg",
+            "name": "3〜8歳女の子 06",
+            "desc": "",
+            "category": "3y8y-girl"
+          },
+          {
+            "file": "co/costume-baby-boy-studio-et-hashima-01.jpg",
+            "name": "ベビー男の子 01",
+            "desc": "",
+            "category": "baby-boy"
+          },
+          {
+            "file": "co/costume-baby-boy-studio-et-hashima-02.jpg",
+            "name": "ベビー男の子 02",
+            "desc": "",
+            "category": "baby-boy"
+          },
+          {
+            "file": "co/costume-baby-boy-studio-et-hashima-03.jpg",
+            "name": "ベビー男の子 03",
+            "desc": "",
+            "category": "baby-boy"
+          },
+          {
+            "file": "co/costume-baby-boy-studio-et-hashima-04.jpg",
+            "name": "ベビー男の子 04",
+            "desc": "",
+            "category": "baby-boy"
+          },
+          {
+            "file": "co/costume-baby-boy-studio-et-hashima-05.jpg",
+            "name": "ベビー男の子 05",
+            "desc": "",
+            "category": "baby-boy"
+          },
+          {
+            "file": "co/costume-baby-boy-studio-et-hashima-06.jpg",
+            "name": "ベビー男の子 06",
+            "desc": "",
+            "category": "baby-boy"
+          },
+          {
+            "file": "co/costume-1y-boy-studio-et-hashima-01.jpg",
+            "name": "1歳男の子 01",
+            "desc": "",
+            "category": "1y-boy"
+          },
+          {
+            "file": "co/costume-1y-boy-studio-et-hashima-02.jpg",
+            "name": "1歳男の子 02",
+            "desc": "",
+            "category": "1y-boy"
+          },
+          {
+            "file": "co/costume-1y-boy-studio-et-hashima-03.jpg",
+            "name": "1歳男の子 03",
+            "desc": "",
+            "category": "1y-boy"
+          },
+          {
+            "file": "co/costume-1y-boy-studio-et-hashima-04.jpg",
+            "name": "1歳男の子 04",
+            "desc": "",
+            "category": "1y-boy"
+          },
+          {
+            "file": "co/costume-1y-boy-studio-et-hashima-05.jpg",
+            "name": "1歳男の子 05",
+            "desc": "",
+            "category": "1y-boy"
+          },
+          {
+            "file": "co/costume-1y-boy-studio-et-hashima-06.jpg",
+            "name": "1歳男の子 06",
+            "desc": "",
+            "category": "1y-boy"
+          },
+          {
+            "file": "co/costume-2y6y-boy-studio-et-hashima-01.jpg",
+            "name": "2〜6歳男の子 01",
+            "desc": "",
+            "category": "2y6y-boy"
+          },
+          {
+            "file": "co/costume-2y6y-boy-studio-et-hashima-02.jpg",
+            "name": "2〜6歳男の子 02",
+            "desc": "",
+            "category": "2y6y-boy"
+          },
+          {
+            "file": "co/costume-2y6y-boy-studio-et-hashima-03.jpg",
+            "name": "2〜6歳男の子 03",
+            "desc": "",
+            "category": "2y6y-boy"
+          },
+          {
+            "file": "co/costume-2y6y-boy-studio-et-hashima-04.jpg",
+            "name": "2〜6歳男の子 04",
+            "desc": "",
+            "category": "2y6y-boy"
+          },
+          {
+            "file": "co/costume-2y6y-boy-studio-et-hashima-05.jpg",
+            "name": "2〜6歳男の子 05",
+            "desc": "",
+            "category": "2y6y-boy"
+          },
+          {
+            "file": "co/costume-2y6y-boy-studio-et-hashima-06.jpg",
+            "name": "2〜6歳男の子 06",
+            "desc": "",
+            "category": "2y6y-boy"
+          },
+          {
+            "file": "co/costume-3y7y-boy-studio-et-hashima-01.jpg",
+            "name": "3〜7歳男の子 01",
+            "desc": "",
+            "category": "3y7y-boy"
+          },
+          {
+            "file": "co/costume-3y7y-boy-studio-et-hashima-02.jpg",
+            "name": "3〜7歳男の子 02",
+            "desc": "",
+            "category": "3y7y-boy"
+          },
+          {
+            "file": "co/costume-3y7y-boy-studio-et-hashima-03.jpg",
+            "name": "3〜7歳男の子 03",
+            "desc": "",
+            "category": "3y7y-boy"
+          },
+          {
+            "file": "co/costume-3y7y-boy-studio-et-hashima-04.jpg",
+            "name": "3〜7歳男の子 04",
+            "desc": "",
+            "category": "3y7y-boy"
+          },
+          {
+            "file": "co/costume-3y7y-boy-studio-et-hashima-05.jpg",
+            "name": "3〜7歳男の子 05",
+            "desc": "",
+            "category": "3y7y-boy"
+          },
+          {
+            "file": "co/costume-3y7y-boy-studio-et-hashima-06.jpg",
+            "name": "3〜7歳男の子 06",
+            "desc": "",
+            "category": "3y7y-boy"
+          }
+        ],
         "gallery": [
           {
             "no": "0806",

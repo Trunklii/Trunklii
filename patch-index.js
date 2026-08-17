@@ -233,6 +233,150 @@
     }
   }
 
+  /* Costume(カジュアル衣装の物撮り)。Kimono と同じ構造・クラスで描画する。
+     TOP(#costume-grid) はカテゴリのミニカード、costume.html(data-full="1") は一覧＋絞り込み。 */
+  function renderCostumeCats(studio){
+    var container = document.getElementById('costume-grid');
+    if(!container) return;
+    var items = (studio && studio.costume && Array.isArray(studio.costume.items)) ? studio.costume.items : [];
+    // category を持たない(旧データ=衣装カード)の場合は既存の描画に任せる
+    if(!items.length || !items.some(function(it){ return it.category; })) return;
+
+    var GROUPS = [
+      { key:'girl', label:'女の子', en:'Girls' },
+      { key:'boy',  label:'男の子', en:'Boys'  }
+    ];
+    var CATS = [
+      { key:'baby-girl', sub:'Baby',        jp:'ベビー', group:'girl' },
+      { key:'1y-girl',   sub:'1 Year Old',  jp:'1歳',    group:'girl' },
+      { key:'2y6y-girl', sub:'2-6 Years',   jp:'2〜6歳', group:'girl' },
+      { key:'3y8y-girl', sub:'3-8 Years',   jp:'3〜8歳', group:'girl' },
+      { key:'baby-boy',  sub:'Baby',        jp:'ベビー', group:'boy'  },
+      { key:'1y-boy',    sub:'1 Year Old',  jp:'1歳',    group:'boy'  },
+      { key:'2y6y-boy',  sub:'2-6 Years',   jp:'2〜6歳', group:'boy'  },
+      { key:'3y7y-boy',  sub:'3-7 Years',   jp:'3〜7歳', group:'boy'  }
+    ];
+    var byCat = {};
+    CATS.forEach(function(c){ byCat[c.key] = []; });
+    items.forEach(function(it){
+      var k = it.category || 'other';
+      if(!byCat[k]) byCat[k] = [];
+      byCat[k].push(it);
+    });
+
+    var isFull = container.getAttribute('data-full') === '1';
+    container.className = isFull ? 'kim-cats' : 'kim-mini-grid';
+
+    if(isFull){
+      var bar = document.getElementById('cos-filter');
+      if(!bar){
+        bar = document.createElement('div');
+        bar.className = 'kim-filter';
+        bar.id = 'cos-filter';
+        container.parentNode.insertBefore(bar, container);
+      }
+      var note = document.getElementById('cos-filter-note');
+      if(!note){
+        note = document.createElement('p');
+        note.className = 'filter-note';
+        note.id = 'cos-filter-note';
+        note.textContent = '※ タグは複数選択できます（ALLで解除）';
+        bar.parentNode.insertBefore(note, bar.nextSibling);
+      }
+      var seen = {}, tags = [];
+      CATS.forEach(function(c){ if(seen[c.jp]) return; seen[c.jp] = true; tags.push(c.jp); });
+      bar.innerHTML = '<button class="kim-filter-btn active" type="button" data-title="all" onclick="cosFilter(this)">ALL</button>'
+        + tags.map(function(t){
+            return '<button class="kim-filter-btn" type="button" data-title="' + t + '" onclick="cosFilter(this)">' + t + '</button>';
+          }).join('');
+    }
+
+    function fullCardHtml(c){
+      var list = byCat[c.key] || [];
+      if(list.length === 0){
+        return '<div class="kim-item kim-cat kim-item-empty" data-cat="' + c.key + '" data-group="' + c.group + '" data-title="' + c.jp + '">'
+          + '<div class="kim-item-img is-empty"><span>Coming Soon</span></div>'
+        + '</div>';
+      }
+      return list.map(function(it, i){
+        var f = it.file || '';
+        var nm = it.name || (c.jp + ' ' + ('0' + (i+1)).slice(-2));
+        return '<figure class="kim-item kim-cat" data-cat="' + c.key + '" data-group="' + c.group + '" data-title="' + c.jp + '"'
+          + ' data-src="' + encodeURIComponent(f) + '" data-name="' + nm + '" onclick="kimZoom(this)" tabindex="0" role="button" aria-label="' + nm + ' を拡大">'
+          + '<div class="kim-item-img" style="background-image:url(\'' + f + '\')"></div>'
+        + '</figure>';
+      }).join('');
+    }
+    function miniCardHtml(c){
+      var list = byCat[c.key] || [];
+      var has = list.length > 0;
+      var f = has ? (list[0].file || '') : '';
+      var img = has
+        ? '<div class="kim-mini-img" style="background-image:url(\'' + f + '\')"></div>'
+        : '<div class="kim-mini-img is-empty"><span>Coming Soon</span></div>';
+      var count = has ? '<span class="kim-mini-count">' + list.length + '</span>' : '';
+      return '<a class="kim-cat kim-mini" href="costume.html#' + c.key + '"'
+        + ' data-cat="' + c.key + '" data-group="' + c.group + '" data-title="' + c.jp + '">'
+        + img
+        + '<div class="kim-mini-cap"><span class="kim-mini-en">' + c.sub + '</span><span class="kim-mini-jp">' + c.jp + '</span>' + count + '</div>'
+      + '</a>';
+    }
+    container.innerHTML = GROUPS.map(function(g){
+      var inCats = CATS.filter(function(c){ return c.group === g.key; });
+      var cards = isFull
+        ? inCats.map(function(c){
+            return '<section class="kim-sub" data-title="' + c.jp + '" data-cat="' + c.key + '">'
+              + '<div class="kim-sub-head"><span class="kim-sub-jp">' + c.jp + '</span><span class="kim-sub-en">' + c.sub + '</span></div>'
+              + '<div class="kim-list">' + fullCardHtml(c) + '</div>'
+            + '</section>';
+          }).join('')
+        : inCats.map(miniCardHtml).join('');
+      return '<div class="kim-group" data-group="' + g.key + '">'
+        + '<div class="kim-group-head"><span class="kim-group-en">' + g.en + '</span><h3 class="kim-group-jp">' + g.label + '</h3></div>'
+        + (isFull ? cards : '<div class="kim-group-cards">' + cards + '</div>')
+      + '</div>';
+    }).join('');
+
+    var more = document.getElementById('cos-more');
+    if(!isFull && !more){
+      more = document.createElement('div');
+      more.id = 'cos-more';
+      more.className = 'kim-more';
+      more.innerHTML = '<a class="btn-line" href="costume.html">衣装一覧を見る <span aria-hidden="true">→</span></a>';
+      container.parentNode.insertBefore(more, container.nextSibling);
+    }
+  }
+
+  /* Costume のカテゴリ絞り込み(cos-filter のボタンから呼ばれる) */
+  window.cosFilter = function(btn){
+    var bar = btn.parentNode;
+    var isAll = btn.getAttribute('data-title') === 'all';
+    var allBtn = bar.querySelector('.kim-filter-btn[data-title="all"]');
+    if(isAll){
+      Array.prototype.forEach.call(bar.querySelectorAll('.kim-filter-btn'), function(b){ b.classList.remove('active'); });
+      if(allBtn) allBtn.classList.add('active');
+    } else {
+      btn.classList.toggle('active');
+      if(allBtn) allBtn.classList.remove('active');
+      if(!bar.querySelector('.kim-filter-btn.active') && allBtn) allBtn.classList.add('active');
+    }
+    var sel = Array.prototype.slice.call(bar.querySelectorAll('.kim-filter-btn.active'))
+      .map(function(b){ return b.getAttribute('data-title'); })
+      .filter(function(t){ return t && t !== 'all'; });
+    Array.prototype.forEach.call(document.querySelectorAll('#costume-grid .kim-cat'), function(card){
+      var show = sel.length === 0 || sel.indexOf(card.getAttribute('data-title')) !== -1;
+      card.style.display = show ? '' : 'none';
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('#costume-grid .kim-sub'), function(sub){
+      var visible = Array.prototype.slice.call(sub.querySelectorAll('.kim-cat')).some(function(c){ return c.style.display !== 'none'; });
+      sub.style.display = visible ? '' : 'none';
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('#costume-grid .kim-group'), function(gEl){
+      var visible = Array.prototype.slice.call(gEl.querySelectorAll('.kim-cat')).some(function(c){ return c.style.display !== 'none'; });
+      gEl.style.display = visible ? '' : 'none';
+    });
+  };
+
   /* カテゴリ絞り込み(kim-filter のボタンから呼ばれる) */
   window.kimFilter = function(btn){
     var bar = btn.parentNode;
@@ -301,7 +445,7 @@
 
   /* 一覧の写真を拡大表示(前後送り付き) */
   function kimZoomList(){
-    return Array.prototype.slice.call(document.querySelectorAll('#kimono-grid .kim-item[data-src]'))
+    return Array.prototype.slice.call(document.querySelectorAll('#kimono-grid .kim-item[data-src], #costume-grid .kim-item[data-src]'))
       .filter(function(el){ return el.style.display !== 'none' && el.offsetParent !== null; });
   }
   function kimZoomShow(list, idx){
@@ -448,6 +592,7 @@
     renderCalTierLegend(studio);
     renderCalTop();
     renderKimonoCats(studio);
+    renderCostumeCats(studio);
     renderReservationBlocks(studio);
   }
 
