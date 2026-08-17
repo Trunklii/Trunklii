@@ -398,7 +398,22 @@ const CLOSED = new Set([
 function pad(n){ return String(n).padStart(2,'0'); }
 function dateKey(y,m,d){ return `${y}-${pad(m+1)}-${pad(d)}`; }
 
+// 旧HPの料金カレンダー(site-data の priceMap)を正とし、記載のない日は休業=色なし
+function priceMapFor(y, m){
+  var st = window.SITE_DATA && window.SITE_DATA.studios
+    && window.SITE_DATA.studios[location.pathname.indexOf('/nr/') !== -1 ? 'nr' : 'et'];
+  var pm = st && st.calendar && st.calendar.priceMap;
+  if(!pm) return null;
+  return pm[y + '-' + pad(m + 1)] || null;
+}
 function getTier(y, m, d){
+  const month = priceMapFor(y, m);
+  if(month){
+    for(const t of ['a','b','c']){
+      if(Array.isArray(month[t]) && month[t].indexOf(d) !== -1) return t;
+    }
+    return '';   // 掲載なし=定休日・休業
+  }
   const dow = new Date(y, m, d).getDay();
   const key = dateKey(y, m, d);
   if(dow === 0 || JP_HOLIDAYS.has(key) || TAIAN.has(key)) return 'c';
@@ -420,7 +435,7 @@ function renderMonth(year, month){
     const dow = new Date(year, month, d).getDay();
     const key = dateKey(year, month, d);
     const tier = getTier(year, month, d);
-    const closed = CLOSED.has(key);
+    const closed = CLOSED.has(key) || !tier;
     let cls = closed ? 'cal-day closed' : `cal-day tier-${tier}`;
     if(dow === 0) cls += ' sun-col';
     if(dow === 6) cls += ' sat-col';

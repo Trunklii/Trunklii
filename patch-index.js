@@ -32,7 +32,24 @@
   };
   function pad(n){ return ('0'+n).slice(-2); }
   function dKey(y,m,d){ return y+'-'+pad(m+1)+'-'+pad(d); }
+  /* 旧HPの料金カレンダー(site-data の priceMap)を正とし、記載のない日は休業=色なし */
+  function priceMapFor(y,m){
+    var key = location.pathname.indexOf('/nr/') !== -1 ? 'nr' : 'et';
+    var st = window.SITE_DATA && window.SITE_DATA.studios && window.SITE_DATA.studios[key];
+    var pm = st && st.calendar && st.calendar.priceMap;
+    if(!pm) return null;
+    return pm[y + '-' + pad(m+1)] || null;
+  }
   function getTier(y,m,d){
+    var month = priceMapFor(y,m);
+    if(month){
+      var tiers = ['a','b','c'];
+      for(var i=0;i<3;i++){
+        var t = tiers[i];
+        if(month[t] && month[t].indexOf(d) !== -1) return t;
+      }
+      return '';   // 掲載なし=定休日・休業
+    }
     var dow = new Date(y,m,d).getDay();
     var k = dKey(y,m,d);
     if(dow === 0 || JP_HOLIDAYS[k] || TAIAN[k]) return 'c';
@@ -75,7 +92,7 @@
         var dow = new Date(y,m,d).getDay();
         var k = dKey(y,m,d);
         var tier = getTier(y,m,d);
-        var cls = CLOSED[k] ? 'cal-top-day closed' : 'cal-top-day tier-' + tier;
+        var cls = (CLOSED[k] || !tier) ? 'cal-top-day closed' : 'cal-top-day tier-' + tier;
         if(dow===0) cls += ' sun-col';
         if(dow===6) cls += ' sat-col';
         if(JP_HOLIDAYS[k] && dow!==0) cls += ' holiday';
