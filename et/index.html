@@ -686,7 +686,20 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
   max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;
   font-family:var(--serif);font-weight:300;font-size:.85rem;color:var(--mid);line-height:2.1;
 }
-.qa-item.open .qa-a{max-height:600px;padding:0 0 1.4rem 1.7rem}
+.qa-item.open .qa-a{max-height:2400px;padding:0 0 1.4rem 1.7rem}
+/* Q&A カテゴリ(展開メニュー) */
+.qa-cat{border-bottom:1px solid var(--border)}
+.qa-cat-head{display:flex;align-items:center;gap:.8rem;width:100%;padding:1.5rem 0;background:none;border:none;cursor:pointer;text-align:left;color:var(--ink)}
+.qa-cat-num{font-family:var(--display);font-style:normal;font-size:.8rem;letter-spacing:.06em;color:var(--accent);font-variant-numeric:lining-nums}
+.qa-cat-title{flex:1;font-family:var(--sans);font-weight:500;font-size:.95rem;letter-spacing:.04em}
+.qa-cat-count{font-family:var(--display);font-style:normal;font-size:.72rem;color:var(--mid);font-variant-numeric:lining-nums}
+.qa-cat-toggle{font-size:1rem;color:var(--ink);transition:transform .3s;flex-shrink:0}
+.qa-cat.open .qa-cat-toggle{transform:rotate(45deg)}
+.qa-cat-body{display:none;padding:0 0 1.2rem}
+.qa-cat.open .qa-cat-body{display:block}
+.qa-cat-body .qa-item:first-child{border-top:1px solid var(--border)}
+.qa-cat-body .qa-item:last-child{border-bottom:none}
+.qa-cat-body .qa-q{padding:1.1rem 0;font-size:.88rem}
 .qa-a a,.qa-msg-bot a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px}
 .qa-a a:hover,.qa-msg-bot a:hover{color:var(--ink);border-bottom-color:var(--ink)}
 
@@ -1715,7 +1728,7 @@ document.querySelectorAll('.movie-item').forEach((btn)=>{
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260817h"></script>
+<script src="../site-data.js?v=20260817i"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
@@ -1929,14 +1942,26 @@ async function init(){
   if(d.qa){
     document.getElementById('qa-heading').textContent = d.qa.heading;
     document.getElementById('qa-body').textContent = d.qa.body;
-    document.getElementById('qa-list').innerHTML = d.qa.items.map((it,i)=>`
+    const qaItemHtml = (it)=>`
       <div class="qa-item">
-        <button class="qa-q" onclick="toggleQa(${i})">
+        <button class="qa-q" onclick="toggleQa(this)">
           <span class="qa-q-mark">Q.</span><span class="qa-q-text">${it.q}</span><span class="qa-toggle">+</span>
         </button>
         <div class="qa-a">${it.a}</div>
-      </div>
-    `).join('') || '<p style="text-align:center;color:var(--mid);font-family:var(--display);font-style:normal">近日公開予定。</p>';
+      </div>`;
+    const qaCats = Array.isArray(d.qa.categories) ? d.qa.categories : null;
+    document.getElementById('qa-list').innerHTML = qaCats
+      ? qaCats.map((c,ci)=>`
+          <div class="qa-cat${ci===0?' open':''}">
+            <button class="qa-cat-head" type="button" onclick="toggleQaCat(this)" aria-expanded="${ci===0}">
+              <span class="qa-cat-num">${String(ci+1).padStart(2,'0')}</span>
+              <span class="qa-cat-title">${c.title}</span>
+              <span class="qa-cat-count">${(c.items||[]).length}</span>
+              <span class="qa-cat-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="qa-cat-body">${(c.items||[]).map(qaItemHtml).join('')}</div>
+          </div>`).join('')
+      : (d.qa.items.map(qaItemHtml).join('') || '<p style="text-align:center;color:var(--mid);font-family:var(--display);font-style:normal">近日公開予定。</p>');
     buildQaBot(d.qa.items, d);
   } else {
     buildQaBot([], d);
@@ -2497,9 +2522,18 @@ function mobScrollTop(e){ e?.preventDefault?.(); window.scrollTo({top:0, behavio
 function scrollTopSmooth(e){ e?.preventDefault?.(); window.scrollTo({top:0, behavior:'smooth'}); }
 
 // Q&A accordion
-function toggleQa(i){
-  const items = document.querySelectorAll('.qa-item');
-  items[i].classList.toggle('open');
+function toggleQa(ref){
+  const el = (typeof ref === 'number')
+    ? document.querySelectorAll('.qa-item')[ref]
+    : (ref && ref.closest ? ref.closest('.qa-item') : null);
+  if(el) el.classList.toggle('open');
+}
+// Q&A カテゴリ(展開メニュー)
+function toggleQaCat(btn){
+  const cat = btn.closest('.qa-cat');
+  if(!cat) return;
+  const open = cat.classList.toggle('open');
+  btn.setAttribute('aria-expanded', String(open));
 }
 
 // SEARCH
@@ -3028,7 +3062,7 @@ init();
   }
 })();
 </script>
-  <script src="../patch-index.js?v=20260817h"></script>
+  <script src="../patch-index.js?v=20260817i"></script>
 
   <!-- Maison nr. は予約受付前: nr. の「予約する」導線を Coming Soon ポップアップに(et. の予約は温存) -->
   <div id="nr-cs" class="nr-cs" hidden aria-hidden="true">
