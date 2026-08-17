@@ -181,16 +181,14 @@
       if(items.length === 0){
         return '<div class="kim-item kim-cat kim-item-empty" data-cat="' + c.key + '" data-group="' + c.group + '" data-title="' + c.jp + '">'
           + '<div class="kim-item-img is-empty"><span>Coming Soon</span></div>'
-          + '<div class="kim-item-cap"><span class="kim-item-jp">' + c.jp + '</span><span class="kim-item-en">' + c.sub + '</span></div>'
         + '</div>';
       }
       return items.map(function(it, i){
         var f = it.file || '';
         var nm = it.name || (c.jp + ' ' + ('0' + (i+1)).slice(-2));
         return '<figure class="kim-item kim-cat" data-cat="' + c.key + '" data-group="' + c.group + '" data-title="' + c.jp + '"'
-          + ' data-src="' + encodeURIComponent(f) + '" onclick="kimZoom(this)" tabindex="0">'
+          + ' data-src="' + encodeURIComponent(f) + '" data-name="' + nm + '" onclick="kimZoom(this)" tabindex="0" role="button" aria-label="' + nm + ' を拡大">'
           + '<div class="kim-item-img" style="background-image:url(\'' + f + '\')"></div>'
-          + '<figcaption class="kim-item-cap"><span class="kim-item-jp">' + nm + '</span><span class="kim-item-en">' + c.sub + '</span></figcaption>'
         + '</figure>';
       }).join('');
     }
@@ -301,24 +299,59 @@
     else if(allBtn) window.kimFilter(allBtn);     // 対応タグが無ければ全表示
   };
 
-  /* 一覧の写真を拡大表示 */
+  /* 一覧の写真を拡大表示(前後送り付き) */
+  function kimZoomList(){
+    return Array.prototype.slice.call(document.querySelectorAll('#kimono-grid .kim-item[data-src]'))
+      .filter(function(el){ return el.style.display !== 'none' && el.offsetParent !== null; });
+  }
+  function kimZoomShow(list, idx){
+    var ov = document.getElementById('kim-zoom');
+    if(!ov || !list.length) return;
+    idx = (idx + list.length) % list.length;
+    ov.dataset.idx = String(idx);
+    var el = list[idx];
+    var img = ov.querySelector('img');
+    img.src = decodeURIComponent(el.getAttribute('data-src') || '');
+    img.alt = el.getAttribute('data-name') || '';
+    var nav = ov.querySelector('.kim-zoom-count');
+    if(nav) nav.textContent = (idx + 1) + ' / ' + list.length;
+  }
+  window.kimZoomStep = function(dir){
+    var ov = document.getElementById('kim-zoom');
+    if(!ov) return;
+    var list = kimZoomList();
+    kimZoomShow(list, parseInt(ov.dataset.idx || '0', 10) + dir);
+  };
   window.kimZoom = function(el){
-    var src = decodeURIComponent(el.getAttribute('data-src') || '');
-    if(!src) return;
-    var cap = el.querySelector('.kim-item-jp');
+    if(!el.getAttribute('data-src')) return;
     var ov = document.getElementById('kim-zoom');
     if(!ov){
       ov = document.createElement('div');
       ov.id = 'kim-zoom';
       ov.className = 'kim-zoom';
-      ov.innerHTML = '<button class="kim-zoom-close" type="button" aria-label="閉じる">✕</button><img alt=""><span class="kim-zoom-cap"></span>';
-      ov.addEventListener('click', function(e){ if(e.target === ov || e.target.className === 'kim-zoom-close') ov.classList.remove('is-open'); });
-      document.addEventListener('keydown', function(e){ if(e.key === 'Escape') ov.classList.remove('is-open'); });
+      ov.innerHTML =
+          '<button class="kim-zoom-close" type="button" aria-label="閉じる">✕</button>'
+        + '<button class="kim-zoom-nav kim-zoom-prev" type="button" aria-label="前の着物"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 6-6 6 6 6"/></svg></button>'
+        + '<img alt="">'
+        + '<button class="kim-zoom-nav kim-zoom-next" type="button" aria-label="次の着物"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9.5 6 6 6-6 6"/></svg></button>'
+        + '<span class="kim-zoom-count"></span>';
+      ov.addEventListener('click', function(e){
+        var prev = e.target.closest && e.target.closest('.kim-zoom-prev');
+        var next = e.target.closest && e.target.closest('.kim-zoom-next');
+        if(prev){ window.kimZoomStep(-1); return; }
+        if(next){ window.kimZoomStep(1); return; }
+        if(e.target === ov || (e.target.closest && e.target.closest('.kim-zoom-close'))) ov.classList.remove('is-open');
+      });
+      document.addEventListener('keydown', function(e){
+        if(!ov.classList.contains('is-open')) return;
+        if(e.key === 'Escape') ov.classList.remove('is-open');
+        else if(e.key === 'ArrowLeft') window.kimZoomStep(-1);
+        else if(e.key === 'ArrowRight') window.kimZoomStep(1);
+      });
       document.body.appendChild(ov);
     }
-    ov.querySelector('img').src = src;
-    ov.querySelector('img').alt = cap ? cap.textContent : '';
-    ov.querySelector('.kim-zoom-cap').textContent = cap ? cap.textContent : '';
+    var list = kimZoomList();
+    kimZoomShow(list, list.indexOf(el));
     ov.classList.add('is-open');
   };
 
