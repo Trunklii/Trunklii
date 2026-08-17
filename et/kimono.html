@@ -369,6 +369,10 @@ body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filte
 .kim-zoom img{max-width:min(92vw,720px);max-height:78vh;object-fit:contain;display:block}
 .kim-zoom-cap{font-family:var(--display);font-size:.85rem;letter-spacing:.06em;color:#f4f2ee}
 .kim-zoom-close{position:absolute;top:1rem;right:1.1rem;background:none;border:none;color:#f4f2ee;font-size:1.1rem;cursor:pointer;padding:.4rem;line-height:1}
+/* 一覧ページではTOPのSP用カルーセル指定を打ち消す */
+#kimono-grid.kim-cats{display:block!important;overflow:visible!important;margin:0!important;padding:0!important;scroll-snap-type:none!important}
+#kimono-grid .kim-group{flex:none!important;width:auto!important;min-width:0;margin:0}
+#kimono-grid .kim-group + .kim-group{margin-top:clamp(2.6rem,6vw,4.5rem)}
 </style>
 </head>
 <body>
@@ -448,7 +452,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260817d"></script>
+<script src="../site-data.js?v=20260817e"></script>
 <script>
 (function(){
   var KEY = location.pathname.indexOf('/nr/') !== -1 ? 'nr' : 'et';
@@ -473,7 +477,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 })();
 </script>
-<script src="../patch-index.js?v=20260817d"></script>
+<script src="../patch-index.js?v=20260817e"></script>
 <script>
 // 予約する › 展開メニュー(TOPページと同仕様)
 function toggleHdrBook(e){
