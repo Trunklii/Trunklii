@@ -375,6 +375,9 @@ body.is-ready .float-book:hover{opacity:1}
 /* 相互ブランド行き来アイコン(チャットの下・スマホのみ) */
 .brand-hop{position:fixed;right:1.25rem;bottom:.5rem;z-index:150;width:48px;height:48px;border-radius:50%;background:#fff;border:1px solid rgba(17,16,16,.25);display:flex;align-items:center;justify-content:center;opacity:.5;box-shadow:0 6px 20px rgba(17,16,16,.15);transition:opacity .3s}
 .brand-hop:hover{opacity:1}
+/* BRAND-HOP-PILL: 正式ロゴ(Studio et./Maison nr.)が潰れないよう円形→ピル型に */
+.brand-hop{width:auto!important;min-width:var(--fab);padding:0 .55rem;border-radius:999px!important}
+.brand-hop .bh-logo{display:block;height:22px;background:currentColor}
 body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-top-btn,body.sheet-open .brand-hop{opacity:0!important;pointer-events:none!important;transition:none!important}
 .book-sheet-close{position:absolute;top:.8rem;right:.9rem;background:none;border:none;font-size:1.05rem;cursor:pointer;color:#111010;padding:.3rem;line-height:1}
 .book-sheet-title{font-family:var(--sans);font-weight:400;font-size:.92rem;letter-spacing:.16em;text-transform:uppercase;color:#111010}
@@ -568,7 +571,12 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 
 /* ブランド別リンクの明示ラベル */
 .icon-btn[data-brand]{position:relative}
-.icon-btn[data-brand]::after{content:attr(data-brand);position:absolute;bottom:1px;right:2px;font-family:var(--display);font-style:normal;font-size:.5rem;line-height:1;pointer-events:none;opacity:.85}
+/* ICON-BRAND-LOGO: 正式ロゴ(Studio et./Maison nr.)をバッジに使用 */
+.icon-btn[data-brand]{width:44px;height:44px;flex-direction:column;gap:1px;padding-bottom:2px}
+.icon-btn[data-brand] svg{width:14px;height:14px}
+.icon-btn[data-brand]::after{content:'';display:block;width:24px;height:16px;background:currentColor;pointer-events:none;opacity:.9;
+  -webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat}
+.icon-btn[data-brand="nr."]::after{-webkit-mask-image:url(../assets/nr-logo.png);mask-image:url(../assets/nr-logo.png)}
 .mob-brand-chip{display:inline-flex;align-items:center;font-family:var(--display);font-style:normal;font-size:.8rem;color:var(--ink);opacity:.7;padding:0 .1rem}
 .mob-icon-row a[data-brand]{position:relative}
 .mob-icon-row a[data-brand]::after{content:attr(data-brand);position:absolute;bottom:2px;right:3px;font-family:var(--display);font-style:normal;font-size:.55rem;line-height:1;pointer-events:none;opacity:.85}
@@ -1113,6 +1121,20 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
   .kim-filter-btn.active{background:#6e5a3a;color:#fff;border-color:#6e5a3a}
 }
 .kim-cats{display:block}
+/* KIM-MINI: TOPの着物セクションはミニカード2列(PCは4列)。詳細は kimono.html */
+.kim-mini-grid{display:block}
+.kim-mini-grid .kim-group + .kim-group{margin-top:clamp(2.4rem,5vw,3.6rem)}
+.kim-mini-grid .kim-group-cards{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:clamp(.5rem,1.6vw,1rem)}
+@media(min-width:961px){.kim-mini-grid .kim-group-cards{grid-template-columns:repeat(4,1fr)!important}}
+.kim-mini{display:block;text-decoration:none;color:inherit}
+.kim-mini-img{width:100%;aspect-ratio:3/4;background-size:cover;background-position:center;background-color:#efece7;transition:opacity .3s}
+.kim-mini:hover .kim-mini-img{opacity:.86}
+.kim-mini-img.is-empty{display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:.6rem;letter-spacing:.12em;color:var(--mid)}
+.kim-mini-cap{display:flex;align-items:baseline;gap:.5em;flex-wrap:wrap;padding:.5rem .1rem 0}
+.kim-mini-en{font-family:var(--display);font-size:.78rem;letter-spacing:.02em;color:var(--ink)}
+.kim-mini-jp{font-family:var(--sans);font-size:.62rem;letter-spacing:.06em;color:var(--mid)}
+.kim-mini-count{margin-left:auto;font-family:var(--display);font-size:.68rem;color:var(--mid)}
+.kim-more{margin-top:clamp(2rem,4vw,3rem);text-align:center}
 .kim-cat{background:#fff;padding:.3rem;display:flex;flex-direction:column;position:relative;overflow:hidden}
 .kim-cat-head{margin:.3rem .3rem .5rem;padding-bottom:.5rem;border-bottom:1px solid rgba(58,42,31,.3)}
 .kim-cat-title{font-family:var(--display);font-style:normal;font-weight:300;font-size:clamp(1rem,1.9vw,1.45rem);color:#3A2A1F;letter-spacing:.01em;margin-bottom:.25rem;font-variant-numeric:lining-nums;display:flex;align-items:baseline;gap:.5em;white-space:nowrap;flex-wrap:nowrap;min-width:0}
@@ -1765,7 +1787,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
   </button>
 </div>
-<a class="brand-hop" href="../et/" aria-label="Studio et. のページへ"><span style="display:block;width:22px;height:13px;background:#111010;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span></a>
+<a class="brand-hop" href="../et/" aria-label="Studio et. のページへ"><span class="bh-logo" style="aspect-ratio:672/445;background:#111010;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span></a>
 <button class="qa-bot-toggle" id="qa-bot-toggle" onclick="toggleBot()" aria-label="Ask a question">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
     <path d="M21 12c0 4.97-4.03 9-9 9-1.55 0-3.03-.39-4.32-1.09L3 21l1.09-4.68C3.39 15.03 3 13.55 3 12c0-4.97 4.03-9 9-9s9 4.03 9 9z"/>

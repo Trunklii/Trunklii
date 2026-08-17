@@ -10,7 +10,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title id="page-title">撮影プラン一覧 | Studio et.（岐阜県羽島市）</title>
+<title id="page-title">Kimono | Studio et. — 着物一覧（岐阜県羽島市のフォトスタジオ）</title>
 <!-- SEO Meta -->
 <meta name="description" content="Studio et.（岐阜県羽島市）の撮影プラン一覧。One Plan・Family Plan・Maternity Plan・Furisode Plan（成人式）の料金と、七五三・お宮参り・バースデー・入園入学などの撮影メニューをご案内。"/>
 <meta name="keywords" content="写真スタジオ,フォトスタジオ,岐阜県,羽島市,七五三,お宮参り,バースデー,マタニティ,ファミリーフォト,Studio et."/>
@@ -240,6 +240,115 @@ body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filte
   overflow-wrap:break-word;
 }
 </style>
+<style>
+/* KIMONO (TOPページから抽出) */
+.filter-note{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.06em;color:var(--mid);margin:-1.9rem 0 2.5rem}
+.kim-filter + .filter-note{margin:-1.2rem 0 1.8rem}
+.g-filters .filter-note{margin:0 0 0 .6rem;align-self:center;white-space:nowrap}
+/* ═══════════════════════════════
+   TOP: Kimono category carousels
+═══════════════════════════════ */
+/* Kimono カテゴリ絞り込み(PC=横並びタグ / スマホ=3列グリッド) */
+.kim-filter{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.8rem}
+.kim-filter .kim-filter-btn{font-family:var(--sans);font-weight:400;font-size:.66rem;letter-spacing:.05em;padding:.5rem 1rem;border:1px solid rgba(110,90,58,.4);background:transparent;color:#6e5a3a;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.kim-filter .kim-filter-btn.active{background:#6e5a3a;color:#fff;border-color:#6e5a3a}
+@media(max-width:760px){
+/* 8ボタンを必ず2行に収める4列グリッド */
+  .kim-filter{display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem;margin:0 0 1.6rem}
+.kim-filter-btn{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.03em;padding:.5rem .1rem;border:1px solid rgba(110,90,58,.4);background:transparent;color:#6e5a3a;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.kim-filter-btn.active{background:#6e5a3a;color:#fff;border-color:#6e5a3a}
+}
+.kim-cats{display:block}
+/* KIM-MINI: TOPの着物セクションはミニカード2列(PCは4列)。詳細は kimono.html */
+.kim-mini-grid{display:block}
+.kim-mini-grid .kim-group + .kim-group{margin-top:clamp(2.4rem,5vw,3.6rem)}
+.kim-mini-grid .kim-group-cards{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:clamp(.5rem,1.6vw,1rem)}
+@media(min-width:961px){
+.kim-mini-grid .kim-group-cards{grid-template-columns:repeat(4,1fr)!important}
+}
+.kim-mini{display:block;text-decoration:none;color:inherit}
+.kim-mini-img{width:100%;aspect-ratio:3/4;background-size:cover;background-position:center;background-color:#efece7;transition:opacity .3s}
+.kim-mini:hover .kim-mini-img{opacity:.86}
+.kim-mini-img.is-empty{display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:.6rem;letter-spacing:.12em;color:var(--mid)}
+.kim-mini-cap{display:flex;align-items:baseline;gap:.5em;flex-wrap:wrap;padding:.5rem .1rem 0}
+.kim-mini-en{font-family:var(--display);font-size:.78rem;letter-spacing:.02em;color:var(--ink)}
+.kim-mini-jp{font-family:var(--sans);font-size:.62rem;letter-spacing:.06em;color:var(--mid)}
+.kim-mini-count{margin-left:auto;font-family:var(--display);font-size:.68rem;color:var(--mid)}
+.kim-more{margin-top:clamp(2rem,4vw,3rem);text-align:center}
+.kim-cat{background:#efe9da;padding:.3rem;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.kim-cat-head{margin:.3rem .3rem .5rem;padding-bottom:.5rem;border-bottom:1px solid rgba(102,86,55,.25)}
+.kim-cat-title{font-family:var(--display);font-style:normal;font-weight:300;font-size:clamp(1rem,1.9vw,1.45rem);color:#6e5a3a;letter-spacing:.01em;margin-bottom:.25rem;font-variant-numeric:lining-nums;display:flex;align-items:baseline;gap:.5em;white-space:nowrap;flex-wrap:nowrap;min-width:0}
+.kim-cat-sub{font-family:var(--display);font-weight:300;font-size:.95rem;color:#897a5f;letter-spacing:.02em}
+.kim-cat-opt{font-family:var(--sans);font-weight:300;font-size:.7rem;color:#a08e6c;display:block;margin-top:.2rem}
+.kim-cat-carousel{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:.3rem}
+.kim-cat-main{grid-row:1;grid-column:1/-1;aspect-ratio:4/5;background:#d8cfb8;display:flex;align-items:center;justify-content:center;color:#9a8866;font-family:var(--display);font-style:normal;font-size:1rem;letter-spacing:.04em;overflow:hidden;position:relative}
+.kim-cat-main::before{content:'';position:absolute;inset:0;background-image:linear-gradient(135deg,rgba(255,255,255,.15) 0%,rgba(0,0,0,.05) 100%);pointer-events:none}
+.kim-cat-sub-img{grid-row:2;aspect-ratio:1/1;background:#d8cfb8;display:flex;align-items:center;justify-content:center;color:#9a8866;font-family:var(--display);font-style:normal;font-size:.8rem;position:relative}
+.kim-cat-sub-img::before{content:'';position:absolute;inset:0;background-image:linear-gradient(135deg,rgba(255,255,255,.15) 0%,rgba(0,0,0,.05) 100%);pointer-events:none}
+.kim-arrow{grid-row:1;grid-column:1/-1;align-self:center;width:38px;height:38px;border-radius:50%;background:rgba(80,68,50,.78);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;line-height:1;padding:0;z-index:2;transition:background .2s;font-family:var(--sans);font-weight:300}
+.kim-arrow:hover{background:rgba(80,68,50,.95)}
+.kim-arrow svg{width:16px;height:16px;display:block}
+.kim-arrow-prev{justify-self:start;margin-left:8px}
+.kim-arrow-next{justify-self:end;margin-right:8px}
+@media(max-width:560px){
+.kim-cats{grid-template-columns:1fr}
+.kim-cats > .kim-group{grid-column:auto}
+.kim-cat{padding:.3rem}
+}
+.sec-jp{font-family:var(--sans);font-weight:400;font-size:.62rem;letter-spacing:.1em;color:var(--mid);white-space:nowrap;margin-left:.2rem}
+.kim-cat-title .sec-jp{margin-left:0;flex:0 0 auto;font-size:.58rem}
+/* 着物グループ見出し(スタジオ撮影着物 / お詣り着物) */
+.kim-group{margin-bottom:2.5rem}
+.kim-group + .kim-group{margin-top:0}
+.kim-group-head{display:flex;align-items:baseline;gap:.8rem;margin:0 0 1.4rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)}
+.kim-group-en{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mid)}
+.kim-group-jp{font-family:var(--display);font-weight:400;font-size:1rem;letter-spacing:.06em;color:var(--ink)}
+.kim-group-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1rem,2.2vw,1.6rem)}
+/* PC: スタジオ=3列 / お詣り=1列。タイトル罫線は kim-cats の align-items:start で横並び揃え */
+/* PC: 両グループとも4列(スタジオ=3女/7女/10女/お宮参り → 3男/5男/10男、お詣り=3女/7女/3男/5男) */
+.kim-group[data-group="studio"] .kim-group-cards,
+.kim-group[data-group="mairi"] .kim-group-cards{grid-template-columns:repeat(4,1fr)}
+.kim-group + .kim-group{margin-top:clamp(2rem,4vw,3.5rem)}
+@media(max-width:1100px){
+.kim-group[data-group="studio"] .kim-group-cards,
+  .kim-group[data-group="mairi"] .kim-group-cards{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:760px){
+/* カード見出しはスマホだと小さすぎたので拡大 */
+  .kim-cat-title{font-size:1.18rem}
+.kim-cat-title .sec-jp{font-size:.72rem}
+.kim-cat-sub{font-size:1rem}
+}
+@media(max-width:760px){
+.kim-cats{display:flex;flex-direction:row;grid-template-columns:none;overflow-x:auto;gap:1.2rem;align-items:flex-start;margin:0 -1.2rem;padding:0 1.2rem .6rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.kim-cats::-webkit-scrollbar{display:none}
+.kim-group{flex:0 0 86vw;scroll-snap-align:start;margin:0;min-width:0}
+.kim-group + .kim-group{margin-top:0}
+.kim-group-head{margin-bottom:.9rem}
+/* PCのstudio3列ルール(詳細度0,3,0)を同詳細度で上書き→縦1列 */
+  .kim-group-cards,
+  .kim-group[data-group="studio"] .kim-group-cards,
+  .kim-group[data-group="mairi"] .kim-group-cards{display:grid;grid-template-columns:1fr;gap:1rem}
+.kim-cat{width:100%}
+/* カードは PC同様「メイン画像＋下に2枚サムネ」のまま(矢印でカテゴリ内送り) */
+  .kim-cat-main{aspect-ratio:4/5}
+}
+.kim-cat-empty{padding-bottom:1.2rem}
+.kim-cat-sub-img.is-empty{display:none}
+.kim-cat-carousel:has(.kim-cat-sub-img.is-empty:only-of-type) .kim-cat-main{grid-column:1/-1}
+.kim-cat-ph{display:flex;align-items:center;justify-content:center;height:96px;background:rgba(110,90,55,.05);border:1px dashed rgba(110,90,55,.28);font-family:var(--display);font-weight:400;font-size:.8rem;letter-spacing:.12em;color:#a08e6c}
+/* GLOBAL-LINING-NUMS */
+/* 数字はすべて等高数字(lining)に統一。Cormorant のオールドスタイル数字は小さく上下にばらつくため無効化 */
+body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filter-note{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0}
+/* JA-WRAP */
+/* 日本語本文は文節単位で折り返す(未対応ブラウザは既定動作) */
+.section-body-text,.lead,.about-text p,.about-text,.plan-desc,.pd-desc,.pd-about p,.pd-notes p,.pd-list li,
+.cal-note,.res-top-notes li,.qa-a,.qa-answer,.goods-desc,.sec-lead,.opt-note,.pd-opt-note,.pd-opt-name,
+.kim-cat-desc,.costume-desc,.footer-note{word-break:auto-phrase;      /* 文節単位で折り返す(Chrome 119+) */
+  text-wrap:pretty;            /* 行末に1文字だけ残さない */
+  line-break:strict;           /* 禁則処理を厳格に */
+  overflow-wrap:break-word;}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -268,14 +377,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="wrap">
 
       <div class="sec-head">
-        <span class="sec-num">05</span>
-        <h1 class="sec-title">Plans & Pricing</h1><span class="sec-jp">撮影プラン・料金</span>
+        <span class="sec-num">04</span>
+        <h1 class="sec-title">Kimono</h1><span class="sec-jp">着物</span>
         <div class="sec-rule"></div>
       </div>
 
-      <p class="section-body-text" style="text-align:center;max-width:640px;margin:0 auto 3rem" id="page-lead">ご希望に合わせて、撮影プランをお選びください。<br/>各プランの詳細・カット数バリエーションは、カードからご覧いただけます。</p>
+      <p class="section-body-text" style="text-align:center;max-width:640px;margin:0 auto 3rem" id="kim-lead"></p>
 
-      <div class="plans-grid" id="pl-grid"></div>
+      <div id="kimono-grid" data-full="1"></div>
 
     </div>
   </section>
@@ -320,76 +429,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="../site-data.js"></script>
 <script>
-const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
-function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-
-function minPriceFromVariants(variants){
-  if(!variants || variants.length === 0) return '';
-  const nums = variants.map(v=>{
-    const m = String(v.price||'').match(/[\d,]+/g);
-    return m ? parseInt(m.join('').replace(/,/g,'')) : NaN;
-  }).filter(n=>!isNaN(n));
-  if(nums.length === 0) return variants[0].price || '';
-  const min = Math.min(...nums);
-  return `¥${min.toLocaleString()}〜`;
-}
-
-function render(){
-  const data = window.SITE_DATA;
-  if(!data) return;
-  const studio = data.studios[STUDIO_KEY];
-  if(!studio) return;
-
-  if(studio.accentColor) document.documentElement.style.setProperty('--accent', studio.accentColor);
-
-  const name = studio.shortName || studio.name || '';
-  document.getElementById('nav-brand').innerHTML = `${esc(name.replace(/\.$/,''))}<span class="b-mark">.</span>`;
-
-  document.getElementById('footer-copy').textContent = data.global.copyright;
-  document.getElementById('page-title').textContent = `Plans | ${studio.name}`;
-
-  if(studio.plansLead){
-    document.getElementById('page-lead').innerHTML = esc(studio.plansLead).replace(/\n/g,'<br/>');
+(function(){
+  var KEY = location.pathname.indexOf('/nr/') !== -1 ? 'nr' : 'et';
+  var st = window.SITE_DATA && window.SITE_DATA.studios && window.SITE_DATA.studios[KEY];
+  var lead = document.getElementById('kim-lead');
+  if(lead && st && st.kimono && st.kimono.body){
+    lead.innerHTML = String(st.kimono.body).split('\n').map(function(l){
+      return l.replace(/[&<>]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; });
+    }).join('<br/>');
   }
-
-  const plans = studio.plans || [];
-  const grid = document.getElementById('pl-grid');
-
-  if(plans.length === 0){
-    grid.innerHTML = '<div class="plans-soon" style="grid-column:1/-1">プラン情報は近日公開予定です。</div>';
-    document.body.classList.add('is-ready');
-    return;
-  }
-
-  grid.innerHTML = plans.map(p=>{
-    const hasDetail = p.detail && p.variants && p.variants.length > 0;
-    const heroImg = hasDetail ? (p.detail.heroImage || '') : '';
-    const price = hasDetail ? minPriceFromVariants(p.variants) : '';
-    const cutsList = hasDetail ? p.variants.map(v=>v.cuts).filter(c=>c!=null).join(' / ') : '';
-    const cardClass = hasDetail ? 'plan-card' : 'plan-card soon';
-    const cardHref = hasDetail ? `plan-detail.html?key=${encodeURIComponent(p.key)}` : 'javascript:void(0)';
-
-    return `
-      <a href="${cardHref}" class="${cardClass}">
-        <div class="plan-card-img">${heroImg ? `<div class="plan-card-img-inner" style="background-image:url('${esc(heroImg)}')"></div>` : ''}</div>
-        <div class="plan-card-body">
-          ${p.tag ? `<div class="plan-tag">${esc(p.tag)}</div>` : ''}
-          <div class="plan-name">${esc(p.name)}</div>
-          <div class="plan-price">${esc(price || '近日公開')}</div>
-          <div class="plan-desc">${esc(p.desc || '')}</div>
-          ${cutsList ? `<div class="plan-meta">${esc(cutsList)} cuts available</div>` : ''}
-          <div class="plan-cta">${hasDetail ? 'View detail →' : 'Coming soon'}</div>
-        </div>
-      </a>
-    `;
-  }).join('');
-
+  var fc = document.getElementById('footer-copy');
+  if(fc) fc.textContent = '© ' + new Date().getFullYear() + ' Trunklii';
   document.body.classList.add('is-ready');
-}
-
-setTimeout(()=>document.body.classList.add('is-ready'), 1200);
-render();
+  // ハッシュ(#3y-girl 等)があればそのカードへ
+  window.addEventListener('load', function(){
+    var k = (location.hash||'').replace('#','');
+    if(!k) return;
+    setTimeout(function(){
+      var card = document.querySelector('.kim-cat[data-cat="'+k+'"]');
+      if(card) window.scrollTo({top: card.getBoundingClientRect().top + window.scrollY - 90, behavior:'smooth'});
+    }, 300);
+  });
+})();
 </script>
+<script src="../patch-index.js?v=20260817b"></script>
 <script>
 // 予約する › 展開メニュー(TOPページと同仕様)
 function toggleHdrBook(e){

@@ -144,7 +144,12 @@ footer{border-top:1px solid var(--border);background:#fff;color:var(--mid);paddi
 .icon-btn:hover{background:var(--ink);color:#fff}
 .icon-btn svg{width:15px;height:15px}
 .icon-btn[data-brand]{position:relative}
-.icon-btn[data-brand]::after{content:attr(data-brand);position:absolute;bottom:1px;right:2px;font-family:var(--display);font-style:normal;font-size:.5rem;line-height:1;pointer-events:none;opacity:.85}
+/* ICON-BRAND-LOGO: 正式ロゴ(Studio et./Maison nr.)をバッジに使用 */
+.icon-btn[data-brand]{width:44px;height:44px;flex-direction:column;gap:1px;padding-bottom:2px}
+.icon-btn[data-brand] svg{width:14px;height:14px}
+.icon-btn[data-brand]::after{content:'';display:block;width:24px;height:16px;background:currentColor;pointer-events:none;opacity:.9;
+  -webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat}
+.icon-btn[data-brand="nr."]::after{-webkit-mask-image:url(../assets/nr-logo.png);mask-image:url(../assets/nr-logo.png)}
 .nav-right{display:flex;align-items:center;gap:.5rem}
 .hdr-book-wrap{position:relative}
 .hdr-book-toggle{display:flex;align-items:center;gap:.5em;height:36px;padding:0 .95rem;border:1px solid #111010;background:#111010;color:#fff;font-family:var(--sans);font-weight:500;font-size:.62rem;letter-spacing:.08em;cursor:pointer;transition:opacity .2s;white-space:nowrap}
@@ -173,6 +178,9 @@ footer{border-top:1px solid var(--border);background:#fff;color:var(--mid);paddi
 /* 相互ブランド行き来アイコン(チャットの下・スマホのみ) */
 .brand-hop{position:fixed;right:1.25rem;bottom:.5rem;z-index:150;width:48px;height:48px;border-radius:50%;background:#fff;border:1px solid rgba(17,16,16,.25);display:flex;align-items:center;justify-content:center;opacity:.5;box-shadow:0 6px 20px rgba(17,16,16,.15);transition:opacity .3s}
 .brand-hop:hover{opacity:1}
+/* BRAND-HOP-PILL: 正式ロゴ(Studio et./Maison nr.)が潰れないよう円形→ピル型に */
+.brand-hop{width:auto!important;min-width:var(--fab);padding:0 .55rem;border-radius:999px!important}
+.brand-hop .bh-logo{display:block;height:22px;background:currentColor}
 body.sheet-open .float-book,body.sheet-open .to-top-btn,body.sheet-open .brand-hop{opacity:0!important;pointer-events:none!important;transition:none!important}
 .book-sheet-close{position:absolute;top:.8rem;right:.9rem;background:none;border:none;font-size:1.05rem;cursor:pointer;color:#111010;padding:.3rem;line-height:1}
 .book-sheet-title{font-family:var(--sans);font-weight:400;font-size:.92rem;letter-spacing:.16em;text-transform:uppercase;color:#111010}
@@ -304,7 +312,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <a class="qa-bot-toggle" href="./#bot" aria-label="質問チャットを開く(トップページ)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12c0 4.97-4.03 9-9 9-1.55 0-3.03-.39-4.32-1.09L3 21l1.09-4.68C3.39 15.03 3 13.55 3 12c0-4.97 4.03-9 9-9s9 4.03 9 9z"/><circle cx="8.5" cy="12" r=".9" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r=".9" fill="currentColor" stroke="none"/><circle cx="15.5" cy="12" r=".9" fill="currentColor" stroke="none"/></svg></a>
-<a class="brand-hop" href="../et/" aria-label="Studio et. のページへ"><span style="display:block;width:22px;height:13px;background:#111010;-webkit-mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat;mask:url(../assets/et-logo-mark-white.png) center/contain no-repeat"></span></a>
+<a class="brand-hop" href="../et/" aria-label="Studio et. のページへ"><span class="bh-logo" style="aspect-ratio:672/445;background:#111010;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span></a>
 <div class="book-sheet" id="book-sheet" hidden>
   <button class="book-sheet-close" type="button" onclick="closeBookSheet()" aria-label="閉じる">✕</button>
   <div class="book-sheet-title">Reservation</div>

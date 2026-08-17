@@ -155,8 +155,10 @@
           return '<button class="kim-filter-btn" type="button" data-title="' + t + '" onclick="kimFilter(this)">' + t + '</button>';
         }).join('');
 
-    container.className = 'kim-cats';
-    function cardHtml(c){
+    // TOP(#kimono-grid)は写真1枚のミニカード2列。data-full="1"(kimono.html)はカルーセル付きフル表示
+    var isFull = container.getAttribute('data-full') === '1';
+    container.className = isFull ? 'kim-cats' : 'kim-mini-grid';
+    function fullCardHtml(c){
       var items = byCat[c.key] || [];
       var hasItems = items.length > 0;
       // 画像 path 解決(et/index.html 内なので相対パスはファイル名のみ)
@@ -199,13 +201,36 @@
         + '</div>'
       + '</div>';
     }
+    function miniCardHtml(c){
+      var items = byCat[c.key] || [];
+      var has = items.length > 0;
+      var f = has ? (items[0].file || '') : '';
+      var img = has
+        ? '<div class="kim-mini-img" style="background-image:url(\'' + f + '\')"></div>'
+        : '<div class="kim-mini-img is-empty"><span>Coming Soon</span></div>';
+      var count = has ? '<span class="kim-mini-count">' + items.length + '</span>' : '';
+      return '<a class="kim-cat kim-mini" href="kimono.html#' + c.key + '"'
+        + ' data-cat="' + c.key + '" data-group="' + c.group + '" data-gender="' + (c.gender||'') + '" data-title="' + c.jp + '">'
+        + img
+        + '<div class="kim-mini-cap"><span class="kim-mini-en">' + c.sub + '</span><span class="kim-mini-jp">' + c.jp + '</span>' + count + '</div>'
+      + '</a>';
+    }
     container.innerHTML = GROUPS.map(function(g){
-      var cards = CATS.filter(function(c){ return c.group === g.key; }).map(cardHtml).join('');
+      var cards = CATS.filter(function(c){ return c.group === g.key; }).map(isFull ? fullCardHtml : miniCardHtml).join('');
       return '<div class="kim-group" data-group="' + g.key + '">'
         + '<div class="kim-group-head"><span class="kim-group-en">' + g.en + '</span><h3 class="kim-group-jp">' + g.label + '</h3></div>'
         + '<div class="kim-group-cards">' + cards + '</div>'
       + '</div>';
     }).join('');
+    // 一覧ページへの導線(TOPのみ・1つだけ)
+    var more = document.getElementById('kim-more');
+    if(!isFull && !more){
+      more = document.createElement('div');
+      more.id = 'kim-more';
+      more.className = 'kim-more';
+      more.innerHTML = '<a class="btn-line" href="kimono.html">着物一覧を見る <span aria-hidden="true">→</span></a>';
+      container.parentNode.insertBefore(more, container.nextSibling);
+    }
   }
 
   /* カテゴリ絞り込み(kim-filter のボタンから呼ばれる) */
