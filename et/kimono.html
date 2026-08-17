@@ -373,6 +373,21 @@ body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filte
 #kimono-grid.kim-cats{display:block!important;overflow:visible!important;margin:0!important;padding:0!important;scroll-snap-type:none!important}
 #kimono-grid .kim-group{flex:none!important;width:auto!important;min-width:0;margin:0}
 #kimono-grid .kim-group + .kim-group{margin-top:clamp(2.6rem,6vw,4.5rem)}
+/* サブセクション見出し(3歳女の子 など)を上部に追従。次の見出しが来ると押し出される */
+.kim-sub{position:relative}
+.kim-sub + .kim-sub{margin-top:clamp(1.8rem,4vw,2.8rem)}
+.kim-sub-head{
+  position:sticky;top:64px;z-index:6;
+  display:flex;align-items:baseline;gap:.7rem;
+  padding:.7rem 0 .55rem;margin-bottom:.9rem;
+  background:var(--bg,#f6f4ef);
+  border-bottom:1px solid rgba(17,16,16,.12);
+}
+.kim-sub-jp{font-family:var(--display);font-weight:400;font-size:1rem;letter-spacing:.06em;color:var(--ink)}
+.kim-sub-en{font-family:var(--sans);font-weight:400;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mid)}
+@media(max-width:960px){.kim-sub-head{top:56px}}
+/* 一覧のカードはTOP用の枠(薄いベージュ背景・内側余白)を使わない */
+#kimono-grid .kim-item.kim-cat{background:none!important;padding:0!important;border:none!important;box-shadow:none!important}
 </style>
 </head>
 <body>
@@ -452,7 +467,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260817e"></script>
+<script src="../site-data.js?v=20260817f"></script>
 <script>
 (function(){
   var KEY = location.pathname.indexOf('/nr/') !== -1 ? 'nr' : 'et';
@@ -477,7 +492,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 })();
 </script>
-<script src="../patch-index.js?v=20260817e"></script>
+<script src="../patch-index.js?v=20260817f"></script>
 <script>
 // 予約する › 展開メニュー(TOPページと同仕様)
 function toggleHdrBook(e){

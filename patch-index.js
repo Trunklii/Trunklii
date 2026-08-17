@@ -209,10 +209,19 @@
       + '</a>';
     }
     container.innerHTML = GROUPS.map(function(g){
-      var cards = CATS.filter(function(c){ return c.group === g.key; }).map(isFull ? fullCardHtml : miniCardHtml).join('');
+      var inCats = CATS.filter(function(c){ return c.group === g.key; });
+      // 一覧はカテゴリごとのサブセクション(見出しは上部に追従)
+      var cards = isFull
+        ? inCats.map(function(c){
+            return '<section class="kim-sub" data-title="' + c.jp + '" data-cat="' + c.key + '">'
+              + '<div class="kim-sub-head"><span class="kim-sub-jp">' + c.jp + '</span><span class="kim-sub-en">' + c.sub + '</span></div>'
+              + '<div class="kim-list">' + fullCardHtml(c) + '</div>'
+            + '</section>';
+          }).join('')
+        : inCats.map(miniCardHtml).join('');
       return '<div class="kim-group" data-group="' + g.key + '">'
         + '<div class="kim-group-head"><span class="kim-group-en">' + g.en + '</span><h3 class="kim-group-jp">' + g.label + '</h3></div>'
-        + '<div class="' + (isFull ? 'kim-list' : 'kim-group-cards') + '">' + cards + '</div>'
+        + (isFull ? cards : '<div class="kim-group-cards">' + cards + '</div>')
       + '</div>';
     }).join('');
     // 一覧ページへの導線(TOPのみ・1つだけ)
@@ -245,6 +254,11 @@
     Array.prototype.forEach.call(document.querySelectorAll('#kimono-grid .kim-cat'), function(card){
       var show = sel.length === 0 || sel.indexOf(card.getAttribute('data-title')) !== -1;
       card.style.display = show ? '' : 'none';
+    });
+    // サブセクション(カテゴリ見出し)は、中に表示中カードがあれば表示
+    Array.prototype.forEach.call(document.querySelectorAll('#kimono-grid .kim-sub'), function(sub){
+      var visible = Array.prototype.slice.call(sub.querySelectorAll('.kim-cat')).some(function(c){ return c.style.display !== 'none'; });
+      sub.style.display = visible ? '' : 'none';
     });
     // グループ見出しは、そのグループに表示中カードが1枚でもあれば表示
     Array.prototype.forEach.call(document.querySelectorAll('#kimono-grid .kim-group'), function(gEl){
