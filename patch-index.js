@@ -176,47 +176,23 @@
     var isFull = container.getAttribute('data-full') === '1';
     container.className = isFull ? 'kim-cats' : 'kim-mini-grid';
     function fullCardHtml(c){
+      // 一覧表示: 1着=1枚のフラットなグリッド(PC4列 / SP2列)
       var items = byCat[c.key] || [];
-      var hasItems = items.length > 0;
-      // 画像 path 解決(et/index.html 内なので相対パスはファイル名のみ)
-      function imgPath(item){
-        var f = item.file || '';
-        if(!f) return '';
-        if(f.indexOf('data:')===0 || f.indexOf('http')===0) return f;
-        return f;
-      }
-      var firstOpt = hasItems && items[0].optionPrice ? '<span class="kim-cat-opt">Option ' + items[0].optionPrice + '</span>' : '';
-      var mainHtml = hasItems
-        ? '<div class="kim-cat-main" style="background-image:url(\'' + imgPath(items[0]) + '\');background-size:cover;background-position:center"></div>'
-        : '<div class="kim-cat-main"><span>'+c.jp+'</span></div>';
-      var sub1 = items.length > 1
-        ? '<div class="kim-cat-sub-img" onclick="kimCarousel(this,1)" style="cursor:pointer;background-image:url(\'' + imgPath(items[1]) + '\');background-size:cover;background-position:center"></div>'
-        : '<div class="kim-cat-sub-img is-empty"><span>—</span></div>';
-      var sub2 = items.length > 2
-        ? '<div class="kim-cat-sub-img" onclick="kimCarousel(this,2)" style="cursor:pointer;background-image:url(\'' + imgPath(items[2]) + '\');background-size:cover;background-position:center"></div>'
-        : '<div class="kim-cat-sub-img is-empty"><span>—</span></div>';
-      // データ属性に全アイテムのファイル名を入れてカルーセル制御
-      var dataAttr = hasItems
-        ? ' data-items="' + items.map(function(it){ return encodeURIComponent(imgPath(it)); }).join(',') + '" data-idx="0"'
-        : '';
-      var showArrows = items.length > 1;
-      if(!hasItems){
-        return '<div class="kim-cat kim-cat-empty" data-cat="' + c.key + '" data-group="' + c.group + '" data-gender="' + (c.gender||'') + '" data-title="' + c.jp + '">'
-          + '<div class="kim-cat-head"><div class="kim-cat-title">' + c.sub + '<span class="sec-jp">' + c.jp + '</span></div></div>'
-          + '<div class="kim-cat-ph">Coming Soon</div>'
+      if(items.length === 0){
+        return '<div class="kim-item kim-cat kim-item-empty" data-cat="' + c.key + '" data-group="' + c.group + '" data-title="' + c.jp + '">'
+          + '<div class="kim-item-img is-empty"><span>Coming Soon</span></div>'
+          + '<div class="kim-item-cap"><span class="kim-item-jp">' + c.jp + '</span><span class="kim-item-en">' + c.sub + '</span></div>'
         + '</div>';
       }
-      return '<div class="kim-cat" data-cat="' + c.key + '" data-group="' + c.group + '" data-gender="' + (c.gender||'') + '" data-title="' + c.jp + '"' + dataAttr + '>'
-        + '<div class="kim-cat-head">'
-          + '<div class="kim-cat-title">'+c.sub+'<span class="sec-jp">'+c.jp+'</span></div>'
-          + firstOpt
-        + '</div>'
-        + '<div class="kim-cat-carousel">'
-          + (showArrows ? '<button class="kim-arrow kim-arrow-prev" type="button" aria-label="前へ" onclick="kimCarousel(this,-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg></button>' : '')
-          + mainHtml + sub1 + sub2
-          + (showArrows ? '<button class="kim-arrow kim-arrow-next" type="button" aria-label="次へ" onclick="kimCarousel(this,1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></button>' : '')
-        + '</div>'
-      + '</div>';
+      return items.map(function(it, i){
+        var f = it.file || '';
+        var nm = it.name || (c.jp + ' ' + ('0' + (i+1)).slice(-2));
+        return '<figure class="kim-item kim-cat" data-cat="' + c.key + '" data-group="' + c.group + '" data-title="' + c.jp + '"'
+          + ' data-src="' + encodeURIComponent(f) + '" onclick="kimZoom(this)" tabindex="0">'
+          + '<div class="kim-item-img" style="background-image:url(\'' + f + '\')"></div>'
+          + '<figcaption class="kim-item-cap"><span class="kim-item-jp">' + nm + '</span><span class="kim-item-en">' + c.sub + '</span></figcaption>'
+        + '</figure>';
+      }).join('');
     }
     function miniCardHtml(c){
       var items = byCat[c.key] || [];
@@ -236,7 +212,7 @@
       var cards = CATS.filter(function(c){ return c.group === g.key; }).map(isFull ? fullCardHtml : miniCardHtml).join('');
       return '<div class="kim-group" data-group="' + g.key + '">'
         + '<div class="kim-group-head"><span class="kim-group-en">' + g.en + '</span><h3 class="kim-group-jp">' + g.label + '</h3></div>'
-        + '<div class="kim-group-cards">' + cards + '</div>'
+        + '<div class="' + (isFull ? 'kim-list' : 'kim-group-cards') + '">' + cards + '</div>'
       + '</div>';
     }).join('');
     // 一覧ページへの導線(TOPのみ・1つだけ)
@@ -309,6 +285,27 @@
     var target = jp ? bar.querySelector('.kim-filter-btn[data-title="' + jp + '"]') : null;
     if(target) window.kimFilter(target);          // 解除済みなので active になる
     else if(allBtn) window.kimFilter(allBtn);     // 対応タグが無ければ全表示
+  };
+
+  /* 一覧の写真を拡大表示 */
+  window.kimZoom = function(el){
+    var src = decodeURIComponent(el.getAttribute('data-src') || '');
+    if(!src) return;
+    var cap = el.querySelector('.kim-item-jp');
+    var ov = document.getElementById('kim-zoom');
+    if(!ov){
+      ov = document.createElement('div');
+      ov.id = 'kim-zoom';
+      ov.className = 'kim-zoom';
+      ov.innerHTML = '<button class="kim-zoom-close" type="button" aria-label="閉じる">✕</button><img alt=""><span class="kim-zoom-cap"></span>';
+      ov.addEventListener('click', function(e){ if(e.target === ov || e.target.className === 'kim-zoom-close') ov.classList.remove('is-open'); });
+      document.addEventListener('keydown', function(e){ if(e.key === 'Escape') ov.classList.remove('is-open'); });
+      document.body.appendChild(ov);
+    }
+    ov.querySelector('img').src = src;
+    ov.querySelector('img').alt = cap ? cap.textContent : '';
+    ov.querySelector('.kim-zoom-cap').textContent = cap ? cap.textContent : '';
+    ov.classList.add('is-open');
   };
 
   /* カルーセル制御(arrow ボタンから呼ばれる) */

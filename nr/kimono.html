@@ -349,6 +349,27 @@ body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filte
   line-break:strict;           /* 禁則処理を厳格に */
   overflow-wrap:break-word;}
 </style>
+<style>
+/* KIMONO-LIST: 着物一覧(PC 4列 / SP 2列) */
+.kim-list{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1rem,3vw,1.6rem) clamp(.7rem,2vw,1.4rem)}
+@media(min-width:721px){.kim-list{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:961px){.kim-list{grid-template-columns:repeat(4,1fr)}}
+.kim-item{margin:0;cursor:pointer;outline:none}
+.kim-item-img{width:100%;aspect-ratio:3/4;background-size:cover;background-position:center;background-color:#eeebe5;transition:opacity .35s var(--ease,ease)}
+.kim-item:hover .kim-item-img,.kim-item:focus-visible .kim-item-img{opacity:.85}
+.kim-item:focus-visible .kim-item-img{outline:2px solid var(--accent,#6e5a3a);outline-offset:2px}
+.kim-item-img.is-empty{display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;color:var(--mid)}
+.kim-item-cap{display:flex;flex-direction:column;gap:.15rem;padding:.6rem .1rem 0}
+.kim-item-jp{font-family:var(--display);font-weight:400;font-size:.9rem;letter-spacing:.04em;color:var(--ink)}
+.kim-item-en{font-family:var(--sans);font-weight:400;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mid)}
+.kim-group + .kim-group{margin-top:clamp(2.6rem,6vw,4.5rem)}
+/* 拡大表示 */
+.kim-zoom{position:fixed;inset:0;z-index:400;background:rgba(20,18,16,.92);display:none;align-items:center;justify-content:center;flex-direction:column;gap:.9rem;padding:2rem 1rem}
+.kim-zoom.is-open{display:flex}
+.kim-zoom img{max-width:min(92vw,720px);max-height:78vh;object-fit:contain;display:block}
+.kim-zoom-cap{font-family:var(--display);font-size:.85rem;letter-spacing:.06em;color:#f4f2ee}
+.kim-zoom-close{position:absolute;top:1rem;right:1.1rem;background:none;border:none;color:#f4f2ee;font-size:1.1rem;cursor:pointer;padding:.4rem;line-height:1}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -427,7 +448,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260817c"></script>
+<script src="../site-data.js?v=20260817d"></script>
 <script>
 (function(){
   var KEY = location.pathname.indexOf('/nr/') !== -1 ? 'nr' : 'et';
@@ -452,7 +473,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 })();
 </script>
-<script src="../patch-index.js?v=20260817c"></script>
+<script src="../patch-index.js?v=20260817d"></script>
 <script>
 // 予約する › 展開メニュー(TOPページと同仕様)
 function toggleHdrBook(e){
