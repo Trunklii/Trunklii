@@ -206,7 +206,9 @@
         + '<div class="kim-mini-cap"><span class="kim-mini-en">' + c.sub + '</span><span class="kim-mini-jp">' + c.jp + '</span>' + count + '</div>'
       + '</a>';
     }
-    container.innerHTML = GROUPS.map(function(g){
+    // TOPは「スタジオ撮影着物」のみ表示(お詣り着物は一覧ページ kimono.html に掲載)
+    var groups = isFull ? GROUPS : GROUPS.filter(function(g){ return g.key === 'studio'; });
+    container.innerHTML = groups.map(function(g){
       var inCats = CATS.filter(function(c){ return c.group === g.key; });
       // 一覧はカテゴリごとのサブセクション(見出しは上部に追従)
       var cards = isFull
