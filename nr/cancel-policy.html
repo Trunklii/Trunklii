@@ -219,7 +219,14 @@ body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filte
 <style>
 /* JA-WRAP */
 /* 日本語本文は文節単位で折り返す(未対応ブラウザは既定動作) */
-.section-body-text,.lead,.about-text p,.plan-desc,.pd-desc{word-break:auto-phrase;overflow-wrap:break-word}
+.section-body-text,.lead,.about-text p,.about-text,.plan-desc,.pd-desc,.pd-about p,.pd-notes p,.pd-list li,
+.cal-note,.res-top-notes li,.qa-a,.qa-answer,.goods-desc,.sec-lead,.opt-note,.pd-opt-note,.pd-opt-name,
+.kim-cat-desc,.costume-desc,.footer-note{
+  word-break:auto-phrase;      /* 文節単位で折り返す(Chrome 119+) */
+  text-wrap:pretty;            /* 行末に1文字だけ残さない */
+  line-break:strict;           /* 禁則処理を厳格に */
+  overflow-wrap:break-word;
+}
 </style>
 </head>
 <body>

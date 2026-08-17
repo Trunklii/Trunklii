@@ -35,7 +35,7 @@
   function getTier(y,m,d){
     var dow = new Date(y,m,d).getDay();
     var k = dKey(y,m,d);
-    if(dow === 0 || JP_HOLIDAYS[k]) return 'c';
+    if(dow === 0 || JP_HOLIDAYS[k] || TAIAN[k]) return 'c';
     if(dow === 6) return 'b';
     return 'a';
   }

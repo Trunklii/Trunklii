@@ -240,7 +240,14 @@ body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filte
 <style>
 /* JA-WRAP */
 /* 日本語本文は文節単位で折り返す(未対応ブラウザは既定動作) */
-.section-body-text,.lead,.about-text p,.plan-desc,.pd-desc{word-break:auto-phrase;overflow-wrap:break-word}
+.section-body-text,.lead,.about-text p,.about-text,.plan-desc,.pd-desc,.pd-about p,.pd-notes p,.pd-list li,
+.cal-note,.res-top-notes li,.qa-a,.qa-answer,.goods-desc,.sec-lead,.opt-note,.pd-opt-note,.pd-opt-name,
+.kim-cat-desc,.costume-desc,.footer-note{
+  word-break:auto-phrase;      /* 文節単位で折り返す(Chrome 119+) */
+  text-wrap:pretty;            /* 行末に1文字だけ残さない */
+  line-break:strict;           /* 禁則処理を厳格に */
+  overflow-wrap:break-word;
+}
 </style>
 </head>
 <body>
@@ -280,7 +287,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="tier-legend" id="tier-legend">
         <div class="tier-item tier-a"><span class="tier-dot"></span><span class="tier-label">A</span><span class="tier-price">¥6,600</span><span class="tier-days">平日</span></div>
         <div class="tier-item tier-b"><span class="tier-dot"></span><span class="tier-label">B</span><span class="tier-price">¥8,800</span><span class="tier-days">土曜</span></div>
-        <div class="tier-item tier-c"><span class="tier-dot"></span><span class="tier-label">C</span><span class="tier-price">¥9,900</span><span class="tier-days">日曜・祝日</span></div>
+        <div class="tier-item tier-c"><span class="tier-dot"></span><span class="tier-label">C</span><span class="tier-price">¥9,900</span><span class="tier-days">日曜・祝日・大安</span></div>
       </div>
 
       <div class="cal-months" id="cal-months"></div>
@@ -289,7 +296,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="cal-note" id="cal-note-main">定休日：火曜・水曜 / 年末年始（12/28〜1/4）は休業いたします。 / 撮影は完全予約制となっております。</p>
         <p class="cal-note">※A / B / C は753撮影料金の区分です。シーズンや曜日によって撮影料金が変動します。フォトグラファーが撮影いたします。</p>
         <p class="cal-note">※753シーズンや祝日により、定休日が変更となる場合がございます。</p>
-        <p class="cal-note">※祝日・大型連休はC料金となります。</p>
+        <p class="cal-note">※祝日・大安・大型連休はC料金となります。</p>
       </div>
 
       <div class="more-cta">
@@ -386,7 +393,7 @@ function dateKey(y,m,d){ return `${y}-${pad(m+1)}-${pad(d)}`; }
 function getTier(y, m, d){
   const dow = new Date(y, m, d).getDay();
   const key = dateKey(y, m, d);
-  if(dow === 0 || JP_HOLIDAYS.has(key)) return 'c';
+  if(dow === 0 || JP_HOLIDAYS.has(key) || TAIAN.has(key)) return 'c';
   if(dow === 6) return 'b';
   return 'a';
 }

@@ -1051,7 +1051,14 @@ body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filte
 <style>
 /* JA-WRAP */
 /* 日本語本文は文節単位で折り返す(未対応ブラウザは既定動作) */
-.section-body-text,.lead,.about-text p,.plan-desc,.pd-desc{word-break:auto-phrase;overflow-wrap:break-word}
+.section-body-text,.lead,.about-text p,.about-text,.plan-desc,.pd-desc,.pd-about p,.pd-notes p,.pd-list li,
+.cal-note,.res-top-notes li,.qa-a,.qa-answer,.goods-desc,.sec-lead,.opt-note,.pd-opt-note,.pd-opt-name,
+.kim-cat-desc,.costume-desc,.footer-note{
+  word-break:auto-phrase;      /* 文節単位で折り返す(Chrome 119+) */
+  text-wrap:pretty;            /* 行末に1文字だけ残さない */
+  line-break:strict;           /* 禁則処理を厳格に */
+  overflow-wrap:break-word;
+}
 </style>
 </head>
 <body>
@@ -1323,7 +1330,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="cal-top-tiers">
     <div class="cal-top-tier"><span class="cal-top-dot" style="background:#f0c8a0"></span><span class="cal-top-lbl">A</span><span class="cal-top-price">¥6,600</span><span class="cal-top-days">平日</span></div>
     <div class="cal-top-tier"><span class="cal-top-dot" style="background:#b8cfe8"></span><span class="cal-top-lbl">B</span><span class="cal-top-price">¥8,800</span><span class="cal-top-days">土曜</span></div>
-    <div class="cal-top-tier"><span class="cal-top-dot" style="background:#f4b0bc"></span><span class="cal-top-lbl">C</span><span class="cal-top-price">¥9,900</span><span class="cal-top-days">日曜・祝日</span></div>
+    <div class="cal-top-tier"><span class="cal-top-dot" style="background:#f4b0bc"></span><span class="cal-top-lbl">C</span><span class="cal-top-price">¥9,900</span><span class="cal-top-days">日曜・祝日・大安</span></div>
   </div>
   <div class="cal-top-months" id="cal-top-months"></div>
   <p class="cal-top-note">※3ヶ月以降の料金カレンダーはリンク先ページよりご確認ください。</p>
