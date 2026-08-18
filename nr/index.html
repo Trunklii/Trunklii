@@ -1521,7 +1521,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="g-counter" id="g-counter" aria-live="polite">1 / 1</div>
   </div>
   <div class="g-fade" id="g-fade">
-    <button class="g-more" id="g-more" type="button" onclick="galleryMore(30)">View More
+    <button class="g-more" id="g-more" type="button" onclick="galleryMore(20)">View More
       <span class="g-more-count" id="g-more-count"></span>
     </button>
   </div>
@@ -1748,8 +1748,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
     <span class="g-fab-dot"></span>
   </button>
-  <button class="g-fab" id="g-fab-more" type="button" onclick="galleryMore(30)" aria-label="表示を30枚増やす" title="表示を30枚増やす">＋</button>
-  <button class="g-fab" id="g-fab-less" type="button" onclick="galleryMore(-30)" aria-label="表示を30枚減らす" title="表示を30枚減らす">－</button>
+  <button class="g-fab" id="g-fab-more" type="button" onclick="galleryMore(20)" aria-label="表示を20枚増やす" title="表示を20枚増やす">＋</button>
+  <button class="g-fab" id="g-fab-less" type="button" onclick="galleryMore(-20)" aria-label="表示を20枚減らす" title="表示を20枚減らす">－</button>
 </div>
 <div class="g-float" id="k-float">
   <div class="k-tip" id="k-tip" hidden>
@@ -1859,7 +1859,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260817q"></script>
+<script src="../site-data.js?v=20260817r"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
@@ -1977,7 +1977,7 @@ async function init(){
     }, { passive: true });
     updateGalleryCounter();
   })();
-  galleryLimit = 30;
+  galleryLimit = 20;
   applyGalleryLimit();
   buildFloatFilters();
 
@@ -2242,7 +2242,7 @@ function filterGallery(cat, btn){
   const grid = document.getElementById('g-grid');
   if(grid){ grid.scrollLeft = 0; }
   updateGalleryCounter();
-  galleryLimit = 30;      // フィルタ変更で表示枚数をリセット
+  galleryLimit = 20;      // フィルタ変更で表示枚数をリセット
   applyGalleryLimit();
   syncFloatFilters();
   scrollToGalleryTop();   // 絞り込んだら写真エリアの先頭へ
@@ -2320,7 +2320,7 @@ function layoutMasonryGrid(grid){
 let masonryT;
 window.addEventListener('resize', ()=>{ clearTimeout(masonryT); masonryT = setTimeout(layoutMasonry, 150); });
 window.addEventListener('load', layoutMasonry);   // 初期幅確定後に再レイアウト
-let galleryLimit = 30;   // 表示枚数(30枚デフォルト・±30)
+let galleryLimit = 20;   // 表示枚数(30枚デフォルト・±30)
 function applyGalleryLimit(){
   let shown = 0;
   document.querySelectorAll('#g-grid .g-item').forEach(it=>{
@@ -2340,13 +2340,13 @@ function updateGalleryMoreUI(){
   const cnt = document.getElementById('g-more-count');
   if(cnt) cnt.textContent = shown + ' / ' + total + '　（あと ' + rem + ' 枚）';
   const fMore = document.getElementById('g-fab-more'); if(fMore) fMore.disabled = rem <= 0;
-  const fLess = document.getElementById('g-fab-less'); if(fLess) fLess.disabled = galleryLimit <= 30;
+  const fLess = document.getElementById('g-fab-less'); if(fLess) fLess.disabled = galleryLimit <= 20;
 }
 function galleryMore(delta){
   const items = [...document.querySelectorAll('#g-grid .g-item:not(.hidden)')];
   const total = items.length;
   const oldLimit = galleryLimit;
-  const lim = Math.min(Math.max(30, galleryLimit + delta), Math.max(30, total));
+  const lim = Math.min(Math.max(20, galleryLimit + delta), Math.max(20, total));
   galleryLimit = lim;
   if(delta > 0){                       // 追加分をフェードイン
     items.forEach((it,idx)=>{
@@ -3242,7 +3242,7 @@ init();
   }
 })();
 </script>
-  <script src="../patch-index.js?v=20260817q"></script>
+  <script src="../patch-index.js?v=20260817r"></script>
 
   <!-- Maison nr. は予約受付前: 「予約する」導線を Coming Soon ポップアップに -->
   <div id="nr-cs" class="nr-cs" hidden aria-hidden="true">
