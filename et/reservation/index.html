@@ -474,11 +474,11 @@ mark.search-hl{background:none;color:var(--accent);font-weight:400}
 .qa-item.open .qa-a{max-height:2400px;padding:0 0 1.4rem 1.7rem}
 /* Q&A カテゴリ(展開メニュー) */
 .qa-cat{border-bottom:1px solid var(--border)}
-.qa-cat-head{display:flex;align-items:center;gap:.8rem;width:100%;padding:1.5rem 0;background:none;border:none;cursor:pointer;text-align:left;color:var(--ink)}
+.qa-cat-head{display:flex;align-items:center;gap:.8rem;width:100%;padding:1.5rem 0;background:none;border:none;cursor:pointer;text-align:left;color:#4c463f}
 .qa-cat-num{font-family:var(--display);font-style:normal;font-size:1.35rem;line-height:1;letter-spacing:.04em;color:var(--accent);font-variant-numeric:lining-nums}
-.qa-cat-title{flex:1;font-family:var(--sans);font-weight:400;font-size:1.06rem;letter-spacing:.05em}
+.qa-cat-title{flex:1;font-family:var(--sans);font-weight:400;font-size:1.06rem;letter-spacing:.05em;color:#4c463f}
 .qa-cat-count{font-family:var(--display);font-style:normal;font-size:.72rem;color:var(--mid);font-variant-numeric:lining-nums}
-.qa-cat-toggle{font-size:1rem;color:var(--ink);transition:transform .3s;flex-shrink:0}
+.qa-cat-toggle{font-size:1rem;color:#8d857b;transition:transform .3s;flex-shrink:0}
 .qa-cat.open .qa-cat-toggle{transform:rotate(45deg)}
 .qa-cat-body{display:none;padding:0 0 1.2rem}
 .qa-cat.open .qa-cat-body{display:block}
@@ -908,7 +908,7 @@ function renderPage(d){
 }
 </script>
 
-<script src="../../site-data.js?v=20260817u"></script>
+<script src="../../site-data.js?v=20260817v"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 const PAGE_KEY = (location.pathname.match(/\/(plans|calendar|reservation|cancel-policy|recruit)\//) || [,''])[1];
