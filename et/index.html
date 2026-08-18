@@ -504,6 +504,8 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 
 .section-body-text{font-family:var(--serif);font-weight:300;font-size:.9rem;color:var(--mid);line-height:2.1;white-space:pre-line;margin-bottom:2.5rem}
 @media(max-width:600px){.section-body-text{font-size:.74rem;line-height:1.9;margin-bottom:2rem}}
+/* SECTION-LEAD: セクション説明文は段落を中央、各行は左揃え */
+.section-body-text{width:fit-content;max-width:100%;margin-left:auto!important;margin-right:auto!important;text-align:left!important}
 
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,7vw,8rem);align-items:center}
@@ -1732,7 +1734,7 @@ document.querySelectorAll('.movie-item').forEach((btn)=>{
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260817x"></script>
+<script src="../site-data.js?v=20260817y"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
@@ -3066,7 +3068,7 @@ init();
   }
 })();
 </script>
-  <script src="../patch-index.js?v=20260817x"></script>
+  <script src="../patch-index.js?v=20260817y"></script>
 
   <!-- Maison nr. は予約受付前: nr. の「予約する」導線を Coming Soon ポップアップに(et. の予約は温存) -->
   <div id="nr-cs" class="nr-cs" hidden aria-hidden="true">

@@ -363,6 +363,8 @@ mark.search-hl{background:none;color:var(--accent);font-weight:400}
 .coming-banner{font-family:var(--display);font-style:normal;font-size:.85rem;letter-spacing:.08em;color:var(--accent);border:1px solid rgba(184,147,90,.25);padding:.75rem 1.5rem;margin-bottom:2rem;text-align:center}
 
 .section-body-text{font-family:var(--serif);font-weight:300;font-size:.9rem;color:var(--mid);line-height:2.1;white-space:pre-line;margin-bottom:2.5rem}
+/* SECTION-LEAD: セクション説明文は段落を中央、各行は左揃え */
+.section-body-text{width:fit-content;max-width:100%;margin-left:auto!important;margin-right:auto!important;text-align:left!important}
 
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,7vw,8rem);align-items:center}
@@ -909,7 +911,7 @@ function renderPage(d){
 }
 </script>
 
-<script src="../../site-data.js?v=20260817x"></script>
+<script src="../../site-data.js?v=20260817y"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 const PAGE_KEY = (location.pathname.match(/\/(plans|calendar|reservation|cancel-policy|recruit)\//) || [,''])[1];

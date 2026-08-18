@@ -59,6 +59,8 @@ a{color:inherit}
 .sec-title{font-family:var(--display);font-weight:300;font-style:normal;font-size:clamp(1.45rem,3.6vw,2.4rem);letter-spacing:.05em}
 .sec-rule{flex:1;height:1px;background:var(--border);min-width:20px}
 .section-body-text{font-family:var(--serif);font-weight:300;font-size:.9rem;color:var(--mid);line-height:2.1;white-space:pre-line;margin-bottom:2.5rem}
+/* SECTION-LEAD: セクション説明文は段落を中央、各行は左揃え */
+.section-body-text{width:fit-content;max-width:100%;margin-left:auto!important;margin-right:auto!important;text-align:left!important}
 .btn-line{display:inline-block;font-family:var(--sans);font-weight:400;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:.85rem 2rem;text-decoration:none;transition:all .3s}
 .btn-line:hover{background:var(--ink);color:#fff}
 .more-cta{display:flex;justify-content:center;margin-top:3rem}
@@ -476,7 +478,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260817x"></script>
+<script src="../site-data.js?v=20260817y"></script>
 <script>
 (function(){
   var KEY = location.pathname.indexOf('/nr/') !== -1 ? 'nr' : 'et';
@@ -501,7 +503,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 })();
 </script>
-<script src="../patch-index.js?v=20260817x"></script>
+<script src="../patch-index.js?v=20260817y"></script>
 <script>
 // 予約する › 展開メニュー(TOPページと同仕様)
 function toggleHdrBook(e){
