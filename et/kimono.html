@@ -66,11 +66,11 @@ a{color:inherit}
 /* ─── Nav ─── */
 .nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid rgba(17,16,16,.12)}
 .nav-top{display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:0 clamp(1rem,3vw,2.5rem);height:64px;gap:1rem}
-.back-link{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:.55rem .9rem;border:1px solid var(--ink);transition:background .2s,color .2s}
+.back-link{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-weight:400;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:.55rem .9rem;border:1px solid var(--ink);transition:background .2s,color .2s}
 .back-link:hover{background:var(--ink);color:#fff}
 .nav-brand{font-family:var(--display);font-style:normal;font-weight:300;font-size:1.1rem;letter-spacing:.04em;text-align:center}
 .nav-brand .b-mark{color:var(--accent);font-style:normal;font-weight:400}
-.nav-right .booking-btn{display:inline-flex;align-items:center;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:#fff;text-decoration:none;padding:.6rem 1.1rem;transition:background .25s}
+.nav-right .booking-btn{display:inline-flex;align-items:center;font-family:var(--sans);font-weight:400;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:#fff;text-decoration:none;padding:.6rem 1.1rem;transition:background .25s}
 .nav-right .booking-btn:hover{background:var(--accent)}
 
 main{padding-top:64px}
@@ -88,7 +88,7 @@ main{padding-top:64px}
 .plan-price{font-family:var(--display);font-weight:400;font-style:normal;font-size:1.45rem;color:var(--accent);margin-bottom:.9rem;transition:color .35s}
 .plan-desc{font-family:var(--serif);font-size:.8rem;color:var(--mid);line-height:1.95;margin-bottom:1rem;flex:1;transition:color .35s}
 .plan-meta{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin-bottom:1rem;transition:color .35s}
-.plan-cta{font-family:var(--sans);font-weight:500;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-top:auto;align-self:flex-start;padding-bottom:.3rem;border-bottom:1px solid var(--ink);transition:color .35s,border-color .35s}
+.plan-cta{font-family:var(--sans);font-weight:400;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-top:auto;align-self:flex-start;padding-bottom:.3rem;border-bottom:1px solid var(--ink);transition:color .35s,border-color .35s}
 .plan-card:hover .plan-name,.plan-card:hover .plan-desc,.plan-card:hover .plan-meta{color:rgba(255,255,255,.75)}
 .plan-card:hover .plan-cta{color:#fff;border-bottom-color:#fff}
 .plan-card.soon{pointer-events:none;opacity:.7}
@@ -122,7 +122,7 @@ footer{border-top:1px solid var(--border);background:#fff;color:var(--mid);paddi
 <style>
 /* ブランド予約ボタン(et./nr.ペア) — RESERVATIONシートと同デザイン */
 .bb-btns{display:flex;gap:.6rem;flex-wrap:wrap}
-.bb-btn{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;gap:.6em;background:#111010;color:#fff;text-decoration:none;padding:.35rem .4rem;font-family:var(--sans);font-weight:500;font-size:.62rem;letter-spacing:.12em;transition:opacity .2s}
+.bb-btn{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;gap:.6em;background:#111010;color:#fff;text-decoration:none;padding:.35rem .4rem;font-family:var(--sans);font-weight:400;font-size:.62rem;letter-spacing:.12em;transition:opacity .2s}
 .bb-btn:hover{opacity:.85}
 .bb-btn.bb-nr{background:#1C0909;color:#f0ead8}
 .bb-logo{display:block;height:2.4em;background:currentColor;flex-shrink:0}
@@ -151,7 +151,7 @@ footer{border-top:1px solid var(--border);background:#fff;color:var(--mid);paddi
 .icon-btn[data-brand]::after{content:attr(data-brand);position:absolute;bottom:1px;right:2px;font-family:var(--display);font-style:normal;font-size:.5rem;line-height:1;pointer-events:none;opacity:.85}
 .nav-right{display:flex;align-items:center;gap:.5rem}
 .hdr-book-wrap{position:relative}
-.hdr-book-toggle{display:flex;align-items:center;gap:.5em;height:36px;padding:0 .95rem;border:1px solid #111010;background:#111010;color:#fff;font-family:var(--sans);font-weight:500;font-size:.62rem;letter-spacing:.08em;cursor:pointer;transition:opacity .2s;white-space:nowrap}
+.hdr-book-toggle{display:flex;align-items:center;gap:.5em;height:36px;padding:0 .95rem;border:1px solid #111010;background:#111010;color:#fff;font-family:var(--sans);font-weight:400;font-size:.62rem;letter-spacing:.08em;cursor:pointer;transition:opacity .2s;white-space:nowrap}
 .hdr-book-toggle:hover{opacity:.8}
 .hdr-book-chev{font-size:1.2em;line-height:1;font-weight:300}
 .hdr-book-menu{position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid rgba(17,16,16,.15);box-shadow:0 10px 30px rgba(17,16,16,.15);padding:.6rem;display:flex;flex-direction:column;gap:.5rem;width:220px;z-index:300}
@@ -184,7 +184,7 @@ body.sheet-open .float-book,body.sheet-open .to-top-btn,body.sheet-open .brand-h
 .book-sheet-close{position:absolute;top:.8rem;right:.9rem;background:none;border:none;font-size:1.05rem;cursor:pointer;color:#111010;padding:.3rem;line-height:1}
 .book-sheet-title{font-family:var(--sans);font-weight:400;font-size:.92rem;letter-spacing:.16em;text-transform:uppercase;color:#111010}
 .book-sheet-btns{display:flex;gap:.6rem;margin-top:.8rem}
-.book-sheet-btn{display:flex;align-items:center;justify-content:center;gap:.6em;flex:1;background:#111010;color:#fff;border:1px solid #111010;font-family:var(--sans);font-weight:500;font-size:.62rem;letter-spacing:.12em;padding:.35rem .4rem;text-decoration:none;transition:background .2s}
+.book-sheet-btn{display:flex;align-items:center;justify-content:center;gap:.6em;flex:1;background:#111010;color:#fff;border:1px solid #111010;font-family:var(--sans);font-weight:400;font-size:.62rem;letter-spacing:.12em;padding:.35rem .4rem;text-decoration:none;transition:background .2s}
 .book-sheet-btn:hover{background:#2b2929}
 .book-sheet-btn.bs-nr{background:#1C0909;border-color:#1C0909;color:#f0ead8}
 .book-sheet-btn.bs-nr .bs-cta{border-color:rgba(240,234,216,.45)}
@@ -215,7 +215,7 @@ body.sheet-open .qa-bot-toggle{opacity:0!important;pointer-events:none!important
 </style>
 <style>
 /* B'（デザイナー提案）: 英数=Cormorant / 日本語見出し=Noto Serif JP / 本文=Noto Sans JP。数字はライニング数字で高さ・ベースラインを揃える */
-.sec-num{font-family:var(--display);font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0;letter-spacing:.1em;font-size:1.05rem;font-weight:500;align-self:baseline}
+.sec-num{font-family:var(--display);font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0;letter-spacing:.1em;font-size:1.05rem;font-weight:400;align-self:baseline}
 .sec-title,.hero-name,.plan-price,.item-price,.price,.qa-q-mark,.flow-num,.cta-en,.cal-top-price,.res-top-mark,.subsec-mark{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0}
 </style>
 <style>
@@ -397,6 +397,7 @@ body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filte
 /* 一覧のカードはTOP用の枠(薄いベージュ背景・内側余白)を使わない */
 #kimono-grid .kim-item.kim-cat{background:none!important;padding:0!important;border:none!important;box-shadow:none!important}
 </style>
+<style>/* NO-BOLD: サイト全体でボールドを使わない */ strong,b{font-weight:400}</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -475,7 +476,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260817s"></script>
+<script src="../site-data.js?v=20260817t"></script>
 <script>
 (function(){
   var KEY = location.pathname.indexOf('/nr/') !== -1 ? 'nr' : 'et';
@@ -500,7 +501,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 })();
 </script>
-<script src="../patch-index.js?v=20260817s"></script>
+<script src="../patch-index.js?v=20260817t"></script>
 <script>
 // 予約する › 展開メニュー(TOPページと同仕様)
 function toggleHdrBook(e){

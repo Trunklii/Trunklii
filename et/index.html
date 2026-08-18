@@ -350,7 +350,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:3
 .search-result-thumb{width:52px;height:52px;object-fit:cover;border-radius:8px;flex-shrink:0;background:#efe9e0}
 .search-result-txt{min-width:0;flex:1}
 .sr-count{font-family:var(--sans);font-size:.6rem;color:var(--mid);letter-spacing:.05em;margin-left:.35em}
-mark.search-hl{background:none;color:var(--accent);font-weight:700}
+mark.search-hl{background:none;color:var(--accent);font-weight:400}
 .search-empty{text-align:center;padding:3rem 1rem;color:var(--mid);font-family:var(--display);font-style:normal;font-size:1rem}
 
 /* ═══ Q&A BOT ═══ */
@@ -686,7 +686,7 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .qa-cat{border-bottom:1px solid var(--border)}
 .qa-cat-head{display:flex;align-items:center;gap:.8rem;width:100%;padding:1.5rem 0;background:none;border:none;cursor:pointer;text-align:left;color:var(--ink)}
 .qa-cat-num{font-family:var(--display);font-style:normal;font-size:.8rem;letter-spacing:.06em;color:var(--accent);font-variant-numeric:lining-nums}
-.qa-cat-title{flex:1;font-family:var(--sans);font-weight:500;font-size:.95rem;letter-spacing:.04em}
+.qa-cat-title{flex:1;font-family:var(--sans);font-weight:400;font-size:.95rem;letter-spacing:.04em}
 .qa-cat-count{font-family:var(--display);font-style:normal;font-size:.72rem;color:var(--mid);font-variant-numeric:lining-nums}
 .qa-cat-toggle{font-size:1rem;color:var(--ink);transition:transform .3s;flex-shrink:0}
 .qa-cat.open .qa-cat-toggle{transform:rotate(45deg)}
@@ -1095,6 +1095,7 @@ body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filte
   overflow-wrap:break-word;
 }
 </style>
+<style>/* NO-BOLD: サイト全体でボールドを使わない */ strong,b{font-weight:400}</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -1730,7 +1731,7 @@ document.querySelectorAll('.movie-item').forEach((btn)=>{
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260817s"></script>
+<script src="../site-data.js?v=20260817t"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
@@ -3064,7 +3065,7 @@ init();
   }
 })();
 </script>
-  <script src="../patch-index.js?v=20260817s"></script>
+  <script src="../patch-index.js?v=20260817t"></script>
 
   <!-- Maison nr. は予約受付前: nr. の「予約する」導線を Coming Soon ポップアップに(et. の予約は温存) -->
   <div id="nr-cs" class="nr-cs" hidden aria-hidden="true">
