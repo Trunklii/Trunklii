@@ -206,8 +206,38 @@
         + '<div class="kim-mini-cap"><span class="kim-mini-en">' + c.sub + '</span><span class="kim-mini-jp">' + c.jp + '</span>' + count + '</div>'
       + '</a>';
     }
+    // TOPで絞り込み中は、その分類の着物をすべて表示する(1着=1枚)
+    function itemCardHtml(c, it){
+      var f = it.file || '';
+      return '<a class="kim-cat kim-mini" href="kimono.html#' + c.key + '"'
+        + ' data-cat="' + c.key + '" data-group="' + c.group + '" data-gender="' + (c.gender||'') + '" data-title="' + c.jp + '">'
+        + '<div class="kim-mini-img" style="background-image:url(\'' + f + '\')"></div>'
+        + '<div class="kim-mini-cap"><span class="kim-mini-en">' + c.sub + '</span><span class="kim-mini-jp">' + c.jp + '</span></div>'
+      + '</a>';
+    }
+    function topGroupHtml(g, cards){
+      return '<div class="kim-group" data-group="' + g.key + '">'
+        + '<div class="kim-group-head"><span class="kim-group-en">' + g.en + '</span><h3 class="kim-group-jp">' + g.label + '</h3></div>'
+        + '<div class="kim-group-cards">' + cards + '</div>'
+      + '</div>';
+    }
     // TOPは「スタジオ撮影着物」のみ表示(お詣り着物は一覧ページ kimono.html に掲載)
     var groups = isFull ? GROUPS : GROUPS.filter(function(g){ return g.key === 'studio'; });
+    if(!isFull){
+      // 絞り込みの選択に応じてTOPのグリッドを描き直す
+      window.__kimRenderTop = function(sel){
+        container.innerHTML = groups.map(function(g){
+          var inCats = CATS.filter(function(c){ return c.group === g.key; });
+          var cards = (sel && sel.length)
+            ? inCats.filter(function(c){ return sel.indexOf(c.jp) !== -1; })
+                    .map(function(c){
+                      return (byCat[c.key] || []).map(function(it){ return itemCardHtml(c, it); }).join('');
+                    }).join('')
+            : inCats.map(miniCardHtml).join('');
+          return cards ? topGroupHtml(g, cards) : '';
+        }).join('');
+      };
+    }
     container.innerHTML = groups.map(function(g){
       var inCats = CATS.filter(function(c){ return c.group === g.key; });
       // 一覧はカテゴリごとのサブセクション(見出しは上部に追従)
@@ -395,6 +425,13 @@
     var sel = Array.prototype.slice.call(bar.querySelectorAll('.kim-filter-btn.active'))
       .map(function(b){ return b.getAttribute('data-title'); })
       .filter(function(t){ return t && t !== 'all'; });
+    var kimGrid = document.getElementById('kimono-grid');
+    if(kimGrid && kimGrid.getAttribute('data-full') !== '1' && typeof window.__kimRenderTop === 'function'){
+      window.__kimRenderTop(sel);            // TOPは対象の着物をすべて描き直す
+      if(typeof window.syncKimFloat === 'function') window.syncKimFloat();
+      scrollToKimonoTop();
+      return;
+    }
     Array.prototype.forEach.call(document.querySelectorAll('#kimono-grid .kim-cat'), function(card){
       var show = sel.length === 0 || sel.indexOf(card.getAttribute('data-title')) !== -1;
       card.style.display = show ? '' : 'none';
