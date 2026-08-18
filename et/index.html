@@ -673,7 +673,7 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
   font-family:var(--sans);font-weight:400;font-size:.92rem;
   letter-spacing:.02em;color:var(--ink);text-align:left;
 }
-.qa-q-mark{color:var(--accent);font-family:var(--display);font-style:normal;font-size:1.1rem;margin-right:.3rem}
+.qa-q-mark{color:var(--accent);font-family:var(--display);font-style:normal;font-size:1.1rem;margin-right:0}
 .qa-q-text{flex:1}
 .qa-toggle{font-size:1rem;color:var(--ink);transition:transform .3s;flex-shrink:0;margin-top:.1rem}
 .qa-item.open .qa-toggle{transform:rotate(45deg)}
@@ -685,7 +685,7 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 /* Q&A カテゴリ(展開メニュー) */
 .qa-cat{border-bottom:1px solid var(--border)}
 .qa-cat-head{display:flex;align-items:center;gap:.8rem;width:100%;padding:1.5rem 0;background:none;border:none;cursor:pointer;text-align:left;color:#4c463f}
-.qa-cat-num{font-family:var(--display);font-style:normal;font-size:.8rem;letter-spacing:.06em;color:var(--accent);font-variant-numeric:lining-nums}
+.qa-cat-num{font-family:var(--display);font-style:normal;font-size:1.18rem;line-height:1;letter-spacing:.04em;color:var(--accent);font-variant-numeric:lining-nums}
 .qa-cat-title{flex:1;font-family:var(--sans);font-weight:400;font-size:.95rem;letter-spacing:.04em;color:#4c463f}
 .qa-cat-count{font-family:var(--display);font-style:normal;font-size:.72rem;color:var(--mid);font-variant-numeric:lining-nums}
 .qa-cat-toggle{font-size:1rem;color:#8d857b;transition:transform .3s;flex-shrink:0}
@@ -694,8 +694,8 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .qa-cat.open .qa-cat-body{display:block}
 .qa-cat-body .qa-item:first-child{border-top:1px solid var(--border)}
 .qa-cat-body .qa-item:last-child{border-bottom:none}
-.qa-cat-body .qa-q{padding:1.1rem 0;font-size:.88rem}
-.qa-cat-body .qa-item{padding-left:.5em}   /* カテゴリより半角1つ分インデント */
+.qa-cat-body .qa-q{padding:1.1rem 0;font-size:.88rem;gap:.45rem}
+.qa-cat-body .qa-item{padding-left:1.4em}   /* カテゴリより字下げ */
 .qa-a a,.qa-msg-bot a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px}
 .qa-a a:hover,.qa-msg-bot a:hover{color:var(--ink);border-bottom-color:var(--ink)}
 
@@ -1732,7 +1732,7 @@ document.querySelectorAll('.movie-item').forEach((btn)=>{
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260817w"></script>
+<script src="../site-data.js?v=20260817x"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
@@ -3066,7 +3066,7 @@ init();
   }
 })();
 </script>
-  <script src="../patch-index.js?v=20260817w"></script>
+  <script src="../patch-index.js?v=20260817x"></script>
 
   <!-- Maison nr. は予約受付前: nr. の「予約する」導線を Coming Soon ポップアップに(et. の予約は温存) -->
   <div id="nr-cs" class="nr-cs" hidden aria-hidden="true">
