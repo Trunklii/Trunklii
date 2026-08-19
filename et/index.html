@@ -1377,12 +1377,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .movie-play{position:absolute;inset:0;margin:auto;width:62px;height:62px;border-radius:50%;background:rgba(17,16,16,.5);transition:background .25s}
 .movie-play::after{content:'';position:absolute;left:50%;top:50%;transform:translate(-38%,-50%);border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent #fff}
 .movie-item:hover .movie-play{background:rgba(17,16,16,.78)}
-.movie-title{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:translateY(-14%);pointer-events:none;color:#fff;text-align:center;text-shadow:0 1px 14px rgba(0,0,0,.35);z-index:1}
-.movie-title .mt-sub{font-family:var(--sans);font-weight:400;font-size:.55rem;letter-spacing:.32em;text-transform:uppercase;opacity:.9;margin-bottom:.15em}
-.movie-title .mt-main{font-family:var(--display);font-weight:400;font-size:clamp(1.5rem,2.6vw,2.3rem);letter-spacing:.06em;line-height:1.1}
-.movie-item .movie-play{z-index:2;transform:translateY(34%);width:52px;height:52px}
+/* タイトル＋再生ボタンを一体のブロックとして配置。位置は .movie-item の data-pos で写真ごとに指定 */
+.movie-cap{position:absolute;display:flex;flex-direction:column;align-items:center;gap:.7rem;pointer-events:none;color:#fff;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,.55),0 2px 18px rgba(0,0,0,.45);z-index:2}
+/* 明るい背景でも読めるよう角に薄い墨のグラデーション（写真ごとの data-pos に追従） */
+.movie-item::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse at var(--cx,50%) var(--cy,50%), rgba(17,16,16,.42) 0%, rgba(17,16,16,.18) 32%, rgba(17,16,16,0) 60%)}
+.movie-item[data-pos="right-bottom"]{--cx:88%;--cy:88%}
+.movie-item[data-pos="right-top"]{--cx:88%;--cy:16%}
+.movie-item[data-pos="left-top"]{--cx:12%;--cy:16%}
+.movie-item[data-pos="left-bottom"]{--cx:12%;--cy:88%}
+.movie-cap .mt-sub{font-family:var(--sans);font-weight:400;font-size:.55rem;letter-spacing:.32em;text-transform:uppercase;opacity:.92}
+.movie-cap .mt-main{font-family:var(--display);font-weight:400;font-size:clamp(1.4rem,2.4vw,2.1rem);letter-spacing:.06em;line-height:1.1;margin-top:.1em}
+.movie-cap .movie-play{position:relative;inset:auto;margin:0;width:48px;height:48px;pointer-events:none;transform:none}
+.movie-item[data-pos="right-bottom"] .movie-cap{right:6%;bottom:9%;align-items:flex-end;text-align:right}
+.movie-item[data-pos="right-top"] .movie-cap{right:6%;top:9%;align-items:flex-end;text-align:right}
+.movie-item[data-pos="left-top"] .movie-cap{left:6%;top:9%;align-items:flex-start;text-align:left}
+.movie-item[data-pos="left-bottom"] .movie-cap{left:6%;bottom:9%;align-items:flex-start;text-align:left}
+.movie-item[data-pos="center"] .movie-cap{left:50%;top:50%;transform:translate(-50%,-50%)}
 .movie-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000}
 .movie-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.movie-tap{position:absolute;inset:0;z-index:2;cursor:pointer}
 .movie-notes{list-style:none;margin-top:2.2rem}
 .movie-notes li{display:flex;gap:.85rem;padding:.9rem 0;border-bottom:1px solid var(--border);font-family:var(--serif);font-weight:300;font-size:.88rem;line-height:1.9}
 .movie-notes li:first-child{border-top:1px solid var(--border)}
@@ -1397,20 +1410,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 可愛い姿をありのまま形にできる、お子様が主役の et. オリジナルムービーです。
 写真には残しきれない撮影の裏側や愛情溢れる家族との触れ合いを、表情・仕草・声とともに特別な映像で残せます。</p>
   <div class="movie-grid">
-    <button type="button" class="movie-item" data-vid="-2go9yCA2yQ" aria-label="動画を再生">
-      <img src="https://i.ytimg.com/vi/-2go9yCA2yQ/maxres1.jpg" alt="et.movie 1歳バースデー" loading="lazy"/>
-      <span class="movie-title"><span class="mt-sub">et.movie</span><span class="mt-main">1st Birthday</span></span>
-      <span class="movie-play" aria-hidden="true"></span>
+    <button type="button" class="movie-item" data-vid="-2go9yCA2yQ" data-pos="right-bottom" aria-label="動画を再生">
+      <img src="et-movie-1st-birthday.jpg" alt="et.movie 1歳バースデー" loading="lazy"/>
+      <span class="movie-cap"><span class="mt-sub">et.movie</span><span class="mt-main">1st Birthday</span><span class="movie-play" aria-hidden="true"></span></span>
     </button>
-    <button type="button" class="movie-item" data-vid="o5a1GeXy6Vo" aria-label="動画を再生">
-      <img src="https://i.ytimg.com/vi/o5a1GeXy6Vo/maxres1.jpg" alt="et.movie 3歳女の子 753②" loading="lazy"/>
-      <span class="movie-title"><span class="mt-sub">et.movie</span><span class="mt-main">753</span></span>
-      <span class="movie-play" aria-hidden="true"></span>
+    <button type="button" class="movie-item" data-vid="o5a1GeXy6Vo" data-pos="right-top" aria-label="動画を再生">
+      <img src="et-movie-753-01.jpg" alt="et.movie 3歳女の子 753" loading="lazy"/>
+      <span class="movie-cap"><span class="mt-sub">et.movie</span><span class="mt-main">753</span><span class="movie-play" aria-hidden="true"></span></span>
     </button>
-    <button type="button" class="movie-item" data-vid="Rl0hZJb5F_o" aria-label="動画を再生">
-      <img src="https://i.ytimg.com/vi/Rl0hZJb5F_o/maxres3.jpg" alt="et.movie 3歳女の子 753①" loading="lazy"/>
-      <span class="movie-title"><span class="mt-sub">et.movie</span><span class="mt-main">753</span></span>
-      <span class="movie-play" aria-hidden="true"></span>
+    <button type="button" class="movie-item" data-vid="Rl0hZJb5F_o" data-pos="left-top" aria-label="動画を再生">
+      <img src="et-movie-753-02.jpg" alt="et.movie 3歳女の子 753 家族" loading="lazy"/>
+      <span class="movie-cap"><span class="mt-sub">et.movie</span><span class="mt-main">753</span><span class="movie-play" aria-hidden="true"></span></span>
     </button>
   </div>
   <ul class="movie-notes">
@@ -1425,19 +1435,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 <script>
-document.querySelectorAll('.movie-item').forEach((btn)=>{
-  btn.addEventListener('click', ()=>{
-    const wrap = document.createElement('div');
-    wrap.className = 'movie-frame';
-    const f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + btn.dataset.vid + '?rel=0&autoplay=1&playsinline=1&controls=0&fs=0&iv_load_policy=3&disablekb=1';
-    f.title = 'et.movie';
-    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-    f.allowFullscreen = true;
-    wrap.appendChild(f);
-    btn.replaceWith(wrap);
+(function(){
+  let apiReady = false, queue = [];
+  window.onYouTubeIframeAPIReady = function(){ apiReady = true; queue.forEach(fn=>fn()); queue = []; };
+  function loadApi(){
+    if (window.YT && window.YT.Player) { apiReady = true; return; }
+    if (document.getElementById('yt-iframe-api')) return;
+    const t = document.createElement('script'); t.id = 'yt-iframe-api'; t.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(t);
+  }
+  loadApi();
+  document.querySelectorAll('.movie-item').forEach((btn)=>{
+    btn.addEventListener('click', ()=>{
+      const wrap = document.createElement('div');
+      wrap.className = 'movie-frame';
+      const host = document.createElement('div');
+      const tap = document.createElement('div');   // 動画上の透明レイヤー: タップで再生/一時停止
+      tap.className = 'movie-tap';
+      wrap.appendChild(host); wrap.appendChild(tap);
+      btn.replaceWith(wrap);
+      const start = ()=>{
+        const player = new YT.Player(host, {
+          host: 'https://www.youtube-nocookie.com',
+          videoId: btn.dataset.vid,
+          playerVars: { autoplay:1, playsinline:1, controls:0, rel:0, fs:0, iv_load_policy:3, disablekb:1, modestbranding:1 },
+          events: { onReady: (e)=>{ e.target.playVideo(); } }
+        });
+        tap.addEventListener('click', ()=>{
+          const st = player.getPlayerState && player.getPlayerState();
+          if (st === 1) player.pauseVideo(); else player.playVideo();
+        });
+      };
+      if (apiReady) start(); else queue.push(start);
+    });
   });
-});
+})();
 </script>
 </section>
 
