@@ -403,7 +403,7 @@ function buildFooter(){
   const g = window.SITE_DATA.global;
   return `
 <footer>
-  <a href="${ROOT}" class="footer-logo">${(g.brandName||'Trunklii').toUpperCase()}</a>
+  <a href="${ROOT}" class="footer-logo">${(g.brandName||'Trunklii')}</a>
   <ul class="footer-links">
     <li><a href="${BASE}#about">About</a></li>
     <li><a href="${BASE}#flow">Flow</a></li>

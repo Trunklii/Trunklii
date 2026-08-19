@@ -914,7 +914,7 @@ function renderPage(d){
 }
 </script>
 
-<script src="../../site-data.js?v=20260817z"></script>
+<script src="../../site-data.js?v=20260818a"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 const PAGE_KEY = (location.pathname.match(/\/(plans|calendar|reservation|cancel-policy|recruit)\//) || [,''])[1];
@@ -987,7 +987,7 @@ async function init(){
 
   // Footer
   document.getElementById('footer-copy').textContent = g.copyright;
-  document.getElementById('footer-logo').textContent = g.brandName.toUpperCase();
+  document.getElementById('footer-logo').textContent = g.brandName;
 
   // Fix relative links + build search index
   fixLinks();
