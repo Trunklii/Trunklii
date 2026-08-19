@@ -1393,12 +1393,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .movie-item[data-pos="left-top"] .movie-cap{left:6%;top:9%;align-items:flex-start;text-align:left}
 .movie-item[data-pos="left-bottom"] .movie-cap{left:6%;bottom:9%;align-items:flex-start;text-align:left}
 .movie-item[data-pos="center"] .movie-cap{left:50%;top:50%;transform:translate(-50%,-50%)}
-.movie-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000}
-.movie-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.movie-tap{position:absolute;inset:0;z-index:2;cursor:pointer}
-/* YouTube が再生中に出すタイトルバー（上部・消せない仕様）を覆い隠す */
-.movie-frame::before{content:"";position:absolute;left:0;right:0;top:0;height:22%;z-index:3;pointer-events:none;background:linear-gradient(to bottom, rgba(248,246,242,1) 0%, rgba(248,246,242,1) 78%, rgba(248,246,242,0) 100%);opacity:1;transition:opacity .4s}
-.movie-frame.is-playing::before{opacity:0}
+.movie-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer}
+.movie-frame video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;background:#000}
+/* 自前の最小コントロール: 再生中は非表示、一時停止中・ホバー時に薄く表示 */
+.movie-ui{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;align-items:center;gap:.8rem;padding:.9rem 1rem 1rem;background:linear-gradient(to top,rgba(0,0,0,.45),rgba(0,0,0,0));opacity:0;transition:opacity .3s;pointer-events:none}
+.movie-frame:hover .movie-ui,.movie-frame.paused .movie-ui,.movie-frame.touch .movie-ui{opacity:1;pointer-events:auto}
+.movie-ui button{appearance:none;border:0;background:none;color:#fff;font-family:var(--sans);font-size:.7rem;letter-spacing:.08em;cursor:pointer;padding:.2rem .4rem;opacity:.9}
+.movie-ui .mv-toggle{width:30px;height:30px;border-radius:50%;background:rgba(17,16,16,.55);position:relative;flex-shrink:0}
+.movie-ui .mv-toggle::after{content:'';position:absolute;left:50%;top:50%;transform:translate(-38%,-50%);border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent #fff}
+.movie-frame:not(.paused) .movie-ui .mv-toggle::after{border:0;width:8px;height:10px;transform:translate(-50%,-50%);border-left:3px solid #fff;border-right:3px solid #fff;border-radius:0}
+.movie-ui .mv-bar{flex:1;height:3px;background:rgba(255,255,255,.3);border-radius:2px;overflow:hidden;cursor:pointer}
+.movie-ui .mv-bar i{display:block;height:100%;width:0;background:#fff;border-radius:2px}
+.movie-ui .mv-close{margin-left:.2rem}
+.movie-frame.paused::after{content:'';position:absolute;inset:0;margin:auto;width:62px;height:62px;border-radius:50%;background:rgba(17,16,16,.5);z-index:1;pointer-events:none}
+.movie-frame.paused::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-38%,-50%);border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent #fff;z-index:2;pointer-events:none}
 .movie-notes{list-style:none;margin-top:2.2rem}
 .movie-notes li{display:flex;gap:.85rem;padding:.9rem 0;border-bottom:1px solid var(--border);font-family:var(--serif);font-weight:300;font-size:.88rem;line-height:1.9}
 .movie-notes li:first-child{border-top:1px solid var(--border)}
@@ -1413,15 +1421,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 可愛い姿をありのまま形にできる、お子様が主役の et. オリジナルムービーです。
 写真には残しきれない撮影の裏側や愛情溢れる家族との触れ合いを、表情・仕草・声とともに特別な映像で残せます。</p>
   <div class="movie-grid">
-    <button type="button" class="movie-item" data-vid="-2go9yCA2yQ" data-pos="right-bottom" aria-label="動画を再生">
+    <button type="button" class="movie-item" data-src="https://pub-faf8f82565a343d7888635e6d7505041.r2.dev/et-movie-1st-birthday.mp4" data-pos="right-bottom" aria-label="動画を再生">
       <img src="et-movie-1st-birthday.jpg" alt="et.movie 1歳バースデー" loading="lazy"/>
       <span class="movie-cap"><span class="mt-sub">et.movie</span><span class="mt-main">1st Birthday</span><span class="movie-play" aria-hidden="true"></span></span>
     </button>
-    <button type="button" class="movie-item" data-vid="o5a1GeXy6Vo" data-pos="right-bottom" aria-label="動画を再生">
+    <button type="button" class="movie-item" data-src="https://pub-faf8f82565a343d7888635e6d7505041.r2.dev/et-movie-753-01.mp4" data-pos="right-bottom" aria-label="動画を再生">
       <img src="et-movie-753-01.jpg" alt="et.movie 3歳女の子 753" loading="lazy"/>
       <span class="movie-cap"><span class="mt-sub">et.movie</span><span class="mt-main">753-Girl</span><span class="movie-play" aria-hidden="true"></span></span>
     </button>
-    <button type="button" class="movie-item" data-vid="Rl0hZJb5F_o" data-pos="right-bottom" aria-label="動画を再生">
+    <button type="button" class="movie-item" data-src="https://pub-faf8f82565a343d7888635e6d7505041.r2.dev/et-movie-753-02.mp4" data-pos="right-bottom" aria-label="動画を再生">
       <img src="et-movie-753-02.jpg" alt="et.movie 3歳女の子 753 家族" loading="lazy"/>
       <span class="movie-cap"><span class="mt-sub">et.movie</span><span class="mt-main">753-Girl</span><span class="movie-play" aria-hidden="true"></span></span>
     </button>
@@ -1439,52 +1447,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <script>
 (function(){
-  let apiReady = false, queue = [];
-  window.onYouTubeIframeAPIReady = function(){ apiReady = true; queue.forEach(fn=>fn()); queue = []; };
-  function loadApi(){
-    if (window.YT && window.YT.Player) { apiReady = true; return; }
-    if (document.getElementById('yt-iframe-api')) return;
-    const t = document.createElement('script'); t.id = 'yt-iframe-api'; t.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(t);
-  }
-  loadApi();
+  // 自前 <video> プレーヤー（Cloudflare R2 配信）。YouTube のタイトル/ロゴ/関連動画は一切出ない
+  const isTouch = matchMedia('(pointer: coarse)').matches;
   document.querySelectorAll('.movie-item').forEach((btn)=>{
     btn.addEventListener('click', ()=>{
       const wrap = document.createElement('div');
-      wrap.className = 'movie-frame';
-      const host = document.createElement('div');
-      const tap = document.createElement('div');   // 動画上の透明レイヤー: タップで停止→サムネイルに戻す
-      tap.className = 'movie-tap';
-      wrap.appendChild(host); wrap.appendChild(tap);
+      wrap.className = 'movie-frame' + (isTouch ? ' touch' : '');
+      const v = document.createElement('video');
+      v.src = btn.dataset.src;
+      v.poster = btn.querySelector('img') ? btn.querySelector('img').src : '';
+      v.playsInline = true; v.preload = 'auto'; v.setAttribute('playsinline',''); v.setAttribute('webkit-playsinline','');
+      v.controls = false;
+      const ui = document.createElement('div');
+      ui.className = 'movie-ui';
+      ui.innerHTML = '<button type="button" class="mv-toggle" aria-label="再生/一時停止"></button><div class="mv-bar" aria-hidden="true"><i></i></div><button type="button" class="mv-close" aria-label="閉じる">✕</button>';
+      wrap.appendChild(v); wrap.appendChild(ui);
       const parent = btn.parentNode;
       parent.replaceChild(wrap, btn);
-      let player = null;
-      // 一時停止画面（タイトル/共有/関連動画）を絶対に見せないため、停止＝プレーヤー破棄→サムネイル復帰
-      const restore = ()=>{
-        try { player && player.destroy && player.destroy(); } catch(e){}
-        if (wrap.parentNode) wrap.parentNode.replaceChild(btn, wrap);
-      };
-      const start = ()=>{
-        player = new YT.Player(host, {
-          host: 'https://www.youtube-nocookie.com',
-          videoId: btn.dataset.vid,
-          // mute:1 で開始 → ブラウザの自動再生制限にかからず待機画面が出ない。再生が始まったら音声を戻す
-          playerVars: { autoplay:1, mute:1, playsinline:1, controls:0, rel:0, fs:0, iv_load_policy:3, disablekb:1, modestbranding:1 },
-          events: {
-            onReady: (e)=>{ e.target.mute(); e.target.playVideo(); },
-            onStateChange: (e)=>{
-              if (e.data === 1 && !wrap.dataset.unmuted) { wrap.dataset.unmuted = '1'; e.target.unMute(); e.target.setVolume(100); }
-              // 再生開始(1): YouTube のタイトルバーが出る数秒間だけ上部を覆い、その後は映像を全面表示
-              if (e.data === 1) { wrap.classList.remove('is-playing'); clearTimeout(wrap._hideT); wrap._hideT = setTimeout(()=>wrap.classList.add('is-playing'), 3800); }
-              if (e.data === 0 || e.data === 2) restore(); // 終了(0) / 一時停止(2) → サムネイルへ
-            }
-          }
-        });
-        tap.addEventListener('click', ()=>{
-          if (player && player.isMuted && player.isMuted()) { player.unMute(); player.setVolume(100); wrap.dataset.unmuted = '1'; return; }
-          restore();
-        });
-      };
-      if (apiReady) start(); else queue.push(start);
+      const bar = ui.querySelector('.mv-bar'), fill = bar.querySelector('i');
+      const toggle = ()=>{ if (v.paused) v.play(); else v.pause(); };
+      const close = ()=>{ v.pause(); v.removeAttribute('src'); v.load(); if (wrap.parentNode) wrap.parentNode.replaceChild(btn, wrap); };
+      v.addEventListener('play', ()=>wrap.classList.remove('paused'));
+      v.addEventListener('pause', ()=>wrap.classList.add('paused'));
+      v.addEventListener('ended', close);
+      v.addEventListener('timeupdate', ()=>{ if (v.duration) fill.style.width = (v.currentTime / v.duration * 100) + '%'; });
+      v.addEventListener('click', toggle);
+      ui.querySelector('.mv-toggle').addEventListener('click', (e)=>{ e.stopPropagation(); toggle(); });
+      ui.querySelector('.mv-close').addEventListener('click', (e)=>{ e.stopPropagation(); close(); });
+      bar.addEventListener('click', (e)=>{ e.stopPropagation(); const r = bar.getBoundingClientRect(); if (v.duration) v.currentTime = (e.clientX - r.left) / r.width * v.duration; });
+      v.play().catch(()=>{ wrap.classList.add('paused'); });
     });
   });
 })();
