@@ -1449,26 +1449,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const wrap = document.createElement('div');
       wrap.className = 'movie-frame';
       const host = document.createElement('div');
-      const tap = document.createElement('div');   // 動画上の透明レイヤー: タップで再生/一時停止
+      const tap = document.createElement('div');   // 動画上の透明レイヤー: タップで停止→サムネイルに戻す
       tap.className = 'movie-tap';
       wrap.appendChild(host); wrap.appendChild(tap);
-      btn.replaceWith(wrap);
+      const parent = btn.parentNode;
+      parent.replaceChild(wrap, btn);
+      let player = null;
+      // 一時停止画面（タイトル/共有/関連動画）を絶対に見せないため、停止＝プレーヤー破棄→サムネイル復帰
+      const restore = ()=>{
+        try { player && player.destroy && player.destroy(); } catch(e){}
+        if (wrap.parentNode) wrap.parentNode.replaceChild(btn, wrap);
+      };
       const start = ()=>{
-        const player = new YT.Player(host, {
+        player = new YT.Player(host, {
           host: 'https://www.youtube-nocookie.com',
           videoId: btn.dataset.vid,
-          // mute:1 で開始 → ブラウザの自動再生制限にかからずタイトル付き待機画面が出ない。再生が始まったら音声を戻す
+          // mute:1 で開始 → ブラウザの自動再生制限にかからず待機画面が出ない。再生が始まったら音声を戻す
           playerVars: { autoplay:1, mute:1, playsinline:1, controls:0, rel:0, fs:0, iv_load_policy:3, disablekb:1, modestbranding:1 },
           events: {
             onReady: (e)=>{ e.target.mute(); e.target.playVideo(); },
-            onStateChange: (e)=>{ if (e.data === 1 && !wrap.dataset.unmuted) { wrap.dataset.unmuted = '1'; e.target.unMute(); e.target.setVolume(100); } }
+            onStateChange: (e)=>{
+              if (e.data === 1 && !wrap.dataset.unmuted) { wrap.dataset.unmuted = '1'; e.target.unMute(); e.target.setVolume(100); }
+              if (e.data === 0 || e.data === 2) restore(); // 終了(0) / 一時停止(2) → サムネイルへ
+            }
           }
         });
         tap.addEventListener('click', ()=>{
-          // まだミュートなら最初のタップで音声ON（再生は継続）。以降は再生/一時停止のトグル
-          if (player.isMuted && player.isMuted()) { player.unMute(); player.setVolume(100); wrap.dataset.unmuted = '1'; return; }
-          const st = player.getPlayerState && player.getPlayerState();
-          if (st === 1) player.pauseVideo(); else player.playVideo();
+          if (player && player.isMuted && player.isMuted()) { player.unMute(); player.setVolume(100); wrap.dataset.unmuted = '1'; return; }
+          restore();
         });
       };
       if (apiReady) start(); else queue.push(start);
