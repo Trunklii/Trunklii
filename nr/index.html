@@ -653,26 +653,6 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 .g-fab.act{background:var(--ink);color:#fff;border-color:var(--ink)}
 .g-fab .g-fab-dot{position:absolute;top:2px;right:2px;width:8px;height:8px;border-radius:50%;background:var(--accent);display:none}
 .g-fab.act .g-fab-dot{display:block}
-/* 初回のみ表示するヒント(共通): すりガラス調の吹き出し */
-.g-tip,.bs-tip,.k-tip{position:absolute;background:rgba(252,250,246,.78);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);border:0;border-radius:16px;box-shadow:0 10px 28px rgba(17,16,16,.12);padding:.9rem 1rem .8rem;text-align:left;overflow:visible}
-.g-tip[hidden],.bs-tip[hidden],.k-tip[hidden]{display:none}
-@keyframes tipIn{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
-.g-tip:not([hidden]),.bs-tip:not([hidden]),.k-tip:not([hidden]){animation:tipIn .5s var(--ease) both}
-/* 吹き出しの尖り: 本体と同じすりガラスを三角に切り抜く(色・質感を一致させる) */
-.g-tip::after,.bs-tip::after,.k-tip::after{content:"";position:absolute;background:rgba(252,250,246,.78);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%)}
-.g-tip{right:calc(100% + .8rem);top:0;width:min(74vw,272px)}
-.g-tip::after{right:-13px;top:13px;width:13px;height:22px;clip-path:polygon(0 0,100% 50%,0 100%)}
-.k-tip{right:calc(100% + .8rem);top:0;width:min(74vw,272px)}
-.k-tip::after{right:-13px;top:13px;width:13px;height:22px;clip-path:polygon(0 0,100% 50%,0 100%)}
-/* 予約バー: シートの上に浮かぶ吹き出し(✕を指す) */
-.bs-tip{right:.9rem;bottom:calc(100% + .6rem);width:min(80vw,330px);z-index:2}
-.bs-tip::after{right:16px;bottom:-13px;width:22px;height:13px;clip-path:polygon(0 0,100% 0,50% 100%)}
-.g-tip-text,.bs-tip-text,.k-tip-text{font-family:var(--serif);font-weight:300;font-size:.74rem;line-height:1.85;color:var(--ink);margin:0 0 .75rem}
-.g-tip-foot,.bs-tip-foot,.k-tip-foot{display:flex;align-items:center;justify-content:space-between;gap:.7rem}
-.g-tip-chk,.bs-tip-chk,.k-tip-chk{display:flex;align-items:center;gap:.4rem;font-family:var(--sans);font-weight:300;font-size:.64rem;letter-spacing:.03em;color:var(--mid);cursor:pointer;white-space:nowrap}
-.g-tip-chk input,.bs-tip-chk input,.k-tip-chk input{width:14px;height:14px;accent-color:var(--accent);cursor:pointer}
-.g-tip-close,.bs-tip-close,.k-tip-close{font-family:var(--sans);font-size:.64rem;letter-spacing:.08em;color:var(--ink);background:rgba(255,255,255,.55);border:1px solid rgba(17,16,16,.14);border-radius:999px;padding:.3rem .85rem;cursor:pointer;transition:all .25s}
-.g-tip-close:hover,.bs-tip-close:hover,.k-tip-close:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 .g-float-panel{position:absolute;right:0;bottom:calc(100% + .6rem);width:min(78vw,300px);max-height:54vh;overflow:auto;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:16px;box-shadow:0 12px 36px rgba(17,16,16,.18);padding:1rem 1.1rem;display:none}
 .g-float-panel.open{display:block}
 .gfp-head{display:flex;align-items:flex-start;justify-content:space-between;gap:.6rem}
@@ -1737,13 +1717,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- LIGHTBOX -->
 <div class="g-float" id="g-float">
-  <div class="g-tip" id="g-tip" hidden>
-    <p class="g-tip-text">ここをタップして絞り込みが可能です。<br>お子様の年齢・性別にマッチした写真だけを見ることができます。</p>
-    <div class="g-tip-foot">
-      <label class="g-tip-chk"><input type="checkbox" id="g-tip-never">今後表示しない</label>
-      <button type="button" class="g-tip-close" id="g-tip-close">閉じる</button>
-    </div>
-  </div>
   <div class="g-float-panel" id="g-float-panel">
     <div class="gfp-head"><span class="gfp-title">タグで絞り込み</span><button type="button" class="gfp-close" data-panel="g-float-panel" aria-label="閉じる">✕</button></div>
     <div class="gfp-tags" id="gfp-tags"></div>
@@ -1756,13 +1729,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <button class="g-fab" id="g-fab-less" type="button" onclick="galleryMore(-20)" aria-label="表示を20枚減らす" title="表示を20枚減らす">－</button>
 </div>
 <div class="g-float" id="k-float">
-  <div class="k-tip" id="k-tip" hidden>
-    <p class="k-tip-text">ここをタップして絞り込みが可能です。お子様の年齢・性別に合う着物だけを見ることができます。</p>
-    <div class="k-tip-foot">
-      <label class="k-tip-chk"><input type="checkbox" id="k-tip-never">今後表示しない</label>
-      <button type="button" class="k-tip-close" id="k-tip-close">閉じる</button>
-    </div>
-  </div>
   <div class="g-float-panel" id="k-float-panel">
     <div class="gfp-head"><span class="gfp-title">着物で絞り込み</span><button type="button" class="gfp-close" data-panel="k-float-panel" aria-label="閉じる">✕</button></div>
     <div class="gfp-tags" id="kfp-tags"></div>
@@ -1784,13 +1750,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Kitsuné風の予約ポップアップ(下部シート・✕で閉じる) -->
 <div class="book-sheet" id="book-sheet" hidden>
   <button class="book-sheet-close" type="button" onclick="closeBookSheet()" aria-label="閉じる">✕</button>
-  <div class="bs-tip" id="bs-tip" hidden>
-    <p class="bs-tip-text">✕ で閉じられます。閉じたあとは、右下のカレンダーアイコンからいつでも再表示できます。</p>
-    <div class="bs-tip-foot">
-      <label class="bs-tip-chk"><input type="checkbox" id="bs-tip-never">今後表示しない</label>
-      <button type="button" class="bs-tip-close" id="bs-tip-close">閉じる</button>
-    </div>
-  </div>
   <div class="book-sheet-title">Reservation</div>
   <div class="book-sheet-btns">
   <a class="book-sheet-btn bs-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bs-brand-lockup" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bs-cta">予約する<span aria-hidden="true">→</span></span></a>
@@ -2491,34 +2450,7 @@ function toggleFloatPanel(ev){
     // タグ列が画面上へ出た後、フロートが View More より下に来たら非表示
     const on = tagsBottom < 70 && refBottom > floatTop;
     fl.classList.toggle('on', on);
-    if(on) showFilterTip();
   }
-  // 初回のみ「絞り込みできます」ヒントを表示（今後表示しない を選ぶと二度と出さない）
-  const TIP_KEY='nr_filter_tip_v2';
-  let tipShown=false;
-  function showFilterTip(){
-    const tip=document.getElementById('g-tip');
-    if(!tip || tipShown) return;
-    try{ if(localStorage.getItem(TIP_KEY)) return; }catch(e){}
-    tip.hidden=false; tipShown=true;
-  }
-  function hideFilterTip(){
-    const tip=document.getElementById('g-tip');
-    if(!tip) return;
-    tip.hidden=true;
-    const never=document.getElementById('g-tip-never');
-    if(never && never.checked){ try{ localStorage.setItem(TIP_KEY,'1'); }catch(e){} }
-  }
-  window.hideFilterTip = hideFilterTip;
-  (function bindTip(){
-    const close=document.getElementById('g-tip-close');
-    if(close) close.addEventListener('click', e=>{ e.stopPropagation(); hideFilterTip(); });
-    const never=document.getElementById('g-tip-never');
-    if(never) never.addEventListener('change', ()=>{ if(never.checked){ try{ localStorage.setItem(TIP_KEY,'1'); }catch(e){} } });
-    const fab=document.getElementById('g-fab-filter');
-    if(fab) fab.addEventListener('click', ()=>{ const t=document.getElementById('g-tip'); if(t) t.hidden=true; });
-  })();
-
   window.updateGalleryFloat = updateFloatVisibility;
   window.addEventListener('scroll', updateFloatVisibility, { passive:true });
   window.addEventListener('resize', updateFloatVisibility);
@@ -2568,29 +2500,7 @@ function toggleKimPanel(ev){
     // フィルタ列が画面上へ出た後、フロートがカード群より下に来たら非表示
     const kon = barBottom < 70 && gridBottom > floatTop;
     fl.classList.toggle('on', kon);
-    if(kon) showKimTip();
   }
-  // Kimono用ヒント(初回のみ)
-  const KTIP_KEY='nr_kimono_tip_v1';
-  let kTipShown=false;
-  function showKimTip(){
-    const tip=document.getElementById('k-tip');
-    if(!tip || kTipShown) return;
-    try{ if(localStorage.getItem(KTIP_KEY)) return; }catch(e){}
-    tip.hidden=false; kTipShown=true;
-  }
-  (function bindKimTip(){
-    const tip=document.getElementById('k-tip'); if(!tip) return;
-    const never=document.getElementById('k-tip-never');
-    const close=document.getElementById('k-tip-close');
-    if(never) never.addEventListener('change', ()=>{ if(never.checked){ try{ localStorage.setItem(KTIP_KEY,'1'); }catch(e){} } });
-    if(close) close.addEventListener('click', e=>{
-      e.stopPropagation(); tip.hidden=true;
-      if(never && never.checked){ try{ localStorage.setItem(KTIP_KEY,'1'); }catch(e){} }
-    });
-    const fab=document.getElementById('k-fab-filter');
-    if(fab) fab.addEventListener('click', ()=>{ tip.hidden=true; });
-  })();
   window.updateKimFloat = updateKimFloatVisibility;
   window.addEventListener('scroll', updateKimFloatVisibility, { passive:true });
   window.addEventListener('resize', updateKimFloatVisibility);
@@ -3013,23 +2923,6 @@ if(location.hash === '#bot'){
   setTimeout(function(){ if(typeof toggleBot === 'function') toggleBot(); }, 500);
 }
 
-/* 予約バーの使い方ヒント(初回のみ・「今後表示しない」で以後非表示) */
-const BOOK_TIP_KEY='nr_book_tip_v2';
-(function initBookTip(){
-  const tip=document.getElementById('bs-tip'); if(!tip) return;
-  let hidden=false; try{ hidden=!!localStorage.getItem(BOOK_TIP_KEY); }catch(e){}
-  if(!hidden) tip.hidden=false;
-  const never=document.getElementById('bs-tip-never');
-  function dismiss(){
-    tip.hidden=true;
-    if(never && never.checked){ try{ localStorage.setItem(BOOK_TIP_KEY,'1'); }catch(e){} }
-  }
-  if(never) never.addEventListener('change', function(){
-    if(never.checked){ try{ localStorage.setItem(BOOK_TIP_KEY,'1'); }catch(e){} }
-  });
-  const close=document.getElementById('bs-tip-close');
-  if(close) close.addEventListener('click', function(e){ e.stopPropagation(); dismiss(); });
-})();
 function closeBookSheet(){
   const s = document.getElementById('book-sheet');
   if(s) s.hidden = true;
