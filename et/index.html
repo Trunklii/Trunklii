@@ -1390,7 +1390,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section id="et-movie" style="background:var(--bg)">
 <style>
 /* ─── et.movie（このセクション専用。セクションと一緒に移動させること） ─── */
-.movie-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.movie-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .movie-item{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;padding:0;border:0;background:#000;cursor:pointer}
 .movie-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease),opacity .3s}
 .movie-item:hover img{transform:scale(1.03);opacity:.92}
@@ -1404,14 +1404,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .movie-notes li:first-child{border-top:1px solid var(--border)}
 .movie-notes li::before{content:'●';flex-shrink:0;font-size:.45rem;margin-top:.85rem;color:var(--accent)}
 .movie-cta{display:flex;justify-content:center;gap:.9rem;flex-wrap:wrap;margin-top:2.5rem}
-.movie-fade{display:none}
-@media(max-width:700px){
-  .movie-grid{grid-template-columns:1fr;gap:.8rem}
-  /* 折りたたみ: 1本目(16:9=56.25vw弱)+隙間+2本目の約半分 で切る */
-  /* 折りたたみ: 外側クリップ枠で 1本目 + 隙間 + 2本目の約半分 まで見せる（グリッド自体は自然な高さのまま） */
-  .movie-wrap.collapsed .movie-clip{max-height:calc((100vw - 3rem) * 9 / 16 * 1.5 + .8rem);overflow:hidden}
-  .movie-wrap.collapsed .movie-fade{display:flex;position:relative;z-index:3;margin-top:-70px;height:110px;background:linear-gradient(to bottom, rgba(248,246,242,0) 0%, var(--bg) 70%);align-items:flex-end;justify-content:center;padding-bottom:0;pointer-events:none}
-  .movie-fade .g-more{pointer-events:auto}
+@media(max-width:700px){.movie-grid{grid-template-columns:1fr;gap:.8rem}}
 }
 </style>
 <div class="wrap">
@@ -1419,8 +1412,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="section-body-text">愛おしくて忘れたくない瞬間の連続を、特別な日だからこそしっかり未来に残したい。
 可愛い姿をありのまま形にできる、お子様が主役の et. オリジナルムービーです。
 写真には残しきれない撮影の裏側や愛情溢れる家族との触れ合いを、表情・仕草・声とともに特別な映像で残せます。</p>
-  <div class="movie-wrap collapsed" id="movie-wrap">
-  <div class="movie-clip">
   <div class="movie-grid">
     <button type="button" class="movie-item" data-vid="-2go9yCA2yQ" aria-label="動画を再生">
       <img src="https://i.ytimg.com/vi/-2go9yCA2yQ/maxres1.jpg" alt="et.movie 1歳バースデー" loading="lazy"/>
@@ -1434,17 +1425,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <img src="https://i.ytimg.com/vi/Rl0hZJb5F_o/maxres3.jpg" alt="et.movie 3歳女の子 753①" loading="lazy"/>
       <span class="movie-play" aria-hidden="true"></span>
     </button>
-    <button type="button" class="movie-item" data-vid="akHOIGcKQ2M" aria-label="動画を再生">
-      <img src="https://i.ytimg.com/vi/akHOIGcKQ2M/maxres2.jpg" alt="et.movie 女の子カジュアル" loading="lazy"/>
-      <span class="movie-play" aria-hidden="true"></span>
-    </button>
-  </div>
-  </div>
-  <div class="movie-fade" id="movie-fade">
-    <button class="g-more" type="button" onclick="document.getElementById('movie-wrap').classList.remove('collapsed')">View More
-      <span class="g-more-count">すべての動画を見る</span>
-    </button>
-  </div>
   </div>
   <ul class="movie-notes">
     <li>料金：¥28,000（約3分）。One / Family / Maternity / Furisode 各プランに追加できます。</li>
