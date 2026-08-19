@@ -1393,6 +1393,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .movie-item[data-pos="left-top"] .movie-cap{left:6%;top:9%;align-items:flex-start;text-align:left}
 .movie-item[data-pos="left-bottom"] .movie-cap{left:6%;bottom:9%;align-items:flex-start;text-align:left}
 .movie-item[data-pos="center"] .movie-cap{left:50%;top:50%;transform:translate(-50%,-50%)}
+/* インライン（サムネサイズ）プレーヤー */
+.movie-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer}
+.movie-frame video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;background:#000}
+.movie-ui{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;align-items:center;gap:.7rem;padding:.8rem .9rem .9rem;background:linear-gradient(to top,rgba(0,0,0,.45),rgba(0,0,0,0));opacity:0;transition:opacity .3s;pointer-events:none}
+.movie-frame:hover .movie-ui,.movie-frame.paused .movie-ui,.movie-frame.touch .movie-ui{opacity:1;pointer-events:auto}
+.movie-ui button{appearance:none;border:0;background:none;color:#fff;font-family:var(--sans);font-size:.7rem;cursor:pointer;padding:.2rem .4rem;opacity:.9}
+.movie-ui .mv-toggle{width:28px;height:28px;border-radius:50%;background:rgba(17,16,16,.55);position:relative;flex-shrink:0}
+.movie-ui .mv-toggle::after{content:'';position:absolute;left:50%;top:50%;transform:translate(-38%,-50%);border-style:solid;border-width:5px 0 5px 9px;border-color:transparent transparent transparent #fff}
+.movie-frame:not(.paused) .movie-ui .mv-toggle::after{border:0;width:7px;height:9px;transform:translate(-50%,-50%);border-left:2.5px solid #fff;border-right:2.5px solid #fff;border-radius:0}
+.movie-ui .mv-bar{flex:1;height:3px;background:rgba(255,255,255,.3);border-radius:2px;overflow:hidden;cursor:pointer}
+.movie-ui .mv-bar i{display:block;height:100%;width:0;background:#fff;border-radius:2px}
+.mv-expand{width:22px;height:22px;position:relative;flex-shrink:0}
+.mv-expand::before{content:'';position:absolute;inset:3px;border:2px solid #fff;border-radius:2px}
+.mv-expand:hover::before{border-color:var(--accent)}
+.movie-frame.paused::after{content:'';position:absolute;inset:0;margin:auto;width:56px;height:56px;border-radius:50%;background:rgba(17,16,16,.5);z-index:1;pointer-events:none}
+.movie-frame.paused::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-38%,-50%);border-style:solid;border-width:8px 0 8px 13px;border-color:transparent transparent transparent #fff;z-index:2;pointer-events:none}
 /* 動画ライトボックス（Gallery の .lightbox と同じトーン） */
 .mlb{display:none;position:fixed;inset:0;z-index:400;background:rgba(17,16,16,.93);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);align-items:center;justify-content:center}
 .mlb.open{display:flex}
@@ -1453,33 +1469,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function(){
-  // et.movie: サムネイルクリック → ライトボックスで拡大再生（Cloudflare R2 配信・YouTube不使用）
-  const lb = document.getElementById('mlb'), stage = document.getElementById('mlb-stage'), v = document.getElementById('mlb-video');
-  const ui = lb.querySelector('.mlb-ui'), bar = ui.querySelector('.mv-bar'), fill = bar.querySelector('i'), timeEl = ui.querySelector('.mv-time'), cap = document.getElementById('mlb-cap');
-  if (matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window || navigator.maxTouchPoints > 0) lb.classList.add('touch');
+  // et.movie: サムネクリック→その場でインライン再生。□ボタンでライトボックス拡大（再生位置を引き継ぎ）
+  const isTouch = matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  const lb = document.getElementById('mlb'), lbStage = document.getElementById('mlb-stage'), lbV = document.getElementById('mlb-video');
+  const lbUi = lb.querySelector('.mlb-ui'), lbBar = lbUi.querySelector('.mv-bar'), lbFill = lbBar.querySelector('i'), lbTime = lbUi.querySelector('.mv-time'), lbCap = document.getElementById('mlb-cap');
+  if (isTouch) lb.classList.add('touch');
   const fmt = (t)=>{ t = Math.max(0, Math.floor(t||0)); return Math.floor(t/60) + ':' + String(t%60).padStart(2,'0'); };
-  const toggle = ()=>{ if (v.paused) v.play(); else v.pause(); };
-  window.closeMovieLb = function(){ v.pause(); v.removeAttribute('src'); v.load(); lb.classList.remove('open','paused'); document.body.style.overflow=''; };
-  window.openMovieLb = function(src, poster, title){
-    v.poster = poster || ''; v.src = src; cap.textContent = title || '';
-    fill.style.width = '0'; timeEl.textContent = '0:00 / 0:00';
+
+  // ── ライトボックス
+  const lbToggle = ()=>{ if (lbV.paused) lbV.play(); else lbV.pause(); };
+  window.closeMovieLb = function(){ lbV.pause(); lbV.removeAttribute('src'); lbV.load(); lb.classList.remove('open','paused'); document.body.style.overflow=''; };
+  window.openMovieLb = function(src, poster, title, startAt){
+    lbV.poster = poster || ''; lbV.src = src; lbCap.textContent = title || '';
+    lbFill.style.width = '0'; lbTime.textContent = '0:00 / 0:00';
     lb.classList.add('open'); document.body.style.overflow='hidden';
-    v.play().catch(()=>lb.classList.add('paused'));
+    const seekAndPlay = ()=>{ if (startAt) { try { lbV.currentTime = startAt; } catch(e){} } lbV.play().catch(()=>lb.classList.add('paused')); };
+    if (lbV.readyState >= 1) seekAndPlay(); else lbV.addEventListener('loadedmetadata', seekAndPlay, { once: true });
   };
-  v.addEventListener('play', ()=>lb.classList.remove('paused'));
-  v.addEventListener('pause', ()=>lb.classList.add('paused'));
-  v.addEventListener('ended', closeMovieLb);
-  v.addEventListener('timeupdate', ()=>{ if (v.duration) { fill.style.width = (v.currentTime / v.duration * 100) + '%'; timeEl.textContent = fmt(v.currentTime) + ' / ' + fmt(v.duration); } });
-  v.addEventListener('loadedmetadata', ()=>{ timeEl.textContent = '0:00 / ' + fmt(v.duration); });
-  v.addEventListener('click', toggle);
-  ui.querySelector('.mv-toggle').addEventListener('click', (e)=>{ e.stopPropagation(); toggle(); });
-  bar.addEventListener('click', (e)=>{ e.stopPropagation(); const r = bar.getBoundingClientRect(); if (v.duration) v.currentTime = (e.clientX - r.left) / r.width * v.duration; });
-  lb.addEventListener('click', (e)=>{ if (e.target === lb) closeMovieLb(); });   // 背景クリックで閉じる
-  document.addEventListener('keydown', (e)=>{ if (!lb.classList.contains('open')) return; if (e.key === 'Escape') closeMovieLb(); if (e.key === ' ') { e.preventDefault(); toggle(); } });
+  lbV.addEventListener('play', ()=>lb.classList.remove('paused'));
+  lbV.addEventListener('pause', ()=>lb.classList.add('paused'));
+  lbV.addEventListener('ended', closeMovieLb);
+  lbV.addEventListener('timeupdate', ()=>{ if (lbV.duration) { lbFill.style.width = (lbV.currentTime / lbV.duration * 100) + '%'; lbTime.textContent = fmt(lbV.currentTime) + ' / ' + fmt(lbV.duration); } });
+  lbV.addEventListener('click', lbToggle);
+  lbUi.querySelector('.mv-toggle').addEventListener('click', (e)=>{ e.stopPropagation(); lbToggle(); });
+  lbBar.addEventListener('click', (e)=>{ e.stopPropagation(); const r = lbBar.getBoundingClientRect(); if (lbV.duration) lbV.currentTime = (e.clientX - r.left) / r.width * lbV.duration; });
+  lb.addEventListener('click', (e)=>{ if (e.target === lb) closeMovieLb(); });
+  document.addEventListener('keydown', (e)=>{ if (!lb.classList.contains('open')) return; if (e.key === 'Escape') closeMovieLb(); if (e.key === ' ') { e.preventDefault(); lbToggle(); } });
+
+  // ── インライン（サムネサイズ）プレーヤー
   document.querySelectorAll('.movie-item').forEach((btn)=>{
     btn.addEventListener('click', ()=>{
-      const img = btn.querySelector('img'); const t = btn.querySelector('.mt-main');
-      openMovieLb(btn.dataset.src, img ? img.src : '', t ? ('et.movie — ' + t.textContent) : 'et.movie');
+      const wrap = document.createElement('div');
+      wrap.className = 'movie-frame' + (isTouch ? ' touch' : '');
+      const v = document.createElement('video');
+      v.src = btn.dataset.src;
+      v.poster = btn.querySelector('img') ? btn.querySelector('img').src : '';
+      v.playsInline = true; v.preload = 'auto'; v.setAttribute('playsinline',''); v.setAttribute('webkit-playsinline','');
+      const ui = document.createElement('div');
+      ui.className = 'movie-ui';
+      ui.innerHTML = '<button type="button" class="mv-toggle" aria-label="再生/一時停止"></button><div class="mv-bar" aria-hidden="true"><i></i></div><button type="button" class="mv-expand" aria-label="拡大表示"></button><button type="button" class="mv-close" aria-label="閉じる">✕</button>';
+      wrap.appendChild(v); wrap.appendChild(ui);
+      const parent = btn.parentNode;
+      parent.replaceChild(wrap, btn);
+      const bar = ui.querySelector('.mv-bar'), fill = bar.querySelector('i');
+      const toggle = ()=>{ if (v.paused) v.play(); else v.pause(); };
+      const close = ()=>{ v.pause(); v.removeAttribute('src'); v.load(); if (wrap.parentNode) wrap.parentNode.replaceChild(btn, wrap); };
+      v.addEventListener('play', ()=>wrap.classList.remove('paused'));
+      v.addEventListener('pause', ()=>wrap.classList.add('paused'));
+      v.addEventListener('ended', close);
+      v.addEventListener('timeupdate', ()=>{ if (v.duration) fill.style.width = (v.currentTime / v.duration * 100) + '%'; });
+      v.addEventListener('click', toggle);
+      ui.querySelector('.mv-toggle').addEventListener('click', (e)=>{ e.stopPropagation(); toggle(); });
+      ui.querySelector('.mv-close').addEventListener('click', (e)=>{ e.stopPropagation(); close(); });
+      ui.querySelector('.mv-expand').addEventListener('click', (e)=>{
+        e.stopPropagation();
+        const t = v.currentTime;
+        const img = btn.querySelector('img'); const mt = btn.querySelector('.mt-main');
+        close(); // インラインを閉じてサムネイルへ戻す
+        openMovieLb(btn.dataset.src, img ? img.src : '', mt ? ('et.movie — ' + mt.textContent) : 'et.movie', t);
+      });
+      bar.addEventListener('click', (e)=>{ e.stopPropagation(); const r = bar.getBoundingClientRect(); if (v.duration) v.currentTime = (e.clientX - r.left) / r.width * v.duration; });
+      v.play().catch(()=>{ wrap.classList.add('paused'); });
     });
   });
 });
