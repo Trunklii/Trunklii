@@ -1393,20 +1393,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .movie-item[data-pos="left-top"] .movie-cap{left:6%;top:9%;align-items:flex-start;text-align:left}
 .movie-item[data-pos="left-bottom"] .movie-cap{left:6%;bottom:9%;align-items:flex-start;text-align:left}
 .movie-item[data-pos="center"] .movie-cap{left:50%;top:50%;transform:translate(-50%,-50%)}
-.movie-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer}
-.movie-frame video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;background:#000}
-/* 自前の最小コントロール: 再生中は非表示、一時停止中・ホバー時に薄く表示 */
-.movie-ui{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;align-items:center;gap:.8rem;padding:.9rem 1rem 1rem;background:linear-gradient(to top,rgba(0,0,0,.45),rgba(0,0,0,0));opacity:0;transition:opacity .3s;pointer-events:none}
-.movie-frame:hover .movie-ui,.movie-frame.paused .movie-ui,.movie-frame.touch .movie-ui{opacity:1;pointer-events:auto}
-.movie-ui button{appearance:none;border:0;background:none;color:#fff;font-family:var(--sans);font-size:.7rem;letter-spacing:.08em;cursor:pointer;padding:.2rem .4rem;opacity:.9}
-.movie-ui .mv-toggle{width:30px;height:30px;border-radius:50%;background:rgba(17,16,16,.55);position:relative;flex-shrink:0}
-.movie-ui .mv-toggle::after{content:'';position:absolute;left:50%;top:50%;transform:translate(-38%,-50%);border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent #fff}
-.movie-frame:not(.paused) .movie-ui .mv-toggle::after{border:0;width:8px;height:10px;transform:translate(-50%,-50%);border-left:3px solid #fff;border-right:3px solid #fff;border-radius:0}
-.movie-ui .mv-bar{flex:1;height:3px;background:rgba(255,255,255,.3);border-radius:2px;overflow:hidden;cursor:pointer}
-.movie-ui .mv-bar i{display:block;height:100%;width:0;background:#fff;border-radius:2px}
-.movie-ui .mv-close{margin-left:.2rem}
-.movie-frame.paused::after{content:'';position:absolute;inset:0;margin:auto;width:62px;height:62px;border-radius:50%;background:rgba(17,16,16,.5);z-index:1;pointer-events:none}
-.movie-frame.paused::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-38%,-50%);border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent #fff;z-index:2;pointer-events:none}
+/* 動画ライトボックス（Gallery の .lightbox と同じトーン） */
+.mlb{display:none;position:fixed;inset:0;z-index:400;background:rgba(17,16,16,.93);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);align-items:center;justify-content:center}
+.mlb.open{display:flex}
+.mlb-close{position:absolute;top:1.5rem;right:1.8rem;font-size:1.2rem;color:rgba(255,255,255,.5);cursor:pointer;background:none;border:none;z-index:3}
+.mlb-close:hover{color:#fff}
+.mlb-stage{position:relative;width:min(92vw, calc(90vh * 16 / 9));aspect-ratio:16/9;background:#000;cursor:pointer}
+.mlb-stage video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;background:#000}
+.mlb-ui{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;align-items:center;gap:.8rem;padding:.9rem 1rem 1rem;background:linear-gradient(to top,rgba(0,0,0,.5),rgba(0,0,0,0));opacity:0;transition:opacity .3s;pointer-events:none}
+.mlb-stage:hover .mlb-ui,.mlb.paused .mlb-ui,.mlb.touch .mlb-ui{opacity:1;pointer-events:auto}
+.mlb-ui button{appearance:none;border:0;background:none;color:#fff;cursor:pointer;padding:.2rem .4rem;opacity:.9}
+.mlb-ui .mv-toggle{width:30px;height:30px;border-radius:50%;background:rgba(17,16,16,.55);position:relative;flex-shrink:0}
+.mlb-ui .mv-toggle::after{content:'';position:absolute;left:50%;top:50%;transform:translate(-38%,-50%);border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent #fff}
+.mlb:not(.paused) .mlb-ui .mv-toggle::after{border:0;width:8px;height:10px;transform:translate(-50%,-50%);border-left:3px solid #fff;border-right:3px solid #fff;border-radius:0}
+.mlb-ui .mv-bar{flex:1;height:3px;background:rgba(255,255,255,.3);border-radius:2px;overflow:hidden;cursor:pointer}
+.mlb-ui .mv-bar i{display:block;height:100%;width:0;background:#fff;border-radius:2px}
+.mlb-ui .mv-time{font-family:var(--sans);font-size:.65rem;letter-spacing:.06em;color:rgba(255,255,255,.85);font-variant-numeric:tabular-nums;white-space:nowrap}
+.mlb.paused .mlb-stage::after{content:'';position:absolute;inset:0;margin:auto;width:70px;height:70px;border-radius:50%;background:rgba(17,16,16,.5);z-index:1;pointer-events:none}
+.mlb.paused .mlb-stage::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-38%,-50%);border-style:solid;border-width:10px 0 10px 17px;border-color:transparent transparent transparent #fff;z-index:2;pointer-events:none}
+.mlb-cap{position:absolute;left:50%;bottom:-2.2rem;transform:translateX(-50%);color:rgba(255,255,255,.75);font-family:var(--display);font-size:.95rem;letter-spacing:.08em;white-space:nowrap}
+@media(max-width:700px){.mlb-close{top:.9rem;right:1rem}.mlb-cap{bottom:-1.8rem;font-size:.85rem}}
 .movie-notes{list-style:none;margin-top:2.2rem}
 .movie-notes li{display:flex;gap:.85rem;padding:.9rem 0;border-bottom:1px solid var(--border);font-family:var(--serif);font-weight:300;font-size:.88rem;line-height:1.9}
 .movie-notes li:first-child{border-top:1px solid var(--border)}
@@ -1446,39 +1452,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 <script>
-(function(){
-  // 自前 <video> プレーヤー（Cloudflare R2 配信）。YouTube のタイトル/ロゴ/関連動画は一切出ない
-  const isTouch = matchMedia('(pointer: coarse)').matches;
+document.addEventListener('DOMContentLoaded', function(){
+  // et.movie: サムネイルクリック → ライトボックスで拡大再生（Cloudflare R2 配信・YouTube不使用）
+  const lb = document.getElementById('mlb'), stage = document.getElementById('mlb-stage'), v = document.getElementById('mlb-video');
+  const ui = lb.querySelector('.mlb-ui'), bar = ui.querySelector('.mv-bar'), fill = bar.querySelector('i'), timeEl = ui.querySelector('.mv-time'), cap = document.getElementById('mlb-cap');
+  if (matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window || navigator.maxTouchPoints > 0) lb.classList.add('touch');
+  const fmt = (t)=>{ t = Math.max(0, Math.floor(t||0)); return Math.floor(t/60) + ':' + String(t%60).padStart(2,'0'); };
+  const toggle = ()=>{ if (v.paused) v.play(); else v.pause(); };
+  window.closeMovieLb = function(){ v.pause(); v.removeAttribute('src'); v.load(); lb.classList.remove('open','paused'); document.body.style.overflow=''; };
+  window.openMovieLb = function(src, poster, title){
+    v.poster = poster || ''; v.src = src; cap.textContent = title || '';
+    fill.style.width = '0'; timeEl.textContent = '0:00 / 0:00';
+    lb.classList.add('open'); document.body.style.overflow='hidden';
+    v.play().catch(()=>lb.classList.add('paused'));
+  };
+  v.addEventListener('play', ()=>lb.classList.remove('paused'));
+  v.addEventListener('pause', ()=>lb.classList.add('paused'));
+  v.addEventListener('ended', closeMovieLb);
+  v.addEventListener('timeupdate', ()=>{ if (v.duration) { fill.style.width = (v.currentTime / v.duration * 100) + '%'; timeEl.textContent = fmt(v.currentTime) + ' / ' + fmt(v.duration); } });
+  v.addEventListener('loadedmetadata', ()=>{ timeEl.textContent = '0:00 / ' + fmt(v.duration); });
+  v.addEventListener('click', toggle);
+  ui.querySelector('.mv-toggle').addEventListener('click', (e)=>{ e.stopPropagation(); toggle(); });
+  bar.addEventListener('click', (e)=>{ e.stopPropagation(); const r = bar.getBoundingClientRect(); if (v.duration) v.currentTime = (e.clientX - r.left) / r.width * v.duration; });
+  lb.addEventListener('click', (e)=>{ if (e.target === lb) closeMovieLb(); });   // 背景クリックで閉じる
+  document.addEventListener('keydown', (e)=>{ if (!lb.classList.contains('open')) return; if (e.key === 'Escape') closeMovieLb(); if (e.key === ' ') { e.preventDefault(); toggle(); } });
   document.querySelectorAll('.movie-item').forEach((btn)=>{
     btn.addEventListener('click', ()=>{
-      const wrap = document.createElement('div');
-      wrap.className = 'movie-frame' + (isTouch ? ' touch' : '');
-      const v = document.createElement('video');
-      v.src = btn.dataset.src;
-      v.poster = btn.querySelector('img') ? btn.querySelector('img').src : '';
-      v.playsInline = true; v.preload = 'auto'; v.setAttribute('playsinline',''); v.setAttribute('webkit-playsinline','');
-      v.controls = false;
-      const ui = document.createElement('div');
-      ui.className = 'movie-ui';
-      ui.innerHTML = '<button type="button" class="mv-toggle" aria-label="再生/一時停止"></button><div class="mv-bar" aria-hidden="true"><i></i></div><button type="button" class="mv-close" aria-label="閉じる">✕</button>';
-      wrap.appendChild(v); wrap.appendChild(ui);
-      const parent = btn.parentNode;
-      parent.replaceChild(wrap, btn);
-      const bar = ui.querySelector('.mv-bar'), fill = bar.querySelector('i');
-      const toggle = ()=>{ if (v.paused) v.play(); else v.pause(); };
-      const close = ()=>{ v.pause(); v.removeAttribute('src'); v.load(); if (wrap.parentNode) wrap.parentNode.replaceChild(btn, wrap); };
-      v.addEventListener('play', ()=>wrap.classList.remove('paused'));
-      v.addEventListener('pause', ()=>wrap.classList.add('paused'));
-      v.addEventListener('ended', close);
-      v.addEventListener('timeupdate', ()=>{ if (v.duration) fill.style.width = (v.currentTime / v.duration * 100) + '%'; });
-      v.addEventListener('click', toggle);
-      ui.querySelector('.mv-toggle').addEventListener('click', (e)=>{ e.stopPropagation(); toggle(); });
-      ui.querySelector('.mv-close').addEventListener('click', (e)=>{ e.stopPropagation(); close(); });
-      bar.addEventListener('click', (e)=>{ e.stopPropagation(); const r = bar.getBoundingClientRect(); if (v.duration) v.currentTime = (e.clientX - r.left) / r.width * v.duration; });
-      v.play().catch(()=>{ wrap.classList.add('paused'); });
+      const img = btn.querySelector('img'); const t = btn.querySelector('.mt-main');
+      openMovieLb(btn.dataset.src, img ? img.src : '', t ? ('et.movie — ' + t.textContent) : 'et.movie');
     });
   });
-})();
+});
 </script>
 </section>
 
@@ -1660,6 +1664,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <img class="lb-img" id="lb-img" src="" alt=""/>
   <div class="lb-no" id="lb-no"></div>
   <button class="lb-next" onclick="lbNav(1)">›</button>
+</div>
+
+<!-- 動画ライトボックス（et.movie） -->
+<div class="mlb" id="mlb" role="dialog" aria-modal="true" aria-label="動画再生">
+  <button class="mlb-close" type="button" onclick="closeMovieLb()">✕</button>
+  <div class="mlb-stage" id="mlb-stage">
+    <video id="mlb-video" playsinline webkit-playsinline preload="auto"></video>
+    <div class="mlb-ui">
+      <button type="button" class="mv-toggle" aria-label="再生/一時停止"></button>
+      <div class="mv-bar" aria-hidden="true"><i></i></div>
+      <span class="mv-time">0:00 / 0:00</span>
+    </div>
+    <div class="mlb-cap" id="mlb-cap"></div>
+  </div>
 </div>
 
 <!-- Q&A BOT -->
