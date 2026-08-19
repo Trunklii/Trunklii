@@ -1405,8 +1405,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .movie-ui .mv-bar{flex:1;height:3px;background:rgba(255,255,255,.3);border-radius:2px;overflow:hidden;cursor:pointer}
 .movie-ui .mv-bar i{display:block;height:100%;width:0;background:#fff;border-radius:2px}
 .mv-expand{width:22px;height:22px;position:relative;flex-shrink:0}
-.mv-expand::before{content:'';position:absolute;inset:3px;border:2px solid #fff;border-radius:2px}
-.mv-expand:hover::before{border-color:var(--accent)}
+.mv-expand::before{content:'';position:absolute;inset:2px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 9V4h5'/%3E%3Cpath d='M15 4h5v5'/%3E%3Cpath d='M20 15v5h-5'/%3E%3Cpath d='M9 20H4v-5'/%3E%3C/svg%3E") center/contain no-repeat}
+.mv-expand:hover::before{opacity:.7}
 .movie-frame.paused::after{content:'';position:absolute;inset:0;margin:auto;width:56px;height:56px;border-radius:50%;background:rgba(17,16,16,.5);z-index:1;pointer-events:none}
 .movie-frame.paused::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-38%,-50%);border-style:solid;border-width:8px 0 8px 13px;border-color:transparent transparent transparent #fff;z-index:2;pointer-events:none}
 /* 動画ライトボックス（Gallery の .lightbox と同じトーン） */
