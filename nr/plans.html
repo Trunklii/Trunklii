@@ -363,7 +363,7 @@ function render(){
     const hasDetail = p.detail && p.variants && p.variants.length > 0;
     const heroImg = hasDetail ? (p.detail.heroImage || '') : '';
     const price = hasDetail ? minPriceFromVariants(p.variants) : '';
-    const cutsList = hasDetail ? p.variants.map(v=>v.cuts).filter(c=>c!=null).join(' / ') : '';
+    const cutsList = hasDetail ? [...new Set(p.variants.map(v=>v.cuts).filter(c=>c!=null))].join(' / ') : '';
     const cardClass = hasDetail ? 'plan-card' : 'plan-card soon';
     const cardHref = hasDetail ? `plan-detail.html?key=${encodeURIComponent(p.key)}` : 'javascript:void(0)';
 
