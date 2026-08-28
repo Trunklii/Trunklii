@@ -926,30 +926,31 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 .hamburger span{background:#f0ead8}
 
 /* FOOTER */
-/* フッターは nr. の水色（--pal-bluegrey）を地にする。
-   文字はクリームだと水色の上で読めない（コントラスト1.5）ため、
-   ワイン（--pal-wine）で受ける。以下、フッター内の色はすべてこの前提でそろえる */
-footer{padding:2.5rem clamp(1.5rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;background:var(--pal-bluegrey);color:var(--pal-wine)}
+/* フッターの地は明るめの茶（--pal-burgundy #74362d）。
+   これまでの --footer #1A0F08 は黒に近く、明るさは0.6%しかなかった。
+   --mid #8B7E6F はさらに明るいが、クリームでもワインでも文字が読めない
+   （2.9 / 3.3）ため使えない。読める範囲でいちばん明るい茶がこれになる */
+footer{padding:2.5rem clamp(1.5rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;background:var(--pal-burgundy);color:var(--cream)}
 /* フッター上段: サイト内検索+予約する(Maison Kitsuné 参考・ダーク配色) */
 /* PCではフッターの検索・予約帯は非表示(モバイルのみ) */
 @media(min-width:961px){.footer-cta{display:none}}
-.footer-cta{width:100%;max-width:720px;margin-left:auto;margin-right:auto;display:flex;flex-direction:column;gap:1.1rem;padding-bottom:1.6rem;border-bottom:1px solid rgba(69,41,40,.3)}
+.footer-cta{width:100%;max-width:720px;margin-left:auto;margin-right:auto;display:flex;flex-direction:column;gap:1.1rem;padding-bottom:1.6rem;border-bottom:1px solid rgba(232,220,196,.35)}
 .footer-cta .cta-note{color:rgba(240,234,216,.6);margin-bottom:0;text-align:center}
-.footer-search{width:100%;display:flex;align-items:center;border-bottom:1px solid rgba(69,41,40,.55)}
-.footer-search-input{flex:1;border:none;outline:none;background:none;font-family:var(--sans);font-weight:300;font-size:.85rem;color:var(--pal-wine);padding:.6rem 0}
-.footer-search-input::placeholder{color:rgba(69,41,40,.8)}
+.footer-search{width:100%;display:flex;align-items:center;border-bottom:1px solid var(--cream)}
+.footer-search-input{flex:1;border:none;outline:none;background:none;font-family:var(--sans);font-weight:300;font-size:.85rem;color:var(--cream);padding:.6rem 0}
+.footer-search-input::placeholder{color:rgba(232,220,196,.75)}
 /* iOSは16px未満の入力欄フォーカスで自動ズームするため、モバイルは16px指定 */
 @media(max-width:960px){.footer-search-input,.qa-bot-search-input{font-size:16px}}
-.footer-search-go{background:none;border:none;cursor:pointer;color:var(--pal-wine);padding:.4rem;display:flex;align-items:center}
+.footer-search-go{background:none;border:none;cursor:pointer;color:var(--cream);padding:.4rem;display:flex;align-items:center}
 .footer-search-go svg{width:16px;height:16px}
 /* Kitsuné の SHOP NOW 風: 全幅の帯ボタン(ダークフッターはクリーム) */
 .footer-book-btn{display:block;width:100%;background:var(--cream);color:#1C0909;font-family:var(--sans);font-weight:400;font-size:.78rem;letter-spacing:.2em;padding:1.05rem 1rem;text-decoration:none;text-align:center;transition:opacity .25s}
 .footer-book-btn:hover{opacity:.85}
-.footer-logo{font-family:var(--sans);font-weight:300;font-size:.85rem;letter-spacing:.3em;color:var(--pal-wine);text-decoration:none}
+.footer-logo{font-family:var(--sans);font-weight:300;font-size:.85rem;letter-spacing:.3em;color:var(--cream);text-decoration:none}
 .footer-links{display:flex;gap:1.2rem;list-style:none;flex-wrap:wrap}
-.footer-links a{font-family:var(--sans);font-weight:400;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--pal-wine);text-decoration:none;transition:color .2s}
-.footer-links a:hover{color:var(--accent)}
-.footer-copy{font-size:.62rem;letter-spacing:.06em;color:rgba(69,41,40,.85)}.footer-logo{order:1}.footer-copy{order:2}.footer-links{order:3;flex-basis:100%;justify-content:center;margin:.2rem 0}footer{flex-direction:column;align-items:center;text-align:center;justify-content:flex-start}
+.footer-links a{font-family:var(--sans);font-weight:400;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,220,196,.8);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--cream)}
+.footer-copy{font-size:.62rem;letter-spacing:.06em;color:rgba(232,220,196,.8)}.footer-logo{order:1}.footer-copy{order:2}.footer-links{order:3;flex-basis:100%;justify-content:center;margin:.2rem 0}footer{flex-direction:column;align-items:center;text-align:center;justify-content:flex-start}
 
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:1200px){
@@ -1226,8 +1227,8 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 /* nr. は水色（--pal-bluegrey）を地にする。et. の白と並べたときに
    どちらの予約ボタンかが色で分かる。文字とロゴは currentColor 任せなので
    color を変えるだけで両方そろう */
-.footer-cta .bb-btn.bb-nr{background:var(--pal-wine);color:var(--cream)}
-.footer-cta .bb-btn.bb-nr .bb-cta{border-color:rgba(232,220,196,.5)}
+.footer-cta .bb-btn.bb-nr{background:#f0ead8;color:#1C0909}
+.footer-cta .bb-btn.bb-nr .bb-cta{border-color:rgba(28,9,9,.45)}
 </style>
 <style>.sec-jp{font-family:var(--sans);font-weight:400;font-size:.62rem;letter-spacing:.1em;color:var(--mid);white-space:nowrap;margin-left:.2rem}.kim-cat-title .sec-jp{margin-left:0;flex:0 0 auto;font-size:.58rem}</style>
 <style>
