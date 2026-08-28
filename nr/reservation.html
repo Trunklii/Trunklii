@@ -42,7 +42,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --ink:#2b2825;--off:#fff;--bg:#f8f6f2;--mid:#888078;
-  --accent:#b8935a;--border:rgba(17,16,16,.1);
+  --accent:#7a9e95;--border:rgba(17,16,16,.1);
   --serif:'Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic Medium','YuGothic',sans-serif;--display:'Cormorant','Noto Serif JP','Hiragino Mincho ProN','Yu Mincho','YuMincho',serif;--sans:'Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic Medium','YuGothic',sans-serif;
   --ease:cubic-bezier(.25,.46,.45,.94);
 }
@@ -66,13 +66,33 @@ a{color:inherit}
 .btn-line.filled:hover{background:var(--accent);border-color:var(--accent)}
 .coming-banner{font-family:var(--serif);font-size:.85rem;letter-spacing:.08em;color:var(--accent);
   border:1px solid var(--accent);padding:.85rem 1.5rem;margin:0 auto 3.5rem;text-align:center;max-width:640px}
-.res-flow{list-style:none;margin:0 0 2rem;padding:0;border-top:1px solid var(--line)}
-.res-flow li{display:grid;grid-template-columns:3.2rem 1fr;gap:.15rem .9rem;
-  padding:1.3rem 0;border-bottom:1px solid var(--line)}
-.rf-n{grid-row:1/3;font-family:var(--serif);font-size:1rem;color:var(--accent);letter-spacing:.06em;padding-top:.1rem}
-.rf-t{font-family:var(--sans);font-weight:500;font-size:.86rem;color:var(--ink)}
-.rf-d{font-size:.78rem;color:var(--mid);line-height:1.95}
-@media(max-width:600px){.res-flow li{grid-template-columns:2.6rem 1fr}}
+/* ご予約の流れ。et. の Flow と同じ見せ方（丸数字を縦線と矢印でつなぐ）。
+   色は var(--accent) 任せなので、nr. の配色がそのまま反映される */
+.flow-wrap{max-width:780px;margin:0 auto 2rem;position:relative}
+.flow-step{position:relative;display:grid;grid-template-columns:80px 1fr;gap:2rem;padding:2.6rem 0;align-items:start}
+.flow-step + .flow-step{border-top:1px solid var(--border)}
+.flow-num{display:flex;align-items:center;justify-content:center;width:45px;height:45px;border-radius:50%;
+  background:var(--ink);color:#fff;font-family:var(--display);font-style:normal;font-weight:300;
+  font-size:1.2rem;letter-spacing:-.02em;flex-shrink:0;position:relative;z-index:2}
+.flow-step:not(:last-child)::before{content:'';position:absolute;left:32px;top:108px;bottom:24px;width:1px;background:var(--border);z-index:1}
+.flow-step:not(:last-child)::after{content:'';position:absolute;left:27px;bottom:18px;width:11px;height:11px;
+  border-right:1.5px solid var(--accent);border-bottom:1.5px solid var(--accent);transform:rotate(45deg);z-index:1}
+.flow-body{padding-top:.4rem}
+.flow-title{font-family:var(--display);font-weight:400;font-size:1rem;letter-spacing:.06em;color:var(--ink);margin-bottom:.5rem}
+.flow-desc{font-family:var(--serif);font-weight:300;font-size:.85rem;color:var(--mid);line-height:2}
+.flow-note{display:inline-block;margin-top:.6rem;font-family:var(--display);font-style:normal;font-size:.78rem;
+  color:var(--accent);letter-spacing:.04em;padding:.25rem .75rem;
+  border:1px solid var(--accent);background:transparent}
+@supports (border-color: color-mix(in srgb, red 30%, transparent)){
+  .flow-note{border-color:color-mix(in srgb, var(--accent) 35%, transparent);
+    background:color-mix(in srgb, var(--accent) 6%, transparent)}
+}
+@media(max-width:768px){
+  .flow-step{grid-template-columns:50px 1fr;gap:1.2rem;padding:2.2rem 0}
+  .flow-num{width:32px;height:32px;font-size:.85rem}
+  .flow-step:not(:last-child)::before{left:23px;top:82px;bottom:18px}
+  .flow-step:not(:last-child)::after{left:18px;bottom:12px}
+}
 .more-cta{display:flex;justify-content:center;margin-top:3rem}
 
 /* ─── Nav ─── */
@@ -351,23 +371,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h2 class="subsec-title">ご予約の流れ</h2>
         </div>
 
-        <ol class="res-flow">
-          <li><span class="rf-n">01</span>
-            <span class="rf-t">撮影プランと日時を選ぶ</span>
-            <span class="rf-d">ご予約ページで、撮影プラン・ご希望の日時・お客様情報を順にお選びいただきます。空いている枠だけが表示されます。</span></li>
-          <li><span class="rf-n">02</span>
-            <span class="rf-t">LINEで予約を確定する</span>
-            <span class="rf-d">入力後の画面からLINEを開き、ボタンを押すだけで確定します。メッセージを送る操作はいりません。</span></li>
-          <li><span class="rf-n">03</span>
-            <span class="rf-t">確定のご案内が届く</span>
-            <span class="rf-d">LINEのトークとメールに、確定のご案内をお送りします。この時点でお席が確保されます。撮影アンケート（2〜3分）もあわせてお送りしますので、当日までにご回答ください。</span></li>
-          <li><span class="rf-n">04</span>
-            <span class="rf-t">事前の電話カウンセリング</span>
-            <span class="rf-d">ご予約から5営業日以内にお電話し、撮影内容・衣装・ご希望のイメージを伺います。</span></li>
-          <li><span class="rf-n">05</span>
-            <span class="rf-t">当日撮影・当日データ納品</span>
-            <span class="rf-d">撮影後はその場で編集し、撮影当日にデータをお渡しします。スマホの空き容量をご用意のうえお越しください。</span></li>
-        </ol>
+        <div class="flow-wrap">
+        <div class="flow-step">
+          <div class="flow-num">01</div>
+          <div class="flow-body">
+            <div class="flow-title">撮影プランと日時を選ぶ</div>
+            <div class="flow-desc">ご予約ページで、撮影プラン・ご希望の日時・お客様情報を順にお選びいただきます。空いている枠だけが表示されます。</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">02</div>
+          <div class="flow-body">
+            <div class="flow-title">LINEで予約を確定する</div>
+            <div class="flow-desc">入力後の画面からLINEを開き、ボタンを押すだけで確定します。メッセージを送る操作はいりません。</div>
+            <div class="flow-note">＊LINEの友だち追加が必要です</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">03</div>
+          <div class="flow-body">
+            <div class="flow-title">確定のご案内が届く</div>
+            <div class="flow-desc">LINEのトークとメールに、確定のご案内をお送りします。この時点でお席が確保されます。撮影アンケートもあわせてお送りしますので、当日までにご回答ください。</div>
+            <div class="flow-note">＊アンケートは2〜3分</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">04</div>
+          <div class="flow-body">
+            <div class="flow-title">事前の電話カウンセリング</div>
+            <div class="flow-desc">お電話で、撮影内容・衣装・ご希望のイメージを伺います。</div>
+            <div class="flow-note">＊ご予約から5営業日以内</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">05</div>
+          <div class="flow-body">
+            <div class="flow-title">当日撮影・当日データ納品</div>
+            <div class="flow-desc">撮影後はその場で編集し、撮影当日にデータをお渡しします。スマホの空き容量をご用意のうえお越しください。</div>
+            <div class="flow-note">＊アルバム等は後日納品</div>
+          </div>
+        </div>
+        </div>
 
         <ul class="res-notes">
           <li><span>ご予約にはLINEの友だち追加が必要です。確定の操作の中でご案内します。</span></li>
