@@ -83,9 +83,11 @@ a{color:inherit}
 .flow-note{display:inline-block;margin-top:.6rem;font-family:var(--display);font-style:normal;font-size:.78rem;
   color:var(--accent);letter-spacing:.04em;padding:.25rem .75rem;
   border:1px solid var(--accent);background:transparent}
+.flow-note.now{background:var(--accent);border-color:var(--accent);color:#fff}
 @supports (border-color: color-mix(in srgb, red 30%, transparent)){
   .flow-note{border-color:color-mix(in srgb, var(--accent) 35%, transparent);
     background:color-mix(in srgb, var(--accent) 6%, transparent)}
+  .flow-note.now{border-color:var(--accent);background:var(--accent)}
 }
 @media(max-width:768px){
   .flow-step{grid-template-columns:50px 1fr;gap:1.2rem;padding:2.2rem 0}
@@ -391,12 +393,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="flow-num">03</div>
           <div class="flow-body">
             <div class="flow-title">確定のご案内が届く</div>
-            <div class="flow-desc">LINEのトークとメールに、確定のご案内をお送りします。この時点でお席が確保されます。撮影アンケートもあわせてお送りしますので、当日までにご回答ください。</div>
-            <div class="flow-note">＊アンケートは2〜3分</div>
+            <div class="flow-desc">LINEのトークとメールに、確定のご案内をお送りします。この時点でお席が確保されます。</div>
           </div>
         </div>
         <div class="flow-step">
           <div class="flow-num">04</div>
+          <div class="flow-body">
+            <div class="flow-title">撮影アンケートにご回答</div>
+            <div class="flow-desc">確定のご案内と一緒に、撮影アンケートをお送りします。お子様の人数やご希望のイメージを伺うもので、2〜3分で終わります。ご回答がないと、当日のご準備が整いません。</div>
+            <div class="flow-note now">＊後日ではなく、ご案内が届いたその場でご回答ください</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">05</div>
           <div class="flow-body">
             <div class="flow-title">事前の電話カウンセリング</div>
             <div class="flow-desc">お電話で、撮影内容・衣装・ご希望のイメージを伺います。</div>
@@ -404,7 +413,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <div class="flow-step">
-          <div class="flow-num">05</div>
+          <div class="flow-num">06</div>
           <div class="flow-body">
             <div class="flow-title">当日撮影・当日データ納品</div>
             <div class="flow-desc">撮影後はその場で編集し、撮影当日にデータをお渡しします。スマホの空き容量をご用意のうえお越しください。</div>

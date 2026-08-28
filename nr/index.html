@@ -26,7 +26,7 @@
         <a href="reservation.html" class="btn-line">流れの詳細を見る</a>
       </div>
       <ul class="res-top-notes">
-        <li>日時を選ぶ → LINEで確定 → ご案内が届く → 事前の電話カウンセリング → 当日撮影・当日データ納品</li>
+        <li>日時を選ぶ → LINEで確定 → ご案内が届く → アンケートに回答 → 事前の電話カウンセリング → 当日撮影・当日データ納品</li>
         <li>ご予約の確定はLINEで行います。ボタンを押すだけで、メッセージを送る操作はいりません。</li>
       </ul>
     </div>
@@ -815,6 +815,8 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 .flow-title{font-family:var(--display);font-weight:400;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:.5rem}
 .flow-desc{font-family:var(--serif);font-weight:300;font-size:.85rem;color:var(--mid);line-height:2}
 .flow-note{display:inline-block;margin-top:.6rem;font-family:var(--display);font-style:normal;font-size:.78rem;color:var(--accent-mustard);letter-spacing:.04em;padding:.25rem .75rem;border:1px solid rgba(193,148,64,.35);background:rgba(193,148,64,.06)}
+/* 注意喚起の注記。他と同じ見た目だと埋もれるので塗りにする */
+.flow-note.now{background:var(--accent);border-color:var(--accent);color:#fff}
 
 /* RECRUIT */
 .recruit-body{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,6rem);align-items:start}
@@ -2136,7 +2138,7 @@ async function init(){
       <div class="flow-body">
         <div class="flow-title">${s.title}</div>
         <div class="flow-desc">${s.desc}</div>
-        ${s.note ? `<div class="flow-note">＊${s.note}</div>` : ''}
+        ${s.note ? `<div class="flow-note${s.urgent ? ' now' : ''}">＊${s.note}</div>` : ''}
       </div>
     </div>
   `).join('');
