@@ -194,11 +194,12 @@ footer{border-top:1px solid var(--border);background:#fff;color:var(--mid);paddi
   .float-book{bottom:calc(.5rem + 48px + .5rem + 48px + .5rem)}
 }
 /* 相互ブランド行き来アイコン(チャットの下・スマホのみ) */
-.brand-hop{position:fixed;right:1.25rem;bottom:.5rem;z-index:150;width:48px;height:48px;border-radius:50%;background:#fff;border:1px solid rgba(17,16,16,.25);display:flex;align-items:center;justify-content:center;opacity:.5;box-shadow:0 6px 20px rgba(17,16,16,.15);transition:opacity .3s}
+.brand-hop{position:fixed;right:1.25rem;bottom:.5rem;z-index:150;width:54px;height:54px;border-radius:50%;background:#fff;border:1px solid rgba(17,16,16,.25);display:flex;align-items:center;justify-content:center;opacity:.5;box-shadow:0 6px 20px rgba(17,16,16,.15);transition:opacity .3s}
 .brand-hop:hover{opacity:1}
-/* BRAND-HOP-PILL: 正式ロゴ(Studio et./Maison nr.)が潰れないよう円形→ピル型に */
-.brand-hop{width:auto!important;min-width:var(--fab);padding:0 .55rem;border-radius:999px!important}
-.brand-hop .bh-logo{display:block;height:22px;background:currentColor}
+/* ほかの丸アイコンと同じ円にそろえる。横長にするとロゴだけ大きく見える。
+   スマホの48px指定は .brand-hop の定義より前にあり打ち消されるので、ここで指定し直す */
+@media(max-width:960px){.brand-hop{width:48px;height:48px}}
+.brand-hop .bh-logo{display:block;width:30px;height:auto;background:currentColor}
 body.sheet-open .float-book,body.sheet-open .to-top-btn,body.sheet-open .brand-hop{opacity:0!important;pointer-events:none!important;transition:none!important}
 .book-sheet-close{position:absolute;top:.8rem;right:.9rem;background:none;border:none;font-size:1.05rem;cursor:pointer;color:#111010;padding:.3rem;line-height:1}
 .book-sheet-title{font-family:var(--sans);font-weight:400;font-size:.92rem;letter-spacing:.16em;text-transform:uppercase;color:#111010}
