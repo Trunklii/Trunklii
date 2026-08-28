@@ -507,6 +507,10 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
    写真準備が整いリリースする際は、この下のブロックを丸ごと削除してください */
 #about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa{display:none!important}
 :is(.nav-item,.mob-item,.footer-links li):has(a:is([href="#about"],[href="#gallery"],[href="#kimono"],[href="#costume"],[href="#plans"],[href="#goods"],[href="#calendar"],[href="#reservation"],[href="#cancel-policy"],[href="#qa"])){display:none}
+/* 「予約の詳細を見る →」だけを個別に非表示にする。
+   いまは Reservation セクションごと隠れているが、先にこの指定を入れておくと
+   Reservation を表に出したときも、詳細ページへは進ませないままにできる */
+#reservation-more-btn{display:none}
 /* ヘッダー下段メニュー(Recruit等)と予約導線も非表示(ページが短くリンク不要・予約ページ未公開) */
 .nav-bot{display:none}
 .mob-item:has(a[href="#recruit"]){display:none}
