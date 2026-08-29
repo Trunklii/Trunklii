@@ -1222,13 +1222,13 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 </style>
 <style>
 /* nr.側: ダーク背景のフッター帯ではボタン配色を反転(背景⇔文字ロゴ罫線) */
-.footer-cta .bb-btn.bb-et{background:#fff;color:#111010}
-.footer-cta .bb-btn.bb-et .bb-cta{border-color:rgba(17,16,16,.4)}
-/* nr. は水色（--pal-bluegrey）を地にする。et. の白と並べたときに
-   どちらの予約ボタンかが色で分かる。文字とロゴは currentColor 任せなので
-   color を変えるだけで両方そろう */
-.footer-cta .bb-btn.bb-nr{background:#f0ead8;color:#1C0909}
-.footer-cta .bb-btn.bb-nr .bb-cta{border-color:rgba(28,9,9,.45)}
+/* 予約ボタンは地を敷かず、赤茶の上に線と文字だけで置く。
+   ロゴは currentColor で描かれるので、color を指定すればロゴも一緒にクリームになる */
+.footer-cta .bb-btn.bb-et,
+.footer-cta .bb-btn.bb-nr{background:transparent;color:var(--cream);border-color:rgba(232,220,196,.55)}
+.footer-cta .bb-btn.bb-et .bb-cta,
+.footer-cta .bb-btn.bb-nr .bb-cta{border-color:rgba(232,220,196,.6)}
+.footer-cta .bb-btn:hover{background:rgba(232,220,196,.12)}
 </style>
 <style>.sec-jp{font-family:var(--sans);font-weight:400;font-size:.62rem;letter-spacing:.1em;color:var(--mid);white-space:nowrap;margin-left:.2rem}.kim-cat-title .sec-jp{margin-left:0;flex:0 0 auto;font-size:.58rem}</style>
 <style>
