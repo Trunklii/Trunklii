@@ -510,8 +510,11 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
    お客様が料金もキャンセルポリシーも見られないまま予約するのを避けるため、
    #plans / #calendar / #reservation / #cancel-policy / #qa をこのリストから外している。
    （キャンセル料を請求する根拠になるので、予約前に読める状態にしておく） */
-#about,#gallery,#kimono,#costume,#goods{display:none!important}
-:is(.nav-item,.mob-item,.footer-links li):has(a:is([href="#about"],[href="#gallery"],[href="#kimono"],[href="#costume"],[href="#goods"])){display:none}
+#about,#gallery,#kimono,#costume,#goods,#calendar{display:none!important}
+:is(.nav-item,.mob-item,.footer-links li):has(a:is([href="#about"],[href="#gallery"],[href="#kimono"],[href="#costume"],[href="#goods"],[href="#calendar"])){display:none}
+/* #calendar を隠しているのは、静的な料金凡例が et. の 753 料金（A ¥6,600 / B ¥8,800 / C ¥9,900）で、
+   nr. には tiers データが無いため。nr. の 753 は ¥60,000 / ¥63,000＋土日祝・ハイシーズン各 +¥5,500 と
+   体系そのものが違い、A/B/C の区分が存在しない。nr. 用の料金表を用意するまでは出さないこと。 */
 /* 「予約の詳細を見る →」だけを個別に非表示にする。
    Reservation セクションは公開したが、詳細ページへは進ませないままにしておく
    （2026-08-29 の指示。ボタンが出てこないのは消し忘れではなく、この1行が理由） */
