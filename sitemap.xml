@@ -1567,18 +1567,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://trunklii.com/nr/calendar.html</loc>
-    <lastmod>2026-07-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://trunklii.com/nr/calendar/</loc>
-    <lastmod>2026-07-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://trunklii.com/nr/reservation.html</loc>
     <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
