@@ -503,19 +503,21 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 /* Coming Soon 期間中はヒーロー左下のロゴ・タグラインを非表示（パネルと重なるため） */
 .hero .hero-content{display:none}
 
-/* ═══ Coming Soon 期間中の非表示: About〜Flow ═══
-   写真準備が整いリリースする際は、この下のブロックを丸ごと削除してください */
-#about,#gallery,#kimono,#costume,#plans,#goods,#calendar,#reservation,#cancel-policy,#qa{display:none!important}
-:is(.nav-item,.mob-item,.footer-links li):has(a:is([href="#about"],[href="#gallery"],[href="#kimono"],[href="#costume"],[href="#plans"],[href="#goods"],[href="#calendar"],[href="#reservation"],[href="#cancel-policy"],[href="#qa"])){display:none}
+/* ═══ Coming Soon 期間中の非表示: 写真がまだ揃っていないセクションのみ ═══
+   写真準備が整いリリースする際は、この下のブロックを丸ごと削除してください
+
+   2026-09-10 の予約受付開始にあたり、料金・規約系は公開に切り替えた。
+   お客様が料金もキャンセルポリシーも見られないまま予約するのを避けるため、
+   #plans / #calendar / #reservation / #cancel-policy / #qa をこのリストから外している。
+   （キャンセル料を請求する根拠になるので、予約前に読める状態にしておく） */
+#about,#gallery,#kimono,#costume,#goods{display:none!important}
+:is(.nav-item,.mob-item,.footer-links li):has(a:is([href="#about"],[href="#gallery"],[href="#kimono"],[href="#costume"],[href="#goods"])){display:none}
 /* 「予約の詳細を見る →」だけを個別に非表示にする。
-   いまは Reservation セクションごと隠れているが、先にこの指定を入れておくと
-   Reservation を表に出したときも、詳細ページへは進ませないままにできる */
+   Reservation セクションは公開したが、詳細ページへは進ませないままにしておく
+   （2026-08-29 の指示。ボタンが出てこないのは消し忘れではなく、この1行が理由） */
 #reservation-more-btn{display:none}
-/* ヘッダー下段メニュー(Recruit等)と予約導線も非表示(ページが短くリンク不要・予約ページ未公開) */
-.nav-bot{display:none}
+/* ヘッダー下段メニュー(Recruit等)は引き続き非表示 */
 .mob-item:has(a[href="#recruit"]){display:none}
-.mob-book-btn{display:none}
-#booking{display:none!important}
 /* ヒーロー写真を全デバイスでウィンドウ高さ・幅100%に(ヘッダーは半透明で写真に重ねる) */
 .hero{margin-top:0;height:100vh;height:100svh}
 header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
@@ -1441,11 +1443,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="hero-logo-ov" aria-hidden="true"><span class="nr-mark"></span></div>
   <div class="hero-cs">
     <div class="hero-cs-inner">
-      <div class="hero-cs-sub">Coming Soon</div>
+      <div class="hero-cs-sub">2026.10.01 OPEN</div>
       <span class="hero-cs-logo" role="img" aria-label="Maison nr.（メゾン ナル）"></span>
       <div class="hero-cs-def"><span class="def-word">nr.（ナル）</span><span class="def-divider">｜</span>narrative<span class="def-divider">―</span>世界観・意味づけ・物語性</div>
       <p class="hero-cs-concept">つかの間の愛らしさを、生花の儚さとともに。<br/>その一瞬を、これからを彩りつづける物語に。</p>
-      <p class="hero-cs-open">Maison nr. は愛知県春日井市に、まもなくオープンします。</p>
+      <p class="hero-cs-open">Maison nr. は愛知県春日井市に、2026年10月1日オープンします。</p>
       <div class="hero-cs-links">
         <a class="hero-cs-btn" id="cs-ig" href="https://www.instagram.com/maison_nr._/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
@@ -1835,7 +1837,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260910a"></script>
+<script src="../site-data.js?v=20260910b"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
