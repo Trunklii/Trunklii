@@ -15,15 +15,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title id="page-title">撮影プラン一覧 | Maison nr.（愛知県春日井市）</title>
 <!-- SEO Meta -->
-<meta name="description" content="Maison nr.（愛知県春日井市・2026年10月1日OPEN）の撮影プラン一覧。七五三・お宮参り・バースデー・マタニティ・ファミリー撮影の料金とプラン内容をご案内。"/>
-<meta name="keywords" content="写真スタジオ,フォトスタジオ,愛知県,春日井市,七五三,お宮参り,バースデー,マタニティ,ファミリーフォト,Maison nr.,和モダン"/>
+<meta name="description" content="Maison nr.（愛知県春日井市・2026年10月1日OPEN）の撮影プラン一覧。七五三とBirthday撮影の料金・プラン内容・オプションをご案内。"/>
+<meta name="keywords" content="フォトスタジオ,愛知県,春日井市,七五三,バースデー,Maison nr.,和モダン"/>
 <meta name="author" content="Trunklii"/>
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
 <link rel="canonical" href="https://trunklii.com/nr/plans.html"/>
 <!-- Open Graph -->
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="撮影プラン一覧 | Maison nr.（愛知県春日井市）"/>
-<meta property="og:description" content="Maison nr.（愛知県春日井市・2026年10月1日OPEN）の撮影プラン一覧。七五三・お宮参り・バースデー・マタニティ・ファミリー撮影の料金とプラン内容をご案内。"/>
+<meta property="og:description" content="Maison nr.（愛知県春日井市・2026年10月1日OPEN）の撮影プラン一覧。七五三とBirthday撮影の料金・プラン内容・オプションをご案内。"/>
 <meta property="og:url" content="https://trunklii.com/nr/plans.html"/>
 <meta property="og:image" content="https://trunklii.com/nr/maison-nr-kasugai-studio-et-hashima-hero-pc-07.jpg"/>
 <meta property="og:site_name" content="Maison nr."/>
@@ -31,7 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="撮影プラン一覧 | Maison nr.（愛知県春日井市）"/>
-<meta name="twitter:description" content="Maison nr.（愛知県春日井市・2026年10月1日OPEN）の撮影プラン一覧。七五三・お宮参り・バースデー・マタニティ・ファミリー撮影の料金とプラン内容をご案内。"/>
+<meta name="twitter:description" content="Maison nr.（愛知県春日井市・2026年10月1日OPEN）の撮影プラン一覧。七五三とBirthday撮影の料金・プラン内容・オプションをご案内。"/>
 <meta name="twitter:image" content="https://trunklii.com/nr/maison-nr-kasugai-studio-et-hashima-hero-pc-07.jpg"/>
 <!-- End SEO Meta -->
 <!-- Structured Data -->
@@ -286,6 +286,13 @@ body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filte
 .mn-og dd{margin:0;text-align:right;white-space:nowrap;font-variant-numeric:lining-nums}
 .mn-og p{font-family:var(--serif);font-size:.68rem;line-height:1.75;color:var(--mid);margin:.5rem 0 0}
 .mn-og .sub{grid-column:1/-1;font-size:.62rem;color:var(--mid);margin-top:-.1rem}
+/* メニューごとのブロック。ここを視覚的に閉じておかないと、
+   七五三の「ハイシーズン +¥5,500」が下の Birthday にも掛かって読めてしまう。 */
+.mn-sheet{padding-top:2.6rem}
+.mn-sheet + .mn-sheet{margin-top:3rem;border-top:1px solid var(--border)}
+.mn-plan-note{font-family:var(--serif);font-size:.7rem;line-height:1.75;color:var(--mid);margin-top:.5rem}
+/* プランが1つだけのメニュー（Birthday）は、カードを横いっぱいに伸ばさない */
+.mn-plans.one{grid-template-columns:minmax(0,360px);justify-content:center}
 .mn-notes{list-style:none;padding:1.1rem 1.2rem;margin:0;border:1px solid var(--border);font-family:var(--serif);font-size:.74rem;line-height:1.95;color:var(--mid)}
 .mn-notes li::before{content:'※ '}
 @media(max-width:640px){
@@ -326,122 +333,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="sec-rule"></div>
       </div>
 
-      <p class="mn-eyebrow">SHICHI-GO-SAN &middot; 2026</p>
-      <h2 class="mn-title">七五三 撮影メニュー</h2>
-      <p class="mn-lead">ご料金は <b>①撮影料金</b> ＋ <b>②プラン</b> ＋ <b>③オプション（任意）</b> の合計です。<br/>表示価格はすべて税込です。</p>
+      <!-- 料金表は site-data.js の studios.nr.menuSheets から描画する。
+           以前はここに金額を直書きしていたが、site-data.js と二重管理になり、
+           片方だけ直すと画面に出ない事故が起きる（2026-09-10 に et. で実際に起きた型）。
+           金額を変えるときは site-data.js だけを直すこと。 -->
+      <div id="mn-sheets"></div>
 
-      <div class="mn-step"><span class="mn-no">①</span><span class="mn-tag req">必須</span><h3>七五三撮影料金</h3></div>
-      <div class="mn-fee">
-        <div class="mn-fee-i"><span>3歳・5歳 男の子</span><b>¥10,000</b></div>
-        <div class="mn-fee-i"><span>3歳 女の子</span><b>¥13,000</b></div>
-        <div class="mn-fee-i"><span>7歳 女の子</span><b>¥15,000</b></div>
-      </div>
-
-      <div class="mn-plus">＋</div>
-
-      <div class="mn-step"><span class="mn-no">②</span><span class="mn-tag req">必須</span><h3>プラン<small>いずれか1つをお選びください</small></h3></div>
-      <div class="mn-plans">
-        <div class="mn-plan">
-          <div class="mn-plan-n">生花髪飾り</div>
-          <div class="mn-plan-en">FRESH FLOWER</div>
-          <div class="mn-plan-p">¥50,000<em>税込</em></div>
-          <ul>
-            <li>データ 40枚</li>
-            <li>ソロ / 家族写真</li>
-            <li>生花髪飾り or 手持ちフラワー<br/><span style="font-size:.68rem">（当日コーディネートさせていただきます）</span></li>
-          </ul>
-        </div>
-        <div class="mn-plan">
-          <div class="mn-plan-n">空間装飾</div>
-          <div class="mn-plan-en">SPACE DECORATION</div>
-          <div class="mn-plan-p">¥73,000<em>税込</em></div>
-          <ul>
-            <li>データ 40枚</li>
-            <li>ソロ / 家族写真</li>
-            <li>空間装飾</li>
-          </ul>
-        </div>
-        <div class="mn-plan">
-          <div class="mn-plan-n">生花髪飾り ＋ 空間装飾</div>
-          <div class="mn-plan-en">FRESH FLOWER + SPACE DECORATION</div>
-          <div class="mn-plan-p">¥85,000<em>税込</em></div>
-          <ul>
-            <li>データ 40枚</li>
-            <li>ソロ / 家族写真</li>
-            <li>生花髪飾り ＋ 空間装飾</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="mn-add">
-        <b>土日祝</b> +¥5,500 ／ <b>ハイシーズン（10月〜12月）</b> 全日 +¥5,500
-        <small>10月〜12月の土日祝は、両方が加算され +¥11,000 となります。</small>
-      </div>
-
-      <div class="mn-ex">
-        <div class="mn-ex-i"><b>例1 &nbsp;3歳 男の子／生花髪飾り／10月の平日</b>
-          撮影料金 ¥10,000 ＋ プラン ¥50,000 ＋ ハイシーズン ¥5,500 ＝ <i>¥65,500</i></div>
-        <div class="mn-ex-i"><b>例2 &nbsp;7歳 女の子／生花髪飾り＋空間装飾／10月の土曜</b>
-          撮影料金 ¥15,000 ＋ プラン ¥85,000 ＋ 土日祝・ハイシーズン ¥11,000 ＝ <i>¥111,000</i></div>
-      </div>
-
-      <div class="mn-step"><span class="mn-no">③</span><span class="mn-tag opt">任意</span><h3>オプション</h3></div>
-      <div class="mn-opts">
-
-        <div class="mn-og">
-          <div class="mn-og-t">生花髪飾りオプション</div>
-          <dl>
-            <dt>髪飾りイメージオーダー</dt><dd>¥5,500〜</dd>
-            <dd class="sub">色や花材の希望はオプション追加になります</dd>
-            <dt>髪飾り 1人追加</dt><dd>¥12,000</dd>
-          </dl>
-        </div>
-
-        <div class="mn-og">
-          <div class="mn-og-t">オプション<small>OPTION</small></div>
-          <dl>
-            <dt>カラー背景紙</dt><dd>¥3,300</dd>
-            <dt>日本髪</dt><dd>¥5,500</dd>
-            <dt>2style（カジュアル追加）+10cut追加</dt><dd>¥11,000</dd>
-          </dl>
-        </div>
-
-        <div class="mn-og">
-          <div class="mn-og-t">きょうだいオプション<small>SIBLING</small></div>
-          <dl>
-            <dt>お宮参り</dt><dd>¥8,800</dd>
-            <dt>3歳・5歳 男の子</dt><dd>¥10,000</dd>
-            <dt>3歳 女の子</dt><dd>¥13,000</dd>
-            <dt>7歳 女の子</dt><dd>¥15,000</dd>
-            <dt>ハーフ成人 男児</dt><dd>¥11,000</dd>
-            <dt>ハーフ成人 女児</dt><dd>¥15,000</dd>
-            <dt>カジュアル衣装（きょうだい・家族）</dt><dd>¥3,300</dd>
-            <dt>カジュアル衣装（ソロ・きょうだい・家族・+10cut）</dt><dd>¥11,000</dd>
-          </dl>
-          <p>上記オプションは +10cut の追加撮影です。いずれもソロ撮影／きょうだい写真を含みます。</p>
-        </div>
-
-        <div class="mn-og">
-          <div class="mn-og-t">大人着物オプション<small>FOR PARENTS</small></div>
-          <dl>
-            <dd class="sub" style="margin-top:0">ママ</dd>
-            <dt>着付けヘアセット（持込着物）</dt><dd>¥17,000</dd>
-            <dt>着付けのみ（持込着物）</dt><dd>¥11,000</dd>
-            <dt>和装ヘアセット</dt><dd>¥11,000</dd>
-            <dd class="sub">パパ</dd>
-            <dt>和装着付け（持込着物）</dt><dd>¥8,800</dd>
-          </dl>
-        </div>
-
-      </div>
-
-      <ul class="mn-notes">
-        <li>所要時間は 2時間30分〜3時間 です。</li>
-        <li>ごきょうだいのお支度料は追加オプションとなります。</li>
-        <li>オプションによるごきょうだい追加や 2style のカット数追加は、最大70枚までとなります。<br/>例：3兄弟＋2style（1人）にした場合、80枚ではなく70枚です。</li>
-        <li>生花はこちらでご用意するため、お持ち込みはご遠慮いただいております。</li>
-        <li>表示価格はすべて税込です。</li>
-      </ul>
 
       <div class="more-cta">
         <a class="btn-line" href="https://reserve.trunklii.com/reserve/nr">ご予約ページへ</a>
@@ -488,7 +385,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260910f"></script>
+<script src="../site-data.js?v=20260910g"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
@@ -502,6 +399,96 @@ function minPriceFromVariants(variants){
   if(nums.length === 0) return variants[0].price || '';
   const min = Math.min(...nums);
   return `¥${min.toLocaleString()}〜`;
+}
+
+/* ── 紙の料金表（studios.nr.menuSheets）を描く ──
+   金額はすべてここで site-data.js から取る。HTMLに直書きしないこと。
+   メニューごとに1ブロックで、加算の注記もブロックの中に閉じる。
+   ページ全体に掛かる注記を作ると、七五三のハイシーズン加算が
+   Birthday にも掛かって読めてしまう。 */
+const yenNum = (n) => '¥' + Number(n).toLocaleString('ja-JP');
+
+function mnFees(items){
+  return '<div class="mn-fee">' + items.map((f) =>
+    '<div class="mn-fee-i"><span>' + esc(f.label) + '</span><b>' + yenNum(f.price) + '</b></div>'
+  ).join('') + '</div>';
+}
+function mnPlans(items){
+  const cls = items.length === 1 ? 'mn-plans one' : 'mn-plans';
+  return '<div class="' + cls + '">' + items.map((p) =>
+    '<div class="mn-plan">'
+    + '<div class="mn-plan-n">' + esc(p.name) + '</div>'
+    + (p.en ? '<div class="mn-plan-en">' + esc(p.en) + '</div>' : '')
+    + '<div class="mn-plan-p">' + yenNum(p.price) + '<em>税込</em></div>'
+    + '<ul class="mn-plan-l">' + (p.includes || []).map((x) => '<li>' + esc(x) + '</li>').join('') + '</ul>'
+    + (p.note ? '<div class="mn-plan-note">（' + esc(p.note) + '）</div>' : '')
+    + '</div>'
+  ).join('') + '</div>';
+}
+function mnOptionGroups(items){
+  return '<div class="mn-opts">' + items.map((g) => {
+    const rows = (g.rows || []).map((r) => {
+      if (r.head) return '<dd class="sub">' + esc(r.head) + '</dd>';
+      return '<dt>' + esc(r.name) + '</dt><dd>' + esc(r.price) + '</dd>'
+        + (r.sub ? '<dd class="sub">' + esc(r.sub) + '</dd>' : '');
+    }).join('');
+    return '<div class="mn-og">'
+      + '<div class="mn-og-t">' + esc(g.title) + (g.en ? '<small>' + esc(g.en) + '</small>' : '') + '</div>'
+      + '<dl>' + rows + '</dl>'
+      + (g.note ? '<p>' + esc(g.note) + '</p>' : '')
+      + '</div>';
+  }).join('') + '</div>';
+}
+
+function renderMenuSheets(studio){
+  const host = document.getElementById('mn-sheets');
+  if(!host) return;
+  const sheets = studio.menuSheets || [];
+  if(sheets.length === 0){
+    host.innerHTML = '<p class="mn-lead">料金表は準備中です。</p>';
+    return;
+  }
+  host.innerHTML = sheets.map((sh) => {
+    const steps = (sh.steps || []).map((st) => {
+      const head = '<div class="mn-step"><span class="mn-no">' + esc(st.no) + '</span>'
+        + '<span class="mn-tag ' + (st.req ? 'req">必須' : 'opt">任意') + '</span>'
+        + '<h3>' + esc(st.title) + (st.sub ? '<small>' + esc(st.sub) + '</small>' : '') + '</h3></div>';
+      let body = '';
+      if(st.type === 'fees') body = mnFees(st.items || []);
+      else if(st.type === 'plans') body = mnPlans(st.items || []);
+      else if(st.type === 'optionGroups') body = mnOptionGroups(st.items || []);
+      return head + body;
+    });
+    // ① と ② のあいだの ＋（3ステップ構成のときだけ出す）
+    const joined = steps.length >= 3
+      ? steps[0] + '<div class="mn-plus">＋</div>' + steps.slice(1).join('')
+      : steps.join('');
+    const add = sh.surcharge
+      ? '<div class="mn-add">' + sh.surcharge.text
+        + (sh.surcharge.note ? '<small>' + esc(sh.surcharge.note) + '</small>' : '') + '</div>'
+      : '';
+    const ex = (sh.examples || []).length
+      ? '<div class="mn-ex">' + sh.examples.map((e) =>
+          '<div class="mn-ex-i"><b>' + e.title + '</b>' + esc(e.body) + '<i>' + esc(e.total) + '</i></div>'
+        ).join('') + '</div>'
+      : '';
+    const notes = (sh.notes || []).length
+      ? '<ul class="mn-notes">' + sh.notes.map((n) => '<li>' + n + '</li>').join('')
+        + '<li>表示価格はすべて税込です。</li></ul>'
+      : '';
+    // ②（プラン）のあとに加算と計算例を置く。オプションはそのあと
+    const parts = joined.split('<div class="mn-step"><span class="mn-no">' + esc((sh.steps[sh.steps.length-1]||{}).no));
+    const beforeOpt = parts[0];
+    const optPart = parts.length > 1
+      ? '<div class="mn-step"><span class="mn-no">' + esc(sh.steps[sh.steps.length-1].no) + parts.slice(1).join('')
+      : '';
+    return '<section class="mn-sheet">'
+      + '<p class="mn-eyebrow">' + esc(sh.eyebrow) + '</p>'
+      + '<h2 class="mn-title">' + esc(sh.title) + '</h2>'
+      + '<p class="mn-lead">' + sh.lead + '<br/>表示価格はすべて税込です。</p>'
+      + beforeOpt + add + ex + optPart + notes
+      + '</section>';
+  }).join('');
 }
 
 function render(){
@@ -523,9 +510,11 @@ function render(){
     leadEl.innerHTML = esc(studio.plansLead).replace(/\n/g,'<br/>');
   }
 
+  renderMenuSheets(studio);
+
   const plans = studio.plans || [];
   const grid = document.getElementById('pl-grid');
-  /* 料金は静的HTMLで組んでいるため #pl-grid / #page-lead が無い。
+  /* このページは #mn-sheets に紙の料金表を描くので #pl-grid / #page-lead が無い。
      カード描画はスキップする（この return を消すと空のグリッドが出る）。 */
   if(!grid){ document.body.classList.add('is-ready'); return; }
 

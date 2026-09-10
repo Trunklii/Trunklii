@@ -702,6 +702,9 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 /* PLANS */
 .plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--border)}
 .plan-card{background:#fff;padding:0;position:relative;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:background .35s}
+/* 中身がまだ無いカード（Coming Soon）。plans.html と同じ見え方に揃える */
+.plan-card.soon{pointer-events:none;opacity:.7}
+.plan-card.soon .plan-price{color:var(--mid)}
 .plan-card:hover{background:var(--ink)}
 .plan-card-img{aspect-ratio:4/3;width:100%;overflow:hidden;background:#eee}
 .plan-card-img-inner{width:100%;height:100%;background-size:cover;background-position:center;transition:transform .7s var(--ease)}
@@ -1859,7 +1862,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260910f"></script>
+<script src="../site-data.js?v=20260910g"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
@@ -2045,10 +2048,13 @@ async function init(){
     const digest = plans;
     const cardsHtml = digest.map(p=>{
       const hasDetail = p.detail && p.variants && p.variants.length>0;
-      const href = hasDetail ? `plan-detail.html?key=${encodeURIComponent(p.key||'')}` : 'plans.html';
+      /* 中身の無いカード（Coming Soon）は押せないようにする。
+         plans.html 側は javascript:void(0) で押せない作りなので、こちらも揃える。
+         以前はここが plans.html へのリンクになっていて、押すと七五三の料金表に着いていた。 */
+      const href = hasDetail ? `plan-detail.html?key=${encodeURIComponent(p.key||'')}` : 'javascript:void(0)';
       const heroImg = (p.detail && p.detail.heroImage) || '';
       return `
-      <a href="${href}" class="plan-card">
+      <a href="${href}" class="plan-card${hasDetail ? '' : ' soon'}">
         ${heroImg ? `<div class="plan-card-img"><div class="plan-card-img-inner" style="background-image:url('${heroImg}')"></div></div>` : ''}
         <div class="plan-card-body">
           ${p.tag ? `<div class="plan-tag">${p.tag}</div>` : ''}
