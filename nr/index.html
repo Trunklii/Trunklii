@@ -528,6 +528,9 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
    来シーズン受け付けるときは、この2行を消し、予約側にお詣りのプランを用意すること。 */
 #res-top-omairi{display:none}
 :is(.nav-item,.mob-item,.footer-links li):has(a[href*="omairi"]){display:none}
+/* B が消えて右半分が空くので、A だけを本文と同じ幅で中央に置く。
+   後段(1195行あたり)の .res-top-grid より後ろに書けないので、#id で強さを上げている */
+#reservation .res-top-grid{grid-template-columns:1fr;max-width:640px}
 /* ヘッダー下段メニュー(Recruit等)は引き続き非表示 */
 .mob-item:has(a[href="#recruit"]){display:none}
 /* ヒーロー写真を全デバイスでウィンドウ高さ・幅100%に(ヘッダーは半透明で写真に重ねる) */
@@ -1628,7 +1631,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="plans.html" class="btn-line">撮影プラン・料金</a>
       </div>
       <ul class="res-top-notes">
-        <li>Instagram DM・LINEでのご予約も受付しております。</li>
         <li>ご予約日から1週間以内に <span id="res-top-tel">050-1732-9505</span> にて撮影内容の確認をいたします。</li>
       </ul>
     </div>
