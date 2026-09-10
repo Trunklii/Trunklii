@@ -7531,7 +7531,7 @@ window.SITE_DATA = {
               "items": [
                 {
                   "name": "生花髪飾り",
-                  "en": "FRESH FLOWER",
+                  "en": "HAIR ORNAMENT",
                   "price": 50000,
                   "includes": [
                     "データ 40枚",

@@ -269,6 +269,14 @@ def verify():
             for v in pl.get('variants', []):
                 for g in (v.get('gallery') or []):
                     chk(studio, g)
+        # menuSheets（紙の料金表）のプラン写真。
+        # ここは normalize_all の対象外にしてある（連番に潰れて、どれがどのプランか
+        # 分からなくなるため）。改名されない代わりに参照切れも見逃すので、検査だけは通す。
+        for sh in st.get('menuSheets', []):
+            for stp in sh.get('steps', []):
+                for it in stp.get('items', []):
+                    if isinstance(it, dict):
+                        chk(studio, it.get('image'))
     print('参照切れ:', len(miss), miss[:5] if miss else '')
     return not miss
 
