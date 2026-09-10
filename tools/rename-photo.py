@@ -138,6 +138,17 @@ def normalize_all(args):
         ext = os.path.splitext(old)[1].lower() or '.jpg'
         sub = os.path.dirname(old)
         used.setdefault(studio, set())
+        cur = os.path.basename(old)
+        # すでに規則どおりの名前なら、そのままにする。
+        # 問答無用で振り直すと2つの事故が起きる:
+        #   1. 同じ接頭辞が二重に付く。2026-08-11 に og:image で実際に起きて、
+        #      studio-et-hashima-studio-et-hashima-hero-pc-07.jpg が1ヶ月404だった
+        #   2. 連番が振り直され、どの写真がどれか分からなくなる
+        #      （例: 生花髪飾り/空間装飾/両方 のサムネイルが -01〜-03 に潰れる）
+        if re.fullmatch(re.escape(base) + r'-\d{2}' + re.escape(ext), cur) and cur not in used[studio]:
+            used[studio].add(cur)
+            assigned[(studio, old)] = old
+            return old
         n = 1
         while True:
             cand = f'{base}-{n:02d}{ext}'

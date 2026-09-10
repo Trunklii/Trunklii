@@ -264,6 +264,8 @@ body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filte
 .mn-plus{text-align:center;font-family:var(--display);font-size:1.3rem;color:var(--accent-text);margin:.2rem 0 1.4rem}
 .mn-plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:1.4rem}
 .mn-plan{background:#fff;padding:1.3rem 1.2rem;display:flex;flex-direction:column}
+/* プランごとの写真。紙の料金表と同じ並び（生花／空間装飾／両方） */
+.mn-plan-img{aspect-ratio:455/273;background-size:cover;background-position:center;margin:-1.3rem -1.2rem 1rem}
 .mn-plan-n{font-family:var(--serif);font-weight:400;font-size:.95rem;letter-spacing:.04em}
 .mn-plan-en{font-family:var(--sans);font-weight:300;font-size:.56rem;letter-spacing:.16em;color:var(--accent-text);margin:.25rem 0 .7rem}
 .mn-plan-p{font-family:var(--display);font-weight:400;font-size:1.75rem;line-height:1;font-variant-numeric:lining-nums}
@@ -385,7 +387,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260910g"></script>
+<script src="../site-data.js?v=20260910h"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
@@ -417,6 +419,7 @@ function mnPlans(items){
   const cls = items.length === 1 ? 'mn-plans one' : 'mn-plans';
   return '<div class="' + cls + '">' + items.map((p) =>
     '<div class="mn-plan">'
+    + (p.image ? '<div class="mn-plan-img" style="background-image:url(\'' + esc(p.image) + '\')" role="img" aria-label="' + esc(p.name) + '"></div>' : '')
     + '<div class="mn-plan-n">' + esc(p.name) + '</div>'
     + (p.en ? '<div class="mn-plan-en">' + esc(p.en) + '</div>' : '')
     + '<div class="mn-plan-p">' + yenNum(p.price) + '<em>税込</em></div>'

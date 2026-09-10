@@ -7538,7 +7538,8 @@ window.SITE_DATA = {
                     "ソロ / 家族写真",
                     "生花髪飾り or 手持ちフラワー"
                   ],
-                  "note": "当日コーディネートさせていただきます"
+                  "note": "当日コーディネートさせていただきます",
+                  "image": "plan-753-fresh-flower-maison-nr-kasugai-01.jpg"
                 },
                 {
                   "name": "空間装飾",
@@ -7548,7 +7549,8 @@ window.SITE_DATA = {
                     "データ 40枚",
                     "ソロ / 家族写真",
                     "空間装飾"
-                  ]
+                  ],
+                  "image": "plan-753-space-decoration-maison-nr-kasugai-01.jpg"
                 },
                 {
                   "name": "生花髪飾り ＋ 空間装飾",
@@ -7558,7 +7560,8 @@ window.SITE_DATA = {
                     "データ 40枚",
                     "ソロ / 家族写真",
                     "生花髪飾り ＋ 空間装飾"
-                  ]
+                  ],
+                  "image": "plan-753-fresh-flower-space-decoration-maison-nr-kasugai-01.jpg"
                 }
               ]
             },
@@ -7702,7 +7705,7 @@ window.SITE_DATA = {
             {
               "no": "①",
               "req": true,
-              "title": "Birthday 撮影料金",
+              "title": "撮影料金",
               "type": "plans",
               "items": [
                 {
@@ -7757,8 +7760,7 @@ window.SITE_DATA = {
             }
           ],
           "notes": [
-            "所要時間は 2時間30分〜3時間 です。",
-            "オプションによるカット数追加は、最大70枚までとなります。"
+            "所要時間は 2時間30分〜3時間 です。"
           ]
         }
       ]
