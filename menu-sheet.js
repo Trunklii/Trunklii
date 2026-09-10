@@ -1,98 +1,171 @@
-// 紙の料金表（studios.<store>.menuSheets）を描く共通モジュール。
+// 紙の料金表（studios.<store>.menuSheets）を、紙と同じレイアウトで描く共通モジュール。
 // plans.html（2枚まとめて）と plan-detail.html（1枚だけ）の両方から使う。
-// ここに1本化していないと、片方だけ直してもう片方がずれる。今日それが実際に起きている。
+// ここに1本化していないと、片方だけ直してもう片方がずれる。
+//
+// 見た目の出どころは紙の資料「七五三 撮影メニュー SHICHI-GO-SAN・2026」:
+//   ・料金は白いカードを間隔をあけて並べる（罫線の格子ではない）
+//   ・撮影料金は横一列の1枚のカード。赤い小さなラベルを中央に置く
+//   ・「＋」でプランに繋ぐ
+//   ・プランは写真つきカード。名前 → 英字（赤）→ 大きな金額 → 土日祝の加算 → 含まれるもの
+//   ・オプションは白いカードに、点線のリーダーで名前と金額を左右に並べる
+//   ・ハイシーズンの加算は最下部に赤字で1行
+//
+// CSS もこのファイルが持つ（HTML 側に置くと2ページで二重管理になる）。
 // 金額は必ず site-data.js から取る。HTML に直書きしないこと。
 (function (global) {
   'use strict';
-  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
-  /* ── 紙の料金表（studios.nr.menuSheets）を描く ──
-     金額はすべてここで site-data.js から取る。HTMLに直書きしないこと。
-     メニューごとに1ブロックで、加算の注記もブロックの中に閉じる。
-     ページ全体に掛かる注記を作ると、七五三のハイシーズン加算が
-     Birthday にも掛かって読めてしまう。 */
-  const yenNum = (n) => '¥' + Number(n).toLocaleString('ja-JP');
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  var yen = function (n) { return '¥' + Number(n).toLocaleString('ja-JP'); };
 
-  function mnFees(items){
-    return '<div class="mn-fee">' + items.map((f) =>
-      '<div class="mn-fee-i"><span>' + esc(f.label) + '</span><b>' + yenNum(f.price) + '</b></div>'
-    ).join('') + '</div>';
+  var CSS = [
+    '.mn-sheet{max-width:1080px;margin:0 auto}',
+    '.mn-sheet + .mn-sheet{margin-top:5rem;padding-top:4rem;border-top:1px solid var(--border)}',
+    '.mn-eyebrow{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.3em;color:var(--accent-text);text-align:center;margin:0 0 .9rem}',
+    '.mn-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.35rem,4vw,2.1rem);letter-spacing:.22em;text-align:center;margin:0}',
+    '.mn-rule{width:64px;height:1px;background:var(--accent);margin:1.4rem auto 2.2rem}',
+    '.mn-lead{font-family:var(--serif);font-weight:300;font-size:.82rem;line-height:1.95;color:var(--mid);text-align:center;max-width:640px;margin:0 auto 2.2rem}',
+    '.mn-lead b{font-weight:400;color:var(--ink)}',
+    /* ── ① 撮影料金：横一列の1枚のカード ── */
+    '.mn-feebox{background:#fff;border-radius:3px;box-shadow:0 1px 3px rgba(31,20,16,.06);padding:1.6rem 1.4rem 1.5rem}',
+    '.mn-feebox-t{font-family:var(--serif);font-weight:400;font-size:.82rem;letter-spacing:.24em;color:var(--accent-text);text-align:center;margin-bottom:1rem}',
+    '.mn-fee{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem 3.2rem}',
+    '.mn-fee-i{display:flex;align-items:baseline;gap:.7rem}',
+    '.mn-fee-i span{font-family:var(--serif);font-weight:300;font-size:.86rem;color:var(--ink)}',
+    '.mn-fee-i b{font-family:var(--display);font-style:normal;font-weight:400;font-size:1.3rem;white-space:nowrap;font-variant-numeric:lining-nums}',
+    '.mn-plus{text-align:center;font-family:var(--sans);font-weight:300;font-size:1.15rem;color:var(--accent);margin:1.5rem 0}',
+    /* ── ② プラン ── */
+    '.mn-plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem;align-items:start}',
+    '.mn-plans.one{grid-template-columns:minmax(0,380px);justify-content:center}',
+    '.mn-plan{background:#fff;border-radius:3px;box-shadow:0 1px 3px rgba(31,20,16,.06);overflow:hidden;display:flex;flex-direction:column}',
+    '.mn-plan-img{aspect-ratio:16/10;background-size:cover;background-position:center}',
+    '.mn-plan-b{padding:1.5rem 1.4rem 1.6rem}',
+    '.mn-plan-n{font-family:var(--serif);font-weight:300;font-size:1.05rem;letter-spacing:.06em;color:var(--ink)}',
+    '.mn-plan-en{font-family:var(--sans);font-weight:300;font-size:.58rem;letter-spacing:.16em;color:var(--accent-text);margin:.3rem 0 1rem}',
+    '.mn-plan-p{font-family:var(--display);font-style:normal;font-weight:300;font-size:2.1rem;line-height:1;color:var(--ink);font-variant-numeric:lining-nums}',
+    '.mn-plan-p em{font-style:normal;font-family:var(--sans);font-weight:300;font-size:.58rem;color:var(--mid);margin-left:.4rem}',
+    '.mn-plan-add{font-family:var(--serif);font-weight:300;font-size:.78rem;color:var(--mid);margin-top:.6rem}',
+    '.mn-plan-add b{font-weight:400;color:var(--accent-text);margin-left:.3em}',
+    '.mn-plan-l{list-style:none;padding:1.1rem 0 0;margin:1.1rem 0 0;border-top:1px solid var(--border);font-family:var(--serif);font-weight:300;font-size:.8rem;line-height:2;color:var(--ink)}',
+    '.mn-plan-l li{position:relative;padding-left:1rem}',
+    '.mn-plan-l li::before{content:"";position:absolute;left:0;top:.85em;width:5px;height:5px;border-radius:50%;background:var(--accent)}',
+    '.mn-plan-note{font-family:var(--serif);font-weight:300;font-size:.7rem;line-height:1.8;color:var(--mid);margin-top:.5rem;padding-left:1rem}',
+    /* ── ③ オプション ── */
+    '.mn-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;align-items:start;margin-top:1.6rem}',
+    /* 紙は左の列に「生花髪飾りオプション」と「OPTION」を積み、残り2つを右の2列に置いている。4群のときだけその並びを再現する */
+    '@media(min-width:860px){.mn-opts.g4{grid-template-columns:repeat(3,1fr)}',
+    '.mn-opts.g4>:nth-child(1){grid-column:1;grid-row:1}',
+    '.mn-opts.g4>:nth-child(2){grid-column:1;grid-row:2}',
+    '.mn-opts.g4>:nth-child(3){grid-column:2;grid-row:1/span 2}',
+    '.mn-opts.g4>:nth-child(4){grid-column:3;grid-row:1/span 2}}',
+    '.mn-og{background:#fff;border-radius:3px;box-shadow:0 1px 3px rgba(31,20,16,.06);padding:1.5rem 1.4rem 1.4rem}',
+    '.mn-og-t{font-family:var(--serif);font-weight:400;font-size:.88rem;letter-spacing:.22em;color:var(--accent-text);text-align:center}',
+    '.mn-og-t small{display:block;font-family:var(--sans);font-weight:300;font-size:.6rem;letter-spacing:.2em;color:var(--mid);margin-top:.35rem}',
+    '.mn-og dl{margin:1rem 0 0;font-family:var(--serif);font-weight:300;font-size:.82rem}',
+    '.mn-row{display:flex;align-items:baseline;gap:.5rem;padding:.6rem 0;border-top:1px solid var(--border)}',
+    '.mn-row .n{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
+    '.mn-row .dots{flex:1;border-bottom:1px dotted var(--line-strong,rgba(31,20,16,.26));transform:translateY(-.25em);min-width:1rem}',
+    '.mn-row .p{font-family:var(--display);font-style:normal;font-weight:400;font-size:.95rem;white-space:nowrap;font-variant-numeric:lining-nums}',
+    '.mn-og .mn-sub{font-family:var(--serif);font-weight:300;font-size:.7rem;line-height:1.8;color:var(--mid);padding:0 0 .5rem}',
+    '.mn-og .mn-head{font-family:var(--serif);font-weight:400;font-size:.8rem;color:var(--accent-text);padding:.9rem 0 .1rem}',
+    '.mn-og .mn-note{font-family:var(--serif);font-weight:300;font-size:.7rem;line-height:1.85;color:var(--mid);margin:.8rem 0 0;padding-top:.7rem;border-top:1px solid var(--border)}',
+    /* ── 最下部 ── */
+    '.mn-foot{font-family:var(--serif);font-weight:400;font-size:.95rem;letter-spacing:.06em;color:var(--accent-text);text-align:center;margin:2.6rem 0 1rem}',
+    '.mn-notes{list-style:none;padding:0;margin:0;font-family:var(--serif);font-weight:300;font-size:.74rem;line-height:1.95;color:var(--mid);text-align:center;max-width:760px;margin-left:auto;margin-right:auto}',
+    '@media(max-width:600px){',
+    '.mn-fee{gap:.5rem 1.4rem}',
+    '.mn-fee-i{width:100%;justify-content:space-between}',
+    '.mn-plans,.mn-opts{grid-template-columns:1fr;gap:1rem}',
+    '.mn-notes{text-align:left}',
+    '}',
+  ].join('\n');
+
+  var cssDone = false;
+  function injectCss() {
+    if (cssDone || document.getElementById('mn-sheet-css')) { cssDone = true; return; }
+    var el = document.createElement('style');
+    el.id = 'mn-sheet-css';
+    el.textContent = CSS;
+    document.head.appendChild(el);
+    cssDone = true;
   }
-  function mnPlans(items){
-    const cls = items.length === 1 ? 'mn-plans one' : 'mn-plans';
-    return '<div class="' + cls + '">' + items.map((p) =>
-      '<div class="mn-plan">'
-      + (p.image ? '<div class="mn-plan-img" style="background-image:url(\'' + esc(p.image) + '\')" role="img" aria-label="' + esc(p.name) + '"></div>' : '')
-      + '<div class="mn-plan-n">' + esc(p.name) + '</div>'
-      + (p.en ? '<div class="mn-plan-en">' + esc(p.en) + '</div>' : '')
-      + '<div class="mn-plan-p">' + yenNum(p.price) + '<em>税込</em></div>'
-      + '<ul class="mn-plan-l">' + (p.includes || []).map((x) => '<li>' + esc(x) + '</li>').join('') + '</ul>'
-      + (p.note ? '<div class="mn-plan-note">（' + esc(p.note) + '）</div>' : '')
-      + '</div>'
-    ).join('') + '</div>';
+
+  function feeBox(step) {
+    var items = (step.items || []).map(function (f) {
+      return '<div class="mn-fee-i"><span>' + esc(f.label) + '</span><b>' + yen(f.price) + '</b></div>';
+    }).join('');
+    return '<div class="mn-feebox">'
+      + (step.label ? '<div class="mn-feebox-t">' + esc(step.label) + '</div>' : '')
+      + '<div class="mn-fee">' + items + '</div></div>';
   }
-  function mnOptionGroups(items){
-    return '<div class="mn-opts">' + items.map((g) => {
-      const rows = (g.rows || []).map((r) => {
-        if (r.head) return '<dd class="sub">' + esc(r.head) + '</dd>';
-        return '<dt>' + esc(r.name) + '</dt><dd>' + esc(r.price) + '</dd>'
-          + (r.sub ? '<dd class="sub">' + esc(r.sub) + '</dd>' : '');
+
+  function planCards(step, sur) {
+    var items = step.items || [];
+    var add = (sur && sur.weekend)
+      ? '<div class="mn-plan-add">' + esc(sur.weekendLabel || '') + '<b>' + esc(sur.weekend) + '</b></div>'
+      : '';
+    return '<div class="mn-plans' + (items.length === 1 ? ' one' : '') + '">' + items.map(function (p) {
+      return '<div class="mn-plan">'
+        + (p.image ? '<div class="mn-plan-img" style="background-image:url(\'' + esc(p.image) + '\')" role="img" aria-label="' + esc(p.name) + '"></div>' : '')
+        + '<div class="mn-plan-b">'
+        + '<div class="mn-plan-n">' + esc(p.name) + '</div>'
+        + (p.en ? '<div class="mn-plan-en">' + esc(p.en) + '</div>' : '')
+        + '<div class="mn-plan-p">' + yen(p.price) + '<em>税込</em></div>'
+        + add
+        + '<ul class="mn-plan-l">' + (p.includes || []).map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>'
+        + (p.note ? '<div class="mn-plan-note">（' + esc(p.note) + '）</div>' : '')
+        + '</div></div>';
+    }).join('') + '</div>';
+  }
+
+  function optionGroups(step) {
+    var items = step.items || [];
+    return '<div class="mn-opts' + (items.length === 4 ? ' g4' : '') + '">' + items.map(function (g) {
+      var rows = (g.rows || []).map(function (r) {
+        if (r.head) return '<div class="mn-head">' + esc(r.head) + '</div>';
+        return '<div class="mn-row"><span class="n">' + esc(r.name) + '</span>'
+          + '<span class="dots"></span><span class="p">' + esc(r.price) + '</span></div>'
+          + (r.sub ? '<div class="mn-sub">（' + esc(r.sub) + '）</div>' : '');
       }).join('');
       return '<div class="mn-og">'
         + '<div class="mn-og-t">' + esc(g.title) + (g.en ? '<small>' + esc(g.en) + '</small>' : '') + '</div>'
         + '<dl>' + rows + '</dl>'
-        + (g.note ? '<p>' + esc(g.note) + '</p>' : '')
+        + (g.note ? '<p class="mn-note">' + esc(g.note) + '</p>' : '')
         + '</div>';
     }).join('') + '</div>';
   }
 
   // host: 描画先の要素 / sheets: 描く menuSheets の配列（1枚でも複数でも）
-  function renderSheets(host, sheets){
-    if(!host) return;
+  function renderSheets(host, sheets) {
+    if (!host) return;
+    injectCss();
     sheets = sheets || [];
-    if(sheets.length === 0){
+    if (sheets.length === 0) {
       host.innerHTML = '<p class="mn-lead">料金表は準備中です。</p>';
       return;
     }
-    host.innerHTML = sheets.map((sh) => {
-      const steps = (sh.steps || []).map((st) => {
-        const head = '<div class="mn-step"><span class="mn-no">' + esc(st.no) + '</span>'
-          + '<span class="mn-tag ' + (st.req ? 'req">必須' : 'opt">任意') + '</span>'
-          + '<h3>' + esc(st.title) + (st.sub ? '<small>' + esc(st.sub) + '</small>' : '') + '</h3></div>';
-        let body = '';
-        if(st.type === 'fees') body = mnFees(st.items || []);
-        else if(st.type === 'plans') body = mnPlans(st.items || []);
-        else if(st.type === 'optionGroups') body = mnOptionGroups(st.items || []);
-        return head + body;
-      });
-      // ① と ② のあいだの ＋（3ステップ構成のときだけ出す）
-      const joined = steps.length >= 3
-        ? steps[0] + '<div class="mn-plus">＋</div>' + steps.slice(1).join('')
-        : steps.join('');
-      const add = sh.surcharge
-        ? '<div class="mn-add">' + sh.surcharge.text
-          + (sh.surcharge.note ? '<small>' + esc(sh.surcharge.note) + '</small>' : '') + '</div>'
-        : '';
-      const ex = (sh.examples || []).length
-        ? '<div class="mn-ex">' + sh.examples.map((e) =>
-            '<div class="mn-ex-i"><b>' + e.title + '</b>' + esc(e.body) + '<i>' + esc(e.total) + '</i></div>'
-          ).join('') + '</div>'
-        : '';
-      const notes = (sh.notes || []).length
-        ? '<ul class="mn-notes">' + sh.notes.map((n) => '<li>' + n + '</li>').join('')
-          + '<li>表示価格はすべて税込です。</li></ul>'
-        : '';
-      // ②（プラン）のあとに加算と計算例を置く。オプションはそのあと
-      const parts = joined.split('<div class="mn-step"><span class="mn-no">' + esc((sh.steps[sh.steps.length-1]||{}).no));
-      const beforeOpt = parts[0];
-      const optPart = parts.length > 1
-        ? '<div class="mn-step"><span class="mn-no">' + esc(sh.steps[sh.steps.length-1].no) + parts.slice(1).join('')
-        : '';
+    host.innerHTML = sheets.map(function (sh) {
+      var sur = sh.surcharge || {};
+      var body = (sh.steps || []).map(function (st, i) {
+        if (st.type === 'fees') return feeBox(st) + '<div class="mn-plus">＋</div>';
+        if (st.type === 'plans') return planCards(st, sur);
+        if (st.type === 'optionGroups') return optionGroups(st);
+        return '';
+      }).join('');
+      var notes = (sh.notes || []).slice();
+      notes.push('表示価格はすべて税込です。');
       return '<section class="mn-sheet">'
-        + '<p class="mn-eyebrow">' + esc(sh.eyebrow) + '</p>'
+        + (sh.eyebrow ? '<p class="mn-eyebrow">' + esc(sh.eyebrow) + '</p>' : '')
         + '<h2 class="mn-title">' + esc(sh.title) + '</h2>'
-        + '<p class="mn-lead">' + sh.lead + '<br/>表示価格はすべて税込です。</p>'
-        + beforeOpt + add + ex + optPart + notes
+        + '<div class="mn-rule"></div>'
+        + (sh.lead ? '<p class="mn-lead">' + sh.lead + '</p>' : '')
+        + body
+        + (sur.footer ? '<div class="mn-foot">' + esc(sur.footer) + '</div>' : '')
+        + '<ul class="mn-notes">' + notes.map(function (n) { return '<li>' + n + '</li>'; }).join('') + '</ul>'
         + '</section>';
     }).join('');
   }
