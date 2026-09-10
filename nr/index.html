@@ -2671,7 +2671,16 @@ function toggleQaCat(btn){
 // SEARCH
 function buildSearchIndex(d){
   SEARCH_INDEX = [];
-  const add = (label, title, snippet, anchor, img)=>SEARCH_INDEX.push({label,title,snippet,anchor,img:img||''});
+  /* 非表示セクションは検索結果にも出さない（2026-09-10）。
+     display:none で画面から消してもサイト内検索は別の入口として残り、
+     押しても何も無い場所へ飛ぶ。実際にお詣りでこれが起きていた。
+     ここは 516 行目の display:none のリストと対で管理すること。
+     セクションを公開するときは、516 行と このリストの両方から外す。 */
+  const SEARCH_HIDDEN = ['#about','#gallery','#kimono','#costume','#goods','#calendar','#plans'];
+  const add = (label, title, snippet, anchor, img)=>{
+    if(SEARCH_HIDDEN.indexOf(anchor) >= 0) return;
+    SEARCH_INDEX.push({label,title,snippet,anchor,img:img||''});
+  };
   add('About', d.about.heading, d.about.body, '#about');
   add('Flow', d.flow.heading, d.flow.body, '#flow');
   d.flow.steps.forEach(s=>add('Flow', s.title, s.desc, '#flow'));
