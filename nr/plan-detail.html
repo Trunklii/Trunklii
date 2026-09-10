@@ -141,8 +141,6 @@ main{padding-top:64px}
 .pd-notes-head{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-text);margin-bottom:.8rem}
 
 /* ─── Final CTA ─── */
-.pd-cta{text-align:center;padding:3rem 0 1rem}
-.pd-cta-text{font-family:var(--display);font-style:normal;font-weight:300;font-size:clamp(1.2rem,2.8vw,1.7rem);margin-bottom:1.5rem;color:var(--ink)}
 
 /* ─── Not found ─── */
 .pd-notfound{text-align:center;padding:clamp(4rem,10vw,8rem) 1.5rem;font-family:var(--serif);font-size:.9rem;color:var(--mid)}
@@ -276,9 +274,6 @@ body.sheet-open .qa-bot-toggle{opacity:0!important;pointer-events:none!important
 @media(min-width:961px){.qa-bot-toggle{bottom:.5rem;width:54px;height:54px}.qa-bot-toggle svg{width:22px;height:22px}}
 </style>
 <style>
-.pd-cta .hdr-book-wrap{display:block;position:relative;z-index:5;max-width:420px;margin:0 auto}
-.pd-cta .hdr-book-toggle{width:100%;height:auto;justify-content:center;padding:.85rem .8rem;font-size:.7rem;letter-spacing:.08em;line-height:1.3}
-.pd-cta .hdr-book-menu{left:0;right:0;width:auto;transform:none}
 </style>
 <style>
 /* B'（デザイナー提案）: 英数=Cormorant / 日本語見出し=Noto Serif JP / 本文=Noto Sans JP。数字はライニング数字で高さ・ベースラインを揃える */
@@ -372,8 +367,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <img id="lb-img" src="" alt=""/>
 </div>
 
-<script src="../site-data.js?v=20260911b"></script>
-<script src="../menu-sheet.js?v=20260911b"></script>
+<script src="../site-data.js?v=20260911c"></script>
+<script src="../menu-sheet.js?v=20260911c"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 function getParam(name){ return new URLSearchParams(location.search).get(name); }
@@ -517,11 +512,6 @@ function render(){
             <div class="pd-notes-head">ご利用にあたって</div>${esc(d.notes)}
           </div>
         `:''}
-
-        <div class="pd-cta">
-          <div class="pd-cta-text">ご予約・お問い合わせ</div>
-          <div class="hdr-book-wrap"><button class="hdr-book-toggle" type="button" onclick="toggleHdrBook(event)" aria-haspopup="true" aria-expanded="false">予約する<span class="hdr-book-chev" aria-hidden="true">›</span></button><div class="hdr-book-menu" hidden><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://reserve.trunklii.com/reserve/nr" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div></div>
-        </div>
 
       </div>
     </section>
