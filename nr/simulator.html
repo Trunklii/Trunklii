@@ -40,7 +40,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <style>
 :root{
   --ink:#2b2825;--off:#fff;--bg:#f8f6f2;--mid:#888078;
-  --accent:#b8935a;--border:rgba(17,16,16,.1);
+  --accent:#b8935a;--accent-text:#826538;--border:rgba(17,16,16,.1);
   --serif:'Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic Medium','YuGothic',sans-serif;--display:'Cormorant','Noto Serif JP','Hiragino Mincho ProN','Yu Mincho','YuMincho',serif;--sans:'Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic Medium','YuGothic',sans-serif;
   --ease:cubic-bezier(.25,.46,.45,.94);
 }
@@ -62,7 +62,7 @@ a{color:inherit}
 .back-link{justify-self:start;display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-weight:400;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:.55rem .9rem;border:1px solid var(--ink);transition:background .2s,color .2s}
 .back-link:hover{background:var(--ink);color:#fff}
 .nav-brand{font-family:var(--display);font-style:normal;font-weight:300;font-size:1.1rem;letter-spacing:.04em;text-align:center}
-.nav-brand .b-mark{color:var(--accent);font-style:normal;font-weight:400}
+.nav-brand .b-mark{color:var(--accent-text);font-style:normal;font-weight:400}
 .nav-right{justify-self:end}
 .nav-right .booking-btn{display:inline-flex;align-items:center;font-family:var(--sans);font-weight:400;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:#fff;text-decoration:none;padding:.6rem 1.1rem;transition:background .25s}
 .nav-right .booking-btn:hover{background:var(--accent)}
@@ -86,7 +86,7 @@ main{padding-top:64px}
 .msg.user .bubble{background:var(--ink);color:#fff;border-color:var(--ink);border-radius:14px 2px 14px 14px}
 .q-note{font-family:var(--serif);font-size:.76rem;color:var(--mid);line-height:1.85;margin-top:.55rem;padding-top:.55rem;border-top:1px dashed var(--border)}
 .q-note strong{font-weight:400;color:var(--ink)}
-.q-note a{color:var(--accent);text-decoration:underline;word-break:break-all}
+.q-note a{color:var(--accent-text);text-decoration:underline;word-break:break-all}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 .typing{display:inline-flex;gap:4px;padding:.9rem 1rem}
@@ -100,7 +100,7 @@ main{padding-top:64px}
 .choices{display:flex;flex-wrap:wrap;gap:.6rem}
 .chip{font-family:var(--sans);font-weight:400;font-size:.82rem;letter-spacing:.02em;color:var(--ink);background:#fff;border:1px solid var(--ink);padding:.6rem 1.1rem;cursor:pointer;transition:all .2s;text-align:left;line-height:1.5}
 .chip:hover,.chip:focus-visible{background:var(--ink);color:#fff;outline:none}
-.chip .p{display:block;font-family:var(--display);font-style:normal;font-size:1rem;color:var(--accent);margin-top:.15rem}
+.chip .p{display:block;font-family:var(--display);font-style:normal;font-size:1rem;color:var(--accent-text);margin-top:.15rem}
 .chip:hover .p,.chip:focus-visible .p{color:#fff}
 .chip .chip-lb{display:block}
 .chip-img{padding:0;width:132px;overflow:hidden;text-align:left}
@@ -121,12 +121,12 @@ main{padding-top:64px}
 .numctl{display:flex;align-items:center;gap:1rem;padding:.4rem 0 1rem}
 .numctl button{width:42px;height:42px;border:1px solid var(--ink);background:#fff;cursor:pointer;font-size:1.2rem;line-height:1;color:var(--ink);transition:all .2s}
 .numctl button:hover{background:var(--ink);color:#fff}
-.numctl .v{min-width:3rem;text-align:center;font-family:var(--display);font-style:normal;font-size:1.7rem;color:var(--accent);font-variant-numeric:tabular-nums}
+.numctl .v{min-width:3rem;text-align:center;font-family:var(--display);font-style:normal;font-size:1.7rem;color:var(--accent-text);font-variant-numeric:tabular-nums}
 .numctl .u{font-family:var(--serif);font-size:.85rem;color:var(--mid)}
 
 .total-bar{display:flex;justify-content:space-between;align-items:baseline;padding:.9rem 0 1.1rem;border-top:1px solid var(--border)}
 .total-bar .lb{font-family:var(--sans);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mid)}
-.total-bar .amt{font-family:var(--display);font-style:normal;font-size:1.9rem;color:var(--accent)}
+.total-bar .amt{font-family:var(--display);font-style:normal;font-size:1.9rem;color:var(--accent-text)}
 
 .btn-primary{display:block;width:100%;text-align:center;font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:#fff;border:none;padding:.95rem 1rem;cursor:pointer;transition:background .25s;text-decoration:none}
 .btn-primary:hover,.btn-primary:focus-visible{background:var(--accent);outline:none}
