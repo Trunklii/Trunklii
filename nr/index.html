@@ -528,6 +528,8 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
    来シーズン受け付けるときは、この2行を消し、予約側にお詣りのプランを用意すること。 */
 #res-top-omairi{display:none}
 :is(.nav-item,.mob-item,.footer-links li):has(a[href*="omairi"]){display:none}
+/* A/B の2枚組が1枚になったので、A のラベルも隠す（B を戻すときに一緒に戻す） */
+#reservation .res-top-mark{display:none}
 /* B が消えて右半分が空くので、A だけを本文と同じ幅で中央に置く。
    後段(1195行あたり)の .res-top-grid より後ろに書けないので、#id で強さを上げている */
 #reservation .res-top-grid{grid-template-columns:1fr;max-width:640px}
@@ -1631,7 +1633,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="plans.html" class="btn-line">撮影プラン・料金</a>
       </div>
       <ul class="res-top-notes">
-        <li>ご予約日から1週間以内に <span id="res-top-tel">050-1732-9505</span> にて撮影内容の確認をいたします。</li>
+        <li>ご予約後、7営業日以内に <span id="res-top-tel">050-1732-9505</span> にて撮影内容の確認をいたします。</li>
       </ul>
     </div>
     <!-- 七五三お詣り予約 -->
