@@ -15,7 +15,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="description" content="Maison nr.（愛知県春日井市・2026年10月1日OPEN）の撮影プラン一覧。七五三・お宮参り・バースデー・マタニティ・ファミリー撮影の料金とプラン内容をご案内。"/>
 <meta name="keywords" content="写真スタジオ,フォトスタジオ,愛知県,春日井市,七五三,お宮参り,バースデー,マタニティ,ファミリーフォト,Maison nr.,和モダン"/>
 <meta name="author" content="Trunklii"/>
-<meta name="robots" content="noindex,nofollow"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
 <link rel="canonical" href="https://trunklii.com/nr/plans.html"/>
 <!-- Open Graph -->
 <meta property="og:type" content="website"/>
@@ -239,9 +239,57 @@ body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filte
 }
 </style>
 <style>/* NO-BOLD: サイト全体でボールドを使わない */ strong,b{font-weight:400}</style>
-<style data-mark="PRICE-COMINGSOON">/* 料金表が確定するまで、プラン・料金は出さない（2026-09-10 の指示）。
-   料金表を反映するときは、この style ブロックと直後の準備中メッセージを削除すること。 */
-#pl-grid,#page-lead{display:none!important}</style>
+<style>
+/* 七五三 撮影メニュー（紙の料金表に合わせた構成）。
+   総額 = ①撮影料金 ＋ ②プラン ＋ ③オプション。プラン価格だけを大きく出すと
+   総額と誤解されるため、①→②→③ の積み上げが見て分かる並びにしている。 */
+.mn-eyebrow{font-family:var(--sans);font-size:.62rem;letter-spacing:.26em;color:var(--accent);text-align:center;margin-bottom:.5rem}
+.mn-title{font-family:var(--display);font-weight:300;font-size:clamp(1.3rem,3.4vw,1.9rem);letter-spacing:.14em;text-align:center;margin:0 0 1rem}
+.mn-lead{font-family:var(--serif);font-size:.82rem;line-height:1.95;color:var(--mid);text-align:center;max-width:620px;margin:0 auto 2.6rem}
+.mn-lead b{font-weight:400;color:var(--ink)}
+.mn-step{display:flex;align-items:center;gap:.6rem;margin:0 0 .9rem;flex-wrap:wrap}
+.mn-no{font-family:var(--display);font-size:1.15rem;color:var(--accent);line-height:1}
+.mn-tag{font-family:var(--sans);font-size:.56rem;letter-spacing:.14em;padding:.2rem .5rem;border:1px solid currentColor}
+.mn-tag.req{color:var(--accent)}
+.mn-tag.opt{color:var(--mid)}
+.mn-step h3{font-family:var(--serif);font-weight:400;font-size:.95rem;letter-spacing:.06em;margin:0}
+.mn-step h3 small{font-family:var(--sans);font-weight:300;font-size:.68rem;color:var(--mid);margin-left:.6rem}
+.mn-fee{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:1.4rem}
+.mn-fee-i{background:#fff;padding:.85rem 1rem;display:flex;justify-content:space-between;align-items:baseline;gap:.6rem}
+.mn-fee-i span{font-family:var(--serif);font-size:.82rem}
+.mn-fee-i b{font-family:var(--display);font-weight:400;font-size:1.1rem;white-space:nowrap;font-variant-numeric:lining-nums}
+.mn-plus{text-align:center;font-family:var(--display);font-size:1.3rem;color:var(--accent);margin:.2rem 0 1.4rem}
+.mn-plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:1.4rem}
+.mn-plan{background:#fff;padding:1.3rem 1.2rem;display:flex;flex-direction:column}
+.mn-plan-n{font-family:var(--serif);font-weight:400;font-size:.95rem;letter-spacing:.04em}
+.mn-plan-en{font-family:var(--sans);font-weight:300;font-size:.56rem;letter-spacing:.16em;color:var(--accent);margin:.25rem 0 .7rem}
+.mn-plan-p{font-family:var(--display);font-weight:400;font-size:1.75rem;line-height:1;font-variant-numeric:lining-nums}
+.mn-plan-p em{font-style:normal;font-size:.6rem;font-family:var(--sans);color:var(--mid);margin-left:.35rem}
+.mn-plan ul{list-style:none;padding:.9rem 0 0;margin:.9rem 0 0;border-top:1px solid var(--border);font-family:var(--serif);font-size:.76rem;line-height:1.9;color:var(--mid)}
+.mn-plan li::before{content:'・';color:var(--accent)}
+.mn-add{border:1px solid var(--accent);padding:.9rem 1.1rem;font-family:var(--serif);font-size:.82rem;line-height:1.9;text-align:center;margin-bottom:1.4rem}
+.mn-add b{font-weight:400;color:var(--accent)}
+.mn-add small{display:block;font-size:.72rem;color:var(--mid);margin-top:.3rem}
+.mn-ex{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:2.6rem}
+.mn-ex-i{background:#fff;padding:.9rem 1.1rem;font-family:var(--serif);font-size:.76rem;line-height:1.9;color:var(--mid)}
+.mn-ex-i b{display:block;font-weight:400;color:var(--ink);font-size:.8rem;margin-bottom:.2rem}
+.mn-ex-i i{font-style:normal;font-family:var(--display);font-size:1.05rem;color:var(--ink);font-variant-numeric:lining-nums}
+.mn-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:1.6rem}
+.mn-og{background:#fff;padding:1.1rem 1.2rem}
+.mn-og-t{font-family:var(--serif);font-weight:400;font-size:.84rem;letter-spacing:.04em;padding-bottom:.5rem;margin-bottom:.5rem;border-bottom:1px solid var(--border)}
+.mn-og-t small{display:block;font-family:var(--sans);font-weight:300;font-size:.54rem;letter-spacing:.16em;color:var(--accent);margin-top:.2rem}
+.mn-og dl{display:grid;grid-template-columns:1fr auto;gap:.3rem .8rem;margin:0;font-family:var(--serif);font-size:.78rem;line-height:1.7}
+.mn-og dt{color:var(--mid)}
+.mn-og dd{margin:0;text-align:right;white-space:nowrap;font-variant-numeric:lining-nums}
+.mn-og p{font-family:var(--serif);font-size:.68rem;line-height:1.75;color:var(--mid);margin:.5rem 0 0}
+.mn-og .sub{grid-column:1/-1;font-size:.62rem;color:var(--mid);margin-top:-.1rem}
+.mn-notes{list-style:none;padding:1.1rem 1.2rem;margin:0;border:1px solid var(--border);font-family:var(--serif);font-size:.74rem;line-height:1.95;color:var(--mid)}
+.mn-notes li::before{content:'※ '}
+@media(max-width:640px){
+  .mn-fee-i{padding:.7rem .85rem}
+  .mn-plan{padding:1.1rem 1rem}
+}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -271,15 +319,130 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div class="sec-head">
         <span class="sec-num">05</span>
-        <h1 class="sec-title">Plans & Pricing</h1><span class="sec-jp">撮影プラン・料金</span>
+        <h1 class="sec-title">Plans &amp; Pricing</h1><span class="sec-jp">撮影プラン・料金</span>
         <div class="sec-rule"></div>
-
-      <p class="section-body-text" style="text-align:center;max-width:640px;margin:0 auto 3rem">撮影プラン・料金は準備中です。<br/>詳細が決まり次第、こちらでご案内いたします。</p>
       </div>
 
-      <p class="section-body-text" style="text-align:center;max-width:640px;margin:0 auto 3rem" id="page-lead">ご希望に合わせて、撮影プランをお選びください。<br/>各プランの詳細・カット数バリエーションは、カードからご覧いただけます。</p>
+      <p class="mn-eyebrow">SHICHI-GO-SAN &middot; 2026</p>
+      <h2 class="mn-title">七五三 撮影メニュー</h2>
+      <p class="mn-lead">ご料金は <b>①撮影料金</b> ＋ <b>②プラン</b> ＋ <b>③オプション（任意）</b> の合計です。<br/>表示価格はすべて税込です。</p>
 
-      <div class="plans-grid" id="pl-grid"></div>
+      <div class="mn-step"><span class="mn-no">①</span><span class="mn-tag req">必須</span><h3>753撮影料金</h3></div>
+      <div class="mn-fee">
+        <div class="mn-fee-i"><span>3歳・5歳 男の子</span><b>¥10,000</b></div>
+        <div class="mn-fee-i"><span>3歳 女の子</span><b>¥13,000</b></div>
+        <div class="mn-fee-i"><span>7歳 女の子</span><b>¥15,000</b></div>
+      </div>
+
+      <div class="mn-plus">＋</div>
+
+      <div class="mn-step"><span class="mn-no">②</span><span class="mn-tag req">必須</span><h3>プラン<small>いずれか1つをお選びください</small></h3></div>
+      <div class="mn-plans">
+        <div class="mn-plan">
+          <div class="mn-plan-n">生花髪飾り</div>
+          <div class="mn-plan-en">FRESH FLOWER</div>
+          <div class="mn-plan-p">¥50,000<em>税込</em></div>
+          <ul>
+            <li>データ 40枚</li>
+            <li>ソロ / 家族写真</li>
+            <li>生花髪飾り or 手持ちフラワー<br/><span style="font-size:.68rem">（当日コーディネートさせていただきます）</span></li>
+          </ul>
+        </div>
+        <div class="mn-plan">
+          <div class="mn-plan-n">空間装飾</div>
+          <div class="mn-plan-en">SPACE DECORATION</div>
+          <div class="mn-plan-p">¥73,000<em>税込</em></div>
+          <ul>
+            <li>データ 40枚</li>
+            <li>ソロ / 家族写真</li>
+            <li>空間装飾</li>
+          </ul>
+        </div>
+        <div class="mn-plan">
+          <div class="mn-plan-n">生花髪飾り ＋ 空間装飾</div>
+          <div class="mn-plan-en">FRESH FLOWER + SPACE DECORATION</div>
+          <div class="mn-plan-p">¥85,000<em>税込</em></div>
+          <ul>
+            <li>データ 40枚</li>
+            <li>ソロ / 家族写真</li>
+            <li>生花髪飾り ＋ 空間装飾</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mn-add">
+        <b>土日祝</b> +¥5,500 ／ <b>ハイシーズン（10月〜12月）</b> 全日 +¥5,500
+        <small>10月〜12月の土日祝は、両方が加算され +¥11,000 となります。</small>
+      </div>
+
+      <div class="mn-ex">
+        <div class="mn-ex-i"><b>例1 &nbsp;3歳 男の子／生花髪飾り／10月の平日</b>
+          撮影料金 ¥10,000 ＋ プラン ¥50,000 ＋ ハイシーズン ¥5,500 ＝ <i>¥65,500</i></div>
+        <div class="mn-ex-i"><b>例2 &nbsp;7歳 女の子／生花髪飾り＋空間装飾／10月の土曜</b>
+          撮影料金 ¥15,000 ＋ プラン ¥85,000 ＋ 土日祝・ハイシーズン ¥11,000 ＝ <i>¥111,000</i></div>
+      </div>
+
+      <div class="mn-step"><span class="mn-no">③</span><span class="mn-tag opt">任意</span><h3>オプション</h3></div>
+      <div class="mn-opts">
+
+        <div class="mn-og">
+          <div class="mn-og-t">生花髪飾りオプション</div>
+          <dl>
+            <dt>髪飾りイメージオーダー</dt><dd>¥5,500〜</dd>
+            <dd class="sub">色や花材の希望はオプション追加になります</dd>
+            <dt>髪飾り 1人追加</dt><dd>¥12,000</dd>
+          </dl>
+        </div>
+
+        <div class="mn-og">
+          <div class="mn-og-t">オプション<small>OPTION</small></div>
+          <dl>
+            <dt>カラー背景紙</dt><dd>¥3,300</dd>
+            <dt>日本髪</dt><dd>¥5,500</dd>
+            <dt>2style（カジュアル追加）+10cut追加</dt><dd>¥11,000</dd>
+          </dl>
+        </div>
+
+        <div class="mn-og">
+          <div class="mn-og-t">きょうだいオプション<small>SIBLING</small></div>
+          <dl>
+            <dt>お宮参り</dt><dd>¥8,800</dd>
+            <dt>3歳・5歳 男の子</dt><dd>¥10,000</dd>
+            <dt>3歳 女の子</dt><dd>¥13,000</dd>
+            <dt>7歳 女の子</dt><dd>¥15,000</dd>
+            <dt>ハーフ成人 男児</dt><dd>¥11,000</dd>
+            <dt>ハーフ成人 女児</dt><dd>¥15,000</dd>
+            <dt>カジュアル衣装（きょうだい・家族）</dt><dd>¥3,300</dd>
+            <dt>カジュアル衣装（ソロ・きょうだい・家族・+10cut）</dt><dd>¥11,000</dd>
+          </dl>
+          <p>上記オプションは +10cut の追加撮影です。いずれもソロ撮影／きょうだい写真を含みます。</p>
+        </div>
+
+        <div class="mn-og">
+          <div class="mn-og-t">大人着物オプション<small>FOR PARENTS</small></div>
+          <dl>
+            <dd class="sub" style="margin-top:0">ママ</dd>
+            <dt>着付けヘアセット（持込着物）</dt><dd>¥17,000</dd>
+            <dt>着付けのみ（持込着物）</dt><dd>¥11,000</dd>
+            <dt>和装ヘアセット</dt><dd>¥11,000</dd>
+            <dd class="sub">パパ</dd>
+            <dt>和装着付け（持込着物）</dt><dd>¥8,800</dd>
+          </dl>
+        </div>
+
+      </div>
+
+      <ul class="mn-notes">
+        <li>所要時間は 2時間30分〜3時間 です。</li>
+        <li>ごきょうだいのお支度料は追加オプションとなります。</li>
+        <li>オプションによるごきょうだい追加や 2style のカット数追加は、最大70枚までとなります。<br/>例：3兄弟＋2style（1人）にした場合、80枚ではなく70枚です。</li>
+        <li>生花はこちらでご用意するため、お持ち込みはご遠慮いただいております。</li>
+        <li>表示価格はすべて税込です。</li>
+      </ul>
+
+      <div class="more-cta">
+        <a class="btn-line" href="https://reserve.trunklii.com/reserve/nr">ご予約ページへ</a>
+      </div>
 
     </div>
   </section>
@@ -352,12 +515,16 @@ function render(){
   document.getElementById('footer-copy').textContent = data.global.copyright;
   document.getElementById('page-title').textContent = `Plans | ${studio.name}`;
 
-  if(studio.plansLead){
-    document.getElementById('page-lead').innerHTML = esc(studio.plansLead).replace(/\n/g,'<br/>');
+  const leadEl = document.getElementById('page-lead');
+  if(studio.plansLead && leadEl){
+    leadEl.innerHTML = esc(studio.plansLead).replace(/\n/g,'<br/>');
   }
 
   const plans = studio.plans || [];
   const grid = document.getElementById('pl-grid');
+  /* 料金は静的HTMLで組んでいるため #pl-grid / #page-lead が無い。
+     カード描画はスキップする（この return を消すと空のグリッドが出る）。 */
+  if(!grid){ document.body.classList.add('is-ready'); return; }
 
   if(plans.length === 0){
     grid.innerHTML = '<div class="plans-soon" style="grid-column:1/-1">プラン情報は近日公開予定です。</div>';
