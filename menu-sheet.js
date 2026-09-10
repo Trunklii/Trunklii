@@ -23,7 +23,7 @@
   var yen = function (n) { return '¥' + Number(n).toLocaleString('ja-JP'); };
 
   var CSS = [
-    '.mn-sheet{max-width:1080px;margin:0 auto}',
+    '.mn-sheet{max-width:1080px;margin:0 auto;scroll-margin-top:88px}',
     '.mn-sheet + .mn-sheet{margin-top:5rem;padding-top:4rem;border-top:1px solid var(--border)}',
     '.mn-eyebrow{font-family:var(--sans);font-weight:300;font-size:.62rem;letter-spacing:.3em;color:var(--accent-text);text-align:center;margin:0 0 .9rem}',
     '.mn-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.35rem,4vw,2.1rem);letter-spacing:.22em;text-align:center;margin:0}',
@@ -186,6 +186,22 @@
         + '<ul class="mn-notes">' + notes.map(function (n) { return '<li>' + n + '</li>'; }).join('') + '</ul>'
         + '</section>';
     }).join('');
+
+    /* 料金表は JS で描くので、ページを開いた時点では #mn-753 などの要素がまだ無い。
+       ブラウザの自動スクロールはその時点で1度きり走って空振りするため、
+       描き終えたあとに自分でアンカーまで送る。 */
+    scrollToHash();
+  }
+
+  function scrollToHash() {
+    var id = (location.hash || '').replace(/^#/, '');
+    if (!id) return;
+    var el = document.getElementById(decodeURIComponent(id));
+    if (!el) return;
+    // どの要素がスクロールしているか（body か html か）はページによって違うので、
+    // 自前で座標を計算せず scrollIntoView に任せる。
+    // 追従ヘッダーのぶんの余白は CSS の scroll-margin-top が持つ。
+    el.scrollIntoView({ block: 'start' });
   }
 
   global.MenuSheet = {
