@@ -176,7 +176,7 @@
       }).join('');
       var notes = (sh.notes || []).slice();
       notes.push('表示価格はすべて税込です。');
-      return '<section class="mn-sheet">'
+      return '<section class="mn-sheet" id="mn-' + esc(sh.key) + '">'
         + (sh.eyebrow ? '<p class="mn-eyebrow">' + esc(sh.eyebrow) + '</p>' : '')
         + '<h2 class="mn-title">' + esc(sh.title) + '</h2>'
         + '<div class="mn-rule"></div>'

@@ -340,8 +340,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260911c"></script>
-<script src="../menu-sheet.js?v=20260911c"></script>
+<script src="../site-data.js?v=20260911d"></script>
+<script src="../menu-sheet.js?v=20260911d"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
@@ -396,7 +396,7 @@ function render(){
     const price = hasDetail ? minPriceFromVariants(p.variants) : '';
     const cutsList = hasDetail ? [...new Set(p.variants.map(v=>v.cuts).filter(c=>c!=null))].join(' / ') : '';
     const cardClass = hasDetail ? 'plan-card' : 'plan-card soon';
-    const cardHref = hasDetail ? `plan-detail.html?key=${encodeURIComponent(p.key)}` : 'javascript:void(0)';
+    const cardHref = hasDetail ? `#mn-${encodeURIComponent(p.key)}` : 'javascript:void(0)';
 
     return `
       <a href="${cardHref}" class="${cardClass}">

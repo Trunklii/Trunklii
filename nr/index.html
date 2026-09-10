@@ -1869,7 +1869,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260911c"></script>
+<script src="../site-data.js?v=20260911d"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
@@ -2058,7 +2058,9 @@ async function init(){
       /* 中身の無いカード（Coming Soon）は押せないようにする。
          plans.html 側は javascript:void(0) で押せない作りなので、こちらも揃える。
          以前はここが plans.html へのリンクになっていて、押すと七五三の料金表に着いていた。 */
-      const href = hasDetail ? `plan-detail.html?key=${encodeURIComponent(p.key||'')}` : 'javascript:void(0)';
+      /* 詳細ページは plans.html に統合した（同じ料金表を2ページで持たない）。
+         plans.html の各メニューには id="mn-<key>" が付いている。 */
+      const href = hasDetail ? `plans.html#mn-${encodeURIComponent(p.key||'')}` : 'javascript:void(0)';
       const heroImg = (p.detail && p.detail.heroImage) || '';
       return `
       <a href="${href}" class="plan-card${hasDetail ? '' : ' soon'}">
