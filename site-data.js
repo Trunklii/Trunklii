@@ -7526,7 +7526,7 @@ window.SITE_DATA = {
             {
               "no": "②",
               "req": true,
-              "title": "プラン",
+              "title": "プラン料金",
               "sub": "いずれか1つをお選びください",
               "type": "plans",
               "items": [
@@ -7569,7 +7569,7 @@ window.SITE_DATA = {
             {
               "no": "③",
               "req": false,
-              "title": "オプション（任意）",
+              "title": "オプション料金（任意）",
               "type": "optionGroups",
               "items": [
                 {
@@ -7717,7 +7717,7 @@ window.SITE_DATA = {
             {
               "no": "②",
               "req": false,
-              "title": "オプション（任意）",
+              "title": "オプション料金（任意）",
               "type": "optionGroups",
               "items": [
                 {

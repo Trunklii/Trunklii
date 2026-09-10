@@ -61,19 +61,23 @@
     '.mn-plan-l li::before{content:"";position:absolute;left:0;top:.85em;width:5px;height:5px;border-radius:50%;background:var(--accent)}',
     '.mn-plan-note{font-family:var(--serif);font-weight:300;font-size:.7rem;line-height:1.8;color:var(--mid);margin-top:.5rem;padding-left:1rem}',
     /* ── ③ オプション ── */
-    '.mn-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;align-items:start}',
+    '.mn-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem;align-items:start}',
+    /* grid の 1fr は min-content より小さくならないので、名前が長いと列が広がって囲みからはみ出す。
+       minmax(0,1fr) と min-width:0 で縮めるようにし、名前は折り返す（省略記号で切らない） */
+    '.mn-og{min-width:0}',
     /* 紙は左の列に「生花髪飾りオプション」と「OPTION」を積み、残り2つを右の2列に置いている。4群のときだけその並びを再現する */
     '@media(min-width:860px){.mn-opts.g4{grid-template-columns:repeat(3,1fr)}',
     '.mn-opts.g4>:nth-child(1){grid-column:1;grid-row:1}',
     '.mn-opts.g4>:nth-child(2){grid-column:1;grid-row:2}',
     '.mn-opts.g4>:nth-child(3){grid-column:2;grid-row:1/span 2}',
     '.mn-opts.g4>:nth-child(4){grid-column:3;grid-row:1/span 2}}',
+    '@media(min-width:860px){.mn-opts.g4{grid-template-columns:repeat(3,minmax(0,1fr))}}',
     '.mn-og{background:#fff;border-radius:3px;box-shadow:0 1px 3px rgba(31,20,16,.06);padding:1.5rem 1.4rem 1.4rem}',
     '.mn-og-t{font-family:var(--serif);font-weight:400;font-size:.88rem;letter-spacing:.22em;color:var(--accent-text);text-align:center}',
     '.mn-og-t small{display:block;font-family:var(--sans);font-weight:300;font-size:.6rem;letter-spacing:.2em;color:var(--mid);margin-top:.35rem}',
     '.mn-og dl{margin:1rem 0 0;font-family:var(--serif);font-weight:300;font-size:.82rem}',
-    '.mn-row{display:flex;align-items:baseline;gap:.5rem;padding:.6rem 0;border-top:1px solid var(--border)}',
-    '.mn-row .n{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
+    '.mn-row{display:flex;align-items:baseline;gap:.5rem;padding:.6rem 0;border-top:1px solid var(--border);flex-wrap:nowrap}',
+    '.mn-row .n{color:var(--ink);min-width:0;line-height:1.7}',
     '.mn-row .dots{flex:1;border-bottom:1px dotted var(--line-strong,rgba(31,20,16,.26));transform:translateY(-.25em);min-width:1rem}',
     '.mn-row .p{font-family:var(--display);font-style:normal;font-weight:400;font-size:.95rem;white-space:nowrap;font-variant-numeric:lining-nums}',
     '.mn-og .mn-sub{font-family:var(--serif);font-weight:300;font-size:.7rem;line-height:1.8;color:var(--mid);padding:0 0 .5rem}',
