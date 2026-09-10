@@ -689,6 +689,20 @@ function closeBookSheet(){
   apply();
   document.addEventListener('DOMContentLoaded', apply);
   setTimeout(apply, 1500);   /* patch-index.js の描画後にも当てる */
+
+  /* 開始を待って画面を開いたままにしている人にも切り替える。
+     リロードなしで 21:00 に変わるようにしておかないと、
+     「開始したのに開始前の表示」のままになり問い合わせが生まれる。 */
+  var wait = OPEN_AT - Date.now();
+  if (wait > 0) {
+    /* 21:00 ちょうどに当てる。setTimeout の遅延上限に触れないよう24時間以内のときだけ張る */
+    if (wait < 86400000) setTimeout(apply, wait + 500);
+    /* 端末のスリープ復帰やタイマーのずれに備えた保険。切り替わったら自分で止まる */
+    var timer = setInterval(function () {
+      apply();
+      if (Date.now() >= OPEN_AT) clearInterval(timer);
+    }, 30000);
+  }
 })();
 </script>
 </body>
