@@ -1555,7 +1555,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title" id="calendar-heading">Calendar</h2><span class="sec-jp">料金カレンダー</span><div class="sec-rule"></div></div>
   <p class="section-body-text" id="calendar-body" style="max-width:640px;margin:0 0 2rem"></p>
-  <p class="cal-top-tiers-label">753撮影料金</p>
+  <p class="cal-top-tiers-label">七五三撮影料金</p>
   <div class="cal-top-tiers">
     <!-- 料金凡例は Maison nr. 用を準備中。ここには Studio et. の753料金（A/B/C）が直書きされていたが、
          nr. は ¥60,000 / ¥63,000＋土日祝・ハイシーズン各 +¥5,500 で体系が違うため撤去した。
@@ -1619,11 +1619,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li>ご予約日から1週間以内に <span id="res-top-tel">050-1732-9505</span> にて撮影内容の確認をいたします。</li>
       </ul>
     </div>
-    <!-- 753お詣り予約 -->
+    <!-- 七五三お詣り予約 -->
     <div class="res-top-block">
       <div class="res-top-head">
         <span class="res-top-mark">B</span>
-        <h3 class="res-top-title">753お詣り予約について</h3>
+        <h3 class="res-top-title">七五三お詣り予約について</h3>
       </div>
       <div class="res-top-btns">
         <a href="#" id="res-top-book-2" class="btn-line filled">お詣り日のご予約はこちら</a>
@@ -2681,7 +2681,7 @@ function buildSearchIndex(d){
   add('Recruit', d.recruit.heading, d.recruit.body, '#recruit');
   d.recruit.positions.forEach(p=>add('Recruit', p.title, p.desc, '#recruit'));
   // 下層ページを検索対象に(ページ単位で直接遷移)
-  [['プラン一覧','全プラン・料金・オプションの詳細','plans.html'],['撮影カレンダー・料金','予約可能日と料金区分','calendar.html'],['撮影予約・753お詣り','ご予約方法・お詣り出張撮影','reservation.html'],['キャンセルポリシー','キャンセル料金の規定','cancel-policy.html'],['採用情報','スタッフ募集','recruit/']].forEach(function(pg){ add('ページ', pg[0], pg[1], pg[2]); });
+  [['プラン一覧','全プラン・料金・オプションの詳細','plans.html'],['撮影カレンダー・料金','予約可能日と料金区分','calendar.html'],['撮影予約・七五三お詣り','ご予約方法・お詣り出張撮影','reservation.html'],['キャンセルポリシー','キャンセル料金の規定','cancel-policy.html'],['採用情報','スタッフ募集','recruit/']].forEach(function(pg){ add('ページ', pg[0], pg[1], pg[2]); });
   // プラン詳細・オプション(下層ページの内容)
   (d.plans||[]).forEach(function(p){
     if(p.detail){ add('Plans', p.name+' の詳細', (p.detail.longDescription||'')+' '+(p.detail.notes||''), 'plans.html', p.detail.heroImage); }
