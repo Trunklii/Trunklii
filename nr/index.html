@@ -510,8 +510,8 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
    お客様が料金もキャンセルポリシーも見られないまま予約するのを避けるため、
    #plans / #calendar / #reservation / #cancel-policy / #qa をこのリストから外している。
    （キャンセル料を請求する根拠になるので、予約前に読める状態にしておく） */
-#about,#gallery,#kimono,#costume,#goods,#calendar{display:none!important}
-:is(.nav-item,.mob-item,.footer-links li):has(a:is([href="#about"],[href="#gallery"],[href="#kimono"],[href="#costume"],[href="#goods"],[href="#calendar"])){display:none}
+#about,#gallery,#kimono,#costume,#goods,#calendar,#plans{display:none!important}
+:is(.nav-item,.mob-item,.footer-links li):has(a:is([href="#about"],[href="#gallery"],[href="#kimono"],[href="#costume"],[href="#goods"],[href="#calendar"],[href="#plans"])){display:none}
 /* #calendar を隠しているのは、静的な料金凡例が et. の 753 料金（A ¥6,600 / B ¥8,800 / C ¥9,900）で、
    nr. には tiers データが無いため。nr. の 753 は ¥60,000 / ¥63,000＋土日祝・ハイシーズン各 +¥5,500 と
    体系そのものが違い、A/B/C の区分が存在しない。nr. 用の料金表を用意するまでは出さないこと。 */
@@ -1311,7 +1311,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </a>
       <div class="hdr-book-wrap">
         <button class="hdr-book-toggle" type="button" onclick="toggleHdrBook(event)" aria-haspopup="true" aria-expanded="false">予約する<span class="hdr-book-chev" aria-hidden="true">›</span></button>
-        <div class="hdr-book-menu" id="hdr-book-menu" hidden><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://reserve.trunklii.com/nr" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
+        <div class="hdr-book-menu" id="hdr-book-menu" hidden><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://reserve.trunklii.com/reserve/nr" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
       </div>
     </div>
   </div>
@@ -1411,7 +1411,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="mob-actions">
-    <div class="bb-btns"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://reserve.trunklii.com/nr" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
+    <div class="bb-btns"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://reserve.trunklii.com/reserve/nr" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
     <div class="mob-icon-row">
       <button onclick="closeMob();openSearch()" aria-label="Search" style="background:none;cursor:pointer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -1479,7 +1479,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="about-grid">
     <div class="about-text">
       <p id="about-body"></p>
-      <div class="hdr-book-wrap about-book" style="margin-top:1.4rem"><button class="hdr-book-toggle" type="button" onclick="toggleHdrBook(event)" aria-haspopup="true" aria-expanded="false">予約する<span class="hdr-book-chev" aria-hidden="true">›</span></button><div class="hdr-book-menu" hidden><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://reserve.trunklii.com/nr" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div></div>
+      <div class="hdr-book-wrap about-book" style="margin-top:1.4rem"><button class="hdr-book-toggle" type="button" onclick="toggleHdrBook(event)" aria-haspopup="true" aria-expanded="false">予約する<span class="hdr-book-chev" aria-hidden="true">›</span></button><div class="hdr-book-menu" hidden><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://reserve.trunklii.com/reserve/nr" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div></div>
     </div>
     <div class="about-img-wrap"><img id="about-img" src="" alt="Studio"/></div>
   </div>
@@ -1601,6 +1601,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">08</span><h2 class="sec-title" id="reservation-heading">Reservation</h2><span class="sec-jp">ご予約</span><div class="sec-rule"></div></div>
   <p class="section-body-text" id="reservation-body" style="max-width:640px;margin:0 0 3rem">ご予約はオンライン（STORES予約）またはInstagram DM・LINEで承っております。<br/>七五三のお詣り日着物レンタルも受付中です。</p>
+  <p class="section-body-text" id="reservation-open-status" style="max-width:640px;margin:-2rem 0 3rem" data-before-open="2026年10月分のご予約は、9月10日（木）21:00 から受付を開始いたします。" data-after-open="2026年10月分のご予約を受付中です。">2026年10月分のご予約は、9月10日（木）21:00 から受付を開始いたします。</p>
 
   <div class="res-top-grid">
     <!-- 撮影予約 -->
@@ -1773,7 +1774,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="book-sheet-btns">
   <a class="book-sheet-btn bs-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bs-brand-lockup" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bs-cta">予約する<span aria-hidden="true">→</span></span></a>
   <!-- nr. は STORES(春日井)未開設のため暫定で Instagram へ -->
-  <a class="book-sheet-btn bs-nr" href="https://reserve.trunklii.com/nr" target="_blank" rel="noopener"><span class="bs-brand-lockup" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bs-cta">予約する<span aria-hidden="true">→</span></span></a>
+  <a class="book-sheet-btn bs-nr" href="https://reserve.trunklii.com/reserve/nr" target="_blank" rel="noopener"><span class="bs-brand-lockup" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bs-cta">予約する<span aria-hidden="true">→</span></span></a>
   </div>
 </div>
 <button class="to-top-btn" id="to-top-btn" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="ページトップへ戻る">
@@ -1821,7 +1822,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </form>
     <span class="cta-note" id="cta-note"></span>
     <!-- nr. は STORES(春日井)未開設のため暫定で Instagram へ。開設後に href を差し替える -->
-    <div class="bb-btns"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://reserve.trunklii.com/nr" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
+    <div class="bb-btns"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://reserve.trunklii.com/reserve/nr" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
   </div>
   <a href="../" class="footer-logo" id="footer-logo">Trunklii</a>
   <ul class="footer-links">
@@ -1841,7 +1842,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260910c"></script>
+<script src="../site-data.js?v=20260910d"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
@@ -3160,5 +3161,25 @@ init();
 </script>
   <script src="../patch-index.js?v=20260910a"></script>
 
+<script>
+/* 受付開始(2026-09-10 21:00 JST)をまたいで文言を自動で切り替える。
+   端末のタイムゾーンに左右されないよう、絶対時刻(UTC 12:00)で比較する。
+   夜間に人が差し替えに来なくて済むようにするための仕組み。 */
+(function(){
+  var OPEN_AT = Date.UTC(2026, 8, 10, 12, 0, 0);
+  function apply(){
+    var opened = Date.now() >= OPEN_AT;
+    var els = document.querySelectorAll('[data-before-open]');
+    for (var i = 0; i < els.length; i++){
+      var el = els[i];
+      var html = opened ? el.getAttribute('data-after-open') : el.getAttribute('data-before-open');
+      if (html !== null && el.innerHTML !== html) el.innerHTML = html;
+    }
+  }
+  apply();
+  document.addEventListener('DOMContentLoaded', apply);
+  setTimeout(apply, 1500);   /* patch-index.js の描画後にも当てる */
+})();
+</script>
 </body>
 </html>
