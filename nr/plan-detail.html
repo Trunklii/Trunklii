@@ -301,9 +301,6 @@ body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filte
 }
 </style>
 <style>/* NO-BOLD: サイト全体でボールドを使わない */ strong,b{font-weight:400}</style>
-<style data-mark="PRICE-COMINGSOON">/* 料金表が確定するまで、プラン・料金は出さない（2026-09-10 の指示）。
-   料金表を反映するときは、この style ブロックと直後の準備中メッセージを削除すること。 */
-#content{display:none!important}</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -328,9 +325,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 
 <main id="main">
-<div class="wrap" style="text-align:center">
-  <p class="section-body-text" style="margin:0 auto">撮影プラン・料金は準備中です。<br/>詳細が決まり次第、こちらでご案内いたします。</p>
-</div>
 <div id="content"></div></main>
 
 
@@ -376,7 +370,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <img id="lb-img" src="" alt=""/>
 </div>
 
-<script src="../site-data.js?v=20260910i"></script>
+<script src="../site-data.js?v=20260910j"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 function getParam(name){ return new URLSearchParams(location.search).get(name); }

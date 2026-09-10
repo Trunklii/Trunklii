@@ -513,8 +513,8 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
    お客様が料金もキャンセルポリシーも見られないまま予約するのを避けるため、
    #plans / #calendar / #reservation / #cancel-policy / #qa をこのリストから外している。
    （キャンセル料を請求する根拠になるので、予約前に読める状態にしておく） */
-#about,#gallery,#kimono,#costume,#goods,#calendar,#plans{display:none!important}
-:is(.nav-item,.mob-item,.footer-links li):has(a:is([href="#about"],[href="#gallery"],[href="#kimono"],[href="#costume"],[href="#goods"],[href="#calendar"],[href="#plans"])){display:none}
+#about,#gallery,#kimono,#costume,#goods,#calendar{display:none!important}
+:is(.nav-item,.mob-item,.footer-links li):has(a:is([href="#about"],[href="#gallery"],[href="#kimono"],[href="#costume"],[href="#goods"],[href="#calendar"])){display:none}
 /* #calendar を隠しているのは、静的な料金凡例が et. の 753 料金（A ¥6,600 / B ¥8,800 / C ¥9,900）で、
    nr. には tiers データが無いため。nr. の 753 は ¥60,000 / ¥63,000＋土日祝・ハイシーズン各 +¥5,500 と
    体系そのものが違い、A/B/C の区分が存在しない。nr. 用の料金表を用意するまでは出さないこと。 */
@@ -707,6 +707,8 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 .plan-card.soon .plan-price{color:var(--mid)}
 .plan-card:hover{background:var(--ink)}
 .plan-card-img{aspect-ratio:4/3;width:100%;overflow:hidden;background:#eee}
+/* 写真がまだ無いカード（Coming Soon）。写真の枠だけ残して、他のカードと高さのリズムを揃える。#eee だと読み込み失敗に見えるので、背景色に寄せる */
+.plan-card-img.no-img{background:var(--pal-cream,#F3EBDD)}
 .plan-card-img-inner{width:100%;height:100%;background-size:cover;background-position:center;transition:transform .7s var(--ease)}
 .plan-card:hover .plan-card-img-inner{transform:scale(1.05)}
 .plan-card-body{padding:2rem 1.8rem 2.2rem;display:flex;flex-direction:column;flex:1;position:relative}
@@ -1862,7 +1864,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260910i"></script>
+<script src="../site-data.js?v=20260910j"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
@@ -2055,7 +2057,7 @@ async function init(){
       const heroImg = (p.detail && p.detail.heroImage) || '';
       return `
       <a href="${href}" class="plan-card${hasDetail ? '' : ' soon'}">
-        ${heroImg ? `<div class="plan-card-img"><div class="plan-card-img-inner" style="background-image:url('${heroImg}')"></div></div>` : ''}
+        ${heroImg ? `<div class="plan-card-img"><div class="plan-card-img-inner" style="background-image:url('${heroImg}')"></div></div>` : `<div class="plan-card-img no-img"></div>`}
         <div class="plan-card-body">
           ${p.tag ? `<div class="plan-tag">${p.tag}</div>` : ''}
           <div class="plan-name">${p.name}</div>
@@ -2682,7 +2684,7 @@ function buildSearchIndex(d){
      押しても何も無い場所へ飛ぶ。実際にお詣りでこれが起きていた。
      ここは 516 行目の display:none のリストと対で管理すること。
      セクションを公開するときは、516 行と このリストの両方から外す。 */
-  const SEARCH_HIDDEN = ['#about','#gallery','#kimono','#costume','#goods','#calendar','#plans'];
+  const SEARCH_HIDDEN = ['#about','#gallery','#kimono','#costume','#goods','#calendar'];
   const add = (label, title, snippet, anchor, img)=>{
     if(SEARCH_HIDDEN.indexOf(anchor) >= 0) return;
     SEARCH_INDEX.push({label,title,snippet,anchor,img:img||''});
