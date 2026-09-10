@@ -7569,7 +7569,7 @@ window.SITE_DATA = {
             {
               "no": "③",
               "req": false,
-              "title": "オプション",
+              "title": "オプション（任意）",
               "type": "optionGroups",
               "items": [
                 {
@@ -7717,7 +7717,7 @@ window.SITE_DATA = {
             {
               "no": "②",
               "req": false,
-              "title": "オプション",
+              "title": "オプション（任意）",
               "type": "optionGroups",
               "items": [
                 {

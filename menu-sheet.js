@@ -38,6 +38,12 @@
     '.mn-fee-i span{font-family:var(--serif);font-weight:300;font-size:.86rem;color:var(--ink)}',
     '.mn-fee-i b{font-family:var(--display);font-style:normal;font-weight:400;font-size:1.3rem;white-space:nowrap;font-variant-numeric:lining-nums}',
     '.mn-plus{text-align:center;font-family:var(--sans);font-weight:300;font-size:1.15rem;color:var(--accent);margin:1.5rem 0}',
+    /* プランとオプションは、極細の罫線で囲って区切りを作る。
+       囲みの見出しは「753撮影料金」と同じ字づかい（.mn-feebox-t と同じ） */
+    '.mn-group{border:1px solid var(--border);padding:1.5rem 1.4rem 1.6rem;margin-top:0}',
+    '.mn-group + .mn-group{margin-top:1.6rem}',
+    '.mn-group-t{font-family:var(--serif);font-weight:400;font-size:.82rem;letter-spacing:.24em;color:var(--accent-text);text-align:center;margin-bottom:1.2rem}',
+    '.mn-group-t small{display:block;font-family:var(--serif);font-weight:300;font-size:.7rem;letter-spacing:.08em;color:var(--mid);margin-top:.35rem}',
     /* ── ② プラン ── */
     '.mn-plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem;align-items:start}',
     '.mn-plans.one{grid-template-columns:minmax(0,380px);justify-content:center}',
@@ -55,7 +61,7 @@
     '.mn-plan-l li::before{content:"";position:absolute;left:0;top:.85em;width:5px;height:5px;border-radius:50%;background:var(--accent)}',
     '.mn-plan-note{font-family:var(--serif);font-weight:300;font-size:.7rem;line-height:1.8;color:var(--mid);margin-top:.5rem;padding-left:1rem}',
     /* ── ③ オプション ── */
-    '.mn-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;align-items:start;margin-top:1.6rem}',
+    '.mn-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;align-items:start}',
     /* 紙は左の列に「生花髪飾りオプション」と「OPTION」を積み、残り2つを右の2列に置いている。4群のときだけその並びを再現する */
     '@media(min-width:860px){.mn-opts.g4{grid-template-columns:repeat(3,1fr)}',
     '.mn-opts.g4>:nth-child(1){grid-column:1;grid-row:1}',
@@ -80,6 +86,7 @@
     '.mn-fee{gap:.5rem 1.4rem}',
     '.mn-fee-i{width:100%;justify-content:space-between}',
     '.mn-plans,.mn-opts{grid-template-columns:1fr;gap:1rem}',
+    '.mn-group{padding:1.2rem .9rem 1.3rem}',
     '.mn-notes{text-align:left}',
     '}',
   ].join('\n');
@@ -101,6 +108,13 @@
     return '<div class="mn-feebox">'
       + (step.label ? '<div class="mn-feebox-t">' + esc(step.label) + '</div>' : '')
       + '<div class="mn-fee">' + items + '</div></div>';
+  }
+
+  function groupBox(step, inner) {
+    var sub = step.sub ? '<small>' + esc(step.sub) + '</small>' : '';
+    return '<div class="mn-group">'
+      + (step.title ? '<div class="mn-group-t">' + esc(step.title) + sub + '</div>' : '')
+      + inner + '</div>';
   }
 
   function planCards(step, sur) {
@@ -152,8 +166,8 @@
       var sur = sh.surcharge || {};
       var body = (sh.steps || []).map(function (st, i) {
         if (st.type === 'fees') return feeBox(st) + '<div class="mn-plus">＋</div>';
-        if (st.type === 'plans') return planCards(st, sur);
-        if (st.type === 'optionGroups') return optionGroups(st);
+        if (st.type === 'plans') return groupBox(st, planCards(st, sur));
+        if (st.type === 'optionGroups') return groupBox(st, optionGroups(st));
         return '';
       }).join('');
       var notes = (sh.notes || []).slice();
