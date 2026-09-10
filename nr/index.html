@@ -522,6 +522,12 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
    Reservation セクションは公開したが、詳細ページへは進ませないままにしておく
    （2026-08-29 の指示。ボタンが出てこないのは消し忘れではなく、この1行が理由） */
 #reservation-more-btn{display:none}
+/* 七五三お詣り予約は今シーズン受け付けないため非表示（2026-09-10 の指示）。
+   そもそもお詣り専用の予約導線は無く、「お詣り日のご予約はこちら」は撮影と同じ
+   reserve/nr を指していて、その先には撮影プランしか無い状態だった。
+   来シーズン受け付けるときは、この2行を消し、予約側にお詣りのプランを用意すること。 */
+#res-top-omairi{display:none}
+:is(.nav-item,.mob-item,.footer-links li):has(a[href*="omairi"]){display:none}
 /* ヘッダー下段メニュー(Recruit等)は引き続き非表示 */
 .mob-item:has(a[href="#recruit"]){display:none}
 /* ヒーロー写真を全デバイスでウィンドウ高さ・幅100%に(ヘッダーは半透明で写真に重ねる) */
@@ -1627,7 +1633,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
     </div>
     <!-- 七五三お詣り予約 -->
-    <div class="res-top-block">
+    <div class="res-top-block" id="res-top-omairi">
       <div class="res-top-head">
         <span class="res-top-mark">B</span>
         <h3 class="res-top-title">七五三お詣り予約について</h3>
