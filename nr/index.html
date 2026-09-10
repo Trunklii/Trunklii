@@ -3166,9 +3166,10 @@ init();
    端末のタイムゾーンに左右されないよう、絶対時刻(UTC 12:00)で比較する。
    夜間に人が差し替えに来なくて済むようにするための仕組み。 */
 (function(){
-  var OPEN_AT = Date.UTC(2026, 8, 10, 12, 0, 0);
+  /* 受付を開始したら true にする。日付では切り替えない（枠の開放と足並みを揃えるため） */
+  var OPENED = false;
   function apply(){
-    var opened = Date.now() >= OPEN_AT;
+    var opened = OPENED;
     var els = document.querySelectorAll('[data-before-open]');
     for (var i = 0; i < els.length; i++){
       var el = els[i];
@@ -3180,19 +3181,10 @@ init();
   document.addEventListener('DOMContentLoaded', apply);
   setTimeout(apply, 1500);   /* patch-index.js の描画後にも当てる */
 
-  /* 開始を待って画面を開いたままにしている人にも切り替える。
-     リロードなしで 21:00 に変わるようにしておかないと、
-     「開始したのに開始前の表示」のままになり問い合わせが生まれる。 */
-  var wait = OPEN_AT - Date.now();
-  if (wait > 0) {
-    /* 21:00 ちょうどに当てる。setTimeout の遅延上限に触れないよう24時間以内のときだけ張る */
-    if (wait < 86400000) setTimeout(apply, wait + 500);
-    /* 端末のスリープ復帰やタイマーのずれに備えた保険。切り替わったら自分で止まる */
-    var timer = setInterval(function () {
-      apply();
-      if (Date.now() >= OPEN_AT) clearInterval(timer);
-    }, 30000);
-  }
+  /* 2026-09-10: 予約枠の開放が保留になったため、時刻での自動切替を止めた。
+     枠が閉じたまま「ご予約を受付中です」と表示すると、来ていただいた方が
+     予約できずに終わる。受付を開始するときは OPENED を true にすること
+     （そのとき data-after-open の文言に切り替わる）。 */
 })();
 </script>
 </body>
