@@ -81,7 +81,23 @@ const hard = [...body.matchAll(/¥[\d,]{3,}/g)].map((m) => m[0]);
 if (hard.length) problems.push(`nr/plans.html に金額の直書きが ${hard.length} 件: ${[...new Set(hard)].join(', ')}`);
 else ok.push('nr/plans.html に金額の直書きなし');
 
-// ── 4) プラン構成が予約の3択と揃っているか ──
+// ── 4) llms.txt にも同じ金額が書いてあるか ──
+// llms.txt は AI検索エンジンが読む。ここがずれると、AIが古い料金を答える。
+const llms = fs.readFileSync(path.join(__dirname, '..', 'llms.txt'), 'utf8');
+if (sheet) {
+  const want = [];
+  for (const st of sheet.steps) {
+    if (st.type === 'fees' || st.type === 'plans') for (const it of st.items) want.push(it.price);
+  }
+  const bdBase = bdSheet && ((bdSheet.steps.find((s) => s.type === 'plans') || {}).items || [])[0];
+  if (bdBase) want.push(bdBase.price);
+  const missing = want.filter((n) => !llms.includes('¥' + Number(n).toLocaleString('ja-JP')));
+  if (missing.length) problems.push(`llms.txt に無い金額: ${missing.map((n) => '¥' + n.toLocaleString()).join(', ')}`);
+  else ok.push('llms.txt に nr. の金額がすべて載っている');
+}
+if (/Birthday[^\n]*未発表/.test(llms)) problems.push('llms.txt に「Birthday は未発表」の記載が残っている');
+
+// ── 5) プラン構成が予約の3択と揃っているか ──
 const keys = (nr.plans || []).map((p) => p.key).join(' / ');
 if (keys !== '753 / birthday / comingsoon') problems.push(`nr.plans の構成が想定と違う: ${keys}`);
 else ok.push('nr.plans = 753 / birthday / comingsoon');
