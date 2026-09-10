@@ -706,7 +706,9 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 .plan-card.soon{pointer-events:none;opacity:.7}
 .plan-card.soon .plan-price{color:var(--mid)}
 .plan-card:hover{background:var(--ink)}
-.plan-card-img{aspect-ratio:4/3;width:100%;overflow:hidden;background:#eee}
+.plan-card-img{aspect-ratio:16/9;width:100%;overflow:hidden;background:#eee}/* 4/3 だと横長の写真が大きく切れる（Birthday は横の52%が画面外になっていた）。
+   16/9 に寄せて、切り落とす量と必要な解像度の両方を下げている。
+   写真の原本が手に入ったら、4/3 に戻して構わない。 */
 /* 写真がまだ無いカード（Coming Soon）。写真の枠だけ残して、他のカードと高さのリズムを揃える。#eee だと読み込み失敗に見えるので、背景色に寄せる */
 .plan-card-img.no-img{background:var(--pal-cream,#F3EBDD)}
 .plan-card-img-inner{width:100%;height:100%;background-size:cover;background-position:center;transition:transform .7s var(--ease)}

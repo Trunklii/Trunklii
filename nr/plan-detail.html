@@ -111,6 +111,8 @@ main{padding-top:64px}
 .pd-list li::before{content:'─';position:absolute;left:0;color:var(--accent-text)}
 
 .pd-options{display:flex;flex-direction:column;gap:.5rem}
+/* 共通オプションは項目数が多いので、広い画面では2列に流して縦を詰める */
+@media(min-width:760px){.pd-options-shared{display:grid;grid-template-columns:1fr 1fr;column-gap:2.5rem;row-gap:0}}
 .pd-opt-note{font-family:var(--serif);font-weight:300;font-size:.78rem;line-height:1.9;color:var(--mid);margin-top:1rem}
 .pd-opt-note a{color:var(--ink);border-bottom:1px solid var(--border);padding-bottom:1px;white-space:nowrap;margin-left:.4em}
 .opt-row{display:flex;justify-content:space-between;align-items:baseline;padding:.55rem 0;border-bottom:1px dotted var(--border);font-family:var(--sans)}
@@ -421,13 +423,26 @@ function render(){
   if(metaDesc) metaDesc.setAttribute('content',
     `${plan.name} — ${d.tagline || plan.desc || ''} ${studio.name}の撮影プラン詳細。`);
 
-  const variantsHtml = plan.variants.map(v=>{
-    const includes = (v.includes||[]).map(it=>`<li>${esc(it)}</li>`).join('');
-    const options = (v.options||[]).map(o=>`
+  /* オプションは、どのバリアントでも同じ内容であることが多い。
+     753 は9通り × 17項目で、そのまま出すとスマホで20画面を超えていた。
+     全バリアントで同じなら、カードから外して最後に1回だけ出す。
+     （中身が違うバリアントが混ざったときは、従来どおり各カードに出す） */
+  const optKey = (v) => JSON.stringify((v.options||[]).map(o=>[o.name,o.price,!!o.sub]));
+  const sharedOptions = plan.variants.length > 1
+    && (plan.variants[0].options||[]).length > 0
+    && plan.variants.every(v => optKey(v) === optKey(plan.variants[0]))
+      ? (plan.variants[0].options||[])
+      : null;
+
+  const optionRows = (list) => (list||[]).map(o=>`
       <div class="opt-row${o.sub?' opt-row-sub':''}">
         <div class="pd-opt-name">${o.sub?'＋ ':''}${esc(o.name)}</div>
         <div class="pd-opt-price">${esc(o.price)}</div>
       </div>`).join('');
+
+  const variantsHtml = plan.variants.map(v=>{
+    const includes = (v.includes||[]).map(it=>`<li>${esc(it)}</li>`).join('');
+    const options = sharedOptions ? '' : optionRows(v.options);
     // プラン詳細内のギャラリーは非表示(Galleryセクションに集約)
     const gallery = '';
     return `
@@ -475,9 +490,19 @@ function render(){
         </div>
         <div class="pd-variants">${variantsHtml}</div>
 
-        ${d.notes?`
+        ${sharedOptions?`
           <div class="sec-head" style="margin-top:4rem">
             <span class="sec-num">03</span>
+            <h2 class="sec-title">Options</h2><span class="sec-jp">オプション（任意）</span>
+            <div class="sec-rule"></div>
+          </div>
+          <div class="pd-options pd-options-shared">${optionRows(sharedOptions)}</div>
+          <p class="pd-opt-note">どのプランでも同じオプションをお選びいただけます。アルバムやフレームなどは別途ご購入いただけます。<a href="./#goods">Goods を見る →</a></p>
+        `:''}
+
+        ${d.notes?`
+          <div class="sec-head" style="margin-top:4rem">
+            <span class="sec-num">${sharedOptions?'04':'03'}</span>
             <h2 class="sec-title">Notes</h2><span class="sec-jp">ご注意事項</span>
             <div class="sec-rule"></div>
           </div>
