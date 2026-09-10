@@ -916,6 +916,10 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 #about .btn-line{color:#1C0909;border-color:rgba(28,9,9,.45)}
 #about .btn-line:hover{background:#1C0909;color:#f0ead8;border-color:#1C0909}
 :is(#about,#kimono,#plans,#reservation,#qa,#recruit) .btn-line{color:var(--on-light-ink);border-color:var(--on-light-line)}
+/* 上の行は明るい地のセクション用に文字を濃くしているが、ID を含むぶん優先度が高く、
+   塗りボタン(.filled)の白文字まで打ち消して「濃い地に濃い文字」になっていた。
+   .filled は地が --ink で暗いので、文字をクリームに戻す。 */
+:is(#about,#kimono,#plans,#reservation,#qa,#recruit) .btn-line.filled{color:var(--cream);border-color:var(--ink)}
 :is(#about,#kimono,#plans,#reservation,#qa,#recruit) .btn-line:hover{background:var(--on-light-ink);color:#fff;border-color:var(--on-light-ink)}
 
 /* === Maison nr. nav (dark mode) === */
