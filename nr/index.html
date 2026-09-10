@@ -2698,7 +2698,7 @@ function buildSearchIndex(d){
   add('Recruit', d.recruit.heading, d.recruit.body, '#recruit');
   d.recruit.positions.forEach(p=>add('Recruit', p.title, p.desc, '#recruit'));
   // 下層ページを検索対象に(ページ単位で直接遷移)
-  [['プラン一覧','全プラン・料金・オプションの詳細','plans.html'],['撮影カレンダー・料金','予約可能日と料金区分','calendar.html'],['撮影予約・七五三お詣り','ご予約方法・お詣り出張撮影','reservation.html'],['キャンセルポリシー','キャンセル料金の規定','cancel-policy.html'],['採用情報','スタッフ募集','recruit/']].forEach(function(pg){ add('ページ', pg[0], pg[1], pg[2]); });
+  [['プラン一覧','全プラン・料金・オプションの詳細','plans.html'],['撮影カレンダー・料金','予約可能日と料金区分','calendar.html'],['撮影予約','ご予約方法・ご予約の流れ','reservation.html']/* 今シーズンはお詣りを受け付けないので、検索結果から外している（2026-09-10）。来シーズン戻すときは '撮影予約・七五三お詣り' に戻す。ただし出張撮影は行っていないので説明文には入れないこと */,['キャンセルポリシー','キャンセル料金の規定','cancel-policy.html'],['採用情報','スタッフ募集','recruit/']].forEach(function(pg){ add('ページ', pg[0], pg[1], pg[2]); });
   // プラン詳細・オプション(下層ページの内容)
   (d.plans||[]).forEach(function(p){
     if(p.detail){ add('Plans', p.name+' の詳細', (p.detail.longDescription||'')+' '+(p.detail.notes||''), 'plans.html', p.detail.heroImage); }
