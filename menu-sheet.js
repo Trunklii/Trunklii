@@ -37,6 +37,12 @@
     /* 料金の間は華奢な縦罫で区切る（狭い画面では横罫） */
     '.mn-fee-i{display:flex;align-items:baseline;gap:.7rem;padding:.15rem 2.4rem}',
     '.mn-fee-i + .mn-fee-i{border-left:1px solid var(--border)}',
+    /* 3つが1行に収まらない幅で折り返すと、2行目の頭に縦罫が残る。
+       中間の幅は余白を詰め、それでも入らない幅（760px以下）は縦に積んで横罫にする */
+    '@media(max-width:900px){.mn-fee-i{padding:.15rem 1.4rem}}',
+    '@media(max-width:760px){.mn-fee{gap:0}',
+    '.mn-fee-i{width:100%;justify-content:space-between;padding:.75rem .2rem}',
+    '.mn-fee-i + .mn-fee-i{border-left:0;border-top:1px solid var(--border)}}',
     '.mn-fee-i span{font-family:var(--serif);font-weight:300;font-size:.86rem;color:var(--ink)}',
     '.mn-fee-i b{font-family:var(--display);font-style:normal;font-weight:400;font-size:1.3rem;white-space:nowrap;font-variant-numeric:lining-nums}',
     '.mn-plus{text-align:center;font-family:var(--sans);font-weight:300;font-size:1.15rem;color:var(--accent);margin:1.5rem 0}',
@@ -97,9 +103,6 @@
     /* 2段組では注記を右の段のオプションの下に置く。段の幅に合わせて左寄せ */
     '.mn-duo .mn-notes{margin-top:1.4rem;text-align:left;max-width:none}',
     '@media(max-width:600px){',
-    '.mn-fee{gap:0}',
-    '.mn-fee-i{width:100%;justify-content:space-between;padding:.75rem .2rem}',
-    '.mn-fee-i + .mn-fee-i{border-left:0;border-top:1px solid var(--border)}',
     '.mn-plans,.mn-opts{grid-template-columns:1fr;gap:1rem}',
     '.mn-group{padding:1.2rem .9rem 1.3rem}',
     '.mn-notes{text-align:left}',
