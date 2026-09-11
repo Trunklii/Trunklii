@@ -33,8 +33,10 @@
     /* ── ① 撮影料金：横一列の1枚のカード ── */
     '.mn-feebox{background:#fff;border-radius:3px;box-shadow:0 1px 3px rgba(31,20,16,.06);padding:1.6rem 1.4rem 1.5rem}',
     '.mn-feebox-t{font-family:var(--serif);font-weight:400;font-size:.82rem;letter-spacing:.24em;color:var(--accent-text);text-align:center;margin-bottom:1rem}',
-    '.mn-fee{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem 3.2rem}',
-    '.mn-fee-i{display:flex;align-items:baseline;gap:.7rem}',
+    '.mn-fee{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem 0}',
+    /* 料金の間は華奢な縦罫で区切る（狭い画面では横罫） */
+    '.mn-fee-i{display:flex;align-items:baseline;gap:.7rem;padding:.15rem 2.4rem}',
+    '.mn-fee-i + .mn-fee-i{border-left:1px solid var(--border)}',
     '.mn-fee-i span{font-family:var(--serif);font-weight:300;font-size:.86rem;color:var(--ink)}',
     '.mn-fee-i b{font-family:var(--display);font-style:normal;font-weight:400;font-size:1.3rem;white-space:nowrap;font-variant-numeric:lining-nums}',
     '.mn-plus{text-align:center;font-family:var(--sans);font-weight:300;font-size:1.15rem;color:var(--accent);margin:1.5rem 0}',
@@ -95,8 +97,9 @@
     /* 2段組では注記を右の段のオプションの下に置く。段の幅に合わせて左寄せ */
     '.mn-duo .mn-notes{margin-top:1.4rem;text-align:left;max-width:none}',
     '@media(max-width:600px){',
-    '.mn-fee{gap:.5rem 1.4rem}',
-    '.mn-fee-i{width:100%;justify-content:space-between}',
+    '.mn-fee{gap:0}',
+    '.mn-fee-i{width:100%;justify-content:space-between;padding:.75rem .2rem}',
+    '.mn-fee-i + .mn-fee-i{border-left:0;border-top:1px solid var(--border)}',
     '.mn-plans,.mn-opts{grid-template-columns:1fr;gap:1rem}',
     '.mn-group{padding:1.2rem .9rem 1.3rem}',
     '.mn-notes{text-align:left}',
