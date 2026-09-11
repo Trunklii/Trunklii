@@ -91,7 +91,9 @@
     '.mn-foot{font-family:var(--serif);font-weight:400;font-size:.95rem;letter-spacing:.06em;color:var(--accent-text);text-align:center;margin:2.6rem 0 1rem}',
     '.mn-notes{list-style:none;padding:0;margin:0;font-family:var(--serif);font-weight:300;font-size:.74rem;line-height:1.95;color:var(--mid);text-align:center;max-width:760px;margin-left:auto;margin-right:auto}',
     /* 加算の一文（.mn-foot）が無いメニューは、注記が囲みの枠に貼りつくので間をあける */
-    '.mn-group + .mn-notes,.mn-duo + .mn-notes{margin-top:1.8rem}',
+    '.mn-group + .mn-notes{margin-top:1.8rem}',
+    /* 2段組では注記を右の段のオプションの下に置く。段の幅に合わせて左寄せ */
+    '.mn-duo .mn-notes{margin-top:1.4rem;text-align:left;max-width:none}',
     '@media(max-width:600px){',
     '.mn-fee{gap:.5rem 1.4rem}',
     '.mn-fee-i{width:100%;justify-content:space-between}',
@@ -183,15 +185,18 @@
     host.innerHTML = sheets.map(function (sh) {
       var sur = sh.surcharge || {};
       var steps = sh.steps || [];
+      var duo = isDuo(steps);
+      var notes = (sh.notes || []).slice();
+      notes.push('表示価格はすべて税込です。');
+      var notesHtml = '<ul class="mn-notes">' + notes.map(function (n) { return '<li>' + n + '</li>'; }).join('') + '</ul>';
       var body = steps.map(function (st, i) {
         if (st.type === 'fees') return feeBox(st) + '<div class="mn-plus">＋</div>';
         if (st.type === 'plans') return groupBox(st, planCards(st, sur));
-        if (st.type === 'optionGroups') return groupBox(st, optionGroups(st));
+        // 2段組のときは、注記を右の段（オプションの囲み）の中に入れる
+        if (st.type === 'optionGroups') return groupBox(st, optionGroups(st) + (duo ? notesHtml : ''));
         return '';
       }).join('');
-      if (isDuo(steps)) body = '<div class="mn-duo">' + body + '</div>';
-      var notes = (sh.notes || []).slice();
-      notes.push('表示価格はすべて税込です。');
+      if (duo) body = '<div class="mn-duo">' + body + '</div>';
       return '<section class="mn-sheet" id="mn-' + esc(sh.key) + '">'
         + (sh.eyebrow ? '<p class="mn-eyebrow">' + esc(sh.eyebrow) + '</p>' : '')
         + '<h2 class="mn-title">' + esc(sh.title) + '</h2>'
@@ -199,7 +204,7 @@
         + (sh.lead ? '<p class="mn-lead">' + sh.lead + '</p>' : '')
         + body
         + (sur.footer ? '<div class="mn-foot">' + esc(sur.footer) + '</div>' : '')
-        + '<ul class="mn-notes">' + notes.map(function (n) { return '<li>' + n + '</li>'; }).join('') + '</ul>'
+        + (duo ? '' : notesHtml)
         + '</section>';
     }).join('');
 
