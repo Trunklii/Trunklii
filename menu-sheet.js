@@ -44,6 +44,10 @@
     '.mn-group + .mn-group{margin-top:1.6rem}',
     '.mn-group-t{font-family:var(--serif);font-weight:400;font-size:.82rem;letter-spacing:.24em;color:var(--accent-text);text-align:center;margin-bottom:1.2rem}',
     '.mn-group-t small{display:block;font-family:var(--serif);font-weight:300;font-size:.7rem;letter-spacing:.08em;color:var(--mid);margin-top:.35rem}',
+    /* 撮影料金＋オプションの2段組（isDuo のとき）。狭い画面では今までどおり縦に積む */
+    '@media(min-width:860px){.mn-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.6rem;align-items:stretch}',
+    '.mn-duo>.mn-group{min-width:0}',
+    '.mn-duo>.mn-group + .mn-group{margin-top:0}}',
     /* ── ② プラン ── */
     '.mn-plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem;align-items:start}',
     '.mn-plans.one{grid-template-columns:minmax(0,380px);justify-content:center}',
@@ -157,6 +161,14 @@
     }).join('') + '</div>';
   }
 
+  /* 撮影料金のカードが1枚だけ（Birthday）のときは、撮影料金とオプションを横に並べる。
+     縦に積むと、1枚のカードの左右と、行数の少ないオプションの右側が大きく空くため */
+  function isDuo(steps) {
+    return steps.length === 2
+      && steps[0].type === 'plans' && (steps[0].items || []).length === 1
+      && steps[1].type === 'optionGroups';
+  }
+
   // host: 描画先の要素 / sheets: 描く menuSheets の配列（1枚でも複数でも）
   function renderSheets(host, sheets) {
     if (!host) return;
@@ -168,12 +180,14 @@
     }
     host.innerHTML = sheets.map(function (sh) {
       var sur = sh.surcharge || {};
-      var body = (sh.steps || []).map(function (st, i) {
+      var steps = sh.steps || [];
+      var body = steps.map(function (st, i) {
         if (st.type === 'fees') return feeBox(st) + '<div class="mn-plus">＋</div>';
         if (st.type === 'plans') return groupBox(st, planCards(st, sur));
         if (st.type === 'optionGroups') return groupBox(st, optionGroups(st));
         return '';
       }).join('');
+      if (isDuo(steps)) body = '<div class="mn-duo">' + body + '</div>';
       var notes = (sh.notes || []).slice();
       notes.push('表示価格はすべて税込です。');
       return '<section class="mn-sheet" id="mn-' + esc(sh.key) + '">'
