@@ -90,6 +90,8 @@
     /* ── 最下部 ── */
     '.mn-foot{font-family:var(--serif);font-weight:400;font-size:.95rem;letter-spacing:.06em;color:var(--accent-text);text-align:center;margin:2.6rem 0 1rem}',
     '.mn-notes{list-style:none;padding:0;margin:0;font-family:var(--serif);font-weight:300;font-size:.74rem;line-height:1.95;color:var(--mid);text-align:center;max-width:760px;margin-left:auto;margin-right:auto}',
+    /* 加算の一文（.mn-foot）が無いメニューは、注記が囲みの枠に貼りつくので間をあける */
+    '.mn-group + .mn-notes,.mn-duo + .mn-notes{margin-top:1.8rem}',
     '@media(max-width:600px){',
     '.mn-fee{gap:.5rem 1.4rem}',
     '.mn-fee-i{width:100%;justify-content:space-between}',
