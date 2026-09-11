@@ -7509,12 +7509,6 @@ window.SITE_DATA = {
               "type": "fees",
               "items": [
                 {
-                  "label": "3歳・5歳 男の子",
-                  "price": 10000,
-                  "image": "plan-753-3-5yo-boy-maison-nr-kasugai-01.jpg",
-                  "en": "BOY · 3 & 5 YEARS"
-                },
-                {
                   "label": "3歳 女の子",
                   "price": 13000,
                   "image": "plan-753-3yo-girl-maison-nr-kasugai-01.jpg",
@@ -7525,6 +7519,12 @@ window.SITE_DATA = {
                   "price": 15000,
                   "image": "plan-753-7yo-girl-maison-nr-kasugai-01.jpg",
                   "en": "GIRL · 7 YEARS"
+                },
+                {
+                  "label": "3歳・5歳 男の子",
+                  "price": 10000,
+                  "image": "plan-753-3-5yo-boy-maison-nr-kasugai-01.jpg",
+                  "en": "BOY · 3 & 5 YEARS"
                 }
               ],
               "label": "753撮影料金"
