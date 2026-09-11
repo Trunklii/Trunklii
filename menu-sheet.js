@@ -61,6 +61,8 @@
     '.mn-plans.one{grid-template-columns:minmax(0,380px);justify-content:center}',
     '.mn-plan{background:#fff;border-radius:3px;box-shadow:0 1px 3px rgba(31,20,16,.06);overflow:hidden;display:flex;flex-direction:column}',
     '.mn-plan-img{aspect-ratio:16/10;background-size:cover;background-position:center}',
+    /* 撮影料金の写真は衣装の置き写真で縦に長いので、3:2 で切れないように見せる */
+    '.mn-plans.fee .mn-plan-img{aspect-ratio:3/2}',
     '.mn-plan-b{padding:1.5rem 1.4rem 1.6rem}',
     '.mn-plan-n{font-family:var(--serif);font-weight:300;font-size:1.05rem;letter-spacing:.06em;color:var(--ink)}',
     '.mn-plan-en{font-family:var(--sans);font-weight:300;font-size:.58rem;letter-spacing:.16em;color:var(--accent-text);margin:.3rem 0 1rem}',
@@ -120,6 +122,18 @@
   }
 
   function feeBox(step) {
+    // 写真があるときは、プラン料金と同じカードの形で並べる
+    if ((step.items || []).some(function (f) { return f.image; })) {
+      return groupBox({ title: step.label }, '<div class="mn-plans fee">' + step.items.map(function (f) {
+        return '<div class="mn-plan">'
+          + (f.image ? '<div class="mn-plan-img" style="background-image:url(\'' + esc(f.image) + '\')" role="img" aria-label="' + esc(f.label) + '"></div>' : '')
+          + '<div class="mn-plan-b">'
+          + '<div class="mn-plan-n">' + esc(f.label) + '</div>'
+          + (f.en ? '<div class="mn-plan-en">' + esc(f.en) + '</div>' : '')
+          + '<div class="mn-plan-p">' + yen(f.price) + '<em>税込</em></div>'
+          + '</div></div>';
+      }).join('') + '</div>');
+    }
     var items = (step.items || []).map(function (f) {
       return '<div class="mn-fee-i"><span>' + esc(f.label) + '</span><b>' + yen(f.price) + '</b></div>';
     }).join('');
