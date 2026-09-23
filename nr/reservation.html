@@ -707,10 +707,17 @@ function closeBookSheet(){
     if (Date.now() >= OPEN_AT){ apply(); clearInterval(t); }
   }, 60000);
 
-  /* 2026-09-10: 予約枠の開放が保留になったため、時刻での自動切替を止めた。
-     枠が閉じたまま「ご予約を受付中です」と表示すると、来ていただいた方が
-     予約できずに終わる。受付を開始するときは OPENED を true にすること
-     （そのとき data-after-open の文言に切り替わる）。 */
+  /* ⚠ OPEN_AT を動かすときの決まり（2026-09-23）
+     手動フラグ OPENED は廃止した。この時刻が来ると、誰も押さなくても
+     「受付中です」に変わる。予約システム側の booking_slots.open_at が
+     同じ時刻になっていないと、告知した時刻に来ていただいた方が
+     1人も予約できない。以前は人が押すまで切り替わらなかったので、
+     DB が遅れても HP は黙っていた。その縛りはもう無い。
+     OPEN_AT を変えるときは、必ず先に booking_slots.open_at を同じ時刻に
+     揃え、本番の API を読んで突き合わせること。
+       curl -s "https://reserve.trunklii.com/api/reserve/slots?store=nr&month=YYYY-MM"
+     （この API は CORS を許していないので、HP から読んで自動で
+       確かめる作りにはできない。2026-09-24 実測） */
 })();
 </script>
 </body>
