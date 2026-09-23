@@ -1629,7 +1629,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="wrap">
   <div class="sec-head"><span class="sec-num">08</span><h2 class="sec-title" id="reservation-heading">Reservation</h2><span class="sec-jp">ご予約</span><div class="sec-rule"></div></div>
   <p class="section-body-text" id="reservation-body" style="max-width:640px;margin:0 0 3rem">撮影のご予約は、公式サイトのご予約ページから承ります。</p>
-  <p class="section-body-text" id="reservation-open-status" style="max-width:640px;margin:-2rem 0 3rem" data-before-open="2026年10月22日（木）以降の撮影分について、受付開始日が決まりましたらこちらでご案内いたします。" data-after-open="2026年10月22日（木）以降の撮影分を受付中です。">2026年10月22日（木）以降の撮影分について、受付開始日が決まりましたらこちらでご案内いたします。</p>
+  <p class="section-body-text" id="reservation-open-status" style="max-width:640px;margin:-2rem 0 3rem" data-before-open="2026年10月22日（木）以降の撮影分のご予約を、9月27日（日）13:00 より受付開始いたします。" data-after-open="2026年10月22日（木）以降の撮影分を受付中です。">2026年10月22日（木）以降の撮影分のご予約を、9月27日（日）13:00 より受付開始いたします。</p>
 
   <div class="res-top-grid">
     <!-- 撮影予約 -->
@@ -3204,14 +3204,19 @@ init();
 
 <script>
 /* 受付開始の文言を切り替える仕組み。
-   当初は 2026-09-10 21:00 JST の時刻判定で自動切替にしていたが、
-   予約枠の開放が保留になったため OPENED の手動フラグに変えた。
-   枠が閉じたまま「受付中です」と出すと、来ていただいた方が予約できずに終わる。 */
+   2026-09-10: 枠の開放が保留になったため、時刻判定をやめて手動フラグにしていた。
+   2026-09-23 川島さん決定: 受付開始 2026-09-27 13:00 JST。自動切替に戻す。
+   予約の受付そのものは予約システム側（booking_slots.open_at）が同じ時刻で
+   判定するので、文言とデータの足並みは揃う。
+   見ている端末の時計がずれると文言だけ早く／遅く変わるが、実際に予約が通るかは
+   サーバー側で判定するため、枠が閉じたまま予約が入ることはない。 */
 (function(){
-  /* 受付を開始したら true にする。日付では切り替えない（枠の開放と足並みを揃えるため） */
-  var OPENED = false;
+  /* 受付開始日時（JST）。ここを変えるときは、予約システム側の
+     booking_slots.open_at も必ず同じ時刻に揃えること。
+     文言だけ先に切り替わると、来ていただいた方が予約できずに終わる。 */
+  var OPEN_AT = new Date('2026-09-27T13:00:00+09:00').getTime();
   function apply(){
-    var opened = OPENED;
+    var opened = Date.now() >= OPEN_AT;
     var els = document.querySelectorAll('[data-before-open]');
     for (var i = 0; i < els.length; i++){
       var el = els[i];
@@ -3222,11 +3227,11 @@ init();
   apply();
   document.addEventListener('DOMContentLoaded', apply);
   setTimeout(apply, 1500);   /* patch-index.js の描画後にも当てる */
+  /* 受付開始の瞬間にページを開いたままの方のために、開始までは1分おきに見直す */
+  var t = setInterval(function(){
+    if (Date.now() >= OPEN_AT){ apply(); clearInterval(t); }
+  }, 60000);
 
-  /* 2026-09-10: 予約枠の開放が保留になったため、時刻での自動切替を止めた。
-     枠が閉じたまま「ご予約を受付中です」と表示すると、来ていただいた方が
-     予約できずに終わる。受付を開始するときは OPENED を true にすること
-     （そのとき data-after-open の文言に切り替わる）。 */
 })();
 </script>
 </body>

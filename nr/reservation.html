@@ -343,7 +343,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="section-body-text" style="text-align:center;max-width:640px;margin:0 auto 2rem">撮影のご予約は、公式サイトのご予約ページから承ります。
 ご予約からお写真のお渡しまで、すべてWeb上で完結します。</p>
 
-      <div class="coming-banner" id="res-open-banner" data-before-open="Coming Soon &nbsp;/&nbsp; 受付開始日は決まりしだいご案内いたします" data-after-open="10月22日（木）以降の撮影分 ご予約受付中">Coming Soon &nbsp;/&nbsp; 受付開始日は決まりしだいご案内いたします</div>
+      <div class="coming-banner" id="res-open-banner" data-before-open="9月27日（日）13:00 受付開始 &nbsp;/&nbsp; 10月22日（木）以降の撮影分" data-after-open="10月22日（木）以降の撮影分 ご予約受付中">9月27日（日）13:00 受付開始 &nbsp;/&nbsp; 10月22日（木）以降の撮影分</div>
 
       <!-- ── 撮影予約 ── -->
       <div class="subsec">
@@ -357,9 +357,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 
         <ul class="res-notes">
-          <li><span>2026年10月22日（木）以降の撮影分のご予約は、受付開始日が決まりましたら当ページと Instagram でご案内いたします。
+          <li><span><span data-before-open="2026年10月22日（木）以降の撮影分のご予約を、9月27日（日）13:00 より受付開始いたします。" data-after-open="2026年10月22日（木）以降の撮影分のご予約を受付中です。">2026年10月22日（木）以降の撮影分のご予約を、9月27日（日）13:00 より受付開始いたします。</span>
             <span class="res-note-sub">※11月以降の日程は、決まり次第このページでご案内いたします。</span></span></li>
-          <li><span>受付開始までは、Instagram DM でお問い合わせを承っております。
+          <li><span><span data-before-open="受付開始までは、Instagram DM でお問い合わせを承っております。" data-after-open="ご不明な点は、Instagram DM でお問い合わせを承っております。">受付開始までは、Instagram DM でお問い合わせを承っております。</span>
             <span class="res-note-sub">
               <a href="https://www.instagram.com/maison_nr._/" target="_blank" rel="noopener" class="res-note-link">Instagram（@maison_nr._）→</a>
             </span></span></li>
@@ -679,14 +679,19 @@ function closeBookSheet(){
 </script>
 <script>
 /* 受付開始の文言を切り替える仕組み。
-   当初は 2026-09-10 21:00 JST の時刻判定で自動切替にしていたが、
-   予約枠の開放が保留になったため OPENED の手動フラグに変えた。
-   枠が閉じたまま「受付中です」と出すと、来ていただいた方が予約できずに終わる。 */
+   2026-09-10: 枠の開放が保留になったため、時刻判定をやめて手動フラグにしていた。
+   2026-09-23 川島さん決定: 受付開始 2026-09-27 13:00 JST。自動切替に戻す。
+   予約の受付そのものは予約システム側（booking_slots.open_at）が同じ時刻で
+   判定するので、文言とデータの足並みは揃う。
+   見ている端末の時計がずれると文言だけ早く／遅く変わるが、実際に予約が通るかは
+   サーバー側で判定するため、枠が閉じたまま予約が入ることはない。 */
 (function(){
-  /* 受付を開始したら true にする。日付では切り替えない（枠の開放と足並みを揃えるため） */
-  var OPENED = false;
+  /* 受付開始日時（JST）。ここを変えるときは、予約システム側の
+     booking_slots.open_at も必ず同じ時刻に揃えること。
+     文言だけ先に切り替わると、来ていただいた方が予約できずに終わる。 */
+  var OPEN_AT = new Date('2026-09-27T13:00:00+09:00').getTime();
   function apply(){
-    var opened = OPENED;
+    var opened = Date.now() >= OPEN_AT;
     var els = document.querySelectorAll('[data-before-open]');
     for (var i = 0; i < els.length; i++){
       var el = els[i];
@@ -697,6 +702,10 @@ function closeBookSheet(){
   apply();
   document.addEventListener('DOMContentLoaded', apply);
   setTimeout(apply, 1500);   /* patch-index.js の描画後にも当てる */
+  /* 受付開始の瞬間にページを開いたままの方のために、開始までは1分おきに見直す */
+  var t = setInterval(function(){
+    if (Date.now() >= OPEN_AT){ apply(); clearInterval(t); }
+  }, 60000);
 
   /* 2026-09-10: 予約枠の開放が保留になったため、時刻での自動切替を止めた。
      枠が閉じたまま「ご予約を受付中です」と表示すると、来ていただいた方が
