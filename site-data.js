@@ -6432,7 +6432,7 @@ window.SITE_DATA = {
       "about": {
         "image": "photo-family-maison-nr-kasugai-01.jpg",
         "heading": "About Maison nr.",
-        "body": "2026年10月1日 OPEN。\nMaison nr. は、独自の世界観で\n新たな表現とスタイルをご提供するフォトスタジオです。\n\n詳細は2026年10月1日に公開予定です。"
+        "body": "2026年10月1日 OPEN。\nMaison nr. は、独自の世界観で\n新たな表現とスタイルをご提供するフォトスタジオです。\n\n併設のフラワーショップは Coming Soon。開店が決まりましたらご案内いたします。\n\n詳細は2026年10月1日に公開予定です。"
       },
       "gallery": [
         {
