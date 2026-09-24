@@ -6327,110 +6327,50 @@ window.SITE_DATA = {
       "comingSoon": false,
       "heroImages": [
         {
-          "file": "maison-nr-kasugai-hero-pc-01.jpg",
-          "alt": "Maison nr. 開業準備（PC） 1"
+          "file": "maison-nr-kasugai-hero-pc-10.jpg",
+          "alt": "Maison nr. 七五三 青い着物と赤い花"
         },
         {
-          "file": "maison-nr-kasugai-hero-pc-02.jpg",
-          "alt": "Maison nr. 開業準備（PC） 2"
+          "file": "maison-nr-kasugai-hero-pc-11.jpg",
+          "alt": "Maison nr. 七五三 緑の着物と掛け軸"
         },
         {
-          "file": "maison-nr-kasugai-hero-pc-03.jpg",
-          "alt": "Maison nr. 開業準備（PC） 3"
+          "file": "maison-nr-kasugai-hero-pc-12.jpg",
+          "alt": "Maison nr. 七五三 緑の着物と壺"
         },
         {
-          "file": "maison-nr-kasugai-hero-pc-04.jpg",
-          "alt": "Maison nr. 開業準備（PC） 4"
+          "file": "maison-nr-kasugai-hero-pc-13.jpg",
+          "alt": "Maison nr. 七五三 掛け軸の前で"
         },
         {
-          "file": "maison-nr-kasugai-hero-pc-05.jpg",
-          "alt": "Maison nr. 開業準備（PC） 5"
-        },
-        {
-          "file": "maison-nr-kasugai-hero-pc-06.jpg",
-          "alt": "Maison nr. 開業準備（PC） 6"
-        },
-        {
-          "file": "maison-nr-kasugai-hero-pc-07.jpg",
-          "alt": "Maison nr. 開業準備（PC） 7"
-        },
-        {
-          "file": "maison-nr-kasugai-hero-pc-08.jpg",
-          "alt": "Maison nr. 開業準備（PC） 8"
-        },
-        {
-          "file": "maison-nr-kasugai-hero-pc-09.jpg",
-          "alt": "Maison nr. 開業準備（PC） 9"
+          "file": "maison-nr-kasugai-hero-pc-14.jpg",
+          "alt": "Maison nr. 七五三 紫の背景で"
         }
       ],
       "heroImagesSp": [
         {
-          "file": "maison-nr-kasugai-hero-sp-01.jpg",
-          "alt": "Maison nr. 開業準備 1"
+          "file": "maison-nr-kasugai-hero-sp-17.jpg",
+          "alt": "Maison nr. 七五三 青い着物と赤い花"
         },
         {
-          "file": "maison-nr-kasugai-hero-sp-02.jpg",
-          "alt": "Maison nr. 開業準備 2"
+          "file": "maison-nr-kasugai-hero-sp-18.jpg",
+          "alt": "Maison nr. 七五三 緑の着物と掛け軸"
         },
         {
-          "file": "maison-nr-kasugai-hero-sp-03.jpg",
-          "alt": "Maison nr. 開業準備 3"
+          "file": "maison-nr-kasugai-hero-sp-19.jpg",
+          "alt": "Maison nr. 七五三 緑の着物と壺"
         },
         {
-          "file": "maison-nr-kasugai-hero-sp-04.jpg",
-          "alt": "Maison nr. 開業準備 4"
+          "file": "maison-nr-kasugai-hero-sp-20.jpg",
+          "alt": "Maison nr. 七五三 青い着物"
         },
         {
-          "file": "maison-nr-kasugai-hero-sp-05.jpg",
-          "alt": "Maison nr. 開業準備 5"
-        },
-        {
-          "file": "maison-nr-kasugai-hero-sp-06.jpg",
-          "alt": "Maison nr. 開業準備 6"
-        },
-        {
-          "file": "maison-nr-kasugai-hero-sp-07.jpg",
-          "alt": "Maison nr. 開業準備 7"
-        },
-        {
-          "file": "maison-nr-kasugai-hero-sp-08.jpg",
-          "alt": "Maison nr. 開業準備 8"
-        },
-        {
-          "file": "maison-nr-kasugai-hero-sp-09.jpg",
-          "alt": "Maison nr. 開業準備 9"
-        },
-        {
-          "file": "maison-nr-kasugai-hero-sp-10.jpg",
-          "alt": "Maison nr. 開業準備 10"
-        },
-        {
-          "file": "maison-nr-kasugai-hero-sp-11.jpg",
-          "alt": "Maison nr. 開業準備 11"
-        },
-        {
-          "file": "maison-nr-kasugai-hero-sp-12.jpg",
-          "alt": "Maison nr. 開業準備 12"
-        },
-        {
-          "file": "maison-nr-kasugai-hero-sp-13.jpg",
-          "alt": "Maison nr. 開業準備 13"
-        },
-        {
-          "file": "maison-nr-kasugai-hero-sp-14.jpg",
-          "alt": "Maison nr. 開業準備 14"
-        },
-        {
-          "file": "maison-nr-kasugai-hero-sp-15.jpg",
-          "alt": "Maison nr. 開業準備 15"
-        },
-        {
-          "file": "maison-nr-kasugai-hero-sp-16.jpg",
-          "alt": "Maison nr. 開業準備 16"
+          "file": "maison-nr-kasugai-hero-sp-21.jpg",
+          "alt": "Maison nr. 花のヘアスタイリング"
         }
       ],
       "about": {
-        "image": "photo-family-maison-nr-kasugai-01.jpg",
+        "image": "about-maison-nr-kasugai-01.jpg",
         "heading": "About Maison nr.",
         "body": "2026年10月1日 OPEN。\nMaison nr. は、独自の世界観で\n新たな表現とスタイルをご提供するフォトスタジオです。\n\n併設のフラワーショップは Coming Soon。開店が決まりましたらご案内いたします。\n\n詳細は2026年10月1日に公開予定です。"
       },

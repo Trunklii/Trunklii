@@ -121,6 +121,9 @@ main{padding-top:64px}
 
 /* ─── Buttons row ─── */
 .res-btns{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:2rem}
+.res-visual{margin:0 auto 2rem;max-width:960px}
+.res-visual img{display:block;width:100%;height:auto;aspect-ratio:21/9;object-fit:cover;object-position:50% 60%}
+@media(max-width:600px){.res-visual{margin-bottom:1.5rem}.res-visual img{aspect-ratio:4/3}}
 .res-btns .btn-line{padding:1.1rem 1rem;font-size:.7rem;line-height:1.4}
 
 /* ─── Notes list ─── */
@@ -339,6 +342,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h1 class="sec-title">Reservation</h1><span class="sec-jp">ご予約</span>
         <div class="sec-rule"></div>
       </div>
+
+      <figure class="res-visual"><img src="reservation-maison-nr-kasugai-01.jpg" alt="Maison nr. 掛け軸の前で緑の着物を着た七五三の撮影" width="2400" height="1600" decoding="async"/></figure>
 
       <p class="section-body-text" style="text-align:center;max-width:640px;margin:0 auto 2rem">撮影のご予約は、公式サイトのご予約ページから承ります。
 ご予約からお写真のお渡しまで、すべてWeb上で完結します。</p>
