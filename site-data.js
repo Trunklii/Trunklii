@@ -6366,7 +6366,7 @@ window.SITE_DATA = {
         },
         {
           "file": "maison-nr-kasugai-hero-sp-21.jpg",
-          "alt": "Maison nr. 花のヘアスタイリング"
+          "alt": "Maison nr. 野の花とキッズ"
         }
       ],
       "about": {
