@@ -639,6 +639,8 @@ body.is-ready .qa-bot-toggle{opacity:1;transform:translateY(0) scale(1)}
   }
   body.is-leaving{opacity:1!important}
 }
+/* TOP で非表示にしているセクション（Gallery/Kimono/Costume/Goods/Calendar）へのナビは、飛んでも何も出ないので隠す（2026-09-26。reservation と同じ） */
+:is(.nav-item,.mob-item,.footer-links li):has(a:is([href="#gallery"],[href="#kimono"],[href="#costume"],[href="#goods"],[href="#calendar"],[href$="/#gallery"],[href$="/#kimono"],[href$="/#costume"],[href$="/#goods"],[href$="/#calendar"])){display:none}
 </style>
 <style>
 /* ブランド予約ボタン(et./nr.ペア) — RESERVATIONシートと同デザイン */
