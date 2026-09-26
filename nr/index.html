@@ -614,8 +614,8 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
   .about-grid{grid-template-columns:max-content auto;justify-content:center;gap:clamp(3rem,5vw,5.5rem)}
   .about-img-wrap img{width:auto;height:clamp(380px,30vw,460px);max-height:none;aspect-ratio:2/3;object-fit:cover}
 }
-/* スマホ・タブレット（縦に並ぶとき）: 横長の枠に縦写真を入れるので、髪飾りと顔が入る位置に寄せる */
-.about-img-wrap img{object-position:center 30%}
+/* スマホ・タブレット（縦に並ぶとき）: 横長の枠に縦写真を入れるので、髪飾りの上端から顔まで入る位置に寄せる（30%だとダリアの上半分が切れた） */
+.about-img-wrap img{object-position:center 12%}
 .about-img-wrap::before{content:'';position:absolute;top:-10px;left:-10px;right:10px;bottom:10px;border:1px solid var(--border);z-index:-1}
 .btn-line{display:inline-block;font-family:var(--sans);font-weight:400;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:.85rem 2rem;text-decoration:none;transition:all .3s}
 .more-cta{display:flex;justify-content:center;margin-top:2.5rem}
@@ -1854,7 +1854,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260926m"></script>
+<script src="../site-data.js?v=20260926n"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
