@@ -548,6 +548,8 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
   .hero-logo-ov .nr-mark{width:clamp(96px,26vw,136px)} /* 2026-09-26 et. のロゴと見た目の大きさを揃えるため約25%縮小（旧 130〜180px） */
 }
 /* ═══ Coming Soon 非表示ここまで ═══ */
+/* 2026-09-26 セクション番号は出さない（非表示セクションの番号が抜けて 01→04→08… と飛ぶため。川島さん判断） */
+.sec-head .sec-num{display:none}
 /* 2026-09-26 PC（横画面）のヒーロー: 写真はヘッダーメニューの下から始める。
    川島さん指示「下基準の上側トリミングで横幅100%」→ 横幅いっぱい（cover）・写真の下端をエリアの下端にそろえ、はみ出す分は上側を切る */
 @media (min-width:961px) and (orientation:landscape){
@@ -1844,7 +1846,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260926j"></script>
+<script src="../site-data.js?v=20260926k"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
@@ -2179,6 +2181,7 @@ function buildHero(images){
     const s = document.createElement('div');
     s.className = 'hero-slide'+(i===0?' active':'');
     s.style.backgroundImage = `url('${img.file}')`;
+    if(img.pos) s.style.backgroundPosition = img.pos; // 2026-09-26 写真ごとの表示位置（顔が切れないように。site-data の pos）
     slides.appendChild(s);
     const d = document.createElement('div');
     d.className = 'hero-dot'+(i===0?' active':'');

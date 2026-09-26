@@ -6326,11 +6326,13 @@ window.SITE_DATA = {
       "heroImages": [
         {
           "file": "maison-nr-kasugai-hero-pc-13.jpg",
-          "alt": "Maison nr. 七五三 掛け軸の前で"
+          "alt": "Maison nr. 七五三 掛け軸の前で",
+          "pos": "center 85%"
         },
         {
           "file": "maison-nr-kasugai-hero-pc-12.jpg",
-          "alt": "Maison nr. 七五三 緑の着物と壺"
+          "alt": "Maison nr. 七五三 緑の着物と壺",
+          "pos": "center 20%"
         },
         {
           "file": "maison-nr-kasugai-hero-pc-16.jpg",
@@ -6338,15 +6340,18 @@ window.SITE_DATA = {
         },
         {
           "file": "maison-nr-kasugai-hero-pc-10.jpg",
-          "alt": "Maison nr. 七五三 青い着物と赤い花"
+          "alt": "Maison nr. 七五三 青い着物と赤い花",
+          "pos": "center 35%"
         },
         {
           "file": "maison-nr-kasugai-hero-pc-17.jpg",
-          "alt": "Maison nr. キッズ撮影 アンティークのソファと黄色い帽子"
+          "alt": "Maison nr. キッズ撮影 アンティークのソファと黄色い帽子",
+          "pos": "center 90%"
         },
         {
           "file": "maison-nr-kasugai-hero-pc-18.jpg",
-          "alt": "Maison nr. キッズ撮影 草花と籐のカート"
+          "alt": "Maison nr. キッズ撮影 草花と籐のカート",
+          "pos": "center 75%"
         }
       ],
       "heroImagesSp": [
