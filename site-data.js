@@ -6355,8 +6355,8 @@ window.SITE_DATA = {
           "alt": "Maison nr. 七五三 青い着物の後ろ姿と赤い花"
         },
         {
-          "file": "maison-nr-kasugai-hero-sp-18.jpg",
-          "alt": "Maison nr. 七五三 緑の着物と掛け軸"
+          "file": "maison-nr-kasugai-hero-sp-26.jpg",
+          "alt": "Maison nr. 七五三 掛け軸の前を歩く緑の着物"
         },
         {
           "file": "maison-nr-kasugai-hero-sp-23.jpg",
@@ -6367,8 +6367,8 @@ window.SITE_DATA = {
           "alt": "Maison nr. ベビー撮影 ブラウンの衣装のふたり"
         },
         {
-          "file": "maison-nr-kasugai-hero-sp-21.jpg",
-          "alt": "Maison nr. 野の花とキッズ"
+          "file": "maison-nr-kasugai-hero-sp-25.jpg",
+          "alt": "Maison nr. キッズ撮影 草花と赤いボーダーのオーバーオール"
         }
       ],
       "about": {
