@@ -542,10 +542,10 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 /* Coming Soon パネル（OPEN・narrative・コンセプト・Instagram/マップ）は 2026-09-26 に廃止（文章は About 本文＝site-data の about.body へ）。
    ヒーローは写真＋ロゴだけにし、ロゴは et. と同じ左下に置く（PC・スマホとも）。 */
 .hero-logo-ov{display:flex;position:absolute;inset:0;align-items:flex-end;justify-content:flex-start;z-index:1;pointer-events:none;padding:clamp(4.5rem,13vh,7rem) clamp(2rem,5vw,4rem) clamp(2.5rem,7vh,4rem)}
-.hero-logo-ov .nr-mark{display:block;width:clamp(170px,14vw,250px);aspect-ratio:1600/821;background:#f0ead8;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat;filter:drop-shadow(0 2px 18px rgba(17,16,16,.45))}
+.hero-logo-ov .nr-mark{display:block;width:clamp(130px,10.5vw,190px);aspect-ratio:1600/821;background:#f0ead8;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat;filter:drop-shadow(0 2px 18px rgba(17,16,16,.45))}
 @media(max-width:960px){
   .hero-logo-ov{padding:0 clamp(1.4rem,5vw,3rem) clamp(3.4rem,9vh,5rem)}
-  .hero-logo-ov .nr-mark{width:clamp(130px,34vw,180px)}
+  .hero-logo-ov .nr-mark{width:clamp(96px,26vw,136px)} /* 2026-09-26 et. のロゴと見た目の大きさを揃えるため約25%縮小（旧 130〜180px） */
 }
 /* ═══ Coming Soon 非表示ここまで ═══ */
 
@@ -692,6 +692,11 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 .plan-card-img.no-img{background:var(--pal-cream,#F3EBDD);display:flex;align-items:center;justify-content:center}
 /* 写真がまだ無いカードは、サムネイルの場所に Coming Soon と出す */
 .plan-card-img.no-img::after{content:'Coming Soon';font-family:var(--display);font-style:normal;font-weight:300;font-size:1.05rem;letter-spacing:.22em;color:var(--mid)}
+/* 準備中カード（説明文にプラン名を「/」区切りで持つもの）は、Coming Soon の代わりにそのプラン名を写真枠に出す（2026-09-26 川島さん指示）。
+   並びは site-data の desc が元（CMS で直せる）。名前の途中では折り返さない */
+.plan-card-img.no-img.has-list::after{content:none}
+.soon-items{margin:0;padding:0 1.2rem;text-align:center;font-family:var(--sans);font-weight:300;font-size:.82rem;letter-spacing:.12em;line-height:2;color:var(--mid)}
+.soon-items span{white-space:nowrap}
 .plan-card-img-inner{width:100%;height:100%;background-size:cover;background-position:center;transition:transform .7s var(--ease)}
 .plan-card:hover .plan-card-img-inner{transform:scale(1.05)}
 .plan-card-body{padding:2rem 1.8rem 2.2rem;display:flex;flex-direction:column;flex:1;position:relative}
@@ -1288,7 +1293,7 @@ body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filte
 }
 </style>
 <style>/* NO-BOLD: サイト全体でボールドを使わない */ strong,b{font-weight:400}</style>
-<link rel="stylesheet" href="/assets/nr-heading-font.css?v=20260926c"/>
+<link rel="stylesheet" href="/assets/nr-heading-font.css?v=20260926e"/>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -1828,7 +1833,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260926d"></script>
+<script src="../site-data.js?v=20260926e"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
@@ -2021,14 +2026,18 @@ async function init(){
          plans.html の各メニューには id="mn-<key>" が付いている。 */
       const href = hasDetail ? `plans.html#mn-${encodeURIComponent(p.key||'')}` : 'javascript:void(0)';
       const heroImg = (p.detail && p.detail.heroImage) || '';
+      /* 準備中カードは desc の「/」区切りを写真枠に並べ、下の説明文は出さない（同じ文が2回並ぶため） */
+      const escH = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+      const soonItems = (!hasDetail && !heroImg && p.desc) ? String(p.desc).split('/').map(s=>s.trim()).filter(Boolean) : [];
+      const soonList = soonItems.length ? `<p class="soon-items">${soonItems.map(s=>`<span>${escH(s)}</span>`).join(' / ')}</p>` : '';
       return `
       <a href="${href}" class="plan-card${hasDetail ? '' : ' soon'}">
-        ${heroImg ? `<div class="plan-card-img"><div class="plan-card-img-inner" style="background-image:url('${heroImg}')"></div></div>` : `<div class="plan-card-img no-img"></div>`}
+        ${heroImg ? `<div class="plan-card-img"><div class="plan-card-img-inner" style="background-image:url('${heroImg}')"></div></div>` : `<div class="plan-card-img no-img${soonList ? ' has-list' : ''}">${soonList}</div>`}
         <div class="plan-card-body">
           ${p.tag ? `<div class="plan-tag">${p.tag}</div>` : ''}
           <div class="plan-name">${p.name}</div>
           <div class="plan-price">${minPrice(p)}</div>
-          <div class="plan-desc">${p.desc}</div>
+          ${soonList ? '' : `<div class="plan-desc">${p.desc}</div>`}
         </div>
       </a>`;
     }).join('');

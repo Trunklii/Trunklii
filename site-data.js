@@ -7339,7 +7339,7 @@ window.SITE_DATA = {
         {
           "key": "comingsoon",
           "name": "Coming Soon",
-          "desc": "お宮参り / ハーフ成人 / マタニティ",
+          "desc": "入園・入学 / お宮参り / ハーフ成人 / マタニティ",
           "tag": "",
           "detail": null,
           "variants": []

@@ -86,6 +86,10 @@ main{padding-top:64px}
 .plan-card:hover{background:var(--ink)}
 .plan-card-img{aspect-ratio:4/3;width:100%;overflow:hidden;background:#eee}
 .plan-card-img-inner{width:100%;height:100%;background-size:cover;background-position:center;transition:transform .7s var(--ease)}
+/* 準備中カードは写真枠にプラン名を並べる（トップの Plan と同じ見え方。2026-09-26） */
+.plan-card-img.no-img{background:var(--pal-cream,#F3EBDD);display:flex;align-items:center;justify-content:center}
+.soon-items{margin:0;padding:0 1.2rem;text-align:center;font-family:var(--sans);font-weight:300;font-size:.82rem;letter-spacing:.12em;line-height:2;color:var(--mid)}
+.soon-items span{white-space:nowrap}
 .plan-card:hover .plan-card-img-inner{transform:scale(1.05)}
 .plan-card-body{padding:2rem 1.8rem 2.2rem;display:flex;flex-direction:column;flex:1;position:relative}
 .plan-tag{position:absolute;top:-1.2rem;right:1.2rem;font-family:var(--sans);font-weight:400;font-size:.55rem;letter-spacing:.1em;color:#fff;background:var(--accent);padding:.2rem .55rem;text-transform:uppercase}
@@ -255,7 +259,7 @@ body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filte
   .mn-plan{padding:1.1rem 1rem}
 }
 </style>
-<link rel="stylesheet" href="/assets/nr-heading-font.css?v=20260926c"/>
+<link rel="stylesheet" href="/assets/nr-heading-font.css?v=20260926e"/>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -341,7 +345,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260926d"></script>
+<script src="../site-data.js?v=20260926e"></script>
 <script src="../menu-sheet.js?v=20260911l"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
@@ -398,15 +402,17 @@ function render(){
     const cutsList = hasDetail ? [...new Set(p.variants.map(v=>v.cuts).filter(c=>c!=null))].join(' / ') : '';
     const cardClass = hasDetail ? 'plan-card' : 'plan-card soon';
     const cardHref = hasDetail ? `#mn-${encodeURIComponent(p.key)}` : 'javascript:void(0)';
+    const soonItems = (!hasDetail && p.desc) ? String(p.desc).split('/').map(s=>s.trim()).filter(Boolean) : [];
+    const soonList = soonItems.length ? `<p class="soon-items">${soonItems.map(s=>`<span>${esc(s)}</span>`).join(' / ')}</p>` : '';
 
     return `
       <a href="${cardHref}" class="${cardClass}">
-        <div class="plan-card-img">${heroImg ? `<div class="plan-card-img-inner" style="background-image:url('${esc(heroImg)}')"></div>` : ''}</div>
+        <div class="plan-card-img${heroImg ? '' : ' no-img'}">${heroImg ? `<div class="plan-card-img-inner" style="background-image:url('${esc(heroImg)}')"></div>` : soonList}</div>
         <div class="plan-card-body">
           ${p.tag ? `<div class="plan-tag">${esc(p.tag)}</div>` : ''}
           <div class="plan-name">${esc(p.name)}</div>
           <div class="plan-price">${esc(price || '近日公開')}</div>
-          <div class="plan-desc">${esc(p.desc || '')}</div>
+          ${soonList ? '' : `<div class="plan-desc">${esc(p.desc || '')}</div>`}
           ${cutsList ? `<div class="plan-meta">${esc(cutsList)} cuts available</div>` : ''}
           <div class="plan-cta">${hasDetail ? 'View detail →' : 'Coming soon'}</div>
         </div>

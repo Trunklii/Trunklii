@@ -1,11 +1,13 @@
 /* ═══ Maison nr. の見出しフォント: Aharoni CLM（2026-09-26 川島さん指示） ═══
    対象: ヘッダーメニュー（PC・スマホ）、店舗タブ、セクション番号・セクションタイトル、小見出し、料金表の見出し。
    Aharoni CLM は欧文（ラテン文字）とヘブライ文字だけのフォントなので、日本語は後ろの Noto Sans JP で表示される。
-   フォント: Culmus 0.140（https://culmus.sourceforge.io/）の AharoniCLM を無改変で同梱。
+   フォント: Culmus 0.140（https://culmus.sourceforge.io/）の AharoniCLM を同梱。
+   標準の太さ（100〜500）は、2026-09-26「文字線を少し華奢に」の指示で、Book の輪郭を片側 8/1090em 内側へ削った派生版
+   AharoniCLM-BookThin.ttf を使う（元の Book は細い太さを持たないため。作り方は fonts/make-thin-font.py、元に戻すなら src を AharoniCLM-Book.otf に）。
    ライセンス: GNU GPL v2（assets/fonts/Culmus-LICENSE.txt / Culmus-GNU-GPL.txt）。
    読み込みは nr/ 配下の各ページの </head> 直前。et. には読み込ませていない。
    body を付けて各ページ内の .sec-title{font-family:…} より強くしている（読み込み順に頼らない）。 */
-@font-face{font-family:'Aharoni CLM';src:url('fonts/AharoniCLM-Book.otf') format('opentype');font-weight:100 500;font-style:normal;font-display:swap}
+@font-face{font-family:'Aharoni CLM';src:url('fonts/AharoniCLM-BookThin.ttf') format('truetype');font-weight:100 500;font-style:normal;font-display:swap}
 @font-face{font-family:'Aharoni CLM';src:url('fonts/AharoniCLM-Bold.otf') format('opentype');font-weight:600 900;font-style:normal;font-display:swap}
 body .nav-link,
 body .nav-drop a,
