@@ -1,0 +1,28 @@
+/* ═══ Maison nr. の見出しフォント: Aharoni CLM（2026-09-26 川島さん指示） ═══
+   対象: ヘッダーメニュー（PC・スマホ）、店舗タブ、セクション番号・セクションタイトル、小見出し、料金表の見出し。
+   Aharoni CLM は欧文（ラテン文字）とヘブライ文字だけのフォントなので、日本語は後ろの Noto Sans JP で表示される。
+   フォント: Culmus 0.140（https://culmus.sourceforge.io/）の AharoniCLM を無改変で同梱。
+   ライセンス: GNU GPL v2（assets/fonts/Culmus-LICENSE.txt / Culmus-GNU-GPL.txt）。
+   読み込みは nr/ 配下の各ページの </head> 直前。et. には読み込ませていない。
+   body を付けて各ページ内の .sec-title{font-family:…} より強くしている（読み込み順に頼らない）。 */
+@font-face{font-family:'Aharoni CLM';src:url('fonts/AharoniCLM-Book.otf') format('opentype');font-weight:100 500;font-style:normal;font-display:swap}
+@font-face{font-family:'Aharoni CLM';src:url('fonts/AharoniCLM-Bold.otf') format('opentype');font-weight:600 900;font-style:normal;font-display:swap}
+body .nav-link,
+body .nav-drop a,
+body .brand-tab,
+body .mob-item-label,
+body .sec-num,
+body .sec-title,
+body .subsec-title,
+body .flow-title,
+body .mn-title{font-family:'Aharoni CLM','Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic Medium','YuGothic',sans-serif}
+/* 見出しに添えた日本語の小さい説明は、これまでどおり本文のゴシック */
+body .mob-item-label .mob-jp,
+body .sec-jp{font-family:var(--sans)}
+/* Aharoni CLM は元の Cormorant より横に広く、スマホ幅でセクションタイトルが2行に折れる
+   （375 幅でタイトル欄は約 167px。「About Maison nr.」は 23px で 191px になる）。
+   560px 以下は 1.2rem に下げて1行に収める（「About Maison nr.」が約 158px）。 */
+@media(max-width:560px){body .sec-title{font-size:1.2rem;white-space:nowrap}}
+/* 360 幅では「Cancellation Policy」の横の日本語（キャンセルポリシー）が見出し欄から約 29px はみ出す。
+   長いタイトルのときだけ日本語を次の行へ回す（ほかのタイトルは1行のまま）。 */
+@media(max-width:560px){body .sec-head{flex-wrap:wrap;row-gap:.15rem}}
