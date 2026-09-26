@@ -539,7 +539,7 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 /* ヒーロー写真を全デバイスでウィンドウ高さ・幅100%に(ヘッダーは半透明で写真に重ねる) */
 .hero{margin-top:0;height:100vh;height:100svh}
 header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
-/* Coming Soon パネル（OPEN・narrative・コンセプト・Instagram/マップ）は 2026-09-26 に About セクションへ移した。
+/* Coming Soon パネル（OPEN・narrative・コンセプト・Instagram/マップ）は 2026-09-26 に廃止（文章は About 本文＝site-data の about.body へ）。
    ヒーローは写真＋ロゴだけにし、ロゴは et. と同じ左下に置く（PC・スマホとも）。 */
 .hero-logo-ov{display:flex;position:absolute;inset:0;align-items:flex-end;justify-content:flex-start;z-index:1;pointer-events:none;padding:clamp(4.5rem,13vh,7rem) clamp(2rem,5vw,4rem) clamp(2.5rem,7vh,4rem)}
 .hero-logo-ov .nr-mark{display:block;width:clamp(170px,14vw,250px);aspect-ratio:1600/821;background:#f0ead8;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat;filter:drop-shadow(0 2px 18px rgba(17,16,16,.45))}
@@ -601,21 +601,6 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 /* PC: 高さを抑えて横位置(3:2)で表示 */
 @media(min-width:961px){.about-img-wrap img{height:auto;aspect-ratio:3/2;max-height:420px;object-fit:cover}}
 .about-img-wrap::before{content:'';position:absolute;top:-10px;left:-10px;right:10px;bottom:10px;border:1px solid var(--border);z-index:-1}
-/* Hero にあった Coming Soon の文章（OPEN・narrative・コンセプト・Instagram/マップ）を About へ移動（2026-09-26 の指示） */
-.about-cs{max-width:640px;margin:1.6rem auto 0;padding-top:1.4rem;border-top:1px solid var(--border);text-align:center}
-.about-cs-sub{font-family:var(--sans);font-weight:400;font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:var(--pal-wine)} /* クリーム地では金色(#a49250)がコントラスト2.6:1で読みにくいためワイン色 */
-.about-cs-def{font-family:var(--serif);font-size:clamp(.62rem,1.8vw,.7rem);letter-spacing:.1em;color:var(--mid);margin-top:.8rem}
-.about-cs-def .def-word{color:var(--pal-wine);letter-spacing:.06em}
-.about-cs-def .def-divider{margin:0 .45em;opacity:.6}
-.about-cs-concept{font-family:var(--serif);font-weight:300;font-size:clamp(.85rem,2.5vw,1rem);line-height:2.1;color:var(--ink);margin-top:.9rem}
-.about-cs-open{font-family:var(--sans);font-weight:300;font-size:.7rem;letter-spacing:.14em;color:var(--mid);margin-top:.6rem}
-.about-cs-links{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:1.2rem}
-.about-cs-btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--sans);font-weight:400;font-size:.7rem;letter-spacing:.1em;color:var(--ink);text-decoration:none;border:1px solid var(--pal-wine);padding:.7rem 1.15rem;transition:background .25s,color .25s}
-.about-cs-btn:hover{background:var(--pal-wine);color:var(--pal-cream)}
-.about-cs-btn svg{width:14px;height:14px;flex-shrink:0}
-.about-cs-btn .cs-handle{opacity:.7;font-size:.62rem;letter-spacing:.05em}
-.about-cs-note{font-family:var(--sans);font-weight:300;font-size:.6rem;letter-spacing:.06em;color:var(--mid);margin-top:.9rem;line-height:1.9}
-@media(max-width:560px){.about-cs-links{flex-direction:column;align-items:stretch}}
 .btn-line{display:inline-block;font-family:var(--sans);font-weight:400;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:.85rem 2rem;text-decoration:none;transition:all .3s}
 .more-cta{display:flex;justify-content:center;margin-top:2.5rem}
 .pos-list-lite{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;max-width:760px;margin:0 auto}
@@ -1484,23 +1469,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="about-img-wrap"><img id="about-img" src="" alt="Studio"/></div>
   </div>
-  <div class="about-cs" id="about-cs">
-    <div class="about-cs-sub">2026.10.01 OPEN</div>
-    <div class="about-cs-def"><span class="def-word">nr.（ナル）</span><span class="def-divider">｜</span>narrative<span class="def-divider">―</span>世界観・意味づけ・物語性</div>
-    <p class="about-cs-concept">つかの間の愛らしさを、生花の儚さとともに。<br/>その一瞬を、これからを彩りつづける物語に。</p>
-    <p class="about-cs-open">Maison nr. は愛知県春日井市に、<span style="white-space:nowrap">2026年10月1日オープンします。</span></p>
-    <div class="about-cs-links">
-      <a class="about-cs-btn" id="cs-ig" href="https://www.instagram.com/maison_nr._/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-        nr. Instagram <span class="cs-handle">@maison_nr._</span>
-      </a>
-      <a class="about-cs-btn" id="cs-map" href="https://maps.google.com/?q=%E3%80%92486-0806%20%E6%84%9B%E7%9F%A5%E7%9C%8C%E6%98%A5%E6%97%A5%E4%BA%95%E5%B8%82%E5%A4%A7%E6%89%8B%E7%94%B0%E9%85%89%E7%94%BA1%E4%B8%81%E7%9B%AE5-9%20Maison%20nr.&amp;ftid=0x6003734a78e48dbf:0x5816e7367a122c44" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-7-7-12a7 7 0 1 1 14 0c0 5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
-        nr. Google マップ <span class="cs-handle">愛知県春日井市</span>
-      </a>
-    </div>
-    <div class="about-cs-note">※ このリンクは Maison nr. 専用です。Studio et.（岐阜県羽島市）の Instagram・マップは et. タブに表示しています。</div>
-  </div>
 </div>
 </section>
 
@@ -1859,7 +1827,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260926c"></script>
+<script src="../site-data.js?v=20260926d"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
