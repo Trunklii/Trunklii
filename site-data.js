@@ -6329,6 +6329,10 @@ window.SITE_DATA = {
           "alt": "Maison nr. 七五三 紫の背景と生花の髪飾り"
         },
         {
+          "file": "maison-nr-kasugai-hero-pc-10.jpg",
+          "alt": "Maison nr. 七五三 青い着物と赤い花"
+        },
+        {
           "file": "maison-nr-kasugai-hero-pc-11.jpg",
           "alt": "Maison nr. 七五三 緑の着物と掛け軸"
         },
