@@ -7347,7 +7347,7 @@ window.SITE_DATA = {
           "key": "comingsoon",
           "name": "Coming Soon",
           "desc": "入園・入学 / お宮参り / ハーフ成人 / マタニティ",
-          "cardImage": "plan-coming-soon-maison-nr-kasugai-03.jpg",
+          "cardImage": "plan-coming-soon-maison-nr-kasugai-04.jpg",
           "tag": "",
           "detail": null,
           "variants": []
