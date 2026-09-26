@@ -28,3 +28,6 @@ body .sec-jp{font-family:var(--sans)}
 /* 360 幅では「Cancellation Policy」の横の日本語（キャンセルポリシー）が見出し欄から約 29px はみ出す。
    長いタイトルのときだけ日本語を次の行へ回す（ほかのタイトルは1行のまま）。 */
 @media(max-width:560px){body .sec-head{flex-wrap:wrap;row-gap:.15rem}}
+/* 店舗切り替え（Studio et. / Maison nr.）は、Aharoni CLM だと et. 側（Noto Sans JP）より字面が約9%小さく見えるため、
+   nr. だけ .78rem → .86rem にして見た目を揃える（2026-09-26 川島さん指示。大文字の高さ 8.4px → 9.2px 相当） */
+body .brand-tab{font-size:.86rem}
