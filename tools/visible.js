@@ -14,6 +14,9 @@
 function isVisible(el, opt) {
   const o = Object.assign({ needInViewport: false, minOpacity: 0.05 }, opt || {});
 
+  if (document.visibilityState !== 'visible') {
+    throw new Error('ブラウザの画面が隠れています（visibilityState=' + document.visibilityState + '）。フェードインが途中で止まり opacity=0 のまま「見えていない」と誤判定するので、画面を表に出してからやり直してください。');
+  }
   if (!innerWidth || !innerHeight) {
     throw new Error('ブラウザの窓が 0×0 です（ペインが閉じている等）。寸法が測れないので判定しません。窓に大きさを与えてからやり直してください。');
   }

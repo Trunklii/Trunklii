@@ -1,5 +1,3 @@
-// Trunklii — Site Data
-// CMSで編集してエクスポートし、このファイルを上書きするだけでサイトに反映されます
 window.SITE_DATA = {
   "global": {
     "brandName": "Trunklii",
@@ -6327,8 +6325,8 @@ window.SITE_DATA = {
       "comingSoon": false,
       "heroImages": [
         {
-          "file": "maison-nr-kasugai-hero-pc-10.jpg",
-          "alt": "Maison nr. 七五三 青い着物と赤い花"
+          "file": "maison-nr-kasugai-hero-pc-15.jpg",
+          "alt": "Maison nr. 七五三 紫の背景と生花の髪飾り"
         },
         {
           "file": "maison-nr-kasugai-hero-pc-11.jpg",
