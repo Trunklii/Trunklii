@@ -697,6 +697,11 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 .plan-card-img.no-img.has-list::after{content:none}
 .soon-items{margin:0;padding:0 1.2rem;text-align:center;font-family:var(--sans);font-weight:300;font-size:.82rem;letter-spacing:.12em;line-height:2;color:var(--mid)}
 .soon-items span{white-space:nowrap}
+/* 準備中カードに背景写真（site-data の cardImage）があるときは、写真に暗幕を重ねて白文字で出す（2026-09-26）。
+   準備中カードは全体を薄く（opacity .7）しているが、写真まで白っぽくなるので写真付きのときだけ戻す */
+.plan-card-img.has-bg{background-size:cover;background-position:center}
+.plan-card-img.has-bg .soon-items{color:#fff;font-weight:400;text-shadow:0 1px 10px rgba(17,16,16,.45)}
+.plan-card.soon.has-photo{opacity:1}
 .plan-card-img-inner{width:100%;height:100%;background-size:cover;background-position:center;transition:transform .7s var(--ease)}
 .plan-card:hover .plan-card-img-inner{transform:scale(1.05)}
 .plan-card-body{padding:2rem 1.8rem 2.2rem;display:flex;flex-direction:column;flex:1;position:relative}
@@ -1833,7 +1838,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260926e"></script>
+<script src="../site-data.js?v=20260926f"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
@@ -2030,9 +2035,10 @@ async function init(){
       const escH = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
       const soonItems = (!hasDetail && !heroImg && p.desc) ? String(p.desc).split('/').map(s=>s.trim()).filter(Boolean) : [];
       const soonList = soonItems.length ? `<p class="soon-items">${soonItems.map(s=>`<span>${escH(s)}</span>`).join(' / ')}</p>` : '';
+      const soonBg = (soonList && p.cardImage) ? String(p.cardImage) : '';
       return `
-      <a href="${href}" class="plan-card${hasDetail ? '' : ' soon'}">
-        ${heroImg ? `<div class="plan-card-img"><div class="plan-card-img-inner" style="background-image:url('${heroImg}')"></div></div>` : `<div class="plan-card-img no-img${soonList ? ' has-list' : ''}">${soonList}</div>`}
+      <a href="${href}" class="plan-card${hasDetail ? '' : ' soon'}${soonBg ? ' has-photo' : ''}">
+        ${heroImg ? `<div class="plan-card-img"><div class="plan-card-img-inner" style="background-image:url('${heroImg}')"></div></div>` : `<div class="plan-card-img no-img${soonList ? ' has-list' : ''}${soonBg ? ' has-bg' : ''}"${soonBg ? ` style="background-image:linear-gradient(rgba(17,16,16,.4),rgba(17,16,16,.4)),url('${escH(soonBg)}')"` : ''}>${soonList}</div>`}
         <div class="plan-card-body">
           ${p.tag ? `<div class="plan-tag">${p.tag}</div>` : ''}
           <div class="plan-name">${p.name}</div>
