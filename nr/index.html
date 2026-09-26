@@ -508,13 +508,14 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 
 /* ═══ Coming Soon 期間中の非表示: 写真がまだ揃っていないセクションのみ ═══
    写真準備が整いリリースする際は、この下のブロックを丸ごと削除してください
+   （2026-09-26 About は写真が入ったので表示に戻した）
 
    予約受付の開始にあたり、料金・規約系は公開に切り替えた（2026-09-10）。
    お客様が料金もキャンセルポリシーも見られないまま予約するのを避けるため、
    #plans / #calendar / #reservation / #cancel-policy / #qa をこのリストから外している。
    （キャンセル料を請求する根拠になるので、予約前に読める状態にしておく） */
-#about,#gallery,#kimono,#costume,#goods,#calendar{display:none!important}
-:is(.nav-item,.mob-item,.footer-links li):has(a:is([href="#about"],[href="#gallery"],[href="#kimono"],[href="#costume"],[href="#goods"],[href="#calendar"])){display:none}
+#gallery,#kimono,#costume,#goods,#calendar{display:none!important}
+:is(.nav-item,.mob-item,.footer-links li):has(a:is([href="#gallery"],[href="#kimono"],[href="#costume"],[href="#goods"],[href="#calendar"])){display:none}
 /* #calendar を隠しているのは、静的な料金凡例が et. の 753 料金（A ¥6,600 / B ¥8,800 / C ¥9,900）で、
    nr. には tiers データが無いため。nr. の 753 は ¥60,000 / ¥63,000＋土日祝・ハイシーズン各 +¥5,500 と
    体系そのものが違い、A/B/C の区分が存在しない。nr. 用の料金表を用意するまでは出さないこと。 */
@@ -1869,7 +1870,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260924a"></script>
+<script src="../site-data.js?v=20260926a"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
