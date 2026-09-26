@@ -6378,10 +6378,10 @@ window.SITE_DATA = {
         }
       ],
       "about": {
-        "image": "about-maison-nr-kasugai-02.jpg",
+        "image": "about-maison-nr-kasugai-03.jpg",
         "heading": "About Maison nr.",
         "body": "nr.（ナル）｜narrative―世界観・意味づけ・物語性\nつかの間の愛らしさを、生花の儚さとともに。\nその一瞬を、これからを彩りつづける物語に。\n\nMaison nr.内のフラワーショップも近日オープン予定",
-        "alt": "Maison nr. 七五三 赤いダリアの生花髪飾りと青い着物"
+        "alt": "Maison nr. 店づくりの設計図と素材サンプルを貼った壁"
       },
       "gallery": [
         {
