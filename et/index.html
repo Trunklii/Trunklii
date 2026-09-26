@@ -2812,7 +2812,7 @@ function accessTab(btn){
     if(e.target.closest('.book-sheet-close')) closedByUser = true;
   }, true);
   function reveal(){
-    if(closedByUser || !s.hidden) return;
+    if(closedByUser) return; // 2026-09-26 手動で閉じた後は触らない（開くボタン側に任せる）
     const vh = window.innerHeight || document.documentElement.clientHeight;
     const about = document.getElementById('about');
     const hero  = document.querySelector('.hero');
@@ -2822,11 +2822,10 @@ function accessTab(btn){
     } else if(hero){
       passed = hero.getBoundingClientRect().bottom <= 0;         // About非表示時はヒーローを通過したら
     }
-    if(passed){
-      s.hidden = false; document.body.classList.add('sheet-open');
-      const t = document.getElementById('book-toggle'); if(t) t.hidden = true;
-      window.removeEventListener('scroll', reveal);
-    }
+    // 2026-09-26 ヒーローまで戻ったら再び隠す（開いたままだとスマホでヒーローのロゴ下部を隠していた）。About に来たらまた出す
+    if(s.hidden === !passed) return;
+    s.hidden = !passed; document.body.classList.toggle('sheet-open', passed);
+    const t = document.getElementById('book-toggle'); if(t) t.hidden = true;
   }
   window.addEventListener('scroll', reveal, { passive:true });
   window.addEventListener('resize', reveal);
