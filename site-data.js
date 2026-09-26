@@ -6312,7 +6312,7 @@ window.SITE_DATA = {
       "name": "Maison nr.",
       "shortName": "nr.",
       "tagline": "A new chapter begins",
-      "description": "2026年10月1日 OPEN。\nMaison nr. は、独自の世界観で\n新たな表現とスタイルをご提供する\nフォトスタジオです。",
+      "description": "2026年10月 OPEN。\nMaison nr. は、独自の世界観で\n新たな表現とスタイルをご提供する\nフォトスタジオです。",
       "accentColor": "#7a9e95",
       "address": "〒486-0806 愛知県春日井市大手田酉町1丁目5-9",
       "tel": "050-1732-9505",
@@ -7453,7 +7453,7 @@ window.SITE_DATA = {
         "positions": [],
         "contactEmail": "recruit@trunklii.com"
       },
-      "ctaHeading": "2026年10月1日 OPEN。\nお楽しみに。",
+      "ctaHeading": "2026年10月 OPEN。\nお楽しみに。",
       "ctaNote": "最新情報はInstagramで",
       "menuSheets": [
         {
