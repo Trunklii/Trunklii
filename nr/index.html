@@ -548,11 +548,11 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
   .hero-logo-ov .nr-mark{width:clamp(96px,26vw,136px)} /* 2026-09-26 et. のロゴと見た目の大きさを揃えるため約25%縮小（旧 130〜180px） */
 }
 /* ═══ Coming Soon 非表示ここまで ═══ */
-/* 2026-09-26 PC（横画面）のヒーロー: 写真はヘッダーメニューの下から始め、写真の高さ＝エリアの高さ（上下は切らない）。
-   エリアが写真より横長なら左右にこげ茶が見え、縦長なら左右が切れる（川島さん指示: 左右が切れるのは可・高さは切らない） */
+/* 2026-09-26 PC（横画面）のヒーロー: 写真はヘッダーメニューの下から始める。
+   川島さん指示「下基準の上側トリミングで横幅100%」→ 横幅いっぱい（cover）・写真の下端をエリアの下端にそろえ、はみ出す分は上側を切る */
 @media (min-width:961px) and (orientation:landscape){
   .hero{margin-top:129px;height:calc(100vh - 129px);height:calc(100svh - 129px);background:#2e2222} /* 129 = ヘッダー上段80＋下段48＋下線1 */
-  .hero-slide{background-size:auto 100%;background-repeat:no-repeat;background-position:center}
+  .hero-slide{background-size:cover;background-repeat:no-repeat;background-position:center bottom} /* 2026-09-26 横幅100%・下基準（はみ出す分は上側を切る） */
 }
 
 /* ACCESS */
