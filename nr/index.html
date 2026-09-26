@@ -608,6 +608,14 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 .about-img-wrap img{width:100%;height:clamp(300px,50vw,560px);object-fit:cover;display:block}
 /* PC: 高さを抑えて横位置(3:2)で表示 */
 @media(min-width:961px){.about-img-wrap img{height:auto;aspect-ratio:3/2;max-height:420px;object-fit:cover}}
+/* 2026-09-26 About 写真を縦位置（2:3）に差し替え。川島さん指示「文章と写真の間を開き過ぎない」
+   → PC は文章と写真を寄せて中央に並べる（左右いっぱいに離さない）。写真は縦のまま、高さを抑える */
+@media(min-width:961px){
+  .about-grid{grid-template-columns:max-content auto;justify-content:center;gap:clamp(3rem,5vw,5.5rem)}
+  .about-img-wrap img{width:auto;height:clamp(380px,30vw,460px);max-height:none;aspect-ratio:2/3;object-fit:cover}
+}
+/* スマホ・タブレット（縦に並ぶとき）: 横長の枠に縦写真を入れるので、髪飾りと顔が入る位置に寄せる */
+.about-img-wrap img{object-position:center 30%}
 .about-img-wrap::before{content:'';position:absolute;top:-10px;left:-10px;right:10px;bottom:10px;border:1px solid var(--border);z-index:-1}
 .btn-line{display:inline-block;font-family:var(--sans);font-weight:400;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:.85rem 2rem;text-decoration:none;transition:all .3s}
 .more-cta{display:flex;justify-content:center;margin-top:2.5rem}
@@ -1846,7 +1854,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20260926l"></script>
+<script src="../site-data.js?v=20260926m"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 let heroTimer, lbImages=[], lbNos=[], lbIdx=0;
@@ -1926,6 +1934,7 @@ async function init(){
   document.getElementById('about-heading').textContent = d.about.heading;
   document.getElementById('about-body').textContent = d.about.body;
   document.getElementById('about-img').src = d.about.image;
+  if(d.about.alt) document.getElementById('about-img').alt = d.about.alt;
 
   // Gallery: 日付の新しい順にソート(日付未設定は配列末尾の順)
   const sortedGallery = d.gallery.slice().sort((a,b)=>{
