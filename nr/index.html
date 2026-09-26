@@ -471,9 +471,6 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .hero{position:relative;height:calc(100vh - 128px);height:calc(100svh - 128px);min-height:520px;margin-top:128px;overflow:hidden}
 .hero-slide{position:absolute;inset:0;opacity:0;background-size:cover;background-position:center;transition:opacity 1.6s ease}
 .hero-slide.active{opacity:1}
-/* 2026-09-26 横画面（PC用写真）は上下を切らずに全体を見せる。左右の余りは同じ写真をぼかして敷く */
-.hero-slide.fit .hs-fill{position:absolute;inset:-60px;background-size:cover;background-position:center;filter:blur(30px) brightness(.72)}
-.hero-slide.fit .hs-img{position:absolute;inset:0;background-size:contain;background-repeat:no-repeat;background-position:center}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(248,246,242,.04) 0%,rgba(17,16,16,.38) 100%)}
 .hero-logo-ov{display:none} /* 表示位置は後段の Coming Soon ブロック側で定義（et. と同じ左下） */
 .hero-content{position:absolute;bottom:clamp(3rem,8vw,7rem);left:clamp(1.5rem,6vw,6rem);z-index:2}
@@ -551,6 +548,14 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
   .hero-logo-ov .nr-mark{width:clamp(96px,26vw,136px)} /* 2026-09-26 et. のロゴと見た目の大きさを揃えるため約25%縮小（旧 130〜180px） */
 }
 /* ═══ Coming Soon 非表示ここまで ═══ */
+/* 2026-09-26 PC（横画面）のヒーロー: 写真（3:2）の上下を切らず、左右にも空きを作らない。
+   写真エリアはページ最上部（半透明ヘッダー・メニューの裏）から始め、高さを「幅×2/3」にそろえる。
+   画面より縦に長くなる幅広の画面では、写真の下側はスクロールで見える。ロゴと点は最初の画面の下端に置く */
+@media (min-width:961px) and (orientation:landscape){
+  .hero{height:max(100vh,66.667vw);height:max(100svh,66.667vw)}
+  .hero-logo-ov{bottom:auto;height:min(100%,100vh);height:min(100%,100svh)}
+  .hero-dots{bottom:auto;top:calc(min(100%,100vh) - 2rem - 5px);top:calc(min(100%,100svh) - 2rem - 5px)}
+}
 
 /* ACCESS */
 .access-tabs{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.8rem}
@@ -2172,15 +2177,10 @@ function buildHero(images){
   const slides = document.getElementById('hero-slides');
   const dots = document.getElementById('hero-dots');
   slides.innerHTML = ''; dots.innerHTML = '';
-  const fit = !window.matchMedia('(orientation: portrait)').matches; // 横画面=PC用写真は上下を切らない
   images.forEach((img,i)=>{
     const s = document.createElement('div');
-    s.className = 'hero-slide'+(fit?' fit':'')+(i===0?' active':'');
-    if(fit){
-      const f=document.createElement('div'); f.className='hs-fill'; f.style.backgroundImage=`url('${img.file}')`;
-      const m=document.createElement('div'); m.className='hs-img'; m.style.backgroundImage=`url('${img.file}')`;
-      s.append(f,m);
-    } else s.style.backgroundImage = `url('${img.file}')`;
+    s.className = 'hero-slide'+(i===0?' active':'');
+    s.style.backgroundImage = `url('${img.file}')`;
     slides.appendChild(s);
     const d = document.createElement('div');
     d.className = 'hero-dot'+(i===0?' active':'');
