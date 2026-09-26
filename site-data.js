@@ -6336,7 +6336,8 @@ window.SITE_DATA = {
         },
         {
           "file": "maison-nr-kasugai-hero-pc-16.jpg",
-          "alt": "Maison nr. ベビー撮影 チェックの布とクッションの前のふたり"
+          "alt": "Maison nr. ベビー撮影 チェックの布とクッションの前のふたり",
+          "pos": "center 50%"
         },
         {
           "file": "maison-nr-kasugai-hero-pc-10.jpg",
