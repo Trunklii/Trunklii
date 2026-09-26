@@ -959,14 +959,15 @@ async function init(){
   document.getElementById('mob-tab-nr').classList.toggle('active', STUDIO_KEY==='nr');
 
   // Logo
-  const wideSvg = await loadSvg(`../../assets/${STUDIO_KEY}-wide.svg`);
+  // 2026-09-26 仮ロゴ（*-wide.svg に「TOKYO」入り）をやめ、トップページと同じ正式ロゴ（PNG をマスクにして文字色で塗る）に統一
+  const logoFile = STUDIO_KEY==='et' ? 'et-logo.png' : 'nr-logo.png';
+  const logoRatio = STUDIO_KEY==='et' ? '672/445' : '1600/821';
+  const logoMask = `-webkit-mask:url(../../assets/${logoFile}) center/contain no-repeat;mask:url(../../assets/${logoFile}) center/contain no-repeat`;
   const logoLink = document.getElementById('nav-logo-link');
   const mobLogo = document.getElementById('mob-logo');
-  if(wideSvg){ logoLink.innerHTML = wideSvg; mobLogo.innerHTML = wideSvg; }
-  else {
-    logoLink.innerHTML = `<span style="font-family:var(--display);font-style:normal;font-size:1.6rem;font-weight:300">${d.name}</span>`;
-    mobLogo.innerHTML = `<span style="font-family:var(--display);font-style:normal;font-size:1.1rem;font-weight:300">${d.name}</span>`;
-  }
+  if(logoLink) logoLink.innerHTML = `<span role="img" aria-label="${d.name}" style="display:block;height:100%;aspect-ratio:${logoRatio};background:currentColor;${logoMask}"></span>`;
+  // モバイルメニューは Safari の aspect-ratio+height:100% 誤計算を避けて固定寸法（トップの et. と同じ考え方）
+  if(mobLogo) mobLogo.innerHTML = `<span role="img" aria-label="${d.name}" style="display:block;${STUDIO_KEY==='et'?'width:57px;height:38px':'width:62px;height:32px'};background:currentColor;${logoMask}"></span>`;
 
   // Header icons links
   document.getElementById('nav-ig').href = d.instagram;
