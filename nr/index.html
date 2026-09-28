@@ -539,6 +539,8 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 /* ヒーロー写真を全デバイスでウィンドウ高さ・幅100%に(ヘッダーは半透明で写真に重ねる) */
 .hero{margin-top:0;height:100vh;height:100svh}
 header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
+/* iPhone（Safari）は半透明のヘッダーだと画面いちばん上（時計・電池の帯）をクリーム色にしてしまうため、iPhone/iPad だけヘッダーを不透明の濃い赤茶にして上の帯も同じ色にする（2026-09-28 川島さん指示） */
+@supports (-webkit-touch-callout:none){header.nav{background:#1C0909}}
 /* Coming Soon パネル（OPEN・narrative・コンセプト・Instagram/マップ）は 2026-09-26 に廃止（文章は About 本文＝site-data の about.body へ）。
    ヒーローは写真＋ロゴだけにし、ロゴは et. と同じ左下に置く（PC・スマホとも）。 */
 .hero-logo-ov{display:flex;position:absolute;inset:0;align-items:flex-end;justify-content:flex-start;z-index:1;pointer-events:none;padding:clamp(4.5rem,13vh,7rem) clamp(2rem,5vw,4rem) clamp(2.5rem,7vh,4rem)}

@@ -6373,8 +6373,8 @@ window.SITE_DATA = {
           "alt": "Maison nr. ベビー撮影 ブラウンの衣装のふたり"
         },
         {
-          "file": "maison-nr-kasugai-hero-sp-25.jpg",
-          "alt": "Maison nr. キッズ撮影 草花と赤いボーダーのオーバーオール"
+          "file": "maison-nr-kasugai-hero-sp-27.jpg",
+          "alt": "Maison nr. 七五三 花の髪飾りと吊るした生花のアレンジ"
         }
       ],
       "about": {
