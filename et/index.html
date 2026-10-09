@@ -969,7 +969,8 @@ body.is-ready .qa-bot-toggle{opacity:.5;transform:translateY(0) scale(1)}
 .res-top-head{display:flex;align-items:baseline;gap:.8rem;margin-bottom:1.4rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)}
 .res-top-mark{font-family:var(--sans);font-weight:400;font-size:.95rem;letter-spacing:.1em;color:var(--accent-text);text-transform:uppercase}
 .res-top-title{font-family:var(--display);font-style:normal;font-weight:400;font-size:1.15rem;line-height:1.3;color:var(--ink)}
-.res-top-btns{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.3rem}
+/* ボタンは縦に 1 列（「〜の詳細について」が PC の 2 列の箱の中で 2 行にならないように。2026-10-10） */
+.res-top-btns{display:grid;grid-template-columns:1fr;gap:.6rem;margin-bottom:1.3rem}
 .res-top-btns .btn-line{padding:.85rem .8rem;font-size:.66rem;text-align:center;line-height:1.3}
 .res-top-btns .hdr-book-wrap{display:block}
 .res-top-btns .hdr-book-toggle{width:100%;height:auto;justify-content:center;padding:.85rem .8rem;font-size:.66rem;letter-spacing:.08em;line-height:1.3}
@@ -1564,7 +1565,7 @@ document.addEventListener('DOMContentLoaded', function(){
       </div>
       <div class="res-top-btns">
         <a href="#" id="res-top-book-1" class="btn-line filled">撮影のご予約はこちら</a>
-        <a href="plans.html" class="btn-line">撮影プラン・料金</a>
+        <a href="plans.html" class="btn-line">撮影プラン・料金の詳細について</a>
       </div>
       <ul class="res-top-notes">
         <li>ご不明な点は Instagram DM・LINE でお問い合わせいただけます。</li>
@@ -1579,7 +1580,7 @@ document.addEventListener('DOMContentLoaded', function(){
       </div>
       <div class="res-top-btns">
         <a href="#" id="res-top-book-2" class="btn-line filled">お詣り日のご予約はこちら</a>
-        <a href="reservation.html#omairi-plan" class="btn-line">お詣りプラン・料金</a>
+        <a href="reservation.html#omairi-plan" class="btn-line">お詣りプラン・料金の詳細について</a>
       </div>
       <ul class="res-top-notes">
         <li>スタジオ撮影 × お詣り着物レンタルのセットプラン。</li>

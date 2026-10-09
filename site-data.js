@@ -5861,7 +5861,7 @@ window.SITE_DATA = {
             "bookingUrl": "https://studio-et.stores.jp/reserve/hashima/733693",
             "bookingLabel": "撮影のご予約はこちら",
             "plansUrl": "plans.html",
-            "plansLabel": "撮影プラン・料金",
+            "plansLabel": "撮影プラン・料金の詳細について",
             "notes": [
               "ご予約はSTORES予約サイトで承ります。ご希望日時を選択後、撮影プラン（One / Family / Maternity / Furisode）と撮影メニュー（753・お宮参り・バースデー・入園入学など）をアンケート形式でお選びいただきます。",
               "予約受付：撮影日の3ヶ月前の20日 21:00 から、撮影日の12時間前まで。",
@@ -5885,7 +5885,7 @@ window.SITE_DATA = {
             "bookingUrl": "https://studio-et.stores.jp/reserve/hashima/2688037",
             "bookingLabel": "お詣り日のご予約はこちら",
             "plansUrl": "#omairi-plan",
-            "plansLabel": "お詣りプラン・料金",
+            "plansLabel": "お詣りプラン・料金の詳細について",
             "notes": [
               "スタジオ撮影×お詣り着物レンタルのセットプランです。スタジオ撮影日と神社へお詣りに行く日の2日間をご予約いただき、各日違うお着物をお選びいただけます。",
               "撮影がお済みでない方は、上記Aの撮影予約も併せてお取りください。（撮影予約は撮影日の3ヶ月前の20日 21:00 に受付開始）",
