@@ -16,7 +16,9 @@ body{background:var(--bg);color:var(--ink)}
 .nav-logo,.nav-brand-logo,.nav-brand{color:#f0ead8}
 .back-link,.icon-btn{color:#f0ead8;border-color:#f0ead8}
 .back-link:hover,.icon-btn:hover{background:#f0ead8;color:#1C0909}
-/* 帯の中の「予約する」だけクリームに（本文の中の「予約する」は黒いまま） */
+/* 本文の中の「予約する」（カレンダー・キャンセルポリシー）：黒ではなく、足もとの nr. の予約ボタンと同じ濃い赤茶にクリームの字（2026-10-09 川島さん指示） */
+.hdr-book-toggle{background:#1C0909;color:#f0ead8;border-color:#1C0909}
+/* 帯の中の「予約する」はクリーム（濃い帯の上で見えるように） */
 .nav .hdr-book-toggle{background:#f0ead8;color:#1C0909;border-color:#f0ead8}
 .nav-right .booking-btn{background:#f0ead8;color:#1C0909}
 .hamburger span{background:#f0ead8}
