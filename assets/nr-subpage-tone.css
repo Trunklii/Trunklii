@@ -1,0 +1,43 @@
+/* Maison nr. の下のページ（プラン・予約・カレンダー・キャンセルポリシー・きもの・シミュレーター・採用 など）の色を、
+   nr. のトップ（nr/index.html）に合わせる上書き（2026-10-09 川島さん「nr. のトンマナは nr. のサイト側と合わせて」「nr. の HP も直して」）。
+   下のページは et. と同じ色（白い帯・#f8f6f2 の地・金茶）で作られていたため、ここで nr. の色に置き換える。
+   各ページの <style> のあと（<body> の直前）で読み込む。同じ強さの決まりは、あとに書いたほうが勝つ。 */
+
+/* 色：トップの :root と同じ。アクセントは nr. のモスグリーン（予約のページ・トップのタグと同じ） */
+:root{
+  --ink:#3a2d24;--bg:#F3EBDD;--mid:#73685c;
+  --accent:#7a9e95;--accent-text:#527069;
+  --border:rgba(42,28,23,.14);--cream:#E8DCC4;
+}
+body{background:var(--bg);color:var(--ink)}
+
+/* 上の帯：トップと同じ濃い赤茶に、クリームのロゴと枠線のボタン */
+.nav{background:#1C0909;border-bottom-color:rgba(240,234,216,.22)}
+.nav-logo,.nav-brand-logo,.nav-brand{color:#f0ead8}
+.back-link,.icon-btn{color:#f0ead8;border-color:#f0ead8}
+.back-link:hover,.icon-btn:hover{background:#f0ead8;color:#1C0909}
+/* 帯の中の「予約する」だけクリームに（本文の中の「予約する」は黒いまま） */
+.nav .hdr-book-toggle{background:#f0ead8;color:#1C0909;border-color:#f0ead8}
+.nav-right .booking-btn{background:#f0ead8;color:#1C0909}
+.hamburger span{background:#f0ead8}
+/* フォルダのページ（plans/ など）の PC の帯：上の段の店の切り替えはクリーム、下の段のメニューはトップと同じ白い地に濃い字 */
+.brand-tab{color:#f0ead8}
+.brand-tab.active::after{background:#f0ead8}
+.nav-bot{background:#fff;border-top-color:rgba(255,255,255,.2)}
+.nav-link{color:var(--ink)}
+.nav-drop{background:#fff;border-color:rgba(255,255,255,.4)}
+/* 採用のページだけ、ロゴを黒く塗った画像で入れている（台本の中の filter:brightness(0)）。クリームに近い白に返す */
+.nav-logo img{filter:brightness(0) invert(1) sepia(.12)!important}
+
+/* 見出し：トップと同じく番号は出さない（2026-09-26 トップで決めたこと。下のページの番号はトップの並びと合わない） */
+.sec-head .sec-num{display:none}
+/* フォルダのページの上の見出し欄：et. の白っぽいぼかしを、nr. の生成りのぼかしに */
+.detail-hero{background:linear-gradient(180deg,#EADFCB 0%,var(--bg) 100%)}
+
+/* 足もと：トップと同じ茶（--pal-burgundy）にクリームの文字 */
+footer{background:#74362d;color:var(--cream);border-top:0}
+footer .footer-logo{color:var(--cream)}
+footer .footer-links a,footer .footer-copy{color:rgba(232,220,196,.8)}
+footer .footer-links a:hover{color:var(--cream)}
+footer .cta-note,footer .footer-cta-sub .cta-note{color:rgba(240,234,216,.7)}
+footer .footer-cta-sub{border-bottom-color:rgba(232,220,196,.35)}
