@@ -113,6 +113,25 @@ footer{border-top:1px solid var(--border);background:#fff;color:var(--mid);paddi
 .footer-links a:hover{color:var(--ink)}
 .footer-copy{font-size:.66rem;letter-spacing:.1em}.footer-logo{order:1}.footer-copy{order:2}.footer-links{order:3;flex-basis:100%;justify-content:center;margin:.2rem 0}footer{flex-direction:column;align-items:center;text-align:center;justify-content:flex-start}
 
+/* 下の帯をトップ（nr/index.html）と同じ形に（2026-10-13 川島さん「フッターを画像と同じにして」） */
+footer{padding:2.5rem clamp(1.5rem,5vw,4rem);font-size:.875rem;letter-spacing:normal}
+.footer-copy{font-size:.62rem;letter-spacing:.06em}
+.footer-links{gap:1.2rem}
+.footer-links a{font-weight:400}
+.footer-cta{flex-basis:100%;width:100%;max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:1.1rem;padding-bottom:1.6rem;border-bottom:1px solid rgba(232,220,196,.35)}
+.footer-cta .cta-note{display:block;font-family:var(--display);font-style:normal;font-weight:300;font-size:.7rem;letter-spacing:.18em;color:rgba(240,234,216,.6);text-align:center}
+.footer-search{width:100%;display:flex;align-items:center;border-bottom:1px solid var(--cream)}
+.footer-search-input{flex:1;min-width:0;border:none;outline:none;background:none;font-family:var(--sans);font-weight:300;font-size:.85rem;color:var(--cream);padding:.6rem 0}
+.footer-search-input::placeholder{color:rgba(232,220,196,.75)}
+@media(max-width:960px){.footer-search-input{font-size:16px}}
+.footer-search-go{background:none;border:none;cursor:pointer;color:var(--cream);padding:.4rem;display:flex;align-items:center}
+.footer-search-go svg{width:16px;height:16px}
+.footer-cta .bb-btn.bb-et,
+.footer-cta .bb-btn.bb-nr{background:transparent;color:var(--cream);border-color:rgba(232,220,196,.55)}
+.footer-cta .bb-btn.bb-et .bb-cta,
+.footer-cta .bb-btn.bb-nr .bb-cta{border-color:rgba(232,220,196,.6)}
+.footer-cta .bb-btn:hover{background:rgba(232,220,196,.12);opacity:1}
+
 @media(max-width:560px){
   .nav-top{height:56px;padding:0 .8rem;gap:.6rem}
   main{padding-top:56px}
@@ -332,16 +351,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <footer>
-  <div class="footer-cta-sub">
-    <span class="cta-note">ご予約・お問い合わせはお気軽に</span>
+  <div class="footer-cta">
+    <!-- 検索はトップの検索の画面で開く（nr/index.html の ?q=） -->
+    <form class="footer-search" action="./" method="get">
+      <input type="text" class="footer-search-input" name="q" placeholder="What are you looking for?"/>
+      <button class="footer-search-go" type="submit" aria-label="検索">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+    </form>
+    <span class="cta-note" id="cta-note">最新情報はInstagramで</span>
     <div class="bb-btns"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://reserve.trunklii.com/reserve/nr" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
   </div>
   <a href="../" class="footer-logo">Trunklii</a>
   <ul class="footer-links">
-    <li><a href="./">Top</a></li>
-    <li><a href="./calendar.html">Calendar</a></li>
-    <li><a href="./reservation.html">Reservation</a></li>
-    <li><a href="./cancel-policy.html">Cancel Policy</a></li>
+    <li><a href="./#about">About</a></li>
+    <li><a href="./#plans">Plans</a></li>
+    <li><a href="./#reservation">Reservation</a></li>
+    <li><a href="./#flow">Flow</a></li>
+    <li><a href="./#cancel-policy">Cancel Policy</a></li>
+    <li><a href="./#qa">Q&A</a></li>
+    <li><a href="./#recruit">Recruit</a></li>
   </ul>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
@@ -375,6 +404,7 @@ function render(){
   document.getElementById('nav-brand').innerHTML = '<img src="../assets/nr-logo.png" alt="Maison nr." style="height:34px;width:auto;display:block;margin:0 auto;filter:brightness(0)"/>';
 
   document.getElementById('footer-copy').textContent = data.global.copyright;
+  if(studio.ctaNote) document.getElementById('cta-note').textContent = studio.ctaNote;
   document.getElementById('page-title').textContent = `Plans | ${studio.name}`;
 
   const leadEl = document.getElementById('page-lead');

@@ -2974,6 +2974,17 @@ function toggleHdrBook(e){
 if(location.hash === '#bot'){
   setTimeout(function(){ if(typeof toggleBot === 'function') toggleBot(); }, 500);
 }
+// 下のページの下の帯の検索から来たら（?q=）、検索の画面を開いて探す（2026-10-13）
+(function(){
+  var q = new URLSearchParams(location.search).get('q');
+  if(!q) return;
+  history.replaceState(null, '', location.pathname + location.hash);
+  window.addEventListener('load', function(){
+    openSearch();
+    document.getElementById('search-input').value = q;
+    runSearch();
+  });
+})();
 
 function closeBookSheet(){
   const s = document.getElementById('book-sheet');
