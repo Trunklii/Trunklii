@@ -44,3 +44,26 @@ footer .footer-links a,footer .footer-copy{color:rgba(232,220,196,.8)}
 footer .footer-links a:hover{color:var(--cream)}
 footer .cta-note,footer .footer-cta-sub .cta-note{color:rgba(240,234,216,.7)}
 footer .footer-cta-sub{border-bottom-color:rgba(232,220,196,.35)}
+
+/* 下の帯をトップ（nr/index.html）と同じ形に（2026-10-13 川島さん「フッターを画像と同じにして」「ほかの5つも」）。
+   帯の中に .footer-cta（検索欄・最新情報はInstagramで・予約ボタン）があるページだけに効く。 */
+footer:has(.footer-cta){padding:2.5rem clamp(1.5rem,5vw,4rem);font-size:.875rem;letter-spacing:normal;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center}
+footer:has(.footer-cta) .footer-logo{order:1}
+footer:has(.footer-cta) .footer-copy{order:2}
+footer:has(.footer-cta) .footer-links{order:3;flex-basis:100%;justify-content:center;margin:.2rem 0}
+footer:has(.footer-cta) .footer-copy{font-size:.62rem;letter-spacing:.06em}
+footer:has(.footer-cta) .footer-links{gap:1.2rem}
+footer:has(.footer-cta) .footer-links a{font-weight:400}
+.footer-cta{flex-basis:100%;width:100%;max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:1.1rem;padding-bottom:1.6rem;border-bottom:1px solid rgba(232,220,196,.35)}
+.footer-cta .cta-note{display:block;font-family:var(--display);font-style:normal;font-weight:300;font-size:.7rem;letter-spacing:.18em;color:rgba(240,234,216,.6);text-align:center}
+.footer-search{width:100%;display:flex;align-items:center;border-bottom:1px solid var(--cream)}
+.footer-search-input{flex:1;min-width:0;border:none;outline:none;background:none;font-family:var(--sans);font-weight:300;font-size:.85rem;color:var(--cream);padding:.6rem 0}
+.footer-search-input::placeholder{color:rgba(232,220,196,.75)}
+@media(max-width:960px){.footer-search-input{font-size:16px}}
+.footer-search-go{background:none;border:none;cursor:pointer;color:var(--cream);padding:.4rem;display:flex;align-items:center}
+.footer-search-go svg{width:16px;height:16px}
+.footer-cta .bb-btn.bb-et,
+.footer-cta .bb-btn.bb-nr{background:transparent;color:var(--cream);border-color:rgba(232,220,196,.55)}
+.footer-cta .bb-btn.bb-et .bb-cta,
+.footer-cta .bb-btn.bb-nr .bb-cta{border-color:rgba(232,220,196,.6)}
+.footer-cta .bb-btn:hover{background:rgba(232,220,196,.12);opacity:1}

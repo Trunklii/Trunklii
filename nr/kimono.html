@@ -406,7 +406,7 @@ body,input,button,select,textarea,.flow-note,.cal-top-note,.res-top-notes,.filte
 <style>/* NO-BOLD: サイト全体でボールドを使わない */ strong,b{font-weight:400}</style>
 <link rel="stylesheet" href="/assets/nr-heading-font.css?v=20260926f"/>
 </head>
-<link rel="stylesheet" href="../assets/nr-subpage-tone.css?v=20261012a"/>
+<link rel="stylesheet" href="../assets/nr-subpage-tone.css?v=20261013a"/>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P3H6H7NT"
@@ -470,16 +470,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <footer>
-  <div class="footer-cta-sub">
-    <span class="cta-note">ご予約・お問い合わせはお気軽に</span>
+  <div class="footer-cta">
+    <!-- 検索はトップの検索の画面で開く（nr/index.html の ?q=） -->
+    <form class="footer-search" action="./" method="get">
+      <input type="text" class="footer-search-input" name="q" placeholder="What are you looking for?"/>
+      <button class="footer-search-go" type="submit" aria-label="検索">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+    </form>
+    <span class="cta-note" id="cta-note">最新情報はInstagramで</span>
     <div class="bb-btns"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://reserve.trunklii.com/reserve/nr" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div>
   </div>
   <a href="../" class="footer-logo">Trunklii</a>
   <ul class="footer-links">
-    <li><a href="./">Top</a></li>
-    <li><a href="./calendar.html">Calendar</a></li>
-    <li><a href="./reservation.html">Reservation</a></li>
-    <li><a href="./cancel-policy.html">Cancel Policy</a></li>
+    <li><a href="./#about">About</a></li>
+    <li><a href="./#plans">Plans</a></li>
+    <li><a href="./#reservation">Reservation</a></li>
+    <li><a href="./#flow">Flow</a></li>
+    <li><a href="./#cancel-policy">Cancel Policy</a></li>
+    <li><a href="./#qa">Q&A</a></li>
+    <li><a href="./#recruit">Recruit</a></li>
   </ul>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
@@ -496,7 +506,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }).join('<br/>');
   }
   var fc = document.getElementById('footer-copy');
-  if(fc) fc.textContent = '© ' + new Date().getFullYear() + ' Trunklii';
+  if(fc) fc.textContent = (window.SITE_DATA && SITE_DATA.global && SITE_DATA.global.copyright) || ('© ' + new Date().getFullYear() + ' Trunklii');
+  (function(){ var n=document.getElementById('cta-note'), s=window.SITE_DATA&&SITE_DATA.studios&&SITE_DATA.studios.nr; if(n&&s&&s.ctaNote) n.textContent=s.ctaNote; })();
   document.body.classList.add('is-ready');
   // ハッシュ(#3y-girl 等)があればそのカードへ
   window.addEventListener('load', function(){
