@@ -12,7 +12,8 @@
 body{background:var(--bg);color:var(--ink)}
 
 /* 上の帯：トップと同じ濃い赤茶に、クリームのロゴと枠線のボタン */
-.nav{background:#1C0909;border-bottom-color:rgba(240,234,216,.22)}
+/* 帯はロゴの地と同じ赤茶（#75362D。2026-10-12 川島さん指示。前は #1C0909） */
+.nav{background:#75362D;border-bottom-color:rgba(240,234,216,.22)}
 .nav-logo,.nav-brand-logo,.nav-brand{color:#f0ead8}
 .back-link,.icon-btn{color:#f0ead8;border-color:#f0ead8}
 .back-link:hover,.icon-btn:hover{background:#f0ead8;color:#1C0909}

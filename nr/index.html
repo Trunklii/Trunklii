@@ -13,7 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" type="image/png" sizes="512x512" href="../assets/favicon-nr-512.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon-nr-180.png"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,viewport-fit=cover"/>
-<meta name="theme-color" content="#1C0909"/>
+<meta name="theme-color" content="#75362D"/>
 <title id="page-title">Maison nr.（メゾンナル）— 愛知県春日井市のフォトスタジオ（2026年10月OPEN）| 七五三・和モダン撮影</title>
 <!-- SEO Meta -->
 <meta name="description" content="愛知県春日井市のフォトスタジオ・写真スタジオ Maison nr.（メゾンナル／メゾン ナル、2026年10月OPEN）。名古屋からもアクセス良好。和モダン×ミッドセンチュリーな空間で、七五三・お宮参り・バースデー・マタニティ・ファミリー写真を撮影。予約制。"/>
@@ -538,9 +538,10 @@ body.sheet-open .qa-bot-toggle,body.sheet-open .float-book,body.sheet-open .to-t
 .mob-item:has(a[href="#recruit"]){display:none}
 /* ヒーロー写真を全デバイスでウィンドウ高さ・幅100%に(ヘッダーは半透明で写真に重ねる) */
 .hero{margin-top:0;height:100vh;height:100svh}
-header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
+/* 帯の色はロゴの地と同じ赤茶（#75362D）を 55% に透かしたもの（2026-10-12 川島さん指示。前は #1C0909 を透かしていた） */
+header.nav{background:rgba(117,54,45,.55);border-bottom-color:rgba(255,255,255,.2)}
 /* iPhone（Safari）は半透明のヘッダーだと画面いちばん上（時計・電池の帯）をクリーム色にしてしまうため、iPhone/iPad だけヘッダーを不透明の濃い赤茶にして上の帯も同じ色にする（2026-09-28 川島さん指示） */
-@supports (-webkit-touch-callout:none){header.nav{background:#1C0909}}
+@supports (-webkit-touch-callout:none){header.nav{background:#75362D}}
 /* Coming Soon パネル（OPEN・narrative・コンセプト・Instagram/マップ）は 2026-09-26 に廃止（文章は About 本文＝site-data の about.body へ）。
    ヒーローは写真＋ロゴだけにし、ロゴは et. と同じ左下に置く（PC・スマホとも）。 */
 .hero-logo-ov{display:flex;position:absolute;inset:0;align-items:flex-end;justify-content:flex-start;z-index:1;pointer-events:none;padding:clamp(4.5rem,13vh,7rem) clamp(2rem,5vw,4rem) clamp(2.5rem,7vh,4rem)}
@@ -944,7 +945,7 @@ header.nav{background:rgba(28,9,9,.55);border-bottom-color:rgba(255,255,255,.2)}
 :is(#about,#kimono,#plans,#reservation,#qa,#recruit) .btn-line:hover{background:var(--on-light-ink);color:#fff;border-color:var(--on-light-ink)}
 
 /* === Maison nr. nav (dark mode) === */
-.nav{background:#1C0909;border-bottom-color:#fff}
+.nav{background:#75362D;border-bottom-color:#fff}
 .brand-tab{color:#f0ead8}
 .brand-tab.active::after{background:#f0ead8}
 .nav-logo{color:#f0ead8}
