@@ -7460,7 +7460,7 @@ window.SITE_DATA = {
         "positions": [],
         "contactEmail": "recruit@trunklii.com"
       },
-      "ctaHeading": "2026年10月 OPEN。\nお楽しみに。",
+      "ctaHeading": "",
       "ctaNote": "最新情報はInstagramで",
       "menuSheets": [
         {

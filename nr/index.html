@@ -830,6 +830,7 @@ header.nav{background:rgba(117,54,45,.55);border-bottom-color:rgba(255,255,255,.
 
 /* CTA */
 .cta{background:var(--ink);color:#fff;text-align:center;padding:clamp(2.5rem,5vw,4rem) 1.5rem;position:relative;overflow:hidden}
+.cta[hidden]{display:none}
 .cta-inner{max-width:900px;margin:0 auto;position:relative;z-index:2}
 .cta-ja{font-family:var(--serif);font-weight:300;font-size:clamp(.95rem,1.7vw,1.15rem);letter-spacing:.08em;line-height:1.7;color:rgba(255,255,255,.92);margin-bottom:.25rem;display:block}
 .cta-en{font-family:var(--display);font-weight:300;font-style:normal;font-size:clamp(.95rem,1.7vw,1.2rem);letter-spacing:.04em;line-height:1.4;color:rgba(255,255,255,.7);margin-bottom:1.3rem;display:block}
@@ -2163,6 +2164,8 @@ async function init(){
   }
   document.getElementById('cta-heading-ja').textContent = ctaJa || '';
   document.getElementById('cta-heading-en').textContent = ctaEn || '';
+  // 見出しが空なら帯ごと出さない（2026-10-12 川島さん「ここはもう不要」）
+  document.getElementById('booking').hidden = !(ctaJa || ctaEn);
   document.getElementById('cta-note').textContent = d.ctaNote || '';
 
   document.getElementById('footer-copy').textContent = g.copyright;
