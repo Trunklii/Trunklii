@@ -350,7 +350,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="section-body-text" style="text-align:center;max-width:640px;margin:0 auto 2rem">撮影のご予約は、公式サイトのご予約ページから承ります。
 ご予約からお写真のお渡しまで、すべてWeb上で完結します。</p>
 
-      <div class="coming-banner" id="res-open-banner" data-before-open="10月1日（木）13:00 受付開始 &nbsp;/&nbsp; 10月22日（木）以降の撮影分" data-after-open="10月22日（木）以降の撮影分 ご予約受付中">10月1日（木）13:00 受付開始 &nbsp;/&nbsp; 10月22日（木）以降の撮影分</div>
+      <div class="coming-banner" id="res-open-banner" data-before-open="10月31日（土）までの撮影分 受付中<br>11月分は 10月16日（金）13:00 受付開始" data-after-open="11月30日（月）までの撮影分 受付中">10月31日（土）までの撮影分 受付中<br>11月分は 10月16日（金）13:00 受付開始</div>
 
       <!-- ── 撮影予約 ── -->
       <div class="subsec">
@@ -364,9 +364,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 
         <ul class="res-notes">
-          <li><span><span data-before-open="2026年10月22日（木）以降の撮影分のご予約を、10月1日（木）13:00 より受付開始いたします。" data-after-open="2026年10月22日（木）以降の撮影分のご予約を受付中です。">2026年10月22日（木）以降の撮影分のご予約を、10月1日（木）13:00 より受付開始いたします。</span>
-            <span class="res-note-sub">※11月以降の日程は、決まり次第このページでご案内いたします。</span></span></li>
-          <li><span><span data-before-open="受付開始までは、Instagram DM でお問い合わせを承っております。" data-after-open="ご不明な点は、Instagram DM でお問い合わせを承っております。">受付開始までは、Instagram DM でお問い合わせを承っております。</span>
+          <li><span><span data-before-open="10月31日（土）までの撮影分を受付中です。11月の撮影分は、10月16日（金）13:00 より受付開始いたします。" data-after-open="11月30日（月）までの撮影分のご予約を受付中です。">10月31日（土）までの撮影分を受付中です。11月の撮影分は、10月16日（金）13:00 より受付開始いたします。</span>
+            <span class="res-note-sub">※12月以降の日程は、決まり次第このページでご案内いたします。</span></span></li>
+          <li><span><span data-before-open="ご不明な点は、Instagram DM でお問い合わせを承っております。" data-after-open="ご不明な点は、Instagram DM でお問い合わせを承っております。">ご不明な点は、Instagram DM でお問い合わせを承っております。</span>
             <span class="res-note-sub">
               <a href="https://www.instagram.com/maison_nr._/" target="_blank" rel="noopener" class="res-note-link">Instagram（@maison_nr._）→</a>
             </span></span></li>
@@ -700,6 +700,9 @@ function closeBookSheet(){
    2026-09-10: 枠の開放が保留になったため、時刻判定をやめて手動フラグにしていた。
    2026-09-23 川島さん決定: 受付開始 2026-09-27 13:00 JST。自動切替に戻す。
    2026-09-28 川島さん決定: 受付開始を 2026-10-01 13:00 JST に延期。
+   2026-10-15 川島さん決定: 10/31 までは受付中のまま、11 月分（11/1〜11/30）を
+   2026-10-16 13:00 JST に受付開始。booking_slots の 11 月 55 枠の open_at を同じ時刻で
+   作り、本番の API で突き合わせた（10/15 06:2x）。
    予約の受付そのものは予約システム側（booking_slots.open_at）が同じ時刻で
    判定するので、文言とデータの足並みは揃う。
    見ている端末の時計がずれると文言だけ早く／遅く変わるが、実際に予約が通るかは
@@ -708,7 +711,7 @@ function closeBookSheet(){
   /* 受付開始日時（JST）。ここを変えるときは、予約システム側の
      booking_slots.open_at も必ず同じ時刻に揃えること。
      文言だけ先に切り替わると、来ていただいた方が予約できずに終わる。 */
-  var OPEN_AT = new Date('2026-10-01T13:00:00+09:00').getTime();
+  var OPEN_AT = new Date('2026-10-16T13:00:00+09:00').getTime();
   function apply(){
     var opened = Date.now() >= OPEN_AT;
     var els = document.querySelectorAll('[data-before-open]');
