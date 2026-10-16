@@ -98,9 +98,15 @@ if (sheet) {
 if (/Birthday[^\n]*未発表/.test(llms)) problems.push('llms.txt に「Birthday は未発表」の記載が残っている');
 
 // ── 5) プラン構成が予約の3択と揃っているか ──
+// お宮参りは予約では Baby & Kids の中の1枚。TOP のカードだけ別に1枚出す（2026-10-17 川島さん）
 const keys = (nr.plans || []).map((p) => p.key).join(' / ');
-if (keys !== '753 / birthday / comingsoon') problems.push(`nr.plans の構成が想定と違う: ${keys}`);
-else ok.push('nr.plans = 753 / birthday / comingsoon');
+if (keys !== '753 / omiyamairi / birthday / comingsoon') problems.push(`nr.plans の構成が想定と違う: ${keys}`);
+else ok.push('nr.plans = 753 / omiyamairi / birthday / comingsoon');
+const omPlan = (nr.plans || []).find((p) => p.key === 'omiyamairi');
+const omBase = bdSheet && ((bdSheet.steps.find((s) => s.type === 'plans') || {}).items || []).find((it) => it.en === 'OMIYAMAIRI');
+if (!omPlan || !omBase || !omPlan.variants[0]) problems.push('お宮参りの plans か料金表が無い');
+else if (yen(omPlan.variants[0].price) !== omBase.price) problems.push(`お宮参り = ${omPlan.variants[0].price} だが、料金表では ¥${omBase.price.toLocaleString()}`);
+else ok.push(`お宮参り = ${omPlan.variants[0].price}`);
 
 console.log(ok.map((s) => '  OK  ' + s).join('\n'));
 if (problems.length) {

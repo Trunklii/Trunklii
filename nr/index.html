@@ -2047,8 +2047,9 @@ async function init(){
          plans.html 側は javascript:void(0) で押せない作りなので、こちらも揃える。
          以前はここが plans.html へのリンクになっていて、押すと七五三の料金表に着いていた。 */
       /* 詳細ページは plans.html に統合した（同じ料金表を2ページで持たない）。
-         plans.html の各メニューには id="mn-<key>" が付いている。 */
-      const href = hasDetail ? `plans.html#mn-${encodeURIComponent(p.key||'')}` : 'javascript:void(0)';
+         plans.html の各メニューには id="mn-<key>" が付いている。
+         お宮参りは料金表では Baby & Kids の中にあるので、sheetKey で行き先の料金表を指す（2026-10-17） */
+      const href = hasDetail ? `plans.html#mn-${encodeURIComponent(p.sheetKey||p.key||'')}` : 'javascript:void(0)';
       const heroImg = (p.detail && p.detail.heroImage) || '';
       /* 準備中カードは desc の「/」区切りを写真枠に並べ、下の説明文は出さない（同じ文が2回並ぶため） */
       const escH = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
