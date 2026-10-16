@@ -46,7 +46,7 @@ Trunklii のオンライン展開は 2 サイト構成で運用しています�
 - Instagram: https://www.instagram.com/maison_nr._/
 - Google マップ: https://maps.google.com/?q=%E3%80%92486-0806%20%E6%84%9B%E7%9F%A5%E7%9C%8C%E6%98%A5%E6%97%A5%E4%BA%95%E5%B8%82%E5%A4%A7%E6%89%8B%E7%94%B0%E9%85%89%E7%94%BA1%E4%B8%81%E7%9B%AE5-9%20Maison%20nr.&ftid=0x6003734a78e48dbf:0x5816e7367a122c44
 - 座標: 緯度 35.2596584 / 経度 136.956087
-- 予約URL: https://trunklii.com/nr/reservation.html
+- 予約URL: https://reserve.trunklii.com/reserve/nr
 - ステータス: 2026年10月オープン予定（Coming Soon）
 - **オープン日: 2026年10月**
 - コンセプト: 和モダン × ミッドセンチュリーな空間。深く上品な色調、彩度の高い着物や小物、ミッドセンチュリー家具が特徴。
