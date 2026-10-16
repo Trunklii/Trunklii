@@ -107,6 +107,18 @@ const omBase = bdSheet && ((bdSheet.steps.find((s) => s.type === 'plans') || {})
 if (!omPlan || !omBase || !omPlan.variants[0]) problems.push('お宮参りの plans か料金表が無い');
 else if (yen(omPlan.variants[0].price) !== omBase.price) problems.push(`お宮参り = ${omPlan.variants[0].price} だが、料金表では ¥${omBase.price.toLocaleString()}`);
 else ok.push(`お宮参り = ${omPlan.variants[0].price}`);
+// お宮参りの中身（枚数・含まれる物・オプション・時間）は Baby & Kids の中のお宮参りと同じ物の写し。
+// 片方だけ直すと TOP のカードと料金表で違う中身が出るので、丸ごと同じかを見る（Codex の見直し 2026-10-17）
+const omInBd = bdPlan && bdPlan.variants.find((v) => /お宮参り/.test(v.label));
+if (omPlan && omInBd) {
+  if (omPlan.variants.length !== 1 || JSON.stringify(omPlan.variants[0]) !== JSON.stringify(omInBd)) {
+    problems.push('お宮参りの中身が、omiyamairi と Baby & Kids の中で違う（枚数・含まれる物・オプション・時間のどれか）');
+  } else ok.push('お宮参りの中身 = Baby & Kids の中のお宮参りと同じ');
+}
+// sheetKey（TOP のカードの行き先の料金表）が、実在する料金表を指しているか
+for (const p of nr.plans || []) {
+  if (p.sheetKey && !(nr.menuSheets || []).some((s) => s.key === p.sheetKey)) problems.push(`${p.key} の sheetKey「${p.sheetKey}」の料金表が無い`);
+}
 
 console.log(ok.map((s) => '  OK  ' + s).join('\n'));
 if (problems.length) {

@@ -396,6 +396,14 @@ function render(){
 
   MenuSheet.render(document.getElementById('mn-sheets'), studio.menuSheets);
 
+  /* 料金表を持たないプランの #mn-<key>（お宮参り）は、そのプランが載っている料金表（sheetKey）へ送る。
+     古い TOP のカードや plan-detail.html?key=omiyamairi から来たとき、ページの先頭に着かないように（2026-10-17） */
+  const hashKey = decodeURIComponent((location.hash.match(/^#mn-(.+)$/) || [])[1] || '');
+  if(hashKey && !document.getElementById('mn-' + hashKey)){
+    const hp = (studio.plans || []).find(p => p.key === hashKey && p.sheetKey);
+    if(hp && document.getElementById('mn-' + hp.sheetKey)) location.replace('#mn-' + encodeURIComponent(hp.sheetKey));
+  }
+
   const plans = studio.plans || [];
   const grid = document.getElementById('pl-grid');
   /* このページは #mn-sheets に紙の料金表を描くので #pl-grid / #page-lead が無い。
@@ -414,7 +422,7 @@ function render(){
     const price = hasDetail ? minPriceFromVariants(p.variants) : '';
     const cutsList = hasDetail ? [...new Set(p.variants.map(v=>v.cuts).filter(c=>c!=null))].join(' / ') : '';
     const cardClass = hasDetail ? 'plan-card' : 'plan-card soon';
-    const cardHref = hasDetail ? `#mn-${encodeURIComponent(p.key)}` : 'javascript:void(0)';
+    const cardHref = hasDetail ? `#mn-${encodeURIComponent(p.sheetKey || p.key)}` : 'javascript:void(0)';
     const soonItems = (!hasDetail && p.desc) ? String(p.desc).split('/').map(s=>s.trim()).filter(Boolean) : [];
     const soonList = soonItems.length ? `<p class="soon-items">${soonItems.map(s=>`<span>${esc(s)}</span>`).join(' / ')}</p>` : '';
 
