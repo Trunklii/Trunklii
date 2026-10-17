@@ -7724,7 +7724,8 @@ window.SITE_DATA = {
               "type": "optionGroups",
               "items": [
                 {
-                  "title": "生花髪飾りオプション",
+                  "title": "生花髪飾り",
+                  "en": "HAIR ORNAMENT",
                   "rows": [
                     {
                       "name": "髪飾りイメージオーダー",
@@ -7738,8 +7739,8 @@ window.SITE_DATA = {
                   ]
                 },
                 {
-                  "title": "オプション",
-                  "en": "OPTION",
+                  "title": "その他",
+                  "en": "OTHERS",
                   "rows": [
                     {
                       "name": "カラー背景紙",
@@ -7761,7 +7762,7 @@ window.SITE_DATA = {
                   ]
                 },
                 {
-                  "title": "きょうだいオプション",
+                  "title": "きょうだい",
                   "en": "SIBLING",
                   "rows": [
                     {
@@ -7802,7 +7803,7 @@ window.SITE_DATA = {
                   "note": "お宮参り・着物・ハーフ成人のオプションは +10cut の追加撮影です（ソロ撮影 / きょうだい撮影 が可能）。カジュアル衣装は ¥11,000 の場合のみ +10cut の追加撮影となります。"
                 },
                 {
-                  "title": "大人着物オプション",
+                  "title": "大人着物",
                   "en": "FOR PARENTS",
                   "rows": [
                     {
@@ -7894,7 +7895,7 @@ window.SITE_DATA = {
               "type": "optionGroups",
               "items": [
                 {
-                  "title": "生花オプション",
+                  "title": "生花",
                   "en": "FLOWER",
                   "rows": [
                     {
@@ -7912,7 +7913,7 @@ window.SITE_DATA = {
                   ]
                 },
                 {
-                  "title": "きょうだいオプション",
+                  "title": "きょうだい",
                   "en": "SIBLING",
                   "rows": [
                     {
@@ -7928,7 +7929,7 @@ window.SITE_DATA = {
                   ]
                 },
                 {
-                  "title": "オプション",
+                  "title": "その他",
                   "en": "OTHER",
                   "rows": [
                     {
@@ -8000,7 +8001,7 @@ window.SITE_DATA = {
               "type": "optionGroups",
               "items": [
                 {
-                  "title": "生花オプション",
+                  "title": "生花",
                   "en": "FLOWER",
                   "rows": [
                     {
@@ -8018,7 +8019,7 @@ window.SITE_DATA = {
                   ]
                 },
                 {
-                  "title": "きょうだいオプション",
+                  "title": "きょうだい",
                   "en": "SIBLING",
                   "rows": [
                     {
@@ -8034,7 +8035,7 @@ window.SITE_DATA = {
                   ]
                 },
                 {
-                  "title": "オプション",
+                  "title": "その他",
                   "en": "OTHER",
                   "rows": [
                     {

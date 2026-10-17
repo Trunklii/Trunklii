@@ -79,7 +79,7 @@
     /* grid の 1fr は min-content より小さくならないので、名前が長いと列が広がって囲みからはみ出す。
        minmax(0,1fr) と min-width:0 で縮めるようにし、名前は折り返す（省略記号で切らない） */
     '.mn-og{min-width:0}',
-    /* 紙は左の列に「生花髪飾りオプション」と「OPTION」を積み、残り2つを右の2列に置いている。4群のときだけその並びを再現する */
+    /* 紙は左の列に「生花髪飾り」と「その他（OTHERS）」を積み、残り2つを右の2列に置いている。4群のときだけその並びを再現する */
     '@media(min-width:860px){.mn-opts.g4{grid-template-columns:repeat(3,1fr)}',
     '}',
     /* 左の列の2つは .mn-ogpair で包んで積む（スマホではこの2つを1枚のカードにまとめて横に送る） */
@@ -115,8 +115,8 @@
     '.mn-swipe>*{flex:0 0 86%;min-width:0;scroll-snap-align:start}',
     /* 横に並べた列は、いちばん高いカードに高さをそろえる（そろえないと短いカードの下に地の色が大きく空く） */
     '.mn-plans.mn-swipe,.mn-opts.mn-swipe{align-items:stretch}',
-    /* 七五三の「生花髪飾りオプション」と「オプション」は1枚にまとめる。どちらも行が少なく、
-       いちばん高い「きょうだいオプション」にそろえると下が大きく白く空くため（2026-10-17 川島さん） */
+    /* 七五三の「生花髪飾り」と「その他」は1枚にまとめる。どちらも行が少なく、
+       いちばん高い「きょうだい」にそろえると下が大きく白く空くため（2026-10-17 川島さん） */
     '.mn-ogpair{gap:0;background:#fff;border-radius:3px;box-shadow:0 1px 3px rgba(31,20,16,.06)}',
     '.mn-ogpair>.mn-og{background:none;box-shadow:none;border-radius:0}',
     '.mn-ogpair>.mn-og+.mn-og{margin:0 1.4rem;padding:1.4rem 0;border-top:1px solid var(--border)}',
