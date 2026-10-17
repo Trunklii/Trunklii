@@ -104,10 +104,21 @@
     '.mn-group + .mn-notes{margin-top:1.8rem}',
     /* 2段組では注記を右の段のオプションの下に置く。段の幅に合わせて左寄せ */
     '.mn-duo .mn-notes{margin-top:1.4rem;text-align:left;max-width:none}',
+    /* スマホでは、カードを横に並べて指で左右に送る（縦に長くなりすぎるため。2026-10-17 川島さん）。
+       次のカードの端を少し見せて横に続くと分かるようにし、下の点で何枚目かを示す。PC は今までどおり */
+    '.mn-dots{display:none}',
     '@media(max-width:600px){',
     '.mn-plans,.mn-opts{grid-template-columns:1fr;gap:1rem}',
     '.mn-group{padding:1.2rem .9rem 1.3rem}',
     '.mn-notes{text-align:left}',
+    '.mn-swipe{display:flex;gap:.8rem;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;margin:0 -.9rem;padding:0 .9rem .3rem;scroll-padding:0 .9rem}',
+    '.mn-swipe::-webkit-scrollbar{display:none}',
+    '.mn-swipe>*{flex:0 0 86%;min-width:0;scroll-snap-align:start}',
+    /* 横に並べた列は、いちばん高いカードに高さをそろえる（そろえないと短いカードの下に地の色が大きく空く） */
+    '.mn-plans.mn-swipe,.mn-opts.mn-swipe{align-items:stretch}',
+    '.mn-dots{display:flex;justify-content:center;gap:.55rem;margin-top:.8rem}',
+    '.mn-dots i{width:6px;height:6px;border-radius:50%;background:var(--border);transition:background .2s}',
+    '.mn-dots i.on{background:var(--accent)}',
     '}',
   ].join('\n');
 
@@ -124,7 +135,7 @@
   function feeBox(step) {
     // 写真があるときは、プラン料金と同じカードの形で並べる
     if ((step.items || []).some(function (f) { return f.image; })) {
-      return groupBox({ title: step.label }, '<div class="mn-plans fee">' + step.items.map(function (f) {
+      return groupBox({ title: step.label }, '<div class="mn-plans fee' + (step.items.length > 1 ? ' mn-swipe' : '') + '">' + step.items.map(function (f) {
         return '<div class="mn-plan">'
           + (f.image ? '<div class="mn-plan-img" style="background-image:url(\'' + esc(f.image) + '\')" role="img" aria-label="' + esc(f.label) + '"></div>' : '')
           + '<div class="mn-plan-b">'
@@ -154,7 +165,7 @@
     var add = (sur && sur.weekend)
       ? '<div class="mn-plan-add">' + esc(sur.weekendLabel || '') + '<b>' + esc(sur.weekend) + '</b></div>'
       : '';
-    return '<div class="mn-plans' + (items.length === 1 ? ' one' : '') + '">' + items.map(function (p) {
+    return '<div class="mn-plans' + (items.length === 1 ? ' one' : ' mn-swipe') + '">' + items.map(function (p) {
       return '<div class="mn-plan">'
         + (p.image ? '<div class="mn-plan-img" style="background-image:url(\'' + esc(p.image) + '\')" role="img" aria-label="' + esc(p.name) + '"></div>' : '')
         + '<div class="mn-plan-b">'
@@ -170,7 +181,7 @@
 
   function optionGroups(step) {
     var items = step.items || [];
-    return '<div class="mn-opts' + (items.length === 4 ? ' g4' : '') + '">' + items.map(function (g) {
+    return '<div class="mn-opts' + (items.length === 4 ? ' g4' : '') + (items.length > 1 ? ' mn-swipe' : '') + '">' + items.map(function (g) {
       var rows = (g.rows || []).map(function (r) {
         if (r.head) return '<div class="mn-head">' + esc(r.head) + '</div>';
         return '<div class="mn-row"><span class="n">' + esc(r.name) + '</span>'
@@ -228,10 +239,36 @@
         + '</section>';
     }).join('');
 
+    addDots(host);
+
     /* 料金表は JS で描くので、ページを開いた時点では #mn-753 などの要素がまだ無い。
        ブラウザの自動スクロールはその時点で1度きり走って空振りするため、
        描き終えたあとに自分でアンカーまで送る。 */
     scrollToHash();
+  }
+
+  // スマホで横に送るカードの列（.mn-swipe）の下に、何枚目かを示す点を付ける。点は飾りなので読み上げない
+  function addDots(host) {
+    Array.prototype.forEach.call(host.querySelectorAll('.mn-swipe'), function (row) {
+      var n = row.children.length;
+      var dots = document.createElement('div');
+      dots.className = 'mn-dots';
+      dots.setAttribute('aria-hidden', 'true');
+      dots.innerHTML = new Array(n + 1).join('<i></i>');
+      row.parentNode.insertBefore(dots, row.nextSibling);
+      var raf = 0;
+      function mark() {
+        raf = 0;
+        var step = row.children[1].offsetLeft - row.children[0].offsetLeft || 1;
+        // 最後のカードは端まで送っても左にそろわないことがあるので、右端に着いたら最後の点にする
+        var i = row.scrollLeft + row.clientWidth >= row.scrollWidth - 2 ? n - 1 : Math.round(row.scrollLeft / step);
+        for (var k = 0; k < n; k++) dots.children[k].className = k === i ? 'on' : '';
+      }
+      var later = function () { if (!raf) raf = requestAnimationFrame(mark); };
+      row.addEventListener('scroll', later, { passive: true });
+      window.addEventListener('resize', later);
+      mark();
+    });
   }
 
   function scrollToHash() {

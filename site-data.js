@@ -7877,6 +7877,7 @@ window.SITE_DATA = {
                   "name": "お宮参り",
                   "en": "OMIYAMAIRI",
                   "price": 42000,
+                  "image": "plan-omiyamairi-maison-nr-kasugai-01.jpg",
                   "includes": [
                     "データ 30枚",
                     "ソロ / 家族写真",
@@ -7965,6 +7966,7 @@ window.SITE_DATA = {
                   "name": "SMASH CAKE",
                   "en": "1ST BIRTHDAY",
                   "price": 42000,
+                  "image": "plan-birthday-maison-nr-kasugai-02.jpg",
                   "includes": [
                     "データ 30枚",
                     "ソロ / 家族写真",
@@ -7979,6 +7981,7 @@ window.SITE_DATA = {
                   "name": "CASUAL",
                   "en": "BIRTHDAY / 入園・入学",
                   "price": 39000,
+                  "image": "plan-birthday-maison-nr-kasugai-01.jpg",
                   "includes": [
                     "データ 30枚",
                     "ソロ / 家族写真",
