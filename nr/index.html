@@ -2048,7 +2048,8 @@ async function init(){
          以前はここが plans.html へのリンクになっていて、押すと七五三の料金表に着いていた。 */
       /* 詳細ページは plans.html に統合した（同じ料金表を2ページで持たない）。
          plans.html の各メニューには id="mn-<key>" が付いている。
-         お宮参りは料金表では Baby & Kids の中にあるので、sheetKey で行き先の料金表を指す（2026-10-17） */
+         お宮参りは七五三・Baby & Kids と並ぶ自分の料金表（#mn-omiyamairi）を持つ（2026-10-17 川島さん「Baby & Kids の中ではない」）。
+         別の料金表に載せたいプランができたら sheetKey で行き先を指せる */
       const href = hasDetail ? `plans.html#mn-${encodeURIComponent(p.sheetKey||p.key||'')}` : 'javascript:void(0)';
       const heroImg = (p.detail && p.detail.heroImage) || '';
       /* 準備中カードは desc の「/」区切りを写真枠に並べ、下の説明文は出さない（同じ文が2回並ぶため） */

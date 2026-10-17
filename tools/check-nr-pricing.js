@@ -91,31 +91,34 @@ if (sheet) {
   }
   const bdBase = bdSheet && ((bdSheet.steps.find((s) => s.type === 'plans') || {}).items || [])[0];
   if (bdBase) want.push(bdBase.price);
+  const omSh = (nr.menuSheets || []).find((s) => s.key === 'omiyamairi');
+  const omB = omSh && ((omSh.steps.find((s) => s.type === 'plans') || {}).items || [])[0];
+  if (omB) want.push(omB.price);
   const missing = want.filter((n) => !llms.includes('¥' + Number(n).toLocaleString('ja-JP')));
   if (missing.length) problems.push(`llms.txt に無い金額: ${missing.map((n) => '¥' + n.toLocaleString()).join(', ')}`);
   else ok.push('llms.txt に nr. の金額がすべて載っている');
 }
 if (/Birthday[^\n]*未発表/.test(llms)) problems.push('llms.txt に「Birthday は未発表」の記載が残っている');
 
-// ── 5) プラン構成が予約の3択と揃っているか ──
-// お宮参りは予約では Baby & Kids の中の1枚。TOP のカードだけ別に1枚出す（2026-10-17 川島さん）
+// ── 5) プラン構成：七五三・お宮参り・Baby & Kids は並ぶ 3 つの料金表（お宮参りは Baby & Kids の中ではない。2026-10-17 川島さん）──
 const keys = (nr.plans || []).map((p) => p.key).join(' / ');
 if (keys !== '753 / omiyamairi / birthday / comingsoon') problems.push(`nr.plans の構成が想定と違う: ${keys}`);
 else ok.push('nr.plans = 753 / omiyamairi / birthday / comingsoon');
+const sheetKeys = (nr.menuSheets || []).map((s) => s.key).join(' / ');
+if (sheetKeys !== '753 / omiyamairi / birthday') problems.push(`nr.menuSheets の構成が想定と違う: ${sheetKeys}`);
+else ok.push('nr.menuSheets = 753 / omiyamairi / birthday');
+const omSheet = (nr.menuSheets || []).find((s) => s.key === 'omiyamairi');
 const omPlan = (nr.plans || []).find((p) => p.key === 'omiyamairi');
-const omBase = bdSheet && ((bdSheet.steps.find((s) => s.type === 'plans') || {}).items || []).find((it) => it.en === 'OMIYAMAIRI');
+const omBase = omSheet && ((omSheet.steps.find((s) => s.type === 'plans') || {}).items || [])[0];
 if (!omPlan || !omBase || !omPlan.variants[0]) problems.push('お宮参りの plans か料金表が無い');
 else if (yen(omPlan.variants[0].price) !== omBase.price) problems.push(`お宮参り = ${omPlan.variants[0].price} だが、料金表では ¥${omBase.price.toLocaleString()}`);
 else ok.push(`お宮参り = ${omPlan.variants[0].price}`);
-// お宮参りの中身（枚数・含まれる物・オプション・時間）は Baby & Kids の中のお宮参りと同じ物の写し。
-// 片方だけ直すと TOP のカードと料金表で違う中身が出るので、丸ごと同じかを見る（Codex の見直し 2026-10-17）
-const omInBd = bdPlan && bdPlan.variants.find((v) => /お宮参り/.test(v.label));
-if (omPlan && omInBd) {
-  if (omPlan.variants.length !== 1 || JSON.stringify(omPlan.variants[0]) !== JSON.stringify(omInBd)) {
-    problems.push('お宮参りの中身が、omiyamairi と Baby & Kids の中で違う（枚数・含まれる物・オプション・時間のどれか）');
-  } else ok.push('お宮参りの中身 = Baby & Kids の中のお宮参りと同じ');
-}
-// sheetKey（TOP のカードの行き先の料金表）が、実在する料金表を指しているか
+// Baby & Kids の料金表とカードに、お宮参りが残っていないか
+const bdItems = bdSheet ? ((bdSheet.steps.find((s) => s.type === 'plans') || {}).items || []) : [];
+if (bdItems.some((it) => /お宮参り|OMIYAMAIRI/i.test(it.name + it.en)) || /OMIYAMAIRI/i.test(bdSheet && bdSheet.eyebrow)) problems.push('Baby & Kids の料金表にお宮参りが残っている');
+if (bdPlan && (bdPlan.variants.some((v) => /お宮参り/.test(v.label)) || /お宮参り/.test(bdPlan.desc + (bdPlan.detail || {}).longDescription))) problems.push('Baby & Kids のカード（plans）にお宮参りが残っている');
+if (bdPlan && bdPlan.variants.length !== bdItems.length) problems.push(`Baby & Kids の組み合わせ ${bdPlan.variants.length} 件 / 料金表 ${bdItems.length} 件`);
+// sheetKey（TOP のカードの行き先の料金表）を使うときは、実在する料金表を指しているか
 for (const p of nr.plans || []) {
   if (p.sheetKey && !(nr.menuSheets || []).some((s) => s.key === p.sheetKey)) problems.push(`${p.key} の sheetKey「${p.sheetKey}」の料金表が無い`);
 }
