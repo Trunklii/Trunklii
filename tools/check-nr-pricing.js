@@ -118,6 +118,13 @@ const bdItems = bdSheet ? ((bdSheet.steps.find((s) => s.type === 'plans') || {})
 if (bdItems.some((it) => /お宮参り|OMIYAMAIRI/i.test(it.name + it.en)) || /OMIYAMAIRI/i.test(bdSheet && bdSheet.eyebrow)) problems.push('Baby & Kids の料金表にお宮参りが残っている');
 if (bdPlan && (bdPlan.variants.some((v) => /お宮参り/.test(v.label)) || /お宮参り/.test(bdPlan.desc + (bdPlan.detail || {}).longDescription))) problems.push('Baby & Kids のカード（plans）にお宮参りが残っている');
 if (bdPlan && bdPlan.variants.length !== bdItems.length) problems.push(`Baby & Kids の組み合わせ ${bdPlan.variants.length} 件 / 料金表 ${bdItems.length} 件`);
+// お宮参りと Baby & Kids は同じオプションを出す（お宮参りの料金表は Baby & Kids の写しで持っている）。
+// 片方だけ値段を変えると食い違うので、撮影料金より後ろが丸ごと同じかを見る。別の値段にすると決めたら、この照合を直す
+const optsOf = (s) => JSON.stringify(((s && s.steps) || []).filter((st) => st.type !== 'plans'));
+if (omSheet && bdSheet) {
+  if (optsOf(omSheet) !== optsOf(bdSheet)) problems.push('お宮参りと Baby & Kids のオプションが食い違っている（同じものを出す決まり）');
+  else ok.push('お宮参りと Baby & Kids のオプションが同じ');
+}
 // sheetKey（TOP のカードの行き先の料金表）を使うときは、実在する料金表を指しているか
 for (const p of nr.plans || []) {
   if (p.sheetKey && !(nr.menuSheets || []).some((s) => s.key === p.sheetKey)) problems.push(`${p.key} の sheetKey「${p.sheetKey}」の料金表が無い`);
