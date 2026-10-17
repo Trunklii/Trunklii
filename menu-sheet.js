@@ -81,10 +81,9 @@
     '.mn-og{min-width:0}',
     /* 紙は左の列に「生花髪飾りオプション」と「OPTION」を積み、残り2つを右の2列に置いている。4群のときだけその並びを再現する */
     '@media(min-width:860px){.mn-opts.g4{grid-template-columns:repeat(3,1fr)}',
-    '.mn-opts.g4>:nth-child(1){grid-column:1;grid-row:1}',
-    '.mn-opts.g4>:nth-child(2){grid-column:1;grid-row:2}',
-    '.mn-opts.g4>:nth-child(3){grid-column:2;grid-row:1/span 2}',
-    '.mn-opts.g4>:nth-child(4){grid-column:3;grid-row:1/span 2}}',
+    '}',
+    /* 左の列の2つは .mn-ogpair で包んで積む（スマホではこの2つを1枚のカードにまとめて横に送る） */
+    '.mn-ogpair{display:flex;flex-direction:column;gap:1.4rem;min-width:0}',
     '@media(min-width:860px){.mn-opts.g4{grid-template-columns:repeat(3,minmax(0,1fr))}}',
     '.mn-og{background:#fff;border-radius:3px;box-shadow:0 1px 3px rgba(31,20,16,.06);padding:1.5rem 1.4rem 1.4rem}',
     '.mn-og-t{font-family:var(--serif);font-weight:400;font-size:.88rem;letter-spacing:.22em;color:var(--accent-text);text-align:center}',
@@ -116,6 +115,11 @@
     '.mn-swipe>*{flex:0 0 86%;min-width:0;scroll-snap-align:start}',
     /* 横に並べた列は、いちばん高いカードに高さをそろえる（そろえないと短いカードの下に地の色が大きく空く） */
     '.mn-plans.mn-swipe,.mn-opts.mn-swipe{align-items:stretch}',
+    /* 七五三の「生花髪飾りオプション」と「オプション」は1枚にまとめる。どちらも行が少なく、
+       いちばん高い「きょうだいオプション」にそろえると下が大きく白く空くため（2026-10-17 川島さん） */
+    '.mn-ogpair{gap:0;background:#fff;border-radius:3px;box-shadow:0 1px 3px rgba(31,20,16,.06)}',
+    '.mn-ogpair>.mn-og{background:none;box-shadow:none;border-radius:0}',
+    '.mn-ogpair>.mn-og+.mn-og{margin:0 1.4rem;padding:1.4rem 0;border-top:1px solid var(--border)}',
     '.mn-dots{display:flex;justify-content:center;gap:.55rem;margin-top:.8rem}',
     '.mn-dots i{width:6px;height:6px;border-radius:50%;background:var(--border);transition:background .2s}',
     '.mn-dots i.on{background:var(--accent)}',
@@ -181,7 +185,7 @@
 
   function optionGroups(step) {
     var items = step.items || [];
-    return '<div class="mn-opts' + (items.length === 4 ? ' g4' : '') + (items.length > 1 ? ' mn-swipe' : '') + '">' + items.map(function (g) {
+    var cards = items.map(function (g) {
       var rows = (g.rows || []).map(function (r) {
         if (r.head) return '<div class="mn-head">' + esc(r.head) + '</div>';
         return '<div class="mn-row"><span class="n">' + esc(r.name) + '</span>'
@@ -193,7 +197,10 @@
         + '<dl>' + rows + '</dl>'
         + (g.note ? '<p class="mn-note">' + esc(g.note) + '</p>' : '')
         + '</div>';
-    }).join('') + '</div>';
+    });
+    // 4群（七五三）は、紙と同じく左の列の2つを積む
+    if (cards.length === 4) cards = ['<div class="mn-ogpair">' + cards[0] + cards[1] + '</div>', cards[2], cards[3]];
+    return '<div class="mn-opts' + (items.length === 4 ? ' g4' : '') + (items.length > 1 ? ' mn-swipe' : '') + '">' + cards.join('') + '</div>';
   }
 
   /* 撮影料金のカードが1枚だけ（Birthday）のときは、撮影料金とオプションを横に並べる。
