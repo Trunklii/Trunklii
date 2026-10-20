@@ -602,6 +602,7 @@
           + '<div class="res-top-btns">'
             + bookBtn
             + '<a href="' + (b.plansUrl||'plans.html') + '" class="btn-line">' + (b.plansLabel||'プラン・料金') + '</a>'
+            + (b.calendarUrl ? '<a href="' + b.calendarUrl + '" class="btn-line res-cal-btn">' + (b.calendarLabel||'カレンダーはこちら') + '</a>' : '')
           + '</div>'
           + (notes ? '<ul class="res-top-notes">' + notes + '</ul>' : '')
         + '</div>';

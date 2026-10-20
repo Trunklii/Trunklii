@@ -91,6 +91,7 @@ main{padding-top:64px}
 /* ─── Buttons row ─── */
 .res-btns{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:2rem}
 .res-btns .btn-line{padding:1.1rem 1rem;font-size:.7rem;line-height:1.4}
+.res-btns .res-cal-btn{grid-column:1/-1}
 
 /* ─── Notes list ─── */
 .res-notes{list-style:none;margin-bottom:0}
@@ -468,7 +469,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20261020a"></script>
+<script src="../site-data.js?v=20261020b"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 
@@ -513,6 +514,7 @@ function renderBlocksFromData(studio){
       <div class="res-btns">
         ${bookBtn}
         <a href="${esc(b.plansUrl||'plans.html')}" class="btn-line">${esc(b.plansLabel||'プラン・料金')}</a>
+        ${b.calendarUrl ? `<a href="${esc(b.calendarUrl)}" class="btn-line res-cal-btn">${esc(b.calendarLabel||'カレンダーはこちら')}</a>` : ''}
       </div>
       ${notes ? `<ul class="res-notes">${notes}</ul>` : ''}
       ${isOmairi && omairiHtml ? omairiHtml : ''}

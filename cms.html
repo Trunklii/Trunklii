@@ -1130,6 +1130,10 @@ function renderReservation(){
           <div class="row"><label>プランボタン ラベル</label><input value="${esc(b.plansLabel||'')}" oninput="D.studios['${currentStudio}'].reservation.blocks[${bi}].plansLabel=this.value"/></div>
           <div class="row"><label>プランボタン リンク</label><input value="${esc(b.plansUrl||'')}" placeholder="plans.html" oninput="D.studios['${currentStudio}'].reservation.blocks[${bi}].plansUrl=this.value"/></div>
         </div>
+        <div class="row-2">
+          <div class="row"><label>カレンダーボタン ラベル</label><input value="${esc(b.calendarLabel||'')}" oninput="D.studios['${currentStudio}'].reservation.blocks[${bi}].calendarLabel=this.value"/></div>
+          <div class="row"><label>カレンダーボタン リンク</label><input value="${esc(b.calendarUrl||'')}" placeholder="calendar.html（空ならボタンを出さない）" oninput="D.studios['${currentStudio}'].reservation.blocks[${bi}].calendarUrl=this.value"/></div>
+        </div>
         <div class="panel-sub">注記</div>
         <div>${noteRows}</div>
         <button class="btn-add" onclick="(D.studios['${currentStudio}'].reservation.blocks[${bi}].notes=D.studios['${currentStudio}'].reservation.blocks[${bi}].notes||[]).push('');renderReservation()">＋ 注記を追加する</button>
