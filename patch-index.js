@@ -572,6 +572,10 @@
     var blocks = studio && studio.reservation && Array.isArray(studio.reservation.blocks) ? studio.reservation.blocks : null;
     var bookUrlFallback = (studio && studio.bookingUrl) || '#';
     var phone = (studio && (studio.tel || studio.phone)) || '050-1751-2601';
+    // カレンダーボタンの文字・リンクを HTML に入れる前に & < > " ' を置き換える
+    var escCal = function(s){
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    };
 
     // CMSにブロックがあれば動的描画。なければ既存HTMLのフォールバックを使う
     if(blocks && blocks.length > 0){
@@ -602,7 +606,7 @@
           + '<div class="res-top-btns">'
             + bookBtn
             + '<a href="' + (b.plansUrl||'plans.html') + '" class="btn-line">' + (b.plansLabel||'プラン・料金') + '</a>'
-            + (b.calendarUrl ? '<a href="' + b.calendarUrl + '" class="btn-line res-cal-btn">' + (b.calendarLabel||'カレンダーはこちら') + '</a>' : '')
+            + (b.calendarUrl ? '<a href="' + escCal(b.calendarUrl) + '" class="btn-line res-cal-btn">' + escCal(b.calendarLabel||'カレンダーはこちら') + '</a>' : '')
           + '</div>'
           + (notes ? '<ul class="res-top-notes">' + notes + '</ul>' : '')
         + '</div>';
