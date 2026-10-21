@@ -118,6 +118,32 @@ main{padding-top:64px}
 .cal-notes{padding-top:1.5rem;border-top:1px solid var(--border);text-align:center}
 .cal-note{font-family:var(--serif);font-weight:300;font-size:.82rem;line-height:2.1;color:var(--mid);margin-bottom:.4rem}
 
+/* ─── 753お詣り日カレンダー（撮影料金カレンダーの下に並べる。トップのボタンから #omairi へ。2026-10-21 川島さん） ─── */
+:root{--om-wk:#e8d9bc;--om-hi:#c9a066}
+#shoot,#omairi{scroll-margin-top:64px}
+.cal-sec-omairi{border-top:1px solid var(--border)}
+.cal-sec-omairi .wrap{padding-top:clamp(2.5rem,6vw,5rem)}
+.om-mp{margin-left:auto;display:flex;align-items:center;gap:.7rem;font-family:var(--sans);font-weight:400;font-size:.7rem;letter-spacing:.04em;color:var(--ink);white-space:nowrap}
+.om-mp i{display:inline-block;width:14px;height:5px;border-radius:2px;margin-right:.3rem;vertical-align:middle}
+.cal-day.om-wk::after{background:var(--om-wk)}
+.cal-day.om-hi::after{background:var(--om-hi)}
+.om-table-wrap{overflow-x:auto;max-width:760px;margin:0 auto clamp(2rem,4vw,3rem)}
+.om-table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:.78rem}
+.om-table th,.om-table td{border:1px solid var(--border);padding:.6rem .8rem;text-align:center;vertical-align:middle}
+.om-table th{background:rgba(17,16,16,.78);color:#fff;font-weight:400;font-size:.7rem;letter-spacing:.04em}
+.om-table td.row-label{text-align:left;background:rgba(17,16,16,.025);font-weight:400;white-space:nowrap}
+.om-table td.row-label i{display:inline-block;width:14px;height:5px;border-radius:2px;margin-right:.4rem;vertical-align:middle}
+.om-table .price-main{display:block;font-family:var(--display);font-size:1rem;color:var(--ink);font-variant-numeric:lining-nums}
+.om-table .price-add{display:block;font-size:.72rem;color:var(--mid);margin-top:.1rem}
+.om-table-tax{text-align:right;font-family:var(--sans);font-size:.66rem;color:var(--mid);letter-spacing:.1em;margin-top:.4rem}
+.om-ctas{flex-wrap:wrap;gap:1rem}
+@media(max-width:700px){
+  #shoot,#omairi{scroll-margin-top:56px}
+  .om-table th,.om-table td{padding:.5rem .4rem;font-size:.72rem}
+  .om-ctas{flex-direction:column;align-items:center}
+  .om-ctas .btn-line{width:100%;max-width:320px;text-align:center}
+}
+
 /* ─── Footer ─── */
 footer{border-top:1px solid var(--border);background:#fff;color:var(--mid);padding:2rem clamp(1.5rem,5vw,4rem);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.2rem;font-family:var(--sans);font-weight:300;font-size:.7rem;letter-spacing:.08em}
 .footer-logo{font-family:var(--sans);font-weight:300;font-size:.85rem;letter-spacing:.3em;color:var(--ink);text-decoration:none}
@@ -283,12 +309,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 
 <main>
-  <section>
+  <section id="shoot">
     <div class="wrap">
 
       <div class="sec-head">
         <span class="sec-num">07</span>
-        <h1 class="sec-title">Calendar</h1><span class="sec-jp">料金カレンダー</span>
+        <h1 class="sec-title">Calendar</h1><span class="sec-jp">753撮影料金カレンダー</span>
         <div class="sec-rule"></div>
       </div>
 
@@ -312,6 +338,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="more-cta">
         <div class="hdr-book-wrap" style="display:inline-block"><button class="hdr-book-toggle" type="button" onclick="toggleHdrBook(event)" aria-haspopup="true" aria-expanded="false" style="margin:0 auto">予約する<span class="hdr-book-chev" aria-hidden="true">›</span></button><div class="hdr-book-menu" hidden style="left:50%;right:auto;transform:translateX(-50%)"><a class="bb-btn bb-et" href="https://studio-et.stores.jp/reserve/hashima/733693" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Studio et." style="aspect-ratio:672/445;-webkit-mask:url(../assets/et-logo.png) center/contain no-repeat;mask:url(../assets/et-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a><a class="bb-btn bb-nr" href="https://reserve.trunklii.com/reserve/nr" target="_blank" rel="noopener"><span class="bb-logo" role="img" aria-label="Maison nr." style="aspect-ratio:1600/821;-webkit-mask:url(../assets/nr-logo.png) center/contain no-repeat;mask:url(../assets/nr-logo.png) center/contain no-repeat"></span><span class="bb-cta">予約する<span aria-hidden="true">→</span></span></a></div></div>
       </div>
+
+    </div>
+  </section>
+
+  <!-- 753お詣り日カレンダー：料金は site-data の omairiPlan（平日／土日祝日大安）。予約のボタンと受付の文は予約の欄の「753お詣り日予約について」から -->
+  <section id="omairi" class="cal-sec-omairi">
+    <div class="wrap">
+
+      <div class="sec-head">
+        <span class="sec-num">08</span>
+        <h2 class="sec-title">Omairi</h2><span class="sec-jp">753お詣り日カレンダー</span>
+        <div class="sec-rule"></div>
+      </div>
+
+      <p class="section-body-text" style="text-align:center;max-width:640px;margin:0 auto 2rem">お詣り日が平日か、土日祝日・大安かで、お詣り着物レンタルの料金が異なります。ご希望のお詣り日をカレンダーでご確認ください。</p>
+
+      <div class="tier-legend">
+        <div class="tier-item"><span class="tier-dot" style="background:var(--om-wk)"></span><span class="tier-days">平日</span></div>
+        <div class="tier-item"><span class="tier-dot" style="background:var(--om-hi)"></span><span class="tier-days">土日祝日・大安</span></div>
+      </div>
+
+      <div class="om-table-wrap" id="om-table"></div>
+
+      <div class="cal-months" id="om-months"></div>
+
+      <div class="cal-notes">
+        <p class="cal-note" id="om-reception"></p>
+        <p class="cal-note">※料金は「スタジオ撮影 × お詣り着物レンタルプラン」のお詣り着物レンタル料金です（スタジオ撮影の料金は別）。（　）内はお子様1人追加料金です。</p>
+        <p class="cal-note">※色のない日はスタジオの定休日・休業日です（お着物はお詣り当日にスタジオでお選びいただきます）。</p>
+      </div>
+
+      <div class="more-cta om-ctas" id="om-ctas"></div>
 
     </div>
   </section>
@@ -354,7 +412,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20261020b"></script>
+<script src="../site-data.js?v=20261021a"></script>
 <script>
 const STUDIO_KEY = location.pathname.includes('/nr/') ? 'nr' : 'et';
 
@@ -381,6 +439,9 @@ const JP_HOLIDAYS = new Set([
   '2026-09-21','2026-09-22','2026-09-23',
   '2026-10-12',
   '2026-11-03','2026-11-23',
+  '2027-01-01','2027-01-11',
+  '2027-02-11','2027-02-23',
+  '2027-03-21','2027-03-22',
 ]);
 
 // 大安(日本の六曜)。ご祈祷・記念撮影の繁忙期のみ強調表示: 1月・10月・11月・12月
@@ -472,6 +533,126 @@ function renderCalendar(){
   document.getElementById('cal-months').innerHTML = html;
 }
 
+// ─── 753お詣り日カレンダー（2026-10-21 川島さん） ───
+// お詣り着物レンタルの料金は「平日」と「土日祝日大安」の 2 つ（site-data の omairiPlan）。
+// 大安は 1 年を通して数える。上の TAIAN は撮影の繁忙期（1・10・11・12月）だけなので、2027年1〜3月をここに足す
+// （暦のサイトと、旧暦の月＋日からの計算の 2 つで突き合わせた。2026-10-21）。
+const OMAIRI_TAIAN_EXTRA = new Set([
+  '2027-01-02','2027-01-13','2027-01-19','2027-01-25','2027-01-31',
+  '2027-02-06','2027-02-11','2027-02-17','2027-02-23',
+  '2027-03-01','2027-03-07','2027-03-11','2027-03-17','2027-03-23','2027-03-29',
+]);
+function isTaianAll(key){ return TAIAN.has(key) || OMAIRI_TAIAN_EXTRA.has(key); }
+function safeHref(u){
+  const s = String(u||'').trim();
+  return /^https?:\/\//i.test(s) || /^[\w\-./#]+$/.test(s) ? s : '#';
+}
+// "2026年 4月〜9月" → { y:2026, from:4, to:9, idx }
+function omairiPeriods(op){
+  const out = [];
+  (op && Array.isArray(op.periods) ? op.periods : []).forEach((p, i) => {
+    const m = String(p).match(/(\d{4})\s*年\s*(\d{1,2})\s*月\s*[〜~～\-－]\s*(\d{1,2})\s*月/);
+    if(m) out.push({ y:+m[1], from:+m[2], to:+m[3], idx:i });
+  });
+  return out;
+}
+function omairiPeriodIndex(periods, y, m1){
+  for(const p of periods){ if(p.y === y && m1 >= p.from && m1 <= p.to) return p.idx; }
+  return -1;
+}
+function splitPrice(raw){
+  const s = String(raw||'');
+  const m = s.match(/^([^(（]+)\s*[(（]([^)）]+)[)）]\s*$/);
+  return m ? { main:m[1].trim(), add:m[2].trim() } : { main:s.trim(), add:'' };
+}
+function omairiRows(op){
+  const rows = op && Array.isArray(op.rows) ? op.rows : [];
+  const wk = rows.find(r => /平日/.test(r.label||'')) || rows[0] || null;
+  const hi = rows.find(r => r !== wk) || null;
+  return { wk, hi };
+}
+function renderOmairiTable(op){
+  const periods = op && Array.isArray(op.periods) ? op.periods : [];
+  const { wk, hi } = omairiRows(op);
+  if(!periods.length || !wk) return '';
+  const row = (r, color) => r ? `<tr><td class="row-label"><i style="background:${color}"></i>${esc(r.label||'')}</td>${
+    periods.map((_, i) => { const p = splitPrice(r.prices && r.prices[i]);
+      return `<td><span class="price-main">${esc(p.main)}</span>${p.add ? `<span class="price-add">(${esc(p.add)})</span>` : ''}</td>`; }).join('')
+  }</tr>` : '';
+  return `<table class="om-table"><thead><tr><th>お詣り日</th>${periods.map(p => `<th>${esc(p).replace(/\s+/g, '<br/>')}</th>`).join('')}</tr></thead>
+    <tbody>${row(wk, 'var(--om-wk)')}${row(hi, 'var(--om-hi)')}</tbody></table>
+    <p class="om-table-tax">（　）内はお子様1人追加料金 / ( tax in )</p>`;
+}
+function renderOmairiMonth(year, month, op, periods){
+  const MONTHS_JA = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+  const firstDow = new Date(year, month, 1).getDay();
+  const startCol = firstDow === 0 ? 6 : firstDow - 1;
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const today = new Date();
+  const todayKey = dateKey(today.getFullYear(), today.getMonth(), today.getDate());
+  const { wk, hi } = omairiRows(op);
+  const pi = omairiPeriodIndex(periods, year, month + 1);
+  const priceOf = r => (r && pi >= 0) ? splitPrice(r.prices && r.prices[pi]).main : '';
+  const wkP = priceOf(wk), hiP = priceOf(hi);
+  const mp = (wkP || hiP) ? `<span class="om-mp">${wkP ? `<span><i style="background:var(--om-wk)"></i>${esc(wkP)}</span>` : ''}${hiP ? `<span><i style="background:var(--om-hi)"></i>${esc(hiP)}</span>` : ''}</span>` : '';
+
+  let cells = '';
+  for(let i = 0; i < startCol; i++) cells += `<div class="cal-day empty"></div>`;
+  for(let d = 1; d <= daysInMonth; d++){
+    const dow = new Date(year, month, d).getDay();
+    const key = dateKey(year, month, d);
+    const closed = CLOSED.has(key) || !getTier(year, month, d);   // スタジオの休み＝撮影の料金カレンダーと同じ
+    const high = dow === 0 || dow === 6 || JP_HOLIDAYS.has(key) || isTaianAll(key);
+    let cls = closed ? 'cal-day closed' : `cal-day ${high ? 'om-hi' : 'om-wk'}`;
+    if(dow === 0) cls += ' sun-col';
+    if(dow === 6) cls += ' sat-col';
+    if(JP_HOLIDAYS.has(key) && dow !== 0) cls += ' holiday';
+    if(key === todayKey) cls += ' today';
+    const taian = isTaianAll(key) ? '<span class="cal-taian">大安</span>' : '';
+    cells += `<div class="${esc(cls)}">${d}${taian}</div>`;
+  }
+  return `
+    <div class="cal-month">
+      <div class="cal-month-hd">
+        <span class="cal-month-name">${esc(MONTHS_JA[month])}</span>
+        <span class="cal-month-year">${year}</span>
+        ${mp}
+      </div>
+      <div class="cal-grid">
+        <div class="cal-dow">月</div><div class="cal-dow">火</div><div class="cal-dow">水</div><div class="cal-dow">木</div><div class="cal-dow">金</div><div class="cal-dow sat">土</div><div class="cal-dow sun">日</div>
+        ${cells}
+      </div>
+    </div>`;
+}
+function renderOmairi(studio){
+  const sec = document.getElementById('omairi');
+  if(!sec) return;
+  const res = studio.reservation || {};
+  const op = res.omairiPlan;
+  const periods = omairiPeriods(op);
+  if(!op || !periods.length){ sec.hidden = true; return; }
+  document.getElementById('om-table').innerHTML = renderOmairiTable(op);
+  // 今月から、料金の期間の最後の月まで（多くて 12 か月）
+  const now = new Date();
+  let y = now.getFullYear(), m = now.getMonth();
+  const last = Math.max(...periods.map(p => p.y * 12 + (p.to - 1)));
+  let html = '';
+  for(let i = 0; i < 12 && (y * 12 + m) <= last; i++){
+    html += renderOmairiMonth(y, m, op, periods);
+    m++; if(m > 11){ m = 0; y++; }
+  }
+  document.getElementById('om-months').innerHTML = html;
+  // 受付の文と予約のボタンは、予約の欄の「753お詣り日予約について」から
+  const blk = (Array.isArray(res.blocks) ? res.blocks : []).find(b => /お詣り/.test(b.title||'')) || null;
+  const rec = blk && Array.isArray(blk.notes) ? blk.notes.find(n => /^お詣り日予約の受付/.test(String(n))) : '';
+  const recEl = document.getElementById('om-reception');
+  if(rec){ recEl.textContent = '※' + rec; } else { recEl.remove(); }
+  const ctas = [];
+  if(blk && blk.bookingUrl) ctas.push(`<a href="${esc(safeHref(blk.bookingUrl))}" class="btn-line" target="_blank" rel="noopener">${esc(blk.bookingLabel || 'お詣り日のご予約はこちら')} →</a>`);
+  if(blk && blk.plansUrl) ctas.push(`<a href="${esc(safeHref(blk.plansUrl))}" class="btn-line">${esc(blk.plansLabel || 'お詣りプラン・料金の詳細について')} →</a>`);
+  document.getElementById('om-ctas').innerHTML = ctas.join('');
+}
+
 function init(){
   const data = window.SITE_DATA;
   if(!data){ document.body.classList.add('is-ready'); return; }
@@ -506,11 +687,18 @@ function init(){
   }
 
   renderCalendar();
+  renderOmairi(studio);
   document.body.classList.add('is-ready');
 }
 
 setTimeout(()=>document.body.classList.add('is-ready'), 1200);
 init();
+// トップの「753お詣り日カレンダーを見る」（calendar.html#omairi）から来たとき、描いたあとの位置へ合わせ直す
+window.addEventListener('load', function(){
+  if(!location.hash) return;
+  var t = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if(t) t.scrollIntoView();
+});
 </script>
 <script>
 // 予約する › 展開メニュー(TOPページと同仕様)

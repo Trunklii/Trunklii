@@ -5942,7 +5942,7 @@ window.SITE_DATA = {
             "bookingLabel": "撮影のご予約はこちら",
             "plansUrl": "plans.html",
             "plansLabel": "撮影プラン・料金の詳細について",
-            "calendarUrl": "calendar.html",
+            "calendarUrl": "calendar.html#omairi",
             "calendarLabel": "753お詣り日カレンダーはこちら",
             "notes": [
               "ご予約はSTORES予約サイトで承ります。ご希望日時を選択後、撮影プラン（One / Family / Maternity / Furisode）と撮影メニュー（753・お宮参り・バースデー・入園入学など）をアンケート形式でお選びいただきます。",
@@ -5968,7 +5968,7 @@ window.SITE_DATA = {
             "bookingLabel": "お詣り日のご予約はこちら",
             "plansUrl": "reservation.html#omairi-plan",
             "plansLabel": "お詣りプラン・料金の詳細について",
-            "calendarUrl": "calendar.html",
+            "calendarUrl": "calendar.html#omairi",
             "calendarLabel": "753お詣り日カレンダーはこちら",
             "notes": [
               "スタジオ撮影×お詣り着物レンタルのセットプランです。スタジオ撮影日と神社へお詣りに行く日の2日間をご予約いただき、各日違うお着物をお選びいただけます。",
