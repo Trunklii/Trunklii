@@ -350,7 +350,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="section-body-text" style="text-align:center;max-width:640px;margin:0 auto 2rem">撮影のご予約は、公式サイトのご予約ページから承ります。
 ご予約からお写真のお渡しまで、すべてWeb上で完結します。</p>
 
-      <div class="coming-banner" id="res-open-banner" data-before-open="10月31日（土）までの撮影分 受付中<br>11月分は 10月16日（金）13:00 受付開始" data-after-open="11月30日（月）までの撮影分 受付中">10月31日（土）までの撮影分 受付中<br>11月分は 10月16日（金）13:00 受付開始</div>
+      <div class="coming-banner" id="res-open-banner" data-before-open="11月30日（月）までの撮影分 受付中<br>12月分は 11月1日（日）13:00 受付開始" data-after-open="12月26日（土）までの撮影分 受付中">11月30日（月）までの撮影分 受付中<br>12月分は 11月1日（日）13:00 受付開始</div>
 
       <!-- ── 撮影予約 ── -->
       <div class="subsec">
@@ -364,8 +364,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 
         <ul class="res-notes">
-          <li><span><span data-before-open="10月31日（土）までの撮影分を受付中です。<br>11月の撮影分は、10月16日（金）13:00 より受付開始いたします。" data-after-open="11月30日（月）までの撮影分のご予約を受付中です。">10月31日（土）までの撮影分を受付中です。<br>11月の撮影分は、10月16日（金）13:00 より受付開始いたします。</span>
-            <span class="res-note-sub">※12月以降の日程は、決まり次第このページでご案内いたします。</span></span></li>
+          <li><span><span data-before-open="11月30日（月）までの撮影分を受付中です。<br>12月の撮影分は、11月1日（日）13:00 より受付開始いたします。" data-after-open="12月26日（土）までの撮影分のご予約を受付中です。">11月30日（月）までの撮影分を受付中です。<br>12月の撮影分は、11月1日（日）13:00 より受付開始いたします。</span>
+            <span class="res-note-sub">※1月以降の日程は、決まり次第このページでご案内いたします。</span></span></li>
           <li><span>大人着物とお子さまの日本髪のオプションは撮影の日程によってはお受けできない日がございます。
             <span class="res-note-sub">具体的な日時は予約フォームの「日時を選ぶ」画面のカレンダーの下に記載してありますのでご確認ください。</span></span></li>
           <li><span><span data-before-open="ご不明な点は、Instagram DM でお問い合わせを承っております。" data-after-open="ご不明な点は、Instagram DM でお問い合わせを承っております。">ご不明な点は、Instagram DM でお問い合わせを承っております。</span>
@@ -705,6 +705,8 @@ function closeBookSheet(){
    2026-10-15 川島さん決定: 10/31 までは受付中のまま、11 月分（11/1〜11/30）を
    2026-10-16 13:00 JST に受付開始。booking_slots の 11 月 55 枠の open_at を同じ時刻で
    作り、本番の API で突き合わせた（10/15 06:2x）。
+   2026-10-31 川島さん決定: 11/30 までは受付中のまま、12 月分（最終 12/26）を
+   2026-11-01 13:00 JST に受付開始。12 月の枠の open_at も同じ時刻にそろえる。
    予約の受付そのものは予約システム側（booking_slots.open_at）が同じ時刻で
    判定するので、文言とデータの足並みは揃う。
    見ている端末の時計がずれると文言だけ早く／遅く変わるが、実際に予約が通るかは
@@ -713,7 +715,7 @@ function closeBookSheet(){
   /* 受付開始日時（JST）。ここを変えるときは、予約システム側の
      booking_slots.open_at も必ず同じ時刻に揃えること。
      文言だけ先に切り替わると、来ていただいた方が予約できずに終わる。 */
-  var OPEN_AT = new Date('2026-10-16T13:00:00+09:00').getTime();
+  var OPEN_AT = new Date('2026-11-01T13:00:00+09:00').getTime();
   function apply(){
     var opened = Date.now() >= OPEN_AT;
     var els = document.querySelectorAll('[data-before-open]');
