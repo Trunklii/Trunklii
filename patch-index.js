@@ -117,7 +117,8 @@
     // スタジオ撮影着物(既存カテゴリを流用=現行写真を自動表示)＋お詣り着物(新カテゴリ・後日データはめ込み)
     var GROUPS = [
       { key:'studio', label:'スタジオ撮影着物', en:'Studio Kimono' },
-      { key:'mairi',  label:'お詣り着物',       en:'Omairi Kimono' }
+      { key:'mairi',  label:'お詣り着物',       en:'Omairi Kimono' },
+      { key:'parents', label:'大人着物',         en:'For Parents' }
     ];
     // 表示順(指定): 女の子(3→7→10) → 男の子(3→5→10) → お宮参り。3列表示で女は1行目・男は2行目に並ぶ
     var CATS = [
@@ -131,8 +132,15 @@
       { key:'mairi-3g', sub:'3 Year Old Girl',  jp:'三歳女の子', group:'mairi', gender:'girl' },
       { key:'mairi-7g', sub:'7 Year Old Girl',  jp:'七歳女の子', group:'mairi', gender:'girl' },
       { key:'mairi-3b', sub:'3 Year Old Boy',   jp:'三歳男の子', group:'mairi', gender:'boy' },
-      { key:'mairi-5b', sub:'5 Year Old Boy',   jp:'五歳男の子', group:'mairi', gender:'boy' }
+      { key:'mairi-5b', sub:'5 Year Old Boy',   jp:'五歳男の子', group:'mairi', gender:'boy' },
+      { key:'mama',         sub:'Rental Kimono for Mama', jp:'ママの着物',   group:'parents', gender:'' },
+      { key:'parents-look', sub:'Styling',                jp:'着用イメージ', group:'parents', gender:'' }
     ];
+    // 大人着物（ママの着物・着用イメージ）は nr. だけ（2026-11-17 大輔さん）
+    if(location.pathname.indexOf('/nr/') === -1){
+      GROUPS = GROUPS.filter(function(g){ return g.key !== 'parents'; });
+      CATS = CATS.filter(function(c){ return c.group !== 'parents'; });
+    }
     CATS.forEach(function(c){ if(!CAT_JP[c.key]) CAT_JP[c.key] = c.jp; });   // メニュー(key)→タグ(日本語)の対応
     // STUDIO_KEY を判定
     var STUDIO_KEY = location.pathname.indexOf('/nr/') !== -1 ? 'nr' : 'et';

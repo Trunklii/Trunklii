@@ -91,10 +91,12 @@
     '.mn-og dl{margin:1rem 0 0;font-family:var(--serif);font-weight:300;font-size:.82rem}',
     '.mn-row{display:flex;align-items:baseline;gap:.5rem;padding:.6rem 0;border-top:1px solid var(--border);flex-wrap:nowrap}',
     '.mn-row .n{color:var(--ink);min-width:0;line-height:1.7}',
+    '.mn-row .n.kp{word-break:keep-all;overflow-wrap:anywhere}',
     '.mn-row .dots{flex:1;border-bottom:1px dotted var(--line-strong,rgba(31,20,16,.26));transform:translateY(-.25em);min-width:1rem}',
     '.mn-row .p{font-family:var(--display);font-style:normal;font-weight:400;font-size:.95rem;white-space:nowrap;font-variant-numeric:lining-nums}',
     '.mn-og .mn-sub{font-family:var(--serif);font-weight:300;font-size:.7rem;line-height:1.8;color:var(--mid);padding:0 0 .5rem}',
     '.mn-og .mn-head{font-family:var(--serif);font-weight:400;font-size:.8rem;color:var(--accent-text);padding:.9rem 0 .1rem}',
+    '.mn-og .mn-link{display:block;margin-top:.9rem;text-align:right;font-family:var(--serif);font-size:.76rem;letter-spacing:.06em;color:var(--accent,#7a3b4a);text-decoration:none;border-bottom:none}',
     '.mn-og .mn-note{font-family:var(--serif);font-weight:300;font-size:.7rem;line-height:1.85;color:var(--mid);margin:.8rem 0 0;padding-top:.7rem;border-top:1px solid var(--border)}',
     /* ── 最下部 ── */
     '.mn-foot{font-family:var(--serif);font-weight:400;font-size:.95rem;letter-spacing:.06em;color:var(--accent-text);text-align:center;margin:2.6rem 0 1rem}',
@@ -188,7 +190,9 @@
     var cards = items.map(function (g) {
       var rows = (g.rows || []).map(function (r) {
         if (r.head) return '<div class="mn-head">' + esc(r.head) + '</div>';
-        return '<div class="mn-row"><span class="n">' + esc(r.name) + '</span>'
+        // 「着付け＋和装ヘアセット」などは、スマホで1文字だけ次の行に落ちないよう「＋」の後でだけ折り返す（2026-11-17）
+        var nm = /＋/.test(r.name || '') ? '<span class="n kp">' + esc(r.name).replace(/＋/g, '＋<wbr>') : '<span class="n">' + esc(r.name);
+        return '<div class="mn-row">' + nm + '</span>'
           + '<span class="dots"></span><span class="p">' + esc(r.price) + '</span></div>'
           + (r.sub ? '<div class="mn-sub">（' + esc(r.sub) + '）</div>' : '');
       }).join('');
@@ -196,6 +200,7 @@
         + '<div class="mn-og-t">' + esc(g.title) + (g.en ? '<small>' + esc(g.en) + '</small>' : '') + '</div>'
         + '<dl>' + rows + '</dl>'
         + (g.note ? '<p class="mn-note">' + esc(g.note) + '</p>' : '')
+        + (g.link ? '<a class="mn-link" href="' + esc(g.link.href) + '">' + esc(g.link.label) + ' ›</a>' : '')
         + '</div>';
     });
     // 4群（七五三）は、紙と同じく左の列の2つを積む

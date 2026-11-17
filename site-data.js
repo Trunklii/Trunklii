@@ -6582,6 +6582,64 @@ window.SITE_DATA = {
             "name": "振袖 C",
             "desc": "白地",
             "category": "10y-girl"
+          },
+          {
+            "file": "kimono-adult-mama-maison-nr-kasugai-01.jpg",
+            "name": "ママ着物 若草色",
+            "desc": "若草色",
+            "category": "mama",
+            "detail": "kimono-adult-mama-detail-maison-nr-kasugai-01.jpg"
+          },
+          {
+            "file": "kimono-adult-mama-maison-nr-kasugai-02.jpg",
+            "name": "ママ着物 白練",
+            "desc": "白練",
+            "category": "mama",
+            "detail": "kimono-adult-mama-detail-maison-nr-kasugai-02.jpg"
+          },
+          {
+            "file": "kimono-adult-mama-maison-nr-kasugai-03.jpg",
+            "name": "ママ着物 紫紺",
+            "desc": "紫紺",
+            "category": "mama",
+            "detail": "kimono-adult-mama-detail-maison-nr-kasugai-03.jpg"
+          },
+          {
+            "file": "kimono-adult-mama-maison-nr-kasugai-04.jpg",
+            "name": "ママ着物 山吹茶",
+            "desc": "山吹茶",
+            "category": "mama",
+            "detail": "kimono-adult-mama-detail-maison-nr-kasugai-04.jpg"
+          },
+          {
+            "file": "kimono-adult-mama-maison-nr-kasugai-05.jpg",
+            "name": "ママ着物 水色",
+            "desc": "水色",
+            "category": "mama"
+          },
+          {
+            "file": "shichigosan-family-kimono-maison-nr-kasugai-01.jpg",
+            "name": "着用イメージ 01",
+            "desc": "ママ・パパの着物",
+            "category": "parents-look"
+          },
+          {
+            "file": "shichigosan-family-kimono-maison-nr-kasugai-02.jpg",
+            "name": "着用イメージ 02",
+            "desc": "ママ・パパの着物",
+            "category": "parents-look"
+          },
+          {
+            "file": "shichigosan-family-kimono-maison-nr-kasugai-03.jpg",
+            "name": "着用イメージ 03",
+            "desc": "ママ・パパの着物",
+            "category": "parents-look"
+          },
+          {
+            "file": "shichigosan-family-kimono-maison-nr-kasugai-04.jpg",
+            "name": "着用イメージ 04",
+            "desc": "ママ・パパの着物",
+            "category": "parents-look"
           }
         ]
       },
@@ -6690,6 +6748,14 @@ window.SITE_DATA = {
                   "price": "¥11,000"
                 },
                 {
+                  "name": "ママ 着付け＋和装ヘアセット（着物レンタル）",
+                  "price": "¥22,000"
+                },
+                {
+                  "name": "ママ 着付けのみ（着物レンタル）",
+                  "price": "¥16,000"
+                },
+                {
                   "name": "ママ 着付け＋和装ヘアセット（持込着物）",
                   "price": "¥17,000"
                 },
@@ -6702,7 +6768,11 @@ window.SITE_DATA = {
                   "price": "¥7,700"
                 },
                 {
-                  "name": "パパ 和装着付け（持込着物）",
+                  "name": "パパ 着付け（着物レンタル）",
+                  "price": "¥13,000"
+                },
+                {
+                  "name": "パパ 着付け（持込着物）",
                   "price": "¥8,800"
                 }
               ],
@@ -6779,6 +6849,14 @@ window.SITE_DATA = {
                   "price": "¥11,000"
                 },
                 {
+                  "name": "ママ 着付け＋和装ヘアセット（着物レンタル）",
+                  "price": "¥22,000"
+                },
+                {
+                  "name": "ママ 着付けのみ（着物レンタル）",
+                  "price": "¥16,000"
+                },
+                {
                   "name": "ママ 着付け＋和装ヘアセット（持込着物）",
                   "price": "¥17,000"
                 },
@@ -6791,7 +6869,11 @@ window.SITE_DATA = {
                   "price": "¥7,700"
                 },
                 {
-                  "name": "パパ 和装着付け（持込着物）",
+                  "name": "パパ 着付け（着物レンタル）",
+                  "price": "¥13,000"
+                },
+                {
+                  "name": "パパ 着付け（持込着物）",
                   "price": "¥8,800"
                 }
               ],
@@ -6868,6 +6950,14 @@ window.SITE_DATA = {
                   "price": "¥11,000"
                 },
                 {
+                  "name": "ママ 着付け＋和装ヘアセット（着物レンタル）",
+                  "price": "¥22,000"
+                },
+                {
+                  "name": "ママ 着付けのみ（着物レンタル）",
+                  "price": "¥16,000"
+                },
+                {
                   "name": "ママ 着付け＋和装ヘアセット（持込着物）",
                   "price": "¥17,000"
                 },
@@ -6880,7 +6970,11 @@ window.SITE_DATA = {
                   "price": "¥7,700"
                 },
                 {
-                  "name": "パパ 和装着付け（持込着物）",
+                  "name": "パパ 着付け（着物レンタル）",
+                  "price": "¥13,000"
+                },
+                {
+                  "name": "パパ 着付け（持込着物）",
                   "price": "¥8,800"
                 }
               ],
@@ -6957,6 +7051,14 @@ window.SITE_DATA = {
                   "price": "¥11,000"
                 },
                 {
+                  "name": "ママ 着付け＋和装ヘアセット（着物レンタル）",
+                  "price": "¥22,000"
+                },
+                {
+                  "name": "ママ 着付けのみ（着物レンタル）",
+                  "price": "¥16,000"
+                },
+                {
                   "name": "ママ 着付け＋和装ヘアセット（持込着物）",
                   "price": "¥17,000"
                 },
@@ -6969,7 +7071,11 @@ window.SITE_DATA = {
                   "price": "¥7,700"
                 },
                 {
-                  "name": "パパ 和装着付け（持込着物）",
+                  "name": "パパ 着付け（着物レンタル）",
+                  "price": "¥13,000"
+                },
+                {
+                  "name": "パパ 着付け（持込着物）",
                   "price": "¥8,800"
                 }
               ],
@@ -7046,6 +7152,14 @@ window.SITE_DATA = {
                   "price": "¥11,000"
                 },
                 {
+                  "name": "ママ 着付け＋和装ヘアセット（着物レンタル）",
+                  "price": "¥22,000"
+                },
+                {
+                  "name": "ママ 着付けのみ（着物レンタル）",
+                  "price": "¥16,000"
+                },
+                {
                   "name": "ママ 着付け＋和装ヘアセット（持込着物）",
                   "price": "¥17,000"
                 },
@@ -7058,7 +7172,11 @@ window.SITE_DATA = {
                   "price": "¥7,700"
                 },
                 {
-                  "name": "パパ 和装着付け（持込着物）",
+                  "name": "パパ 着付け（着物レンタル）",
+                  "price": "¥13,000"
+                },
+                {
+                  "name": "パパ 着付け（持込着物）",
                   "price": "¥8,800"
                 }
               ],
@@ -7135,6 +7253,14 @@ window.SITE_DATA = {
                   "price": "¥11,000"
                 },
                 {
+                  "name": "ママ 着付け＋和装ヘアセット（着物レンタル）",
+                  "price": "¥22,000"
+                },
+                {
+                  "name": "ママ 着付けのみ（着物レンタル）",
+                  "price": "¥16,000"
+                },
+                {
                   "name": "ママ 着付け＋和装ヘアセット（持込着物）",
                   "price": "¥17,000"
                 },
@@ -7147,7 +7273,11 @@ window.SITE_DATA = {
                   "price": "¥7,700"
                 },
                 {
-                  "name": "パパ 和装着付け（持込着物）",
+                  "name": "パパ 着付け（着物レンタル）",
+                  "price": "¥13,000"
+                },
+                {
+                  "name": "パパ 着付け（持込着物）",
                   "price": "¥8,800"
                 }
               ],
@@ -7224,6 +7354,14 @@ window.SITE_DATA = {
                   "price": "¥11,000"
                 },
                 {
+                  "name": "ママ 着付け＋和装ヘアセット（着物レンタル）",
+                  "price": "¥22,000"
+                },
+                {
+                  "name": "ママ 着付けのみ（着物レンタル）",
+                  "price": "¥16,000"
+                },
+                {
                   "name": "ママ 着付け＋和装ヘアセット（持込着物）",
                   "price": "¥17,000"
                 },
@@ -7236,7 +7374,11 @@ window.SITE_DATA = {
                   "price": "¥7,700"
                 },
                 {
-                  "name": "パパ 和装着付け（持込着物）",
+                  "name": "パパ 着付け（着物レンタル）",
+                  "price": "¥13,000"
+                },
+                {
+                  "name": "パパ 着付け（持込着物）",
                   "price": "¥8,800"
                 }
               ],
@@ -7313,6 +7455,14 @@ window.SITE_DATA = {
                   "price": "¥11,000"
                 },
                 {
+                  "name": "ママ 着付け＋和装ヘアセット（着物レンタル）",
+                  "price": "¥22,000"
+                },
+                {
+                  "name": "ママ 着付けのみ（着物レンタル）",
+                  "price": "¥16,000"
+                },
+                {
                   "name": "ママ 着付け＋和装ヘアセット（持込着物）",
                   "price": "¥17,000"
                 },
@@ -7325,7 +7475,11 @@ window.SITE_DATA = {
                   "price": "¥7,700"
                 },
                 {
-                  "name": "パパ 和装着付け（持込着物）",
+                  "name": "パパ 着付け（着物レンタル）",
+                  "price": "¥13,000"
+                },
+                {
+                  "name": "パパ 着付け（持込着物）",
                   "price": "¥8,800"
                 }
               ],
@@ -7402,6 +7556,14 @@ window.SITE_DATA = {
                   "price": "¥11,000"
                 },
                 {
+                  "name": "ママ 着付け＋和装ヘアセット（着物レンタル）",
+                  "price": "¥22,000"
+                },
+                {
+                  "name": "ママ 着付けのみ（着物レンタル）",
+                  "price": "¥16,000"
+                },
+                {
                   "name": "ママ 着付け＋和装ヘアセット（持込着物）",
                   "price": "¥17,000"
                 },
@@ -7414,7 +7576,11 @@ window.SITE_DATA = {
                   "price": "¥7,700"
                 },
                 {
-                  "name": "パパ 和装着付け（持込着物）",
+                  "name": "パパ 着付け（着物レンタル）",
+                  "price": "¥13,000"
+                },
+                {
+                  "name": "パパ 着付け（持込着物）",
                   "price": "¥8,800"
                 }
               ],
@@ -7891,7 +8057,18 @@ window.SITE_DATA = {
                   "en": "FOR PARENTS",
                   "rows": [
                     {
-                      "head": "ママ"
+                      "head": "ママ（着物レンタル）"
+                    },
+                    {
+                      "name": "着付け＋和装ヘアセット",
+                      "price": "¥22,000"
+                    },
+                    {
+                      "name": "着付けのみ",
+                      "price": "¥16,000"
+                    },
+                    {
+                      "head": "ママ（持込着物）"
                     },
                     {
                       "name": "着付け＋和装ヘアセット",
@@ -7906,14 +8083,24 @@ window.SITE_DATA = {
                       "price": "¥7,700"
                     },
                     {
-                      "head": "パパ"
+                      "head": "パパ（着物レンタル）"
                     },
                     {
-                      "name": "和装着付け",
+                      "name": "着付け",
+                      "price": "¥13,000"
+                    },
+                    {
+                      "head": "パパ（持込着物）"
+                    },
+                    {
+                      "name": "着付け",
                       "price": "¥8,800"
                     }
                   ],
-                  "note": "大人着付けは持込着物のみ対応"
+                  "link": {
+                    "href": "kimono.html#mama",
+                    "label": "ママの着物・着用イメージを見る"
+                  }
                 }
               ]
             }
