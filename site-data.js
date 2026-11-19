@@ -9564,7 +9564,7 @@ window.SITE_DATA = {
                   ],
                   "link": {
                     "href": "kimono.html#mama",
-                    "label": "ママの着物・着用イメージを見る"
+                    "label": "ママの着物を見る"
                   }
                 }
               ]

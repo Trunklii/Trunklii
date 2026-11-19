@@ -210,6 +210,13 @@ body.sheet-open .to-top-btn{opacity:0!important;pointer-events:none!important;tr
 .brand-hop{position:fixed;right:1.25rem;bottom:.5rem;z-index:150;width:48px;height:48px;border-radius:50%;background:#fff;border:1px solid rgba(17,16,16,.25);display:flex;align-items:center;justify-content:center;opacity:.5;box-shadow:0 6px 20px rgba(17,16,16,.15);transition:opacity .3s}
 .brand-hop:hover{opacity:1}
 </style>
+<style>
+/* 当面は「大人着物」の「ママの着物」だけを見せる（お子さまの着物と絞り込みタグは写真が揃うまで非表示。
+   着用イメージはお客様の持ち込み着物の写真なので非表示・2026-11-19 大輔さん）
+   戻すときはこのブロックを丸ごと削除する */
+#kimono-grid .kim-group:not([data-group="parents"]),#kimono-grid .kim-sub[data-cat="parents-look"],#kim-filter,#kim-filter-note{display:none!important}
+#kimono-grid .kim-group[data-group="parents"]{margin-top:0!important;padding-top:0!important}
+</style>
 <style>.sec-jp{font-family:var(--sans);font-weight:400;font-size:.62rem;letter-spacing:.1em;color:var(--mid);white-space:nowrap;margin-left:.2rem}.kim-cat-title .sec-jp{margin-left:.55em}</style>
 <style>
 /* チャットボットアイコン(TOPのチャットへ誘導) */
@@ -494,7 +501,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="footer-copy" id="footer-copy"></span>
 </footer>
 
-<script src="../site-data.js?v=20261119a"></script>
+<script src="../site-data.js?v=20261119b"></script>
 <script>
 (function(){
   var KEY = location.pathname.indexOf('/nr/') !== -1 ? 'nr' : 'et';
