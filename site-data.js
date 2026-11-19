@@ -8047,7 +8047,8 @@ window.SITE_DATA = {
             "file": "kimono-adult-mama-maison-nr-kasugai-05.jpg",
             "name": "ママ着物 水色",
             "desc": "水色",
-            "category": "mama"
+            "category": "mama",
+            "detail": "kimono-adult-mama-detail-maison-nr-kasugai-05.jpg"
           },
           {
             "file": "shichigosan-family-kimono-maison-nr-kasugai-01.jpg",

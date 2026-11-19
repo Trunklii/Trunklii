@@ -1538,6 +1538,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="g-no-msg" id="g-no-msg"></span>
     </span>
   </div>
+  <p class="g-mama-link" id="g-mama-link" hidden style="margin:.4rem 0 1rem;font-size:.85rem;letter-spacing:.06em"><a href="kimono.html#mama" style="color:inherit;text-decoration:underline;text-underline-offset:.25em">レンタルできるママの着物を見る ›</a></p>
   <div class="g-carousel">
     <div class="g-grid" id="g-grid"></div>
     <button class="g-nav g-nav-prev" type="button" aria-label="前の写真" onclick="galleryScroll(-1)">‹</button>
@@ -1625,6 +1626,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="section-body-text" id="reservation-body" style="width:auto;max-width:640px;margin:0 0 3rem">撮影のご予約は、公式サイトのご予約ページから承ります。</p>
   <p class="section-body-text" id="reservation-open-status" style="width:auto;max-width:640px;margin:-2rem 0 3rem" data-before-open="11月30日（月）までの撮影分を受付中です。<br>12月の撮影分は、11月1日（日）13:00 より受付開始いたします。" data-after-open="12月26日（土）までの撮影分を受付中です。">11月30日（月）までの撮影分を受付中です。<br>12月の撮影分は、11月1日（日）13:00 より受付開始いたします。</p>
   <p class="section-body-text" id="reservation-option-note" style="width:auto;max-width:640px;margin:-1.5rem 0 1rem">大人着物とお子さまの日本髪のオプションは撮影の日程によってはお受けできない日がございます。</p>
+  <p class="section-body-text" id="reservation-mama-link" style="width:auto;max-width:640px;margin:0 0 1rem"><a href="kimono.html#mama" style="color:inherit;text-decoration:underline;text-underline-offset:.25em">レンタルできるママの着物を見る ›</a></p>
   <p class="section-body-text" style="width:auto;max-width:640px;margin:0 0 3rem">具体的な日時は予約フォームの「日時を選ぶ」画面のカレンダーの下に記載してありますのでご確認ください。</p>
   </div>
 
@@ -2258,6 +2260,9 @@ function filterGallery(cat, btn){
     }
   }
   const sel = bar ? Array.from(bar.querySelectorAll('.g-filter.active')).map(b=>b.dataset.cat).filter(c=>c && c!=='all') : [];
+  // 「ママ着物」で絞り込んだときだけ、レンタル着物の一覧へのリンクを出す（2026-11-19 大輔さん）
+  const mamaLink = document.getElementById('g-mama-link');
+  if(mamaLink) mamaLink.hidden = sel.indexOf('mamakimono') === -1;
   document.querySelectorAll('.g-item').forEach(item=>{
     const cats = (item.dataset.cat || 'other').split(' ').filter(Boolean);   // 1枚に複数タグ
     const match = sel.length === 0 || cats.some(c=>sel.indexOf(c) !== -1);   // いずれか一致で表示

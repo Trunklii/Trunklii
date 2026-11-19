@@ -191,13 +191,16 @@
           + '<div class="kim-item-img is-empty"><span>Coming Soon</span></div>'
         + '</div>';
       }
-      return items.map(function(it, i){
-        var f = it.file || '';
-        var nm = it.name || (c.jp + ' ' + ('0' + (i+1)).slice(-2));
+      function fig(f, nm){
         return '<figure class="kim-item kim-cat" data-cat="' + c.key + '" data-group="' + c.group + '" data-title="' + c.jp + '"'
           + ' data-src="' + encodeURIComponent(f) + '" data-name="' + nm + '" onclick="kimZoom(this)" tabindex="0" role="button" aria-label="' + nm + ' を拡大">'
           + '<div class="kim-item-img" style="background-image:url(\'' + f + '\')"></div>'
         + '</figure>';
+      }
+      // 寄り(柄のアップ)の写真があれば全身の隣に並べる（ママの着物・2026-11-19）
+      return items.map(function(it, i){
+        var nm = it.name || (c.jp + ' ' + ('0' + (i+1)).slice(-2));
+        return fig(it.file || '', nm) + (it.detail ? fig(it.detail, nm + '（柄）') : '');
       }).join('');
     }
     function miniCardHtml(c){
