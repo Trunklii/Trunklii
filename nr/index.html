@@ -855,7 +855,8 @@ header.nav{background:rgba(117,54,45,.55);border-bottom-color:rgba(255,255,255,.
 
 /* Gallery filter chips on dark */
 #gallery .g-filter{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.25)}
-#gallery .g-filter.active,#gallery .g-filter:hover{background:#fff;border-color:#fff;color:var(--ink)}
+#gallery .g-filter.active{background:#fff;border-color:#fff;color:var(--ink)}
+@media(hover:hover){#gallery .g-filter:hover{background:#fff;border-color:#fff;color:var(--ink)}}
 
 /* Calendar internals on dark (day cells are white cards) */
 #calendar .cal-top-note{color:rgba(255,255,255,.55)}
@@ -957,7 +958,8 @@ header.nav{background:rgba(117,54,45,.55);border-bottom-color:rgba(255,255,255,.
 #flow .flow-step + .flow-step{border-top-color:rgba(240,234,216,.25)}
 /* Gallery：タグ・注記・No.で探す・View More */
 #gallery .g-filter{color:rgba(240,234,216,.92);border-color:rgba(240,234,216,.4)}
-#gallery .g-filter.active,#gallery .g-filter:hover{background:#f0ead8;border-color:#f0ead8;color:var(--ink)}
+#gallery .g-filter.active{background:#f0ead8;border-color:#f0ead8;color:var(--ink)}
+@media(hover:hover){#gallery .g-filter:hover{background:#f0ead8;border-color:#f0ead8;color:var(--ink)}}
 #gallery .filter-note,#gallery .g-no-search{color:rgba(240,234,216,.85)}
 #gallery .g-more{color:#f0ead8;border-color:rgba(240,234,216,.7)}
 #gallery .g-more:hover{background:#f0ead8;color:var(--ink)}
